@@ -7,3 +7,4 @@ Beat 'em up game featuring Abe Lincoln, built with Unity
 - Parker Sprouse - Developer / QA Tester
 - Chris Toups - Producer
 - Kyle Whittington - Head of Marketing / Lead Artist
+- Christian Simmers - Artist (2D) / Designer
