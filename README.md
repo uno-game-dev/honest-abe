@@ -5,5 +5,4 @@ Beat 'em up game featuring Abe Lincoln, built with Unity
 
 Chris Toups - Producer
 Ted Mader - Lead Developer
-
 Parker Sprouse - Developer / QA Tester
