@@ -11,3 +11,4 @@ Beat 'em up game featuring Abe Lincoln, built with Unity
 - Breena Crump - Developer / QA Tester
 - Edward Garcia - Developer / Artist
 - David DiMaggio - Sound Designer / Game Designer
+- Maurice Robert - Developer / Game Designer
