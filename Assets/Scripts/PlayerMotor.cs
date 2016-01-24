@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(PlayerCollision))]
 public class PlayerMotor : MonoBehaviour {
 
-    public float maxJumpHeight = 4; // max units we can jump
-    public float minJumpHeight = 1; // min units we can jump
-    public float timeToJumpApex = .3f; // how long in seconds it takes for us to reach the top of our jump
+    //public float maxJumpHeight = 4; // max units we can jump
+    //public float minJumpHeight = 1; // min units we can jump
+    //public float timeToJumpApex = .3f; // how long in seconds it takes for us to reach the top of our jump
     public float moveSpeed = 8;
     public float movementSmoothing = .115f;
     [HideInInspector]
