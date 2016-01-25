@@ -3,7 +3,7 @@
 [RequireComponent(typeof(BaseCollision))]
 public class PlayerMotor : MonoBehaviour {
 
-    public float hMoveSpeed = 8, vMoveSpeed = 2;
+    public float hMoveSpeed = 8, vMoveSpeed = 6;
     public float movementSmoothing = .115f;
 
     private Vector3 velocity;
