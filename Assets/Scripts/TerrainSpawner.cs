@@ -6,7 +6,6 @@ public class TerrainSpawner : MonoBehaviour
 	public GameObject terrain;
 	public float startSpawnPosition = 11.2f;
 	public int spawnYPos = 0;
-	public int terrainLength = 16;
 
 	float lastPosition;
 	GameObject cam;
@@ -22,7 +21,7 @@ public class TerrainSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (cam.transform.position.x >= lastPosition - terrainLength && canSpawn)
+		if (cam.transform.position.x >= lastPosition - 16 && canSpawn)
 		{
 			canSpawn = false;
 			SpawnTerrain();
