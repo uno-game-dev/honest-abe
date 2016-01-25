@@ -6,16 +6,15 @@ public class PlayerMotor : MonoBehaviour {
     //public float maxJumpHeight = 4; // max units we can jump
     //public float minJumpHeight = 1; // min units we can jump
     //public float timeToJumpApex = .3f; // how long in seconds it takes for us to reach the top of our jump
-    public float moveSpeed = 8;
+    public float hMoveSpeed = 8, vMoveSpeed = 2;
     public float movementSmoothing = .115f;
-    [HideInInspector]
-    public Vector3 velocity;
+    [HideInInspector] public Vector3 velocity;
 
     //private float gravity;
     //private float maxJumpVelocity, minJumpVelocity;
-    private float velocityXSmoothing, velocityYSmoothing;
     //private float accelerationTimeAirborn = .2f;
     //private float accelerationTimeGrounded = .05f;
+    private float velocityXSmoothing, velocityYSmoothing;
     private PlayerCollision collision;
 
     void Start() {
@@ -46,8 +45,8 @@ public class PlayerMotor : MonoBehaviour {
             }
             */
 
-            float targetVelX = input.x * moveSpeed;
-            float targetVelY = input.y * moveSpeed;
+            float targetVelX = input.x * hMoveSpeed;
+            float targetVelY = input.y * vMoveSpeed;
             velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, movementSmoothing);
             velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, movementSmoothing);
             //velocity.y += gravity * Time.deltaTime;
