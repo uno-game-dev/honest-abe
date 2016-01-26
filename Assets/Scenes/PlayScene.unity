@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 473887776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,13 +431,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
-      propertyPath: enemyLayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1508476704 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379,
+    type: 2}
+  m_PrefabInternal: {fileID: 1508476703}
+  m_Script: {fileID: 11500000, guid: 351c737b96fa5cb4387863ad9a894069, type: 3}
 --- !u!1 &1778710417
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +452,7 @@ GameObject:
   - 92: {fileID: 1778710420}
   - 124: {fileID: 1778710419}
   - 81: {fileID: 1778710418}
+  - 114: {fileID: 1778710423}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -524,6 +527,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1778710423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1778710417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4009f725d426b984fb93a4a01fef96d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1508476704}
+  focusAreaSize: {x: 1, y: 1}
+  verticalOffset: 0
+  lookAheadDistanceX: 0
+  lookSmoothTimeX: 0.5
+  verticalSmoothTime: 0.15
 --- !u!1001 &1873982766
 Prefab:
   m_ObjectHideFlags: 0

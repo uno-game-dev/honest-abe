@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11409258}
   - 114: {fileID: 11471966}
   - 61: {fileID: 6135896}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -95,8 +95,7 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 512
-  boxCollider: {fileID: 0}
-  playerInput: {x: 0, y: 0}
+  objCollider: {fileID: 0}
 --- !u!114 &11471966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,9 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hMoveSpeed: 8
-  vMoveSpeed: 4
+  vMoveSpeed: 6
   movementSmoothing: 0.115
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
