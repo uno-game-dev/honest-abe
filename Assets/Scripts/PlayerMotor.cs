@@ -20,6 +20,7 @@ public class PlayerMotor : MonoBehaviour {
 
             float targetVelX = input.x * hMoveSpeed;
             float targetVelY = input.y * vMoveSpeed;
+
             velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, movementSmoothing);
             velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, movementSmoothing);
 

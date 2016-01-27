@@ -3,12 +3,12 @@
 public class CameraFollow : MonoBehaviour {
 
     public float smoothTime = 0.15f;
+    [HideInInspector] public float leftEdge;
 
     private Transform playerTransform;
     private BoxCollider2D levelBounds;
     private Camera cam;
     private float smoothVelX, smoothVelY;
-    private float leftEdge;
 
     void Start() {
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -29,19 +29,25 @@ public class CameraFollow : MonoBehaviour {
         //float height = 2f * cam.orthographicSize;
         //float width = height * cam.aspect;
 
+
+        // Prevents the camera from going above the bounds of the level
         if (pos.y + cam.orthographicSize > levelBounds.transform.position.y + (levelBounds.size.y / 2))
         {
             pos.y = (levelBounds.transform.position.y + (levelBounds.size.y / 2) - cam.orthographicSize);
         }
+
+        // Prevents the camera from going below the bounds of the level
         else if (pos.y - cam.orthographicSize < levelBounds.transform.position.y - (levelBounds.size.y / 2))
         {
             pos.y = (levelBounds.transform.position.y - (levelBounds.size.y / 2) + cam.orthographicSize);
         }
-
+        
+        // Prevents the camera from going backwards
         if (pos.x - (((2 * cam.orthographicSize) * cam.aspect) / 2) < leftEdge)
         {
-            pos.x = leftEdge;
+            pos.x = leftEdge + (((2 * cam.orthographicSize) * cam.aspect) / 2);
         }
+        
 
         transform.position = pos;
     }
