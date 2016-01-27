@@ -175,7 +175,7 @@ Transform:
   - {fileID: 2080159261}
   - {fileID: 1231238118}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1001 &684017036
 Prefab:
   m_ObjectHideFlags: 0
@@ -346,6 +346,48 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 434990, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
   m_PrefabInternal: {fileID: 684017036}
+--- !u!1 &1316732004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1316732006}
+  - 61: {fileID: 1316732005}
+  m_Layer: 0
+  m_Name: _Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1316732005
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1316732004}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 27, y: 18}
+--- !u!4 &1316732006
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1316732004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1001 &1426544728
 Prefab:
   m_ObjectHideFlags: 0
@@ -434,12 +476,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1508476704 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379,
-    type: 2}
-  m_PrefabInternal: {fileID: 1508476703}
-  m_Script: {fileID: 11500000, guid: 351c737b96fa5cb4387863ad9a894069, type: 3}
 --- !u!1 &1778710417
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +562,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &1778710423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,12 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4009f725d426b984fb93a4a01fef96d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1508476704}
-  focusAreaSize: {x: 1, y: 1}
-  verticalOffset: 0
-  lookAheadDistanceX: 0
-  lookSmoothTimeX: 0.5
-  verticalSmoothTime: 0.15
+  smoothTime: 0.15
 --- !u!1001 &1873982766
 Prefab:
   m_ObjectHideFlags: 0
