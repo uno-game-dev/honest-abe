@@ -2,6 +2,9 @@
 
 public class PlayerCollision : BaseCollision {
 
+	public GameManager gameManager;
+	private int timer;
+
     protected override void HorizontalCollisions(ref Vector3 vel)
     {
         float directionX = Mathf.Sign(vel.x);
@@ -22,13 +25,18 @@ public class PlayerCollision : BaseCollision {
 
                 collisionInfo.left = directionX == -1;
                 collisionInfo.right = directionX == 1;
-				Debug.Log ("hit");
+				Debug.Log ("hit " + hit.collider);
             }
+			//Need to check to make sure transform != null because the script is constantly being ran
 			if(hit.transform != null){
+				//Check to see if the player hits an enemy
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy")) {
 					Debug.Log ("Hit enemy");
+					gameManager.DecreaseHealth ();
+					SleepTimeout
 				}
 			}
+
         }
     }
 
@@ -52,10 +60,14 @@ public class PlayerCollision : BaseCollision {
 
                 collisionInfo.below = directionY == -1;
                 collisionInfo.above = directionY == 1;
+				Debug.Log ("hit " + hit.collider);
             }
+			//Need to check to make sure transform != null because the script is constantly being ran
 			if(hit.transform != null){
+				//Check to see if the player hits an enemy
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy")) {
 					Debug.Log ("Hit enemy");
+					gameManager.DecreaseHealth ();
 				}
 			}
         }
