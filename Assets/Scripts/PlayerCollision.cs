@@ -15,14 +15,20 @@ public class PlayerCollision : BaseCollision {
 
             Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
-            if (hit)
+			if (hit)
             {
                 vel.x = (hit.distance - skinWidth) * directionX;
                 rayLength = hit.distance;
 
                 collisionInfo.left = directionX == -1;
                 collisionInfo.right = directionX == 1;
+				Debug.Log ("hit");
             }
+			if(hit.transform != null){
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy")) {
+					Debug.Log ("Hit enemy");
+				}
+			}
         }
     }
 
@@ -47,6 +53,11 @@ public class PlayerCollision : BaseCollision {
                 collisionInfo.below = directionY == -1;
                 collisionInfo.above = directionY == 1;
             }
+			if(hit.transform != null){
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy")) {
+					Debug.Log ("Hit enemy");
+				}
+			}
         }
     }
 

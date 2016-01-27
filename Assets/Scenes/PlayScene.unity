@@ -136,8 +136,76 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 144610, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &336629378
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: enemyLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: collisionLayer.m_Bits
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 109664, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 109664, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 109664, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11471966, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+    - {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &447651497 stripped
 Transform:
@@ -227,6 +295,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 144610, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
   m_IsPrefabParent: 0
@@ -280,6 +352,10 @@ Prefab:
     - target: {fileID: 434990, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 144610, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
@@ -335,6 +411,10 @@ Prefab:
       propertyPath: m_Name
       value: WallRight
       objectReference: {fileID: 0}
+    - target: {fileID: 144610, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
   m_IsPrefabParent: 0
@@ -389,6 +469,10 @@ Prefab:
       propertyPath: m_Name
       value: WallLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 144610, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
   m_IsPrefabParent: 0
@@ -434,6 +518,14 @@ Prefab:
     - target: {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
       propertyPath: enemyLayer.m_Bits
       value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: collisionLayer.m_Bits
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 109664, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
@@ -574,6 +666,10 @@ Prefab:
     - target: {fileID: 434990, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
       propertyPath: m_LocalScale.x
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 144610, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce5f91ac40f9cf345b7b92871cd1e9ab, type: 2}
