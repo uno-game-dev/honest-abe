@@ -31,7 +31,7 @@ public class CameraFollow : MonoBehaviour {
             pos.y = (levelBounds.transform.position.y + (levelBounds.size.y / 2) - cam.orthographicSize);
         }
 
-        if (pos.y - cam.orthographicSize < levelBounds.transform.position.y - (levelBounds.size.y / 2))
+        else if (pos.y - cam.orthographicSize < levelBounds.transform.position.y - (levelBounds.size.y / 2))
         {
             pos.y = (levelBounds.transform.position.y - (levelBounds.size.y / 2) + cam.orthographicSize);
         }
