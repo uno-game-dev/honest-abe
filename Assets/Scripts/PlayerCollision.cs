@@ -33,7 +33,6 @@ public class PlayerCollision : BaseCollision {
 				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy")) {
 					Debug.Log ("Hit enemy");
 					gameManager.DecreaseHealth ();
-					SleepTimeout
 				}
 			}
 
