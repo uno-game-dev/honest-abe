@@ -37,12 +37,12 @@ public class EnemyFollow : MonoBehaviour
     private GameObject _player;
 
     /// <summary>The Movement Engine</summary>
-    private PlayerCollision _collision;
+    private EnemyCollision _collision;
 
     /// <summary>Use this for initialization</summary>
     private void Start()
     {
-        _collision = GetComponent<PlayerCollision>();
+        _collision = GetComponent<EnemyCollision>();
     }
 
     /// <summary>Update is called once per frame</summary>
