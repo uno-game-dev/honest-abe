@@ -4,7 +4,7 @@ using System.Collections;
 public class TerrainSpawner : MonoBehaviour
 {
 	public GameObject terrain;
-	public float startSpawnPosition = 11.2f;
+	public float startSpawnPosition = 8f;
 	public int spawnYPos = 0;
 
 	float lastPosition;
@@ -31,7 +31,7 @@ public class TerrainSpawner : MonoBehaviour
 	void SpawnTerrain()
 	{
 		Instantiate(terrain, new Vector3(lastPosition, spawnYPos, 0), Quaternion.Euler(0, 0, 0));
-		lastPosition += 11.2f;
+		lastPosition += startSpawnPosition;
 
 		canSpawn = true;
 	}
