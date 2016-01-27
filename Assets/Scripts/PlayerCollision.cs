@@ -22,6 +22,8 @@ public class PlayerCollision : BaseCollision {
 
                 collisionInfo.left = directionX == -1;
                 collisionInfo.right = directionX == 1;
+
+                Debug.Log("object hit" + hit.collider);
             }
         }
     }
@@ -46,6 +48,8 @@ public class PlayerCollision : BaseCollision {
 
                 collisionInfo.below = directionY == -1;
                 collisionInfo.above = directionY == 1;
+
+                Debug.Log("object hit" + hit.collider);
             }
         }
     }

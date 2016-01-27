@@ -9,6 +9,8 @@ public abstract class BaseCollision : MonoBehaviour {
     public CollisionInfo collisionInfo;
     [HideInInspector]
     public Collider2D objCollider;
+    [HideInInspector]
+    public Vector2 playerInput;
 
     protected float horizontalRaySpacing, verticalRaySpacing;
     protected RaycastOrigins raycastOrigins;
@@ -42,6 +44,8 @@ public abstract class BaseCollision : MonoBehaviour {
 
     public void Move(Vector3 vel, Vector2 input)
     {
+        playerInput = input;
+
         UpdateRaycastOrigins();
         collisionInfo.Reset();
 
