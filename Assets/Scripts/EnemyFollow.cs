@@ -12,7 +12,7 @@ using System;
 /// 
 /// Author: Edward Thomas Garcia
 /// </summary>
-[RequireComponent(typeof(BaseCollision))]
+[RequireComponent(typeof(BaseTrigger))]
 public class EnemyFollow : MonoBehaviour
 {
     /// <summary>Maximum Horizontal Movement Speed for GameObject</summary>
@@ -37,12 +37,13 @@ public class EnemyFollow : MonoBehaviour
     private GameObject _player;
 
     /// <summary>The Movement Engine</summary>
-    private PlayerCollision _collision;
+    private BaseCollision _collision;
 
-    /// <summary>Use this for initialization</summary>
+    public Vector3 velocity;
+
     private void Start()
     {
-        _collision = GetComponent<PlayerCollision>();
+        _collision = GetComponent<BaseCollision>();
     }
 
     /// <summary>Update is called once per frame</summary>
@@ -89,6 +90,7 @@ public class EnemyFollow : MonoBehaviour
         if (Mathf.Abs(targetVelocity.y) > slowDistance)
             targetVelocity.y = Mathf.Sign(targetVelocity.y) * verticalMoveSpeed;
 
+        velocity = targetVelocity;
         _collision.Move(targetVelocity * Time.deltaTime, new Vector2(0, 0));
     }
 }

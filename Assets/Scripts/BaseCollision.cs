@@ -1,88 +1,68 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-public abstract class BaseCollision : MonoBehaviour {
+public class BaseCollision : BaseTrigger
+{
+    public event CollisionHandler CollisionEnter = delegate { };
+    public event CollisionHandler CollisionStay = delegate { };
+    public event CollisionHandler CollisionExit = delegate { };
 
-    public int horizontalRayCount = 4;
-    public int verticalRayCount = 4;
-    public LayerMask collisionLayer;
-    public CollisionInfo collisionInfo;
-    [HideInInspector]
-    public Collider2D objCollider;
-    [HideInInspector]
-    public Vector2 playerInput;
-
-    protected float horizontalRaySpacing, verticalRaySpacing;
-    protected RaycastOrigins raycastOrigins;
-
-    protected const float skinWidth = .015f;
-
-    protected struct RaycastOrigins
+    public override void Move(Vector3 vel, Vector2 input)
     {
-        public Vector2 topLeft, topRight, bottomLeft, bottomRight;
-    }
-
-    public struct CollisionInfo
-    {
-        public bool above, below, left, right;
-
-        public void Reset()
-        {
-            above = below = left = right = false;
-        }
-    }
-
-    public virtual void Awake()
-    {
-        objCollider = GetComponent<Collider2D>();
-    }
-
-    public virtual void Start()
-    {
-        CalculateRaySpacing();
-    }
-
-    public void Move(Vector3 vel, Vector2 input)
-    {
-        playerInput = input;
-
-        UpdateRaycastOrigins();
-        collisionInfo.Reset();
-
         if (vel.x != 0)
             HorizontalCollisions(ref vel);
 
         if (vel.y != 0)
             VerticalCollisions(ref vel);
 
-        transform.Translate(vel);
+        base.Move(vel, input);
     }
 
-    protected abstract void HorizontalCollisions(ref Vector3 vel);
-
-    protected abstract void VerticalCollisions(ref Vector3 vel);
-
-    void UpdateRaycastOrigins()
+    private void HorizontalCollisions(ref Vector3 vel)
     {
-        Bounds bounds = objCollider.bounds;
-        bounds.Expand(skinWidth * -2);
+        float directionX = Mathf.Sign(vel.x);
+        float rayLength = Mathf.Abs(vel.x) + skinWidth;
 
-        raycastOrigins.bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
-        raycastOrigins.bottomRight = new Vector2(bounds.max.x, bounds.min.y);
-        raycastOrigins.topLeft = new Vector2(bounds.min.x, bounds.max.y);
-        raycastOrigins.topRight = new Vector2(bounds.max.x, bounds.max.y);
+        for (int i = 0; i < horizontalRayCount; i++)
+        {
+            Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+            rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionLayer);
+
+            Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
+
+            if (hit)
+            {
+                vel.x = (hit.distance - skinWidth) * directionX;
+                rayLength = hit.distance;
+
+                collisionInfo.left = directionX == -1;
+                collisionInfo.right = directionX == 1;
+            }
+        }
     }
 
-    void CalculateRaySpacing()
+    private void VerticalCollisions(ref Vector3 vel)
     {
-        Bounds bounds = objCollider.bounds;
-        bounds.Expand(skinWidth * -2);
+        float directionY = Mathf.Sign(vel.y);
+        float rayLength = Mathf.Abs(vel.y) + skinWidth;
 
-        horizontalRayCount = Mathf.Clamp(horizontalRayCount, 2, int.MaxValue);
-        verticalRayCount = Mathf.Clamp(verticalRayCount, 2, int.MaxValue);
+        for (int i = 0; i < verticalRayCount; i++)
+        {
+            Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
+            rayOrigin += Vector2.right * (verticalRaySpacing * i + vel.x);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionLayer);
 
-        horizontalRaySpacing = bounds.size.y / (horizontalRayCount - 1);
-        verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
+            Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
+
+            if (hit)
+            {
+                vel.y = (hit.distance - skinWidth) * directionY;
+                rayLength = hit.distance;
+
+                collisionInfo.below = directionY == -1;
+                collisionInfo.above = directionY == 1;
+            }
+        }
     }
 
 }

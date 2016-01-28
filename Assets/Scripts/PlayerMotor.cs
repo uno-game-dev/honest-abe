@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(BaseCollision))]
+[RequireComponent(typeof(BaseTrigger))]
 public class PlayerMotor : MonoBehaviour {
 
     public float hMoveSpeed = 8, vMoveSpeed = 6;
@@ -8,10 +8,10 @@ public class PlayerMotor : MonoBehaviour {
 
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
-    private PlayerCollision collision;
+    private BaseCollision collision;
 
     void Start() {
-        collision = GetComponent<PlayerCollision>();
+        collision = GetComponent<BaseCollision>();
     }
 
     void Update() {
