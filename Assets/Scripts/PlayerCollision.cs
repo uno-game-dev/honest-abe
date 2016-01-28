@@ -2,9 +2,6 @@
 
 public class PlayerCollision : BaseCollision {
 
-	public GameManager gameManager;
-	private int timer;
-
     protected override void HorizontalCollisions(ref Vector3 vel)
     {
         float directionX = Mathf.Sign(vel.x);
@@ -30,10 +27,10 @@ public class PlayerCollision : BaseCollision {
             }
 			//Need to check to make sure transform != null because the script is constantly being ran
 			if(hit.transform != null){
-				//Check to see if the player hits an enemy
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy")) {
-					Debug.Log ("Hit enemy");
-					gameManager.DecreaseHealth ();
+				//Check to see if the gameObject hit an enemy and the current gameObject is "Player"
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy") && gameObject.tag.Equals("Player")) {
+					//Enemy will cause damage to Player
+					hit.transform.gameObject.GetComponent<Damage>().DoDamage(gameObject);
 				}
 			}
 
@@ -65,10 +62,10 @@ public class PlayerCollision : BaseCollision {
             }
 			//Need to check to make sure transform != null because the script is constantly being ran
 			if(hit.transform != null){
-				//Check to see if the player hits an enemy
-				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy")) {
-					Debug.Log ("Hit enemy");
-					gameManager.DecreaseHealth ();
+				//Check to see if the gameObject hit an enemy and the current gameObject is "Player"
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer ("Enemy") && gameObject.tag.Equals("Player")) {
+					//Enemy will cause damage to Player
+					hit.transform.gameObject.GetComponent<Damage>().DoDamage(gameObject);
 				}
 			}
         }
