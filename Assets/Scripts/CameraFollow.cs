@@ -5,7 +5,7 @@ public class CameraFollow : MonoBehaviour {
     public float smoothTime = 0.15f;
     [HideInInspector] public float leftEdge;
 
-    private Transform playerTransform;
+    private Transform playerTransform, leftEdgeTransform;
     private BoxCollider2D levelBounds;
     private Camera cam;
     private float smoothVelX, smoothVelY;
@@ -15,12 +15,14 @@ public class CameraFollow : MonoBehaviour {
         levelBounds = GameObject.Find("_Manager").GetComponent<BoxCollider2D>();
         cam = GetComponent<Camera>();
         leftEdge = transform.position.x - (((2 * cam.orthographicSize) * cam.aspect) / 2);
+        leftEdgeTransform = transform.GetChild(0);
     }
 
     void LateUpdate() {
         Vector3 pos = transform.position;
 
         leftEdge = pos.x - (((2 * cam.orthographicSize) * cam.aspect) / 2);
+        leftEdgeTransform.position = new Vector3(leftEdge, leftEdgeTransform.position.y, leftEdgeTransform.position.z);
 
         pos.x = Mathf.SmoothDamp(transform.position.x, playerTransform.position.x, ref smoothVelX, smoothTime);
         pos.y = Mathf.SmoothDamp(transform.position.y, playerTransform.position.y, ref smoothVelY, smoothTime);
