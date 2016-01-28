@@ -27,30 +27,31 @@ public class CameraFollow : MonoBehaviour {
         pos.x = Mathf.SmoothDamp(transform.position.x, playerTransform.position.x, ref smoothVelX, smoothTime);
         pos.y = Mathf.SmoothDamp(transform.position.y, playerTransform.position.y, ref smoothVelY, smoothTime);
 
-        // Getting camera size
-        //float height = 2f * cam.orthographicSize;
-        //float width = height * cam.aspect;
-
+        /* 
+         * Use these to get camera size
+         * cam.orthographicSize gives half of the height of the camera.
+         * multiply it by 2 to get the full height.
+         * multiplying that height by the aspect ratio gives you the width.
+         * 
+         * float height = 2f * cam.orthographicSize;
+         * float width = height * cam.aspect;
+         */
 
         // Prevents the camera from going above the bounds of the level
-        if (pos.y + cam.orthographicSize > levelBounds.transform.position.y + (levelBounds.size.y / 2))
-        {
+        if (pos.y + cam.orthographicSize > levelBounds.transform.position.y + (levelBounds.size.y / 2)) {
             pos.y = (levelBounds.transform.position.y + (levelBounds.size.y / 2) - cam.orthographicSize);
         }
 
         // Prevents the camera from going below the bounds of the level
-        else if (pos.y - cam.orthographicSize < levelBounds.transform.position.y - (levelBounds.size.y / 2))
-        {
+        else if (pos.y - cam.orthographicSize < levelBounds.transform.position.y - (levelBounds.size.y / 2)) {
             pos.y = (levelBounds.transform.position.y - (levelBounds.size.y / 2) + cam.orthographicSize);
         }
         
         // Prevents the camera from going backwards
-        if (pos.x - (((2 * cam.orthographicSize) * cam.aspect) / 2) < leftEdge)
-        {
+        if (pos.x - (((2 * cam.orthographicSize) * cam.aspect) / 2) < leftEdge) {
             pos.x = leftEdge + (((2 * cam.orthographicSize) * cam.aspect) / 2);
         }
         
-
         transform.position = pos;
     }
 
