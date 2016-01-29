@@ -342,6 +342,19 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 109664, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
   m_PrefabInternal: {fileID: 1508476703}
+--- !u!114 &1106857563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1106857562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa73ec6a8046348c9937228b0231044d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 7
+  damageRate: 1
 --- !u!114 &1106857564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +460,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1545635385}
+  - {fileID: 1604319332}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
@@ -508,7 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b240a41e3d74fd8a0e34357d9835c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 1545635386}
+  playerHealthText: {fileID: 1545635386}
+  enemyHealthText: {fileID: 1604319333}
 --- !u!1001 &1426544728
 Prefab:
   m_ObjectHideFlags: 0
@@ -616,7 +631,7 @@ GameObject:
   - 222: {fileID: 1545635387}
   - 114: {fileID: 1545635386}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Player HP Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,7 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -671,13 +686,86 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Health: '
+  m_Text: 'Player HP: '
 --- !u!222 &1545635387
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545635384}
+--- !u!1 &1604319331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1604319332}
+  - 222: {fileID: 1604319334}
+  - 114: {fileID: 1604319333}
+  m_Layer: 5
+  m_Name: Enemy HP Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1604319332
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604319331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1278690692}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -15}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1604319333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604319331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Enemy HP: '
+--- !u!222 &1604319334
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604319331}
 --- !u!1 &1638824990
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +876,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 109664, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 479440, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
       propertyPath: m_LocalScale.x
@@ -798,6 +886,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.75
       objectReference: {fileID: 0}
+    - target: {fileID: 2340318, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ac1328841bbb74c8a9a58e1ef716acd2, type: 2}
     m_RemovedComponents:
     - {fileID: 11471966, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
     - {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
@@ -833,6 +925,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   damageRate: 0.3
+--- !u!114 &1723382094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723382091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351c737b96fa5cb4387863ad9a894069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 3072
+  objCollider: {fileID: 0}
+  playerInput: {x: 0, y: 0}
 --- !u!1 &1778710417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,8 +1153,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 109664, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2340318, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ac1328841bbb74c8a9a58e1ef716acd2, type: 2}
     m_RemovedComponents:
     - {fileID: 11471966, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
     - {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379, type: 2}
@@ -1084,3 +1198,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 5
   damageRate: 1
+--- !u!114 &2097045153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097045150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351c737b96fa5cb4387863ad9a894069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 1536
+  objCollider: {fileID: 0}
+  playerInput: {x: 0, y: 0}
+--- !u!114 &2097045158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097045150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb105ec0d4069d49bedf7a0f6a56ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hMoveSpeed: 8
+  vMoveSpeed: 6
+  movementSmoothing: 0.115

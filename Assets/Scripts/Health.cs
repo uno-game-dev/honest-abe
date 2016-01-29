@@ -33,7 +33,12 @@ public class Health : MonoBehaviour {
 	void UpdateHealth(){
 		//Check and see if the object is Player just in case we display eniemes health we can differentiate
 		if (gameObject.tag == "Player") {
-			gm.healthText.text = "Health: " + health;
+			gm.playerHealthText.text = "Player HP: " + health;
+			Debug.Log ("Player health is: " + health);
+		}
+		if (gameObject.tag == "Enemy") {
+			gm.enemyHealthText.text = "Enemy HP: " + health;
+			Debug.Log ("Enemy health is: " + health);
 		}
 	}
 

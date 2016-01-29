@@ -17,7 +17,7 @@ public class Damage : MonoBehaviour {
 	
 	}
 
-	public void DoDamage(GameObject toObject){
+	public void ExecuteDamage(GameObject toObject){
 		health = toObject.GetComponent<Health>();
 		health.Decrease (damageAmount, damageRate);
 	}
