@@ -41,6 +41,7 @@ public class CameraFollow : MonoBehaviour {
         bottomEdgeTransform.position = new Vector3(bottomEdgeTransform.position.x, bottomEdge - bottomEdgeBoundsHalfHeight, bottomEdgeTransform.position.z);
 
         // The collider that prevents the player from walking onto the background
+        bgBounds.localScale = new Vector3(((2 * cam.orthographicSize) * cam.aspect), 1, 1);
         bgBounds.position = new Vector3(pos.x, bgBounds.position.y, bgBounds.position.z);
 
         pos.x = Mathf.SmoothDamp(transform.position.x, playerTransform.position.x, ref smoothVelX, smoothTime);
