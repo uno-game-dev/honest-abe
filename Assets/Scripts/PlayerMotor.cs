@@ -17,6 +17,8 @@ public class PlayerMotor : MonoBehaviour {
 
     void Update() {
         if (collision.enabled) {
+            float delta = Time.deltaTime;
+
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
             float targetVelX = input.x * hMoveSpeed;
@@ -25,7 +27,7 @@ public class PlayerMotor : MonoBehaviour {
             velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, movementSmoothing);
             velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, movementSmoothing);
 
-            collision.Move(velocity * Time.deltaTime);
+            collision.Move(velocity * delta);
         }
         else {
             velocity.x = 0;
@@ -36,9 +38,9 @@ public class PlayerMotor : MonoBehaviour {
 
     private void OnCollision(RaycastHit2D hit) {
         if (hit.collider.tag == "Enemy") {
-            Debug.Log("AWAY FROM ME");
+            Debug.Log("OUCH");
         }
     }
-    
+
 
 }

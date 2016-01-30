@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour {
         leftEdge = transform.position.x - (((2 * cam.orthographicSize) * cam.aspect) / 2);
         leftEdgeTransform = transform.GetChild(0);
         leftEdgeBoundsHalfWidth = leftEdgeTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.x / 2;
-
+        
         bottomEdge = transform.position.y - cam.orthographicSize;
         bottomEdgeTransform = transform.GetChild(1);
         bottomEdgeBoundsHalfHeight = bottomEdgeTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.y / 2;
