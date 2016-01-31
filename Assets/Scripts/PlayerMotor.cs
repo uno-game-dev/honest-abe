@@ -36,9 +36,9 @@ public class PlayerMotor : MonoBehaviour {
         }
     }
 
-    private void OnCollision(RaycastHit2D hit) {
-        if (hit.collider.tag == "Enemy") {
-            Debug.Log("OUCH");
+    private void OnCollision(Collider2D otherCollider, RaycastHit2D hit) {
+        if (otherCollider.tag == "Enemy") {
+            //Debug.Log("OUCH");
         }
     }
 

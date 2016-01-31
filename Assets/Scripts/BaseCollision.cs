@@ -14,7 +14,7 @@ public class BaseCollision : MonoBehaviour {
 
     private const float skinWidth = .015f;
 
-    public delegate void CollisionHandler(RaycastHit2D hit);
+    public delegate void CollisionHandler(Collider2D otherCollider, RaycastHit2D hit);
     public event CollisionHandler OnCollision = delegate { };
 
     private struct RaycastOrigins
@@ -74,7 +74,9 @@ public class BaseCollision : MonoBehaviour {
                 collisionInfo.left = directionX == -1;
                 collisionInfo.right = directionX == 1;
 
-                OnCollision(hit);
+                OnCollision(hit.collider, hit);
+                BaseCollision otherCollision = hit.collider.GetComponent<BaseCollision>();
+                if (otherCollision) otherCollision.OnCollision(_collider, hit);
             }
         }
     }
@@ -97,7 +99,9 @@ public class BaseCollision : MonoBehaviour {
                 collisionInfo.below = directionY == -1;
                 collisionInfo.above = directionY == 1;
 
-                OnCollision(hit);
+                OnCollision(hit.collider, hit);
+                BaseCollision otherCollision = hit.collider.GetComponent<BaseCollision>();
+                if (otherCollision) otherCollision.OnCollision(_collider, hit);
             }
         }
     }
