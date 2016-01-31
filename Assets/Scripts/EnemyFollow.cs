@@ -12,7 +12,6 @@ using System;
 /// 
 /// Author: Edward Thomas Garcia
 /// </summary>
-[RequireComponent(typeof(BaseCollision))]
 public class EnemyFollow : MonoBehaviour
 {
     /// <summary>Maximum Horizontal Movement Speed for GameObject</summary>
@@ -31,19 +30,18 @@ public class EnemyFollow : MonoBehaviour
     public GameObject target;
 
     /// <summary>The distance in an axis x or y where the GameObject starts slowing down from Maximum Speed</summary>
-    public float slowDistance = 1;
+    public float stoppingDistance = 2;
 
     /// <summary>The player GameObject when targetType is Player</summary>
     private GameObject _player;
 
-    /// <summary>The Movement Engine</summary>
-    private BaseCollision _collision;
+    private Rigidbody2D _rigidbody;
 
     public Vector3 velocity;
 
-    private void Start()
+    private void Awake()
     {
-        _collision = GetComponent<BaseCollision>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>Update is called once per frame</summary>
@@ -85,12 +83,12 @@ public class EnemyFollow : MonoBehaviour
     {
         Vector3 targetVelocity = position - new Vector2(transform.position.x, transform.position.y);
 
-        if (Mathf.Abs(targetVelocity.x) > slowDistance)
+        if (Mathf.Abs(targetVelocity.x) > stoppingDistance)
             targetVelocity.x = Mathf.Sign(targetVelocity.x) * horizontalMoveSpeed;
-        if (Mathf.Abs(targetVelocity.y) > slowDistance)
+        if (Mathf.Abs(targetVelocity.y) > stoppingDistance)
             targetVelocity.y = Mathf.Sign(targetVelocity.y) * verticalMoveSpeed;
 
         velocity = targetVelocity;
-        _collision.Move(targetVelocity * Time.deltaTime);
+        _rigidbody.velocity = targetVelocity;
     }
 }

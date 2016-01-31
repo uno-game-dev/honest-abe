@@ -2,25 +2,11 @@
 using System.Collections;
 using System;
 
-[RequireComponent(typeof(BaseCollision))]
 public class TakeDamage : MonoBehaviour
 {
-    private BaseCollision _trigger;
-
-    void OnEnable()
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        _trigger = GetComponent<BaseCollision>();
-        _trigger.OnCollision += OnCollision;
-    }
-
-    void OnDisable()
-    {
-        _trigger.OnCollision -= OnCollision;
-    }
-
-    private void OnCollision(Collider2D otherCollider, RaycastHit2D hit)
-    {
-        if (otherCollider.tag == "Player")
+        if (collider.tag == "Player")
         {
             System.Random r = new System.Random();
             int damage = r.Next(1, 10);
