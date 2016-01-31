@@ -194,6 +194,7 @@ GameObject:
   - 33: {fileID: 116675641}
   - 23: {fileID: 116675640}
   - 61: {fileID: 116675639}
+  - 114: {fileID: 116675638}
   - 114: {fileID: 116675637}
   m_Layer: 11
   m_Name: Fist of Fury
@@ -222,9 +223,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 116675635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0b391562527784c81e78e67711f0eb, type: 3}
+  m_Script: {fileID: 11500000, guid: ea366a8ee66005147b070fbe594637a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &116675638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 116675635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e82b4b0da06a14ebae9e830f632cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _collider: {fileID: 0}
 --- !u!61 &116675639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -281,7 +299,7 @@ GameObject:
   - 4: {fileID: 244283747}
   - 33: {fileID: 244283746}
   - 23: {fileID: 244283745}
-  - 50: {fileID: 244283748}
+  - 114: {fileID: 244283744}
   - 114: {fileID: 244283743}
   - 61: {fileID: 244283742}
   m_Layer: 10
@@ -314,12 +332,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 244283741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7eb105ec0d4069d49bedf7a0f6a56ba2, type: 3}
+  m_Script: {fileID: 11500000, guid: d4553ce24f14af24bad81b0c80afeb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hMoveSpeed: 8
   vMoveSpeed: 6
   movementSmoothing: .115000002
+--- !u!114 &244283744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11409258, guid: 5c197b40c23462246858d2caa5f39379,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 244283741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e82b4b0da06a14ebae9e830f632cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 2560
+  _collider: {fileID: 0}
 --- !u!23 &244283745
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -367,22 +403,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!50 &244283748
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244283741}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1001 &563548125
 Prefab:
   m_ObjectHideFlags: 0
@@ -425,6 +445,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75aa131fe3334c746bc00a8a671e5818, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &563548126 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 146904, guid: 75aa131fe3334c746bc00a8a671e5818, type: 2}
+  m_PrefabInternal: {fileID: 563548125}
+--- !u!114 &563548127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563548126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d235680c036fd134d8e0e77d62329248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &866109088
 Prefab:
   m_ObjectHideFlags: 0
@@ -482,8 +517,8 @@ GameObject:
   - 33: {fileID: 1147874720}
   - 23: {fileID: 1147874718}
   - 61: {fileID: 1147874722}
+  - 114: {fileID: 1147874719}
   - 114: {fileID: 1147874723}
-  - 50: {fileID: 1147874719}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -517,22 +552,23 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!50 &1147874719
-Rigidbody2D:
-  serializedVersion: 2
+--- !u!114 &1147874719
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1147874717}
-  m_Mass: 1
-  m_LinearDrag: 4
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e82b4b0da06a14ebae9e830f632cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _collider: {fileID: 0}
 --- !u!33 &1147874720
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -574,14 +610,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1147874717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66d7426bec29fef41a4d3e25f56a4dfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c06528466c44704689736f87fee84e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 4
   targetType: 0
   target: {fileID: 0}
-  stoppingDistance: 2
+  slowDistance: 1
   velocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &1216769665
 Prefab:
