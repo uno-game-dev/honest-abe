@@ -1,23 +1,24 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public abstract class BaseCollision : MonoBehaviour {
+public class BaseCollision : MonoBehaviour {
 
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
     public LayerMask collisionLayer;
     public CollisionInfo collisionInfo;
-    [HideInInspector]
-    public Collider2D objCollider;
-    [HideInInspector]
-    public Vector2 playerInput;
+    public bool immobile = false;
+    [HideInInspector] public Collider2D _collider;
 
-    protected float horizontalRaySpacing, verticalRaySpacing;
-    protected RaycastOrigins raycastOrigins;
+    private float horizontalRaySpacing, verticalRaySpacing;
+    private RaycastOrigins raycastOrigins;
 
-    protected const float skinWidth = .015f;
+    private const float skinWidth = .015f;
 
-    protected struct RaycastOrigins
+    public delegate void CollisionHandler(RaycastHit2D hit);
+    public event CollisionHandler OnCollision = delegate { };
+
+    private struct RaycastOrigins
     {
         public Vector2 topLeft, topRight, bottomLeft, bottomRight;
     }
@@ -32,39 +33,107 @@ public abstract class BaseCollision : MonoBehaviour {
         }
     }
 
-    public virtual void Awake()
+    void Awake()
     {
-        objCollider = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
     }
 
-    public virtual void Start()
+    void Start()
     {
         CalculateRaySpacing();
     }
 
-    public void Move(Vector3 vel, Vector2 input)
+    void OnDrawGizmos()
     {
-        playerInput = input;
-
-        UpdateRaycastOrigins();
-        collisionInfo.Reset();
-
-        if (vel.x != 0)
-            HorizontalCollisions(ref vel);
-
-        if (vel.y != 0)
-            VerticalCollisions(ref vel);
-
-        transform.Translate(vel);
+        Gizmos.DrawWireSphere(transform.position, 1);
     }
 
-    protected abstract void HorizontalCollisions(ref Vector3 vel);
-
-    protected abstract void VerticalCollisions(ref Vector3 vel);
-
-    void UpdateRaycastOrigins()
+    public void Move(Vector3 vel)
     {
-        Bounds bounds = objCollider.bounds;
+
+        Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 1, collisionLayer);
+
+        if (hitCollider != null)
+        {
+            UpdateRaycastOrigins();
+            collisionInfo.Reset();
+
+            if (immobile)
+            {
+                vel = new Vector3(skinWidth, 0, 0);
+                HorizontalCollisions(ref vel);
+
+                vel = new Vector3(-skinWidth, 0, 0);
+                HorizontalCollisions(ref vel);
+
+                vel = new Vector3(0, skinWidth, 0);
+                VerticalCollisions(ref vel);
+
+                vel = new Vector3(0, -skinWidth, 0);
+                VerticalCollisions(ref vel);
+            }
+            else
+            {
+                if (vel.x != 0)
+                    HorizontalCollisions(ref vel);
+
+                if (vel.y != 0)
+                    VerticalCollisions(ref vel);
+            }
+        }
+
+        if (!immobile) transform.Translate(vel);
+    }
+
+    private void HorizontalCollisions(ref Vector3 vel) {
+        float directionX = Mathf.Sign(vel.x);
+        float rayLength = Mathf.Abs(vel.x) + skinWidth;
+
+        for (int i = 0; i < horizontalRayCount; i++) {
+            Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+            rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionLayer);
+
+            Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
+
+            if (hit) {
+                if (!hit.collider.isTrigger)
+                    vel.x = (hit.distance - skinWidth) * directionX;
+                rayLength = hit.distance;
+                collisionInfo.left = directionX == -1;
+                collisionInfo.right = directionX == 1;
+
+                OnCollision(hit);
+            }
+        }
+    }
+
+    private void VerticalCollisions(ref Vector3 vel) {
+        float directionY = Mathf.Sign(vel.y);
+        float rayLength = Mathf.Abs(vel.y) + skinWidth;
+
+        for (int i = 0; i < verticalRayCount; i++) {
+            Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
+            rayOrigin += Vector2.right * (verticalRaySpacing * i + vel.x);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionLayer);
+
+            Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
+
+            if (hit) {
+                if (!hit.collider.isTrigger)
+                    vel.y = (hit.distance - skinWidth) * directionY;
+                rayLength = hit.distance;
+                collisionInfo.below = directionY == -1;
+                collisionInfo.above = directionY == 1;
+
+                OnCollision(hit);
+            }
+        }
+    }
+
+    private void UpdateRaycastOrigins()
+    {
+        Bounds bounds = _collider.bounds;
         bounds.Expand(skinWidth * -2);
 
         raycastOrigins.bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
@@ -73,9 +142,9 @@ public abstract class BaseCollision : MonoBehaviour {
         raycastOrigins.topRight = new Vector2(bounds.max.x, bounds.max.y);
     }
 
-    void CalculateRaySpacing()
+    private void CalculateRaySpacing()
     {
-        Bounds bounds = objCollider.bounds;
+        Bounds bounds = _collider.bounds;
         bounds.Expand(skinWidth * -2);
 
         horizontalRayCount = Mathf.Clamp(horizontalRayCount, 2, int.MaxValue);
