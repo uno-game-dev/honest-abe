@@ -9,7 +9,6 @@ public class Health : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		health = 100;
 		UpdateHealth ();
 	}
 	
@@ -31,7 +30,6 @@ public class Health : MonoBehaviour {
 	}
 
 	void UpdateHealth(){
-		//Check and see if the object is Player just in case we display eniemes health we can differentiate
 		if (gameObject.tag == "Player") {
 			gm.playerHealthText.text = "Player HP: " + health;
 			Debug.Log ("Player health is: " + health);
