@@ -8,28 +8,39 @@ public class PlayerMotor : MonoBehaviour {
 
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
-    private PlayerCollision collision;
+    private BaseCollision collision;
 
     void Start() {
-        collision = GetComponent<PlayerCollision>();
+        collision = GetComponent<BaseCollision>();
+        collision.OnCollision += OnCollision;
     }
 
     void Update() {
         if (collision.enabled) {
+            float delta = Time.deltaTime;
+
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
             float targetVelX = input.x * hMoveSpeed;
             float targetVelY = input.y * vMoveSpeed;
+
             velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, movementSmoothing);
             velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, movementSmoothing);
 
-            collision.Move(velocity * Time.deltaTime, input);
+            collision.Move(velocity * delta);
         }
         else {
             velocity.x = 0;
             velocity.y = 0;
-            collision.Move(velocity * Time.deltaTime, new Vector2(0, 0));
+            collision.Move(velocity * Time.deltaTime);
         }
     }
+
+    private void OnCollision(RaycastHit2D hit) {
+        if (hit.collider.tag == "Enemy") {
+            Debug.Log("OUCH");
+        }
+    }
+
 
 }
