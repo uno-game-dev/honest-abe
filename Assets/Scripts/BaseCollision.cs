@@ -75,8 +75,6 @@ public class BaseCollision : MonoBehaviour {
                 collisionInfo.right = directionX == 1;
 
                 OnCollision(hit);
-
-                break;
             }
         }
     }
@@ -100,8 +98,6 @@ public class BaseCollision : MonoBehaviour {
                 collisionInfo.above = directionY == 1;
 
                 OnCollision(hit);
-
-                break;
             }
         }
     }
