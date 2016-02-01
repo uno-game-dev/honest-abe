@@ -20,7 +20,7 @@ public class TerrainSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 
-		if (cam.transform.position.x >= lastPosition - 16 && canSpawn) {
+		if (cam.transform.position.x >= lastPosition - startSpawnPosition && canSpawn) {
 			canSpawn = false;
 			SpawnTerrain();
 		}
