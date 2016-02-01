@@ -43,35 +43,46 @@ public class BaseCollision : MonoBehaviour {
         CalculateRaySpacing();
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 1);
+    }
+
     public void Move(Vector3 vel)
     {
-        UpdateRaycastOrigins();
-        collisionInfo.Reset();
 
-        if (immobile)
+        Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 1, collisionLayer);
+
+        if (hitCollider != null)
         {
-            vel = new Vector3(skinWidth, 0, 0);
-            HorizontalCollisions(ref vel);
+            UpdateRaycastOrigins();
+            collisionInfo.Reset();
 
-            vel = new Vector3(-skinWidth, 0, 0);
-            HorizontalCollisions(ref vel);
-
-            vel = new Vector3(0, skinWidth, 0);
-            VerticalCollisions(ref vel);
-
-            vel = new Vector3(0, -skinWidth, 0);
-            VerticalCollisions(ref vel);
-        }
-        else
-        {
-            if (vel.x != 0)
+            if (immobile)
+            {
+                vel = new Vector3(skinWidth, 0, 0);
                 HorizontalCollisions(ref vel);
 
-            if (vel.y != 0)
+                vel = new Vector3(-skinWidth, 0, 0);
+                HorizontalCollisions(ref vel);
+
+                vel = new Vector3(0, skinWidth, 0);
                 VerticalCollisions(ref vel);
 
-            transform.Translate(vel);
+                vel = new Vector3(0, -skinWidth, 0);
+                VerticalCollisions(ref vel);
+            }
+            else
+            {
+                if (vel.x != 0)
+                    HorizontalCollisions(ref vel);
+
+                if (vel.y != 0)
+                    VerticalCollisions(ref vel);
+            }
         }
+
+        if (!immobile) transform.Translate(vel);
     }
 
     private void HorizontalCollisions(ref Vector3 vel) {
