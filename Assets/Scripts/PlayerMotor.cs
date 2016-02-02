@@ -16,6 +16,10 @@ public class PlayerMotor : MonoBehaviour {
     }
 
     void Update() {
+
+        // If the game hasn't officially started yet, don't do any update calls
+        if (!UIManager.updateActive) return;
+
         if (collision.enabled) {
             float delta = Time.deltaTime;
 
