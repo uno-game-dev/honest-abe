@@ -3,6 +3,11 @@
 [RequireComponent(typeof(Collider2D))]
 public class BaseCollision : MonoBehaviour {
 
+    private Vector2 velocity;
+    public Vector2 Velocity {
+        get { return velocity; }
+    }
+
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
     public LayerMask collisionLayer;
@@ -10,13 +15,13 @@ public class BaseCollision : MonoBehaviour {
     public bool immobile = false;
     [HideInInspector] public Collider2D _collider;
 
+    public delegate void CollisionHandler(RaycastHit2D hit);
+    public event CollisionHandler OnCollision = delegate { };
+
     private float horizontalRaySpacing, verticalRaySpacing;
     private RaycastOrigins raycastOrigins;
 
     private const float skinWidth = .015f;
-
-    public delegate void CollisionHandler(RaycastHit2D hit);
-    public event CollisionHandler OnCollision = delegate { };
 
     private struct RaycastOrigins
     {
@@ -50,6 +55,7 @@ public class BaseCollision : MonoBehaviour {
 
     public void Move(Vector3 vel)
     {
+        velocity = vel;
 
         Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 1, collisionLayer);
 
