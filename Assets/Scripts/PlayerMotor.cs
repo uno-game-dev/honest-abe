@@ -1,24 +1,22 @@
 ﻿using UnityEngine;
 
-public class PlayerMotor : MonoBehaviour
-{
+[RequireComponent(typeof(BaseCollision))]
+public class PlayerMotor : MonoBehaviour {
 
     public float hMoveSpeed = 8, vMoveSpeed = 6;
     public float movementSmoothing = .115f;
 
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
-    private Rigidbody2D _rigidbody;
+    private BaseCollision collision;
 
-    void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
+    void Start() {
+        collision = GetComponent<BaseCollision>();
+        collision.OnCollision += OnCollision;
     }
 
-    void Update()
-    {
-        if (_rigidbody)
-        {
+    void Update() {
+        if (collision.enabled) {
             float delta = Time.deltaTime;
 
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -29,21 +27,20 @@ public class PlayerMotor : MonoBehaviour
             velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, movementSmoothing);
             velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, movementSmoothing);
 
-            _rigidbody.velocity = velocity;
+            collision.Move(velocity * delta);
         }
-        else
-        {
+        else {
             velocity.x = 0;
             velocity.y = 0;
-            _rigidbody.velocity = velocity;
+            collision.Move(velocity * Time.deltaTime);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Enemy")
-        {
-            Debug.Log("OUCH");
+    private void OnCollision(RaycastHit2D hit) {
+        if (hit.collider.tag == "Enemy") {
+            //Debug.Log("OUCH");
         }
     }
+
+
 }
