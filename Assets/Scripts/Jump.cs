@@ -10,29 +10,30 @@ public class Jump : MonoBehaviour
 
     [HideInInspector]
     public bool isGrounded;
+    [HideInInspector]
+    public float jumpVelocity;
 
     private float gravity = -9.81f;
-    private float verticalVelocity;
     private float _previousHeight;
     
     private void Update()
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            verticalVelocity = jumpStrength;
+            jumpVelocity = jumpStrength;
             isGrounded = false;
         }
 
-        height += verticalVelocity * Time.deltaTime;
+        height += jumpVelocity * Time.deltaTime;
         height = Mathf.Clamp(height, 0, height);
 
-        if (verticalVelocity <= 0)
+        if (jumpVelocity <= 0)
             CheckGrounded();
 
         _previousHeight = height;
 
-        verticalVelocity += gravity * gravityMultiplier * Time.deltaTime;
-        verticalVelocity = height <= 0 ? 0 : verticalVelocity;
+        jumpVelocity += gravity * gravityMultiplier * Time.deltaTime;
+        jumpVelocity = height <= 0 ? 0 : jumpVelocity;
     }
 
     private void CheckGrounded()
