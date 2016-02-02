@@ -12,13 +12,14 @@ using System;
 /// 
 /// Author: Edward Thomas Garcia
 /// </summary>
+[RequireComponent(typeof(BaseCollision))]
 public class EnemyFollow : MonoBehaviour
 {
     /// <summary>Maximum Horizontal Movement Speed for GameObject</summary>
-    public float horizontalMoveSpeed = 6;
+    public float horizontalMoveSpeed = 2;
 
     /// <summary>Maximum Vertical Movement Speed for GameObject</summary>
-    public float verticalMoveSpeed = 4;
+    public float verticalMoveSpeed = 1;
 
     /// <summary>Enumeration of the different Target Types</summary>
     public enum TargetType { Null, Player, Mouse, TargetGameObject }
@@ -30,18 +31,19 @@ public class EnemyFollow : MonoBehaviour
     public GameObject target;
 
     /// <summary>The distance in an axis x or y where the GameObject starts slowing down from Maximum Speed</summary>
-    public float stoppingDistance = 2;
+    public float stopDistance = 2;
 
     /// <summary>The player GameObject when targetType is Player</summary>
     private GameObject _player;
 
-    private Rigidbody2D _rigidbody;
+    /// <summary>The Movement Engine</summary>
+    private BaseCollision _collision;
 
     public Vector3 velocity;
 
-    private void Awake()
+    private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _collision = GetComponent<BaseCollision>();
     }
 
     /// <summary>Update is called once per frame</summary>
@@ -83,12 +85,17 @@ public class EnemyFollow : MonoBehaviour
     {
         Vector3 targetVelocity = position - new Vector2(transform.position.x, transform.position.y);
 
-        if (Mathf.Abs(targetVelocity.x) > stoppingDistance)
+        if (Mathf.Abs(targetVelocity.x) > stopDistance)
             targetVelocity.x = Mathf.Sign(targetVelocity.x) * horizontalMoveSpeed;
-        if (Mathf.Abs(targetVelocity.y) > stoppingDistance)
+        else
+            targetVelocity.x = 0;
+
+        if (Mathf.Abs(targetVelocity.y) > stopDistance)
             targetVelocity.y = Mathf.Sign(targetVelocity.y) * verticalMoveSpeed;
+        else
+            targetVelocity.y = 0;
 
         velocity = targetVelocity;
-        _rigidbody.velocity = targetVelocity;
+        _collision.Move(targetVelocity * Time.deltaTime);
     }
 }
