@@ -7,6 +7,7 @@ public class BaseCollision : MonoBehaviour {
     public int verticalRayCount = 4;
     public LayerMask collisionLayer;
     public CollisionInfo collisionInfo;
+    public bool immobile = false;
     [HideInInspector] public Collider2D _collider;
 
     private float horizontalRaySpacing, verticalRaySpacing;
@@ -42,18 +43,46 @@ public class BaseCollision : MonoBehaviour {
         CalculateRaySpacing();
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 1);
+    }
+
     public void Move(Vector3 vel)
     {
-        UpdateRaycastOrigins();
-        collisionInfo.Reset();
 
-        if (vel.x != 0)
-            HorizontalCollisions(ref vel);
+        Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 1, collisionLayer);
 
-        if (vel.y != 0)
-            VerticalCollisions(ref vel);
+        if (hitCollider != null)
+        {
+            UpdateRaycastOrigins();
+            collisionInfo.Reset();
 
-        transform.Translate(vel);
+            if (immobile)
+            {
+                vel = new Vector3(skinWidth, 0, 0);
+                HorizontalCollisions(ref vel);
+
+                vel = new Vector3(-skinWidth, 0, 0);
+                HorizontalCollisions(ref vel);
+
+                vel = new Vector3(0, skinWidth, 0);
+                VerticalCollisions(ref vel);
+
+                vel = new Vector3(0, -skinWidth, 0);
+                VerticalCollisions(ref vel);
+            }
+            else
+            {
+                if (vel.x != 0)
+                    HorizontalCollisions(ref vel);
+
+                if (vel.y != 0)
+                    VerticalCollisions(ref vel);
+            }
+        }
+
+        if (!immobile) transform.Translate(vel);
     }
 
     private void HorizontalCollisions(ref Vector3 vel) {
@@ -75,8 +104,6 @@ public class BaseCollision : MonoBehaviour {
                 collisionInfo.right = directionX == 1;
 
                 OnCollision(hit);
-
-                break;
             }
         }
     }
@@ -100,8 +127,6 @@ public class BaseCollision : MonoBehaviour {
                 collisionInfo.above = directionY == 1;
 
                 OnCollision(hit);
-
-                break;
             }
         }
     }
