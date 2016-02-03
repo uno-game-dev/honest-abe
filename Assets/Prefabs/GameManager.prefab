@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &123960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+<<<<<<< HEAD:Assets/Prefabs/_Manager.prefab
+  - 4: {fileID: 443538}
+  - 114: {fileID: 11490558}
+=======
+  - 4: {fileID: 465010}
+  - 114: {fileID: 11405452}
+>>>>>>> 642d373d933e1fcdb114e1faa7e655c2ffb2ea02:Assets/Prefabs/GameManager.prefab
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &465010
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+<<<<<<< HEAD:Assets/Prefabs/_Manager.prefab
+--- !u!114 &11490558
+=======
+--- !u!114 &11405452
+>>>>>>> 642d373d933e1fcdb114e1faa7e655c2ffb2ea02:Assets/Prefabs/GameManager.prefab
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+<<<<<<< HEAD:Assets/Prefabs/_Manager.prefab
+  m_Script: {fileID: 11500000, guid: 5cb2f866c93128641bbe815697b3d35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+=======
+  m_Script: {fileID: 11500000, guid: c86b8d23e6eb747a087dcb6dda9ba7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealthText: {fileID: 0}
+  enemyHealthText: {fileID: 0}
+>>>>>>> 642d373d933e1fcdb114e1faa7e655c2ffb2ea02:Assets/Prefabs/GameManager.prefab
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 123960}
+  m_IsPrefabParent: 1
