@@ -16,7 +16,7 @@ public class Damage : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		collision.Move(Vector2.zero);
+		// collision.Move(Vector2.zero);
 	}
 
 	public void ExecuteDamage(GameObject toObject){

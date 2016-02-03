@@ -5,6 +5,7 @@ public class TerrainSpawner : MonoBehaviour {
 	public GameObject terrain;
 	public float startSpawnPosition = 8f;
 	public int spawnYPos = 0;
+	public int spawnZPos = 10;
 
 	float lastPosition;
 	GameObject cam;
@@ -28,7 +29,7 @@ public class TerrainSpawner : MonoBehaviour {
 
 	void SpawnTerrain() {
 
-		Instantiate(terrain, new Vector3(lastPosition, spawnYPos, 0), Quaternion.Euler(0, 0, 0));
+		Instantiate(terrain, new Vector3(lastPosition, spawnYPos, spawnZPos), Quaternion.Euler(0, 0, 0));
 		lastPosition += startSpawnPosition;
 
 		canSpawn = true;
