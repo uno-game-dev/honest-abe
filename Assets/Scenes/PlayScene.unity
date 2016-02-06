@@ -657,36 +657,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1924033798}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!1 &985979155 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 136070, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-  m_PrefabInternal: {fileID: 1987330854}
---- !u!114 &985979163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 985979155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc81c0bf69632439683fbfeb04abd95b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 10
-  damageRate: 1
---- !u!114 &985979164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 985979155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfe3d0ba67714a78bb21dc1cfbfcadc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  gm: {fileID: 1297848625}
 --- !u!1001 &1216769665
 Prefab:
   m_ObjectHideFlags: 0
@@ -735,21 +705,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 58211470}
   m_Script: {fileID: 11500000, guid: c86b8d23e6eb747a087dcb6dda9ba7aa, type: 3}
---- !u!1 &1469547511 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 146904, guid: 75aa131fe3334c746bc00a8a671e5818, type: 2}
-  m_PrefabInternal: {fileID: 563548125}
---- !u!114 &1469547518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1469547511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d235680c036fd134d8e0e77d62329248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1555800520
 Prefab:
   m_ObjectHideFlags: 0
@@ -984,6 +939,10 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1297848625}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
   m_IsPrefabParent: 0
