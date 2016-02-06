@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(BaseCollision))]
-public class PlayerMotor : MonoBehaviour {
+public class PlayerMotor : MonoBehaviour
+{
+    public enum MovementState { Idle, Walk, Run, Jump }
+    public MovementState movementState = MovementState.Idle;
 
     public float hMoveSpeed = 8, vMoveSpeed = 6;
     public float movementSmoothing = .115f;
@@ -10,17 +13,19 @@ public class PlayerMotor : MonoBehaviour {
     private float velocityXSmoothing, velocityYSmoothing;
     private BaseCollision collision;
 
-    void Start() {
+    void Start()
+    {
         collision = GetComponent<BaseCollision>();
         //collision.OnCollision += OnCollision;
     }
 
-    void Update() {
-
+    void Update()
+    {
         // If the game hasn't officially started yet, don't do any update calls
         if (!UIManager.updateActive) return;
 
-        if (collision.enabled) {
+        if (collision.enabled)
+        {
             float delta = Time.deltaTime;
 
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -33,13 +38,14 @@ public class PlayerMotor : MonoBehaviour {
 
             collision.Move(velocity * delta);
         }
-        else {
+        else
+        {
             velocity.x = 0;
             velocity.y = 0;
             collision.Move(velocity * Time.deltaTime);
         }
     }
-	/**
+    /**
     private void OnCollision(RaycastHit2D hit) {
         if (hit.collider.tag == "Enemy") {
             Debug.Log("OUCH");

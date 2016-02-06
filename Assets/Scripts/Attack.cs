@@ -4,77 +4,70 @@ using System;
 
 public class Attack : MonoBehaviour
 {
+    public enum State { Idle, Prep, Light, Heavy }
+
+    public State attackState = State.Idle;
     public float prepLightAttackTime = 0.5f;
     public float prepHeavyAttackTime = 1f;
     public float lightAttackTime = 1f;
     public float heavyAttackTime = 1f;
 
     private GameObject _meleeArea;
-    private CharacterState _characterState;
+    private Animator _animator;
 
     private void Awake()
     {
         _meleeArea = this.FindInChildren("Melee Area");
-        _characterState = GetComponent<CharacterState>();
+        _animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
+    public void LightAttack()
     {
-        MainCameraKeyboardController.LightAttack += OnLightAttack;
-        MainCameraKeyboardController.HeavyAttack += OnHeavyAttack;
-    }
-
-    private void OnDisable()
-    {
-        MainCameraKeyboardController.LightAttack -= OnLightAttack;
-        MainCameraKeyboardController.HeavyAttack -= OnHeavyAttack;
-    }
-
-    private void OnLightAttack()
-    {
-        if (_characterState.attackState != CharacterState.AttackState.Idle)
+        if (attackState != State.Idle)
             return;
 
+        _animator.SetTrigger("Light Punch");
         PrepToLightAttack();
-    }
-
-    private void OnHeavyAttack()
-    {
-        if (_characterState.attackState != CharacterState.AttackState.Idle)
-            return;
-
-        PrepToHeavyAttack();
     }
 
     private void PrepToLightAttack()
     {
-        _characterState.attackState = CharacterState.AttackState.Prep;
-        Invoke("LightAttack", prepLightAttackTime);
+        attackState = State.Prep;
+        Invoke("PerformLightAttack", prepLightAttackTime);
     }
 
-    private void PrepToHeavyAttack()
+    private void PerformLightAttack()
     {
-        _characterState.attackState = CharacterState.AttackState.Prep;
-        Invoke("HeavyAttack", prepHeavyAttackTime);
-    }
-
-    private void LightAttack()
-    {
-        _characterState.attackState = CharacterState.AttackState.Light;
+        attackState = State.Light;
         _meleeArea.SetActive(true);
         Invoke("Disable", lightAttackTime);
     }
 
-    private void HeavyAttack()
+    public void HeavyAttack()
     {
-        _characterState.attackState = CharacterState.AttackState.Heavy;
+        if (attackState != State.Idle)
+            return;
+
+        _animator.SetTrigger("Heavy Punch");
+        PrepToHeavyAttack();
+    }
+
+    private void PrepToHeavyAttack()
+    {
+        attackState = State.Prep;
+        Invoke("PerformHeavyAttack", prepHeavyAttackTime);
+    }
+
+    private void PerformHeavyAttack()
+    {
+        attackState = State.Heavy;
         _meleeArea.SetActive(true);
         Invoke("Disable", heavyAttackTime);
     }
 
     private void Disable()
     {
-        _characterState.attackState = CharacterState.AttackState.Idle;
+        attackState = State.Idle;
         _meleeArea.SetActive(false);
     }
 }
