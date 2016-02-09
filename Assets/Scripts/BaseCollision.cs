@@ -53,22 +53,26 @@ public class BaseCollision : MonoBehaviour {
     }
 
     public void Tick() {
-        UpdateRaycastOrigins();
-        collisionInfo.Reset();
+        Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 1, collisionLayer);
 
-        Vector3 vel;
+        if (hitCollider != null) {
+            UpdateRaycastOrigins();
+            collisionInfo.Reset();
 
-        vel = new Vector3(skinWidth, 0, 0);
-        HorizontalCollisions(ref vel);
+            Vector3 vel;
 
-        vel = new Vector3(-skinWidth, 0, 0);
-        HorizontalCollisions(ref vel);
+            vel = new Vector3(skinWidth, 0, 0);
+            HorizontalCollisions(ref vel);
 
-        vel = new Vector3(0, skinWidth, 0);
-        VerticalCollisions(ref vel);
+            vel = new Vector3(-skinWidth, 0, 0);
+            HorizontalCollisions(ref vel);
 
-        vel = new Vector3(0, -skinWidth, 0);
-        VerticalCollisions(ref vel);
+            vel = new Vector3(0, skinWidth, 0);
+            VerticalCollisions(ref vel);
+
+            vel = new Vector3(0, -skinWidth, 0);
+            VerticalCollisions(ref vel);
+        }
     }
 
     public void Move(Vector3 vel) {
