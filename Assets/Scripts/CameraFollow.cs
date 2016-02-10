@@ -4,6 +4,7 @@ public class CameraFollow : MonoBehaviour {
 
     public float smoothTime = 0.15f;
     [HideInInspector] public float leftEdge, bottomEdge;
+    [HideInInspector] public Vector3 velocity, previousPos;
 
     private Transform playerTransform, leftEdgeTransform, bottomEdgeTransform, bgBounds;
     private BoxCollider2D verticalBounds;
@@ -26,8 +27,6 @@ public class CameraFollow : MonoBehaviour {
         bottomEdgeTransform = transform.GetChild(1);
         bottomEdgeBoundsHalfHeight = bottomEdgeTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.y / 2;
 
-
-
         // Initial positioning of the camera on top of the player
         // This prevents the "slide in" of the camera to the player when the game starts
         Vector3 pos = new Vector3(playerTransform.position.x, playerTransform.position.y, transform.position.z);
@@ -41,6 +40,7 @@ public class CameraFollow : MonoBehaviour {
     }
 
     void LateUpdate() {
+        previousPos = transform.position;
         Vector3 pos = transform.position;
 
         // Set the left edge collider to be the height of the camera and set it to be at the very left edge
@@ -84,8 +84,14 @@ public class CameraFollow : MonoBehaviour {
         if (pos.x - (((2 * cam.orthographicSize) * cam.aspect) / 2) < leftEdge) {
             pos.x = leftEdge + (((2 * cam.orthographicSize) * cam.aspect) / 2);
         }
-        
+
+        velocity.x = (pos.x - previousPos.x) / Time.deltaTime;
+        velocity.y = (pos.y - previousPos.y) / Time.deltaTime;
+
+        Debug.Log(velocity.x + " : " + velocity.y);
+
         transform.position = pos;
+
     }
 
 }
