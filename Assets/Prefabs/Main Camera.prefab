@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 438750}
   - 61: {fileID: 6189530}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: LeftEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,6 +29,7 @@ GameObject:
   - 124: {fileID: 12404938}
   - 81: {fileID: 8126998}
   - 114: {fileID: 11450828}
+  - 114: {fileID: 11420252}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -45,7 +46,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 469996}
   - 61: {fileID: 6141502}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BottomEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +167,17 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146904}
   m_Enabled: 1
+--- !u!114 &11420252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d235680c036fd134d8e0e77d62329248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11450828
 MonoBehaviour:
   m_ObjectHideFlags: 1

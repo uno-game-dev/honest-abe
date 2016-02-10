@@ -56,7 +56,7 @@ public class EnemyFollow : MonoBehaviour
         else if (targetType == TargetType.TargetGameObject)
             FollowTargetGameObject();
         else
-            _collision.Move(Vector3.zero);
+            _collision.Tick();
     }
 
     /// <summary>Moves GameObject towards Mouse</summary>
