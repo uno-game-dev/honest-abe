@@ -88,8 +88,6 @@ public class CameraFollow : MonoBehaviour {
         velocity.x = (pos.x - previousPos.x) / Time.deltaTime;
         velocity.y = (pos.y - previousPos.y) / Time.deltaTime;
 
-        Debug.Log(velocity.x + " : " + velocity.y);
-
         transform.position = pos;
 
     }
