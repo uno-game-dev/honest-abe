@@ -7,18 +7,24 @@ public class ScrollingBackground : MonoBehaviour {
 	private Vector2 savedOffset;
 	new private Renderer renderer;
 
-	// Use this for initialization
+	private CameraFollow cameraFollow;
+
+
 	void Start () {
 		renderer = this.GetComponent<Renderer>();
 		savedOffset = renderer.material.mainTextureOffset;
+		cameraFollow = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraFollow> ();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float x = Mathf.Repeat (Time.time * scrollSpeed, 1);
-		Vector2 offset = new Vector2 ( x, savedOffset.y);
-		renderer.material.mainTextureOffset = offset;
+		if ( cameraFollow.velocity.x > 0f && cameraFollow.velocity.magnitude > 0f) {
+			float x = renderer.material.mainTextureOffset.x + (scrollSpeed * (cameraFollow.velocity.magnitude/-1000f));
+			Vector2 offset = new Vector2 (x, savedOffset.y);
+			renderer.material.mainTextureOffset = offset;
+			Debug.Log (cameraFollow.velocity.magnitude);
+		}
 	}
 
 	void OnDisable() {
