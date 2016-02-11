@@ -59,6 +59,10 @@ public class PlayerMotor : MonoBehaviour
             {
                 //playerHealth.Increase(item.increaseAmount);
             }
+            if (item.type == Item.ItemType.AXE)
+            {
+
+            }
             item.OnCollision();
         }
     }

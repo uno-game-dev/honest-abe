@@ -12,7 +12,8 @@ public class Item : MonoBehaviour
 
     public enum ItemType
     {
-        HEALTH
+        HEALTH,
+        AXE
     }
 
     public ItemType type;
@@ -23,6 +24,9 @@ public class Item : MonoBehaviour
         {
             case ItemType.HEALTH:
                 Debug.Log("I am health");
+                Destroy(gameObject);
+                break;
+            case ItemType.AXE:
                 Destroy(gameObject);
                 break;
             default:
