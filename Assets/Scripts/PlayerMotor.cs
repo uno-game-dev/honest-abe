@@ -10,14 +10,11 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
     private BaseCollision collision;
-    private Health playerHealth;
 
     void Start()
     {
         collision = GetComponent<BaseCollision>();
         collision.OnCollision += OnCollision;
-
-        playerHealth = GetComponent<Health>();
     }
 
     void Update()
@@ -45,25 +42,15 @@ public class PlayerMotor : MonoBehaviour
         {
             velocity.x = 0;
             velocity.y = 0;
-            collision.Move(velocity * Time.deltaTime);
+            collision.Tick();
         }
     }
 
     private void OnCollision(RaycastHit2D hit)
     {
-        Debug.Log(hit.collider);
         if (hit.collider.tag == "Item")
         {
-            Item item = hit.transform.gameObject.GetComponent<Item>();
-            if (item.type == Item.ItemType.HEALTH)
-            {
-                //playerHealth.Increase(item.increaseAmount);
-            }
-            if (item.type == Item.ItemType.AXE)
-            {
-
-            }
-            item.OnCollision();
+            hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
         }
     }
 
