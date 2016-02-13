@@ -8,15 +8,13 @@ public class Damage : MonoBehaviour {
 	private Health health;
 	private BaseCollision collision;
 
-	// Use this for initialization
 	void Start () {
 		collision = GetComponent<BaseCollision>();
 		collision.OnCollision += OnCollision;
 	}
 
-	// Update is called once per frame
 	void Update () {
-		// collision.Move(Vector2.zero);
+        collision.Tick();
 	}
 
 	public void ExecuteDamage(GameObject toObject){
@@ -37,7 +35,5 @@ public class Damage : MonoBehaviour {
 			Debug.Log ("Hit player");
 		}
 	}
-
-
 
 }

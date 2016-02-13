@@ -31,8 +31,7 @@ public class EnemyFollow : MonoBehaviour
     public GameObject target;
 
     /// <summary>The distance in an axis x or y where the GameObject starts slowing down from Maximum Speed</summary>
-    public float stopDistanceX = 2;
-    public float stopDistanceY = 0;
+    public float stopDistance = 2;
 
     /// <summary>The player GameObject when targetType is Player</summary>
     private GameObject _player;
@@ -57,7 +56,7 @@ public class EnemyFollow : MonoBehaviour
         else if (targetType == TargetType.TargetGameObject)
             FollowTargetGameObject();
         else
-            _collision.Move(Vector3.zero);
+            _collision.Tick();
     }
 
     /// <summary>Moves GameObject towards Mouse</summary>
@@ -88,12 +87,12 @@ public class EnemyFollow : MonoBehaviour
     {
         Vector3 targetVelocity = position - new Vector2(transform.position.x, transform.position.y);
 
-        if (Mathf.Abs(targetVelocity.x) > stopDistanceX)
+        if (Mathf.Abs(targetVelocity.x) > stopDistance)
             targetVelocity.x = Mathf.Sign(targetVelocity.x) * horizontalMoveSpeed;
         else
             targetVelocity.x = 0;
 
-        if (Mathf.Abs(targetVelocity.y) > stopDistanceY)
+        if (Mathf.Abs(targetVelocity.y) > stopDistance)
             targetVelocity.y = Mathf.Sign(targetVelocity.y) * verticalMoveSpeed;
         else
             targetVelocity.y = 0;
