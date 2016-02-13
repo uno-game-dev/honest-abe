@@ -16,4 +16,15 @@ public static class ExtensionFunctions
         }
         return null;
     }
+
+    public static T FindComponent<T>(this Component component) where T : Component
+    {
+        for (int i = 0; i < component.gameObject.GetComponents<Component>().Length; i++)
+        {
+            Component child = component.gameObject.GetComponents<Component>()[i];
+            if (child is T)
+                return (child as T);
+        }
+        return null;
+    }
 }
