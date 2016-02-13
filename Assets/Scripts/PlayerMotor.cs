@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(BaseCollision))]
-public class PlayerMotor : MonoBehaviour {
+public class PlayerMotor : MonoBehaviour
+{
 
     public float hMoveSpeed = 8, vMoveSpeed = 6;
     public float movementSmoothing = .115f;
@@ -10,17 +11,21 @@ public class PlayerMotor : MonoBehaviour {
     private float velocityXSmoothing, velocityYSmoothing;
     private BaseCollision collision;
 
-    void Start() {
+    void Start()
+    {
         collision = GetComponent<BaseCollision>();
-        //collision.OnCollision += OnCollision;
+        collision.OnCollision += OnCollision;
     }
 
-    void Update() {
+    void Update()
+    {
 
         // If the game hasn't officially started yet, don't do any update calls
         if (!UIManager.updateActive) return;
 
-        if (collision.enabled) {
+        // Else run the update code
+        if (collision.enabled)
+        {
             float delta = Time.deltaTime;
 
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -33,19 +38,22 @@ public class PlayerMotor : MonoBehaviour {
 
             collision.Move(velocity * delta);
         }
-        else {
+        else
+        {
             velocity.x = 0;
             velocity.y = 0;
-            collision.Move(velocity * Time.deltaTime);
+            collision.Tick();
         }
     }
-	/**
-    private void OnCollision(RaycastHit2D hit) {
-        if (hit.collider.tag == "Enemy") {
-            Debug.Log("OUCH");
+
+    private void OnCollision(RaycastHit2D hit)
+    {
+        if (hit.collider.tag == "Item")
+        {
+            hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
         }
     }
-    **/
+
 
 
 }

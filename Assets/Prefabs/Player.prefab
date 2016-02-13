@@ -181,6 +181,8 @@ GameObject:
   - 95: {fileID: 9580994}
   - 114: {fileID: 11458750}
   - 114: {fileID: 11402006}
+  - 114: {fileID: 11407208}
+  - 114: {fileID: 11415730}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -917,7 +919,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5dba62b50b60a9f46befa28c00c8df13, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -982,6 +984,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7dfacf1bbf624a8380211d7dfc6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11407208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc81c0bf69632439683fbfeb04abd95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 10
+  damageRate: 1
+--- !u!114 &11415730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfe3d0ba67714a78bb21dc1cfbfcadc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  gm: {fileID: 0}
 --- !u!114 &11418610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1011,8 +1039,7 @@ MonoBehaviour:
   verticalRayCount: 4
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 2560
-  immobile: 0
+    m_Bits: 6912
   _collider: {fileID: 0}
 --- !u!114 &11458566
 MonoBehaviour:

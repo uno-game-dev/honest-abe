@@ -12,7 +12,6 @@ public class BaseCollision : MonoBehaviour {
     public int verticalRayCount = 4;
     public LayerMask collisionLayer;
     public CollisionInfo collisionInfo;
-    public bool immobile = false;
     [HideInInspector] public Collider2D _collider;
 
     public delegate void CollisionHandler(RaycastHit2D hit);
@@ -53,42 +52,45 @@ public class BaseCollision : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, 1);
     }
 
-    public void Move(Vector3 vel)
-    {
+    public void Tick() {
+        Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 1, collisionLayer);
+
+        if (hitCollider != null) {
+            UpdateRaycastOrigins();
+            collisionInfo.Reset();
+
+            Vector3 vel;
+
+            vel = new Vector3(skinWidth, 0, 0);
+            HorizontalCollisions(ref vel);
+
+            vel = new Vector3(-skinWidth, 0, 0);
+            HorizontalCollisions(ref vel);
+
+            vel = new Vector3(0, skinWidth, 0);
+            VerticalCollisions(ref vel);
+
+            vel = new Vector3(0, -skinWidth, 0);
+            VerticalCollisions(ref vel);
+        }
+    }
+
+    public void Move(Vector3 vel) {
         velocity = vel;
 
         Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, 1, collisionLayer);
 
-        if (hitCollider != null)
-        {
+        if (hitCollider != null) {
             UpdateRaycastOrigins();
             collisionInfo.Reset();
-
-            if (immobile)
-            {
-                vel = new Vector3(skinWidth, 0, 0);
+            if (vel.x != 0)
                 HorizontalCollisions(ref vel);
 
-                vel = new Vector3(-skinWidth, 0, 0);
-                HorizontalCollisions(ref vel);
-
-                vel = new Vector3(0, skinWidth, 0);
+            if (vel.y != 0)
                 VerticalCollisions(ref vel);
-
-                vel = new Vector3(0, -skinWidth, 0);
-                VerticalCollisions(ref vel);
-            }
-            else
-            {
-                if (vel.x != 0)
-                    HorizontalCollisions(ref vel);
-
-                if (vel.y != 0)
-                    VerticalCollisions(ref vel);
-            }
         }
 
-        if (!immobile) transform.Translate(vel);
+        transform.Translate(vel);
     }
 
     private void HorizontalCollisions(ref Vector3 vel) {
