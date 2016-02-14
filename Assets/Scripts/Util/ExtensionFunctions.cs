@@ -6,6 +6,14 @@ using UnityEngine;
 
 public static class ExtensionFunctions
 {
+    public static T GetOrAddComponent<T>(this Component component) where T : Component
+    {
+        T comp = component.GetComponent<T>();
+        if (!comp)
+            comp = component.gameObject.AddComponent<T>();
+        return comp;
+    }
+
     public static GameObject FindInChildren(this Component component, string name)
     {
         for (int i = 0; i < component.transform.childCount; i++)
@@ -14,6 +22,26 @@ public static class ExtensionFunctions
             if (name == child.name)
                 return child;
         }
+        return null;
+    }
+
+    public static GameObject FindContainsInChildren(this Component component, string name)
+    {
+        for (int i = 0; i < component.transform.childCount; i++)
+        {
+            GameObject child = component.transform.GetChild(i).gameObject;
+            if (child.name.Contains(name))
+                return child;
+        }
+
+        for (int i = 0; i < component.transform.childCount; i++)
+        {
+            GameObject child = component.transform.GetChild(i).gameObject;
+            GameObject childsChild = child.transform.FindContainsInChildren(name);
+            if (childsChild)
+                return childsChild;
+        }
+
         return null;
     }
 
