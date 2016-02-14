@@ -10,9 +10,6 @@ class MeleeAttack : MonoBehaviour, IAttackType
     public float prepHeavyAttackTime = 0.6f;
     public float lightAttackTime = 0.2f;
     public float heavyAttackTime = 0.2f;
-    public Vector2 size = Vector2.one;
-    public Vector2 position = new Vector2(1, 0.5f);
-    public float damage = 10;
 
     [HideInInspector]
     public Animator animator;
@@ -32,8 +29,8 @@ class MeleeAttack : MonoBehaviour, IAttackType
     private void PrepToLightAttack()
     {
         attack.attackState = Attack.State.Prep;
-        meleeArea.transform.localPosition = position;
-        meleeArea.transform.localScale = size;
+        meleeArea.transform.localPosition = Weapon.attackOffset;
+        meleeArea.transform.localScale = Weapon.attackSize;
         Invoke("PerformLightAttack", prepLightAttackTime);
     }
 
@@ -69,7 +66,5 @@ class MeleeAttack : MonoBehaviour, IAttackType
         meleeArea.SetActive(false);
     }
 
-    public Vector2 Size { get { return size; } }
-    public Vector2 Position { get { return position; } }
-    public float Damage { get { return damage; } }
+    public Weapon Weapon { get; set; }
 }
