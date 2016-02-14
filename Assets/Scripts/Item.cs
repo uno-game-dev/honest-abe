@@ -23,7 +23,7 @@ public class Item : MonoBehaviour
         switch (type)
         {
             case ItemType.HEALTH:
-                //other.GetComponent<Health>().Increase(increaseAmount); // This is where you call the function that updates the player's health
+                other.GetComponent<PlayerHealth>().Increase(increaseAmount); // This is where you call the function that updates the player's health
                 Destroy(gameObject);
                 break;
             case ItemType.AXE:

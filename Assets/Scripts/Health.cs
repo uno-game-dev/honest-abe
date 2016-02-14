@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-
+	[HideInInspector]
 	public int health;
 	public GameManager gm;
 	private float nextHit;
@@ -17,23 +17,27 @@ public class Health : MonoBehaviour {
 
 	}
 
-	public void Increase(int amount){
+	public virtual void Increase(int amount){
 		health += amount;
 	}
 
-	public void Decrease(int damage, float damageRate){
+	public virtual void Decrease(int damage, float damageRate){
+		int tempHealth = health;
 		if (Time.time > nextHit) {
 			nextHit = Time.time + damageRate;
-			health -= damage;
-			UpdateHealth ();
+			//If the hit would kill the gameObject
+			if ((tempHealth -= damage) <= 0) {
+				health = 0;
+				UpdateHealth ();
+				Destroy (gameObject);
+			} else {
+				health -= damage;
+				UpdateHealth ();
+			}
 		}
 	}
-
-	void UpdateHealth(){
-		if (gameObject.tag == "Player") {
-			gm.playerHealthText.text = "Player HP: " + health;
-			Debug.Log ("Player health is: " + health);
-		}
+	//For testing purposes
+	public virtual void UpdateHealth(){
 		if (gameObject.tag == "Enemy") {
 			gm.enemyHealthText.text = "Enemy HP: " + health;
 			Debug.Log ("Enemy health is: " + health);
