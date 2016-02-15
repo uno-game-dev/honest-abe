@@ -6,6 +6,7 @@ public class Damage : MonoBehaviour {
 	public int damageAmount;
 	public float damageRate = 1f;
 	private Health health;
+	private PlayerHealth playerHealth;
 	private BaseCollision collision;
 
 	void Start () {
@@ -18,22 +19,23 @@ public class Damage : MonoBehaviour {
 	}
 
 	public void ExecuteDamage(GameObject toObject){
-		if (health == null) {
-			health = toObject.GetComponent<Health> ();
+		if (toObject.tag == "Enemy") {
+			if (health == null) {
+				health = toObject.GetComponent<Health> ();
+			}
+			health.Decrease (damageAmount, damageRate);
 		}
-		health.Decrease (damageAmount, damageRate);
-
+		if (toObject.tag == "Player") {
+			if (playerHealth == null) {
+				playerHealth = toObject.GetComponent<PlayerHealth> ();
+			}
+			playerHealth.Decrease (damageAmount, damageRate);
+		}
 	}
 
 	private void OnCollision(RaycastHit2D hit) {
-		if (hit.collider.tag == "Enemy") {
+		if ((hit.collider.tag == "Enemy") || (hit.collider.tag == "Player") ) {
 			ExecuteDamage(hit.transform.gameObject);
-			Debug.Log ("Hit enemy");
-		}
-		if (hit.collider.tag == "Player") {
-			ExecuteDamage(hit.transform.gameObject);
-			Debug.Log ("Hit player");
 		}
 	}
-
 }
