@@ -9,15 +9,19 @@ public class TerrainSpawner : MonoBehaviour {
 	public int spawnYPos = 0;
 	public int spawnZPos = 10;
 
-	float lastPosition;
-	GameObject cam;
-	bool canSpawn = true;
+	private GameObject cam;
+	private GameObject gm;
+	private PropList props;
+	private bool canSpawn = true;
+	private float lastPosition;
 
 	// Use this for initialization
 	void Start() {
 
 		lastPosition = startSpawnPosition;
 		cam = GameObject.Find("Main Camera");
+		gm = GameObject.Find("GameManager");
+		props = (PropList)gm.GetComponent(typeof(PropList));
 	}
 	
 	// Update is called once per frame
@@ -40,7 +44,7 @@ public class TerrainSpawner : MonoBehaviour {
 
 	void SpawnProp() {
 
-		Instantiate(prop, new Vector3(lastPosition, spawnYPos + 10, 1), Quaternion.Euler(0, 0, 0));
+		Instantiate(props.GetRandomProp(), new Vector3(lastPosition, spawnYPos - 5, 1), Quaternion.Euler(0, 0, 0));
 	}
 
 	void SpawnEnemy() {
