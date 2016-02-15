@@ -3,10 +3,6 @@
 [RequireComponent(typeof(BaseCollision))]
 public class PlayerMotor : MonoBehaviour
 {
-
-    public float hMoveSpeed = 8, vMoveSpeed = 6;
-    public float movementSmoothing = .115f;
-
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
     private BaseCollision collision;
@@ -26,17 +22,15 @@ public class PlayerMotor : MonoBehaviour
         // Else run the update code
         if (collision.enabled)
         {
-            float delta = Time.deltaTime;
-
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-            float targetVelX = input.x * hMoveSpeed;
-            float targetVelY = input.y * vMoveSpeed;
+            float targetVelX = input.x * GlobalSettings.playerMoveSpeedH;
+            float targetVelY = input.y * GlobalSettings.playerMoveSpeedV;
 
-            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, movementSmoothing);
-            velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, movementSmoothing);
+            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, GlobalSettings.playerMovementSmoothing);
+            velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, GlobalSettings.playerMovementSmoothing);
 
-            collision.Move(velocity * delta);
+            collision.Move(velocity * Time.deltaTime);
         }
         else
         {
@@ -53,7 +47,5 @@ public class PlayerMotor : MonoBehaviour
             hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
         }
     }
-
-
 
 }
