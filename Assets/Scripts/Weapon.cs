@@ -8,5 +8,7 @@ public class Weapon : MonoBehaviour
     public AttackType attackType = AttackType.Melee;
     public Vector2 attackSize = Vector2.one;
     public Vector2 attackOffset = new Vector2(1, 0.5f);
-    public float damage = 10;
+    public Vector3 heldOrientation = Vector3.zero;
+    public float lightDamage = 10;
+    public float heavyDamage = 15;
 }

@@ -1,41 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class Damage : MonoBehaviour {
+public class Damage : MonoBehaviour
+{
 
-	public int damageAmount;
-	public float damageRate = 1f;
-	private Health health;
-	private PlayerHealth playerHealth;
-	private BaseCollision collision;
+    public float damageAmount;
+    public float damageRate = 1f;
+    private Health health;
+    private BaseCollision collision;
 
-	void Start () {
-		collision = GetComponent<BaseCollision>();
-		collision.OnCollision += OnCollision;
-	}
+    void Start()
+    {
+        collision = GetComponent<BaseCollision>();
+        collision.OnCollision += OnCollision;
+    }
 
-	void Update () {
+    void Update()
+    {
         collision.Tick();
-	}
+    }
 
-	public void ExecuteDamage(GameObject toObject){
-		if (toObject.tag == "Enemy") {
-			if (health == null) {
-				health = toObject.GetComponent<Health> ();
-			}
-			health.Decrease (damageAmount, damageRate);
-		}
-		if (toObject.tag == "Player") {
-			if (playerHealth == null) {
-				playerHealth = toObject.GetComponent<PlayerHealth> ();
-			}
-			playerHealth.Decrease (damageAmount, damageRate);
-		}
-	}
+    public void ExecuteDamage(GameObject toObject)
+    {
+        if (!health)
+            health = toObject.GetComponent<Health>();
+        if (health)
+            health.Decrease(Convert.ToInt32(damageAmount), damageRate);
+    }
 
-	private void OnCollision(RaycastHit2D hit) {
-		if ((hit.collider.tag == "Enemy") || (hit.collider.tag == "Player") ) {
-			ExecuteDamage(hit.transform.gameObject);
-		}
-	}
+    private void OnCollision(RaycastHit2D hit)
+    {
+        if (hit.collider.tag == "Damage")
+        {
+            damageAmount = hit.transform.GetComponentInParent<Attack>().GetDamageAmount();
+            ExecuteDamage(gameObject);
+            Debug.Log("Hit! " + gameObject.name);
+        }
+    }
+
 }
