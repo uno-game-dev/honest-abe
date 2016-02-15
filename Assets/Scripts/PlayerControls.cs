@@ -15,7 +15,6 @@ public class PlayerControls : MonoBehaviour
         heldComplete = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -33,7 +32,7 @@ public class PlayerControls : MonoBehaviour
 
             if (mouseHeldTime >= timeToConsiderHeld)
             {
-                mouseHeldTime = 0;
+                mouseHeldTime -= timeToConsiderHeld;
                 Debug.Log("Left mouse was held");
                 heldComplete = true;
             }
@@ -41,8 +40,7 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
-            heldComplete = false;
-            justClicked = false;
+            ResetHold();
         }
     }
 
@@ -50,7 +48,6 @@ public class PlayerControls : MonoBehaviour
     {
         justClicked = false;
         heldComplete = false;
-        mouseHeldTime = 0;
     }
 
 }

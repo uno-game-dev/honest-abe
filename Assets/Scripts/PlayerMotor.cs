@@ -10,6 +10,7 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
     private BaseCollision collision;
+    private BaseCollision.CollisionInfo collisionInfo;
     private PlayerControls controls;
 
     private bool justCollided = false;
@@ -31,6 +32,10 @@ public class PlayerMotor : MonoBehaviour
         // Else run the update code
         if (collision.enabled)
         {
+
+            if (!collision.collisionInfo.above && !collision.collisionInfo.below && !collision.collisionInfo.right && !collision.collisionInfo.left)
+                justCollided = false;
+
             float delta = Time.deltaTime;
 
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
