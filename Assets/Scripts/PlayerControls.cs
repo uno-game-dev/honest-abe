@@ -6,12 +6,12 @@ public class PlayerControls : MonoBehaviour
 
     private float mouseHeldTime;
     private float timeToConsiderHeld;
-    [HideInInspector] public bool heldComplete;
+    [HideInInspector] public bool heldComplete, justClicked;
 
     void Start()
     {
         _attack = GetComponent<Attack>();
-        timeToConsiderHeld = 1;
+        timeToConsiderHeld = 1f;
         heldComplete = false;
     }
 
@@ -20,6 +20,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            justClicked = true;
             _attack.LightAttack();
         }
 
@@ -39,7 +40,17 @@ public class PlayerControls : MonoBehaviour
         }
 
         if (Input.GetButtonUp("Fire1"))
+        {
             heldComplete = false;
+            justClicked = false;
+        }
+    }
+
+    public void ResetHold()
+    {
+        justClicked = false;
+        heldComplete = false;
+        mouseHeldTime = 0;
     }
 
 }

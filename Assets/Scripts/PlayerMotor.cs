@@ -12,6 +12,8 @@ public class PlayerMotor : MonoBehaviour
     private BaseCollision collision;
     private PlayerControls controls;
 
+    private bool justCollided = false;
+
     void Start()
     {
         collision = GetComponent<BaseCollision>();
@@ -56,9 +58,14 @@ public class PlayerMotor : MonoBehaviour
             hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
         }
 
-        if (hit.collider.tag == "Weapon")
-        {
-            if (controls.heldComplete)
+        if (hit.collider.tag == "Weapon") {
+            if (!justCollided)
+            {
+                controls.ResetHold();
+                justCollided = true;
+            }
+
+            if (controls.heldComplete && justCollided && controls.justClicked)
             {
                 hit.transform.gameObject.GetComponent<Weapon>().OnCollision(gameObject);
             }
