@@ -43,6 +43,11 @@ public class Attack : MonoBehaviour
         _attackBox.name = "Melee Area";
         _attackBox.transform.parent = transform;
         _attackBox.transform.localPosition = new Vector3(1f, 0.5f, 0f);
+        _attackBox.tag = "Damage";
+        _attackBox.layer = gameObject.layer;
+        DestroyImmediate(_attackBox.GetComponent<MeshCollider>());
+        _attackBox.AddComponent<BoxCollider2D>().isTrigger = true;
+        _attackBox.AddComponent<BaseCollision>();
         _attackBox.SetActive(false);
     }
 
@@ -64,20 +69,43 @@ public class Attack : MonoBehaviour
 
         if (weapon.attackType != Weapon.AttackType.Melee)
         {
-            weapon.transform.parent = _leftHand.transform;
+            weapon.transform.parent = _rightHand.transform;
             weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localEulerAngles = weapon.heldOrientation;
         }
+    }
+
+    public float GetDamageAmount()
+    {
+        if (attackState == State.Heavy)
+            return weapon.heavyDamage;
+        else
+            return weapon.lightDamage;
     }
 
     private IAttackType CreateAttackType(Weapon.AttackType attackType)
     {
+        foreach (MonoBehaviour component in GetComponents<MonoBehaviour>())
+            if (component is IAttackType)
+                component.enabled = false;
+
         if (attackType == Weapon.AttackType.Melee)
         {
             MeleeAttack ma = this.GetOrAddComponent<MeleeAttack>();
             ma.animator = _animator;
             ma.attack = this;
             ma.meleeArea = _attackBox;
+            ma.enabled = true;
             return ma;
+        }
+        if (attackType == Weapon.AttackType.Swing)
+        {
+            SwingAttack sa = this.GetOrAddComponent<SwingAttack>();
+            sa.animator = _animator;
+            sa.attack = this;
+            sa.meleeArea = _attackBox;
+            sa.enabled = true;
+            return sa;
         }
         else
         {
@@ -85,6 +113,7 @@ public class Attack : MonoBehaviour
             ma.animator = _animator;
             ma.attack = this;
             ma.meleeArea = _attackBox;
+            ma.enabled = true;
             return ma;
         }
     }
