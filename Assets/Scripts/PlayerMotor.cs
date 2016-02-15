@@ -10,11 +10,14 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
     private BaseCollision collision;
+    private PlayerControls controls;
 
     void Start()
     {
         collision = GetComponent<BaseCollision>();
         collision.OnCollision += OnCollision;
+
+        controls = GetComponent<PlayerControls>();
     }
 
     void Update()
@@ -51,6 +54,14 @@ public class PlayerMotor : MonoBehaviour
         if (hit.collider.tag == "Item")
         {
             hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
+        }
+
+        if (hit.collider.tag == "Weapon")
+        {
+            if (controls.heldComplete)
+            {
+                hit.transform.gameObject.GetComponent<Weapon>().OnCollision(gameObject);
+            }
         }
     }
 

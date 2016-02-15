@@ -131,7 +131,7 @@ GameObject:
   - 33: {fileID: 3322318}
   - 23: {fileID: 2308372}
   m_Layer: 10
-  m_Name: Shadow
+  m_Name: Bounding Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,6 +183,9 @@ GameObject:
   - 114: {fileID: 11402006}
   - 114: {fileID: 11407208}
   - 114: {fileID: 11415730}
+  - 114: {fileID: 11489494}
+  - 114: {fileID: 11469270}
+  - 114: {fileID: 11488320}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -604,7 +607,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186116}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0.953717, z: 0, w: 0.3007057}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
@@ -1039,7 +1042,7 @@ MonoBehaviour:
   verticalRayCount: 4
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 6912
+    m_Bits: 15104
   _collider: {fileID: 0}
 --- !u!114 &11458566
 MonoBehaviour:
@@ -1070,6 +1073,52 @@ MonoBehaviour:
   height: 0
   isGrounded: 0
   jumpVelocity: 0
+--- !u!114 &11469270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e234309cfe98147a31766a9b10eba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldComplete: 0
+--- !u!114 &11488320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5323fc68ed87e934aaeed6926c9983e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackState: 0
+  attackType: 0
+--- !u!114 &11489494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af893658bebf327478b83394f7c996e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prepLightAttackTime: 0.3
+  prepHeavyAttackTime: 0.6
+  lightAttackTime: 0.2
+  heavyAttackTime: 0.2
+  size: {x: 1, y: 1}
+  position: {x: 1, y: 0.5}
+  damage: 10
+  animator: {fileID: 0}
+  attack: {fileID: 0}
+  meleeArea: {fileID: 0}
 --- !u!137 &13700022
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
