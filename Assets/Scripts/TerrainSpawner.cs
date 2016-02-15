@@ -1,27 +1,28 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class TerrainSpawner : MonoBehaviour {
 
 	public GameObject terrain;
-	public GameObject prop;
-	public GameObject enemy;
+	public List<GameObject> enemies;
+	public List<GameObject> props;
 	public float startSpawnPosition = 8f;
 	public int spawnYPos = 0;
 	public int spawnZPos = 10;
 
 	private GameObject cam;
 	private GameObject gm;
-	private PropList props;
+	private GameObject lastTerrain;
+	private System.Random rnd;
 	private bool canSpawn = true;
 	private float lastPosition;
 
 	// Use this for initialization
 	void Start() {
-
+		rnd = new System.Random();
 		lastPosition = startSpawnPosition;
 		cam = GameObject.Find("Main Camera");
 		gm = GameObject.Find("GameManager");
-		props = (PropList)gm.GetComponent(typeof(PropList));
 	}
 	
 	// Update is called once per frame
@@ -37,18 +38,31 @@ public class TerrainSpawner : MonoBehaviour {
 		}
 	}
 
-	void SpawnTerrain() {
+	private void SpawnTerrain() {
 
-		Instantiate(terrain, new Vector3(lastPosition, spawnYPos, spawnZPos), Quaternion.Euler(0, 0, 0));
+		lastTerrain = Instantiate(terrain, new Vector3(lastPosition, spawnYPos, spawnZPos), Quaternion.Euler(0, 0, 0)) as GameObject;
 	}
 
-	void SpawnProp() {
+	private void SpawnProp() {
 
-		Instantiate(props.GetRandomProp(), new Vector3(lastPosition, spawnYPos - 5, 1), Quaternion.Euler(0, 0, 0));
+		int r = rnd.Next(props.Count);
+		Instantiate(props[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
 	}
 
-	void SpawnEnemy() {
+	private void SpawnEnemy() {
 
-		Instantiate(enemy, new Vector3(lastPosition, spawnYPos - 10, 1), Quaternion.Euler(0, 0, 0));
+		int r = rnd.Next(enemies.Count);
+		Instantiate(enemies[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+	}
+
+	private Vector3 getRandomPos() {
+		RectTransform area = (RectTransform)terrain.transform;
+		double width = area.rect.width;
+		double height = area.rect.height;
+
+		float x = (float)((width * rnd.NextDouble()) - (width / 2) + lastPosition);
+		float y = (float)((height * rnd.NextDouble()) - (height / 2));
+
+		return new Vector3(x, y, 1);
 	}
 }
