@@ -10,7 +10,6 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
     private BaseCollision collision;
-    private BaseCollision.CollisionInfo collisionInfo;
     private PlayerControls controls;
 
     private bool justCollided = false;
