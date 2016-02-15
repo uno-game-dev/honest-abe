@@ -4,7 +4,6 @@ using System;
 
 public class Jump : MonoBehaviour
 {
-    public float gravityMultiplier = 1;
     public float jumpStrength = 5;
     public float height = 0;
 
@@ -13,7 +12,6 @@ public class Jump : MonoBehaviour
     [HideInInspector]
     public float jumpVelocity;
 
-    private float gravity = -9.81f;
     private float _previousHeight;
     
     private void Update()
@@ -32,7 +30,7 @@ public class Jump : MonoBehaviour
 
         _previousHeight = height;
 
-        jumpVelocity += gravity * gravityMultiplier * Time.deltaTime;
+        jumpVelocity += GlobalSettings.gravity * GlobalSettings.gravityMultiplier * Time.deltaTime;
         jumpVelocity = height <= 0 ? 0 : jumpVelocity;
     }
 
