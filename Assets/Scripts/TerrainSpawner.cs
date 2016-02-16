@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 public class TerrainSpawner : MonoBehaviour {
@@ -16,12 +17,14 @@ public class TerrainSpawner : MonoBehaviour {
 	private System.Random rnd;
 	private bool canSpawn = true;
 	private float lastPosition;
+	private List<Vector3> occupiedPositions;
 
 	// Use this for initialization
-	void Start() {
-		rnd = new System.Random();
+	void Start()
+	{
 		lastPosition = startSpawnPosition;
 		cam = GameObject.Find("Main Camera");
+		rnd = new System.Random();
 	}
 	
 	// Update is called once per frame
@@ -30,6 +33,7 @@ public class TerrainSpawner : MonoBehaviour {
 		if (cam.transform.position.x >= lastPosition - startSpawnPosition && canSpawn) {
 			canSpawn = false;
 			SpawnTerrain();
+			occupiedPositions = new List<Vector3>();
 			SpawnProp();
 			SpawnEnemy();
 			lastPosition += startSpawnPosition;
@@ -44,7 +48,7 @@ public class TerrainSpawner : MonoBehaviour {
 
 	private void SpawnProp() {
 
-		for (int i = 1; i <= propDensity; i++)
+		for (int i = 0; i < propDensity; i++)
 		{
 			int r = rnd.Next(props.Count);
 			Instantiate(props[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
@@ -53,7 +57,7 @@ public class TerrainSpawner : MonoBehaviour {
 
 	private void SpawnEnemy() {
 		
-		for (int i = 1; i <= enemyDensity; i++)
+		for (int i = 0; i < enemyDensity; i++)
 		{
 			int r = rnd.Next(enemies.Count);
 			Instantiate(enemies[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
@@ -61,13 +65,32 @@ public class TerrainSpawner : MonoBehaviour {
 	}
 
 	private Vector3 getRandomPos() {
+
 		RectTransform area = (RectTransform)terrain.transform;
 		double width = area.rect.width;
 		double height = area.rect.height * 0.55;
 
-		float x = (float)((width * rnd.NextDouble()) - (width / 2) + lastPosition);
-		float y = (float)((height * rnd.NextDouble()) - (height / 2) - (width * 0.3));
+		float x = 0;
+		float y = 0;
+		bool occupied = true;
 
-		return new Vector3(x, y, 1);
+		while (occupied) {
+			occupied = false;
+
+			x = (float)((width * rnd.NextDouble() * 2) - width + lastPosition);
+			y = (float)((height * rnd.NextDouble()) - (height / 2) - (height * 0.4));
+
+			foreach (Vector3 pos in occupiedPositions) {
+				if ((Math.Abs((double)(x - pos.x)) < 1.0) && (Math.Abs((double)(y - pos.y)) < 1.0)) {
+					occupied = true;
+					Debug.Log("OVERLAP!");
+					break;
+				}
+			}
+		}
+
+		Vector3 vector = new Vector3(x, y, 1);
+		occupiedPositions.Add(vector);
+		return vector;
 	}
 }
