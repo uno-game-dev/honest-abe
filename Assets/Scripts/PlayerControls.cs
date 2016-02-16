@@ -26,7 +26,7 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
             _attack.HeavyAttack();
 
-        if (Input.GetButton("Fire1") && !heldComplete)
+        if (Input.GetButton("Fire1") && !heldComplete && justClicked)
         {
             mouseHeldTime += Time.deltaTime;
 
