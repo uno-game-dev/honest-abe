@@ -4,7 +4,6 @@ using System.Collections;
 public class Health : MonoBehaviour {
 	[HideInInspector]
 	public int health;
-	public GameManager gm;
 	private float nextHit;
 
 	// Use this for initialization
@@ -39,7 +38,6 @@ public class Health : MonoBehaviour {
 	//For testing purposes
 	public virtual void UpdateHealth(){
 		if (gameObject.tag == "Enemy") {
-			gm.enemyHealthText.text = "Enemy HP: " + health;
 			Debug.Log ("Enemy health is: " + health);
 		}
 	}
