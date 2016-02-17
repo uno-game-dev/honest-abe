@@ -2,7 +2,7 @@
 
 public class PreferenceManager : MonoBehaviour {
 
-	public static void UpdatePerkStatus () {
+	void Awake () {
 
         if(!PlayerPrefs.HasKey("Axe_Fire"))
             PlayerPrefs.SetInt("Axe_Fire", 0);
