@@ -11,4 +11,10 @@ public class Weapon : MonoBehaviour
     public Vector3 heldOrientation = Vector3.zero;
     public float lightDamage = 10;
     public float heavyDamage = 15;
+
+	public void OnCollision(GameObject other)
+	{
+		Debug.Log("Weapon Picked Up");
+		Destroy(gameObject);
+	}
 }
