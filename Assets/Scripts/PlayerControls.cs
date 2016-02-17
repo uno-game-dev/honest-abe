@@ -32,8 +32,7 @@ public class PlayerControls : MonoBehaviour
 
             if (mouseHeldTime >= timeToConsiderHeld)
             {
-                mouseHeldTime -= timeToConsiderHeld;
-                Debug.Log("Left mouse was held");
+                mouseHeldTime = 0;
                 heldComplete = true;
             }
         }
@@ -48,6 +47,7 @@ public class PlayerControls : MonoBehaviour
     {
         justClicked = false;
         heldComplete = false;
+        mouseHeldTime = 0;
     }
 
 }
