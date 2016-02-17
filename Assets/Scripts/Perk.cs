@@ -12,7 +12,7 @@ public class Perk : MonoBehaviour
 
     private bool perkUnlocked;
 
-    void Start()
+    public void CheckStatus()
     {
         switch (type)
         {
@@ -26,11 +26,6 @@ public class Perk : MonoBehaviour
 
         if (!perkUnlocked)
             gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-
     }
 
     public void OnCollision(GameObject other)

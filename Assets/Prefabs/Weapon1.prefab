@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 452048}
   - 61: {fileID: 6154940}
   - 212: {fileID: 21207020}
-  - 114: {fileID: 11481524}
+  - 114: {fileID: 11480716}
   m_Layer: 13
   m_Name: Weapon1
-  m_TagString: Weapon
+  m_TagString: Perk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.85, y: -3.13, z: 0}
+  m_LocalPosition: {x: -2.88, y: -5.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
---- !u!114 &11481524
+--- !u!114 &11480716
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -52,15 +52,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 126218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
+  m_Script: {fileID: 11500000, guid: bd71f47f14968164ebc11b9250190101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackType: 0
-  attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1, y: 0.5}
-  heldOrientation: {x: 0, y: 0, z: 0}
-  lightDamage: 10
-  heavyDamage: 15
+  type: 1
 --- !u!212 &21207020
 SpriteRenderer:
   m_ObjectHideFlags: 1
