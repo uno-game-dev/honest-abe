@@ -89,33 +89,20 @@ public class Attack : MonoBehaviour
             if (component is IAttackType)
                 component.enabled = false;
 
+        IAttackType attack;
         if (attackType == Weapon.AttackType.Melee)
-        {
-            MeleeAttack ma = this.GetOrAddComponent<MeleeAttack>();
-            ma.animator = _animator;
-            ma.attack = this;
-            ma.meleeArea = _attackBox;
-            ma.enabled = true;
-            return ma;
-        }
-        if (attackType == Weapon.AttackType.Swing)
-        {
-            SwingAttack sa = this.GetOrAddComponent<SwingAttack>();
-            sa.animator = _animator;
-            sa.attack = this;
-            sa.meleeArea = _attackBox;
-            sa.enabled = true;
-            return sa;
-        }
+            attack = this.GetOrAddComponent<MeleeAttack>();
+        else if (attackType == Weapon.AttackType.Swing)
+            attack = this.GetOrAddComponent<SwingAttack>();
+        else if (attackType == Weapon.AttackType.Jab)
+            attack = this.GetOrAddComponent<JabAttack>();
         else
-        {
-            MeleeAttack ma = this.GetOrAddComponent<MeleeAttack>();
-            ma.animator = _animator;
-            ma.attack = this;
-            ma.meleeArea = _attackBox;
-            ma.enabled = true;
-            return ma;
-        }
+            attack = this.GetOrAddComponent<MeleeAttack>();
+
+        attack.Animator = _animator;
+        attack.Attack = this;
+        attack.AttackArea = _attackBox;
+        return attack;
     }
 
     public void LightAttack()

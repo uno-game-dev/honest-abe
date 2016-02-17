@@ -6,4 +6,7 @@ public interface IAttackType
     void HeavyAttack();
 
     Weapon Weapon { get; set; }
+    Animator Animator { get; set; }
+    Attack Attack { get; set; }
+    GameObject AttackArea { get; set; }
 }
