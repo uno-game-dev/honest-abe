@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.959999, y: -5.23, z: 0}
+  m_LocalPosition: {x: -7.85, y: -3.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,9 +52,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 126218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967a6b4e5d4419d47a2dcf279266a243, type: 3}
+  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackType: 0
+  attackSize: {x: 1, y: 1}
+  attackOffset: {x: 1, y: 0.5}
+  heldOrientation: {x: 0, y: 0, z: 0}
+  lightDamage: 10
+  heavyDamage: 15
 --- !u!212 &21207020
 SpriteRenderer:
   m_ObjectHideFlags: 1
