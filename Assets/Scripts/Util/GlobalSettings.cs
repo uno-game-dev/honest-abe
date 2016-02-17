@@ -11,4 +11,9 @@ public class GlobalSettings : MonoBehaviour
     public static float playerMoveSpeedH = 8;
     public static float playerMoveSpeedV = 6;
     public static float playerMovementSmoothing = .115f;
+
+
+    // Perks and their unlocked state
+    public static bool axe_fire_unlocked = false;
+    public static bool hat_dtVampirism_unlocked = false;
 }

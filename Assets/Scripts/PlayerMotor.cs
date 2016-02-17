@@ -75,6 +75,20 @@ public class PlayerMotor : MonoBehaviour
                 hit.transform.gameObject.GetComponent<Weapon>().OnCollision(gameObject);
             }
         }
+
+        if (hit.collider.tag == "Perk")
+        {
+            if (!justCollided)
+            {
+                controls.ResetHold();
+                justCollided = true;
+            }
+
+            if (controls.heldComplete && justCollided && controls.justClicked)
+            {
+                hit.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+            }
+        }
     }
 
 
