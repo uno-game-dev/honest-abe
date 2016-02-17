@@ -3,14 +3,23 @@
 [RequireComponent(typeof(BaseCollision))]
 public class PlayerMotor : MonoBehaviour
 {
+
+    public float hMoveSpeed = 8, vMoveSpeed = 6;
+    public float movementSmoothing = .115f;
+
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
     private BaseCollision collision;
+    private PlayerControls controls;
+
+    private bool justCollided = false;
 
     void Start()
     {
         collision = GetComponent<BaseCollision>();
         collision.OnCollision += OnCollision;
+
+        controls = GetComponent<PlayerControls>();
     }
 
     void Update()
@@ -22,15 +31,21 @@ public class PlayerMotor : MonoBehaviour
         // Else run the update code
         if (collision.enabled)
         {
+
+            if (!collision.collisionInfo.above && !collision.collisionInfo.below && !collision.collisionInfo.right && !collision.collisionInfo.left)
+                justCollided = false;
+
+            float delta = Time.deltaTime;
+
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-            float targetVelX = input.x * GlobalSettings.playerMoveSpeedH;
-            float targetVelY = input.y * GlobalSettings.playerMoveSpeedV;
+            float targetVelX = input.x * hMoveSpeed;
+            float targetVelY = input.y * vMoveSpeed;
 
-            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, GlobalSettings.playerMovementSmoothing);
-            velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, GlobalSettings.playerMovementSmoothing);
+            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, movementSmoothing);
+            velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, movementSmoothing);
 
-            collision.Move(velocity * Time.deltaTime);
+            collision.Move(velocity * delta);
         }
         else
         {
@@ -46,6 +61,22 @@ public class PlayerMotor : MonoBehaviour
         {
             hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
         }
+
+        if (hit.collider.tag == "Weapon")
+        {
+            if (!justCollided)
+            {
+                controls.ResetHold();
+                justCollided = true;
+            }
+
+            if (controls.heldComplete && justCollided && controls.justClicked)
+            {
+                hit.transform.gameObject.GetComponent<Weapon>().OnCollision(gameObject);
+            }
+        }
     }
+
+
 
 }
