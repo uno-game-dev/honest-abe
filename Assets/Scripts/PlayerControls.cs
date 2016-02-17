@@ -11,7 +11,7 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         _attack = GetComponent<Attack>();
-        timeToConsiderHeld = 1f;
+        timeToConsiderHeld = .7f;
         heldComplete = false;
     }
 
