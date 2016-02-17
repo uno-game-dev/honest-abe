@@ -47,7 +47,6 @@ public class Damage : MonoBehaviour
             damageAmount = hit.transform.GetComponentInParent<Attack>().GetDamageAmount();
             ExecuteDamage(gameObject);
             AddBlood(hit);
-            Debug.Log("Hit! " + gameObject.name);
         }
     }
 

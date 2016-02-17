@@ -11,60 +11,54 @@ class SwingAttack : MonoBehaviour, IAttackType
     public float lightAttackTime = 0.2f;
     public float heavyAttackTime = 0.2f;
 
-    [HideInInspector]
-    public Animator animator;
-
-    [HideInInspector]
-    public Attack attack;
-
-    [HideInInspector]
-    public GameObject meleeArea;
-
     public void LightAttack()
     {
-        animator.SetTrigger("Light Swing");
+        Animator.SetTrigger("Light Swing");
         PrepToLightAttack();
     }
 
     private void PrepToLightAttack()
     {
-        attack.attackState = Attack.State.Prep;
-        meleeArea.transform.localPosition = Weapon.attackOffset;
-        meleeArea.transform.localScale = Weapon.attackSize;
+        Attack.attackState = Attack.State.Prep;
+        AttackArea.transform.localPosition = Weapon.attackOffset;
+        AttackArea.transform.localScale = Weapon.attackSize;
         Invoke("PerformLightAttack", prepLightAttackTime);
     }
 
     private void PerformLightAttack()
     {
-        attack.attackState = Attack.State.Light;
-        meleeArea.SetActive(true);
+        Attack.attackState = Attack.State.Light;
+        AttackArea.SetActive(true);
         Invoke("Disable", lightAttackTime);
     }
 
     public void HeavyAttack()
     {
-        animator.SetTrigger("Heavy Swing");
+        Animator.SetTrigger("Heavy Swing");
         PrepToHeavyAttack();
     }
 
     private void PrepToHeavyAttack()
     {
-        attack.attackState = Attack.State.Prep;
+        Attack.attackState = Attack.State.Prep;
         Invoke("PerformHeavyAttack", prepHeavyAttackTime);
     }
 
     private void PerformHeavyAttack()
     {
-        attack.attackState = Attack.State.Heavy;
-        meleeArea.SetActive(true);
+        Attack.attackState = Attack.State.Heavy;
+        AttackArea.SetActive(true);
         Invoke("Disable", heavyAttackTime);
     }
 
     private void Disable()
     {
-        attack.attackState = Attack.State.Idle;
-        meleeArea.SetActive(false);
+        Attack.attackState = Attack.State.Idle;
+        AttackArea.SetActive(false);
     }
 
     public Weapon Weapon { get; set; }
+    public Animator Animator { get; set; }
+    public Attack Attack { get; set; }
+    public GameObject AttackArea { get; set; }
 }
