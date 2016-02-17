@@ -131,7 +131,7 @@ GameObject:
   - 33: {fileID: 3322318}
   - 23: {fileID: 2308372}
   m_Layer: 10
-  m_Name: Shadow
+  m_Name: Bounding Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,6 +183,10 @@ GameObject:
   - 114: {fileID: 11402006}
   - 114: {fileID: 11407208}
   - 114: {fileID: 11415730}
+  - 114: {fileID: 11496650}
+  - 114: {fileID: 11410656}
+  - 114: {fileID: 11429280}
+  - 114: {fileID: 11474364}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -604,7 +608,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186116}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0.953717, z: 0, w: 0.3007057}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
@@ -965,7 +969,7 @@ Animator:
   m_GameObject: {fileID: 136070}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c9d3ebb002f764948a20e09aa8f4026f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 76c84f155db219a4a85cd6725d8ac004, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -997,6 +1001,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   damageRate: 1
+--- !u!114 &11410656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e234309cfe98147a31766a9b10eba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldComplete: 0
+  justClicked: 0
 --- !u!114 &11415730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1005,11 +1022,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 136070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfe3d0ba67714a78bb21dc1cfbfcadc, type: 3}
+  m_Script: {fileID: 11500000, guid: fb8e20df90a4747ddacb80ec1c45e3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
   gm: {fileID: 0}
+  damageThreshold: 0
+  currentHealth: 0
+  performedExecution: 0
 --- !u!114 &11418610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1039,8 +1059,21 @@ MonoBehaviour:
   verticalRayCount: 4
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 6912
+    m_Bits: 15104
   _collider: {fileID: 0}
+--- !u!114 &11429280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5323fc68ed87e934aaeed6926c9983e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackState: 0
+  attackType: 0
 --- !u!114 &11458566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1065,11 +1098,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityMultiplier: 2
   jumpStrength: 10
   height: 0
   isGrounded: 0
   jumpVelocity: 0
+--- !u!114 &11474364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e6a832d951841b184806510006e0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageThresholdSlider: {fileID: 0}
+  currentHealthSlider: {fileID: 0}
+  amountOfDTSlider: {fileID: 0}
+--- !u!114 &11496650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af893658bebf327478b83394f7c996e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prepLightAttackTime: 0.3
+  prepHeavyAttackTime: 0.6
+  lightAttackTime: 0.2
+  heavyAttackTime: 0.2
+  size: {x: 1, y: 1}
+  position: {x: 1, y: 0.5}
+  damage: 10
+  animator: {fileID: 0}
+  attack: {fileID: 0}
+  meleeArea: {fileID: 0}
 --- !u!137 &13700022
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
