@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class MeleeAttack : MonoBehaviour, IAttackType
+class SwingAttack : MonoBehaviour, IAttackType
 {
-    public float prepLightAttackTime = 0.3f;
-    public float prepHeavyAttackTime = 0.6f;
+    public float prepLightAttackTime = 0.2f;
+    public float prepHeavyAttackTime = 0.9f;
     public float lightAttackTime = 0.2f;
     public float heavyAttackTime = 0.2f;
 
     public void LightAttack()
     {
-        Animator.SetTrigger("Light Punch");
+        Animator.SetTrigger("Light Swing");
         PrepToLightAttack();
     }
 
@@ -34,7 +34,7 @@ class MeleeAttack : MonoBehaviour, IAttackType
 
     public void HeavyAttack()
     {
-        Animator.SetTrigger("Heavy Punch");
+        Animator.SetTrigger("Heavy Swing");
         PrepToHeavyAttack();
     }
 
