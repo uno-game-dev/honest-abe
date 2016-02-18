@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 	//TESTING
 	public Text enemyHealthText;
+
     private PerkManager perkManager;
 
     void Start()
