@@ -85,8 +85,6 @@ public class CameraFollow : MonoBehaviour {
             pos.x = leftEdge + (((2 * cam.orthographicSize) * cam.aspect) / 2);
         }
 
-        Debug.Log(string.Format("{0} {1}", pos, playerTransform.position));
-
         transform.position = pos;
     }
 

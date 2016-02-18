@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     public Direction direction = Direction.Left;
     public Vector2 velocity;
     public float movementSmoothing = .115f;
+    public float yToZFactor = 2f;
 
     [HideInInspector]
     public bool isGrounded;
@@ -48,6 +49,15 @@ public class Movement : MonoBehaviour
 
         jumpVelocity += gravity * gravityMultiplier * Time.deltaTime;
         jumpVelocity = simulatedHeight <= 0 ? 0 : jumpVelocity;
+
+        ChangeZBasedOnY();
+    }
+
+    private void ChangeZBasedOnY()
+    {
+        Vector3 localPosition = transform.localPosition;
+        localPosition.z = localPosition.y * yToZFactor;
+        transform.localPosition = localPosition;
     }
 
     private void CheckGrounded()
