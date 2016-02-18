@@ -19,6 +19,7 @@ public class Health : MonoBehaviour {
 
 	public void Increase(int amount){
 		health += amount;
+        UpdateHealth();
 	}
 
 	public void Decrease(int damage, float damageRate){

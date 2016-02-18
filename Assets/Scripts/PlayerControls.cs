@@ -4,10 +4,12 @@ using System.Collections;
 public class PlayerControls : MonoBehaviour
 {
     private Attack _attack;
+    private Movement _movement;
 
     void Start()
     {
         _attack = GetComponent<Attack>();
+        _movement = GetComponent<Movement>();
     }
 
     // Update is called once per frame
@@ -18,5 +20,8 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2"))
             _attack.HeavyAttack();
+
+        if (Input.GetButtonDown("Jump"))
+            _movement.Jump();
     }
 }

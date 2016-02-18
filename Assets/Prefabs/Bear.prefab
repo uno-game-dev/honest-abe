@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464660}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigFrontLLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472430}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigSpine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +49,7 @@ GameObject:
   - 114: {fileID: 11479578}
   - 114: {fileID: 11438742}
   - 114: {fileID: 11469500}
+  - 114: {fileID: 11487088}
   m_Layer: 11
   m_Name: Bear
   m_TagString: Enemy
@@ -64,7 +65,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 466696}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigFrontRLegToe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,30 +80,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441160}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &118718
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 437400}
-  - 33: {fileID: 3341576}
-  - 23: {fileID: 2311102}
-  m_Layer: 10
-  m_Name: Melee Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &121416
 GameObject:
   m_ObjectHideFlags: 1
@@ -111,7 +95,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482360}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigPelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +110,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431274}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigFrontLLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +125,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419786}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +140,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422734}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigBackRLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +155,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402750}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigBackRLegDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +170,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439688}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +185,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigBackRLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +200,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 403022}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigBackLLegDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +216,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 413268}
   - 137: {fileID: 13745906}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +231,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411594}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigSpine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +246,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 458196}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigBackLLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +261,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487900}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigBackLLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +276,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439460}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigFrontRLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +291,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491920}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigBackRLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +306,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460558}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigFrontLLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +321,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 471384}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigNeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +338,7 @@ GameObject:
   - 4: {fileID: 426746}
   - 33: {fileID: 3322176}
   - 23: {fileID: 2386958}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +353,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 425522}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigFrontRLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +368,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484298}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigFrontRLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +383,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491482}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +398,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490600}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigBackLLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +413,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488208}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BearRigFrontLLegToe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +429,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 493128}
   - 137: {fileID: 13712480}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,10 +467,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.39, y: -0.58, z: 0}
+  m_LocalPosition: {x: 36.05, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 437400}
   - {fileID: 426746}
   - {fileID: 491482}
   m_Father: {fileID: 0}
@@ -565,10 +548,10 @@ Transform:
   m_GameObject: {fileID: 172456}
   m_LocalRotation: {x: 0.5372997, y: 0, z: 0, w: 0.8433914}
   m_LocalPosition: {x: 0, y: -0.5, z: 1}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 7.5, y: 7.5, z: 7.5}
   m_Children: []
   m_Father: {fileID: 411406}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &431274
 Transform:
   m_ObjectHideFlags: 1
@@ -581,18 +564,6 @@ Transform:
   m_Children:
   - {fileID: 460558}
   m_Father: {fileID: 419786}
-  m_RootOrder: 0
---- !u!4 &437400
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118718}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 411406}
   m_RootOrder: 0
 --- !u!4 &439460
 Transform:
@@ -795,14 +766,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189038}
-  m_LocalRotation: {x: 0, y: -0.92344487, z: 0, w: 0.38373125}
+  m_LocalRotation: {x: 0, y: 0.953717, z: 0, w: 0.3007057}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 441160}
   - {fileID: 482360}
   m_Father: {fileID: 411406}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &491920
 Transform:
   m_ObjectHideFlags: 1
@@ -828,32 +799,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 441160}
   m_RootOrder: 1
---- !u!23 &2311102
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118718}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!23 &2343884
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -920,13 +865,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172456}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &3341576
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118718}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!61 &6169350
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -986,13 +924,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85308c30f855c6e4ca70fe04d49612e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMoveSpeed: 2
-  verticalMoveSpeed: 1
   targetType: 0
   target: {fileID: 0}
   stopDistanceX: 2
   stopDistanceY: 0.1
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &11438742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,6 +980,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   gm: {fileID: 0}
+--- !u!114 &11487088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalMovementSpeed: 2
+  vericalMovementSpeed: 1
+  simulatedHeight: 0
+  gravityMultiplier: 1
+  jumpStrength: 5
+  direction: 1
+  velocity: {x: 0, y: 0}
+  movementSmoothing: 0.115
+  isGrounded: 0
+  jumpVelocity: 0
 --- !u!114 &11494644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1058,8 +1014,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   damageRate: 1
-  bloodSplatter: {fileID: 0}
-  bloodFountain: {fileID: 0}
+  bloodSplatter: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+  bloodFountain: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
 --- !u!137 &13712480
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

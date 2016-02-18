@@ -9,12 +9,11 @@ public class PlayerMotor : MonoBehaviour
 
     private Vector3 velocity;
     private float velocityXSmoothing, velocityYSmoothing;
-    private BaseCollision collision;
+    private Movement movement;
 
     void Start()
     {
-        collision = GetComponent<BaseCollision>();
-        collision.OnCollision += OnCollision;
+        movement = GetComponent<Movement>();
     }
 
     void Update()
@@ -24,36 +23,15 @@ public class PlayerMotor : MonoBehaviour
         if (!UIManager.updateActive) return;
 
         // Else run the update code
-        if (collision.enabled)
+        if (movement.enabled)
         {
-            float delta = Time.deltaTime;
-
-            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-            float targetVelX = input.x * hMoveSpeed;
-            float targetVelY = input.y * vMoveSpeed;
-
-            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelX, ref velocityXSmoothing, movementSmoothing);
-            velocity.y = Mathf.SmoothDamp(velocity.y, targetVelY, ref velocityYSmoothing, movementSmoothing);
-
-            collision.Move(velocity * delta);
+            velocity = new Vector2(Input.GetAxisRaw("Horizontal") * 100, Input.GetAxisRaw("Vertical") * 100);
+            movement.Move(velocity);
         }
         else
         {
             velocity.x = 0;
             velocity.y = 0;
-            collision.Tick();
         }
     }
-
-    private void OnCollision(RaycastHit2D hit)
-    {
-        if (hit.collider.tag == "Item")
-        {
-            hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
-        }
-    }
-
-
-
 }

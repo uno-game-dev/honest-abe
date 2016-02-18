@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour {
     private float smoothVelX, smoothVelY, leftEdgeBoundsHalfWidth, bottomEdgeBoundsHalfHeight;
 
     void Start() {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
         verticalBounds = GameObject.Find("VerticalBounds").GetComponent<BoxCollider2D>();
         cam = GetComponent<Camera>();
 
@@ -84,7 +84,9 @@ public class CameraFollow : MonoBehaviour {
         if (pos.x - (((2 * cam.orthographicSize) * cam.aspect) / 2) < leftEdge) {
             pos.x = leftEdge + (((2 * cam.orthographicSize) * cam.aspect) / 2);
         }
-        
+
+        Debug.Log(string.Format("{0} {1}", pos, playerTransform.position));
+
         transform.position = pos;
     }
 
