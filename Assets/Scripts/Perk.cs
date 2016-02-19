@@ -10,7 +10,7 @@ public class Perk : MonoBehaviour
     public PerkType type;
 
     [HideInInspector]
-    public string name;
+    public string perkName;
     [HideInInspector]
     public bool unlocked;
 
@@ -19,11 +19,11 @@ public class Perk : MonoBehaviour
         switch (type)
         {
             case PerkType.AXE_FIRE:
-                name = "Axe_Fire";
+                perkName = "Axe_Fire";
                 unlocked = GlobalSettings.axe_fire_unlocked;
                 break;
             case PerkType.HAT_DTVAMPIRISM:
-                name = "Hat_DTVampirism";
+                perkName = "Hat_DTVampirism";
                 unlocked = GlobalSettings.hat_dtVampirism_unlocked;
                 break;
         }
