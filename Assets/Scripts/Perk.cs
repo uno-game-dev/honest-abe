@@ -2,7 +2,6 @@
 
 public class Perk : MonoBehaviour
 {
-
     public enum PerkType
     {
         AXE_FIRE,
@@ -10,27 +9,32 @@ public class Perk : MonoBehaviour
     }
     public PerkType type;
 
-    private bool perkUnlocked;
+    [HideInInspector]
+    public string name;
+    [HideInInspector]
+    public bool unlocked;
 
     public void CheckStatus()
     {
         switch (type)
         {
             case PerkType.AXE_FIRE:
-                perkUnlocked = GlobalSettings.axe_fire_unlocked;
+                name = "Axe_Fire";
+                unlocked = GlobalSettings.axe_fire_unlocked;
                 break;
             case PerkType.HAT_DTVAMPIRISM:
-                perkUnlocked = GlobalSettings.hat_dtVampirism_unlocked;
+                name = "Hat_DTVampirism";
+                unlocked = GlobalSettings.hat_dtVampirism_unlocked;
                 break;
         }
 
-        if (!perkUnlocked)
+        if (!unlocked)
             gameObject.SetActive(false);
     }
 
     public void OnCollision(GameObject other)
     {
-
+        // Give player the perk
     }
 
 }

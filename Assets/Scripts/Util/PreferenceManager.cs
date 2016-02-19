@@ -14,4 +14,8 @@ public class PreferenceManager : MonoBehaviour {
         GlobalSettings.hat_dtVampirism_unlocked = PlayerPrefs.GetInt("Hat_DTVampirism") == 1;
 	}
 
+    public void UpdatePerkStatus(string perk, int status) {
+        PlayerPrefs.SetInt(perk, status);
+    }
+
 }
