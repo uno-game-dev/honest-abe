@@ -9,8 +9,8 @@ public class Movement : MonoBehaviour
     public float horizontalMovementSpeed = 2;
     public float vericalMovementSpeed = 1;
     public float simulatedHeight = 0;
-    public float gravityMultiplier = 1;
-    public float jumpStrength = 5;
+    public float gravityMultiplier = 8;
+    public float jumpStrength = 20;
     public Direction direction = Direction.Left;
     public Vector2 velocity;
     public float movementSmoothing = .115f;

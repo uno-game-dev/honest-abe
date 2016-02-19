@@ -1,27 +1,60 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PlayerControls : MonoBehaviour
 {
     private Attack _attack;
     private Movement _movement;
 
+    private float mouseHeldTime;
+    private float timeToConsiderHeld;
+    [HideInInspector]
+    public bool heldComplete, justClicked;
+
     void Start()
     {
         _attack = GetComponent<Attack>();
+        timeToConsiderHeld = .7f;
+        heldComplete = false;
         _movement = GetComponent<Movement>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
+        {
+            justClicked = true;
             _attack.LightAttack();
+        }
 
         if (Input.GetButtonDown("Fire2"))
             _attack.HeavyAttack();
 
+        if (Input.GetButton("Fire1") && !heldComplete && justClicked)
+        {
+            mouseHeldTime += Time.deltaTime;
+
+            if (mouseHeldTime >= timeToConsiderHeld)
+            {
+                mouseHeldTime = 0;
+                heldComplete = true;
+            }
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            ResetHold();
+        }
+
         if (Input.GetButtonDown("Jump"))
             _movement.Jump();
     }
+
+    public void ResetHold()
+    {
+        justClicked = false;
+        heldComplete = false;
+        mouseHeldTime = 0;
+
+    }
+
 }

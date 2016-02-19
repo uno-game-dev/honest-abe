@@ -27,9 +27,8 @@ GameObject:
   - 20: {fileID: 2074602}
   - 92: {fileID: 9202818}
   - 124: {fileID: 12404938}
-  - 81: {fileID: 8126998}
+  - 81: {fileID: 8111266}
   - 114: {fileID: 11450828}
-  - 114: {fileID: 11420252}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -84,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 438750}
@@ -153,7 +152,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!81 &8126998
+--- !u!81 &8111266
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -167,17 +166,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146904}
   m_Enabled: 1
---- !u!114 &11420252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 146904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d235680c036fd134d8e0e77d62329248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11450828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,6 +180,8 @@ MonoBehaviour:
   smoothTime: 0.15
   leftEdge: 0
   bottomEdge: 0
+  velocity: {x: 0, y: 0, z: 0}
+  previousPos: {x: 0, y: 0, z: 0}
 --- !u!124 &12404938
 Behaviour:
   m_ObjectHideFlags: 1
@@ -205,7 +195,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: -50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146904}
