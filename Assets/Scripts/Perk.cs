@@ -11,11 +11,16 @@ public class Perk : MonoBehaviour
 
     [HideInInspector]
     public string perkName;
+
+    // Unlocked is whether the perk is available for the player to pick up when the game starts
+    // setToBeUnlocked is whether the perk was earned during the game but the player has not finished the game yet
     [HideInInspector]
-    public bool unlocked;
+    public bool unlocked, setToBeUnlocked;
 
     public void CheckStatus()
     {
+        setToBeUnlocked = false;
+
         switch (type)
         {
             case PerkType.AXE_FIRE:
