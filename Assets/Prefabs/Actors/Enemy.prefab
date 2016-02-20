@@ -1249,8 +1249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   damageRate: 1
-  bloodSplatter: {fileID: 0}
-  bloodFountain: {fileID: 0}
+  bloodSplatter: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+  bloodFountain: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
 --- !u!114 &11487932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1610,6 +1610,14 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bloodSplatter
+      value: 
+      objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodFountain
+      value: 
+      objectReference: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}

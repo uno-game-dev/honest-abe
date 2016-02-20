@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
 
 	public void OnCollision(GameObject other)
 	{
-		Debug.Log("Weapon Picked Up");
-		Destroy(gameObject);
+        other.GetComponent<Attack>().SetWeapon(this);
+        GetComponent<BoxCollider2D>().enabled = false;
 	}
 }
