@@ -70,7 +70,7 @@ public class Attack : MonoBehaviour
         if (weapon.attackType != Weapon.AttackType.Melee)
         {
             weapon.transform.parent = _rightHand.transform;
-            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localPosition = weapon.heldOffset;
             weapon.transform.localEulerAngles = weapon.heldOrientation;
         }
     }

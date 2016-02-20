@@ -6,18 +6,18 @@ public class JumpPositionOffset : MonoBehaviour
     public float offset;
     public bool isShadow;
     private float previousOffset;
-    private Jump jump;
+    private Movement jump;
 
     // Use this for initialization
     void Awake()
     {
-        jump = GetComponentInParent<Jump>();
+        jump = GetComponentInParent<Movement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        offset = isShadow && !jump.isGrounded ? 0 : jump.height;
+        offset = isShadow && !jump.isGrounded ? 0 : jump.simulatedHeight;
         if (previousOffset != offset)
         {
             Vector3 localPosition = transform.localPosition;

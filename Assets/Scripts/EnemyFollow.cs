@@ -15,12 +15,6 @@ using System;
 [RequireComponent(typeof(BaseCollision))]
 public class EnemyFollow : MonoBehaviour
 {
-    /// <summary>Maximum Horizontal Movement Speed for GameObject</summary>
-    public float horizontalMoveSpeed = 2;
-
-    /// <summary>Maximum Vertical Movement Speed for GameObject</summary>
-    public float verticalMoveSpeed = 1;
-
     /// <summary>Enumeration of the different Target Types</summary>
     public enum TargetType { Null, Player, Mouse, TargetGameObject }
 
@@ -38,13 +32,11 @@ public class EnemyFollow : MonoBehaviour
     private GameObject _player;
 
     /// <summary>The Movement Engine</summary>
-    private BaseCollision _collision;
-
-    public Vector3 velocity;
+    private Movement _movement;
 
     private void Start()
     {
-        _collision = GetComponent<BaseCollision>();
+        _movement = GetComponent<Movement>();
     }
 
     /// <summary>Update is called once per frame</summary>
@@ -55,15 +47,13 @@ public class EnemyFollow : MonoBehaviour
         else if (targetType == TargetType.Player)
             FollowPlayer();
         else if (targetType == TargetType.TargetGameObject)
-            FollowTargetGameObject();
-        else
-            _collision.Tick();
+            FollowTargetGameObject();            
     }
 
     /// <summary>Moves GameObject towards Mouse</summary>
     private void FollowMouse()
     {
-        MoveTowards(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        MoveOrStopTowards(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     /// <summary>Moves GameObject towards Player</summary>
@@ -73,32 +63,27 @@ public class EnemyFollow : MonoBehaviour
             _player = GameObject.Find("Player");
 
         if (_player)
-            MoveTowards(_player.transform.position);
+            MoveOrStopTowards(_player.transform.position);
     }
 
     /// <summary>Moves GameObject towards targetGameObject</summary>
     private void FollowTargetGameObject()
     {
         if (target)
-            MoveTowards(target.transform.position);
+            MoveOrStopTowards(target.transform.position);
     }
 
     /// <summary>Moves GameObject towards a position</summary>
-    private void MoveTowards(Vector2 position)
+    private void MoveOrStopTowards(Vector2 position)
     {
-        Vector3 targetVelocity = position - new Vector2(transform.position.x, transform.position.y);
+        Vector3 deltaPosition = position - new Vector2(transform.position.x, transform.position.y);
 
-        if (Mathf.Abs(targetVelocity.x) > stopDistanceX)
-            targetVelocity.x = Mathf.Sign(targetVelocity.x) * horizontalMoveSpeed;
-        else
-            targetVelocity.x = 0;
+        if (Mathf.Abs(deltaPosition.x) <= stopDistanceX)
+            deltaPosition.x = 0;
 
-        if (Mathf.Abs(targetVelocity.y) > stopDistanceY)
-            targetVelocity.y = Mathf.Sign(targetVelocity.y) * verticalMoveSpeed;
-        else
-            targetVelocity.y = 0;
+        if (Mathf.Abs(deltaPosition.y) <= stopDistanceY)
+            deltaPosition.y = 0;
 
-        velocity = targetVelocity;
-        _collision.Move(targetVelocity * Time.deltaTime);
+        _movement.Move(deltaPosition);
     }
 }
