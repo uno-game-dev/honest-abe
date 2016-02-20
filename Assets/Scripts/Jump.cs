@@ -13,6 +13,11 @@ public class Jump : MonoBehaviour
     public float jumpVelocity;
 
     private float _previousHeight;
+    private BaseCollision collision;
+
+    void Start() {
+        collision = GetComponent<BaseCollision>();
+    }
     
     private void Update()
     {
@@ -20,6 +25,7 @@ public class Jump : MonoBehaviour
         {
             jumpVelocity = jumpStrength;
             isGrounded = false;
+            collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Environment"));
         }
 
         height += jumpVelocity * Time.deltaTime;
@@ -36,8 +42,10 @@ public class Jump : MonoBehaviour
 
     private void CheckGrounded()
     {
-        if (_previousHeight == height)
+        if (_previousHeight == height) {
             isGrounded = true;
+            collision.collisionLayer = collision.collisionLayer | (1 << LayerMask.NameToLayer("Environment"));
+        }
         else
             isGrounded = false;
     }
