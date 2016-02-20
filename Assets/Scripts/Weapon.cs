@@ -35,14 +35,17 @@ public class Weapon : MonoBehaviour
         _collision.OnCollision -= OnCollision;
     }
 
+    private void Update()
+    {
+        _collision.Tick();
+    }
+
     private void OnCollision(RaycastHit2D hit)
     {
-        Debug.Log(hit.collider.gameObject.name);
         if (!justCollided)
         {
             controls.ResetHold();
             justCollided = true;
-
         }
 
         if (controls.heldComplete && justCollided && controls.justClicked)
