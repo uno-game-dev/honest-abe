@@ -14,7 +14,9 @@ public class Weapon : MonoBehaviour
 
 	public void OnCollision(GameObject other)
 	{
-        other.GetComponent<Attack>().SetWeapon(this);
-        GetComponent<BoxCollider2D>().enabled = false;
+        if (other.tag == "Player") {
+            other.GetComponent<Attack>().SetWeapon(this);
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
 	}
 }
