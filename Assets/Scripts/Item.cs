@@ -2,28 +2,47 @@
 
 public class Item : MonoBehaviour
 {
+    public enum Type { HEALTH }
 
-    public enum ItemType
+    public int increaseAmount;
+    public Type type;
+
+    private BaseCollision _collision;
+
+    private void Awake()
     {
-        HEALTH,
-        AXE
+        increaseAmount = 20;
+        _collision = GetComponent<BaseCollision>();
     }
 
-    public ItemType type;
+    private void OnEnable()
+    {
+        _collision.OnCollision += OnCollision;
+    }
 
-    public void OnCollision(GameObject other)
+    private void OnDisable()
+    {
+        _collision.OnCollision -= OnCollision;
+    }
+
+    private void Update()
+    {
+        _collision.Tick();
+    }
+
+    private void OnCollision(RaycastHit2D hit)
+    {
+        if (hit.collider.tag == "Player")
     {
         switch (type)
         {
-            case ItemType.HEALTH:
-                other.GetComponent<PlayerHealth>().Increase(GlobalSettings.healthIncreaseAmount); // This is where you call the function that updates the player's health
-                Destroy(gameObject);
-                break;
-            case ItemType.AXE:
+                case Type.HEALTH:
+                    hit.collider.GetComponent<Health>().Increase(increaseAmount); // This is where you call the function that updates the player's health
                 Destroy(gameObject);
                 break;
             default:
                 break;
         }
     }
+}
 }
