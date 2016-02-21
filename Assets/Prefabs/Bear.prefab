@@ -986,13 +986,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85308c30f855c6e4ca70fe04d49612e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMoveSpeed: 2
-  verticalMoveSpeed: 1
   targetType: 0
   target: {fileID: 0}
   stopDistanceX: 2
   stopDistanceY: 0.1
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &11438742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1058,8 +1055,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   damageRate: 1
-  bloodSplatter: {fileID: 0}
-  bloodFountain: {fileID: 0}
+  bloodSplatter: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+  bloodFountain: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
 --- !u!137 &13712480
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1161,7 +1158,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: bloodFountain
+      value: 
+      objectReference: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodSplatter
+      value: 
+      objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112324}

@@ -7,13 +7,13 @@ public class GenericAnimation : MonoBehaviour
     private Animator _animator;
     private BaseCollision _baseCollision;
     private Attack _attack;
-    private Jump _jump;
+    private Movement _jump;
 
     void Start()
     {
         _animator = GetComponent<Animator>();
         _baseCollision = GetComponent<BaseCollision>();
-        _jump = GetComponent<Jump>();
+        _jump = GetComponent<Movement>();
     }
     
     void Update()

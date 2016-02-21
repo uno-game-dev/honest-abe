@@ -583,6 +583,7 @@ GameObject:
   - 114: {fileID: 11411282}
   - 114: {fileID: 11487932}
   - 114: {fileID: 11405632}
+  - 114: {fileID: 11462540}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -898,7 +899,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163038}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0.953717, z: 0, w: 0.3007057}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
@@ -1160,7 +1161,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -1236,6 +1237,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7dfacf1bbf624a8380211d7dfc6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11462540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalMovementSpeed: 2
+  vericalMovementSpeed: 1
+  simulatedHeight: 0
+  gravityMultiplier: 8
+  jumpStrength: 20
+  direction: 1
+  velocity: {x: 0, y: 0}
+  movementSmoothing: 0.115
+  yToZFactor: 2
+  isGrounded: 0
+  jumpVelocity: 0
 --- !u!114 &11462748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1276,13 +1299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85308c30f855c6e4ca70fe04d49612e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMoveSpeed: 2
-  verticalMoveSpeed: 1
   targetType: 0
   target: {fileID: 0}
   stopDistanceX: 2
   stopDistanceY: 0.1
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!137 &13702110
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1608,16 +1628,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: bloodSplatter
-      value: 
-      objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+      propertyPath: gravityMultiplier
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: jumpStrength
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bloodFountain
       value: 
       objectReference: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodSplatter
+      value: 
+      objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}

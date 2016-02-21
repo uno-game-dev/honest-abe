@@ -186,7 +186,6 @@ GameObject:
   - 114: {fileID: 11413764}
   - 114: {fileID: 11420284}
   - 114: {fileID: 11440234}
-  - 114: {fileID: 11404884}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1051,23 +1050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7dfacf1bbf624a8380211d7dfc6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11404884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackType: 0
-  attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1, y: 0.5}
-  heldOrientation: {x: 0, y: 0, z: 0}
-  lightDamage: 10
-  heavyDamage: 15
 --- !u!114 &11407208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1153,7 +1135,7 @@ MonoBehaviour:
   verticalRayCount: 4
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 31488
+    m_Bits: 15104
   _collider: {fileID: 0}
 --- !u!114 &11440234
 MonoBehaviour:
@@ -1194,8 +1176,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpStrength: 10
-  height: 0
+  horizontalMovementSpeed: 8
+  vericalMovementSpeed: 6
+  simulatedHeight: 0
+  gravityMultiplier: 8
+  jumpStrength: 20
+  direction: 2
+  velocity: {x: 0, y: 0}
+  movementSmoothing: 0.115
+  yToZFactor: 2
   isGrounded: 0
   jumpVelocity: 0
 --- !u!137 &13700022
@@ -1304,6 +1293,26 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: horizontalMovementSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: vericalMovementSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: gravityMultiplier
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: jumpStrength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: direction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bloodSplatter
       value: 
