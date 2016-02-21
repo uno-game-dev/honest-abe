@@ -186,6 +186,7 @@ GameObject:
   - 114: {fileID: 11413764}
   - 114: {fileID: 11420284}
   - 114: {fileID: 11440234}
+  - 114: {fileID: 11463734}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1135,7 +1136,7 @@ MonoBehaviour:
   verticalRayCount: 4
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 15104
+    m_Bits: 31488
   _collider: {fileID: 0}
 --- !u!114 &11440234
 MonoBehaviour:
@@ -1187,6 +1188,24 @@ MonoBehaviour:
   yToZFactor: 2
   isGrounded: 0
   jumpVelocity: 0
+--- !u!114 &11463734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 0
+  attackSize: {x: 1, y: 1}
+  attackOffset: {x: 1, y: 0.5}
+  heldOffset: {x: 0, y: 0, z: 0}
+  heldOrientation: {x: 0, y: 0, z: 0}
+  lightDamage: 10
+  heavyDamage: 15
 --- !u!137 &13700022
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
