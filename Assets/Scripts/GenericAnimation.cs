@@ -6,7 +6,6 @@ public class GenericAnimation : MonoBehaviour
 {
     private Animator _animator;
     private BaseCollision _baseCollision;
-    private Attack _attack;
     private Movement _jump;
 
     void Start()

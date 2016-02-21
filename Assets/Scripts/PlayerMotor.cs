@@ -8,7 +8,6 @@ public class PlayerMotor : MonoBehaviour
     public float movementSmoothing = .115f;
 
     private Vector3 velocity;
-    private float velocityXSmoothing, velocityYSmoothing;
     private Movement movement;
 
     void Start()

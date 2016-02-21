@@ -584,6 +584,7 @@ GameObject:
   - 114: {fileID: 11487932}
   - 114: {fileID: 11405632}
   - 114: {fileID: 11462540}
+  - 114: {fileID: 11441050}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -1226,6 +1227,17 @@ MonoBehaviour:
   movementProximityDistance: 20
   attackProximityDistanceX: 3
   attackProximityDistanceY: 1
+--- !u!114 &11441050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422b50cfdba7c064d86b05dc0c7abe8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11451986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1646,6 +1658,10 @@ Prefab:
       propertyPath: bloodSplatter
       value: 
       objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: collisionLayer.m_Bits
+      value: 1536
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}

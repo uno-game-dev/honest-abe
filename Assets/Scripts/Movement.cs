@@ -24,20 +24,21 @@ public class Movement : MonoBehaviour
 
     private float gravity = -9.81f;
     private float _previousHeight;
-    private Direction _previousDirection;
     private BaseCollision _collision;
     private float velocityXSmoothing, velocityYSmoothing;
-
+    private Attack _attack;
 
     private void Start()
     {
         _collision = GetComponent<BaseCollision>();
+        _attack = GetComponent<Attack>();
         SetDirection(direction, true);
     }
 
     private void Update()
     {
         _collision.Tick();
+        ChangeZBasedOnY();
 
         simulatedHeight += jumpVelocity * Time.deltaTime;
         simulatedHeight = Mathf.Clamp(simulatedHeight, 0, simulatedHeight);
@@ -49,8 +50,6 @@ public class Movement : MonoBehaviour
 
         jumpVelocity += gravity * gravityMultiplier * Time.deltaTime;
         jumpVelocity = simulatedHeight <= 0 ? 0 : jumpVelocity;
-
-        ChangeZBasedOnY();
     }
 
     private void ChangeZBasedOnY()
@@ -70,6 +69,9 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
+        if (_attack.attackState == Attack.State.Grab)
+            return;
+
         if (!isGrounded)
             return;
 
@@ -93,7 +95,6 @@ public class Movement : MonoBehaviour
         else
             velocity.y = Mathf.Sign(deltaPosition.y) * vericalMovementSpeed;
 
-
         this.velocity = velocity;
         _collision.Move(velocity * Time.deltaTime);
     }
@@ -106,7 +107,7 @@ public class Movement : MonoBehaviour
             SetDirection(Direction.Left);
     }
 
-    private void SetDirection(Direction newDirection, bool forceUpdate = false)
+    public void SetDirection(Direction newDirection, bool forceUpdate = false)
     {
         if (direction == newDirection && !forceUpdate)
             return;
@@ -118,5 +119,13 @@ public class Movement : MonoBehaviour
         else
             newScale.x = Math.Abs(transform.localScale.x);
         transform.localScale = newScale;
+    }
+
+    public void Flip()
+    {
+        if (direction == Direction.Left)
+            SetDirection(Direction.Right, true);
+        else if (direction == Direction.Right)
+            SetDirection(Direction.Left, true);
     }
 }

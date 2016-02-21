@@ -45,6 +45,12 @@ public class PlayerControls : MonoBehaviour
             ResetHold();
         }
 
+        if (Input.GetButtonDown("Fire3"))
+            _attack.Grab();
+
+        if (Input.GetButtonUp("Fire3"))
+            _attack.Release();
+
         if (Input.GetButtonDown("Jump"))
             _movement.Jump();
     }
