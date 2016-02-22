@@ -37,9 +37,6 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        _collision.Tick();
-        ChangeZBasedOnY();
-
         simulatedHeight += jumpVelocity * Time.deltaTime;
         simulatedHeight = Mathf.Clamp(simulatedHeight, 0, simulatedHeight);
 
@@ -50,6 +47,8 @@ public class Movement : MonoBehaviour
 
         jumpVelocity += gravity * gravityMultiplier * Time.deltaTime;
         jumpVelocity = simulatedHeight <= 0 ? 0 : jumpVelocity;
+
+        ChangeZBasedOnY();
     }
 
     private void ChangeZBasedOnY()
@@ -61,8 +60,10 @@ public class Movement : MonoBehaviour
 
     private void CheckGrounded()
     {
-        if (_previousHeight == simulatedHeight)
+        if (_previousHeight == simulatedHeight) {
             isGrounded = true;
+            _collision.collisionLayer = _collision.collisionLayer | (1 << LayerMask.NameToLayer("Environment"));
+        }
         else
             isGrounded = false;
     }
@@ -77,6 +78,7 @@ public class Movement : MonoBehaviour
 
         jumpVelocity = jumpStrength;
         isGrounded = false;
+        _collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Environment"));
     }
 
     public void Move(Vector2 deltaPosition)

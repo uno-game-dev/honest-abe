@@ -584,7 +584,7 @@ GameObject:
   - 114: {fileID: 11487932}
   - 114: {fileID: 11405632}
   - 114: {fileID: 11462540}
-  - 114: {fileID: 11441050}
+  - 114: {fileID: 11415920}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -1227,7 +1227,7 @@ MonoBehaviour:
   movementProximityDistance: 20
   attackProximityDistanceX: 3
   attackProximityDistanceY: 1
---- !u!114 &11441050
+--- !u!114 &11415920
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1260,8 +1260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMovementSpeed: 2
-  vericalMovementSpeed: 1
+  horizontalMovementSpeed: 6
+  vericalMovementSpeed: 4
   simulatedHeight: 0
   gravityMultiplier: 8
   jumpStrength: 20
@@ -1659,8 +1659,12 @@ Prefab:
       value: 
       objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
     - target: {fileID: 0}
-      propertyPath: collisionLayer.m_Bits
-      value: 1536
+      propertyPath: horizontalMovementSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: vericalMovementSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: health

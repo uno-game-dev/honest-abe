@@ -72,7 +72,7 @@ public class Attack : MonoBehaviour
         _grabBox.layer = gameObject.layer;
         DestroyImmediate(_grabBox.GetComponent<MeshCollider>());
         _grabBox.AddComponent<BoxCollider2D>().isTrigger = true;
-        _grabBox.AddComponent<BaseCollision>();
+        _grabBox.AddComponent<BaseCollision>().collisionLayer = LayerMask.GetMask("Enemy");
         _grabBox.SetActive(false);
     }
 
@@ -142,6 +142,10 @@ public class Attack : MonoBehaviour
 
     public void Grab()
     {
+        if (attackState != State.Idle)
+            return;
+
+        _attackType.input.Clear();
         _grabBox.SetActive(true);
         attackState = State.Grab;
     }

@@ -42,6 +42,7 @@ public class Grab : MonoBehaviour
 
     private void Update()
     {
+        _collision.Tick();
         if (_grabbedBy)
             transform.localPosition = new Vector3(1.5f, 0, 0);
     }
@@ -62,7 +63,8 @@ public class Grab : MonoBehaviour
         _animator.SetBool("Grabbed", false);
         transform.parent = null;
 
-        _movement.SetDirection(_grabbedBy.GetComponent<Movement>().direction);
+        if (_grabbedBy)
+            _movement.SetDirection(_grabbedBy.GetComponent<Movement>().direction);
         _movement.Flip();
         _grabbedBy = null;
     }
