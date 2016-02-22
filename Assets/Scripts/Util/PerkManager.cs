@@ -9,6 +9,11 @@ public class PerkManager : MonoBehaviour {
     public Perk activeHatPerk = null;
     public Perk activeTrinketPerk = null;
 
+    public delegate void PerkEffectHandler();
+    public event PerkEffectHandler AxePerkEffect = delegate { };
+    public event PerkEffectHandler HatPerkEffect = delegate { };
+    public event PerkEffectHandler TrinketPerkEffect = delegate { };
+
     void Start () {
         GameObject[] perksInLevel = GameObject.FindGameObjectsWithTag("Perk");
         for (int i = 0; i < perksInLevel.Length; i++)
@@ -17,6 +22,5 @@ public class PerkManager : MonoBehaviour {
             p.CheckStatus();
             perkList.Add(p);
         }
-	}
-	
+	}	
 }
