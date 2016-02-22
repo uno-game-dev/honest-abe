@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-	[HideInInspector]
 	public int health;
 	private float nextHit;
 
@@ -18,6 +17,7 @@ public class Health : MonoBehaviour {
 
 	public virtual void Increase(int amount){
 		health += amount;
+        UpdateHealth();
 	}
 
 	public virtual void Decrease(int damage, float damageRate){

@@ -4,17 +4,39 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class MeleeAttack : MonoBehaviour, IAttackType
+public class MeleeAttack : BaseAttack
 {
     public float prepLightAttackTime = 0.3f;
     public float prepHeavyAttackTime = 0.6f;
     public float lightAttackTime = 0.2f;
     public float heavyAttackTime = 0.2f;
 
-    public void LightAttack()
+    public override void AddAttack(AttackStrength strength)
     {
-        Animator.SetTrigger("Light Punch");
-        PrepToLightAttack();
+        if (input.Count >= maxQueueSize)
+            return;
+
+        input.Enqueue(strength);
+        if (Attack.attackState == Attack.State.Idle)
+            ProcessNextAttack();
+    }
+
+    private void ProcessNextAttack()
+    {
+        if (input.Count <= 0)
+            return;
+
+        AttackStrength strength = input.Dequeue();
+        if (strength == AttackStrength.Light)
+        {
+            Animator.SetTrigger("Light Punch");
+            PrepToLightAttack();
+        }
+        else
+        {
+            Animator.SetTrigger("Heavy Punch");
+            PrepToHeavyAttack();
+        }
     }
 
     private void PrepToLightAttack()
@@ -32,12 +54,6 @@ class MeleeAttack : MonoBehaviour, IAttackType
         Invoke("Disable", lightAttackTime);
     }
 
-    public void HeavyAttack()
-    {
-        Animator.SetTrigger("Heavy Punch");
-        PrepToHeavyAttack();
-    }
-
     private void PrepToHeavyAttack()
     {
         Attack.attackState = Attack.State.Prep;
@@ -53,12 +69,14 @@ class MeleeAttack : MonoBehaviour, IAttackType
 
     private void Disable()
     {
-        Attack.attackState = Attack.State.Idle;
-        AttackArea.SetActive(false);
-    }
+        if (AttackArea.GetComponent<AttackArea>().hit == null)
+            input.Clear();
 
-    public Weapon Weapon { get; set; }
-    public Animator Animator { get; set; }
-    public Attack Attack { get; set; }
-    public GameObject AttackArea { get; set; }
+        AttackArea.SetActive(false);
+
+        if (input.Count > 0)
+            ProcessNextAttack();
+        else
+            Attack.attackState = Attack.State.Idle;
+    }
 }

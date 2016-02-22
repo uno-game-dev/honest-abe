@@ -3,6 +3,7 @@
 public class PlayerControls : MonoBehaviour
 {
     private Attack _attack;
+    private Movement _movement;
 
     private float mouseHeldTime;
     private float timeToConsiderHeld;
@@ -14,6 +15,7 @@ public class PlayerControls : MonoBehaviour
         _attack = GetComponent<Attack>();
         timeToConsiderHeld = .7f;
         heldComplete = false;
+        _movement = GetComponent<Movement>();
     }
 
     void Update()
@@ -42,6 +44,15 @@ public class PlayerControls : MonoBehaviour
         {
             ResetHold();
         }
+
+        if (Input.GetButtonDown("Fire3"))
+            _attack.Grab();
+
+        if (Input.GetButtonUp("Fire3"))
+            _attack.Release();
+
+        if (Input.GetButtonDown("Jump"))
+            _movement.Jump();
     }
 
     public void ResetHold()
