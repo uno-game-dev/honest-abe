@@ -14,44 +14,4 @@ public class Weapon : MonoBehaviour
     public float lightDamage = 10;
     public float heavyDamage = 15;
 
-    private BaseCollision _collision;
-    private PlayerControls controls;
-    public bool justCollided;
-
-    private void Awake()
-    {
-        _collision = GetComponent<BaseCollision>();
-        controls = GameObject.Find("Player").GetComponent<PlayerControls>();
-    }
-
-    private void OnEnable()
-    {
-        if (tag == "Weapon")
-            _collision.OnCollision += OnCollision;
-    }
-
-    private void OnDisable()
-    {
-        _collision.OnCollision -= OnCollision;
-    }
-
-    private void Update()
-    {
-        _collision.Tick();
-    }
-
-    private void OnCollision(RaycastHit2D hit)
-    {
-        if (!justCollided)
-        {
-            controls.ResetHold();
-            justCollided = true;
-        }
-
-        if (controls.heldComplete && justCollided && controls.justClicked)
-        {
-            hit.collider.gameObject.GetComponent<Attack>().SetWeapon(this);
-            OnDisable();
-        }
-    }
 }

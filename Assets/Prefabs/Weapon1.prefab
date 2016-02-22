@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 452048}
   - 61: {fileID: 6154940}
   - 114: {fileID: 11481524}
-  - 114: {fileID: 11461198}
   m_Layer: 13
   m_Name: Weapon1
   m_TagString: Weapon
@@ -195,26 +194,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.21729803, y: 0.72700024}
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
---- !u!114 &11461198
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 126218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e82b4b0da06a14ebae9e830f632cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalRayCount: 4
-  verticalRayCount: 4
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  _collider: {fileID: 0}
+  m_Size: {x: 0.9108467, y: 1.5117569}
 --- !u!114 &11481524
 MonoBehaviour:
   m_ObjectHideFlags: 1

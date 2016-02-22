@@ -54,7 +54,6 @@ public class PlayerControls : MonoBehaviour
         justClicked = false;
         heldComplete = false;
         mouseHeldTime = 0;
-
     }
 
 }
