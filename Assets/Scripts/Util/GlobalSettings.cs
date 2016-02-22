@@ -11,4 +11,6 @@ public class GlobalSettings : MonoBehaviour
     public static float playerMoveSpeedH = 8;
     public static float playerMoveSpeedV = 6;
     public static float playerMovementSmoothing = .115f;
+	
+	public static bool executionPerformed = false;
 }
