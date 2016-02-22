@@ -187,6 +187,8 @@ GameObject:
   - 114: {fileID: 11420284}
   - 114: {fileID: 11440234}
   - 114: {fileID: 11463734}
+  - 114: {fileID: 11492994}
+  - 114: {fileID: 11497008}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1063,7 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
-  damageRate: 1
+  damageRate: 0.2
   bloodSplatter: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
   bloodFountain: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
 --- !u!114 &11413764
@@ -1104,9 +1106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb105ec0d4069d49bedf7a0f6a56ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hMoveSpeed: 8
-  vMoveSpeed: 6
-  movementSmoothing: 0.115
 --- !u!114 &11420284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1206,6 +1205,31 @@ MonoBehaviour:
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 10
   heavyDamage: 15
+--- !u!114 &11492994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422b50cfdba7c064d86b05dc0c7abe8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11497008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcebd7f864cdd8047bcba703c4a9a092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfChainAttacks: 0
+  chainAttackTimer: 0
+  chainAttackResetsIn: 1
 --- !u!137 &13700022
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1340,6 +1364,10 @@ Prefab:
       propertyPath: bloodFountain
       value: 
       objectReference: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
+    - target: {fileID: 0}
+      propertyPath: damageRate
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 136070}

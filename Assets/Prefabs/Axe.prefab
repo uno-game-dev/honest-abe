@@ -11,7 +11,7 @@ GameObject:
   - 61: {fileID: 6154940}
   - 114: {fileID: 11481524}
   m_Layer: 13
-  m_Name: Weapon1
+  m_Name: Axe
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.85, y: -3.13, z: 0}
+  m_LocalPosition: {x: -11.29, y: -5.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 403856}
@@ -212,10 +212,9 @@ MonoBehaviour:
   attackSize: {x: 1, y: 1}
   attackOffset: {x: 1, y: 0.5}
   heldOffset: {x: 0, y: 0, z: 0}
-  heldOrientation: {x: 0, y: 0, z: 0}
+  heldOrientation: {x: 327, y: 156, z: 218}
   lightDamage: 10
   heavyDamage: 15
-  justCollided: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

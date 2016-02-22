@@ -229,7 +229,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1001 &899359752
 Prefab:
   m_ObjectHideFlags: 0
@@ -268,6 +268,10 @@ Prefab:
     - target: {fileID: 454780, guid: fcaa54cf6eefeff43ac79ffbe62edee0, type: 2}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 483236, guid: fcaa54cf6eefeff43ac79ffbe62edee0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcaa54cf6eefeff43ac79ffbe62edee0, type: 2}
@@ -356,6 +360,53 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bb39e4b7c7d6c142a7d9f82f77c67f3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1498959178 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136070, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+  m_PrefabInternal: {fileID: 1954916909}
+--- !u!114 &1498959179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1498959178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422b50cfdba7c064d86b05dc0c7abe8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1498959191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1498959178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 0
+  attackSize: {x: 1, y: 1}
+  attackOffset: {x: 1, y: 0.5}
+  heldOffset: {x: 0, y: 0, z: 0}
+  heldOrientation: {x: 0, y: 0, z: 0}
+  lightDamage: 10
+  heavyDamage: 15
+--- !u!114 &1498959196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1498959178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcebd7f864cdd8047bcba703c4a9a092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfChainAttacks: 0
+  chainAttackTimer: 0
+  chainAttackResetsIn: 1
 --- !u!1001 &1527065157
 Prefab:
   m_ObjectHideFlags: 0
@@ -714,7 +765,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22464042, guid: 87e974aa6c44041ad86e0cee34e63776, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 22464042, guid: 87e974aa6c44041ad86e0cee34e63776, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -810,6 +861,26 @@ Prefab:
       propertyPath: amountOfDTSlider
       value: 
       objectReference: {fileID: 1780418089}
+    - target: {fileID: 11458750, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: horizontalMovementSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11458750, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: vericalMovementSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11458750, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: gravityMultiplier
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11458750, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: jumpStrength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11458750, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: direction
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
   m_IsPrefabParent: 0

@@ -5,7 +5,7 @@ using System;
 public class Damage : MonoBehaviour
 {
     public float damageAmount;
-    public float damageRate = 1f;
+    public float damageRate = 0.2f;
     public GameObject bloodSplatter;
     public GameObject bloodFountain;
 

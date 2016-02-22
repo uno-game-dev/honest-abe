@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
@@ -54,8 +55,8 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void Restart(){
-		Application.LoadLevel (Application.loadedLevel);
-		updateActive = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        updateActive = false;
 	}
 
 	public void Quit(){
