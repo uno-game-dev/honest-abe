@@ -11,7 +11,7 @@ public class TerrainSpawner : MonoBehaviour {
 	public int spawnYPos = 0;
 	public int spawnZPos = 10;
 	public int propDensity = 3;
-	public int enemyDensity = 3;
+	public int difficulty = 1;
 
 	private GameObject cam;
 	private System.Random rnd;
@@ -56,9 +56,22 @@ public class TerrainSpawner : MonoBehaviour {
 	}
 
 	private void SpawnEnemy() {
+
+		int enemyDensity = 0;
 		
-		for (int i = 0; i < enemyDensity; i++)
-		{
+		switch (difficulty) {
+			case 1:
+				enemyDensity = rnd.Next(5, 8);
+				break;
+			case 2:
+				enemyDensity = rnd.Next(8, 12);
+				break;
+			case 3:
+				enemyDensity = rnd.Next(12, 16);
+				break;
+		}
+		
+		for (int i = 0; i < enemyDensity; i++) {
 			int r = rnd.Next(enemies.Count);
 			Instantiate(enemies[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
 		}
