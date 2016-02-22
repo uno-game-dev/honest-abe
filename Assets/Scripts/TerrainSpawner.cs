@@ -68,7 +68,7 @@ public class TerrainSpawner : MonoBehaviour {
 
 		RectTransform area = (RectTransform)terrain.transform;
 		double width = area.rect.width;
-		double height = area.rect.height * 0.55;
+		double height = area.rect.height * 0.5;
 
 		float x = 0;
 		float y = 0;
@@ -78,7 +78,7 @@ public class TerrainSpawner : MonoBehaviour {
 			occupied = false;
 
 			x = (float)((width * rnd.NextDouble() * 2) - width + lastPosition);
-			y = (float)((height * rnd.NextDouble()) - (height / 2) - (height * 0.4));
+			y = (float)(height * rnd.NextDouble() - height);
 
 			foreach (Vector3 pos in occupiedPositions) {
 				if ((Math.Abs((double)(x - pos.x)) < 1.0) && (Math.Abs((double)(y - pos.y)) < 1.0)) {
