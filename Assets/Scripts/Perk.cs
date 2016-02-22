@@ -57,17 +57,43 @@ public class Perk : MonoBehaviour
 
     public void OnCollision(GameObject other)
     {
+
+        PerkManager pm = GameObject.Find("GameManager").GetComponent<PerkManager>();
         switch (category)
         {
             case PerkCategory.AXE:
-                GameObject.Find("GameManager").GetComponent<PerkManager>().activeAxePerk = this;
+                pm.activeAxePerk = this;
+                pm.AxePerkEffect += AxeEffect;
                 break;
             case PerkCategory.HAT:
-                GameObject.Find("GameManager").GetComponent<PerkManager>().activeHatPerk = this;
+                pm.activeHatPerk = this;
+                pm.HatPerkEffect += HatEffect;
                 break;
             case PerkCategory.TRINKET:
-                GameObject.Find("GameManager").GetComponent<PerkManager>().activeTrinketPerk = this;
+                pm.activeTrinketPerk = this;
+                pm.TrinketPerkEffect += TrinketEffect;
                 break;
         }
+    }
+
+    private void AxeEffect()
+    {
+        if (type == PerkType.AXE_FIRE)
+        {
+            Debug.Log("you're on fire now");
+        }
+    }
+
+    private void HatEffect()
+    {
+        if (type == PerkType.HAT_DTVAMPIRISM)
+        {
+
+        }
+    }
+
+    private void TrinketEffect()
+    {
+
     }
 }

@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class PerkManager : MonoBehaviour {
+public class PerkManager : MonoBehaviour
+{
 
-    [HideInInspector] public List<Perk> perkList = new List<Perk>();
+    [HideInInspector]
+    public List<Perk> perkList = new List<Perk>();
 
+    [HideInInspector]
     public Perk activeAxePerk = null;
+    [HideInInspector]
     public Perk activeHatPerk = null;
+    [HideInInspector]
     public Perk activeTrinketPerk = null;
 
     public delegate void PerkEffectHandler();
@@ -14,7 +19,8 @@ public class PerkManager : MonoBehaviour {
     public event PerkEffectHandler HatPerkEffect = delegate { };
     public event PerkEffectHandler TrinketPerkEffect = delegate { };
 
-    void Start () {
+    void Start()
+    {
         GameObject[] perksInLevel = GameObject.FindGameObjectsWithTag("Perk");
         for (int i = 0; i < perksInLevel.Length; i++)
         {
@@ -22,5 +28,5 @@ public class PerkManager : MonoBehaviour {
             p.CheckStatus();
             perkList.Add(p);
         }
-	}	
+    }
 }
