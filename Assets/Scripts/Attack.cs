@@ -83,12 +83,12 @@ public class Attack : MonoBehaviour
         if (attackTypes.ContainsKey(weapon.attackType))
         {
             _attackType = attackTypes[weapon.attackType];
-            _attackType.Weapon = weapon;
+            _attackType.weapon = weapon;
         }
         else
         {
             _attackType = CreateAttackType(weapon.attackType);
-            _attackType.Weapon = weapon;
+            _attackType.weapon = weapon;
             attackTypes[weapon.attackType] = _attackType;
         }
 
@@ -124,20 +124,20 @@ public class Attack : MonoBehaviour
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 
-        attack.Animator = _animator;
-        attack.Attack = this;
-        attack.AttackArea = _attackBox;
+        attack.animator = _animator;
+        attack.attack = this;
+        attack.attackArea = _attackBox;
         return attack;
     }
 
     public void LightAttack()
     {
-        _attackType.AddAttack(BaseAttack.AttackStrength.Light);
+        _attackType.StartAttack(BaseAttack.AttackStrength.Light);
     }
 
     public void HeavyAttack()
     {
-        _attackType.AddAttack(BaseAttack.AttackStrength.Heavy);
+        _attackType.StartAttack(BaseAttack.AttackStrength.Heavy);
     }
 
     public void Grab()
@@ -145,7 +145,6 @@ public class Attack : MonoBehaviour
         if (attackState != State.Idle)
             return;
 
-        _attackType.input.Clear();
         _grabBox.SetActive(true);
         attackState = State.Grab;
     }
