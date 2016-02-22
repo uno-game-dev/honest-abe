@@ -2,6 +2,19 @@
 
 public class Perk : MonoBehaviour
 {
+
+    public enum PerkCategory
+    {
+        AXE,
+        HAT,
+        TRINKET
+    }
+    private PerkCategory _category;
+    public PerkCategory category
+    {
+        get { return _category; }
+    }
+
     public enum PerkType
     {
         AXE_FIRE,
@@ -9,8 +22,11 @@ public class Perk : MonoBehaviour
     }
     public PerkType type;
 
-    [HideInInspector]
-    public string perkName;
+    private string _perkName;
+    public string perkName
+    {
+        get { return _perkName; }
+    }
 
     // Unlocked is whether the perk is available for the player to pick up when the game starts
     // setToBeUnlocked is whether the perk was earned during the game but the player has not finished the game yet
@@ -24,11 +40,13 @@ public class Perk : MonoBehaviour
         switch (type)
         {
             case PerkType.AXE_FIRE:
-                perkName = "Axe_Fire";
+                _category = PerkCategory.AXE;
+                _perkName = GlobalSettings.axe_fire_name;
                 unlocked = GlobalSettings.axe_fire_unlocked;
                 break;
             case PerkType.HAT_DTVAMPIRISM:
-                perkName = "Hat_DTVampirism";
+                _category = PerkCategory.HAT;
+                _perkName = GlobalSettings.hat_dtVampirism_name;
                 unlocked = GlobalSettings.hat_dtVampirism_unlocked;
                 break;
         }
@@ -39,7 +57,17 @@ public class Perk : MonoBehaviour
 
     public void OnCollision(GameObject other)
     {
-        // Give player the perk
+        switch (category)
+        {
+            case PerkCategory.AXE:
+                GameObject.Find("GameManager").GetComponent<PerkManager>().activeAxePerk = this;
+                break;
+            case PerkCategory.HAT:
+                GameObject.Find("GameManager").GetComponent<PerkManager>().activeHatPerk = this;
+                break;
+            case PerkCategory.TRINKET:
+                GameObject.Find("GameManager").GetComponent<PerkManager>().activeTrinketPerk = this;
+                break;
+        }
     }
-
 }
