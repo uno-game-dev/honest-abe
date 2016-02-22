@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-	[HideInInspector]
 	public int health;
 	private float nextHit;
 

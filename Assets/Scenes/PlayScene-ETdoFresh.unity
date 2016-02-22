@@ -269,6 +269,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 483236, guid: fcaa54cf6eefeff43ac79ffbe62edee0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcaa54cf6eefeff43ac79ffbe62edee0, type: 2}
   m_IsPrefabParent: 0
@@ -390,6 +394,20 @@ MonoBehaviour:
   lightDamage: 10
   heavyDamage: 15
   justCollided: 0
+--- !u!114 &1498959196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1498959178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcebd7f864cdd8047bcba703c4a9a092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfChainAttacks: 0
+  chainAttackTimer: 0
+  chainAttackResetsIn: 1
 --- !u!1001 &1527065157
 Prefab:
   m_ObjectHideFlags: 0
@@ -748,7 +766,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22464042, guid: 87e974aa6c44041ad86e0cee34e63776, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 22464042, guid: 87e974aa6c44041ad86e0cee34e63776, type: 2}
       propertyPath: m_AnchoredPosition.x

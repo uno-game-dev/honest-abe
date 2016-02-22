@@ -11,13 +11,13 @@ public class Attack : MonoBehaviour
     public State attackState = State.Idle;
     public Hand hand = Hand.Right;
     public Weapon weapon;
-    public Dictionary<Weapon.AttackType, IAttackType> attackTypes = new Dictionary<Weapon.AttackType, IAttackType>();
+    public Dictionary<Weapon.AttackType, BaseAttack> attackTypes = new Dictionary<Weapon.AttackType, BaseAttack>();
 
     private GameObject _attackBox;
     private Animator _animator;
     private GameObject _leftHand;
     private GameObject _rightHand;
-    private IAttackType _attackType;
+    private BaseAttack _attackType;
     private GameObject _grabBox;
     private Grab _grabbed;
 
@@ -39,20 +39,21 @@ public class Attack : MonoBehaviour
 
     private void CreateOrGetAttackBox()
     {
-        _attackBox = this.FindInChildren("Melee Area");
+        _attackBox = this.FindInChildren("Attack Box");
         if (_attackBox)
             return;
 
         _attackBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
         // _attackBox = new GameObject(); // Use this one when done debugging
-        _attackBox.name = "Melee Area";
+        _attackBox.name = "Attack Box";
         _attackBox.transform.parent = transform;
         _attackBox.transform.localPosition = new Vector3(1f, 0.5f, 0f);
         _attackBox.tag = "Damage";
         _attackBox.layer = gameObject.layer;
         DestroyImmediate(_attackBox.GetComponent<MeshCollider>());
         _attackBox.AddComponent<BoxCollider2D>().isTrigger = true;
-        _attackBox.AddComponent<BaseCollision>();
+        _attackBox.AddComponent<BaseCollision>().collisionLayer = LayerMask.GetMask("Enemy");
+        _attackBox.AddComponent<AttackArea>();
         _attackBox.SetActive(false);
     }
 
@@ -107,13 +108,13 @@ public class Attack : MonoBehaviour
             return weapon.lightDamage;
     }
 
-    private IAttackType CreateAttackType(Weapon.AttackType attackType)
+    private BaseAttack CreateAttackType(Weapon.AttackType attackType)
     {
         foreach (MonoBehaviour component in GetComponents<MonoBehaviour>())
-            if (component is IAttackType)
+            if (component is BaseAttack)
                 component.enabled = false;
 
-        IAttackType attack;
+        BaseAttack attack;
         if (attackType == Weapon.AttackType.Melee)
             attack = this.GetOrAddComponent<MeleeAttack>();
         else if (attackType == Weapon.AttackType.Swing)
@@ -131,18 +132,12 @@ public class Attack : MonoBehaviour
 
     public void LightAttack()
     {
-        if (attackState != State.Idle)
-            return;
-
-        _attackType.LightAttack();
+        _attackType.AddAttack(BaseAttack.AttackStrength.Light);
     }
 
     public void HeavyAttack()
     {
-        if (attackState != State.Idle)
-            return;
-
-        _attackType.HeavyAttack();
+        _attackType.AddAttack(BaseAttack.AttackStrength.Heavy);
     }
 
     public void Grab()
