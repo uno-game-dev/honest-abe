@@ -33,6 +33,19 @@ public class Perk : MonoBehaviour
     [HideInInspector]
     public bool unlocked, setToBeUnlocked;
 
+
+    /*
+     * References to scripts affected by the perks
+     */
+    private PlayerHealth playerHealth;
+    private Weapon currentPlayerWeapon;
+
+    void Start()
+    {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        currentPlayerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<Weapon>();
+    }
+
     public void CheckStatus()
     {
         setToBeUnlocked = false;
@@ -57,21 +70,19 @@ public class Perk : MonoBehaviour
 
     public void OnCollision(GameObject other)
     {
-
-        PerkManager pm = GameObject.Find("GameManager").GetComponent<PerkManager>();
         switch (category)
         {
             case PerkCategory.AXE:
-                pm.activeAxePerk = this;
-                pm.AxePerkEffect += AxeEffect;
+                PerkManager.activeAxePerk = this;
+                PerkManager.AxePerkEffect += AxeEffect;
                 break;
             case PerkCategory.HAT:
-                pm.activeHatPerk = this;
-                pm.HatPerkEffect += HatEffect;
+                PerkManager.activeHatPerk = this;
+                PerkManager.HatPerkEffect += HatEffect;
                 break;
             case PerkCategory.TRINKET:
-                pm.activeTrinketPerk = this;
-                pm.TrinketPerkEffect += TrinketEffect;
+                PerkManager.activeTrinketPerk = this;
+                PerkManager.TrinketPerkEffect += TrinketEffect;
                 break;
         }
     }
@@ -88,7 +99,8 @@ public class Perk : MonoBehaviour
     {
         if (type == PerkType.HAT_DTVAMPIRISM)
         {
-
+            playerHealth.DamageThreshold += (int)currentPlayerWeapon.lightDamage;
+            Debug.Log(playerHealth.DamageThreshold);
         }
     }
 

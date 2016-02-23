@@ -6,18 +6,15 @@ public class PerkManager : MonoBehaviour
 
     [HideInInspector]
     public List<Perk> perkList = new List<Perk>();
-
-    [HideInInspector]
-    public Perk activeAxePerk = null;
-    [HideInInspector]
-    public Perk activeHatPerk = null;
-    [HideInInspector]
-    public Perk activeTrinketPerk = null;
+    
+    public static Perk activeAxePerk = null;
+    public static Perk activeHatPerk = null;
+    public static Perk activeTrinketPerk = null;
 
     public delegate void PerkEffectHandler();
-    public event PerkEffectHandler AxePerkEffect = delegate { };
-    public event PerkEffectHandler HatPerkEffect = delegate { };
-    public event PerkEffectHandler TrinketPerkEffect = delegate { };
+    public static event PerkEffectHandler AxePerkEffect = delegate { };
+    public static event PerkEffectHandler HatPerkEffect = delegate { };
+    public static event PerkEffectHandler TrinketPerkEffect = delegate { };
 
     void Start()
     {
@@ -28,5 +25,12 @@ public class PerkManager : MonoBehaviour
             p.CheckStatus();
             perkList.Add(p);
         }
+    }
+
+    public static void PerformPerkEffects()
+    {
+        if (activeAxePerk != null) AxePerkEffect();
+        if (activeHatPerk != null) HatPerkEffect();
+        if (activeTrinketPerk != null) TrinketPerkEffect();
     }
 }

@@ -12,17 +12,18 @@ public class AttackArea : MonoBehaviour
     {
         _collision = GetComponent<BaseCollision>();
         _chainAttack = GetComponentInParent<ChainAttack>();
+        _collision.OnCollision += OnCollision;
     }
 
     private void OnEnable()
     {
-        _collision.OnCollision += OnCollision;
+        //_collision.OnCollision += OnCollision;
         _updateChainAttack = true;
     }
 
     private void OnDisable()
     {
-        _collision.OnCollision -= OnCollision;
+        //_collision.OnCollision -= OnCollision;
         if (!hit && _chainAttack)
             _chainAttack.Miss();
         hit = null;
@@ -31,6 +32,16 @@ public class AttackArea : MonoBehaviour
     private void Update()
     {
         _collision.Tick();
+
+        if (hit != null)
+        {
+            if (transform.parent.gameObject.tag == "Player")
+            {
+                //PerkManager.PerformPerkEffects();
+                Debug.Log("player");
+            }
+            hit = null;
+        }
     }
 
     private void OnCollision(RaycastHit2D hit)

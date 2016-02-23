@@ -57,7 +57,7 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            PreferenceManager.UpdatePerkStatus(GlobalSettings.hat_dtVampirism_name, 0);
+            PreferenceManager.UpdatePerkStatus(GlobalSettings.hat_dtVampirism_name, 1);
             PreferenceManager.UpdatePerkStatus(GlobalSettings.axe_fire_name, 0);
         }
     }
