@@ -4,60 +4,88 @@ using UnityEngine;
 
 public abstract class BaseAttack : MonoBehaviour
 {
-    public enum AttackStrength { Light, Heavy, Throw }
+    public enum Strength { Null, Light, Heavy, Throw }
+    public enum State { Null, Prepare, Perform, Finish }
 
     public Weapon weapon;
     public Animator animator;
     public Attack attack;
     public GameObject attackArea;
+    public Strength strength;
+    public State state;
     public float prepLightAttackTime = 0.3f;
     public float prepHeavyAttackTime = 0.6f;
     public float lightAttackTime = 0.2f;
     public float heavyAttackTime = 0.2f;
+    public float finishLightAttackTime = 0.1f;
+    public float finishHeavyAttackTime = 0.1f;
 
-    public virtual void StartAttack(AttackStrength strength)
+    public void StartLightAttack()
     {
-        if (attack.attackState != Attack.State.Idle)
-            return;
-
-        attackArea.transform.localPosition = weapon.attackOffset;
-        attackArea.transform.localScale = weapon.attackSize;
-
-        if (strength == AttackStrength.Light)
-            PrepToLightAttack();
-        else if (strength == AttackStrength.Heavy)
-            PrepToHeavyAttack();
+        strength = Strength.Light;
+        PrepareToLightAttack();
     }
 
-    protected virtual void PrepToLightAttack()
+    public void StartHeavyAttack()
     {
-        attack.attackState = Attack.State.Prep;
+        strength = Strength.Heavy;
+        PrepareToHeavyAttack();
+    }
+
+    private void SetWeaponLocalTransform()
+    {
+        attackArea.transform.localPosition = weapon.attackOffset;
+        attackArea.transform.localScale = weapon.attackSize;
+    }
+
+    protected virtual void PrepareToLightAttack()
+    {
+        attack.attackState = Attack.State.Light;
+        strength = Strength.Light;
+        state = State.Prepare;
         Invoke("PerformLightAttack", prepLightAttackTime);
     }
 
-    protected virtual void PrepToHeavyAttack()
+    protected virtual void PrepareToHeavyAttack()
     {
-        attack.attackState = Attack.State.Prep;
+        attack.attackState = Attack.State.Heavy;
+        strength = Strength.Heavy;
+        state = State.Prepare;
         Invoke("PerformHeavyAttack", prepHeavyAttackTime);
     }
 
     protected virtual void PerformLightAttack()
     {
-        attack.attackState = Attack.State.Light;
+        state = State.Perform;
         attackArea.SetActive(true);
-        Invoke("Disable", lightAttackTime);
+        Invoke("FinishLightAttack", lightAttackTime);
     }
 
     protected virtual void PerformHeavyAttack()
     {
-        attack.attackState = Attack.State.Heavy;
+        state = State.Perform;
         attackArea.SetActive(true);
-        Invoke("Disable", heavyAttackTime);
+        Invoke("FinishHeavyAttack", heavyAttackTime);
     }
 
-    protected virtual void Disable()
+    protected virtual void FinishLightAttack()
     {
+        state = State.Finish;
         attackArea.SetActive(false);
-        attack.attackState = Attack.State.Idle;
+        Invoke("BackToIdle", finishLightAttackTime);
+    }
+
+    protected virtual void FinishHeavyAttack()
+    {
+        state = State.Finish;
+        attackArea.SetActive(false);
+        Invoke("BackToIdle", finishHeavyAttackTime);
+    }
+
+    protected virtual void BackToIdle()
+    {
+        attack.attackState = Attack.State.Null;
+        state = State.Null;
+        strength = Strength.Null;
     }
 }

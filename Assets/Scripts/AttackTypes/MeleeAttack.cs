@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class MeleeAttack : BaseAttack
 {
-    protected override void PrepToLightAttack()
+    protected override void PrepareToLightAttack()
     {
         animator.SetTrigger("Light Punch");
-        base.PrepToLightAttack();
+        base.PrepareToLightAttack();
     }
 
-    protected override void PrepToHeavyAttack()
+    protected override void PrepareToHeavyAttack()
     {
         animator.SetTrigger("Heavy Punch");
-        base.PrepToHeavyAttack();
+        base.PrepareToHeavyAttack();
     }    
 }

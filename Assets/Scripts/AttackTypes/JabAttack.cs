@@ -6,15 +6,15 @@ using UnityEngine;
 
 class JabAttack : BaseAttack
 {
-    protected override void PrepToLightAttack()
+    protected override void PrepareToLightAttack()
     {
         animator.SetTrigger("Light Jab");
-        base.PrepToLightAttack();
+        base.PrepareToLightAttack();
     }
 
-    protected override void PrepToHeavyAttack()
+    protected override void PrepareToHeavyAttack()
     {
         animator.SetTrigger("Heavy Jab");
-        base.PrepToHeavyAttack();
+        base.PrepareToHeavyAttack();
     }
 }

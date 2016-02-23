@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class Attack : MonoBehaviour
 {
-    public enum State { Idle, Prep, Light, Heavy, Grab }
+    public enum State { Null, Light, Heavy, Grab, Throw }
     public enum Hand { Left, Right, Both }
 
-    public State attackState = State.Idle;
+    public State attackState = State.Null;
     public Hand hand = Hand.Right;
     public Weapon weapon;
     public Dictionary<Weapon.AttackType, BaseAttack> attackTypes = new Dictionary<Weapon.AttackType, BaseAttack>();
@@ -19,11 +19,12 @@ public class Attack : MonoBehaviour
     private GameObject _rightHand;
     private BaseAttack _attackType;
     private GameObject _grabBox;
-    private Grab _grabbed;
+    private Grabber _grab;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _grab = GetComponent<Grabber>();
 
         CreateOrGetAttackBox();
         CreateOrGetGrabBox();
@@ -35,6 +36,9 @@ public class Attack : MonoBehaviour
 
         Weapon weapon = this.GetOrAddComponent<Weapon>();
         SetWeapon(weapon);
+
+        if (_grab)
+            _grab.grabArea = _grabBox;
     }
 
     private void CreateOrGetAttackBox()
@@ -132,27 +136,33 @@ public class Attack : MonoBehaviour
 
     public void LightAttack()
     {
-        _attackType.StartAttack(BaseAttack.AttackStrength.Light);
+        if (attackState != State.Null)
+            return;
+
+        attackState = State.Light;
+        _attackType.StartLightAttack();
     }
 
     public void HeavyAttack()
     {
-        _attackType.StartAttack(BaseAttack.AttackStrength.Heavy);
+        if (attackState != State.Null)
+            return;
+
+        attackState = State.Heavy;
+        _attackType.StartHeavyAttack();
     }
 
     public void Grab()
     {
-        if (attackState != State.Idle)
+        if (attackState == State.Grab)
+            _grab.Release();
+        else if (attackState != State.Null)
             return;
-
-        _grabBox.SetActive(true);
-        attackState = State.Grab;
-    }
-
-    public void FinishGrab(Grab grabbed)
-    {
-        _grabBox.SetActive(false);
-        _grabbed = grabbed;
+        else
+        {
+            attackState = State.Grab;
+            _grab.StartGrab();
+        }
     }
 
     public void Release()
@@ -160,10 +170,6 @@ public class Attack : MonoBehaviour
         if (attackState != State.Grab)
             return;
 
-        if (_grabbed)
-            _grabbed.Release();
-
-        _grabBox.SetActive(false);
-        attackState = State.Idle;
+        attackState = State.Null;
     }
 }
