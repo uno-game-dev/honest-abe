@@ -11,7 +11,7 @@ public class PlayerHealth : Health {
 	private float updateHealthSliderTime = 2;
 	private bool isDead;
 	[HideInInspector]
-	public bool performedExecution = false;
+	public bool executionPerformed = false;
 	private HealthSlider healthSlider;
 
 	// Use this for initialization
@@ -29,7 +29,7 @@ public class PlayerHealth : Health {
 		//Test execution
 		if (Input.GetKeyDown(KeyCode.E)) {
 			Debug.Log ("Performed EXECUTION!!!");
-			performedExecution = true;
+			executionPerformed = true;
 		}	
 		//Test healthpickup
 		if (Input.GetKeyDown(KeyCode.H)) {
@@ -113,10 +113,11 @@ public class PlayerHealth : Health {
 	//Updates the currentHealth and damageThreshold 
 	void UpdateHUD(){
 		//CurrentHealth is slowly decreasing to eventually equal damageThreshold 
-		if (currentHealth > damageThreshold) {
+		executionPerformed = GlobalSettings.executionPerformed;
+        if (currentHealth > damageThreshold) {
 			//Time to update currentHealthSlider
 			if (updateHealthSliderTime < 0) {
-				if (!performedExecution) {
+				if (!executionPerformed) {
 					//Decrease the currentHealth in increments of 5
 					currentHealth -= 1;
 					// If the player has lost all it's health
@@ -143,13 +144,13 @@ public class PlayerHealth : Health {
 					healthSlider.UpdateDamageThreshold(damageThreshold);
 
 					//Reset execution check
-					performedExecution = false;
+					executionPerformed = false;
 				}
 			}
 		}else {
 			//Else -- Abe did not get hit but performed an execution
 			//The damageThreshold is above or equal to currentHealth and Abe performed execution
-			if (performedExecution) {
+			if (executionPerformed) {
 				//Make sure damageThreshold does not go above 120
 				if (damageThreshold <= 110) {
 					//Abe performed an execution increase damageThreshold by 10
@@ -163,7 +164,7 @@ public class PlayerHealth : Health {
 				healthSlider.UpdateDamageThreshold(damageThreshold);
 
 				//Reset execution check
-				performedExecution = false;
+				executionPerformed = false;
 			}
 		}
 	}
