@@ -1199,7 +1199,7 @@ MonoBehaviour:
   verticalRayCount: 4
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 17920
   _collider: {fileID: 0}
 --- !u!114 &11405632
 MonoBehaviour:
@@ -1673,6 +1673,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: damageRate
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionLayer.m_Bits
+      value: 17920
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
