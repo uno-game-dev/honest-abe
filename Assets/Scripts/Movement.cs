@@ -5,6 +5,7 @@ using System;
 public class Movement : MonoBehaviour
 {
     public enum Direction { Null, Left, Right }
+    public enum State { Null, Idle, Walk, Jump, Fall, Attack, Stun, Settle }
 
     public float horizontalMovementSpeed = 2;
     public float vericalMovementSpeed = 1;
@@ -123,7 +124,7 @@ public class Movement : MonoBehaviour
         transform.localScale = newScale;
     }
 
-    public void Flip()
+    public void FlipDirection()
     {
         if (direction == Direction.Left)
             SetDirection(Direction.Right, true);

@@ -77,7 +77,7 @@ public class Grabbable : MonoBehaviour
 
         if (_grabbedBy)
             _movement.SetDirection(_grabbedBy.GetComponent<Movement>().direction);
-        _movement.Flip();
+        _movement.FlipDirection();
 
         Grabber grabber;
         if (grabber = GetComponent<Grabber>())
