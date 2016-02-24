@@ -95,8 +95,11 @@ public class PlayerHealth : Health {
 			}   else {
 				currentHealth = 100;
 				healthSlider.UpdateCurrentHealth(currentHealth);
-				damageThreshold = 100;
-				healthSlider.UpdateDamageThreshold(damageThreshold);
+				//Only bring the DT = 100 if it is less than 100. If it's above then just leave the same
+				if (damageThreshold < 100) {
+					damageThreshold = 100;
+					healthSlider.UpdateDamageThreshold (damageThreshold);
+				}
 			}
 		}
 	}
@@ -145,6 +148,7 @@ public class PlayerHealth : Health {
 
 					//Reset execution check
 					executionPerformed = false;
+					GlobalSettings.executionPerformed = false;
 				}
 			}
 		}else {
@@ -165,6 +169,7 @@ public class PlayerHealth : Health {
 
 				//Reset execution check
 				executionPerformed = false;
+				GlobalSettings.executionPerformed = false;
 			}
 		}
 	}
