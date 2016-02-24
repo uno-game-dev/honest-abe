@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class MeleeAttack : BaseAttack
 {
-    private float _previousAnimationSpeed;
-
     protected override void PrepareToLightAttack()
     {
         _previousAnimationSpeed = animator.speed;

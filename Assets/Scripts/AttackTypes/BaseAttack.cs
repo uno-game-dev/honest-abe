@@ -20,6 +20,8 @@ public abstract class BaseAttack : MonoBehaviour
     public float finishLightAttackTime = 0.1f;
     public float finishHeavyAttackTime = 0.1f;
 
+    protected float _previousAnimationSpeed;
+
     public void StartLightAttack()
     {
         strength = Strength.Light;
@@ -32,14 +34,9 @@ public abstract class BaseAttack : MonoBehaviour
         PrepareToHeavyAttack();
     }
 
-    private void SetWeaponLocalTransform()
-    {
-        attackArea.transform.localPosition = weapon.attackOffset;
-        attackArea.transform.localScale = weapon.attackSize;
-    }
-
     protected virtual void PrepareToLightAttack()
     {
+        SetWeaponLocalTransform();
         strength = Strength.Light;
         state = State.Prepare;
         Invoke("PerformLightAttack", prepLightAttackTime);
@@ -47,9 +44,16 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected virtual void PrepareToHeavyAttack()
     {
+        SetWeaponLocalTransform();
         strength = Strength.Heavy;
         state = State.Prepare;
         Invoke("PerformHeavyAttack", prepHeavyAttackTime);
+    }
+
+    private void SetWeaponLocalTransform()
+    {
+        attackArea.transform.localPosition = weapon.attackOffset;
+        attackArea.transform.localScale = weapon.attackSize;
     }
 
     protected virtual void PerformLightAttack()

@@ -44,6 +44,7 @@ GameObject:
   - 4: {fileID: 413746}
   - 61: {fileID: 6100682}
   - 114: {fileID: 11434936}
+  - 114: {fileID: 11497070}
   m_Layer: 13
   m_Name: Musket
   m_TagString: Weapon
@@ -215,6 +216,20 @@ MonoBehaviour:
   heldOrientation: {x: 35, y: 350, z: 198}
   lightDamage: 30
   heavyDamage: 50
+--- !u!114 &11497070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e631eff86fb93c488df840a98a56a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetFromOrigin: 2
+  maxZ: 45
+  yToZFactor: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

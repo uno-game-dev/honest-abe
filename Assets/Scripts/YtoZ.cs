@@ -13,9 +13,9 @@ public class YtoZ : MonoBehaviour {
 
     private void ChangeZBasedOnY()
     {
-        Vector3 localPosition = transform.localPosition;
-        localPosition.z = -offsetFromOrigin + localPosition.y * yToZFactor;
-        localPosition.z = Mathf.Clamp(localPosition.z, -maxZ, 0);
-        transform.localPosition = localPosition;
+        Vector3 position = transform.position;
+        position.z = -offsetFromOrigin + position.y * yToZFactor;
+        position.z = Mathf.Clamp(position.z, -maxZ, 0);
+        transform.position = position;
     }
 }

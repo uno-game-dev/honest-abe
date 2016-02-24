@@ -8,6 +8,7 @@ public class PlayerControls : MonoBehaviour
     private Grabber _grab;
     private float mouseHeldTime;
     private float timeToConsiderHeld;
+    private Throw _throw;
 
     [HideInInspector]
     public bool heldComplete, justClicked;
@@ -20,6 +21,7 @@ public class PlayerControls : MonoBehaviour
         _movement = GetComponent<Movement>();
         _jump = GetComponent<Jump>();
         _grab = GetComponent<Grabber>();
+        _throw = GetComponent<Throw>();
     }
 
     void Update()
@@ -62,6 +64,9 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
             _jump.StartJump();
+
+        if (Input.GetKeyDown(KeyCode.E))
+            _throw.StartThrow();
     }
 
     public void ResetHold()

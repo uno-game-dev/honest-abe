@@ -38,18 +38,23 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
-    private void OnCollision(RaycastHit2D hit) {
-        if (hit.collider.tag == "Item") {
+    private void OnCollision(RaycastHit2D hit)
+    {
+        if (hit.collider.tag == "Item")
+        {
             hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
         }
 
-        else if (hit.collider.tag == "Weapon") {
-            if (!justCollided) {
+        else if (hit.collider.tag == "Weapon")
+        {
+            if (!justCollided)
+            {
                 controls.ResetHold();
                 justCollided = true;
             }
 
-            if (controls.heldComplete && justCollided && controls.justClicked) {
+            if (controls.heldComplete && justCollided && controls.justClicked)
+            {
                 GetComponent<Attack>().SetWeapon(hit.collider.gameObject.GetComponent<Weapon>());
                 //hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
