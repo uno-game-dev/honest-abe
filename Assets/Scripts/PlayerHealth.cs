@@ -46,7 +46,6 @@ public class PlayerHealth : Health {
 			Debug.Log ("Increased DT!!!");
 			IncreaseDT(10);
 		}**/
-		Debug.Log("IS THERE AN EXECUTION?" + executionPerformed);
 		if(!isDead){
 			//Decreases the timer to know when to update the damageSlider
 			updateHealthSliderTime -= Time.deltaTime;
