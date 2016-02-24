@@ -1,22 +1,34 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class UIManager : MonoBehaviour {
 
 	public static bool updateActive = false;
 	private bool paused = false;
 	private bool options = false;
+	private bool slowMotion;
+	public static bool displayLost;
+	public static bool displayWin;
 	private GameObject startGameText;
 	private GameObject pauseUI;
 	private GameObject optionsUI;
+	private GameObject loseUI;
+	private GameObject winUI;
 
 	void Start() {
 		startGameText = GameObject.Find("StartText");
 		pauseUI = GameObject.Find("PauseUI");
 		optionsUI = GameObject.Find("OptionsCanvas");
+		loseUI = GameObject.Find("LoseUI");
+		winUI = GameObject.Find ("WinUI");
 		pauseUI.SetActive (false);
 		optionsUI.SetActive (false);
+		loseUI.SetActive (false);
+		winUI.SetActive (false);
+		displayWin = false;
+		displayLost = false;
+		slowMotion = true;
 	}
 
 	void Update () {
@@ -43,6 +55,14 @@ public class UIManager : MonoBehaviour {
 			pauseUI.SetActive (false);
 			Time.timeScale = 1;
 		}
+
+		if (displayLost) {
+			loseUI.SetActive (true);
+		}
+
+		if (displayWin) {
+			winUI.SetActive (true);
+		}
 	}
 
 	public void Resume(){
@@ -55,8 +75,8 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void Restart(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-        updateActive = false;
+		Application.LoadLevel (Application.loadedLevel);
+		updateActive = false;
 	}
 
 	public void Quit(){
@@ -66,5 +86,29 @@ public class UIManager : MonoBehaviour {
 	public void ExitOptions (){
 		options = false;
 		paused = true;
+	}
+
+	public void RetryYes(){
+		//Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
+		Application.LoadLevel (Application.loadedLevel);
+		loseUI.SetActive (false);
+		updateActive = false;
+	}
+
+	public void RetryNo(){
+		//Need to go back to the main menu, but for the alpha just quit the game
+		Application.Quit(); //Only works when the project is built
+	}
+
+	public void PlayAgainYes(){
+		//Need to restart the game, but for the alpha since it's only one scene it will restart the level
+		Application.LoadLevel (Application.loadedLevel);
+		winUI.SetActive(false);
+		updateActive = false;
+	}
+
+	public void PlayAgainNo(){
+		//Need to go back to the main menu, but for the alpha just quit the game
+		Application.Quit(); //Only works when the project is built	
 	}
 }

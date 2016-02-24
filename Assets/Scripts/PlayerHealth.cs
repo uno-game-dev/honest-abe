@@ -171,11 +171,12 @@ public class PlayerHealth : Health {
 
 	void Death(){
 		isDead = true;
+		GameManager.lost = true;
 		Debug.Log ("Abe is dead :( ");
 		//Disable PlayerMotor script 
 		gameObject.GetComponent<PlayerMotor> ().enabled = !enabled;
-		//Set animation for dead player
 		//Turn off any attack effects
-		//Alert the player that they died. Ask the player to play again
+		gameObject.GetComponent<PlayerControls> ().enabled = !enabled;
+		//Set animation for dead player
 	}
 }
