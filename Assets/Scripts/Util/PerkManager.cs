@@ -25,6 +25,14 @@ public class PerkManager : MonoBehaviour
             p.CheckStatus();
             perkList.Add(p);
         }
+
+        GameObject[] axePerksInLevel = GameObject.FindGameObjectsWithTag("AbeAxe");
+        for (int i = 0; i < axePerksInLevel.Length; i++)
+        {
+            Perk p = axePerksInLevel[i].GetComponent<Perk>();
+            p.CheckStatus();
+            perkList.Add(p);
+        }
     }
 
     public static void PerformPerkEffects()

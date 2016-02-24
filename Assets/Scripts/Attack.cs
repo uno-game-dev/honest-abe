@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour
     public Hand hand = Hand.Right;
     public Weapon weapon;
     public Dictionary<Weapon.AttackType, BaseAttack> attackTypes = new Dictionary<Weapon.AttackType, BaseAttack>();
+    public bool emptyHanded = true; // This will be true when Abe has no weapon in his hand and false if he does
 
     private GameObject _attackBox;
     private Animator _animator;

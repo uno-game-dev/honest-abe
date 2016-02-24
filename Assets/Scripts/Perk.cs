@@ -5,6 +5,9 @@ public class Perk : MonoBehaviour
 
     public enum PerkCategory
     {
+        NONE_AXE,
+        NONE_HAT,
+        NONE_TRINKET,
         AXE,
         HAT,
         TRINKET
@@ -17,6 +20,9 @@ public class Perk : MonoBehaviour
 
     public enum PerkType
     {
+        NONE_AXE,
+        NONE_HAT,
+        NONE_TRINKET,
         AXE_FIRE,
         HAT_DTVAMPIRISM
     }
@@ -52,6 +58,21 @@ public class Perk : MonoBehaviour
 
         switch (type)
         {
+            case PerkType.NONE_AXE:
+                _category = PerkCategory.NONE_AXE;
+                _perkName = null;
+                unlocked = true;
+                break;
+            case PerkType.NONE_HAT:
+                _category = PerkCategory.NONE_HAT;
+                _perkName = null;
+                unlocked = true;
+                break;
+            case PerkType.NONE_TRINKET:
+                _category = PerkCategory.NONE_TRINKET;
+                _perkName = null;
+                unlocked = true;
+                break;
             case PerkType.AXE_FIRE:
                 _category = PerkCategory.AXE;
                 _perkName = GlobalSettings.axe_fire_name;
@@ -62,17 +83,28 @@ public class Perk : MonoBehaviour
                 _perkName = GlobalSettings.hat_dtVampirism_name;
                 unlocked = GlobalSettings.hat_dtVampirism_unlocked;
                 break;
+            default:
+                break;
         }
 
+        Debug.Log(unlocked);
         if (!unlocked)
             gameObject.SetActive(false);
     }
 
     public void OnCollision(GameObject other)
     {
-        Debug.Log("picked up perk");
         switch (category)
         {
+            case PerkCategory.NONE_AXE:
+                PerkManager.activeAxePerk = null;
+                break;
+            case PerkCategory.NONE_HAT:
+                PerkManager.activeHatPerk = null;
+                break;
+            case PerkCategory.NONE_TRINKET:
+                PerkManager.activeTrinketPerk = null;
+                break;
             case PerkCategory.AXE:
                 PerkManager.activeAxePerk = this;
                 PerkManager.AxePerkEffect += AxeEffect;
@@ -84,6 +116,8 @@ public class Perk : MonoBehaviour
             case PerkCategory.TRINKET:
                 PerkManager.activeTrinketPerk = this;
                 PerkManager.TrinketPerkEffect += TrinketEffect;
+                break;
+            default:
                 break;
         }
         GetComponent<BoxCollider2D>().enabled = false;

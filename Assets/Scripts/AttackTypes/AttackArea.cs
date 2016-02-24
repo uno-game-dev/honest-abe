@@ -42,9 +42,12 @@ public class AttackArea : MonoBehaviour
             _chainAttack.Hit();
             _updateChainAttack = false;
         }
-		if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
+		if (transform.parent.gameObject.tag == "Player")
 		{
-			GlobalSettings.executionPerformed = true;
+            PerkManager.PerformPerkEffects();
+
+            if (_attack.attackState == Attack.State.Heavy)
+                GlobalSettings.executionPerformed = true;
 		}
         this.hit = hit.collider.gameObject;
     }

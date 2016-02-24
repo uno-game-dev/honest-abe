@@ -9,8 +9,8 @@ public class PreferenceManager : MonoBehaviour {
             PlayerPrefs.SetInt(GlobalSettings.axe_fire_name, 0);
 
         // DT Vampirism Hat
-        if (!PlayerPrefs.HasKey(GlobalSettings.hat_dtVampirism_name))
-            PlayerPrefs.SetInt(GlobalSettings.hat_dtVampirism_name, 0);
+        //if (!PlayerPrefs.HasKey(GlobalSettings.hat_dtVampirism_name))
+            PlayerPrefs.SetInt(GlobalSettings.hat_dtVampirism_name, 1);
 
         GlobalSettings.axe_fire_unlocked = PlayerPrefs.GetInt(GlobalSettings.axe_fire_name) == 1;
         GlobalSettings.hat_dtVampirism_unlocked = PlayerPrefs.GetInt(GlobalSettings.hat_dtVampirism_name) == 1;
