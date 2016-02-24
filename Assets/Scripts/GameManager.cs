@@ -5,12 +5,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 	public static bool lost;
 	public static bool win;
-	private bool slowMotion;
 
 	void Start(){
 		lost = false;
 		win = false;
-		slowMotion = true;
 	}
 
 	void Update(){
