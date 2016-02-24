@@ -88,6 +88,7 @@ public class UIManager : MonoBehaviour {
 		paused = true;
 	}
 
+	//After Losing
 	public void RetryYes(){
 		//Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
 		Application.LoadLevel (Application.loadedLevel);
@@ -95,11 +96,13 @@ public class UIManager : MonoBehaviour {
 		updateActive = false;
 	}
 
+	//After Losing
 	public void RetryNo(){
 		//Need to go back to the main menu, but for the alpha just quit the game
 		Application.Quit(); //Only works when the project is built
 	}
 
+	//After Win
 	public void PlayAgainYes(){
 		//Need to restart the game, but for the alpha since it's only one scene it will restart the level
 		Application.LoadLevel (Application.loadedLevel);
@@ -107,6 +110,7 @@ public class UIManager : MonoBehaviour {
 		updateActive = false;
 	}
 
+	//After Win
 	public void PlayAgainNo(){
 		//Need to go back to the main menu, but for the alpha just quit the game
 		Application.Quit(); //Only works when the project is built	

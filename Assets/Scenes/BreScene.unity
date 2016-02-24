@@ -507,6 +507,38 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
       objectReference: {fileID: 0}
+    - target: {fileID: 11436378, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 172837489}
+    - target: {fileID: 11436378, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RetryYes
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415488, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 172837489}
+    - target: {fileID: 11415488, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RetryNo
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444348, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 172837489}
+    - target: {fileID: 11444348, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAgainYes
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439422, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 172837489}
+    - target: {fileID: 11439422, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayAgainNo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 431241fb7d2e54c3ca13c298f8cf7efa, type: 2}
   m_IsPrefabParent: 0
@@ -834,6 +866,52 @@ Prefab:
       objectReference: {fileID: 172837489}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87e974aa6c44041ad86e0cee34e63776, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1896567466
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 493242, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 11.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 493242, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 493242, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493242, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493242, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493242, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493242, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 493242, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 188124, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1954916909
 Prefab:
