@@ -49,6 +49,9 @@ class SwingAttack : BaseAttack
 
     private void PerformLightAttack()
     {
+        //FOR ALPHA ONLY!!! Audio Architecture should be refactored Post-Alpha!
+        AudioManager.instance.PlayAttackSound(2);
+
         Attack.attackState = Attack.State.Light;
         AttackArea.SetActive(true);
         Invoke("Disable", lightAttackTime);
@@ -62,6 +65,9 @@ class SwingAttack : BaseAttack
 
     private void PerformHeavyAttack()
     {
+        //FOR ALPHA ONLY!!! Audio Architecture should be refactored Post-Alpha!
+        AudioManager.instance.PlayAttackSound();
+
         Attack.attackState = Attack.State.Heavy;
         AttackArea.SetActive(true);
         Invoke("Disable", heavyAttackTime);

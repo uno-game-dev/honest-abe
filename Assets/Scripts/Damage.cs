@@ -34,6 +34,7 @@ public class Damage : MonoBehaviour
 
     public void ExecuteDamage(GameObject toObject)
     {
+
         if (!health)
             health = toObject.GetComponent<Health>();
         if (health)
