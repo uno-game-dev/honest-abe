@@ -585,6 +585,7 @@ GameObject:
   - 114: {fileID: 11405632}
   - 114: {fileID: 11462540}
   - 114: {fileID: 11417292}
+  - 114: {fileID: 11417352}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -1239,6 +1240,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+--- !u!114 &11417352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e631eff86fb93c488df840a98a56a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetFromOrigin: 2
+  maxZ: 45
+  yToZFactor: 2
 --- !u!114 &11451986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1263,15 +1278,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalMovementSpeed: 6
   vericalMovementSpeed: 4
-  simulatedHeight: 0
-  gravityMultiplier: 8
-  jumpStrength: 20
   direction: 1
   velocity: {x: 0, y: 0}
   movementSmoothing: 0.115
-  yToZFactor: 2
-  isGrounded: 0
-  jumpVelocity: 0
+  state: 0
 --- !u!114 &11462748
 MonoBehaviour:
   m_ObjectHideFlags: 1

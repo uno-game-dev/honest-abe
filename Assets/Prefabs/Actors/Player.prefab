@@ -190,6 +190,8 @@ GameObject:
   - 114: {fileID: 11492994}
   - 114: {fileID: 11497008}
   - 114: {fileID: 11469688}
+  - 114: {fileID: 11451924}
+  - 114: {fileID: 11417068}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1096,6 +1098,20 @@ MonoBehaviour:
   damageThresholdSlider: {fileID: 0}
   currentHealthSlider: {fileID: 0}
   amountOfDTSlider: {fileID: 0}
+--- !u!114 &11417068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e631eff86fb93c488df840a98a56a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetFromOrigin: 2
+  maxZ: 45
+  yToZFactor: 2
 --- !u!114 &11418610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1153,6 +1169,29 @@ MonoBehaviour:
   damageThreshold: 0
   currentHealth: 0
   executionPerformed: 0
+--- !u!114 &11451924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af893658bebf327478b83394f7c996e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  animator: {fileID: 0}
+  attack: {fileID: 0}
+  attackArea: {fileID: 0}
+  strength: 0
+  state: 0
+  prepLightAttackTime: 0.2
+  prepHeavyAttackTime: 0.6
+  lightAttackTime: 0.2
+  heavyAttackTime: 0.2
+  finishLightAttackTime: 0.05
+  finishHeavyAttackTime: 0.1
 --- !u!114 &11458566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1231,11 +1270,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422b50cfdba7c064d86b05dc0c7abe8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
   grabArea: {fileID: 0}
-  prepareGrabTime: 0.3
-  performGrabTime: 0.3
-  finishGrabTime: 0.3
+  prepareGrabTime: 0.1
+  performGrabTime: 0.6
+  finishGrabTime: 0.1
+  state: 0
 --- !u!114 &11497008
 MonoBehaviour:
   m_ObjectHideFlags: 1
