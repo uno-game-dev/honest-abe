@@ -49,7 +49,7 @@ public class Perk : MonoBehaviour
     void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        currentPlayerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<Weapon>();
+        currentPlayerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>().weapon;
     }
 
     public void CheckStatus()
@@ -87,7 +87,6 @@ public class Perk : MonoBehaviour
                 break;
         }
 
-        Debug.Log(unlocked);
         if (!unlocked)
             gameObject.SetActive(false);
     }
@@ -135,8 +134,10 @@ public class Perk : MonoBehaviour
     {
         if (type == PerkType.HAT_DTVAMPIRISM)
         {
-            playerHealth.DamageThreshold += (int)currentPlayerWeapon.lightDamage;
             Debug.Log(playerHealth.DamageThreshold);
+            playerHealth.DamageThreshold += (int)(GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>().weapon.lightDamage / 4);
+            Debug.Log(playerHealth.DamageThreshold);
+            Debug.Log("---------------------------");
         }
     }
 

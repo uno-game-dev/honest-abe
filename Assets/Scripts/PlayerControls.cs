@@ -46,12 +46,6 @@ public class PlayerControls : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump"))
             _movement.Jump();
-
-
-        if (Input.GetKeyDown(KeyCode.T)) {
-            PreferenceManager.UpdatePerkStatus(GlobalSettings.hat_dtVampirism_name, 1);
-            PreferenceManager.UpdatePerkStatus(GlobalSettings.axe_fire_name, 0);
-        }
     }
 
     public void ResetHold() {

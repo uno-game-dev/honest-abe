@@ -13,11 +13,12 @@ public class PlayerHealth : Health {
         }
         set
         {
-            damageThreshold += value;
+            damageThreshold += (value - damageThreshold);
             if (damageThreshold > 120)
                 damageThreshold = 120;
         }
     }
+
 	[HideInInspector]
 	public int currentHealth;
 	private float nextHitToPlayer;

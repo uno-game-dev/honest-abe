@@ -57,17 +57,17 @@ public class TerrainSpawner : MonoBehaviour {
 
 	private void SpawnEnemy() {
 
-		int enemyDensity = 0;
+		int enemyDensity = 1;
 		
 		switch (difficulty) {
 			case 1:
-				enemyDensity = rnd.Next(5, 8);
+				//enemyDensity = rnd.Next(5, 8);
 				break;
 			case 2:
-				enemyDensity = rnd.Next(8, 12);
+				//enemyDensity = rnd.Next(8, 12);
 				break;
 			case 3:
-				enemyDensity = rnd.Next(12, 16);
+				//enemyDensity = rnd.Next(12, 16);
 				break;
 		}
 		

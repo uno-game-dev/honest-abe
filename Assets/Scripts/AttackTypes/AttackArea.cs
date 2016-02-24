@@ -44,8 +44,6 @@ public class AttackArea : MonoBehaviour
         }
 		if (transform.parent.gameObject.tag == "Player")
 		{
-            PerkManager.PerformPerkEffects();
-
             if (_attack.attackState == Attack.State.Heavy)
                 GlobalSettings.executionPerformed = true;
 		}
