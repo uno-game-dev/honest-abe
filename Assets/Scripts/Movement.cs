@@ -5,85 +5,36 @@ using System;
 public class Movement : MonoBehaviour
 {
     public enum Direction { Null, Left, Right }
-    public enum State { Null, Idle, Walk, Jump, Fall, Attack, Stun, Settle }
+    public enum State { Null, Idle, Walk, Grabbed, Stunned, Jump, Attack, Grab }
 
     public float horizontalMovementSpeed = 2;
     public float vericalMovementSpeed = 1;
-    public float simulatedHeight = 0;
-    public float gravityMultiplier = 8;
-    public float jumpStrength = 20;
     public Direction direction = Direction.Left;
     public Vector2 velocity;
     public float movementSmoothing = .115f;
-    public float yToZFactor = 2f;
+    public State state;
 
-    [HideInInspector]
-    public bool isGrounded;
-
-    [HideInInspector]
-    public float jumpVelocity;
-
-    private float gravity = -9.81f;
-    private float _previousHeight;
     private BaseCollision _collision;
     private float velocityXSmoothing, velocityYSmoothing;
-    private Attack _attack;
 
     private void Start()
     {
         _collision = GetComponent<BaseCollision>();
-        _attack = GetComponent<Attack>();
         SetDirection(direction, true);
-    }
-
-    private void Update()
-    {
-        simulatedHeight += jumpVelocity * Time.deltaTime;
-        simulatedHeight = Mathf.Clamp(simulatedHeight, 0, simulatedHeight);
-
-        if (jumpVelocity <= 0)
-            CheckGrounded();
-
-        _previousHeight = simulatedHeight;
-
-        jumpVelocity += gravity * gravityMultiplier * Time.deltaTime;
-        jumpVelocity = simulatedHeight <= 0 ? 0 : jumpVelocity;
-
-        ChangeZBasedOnY();
-    }
-
-    private void ChangeZBasedOnY()
-    {
-        Vector3 localPosition = transform.localPosition;
-        localPosition.z = localPosition.y * yToZFactor;
-        transform.localPosition = localPosition;
-    }
-
-    private void CheckGrounded()
-    {
-        if (_previousHeight == simulatedHeight) {
-            isGrounded = true;
-            _collision.collisionLayer = _collision.collisionLayer | (1 << LayerMask.NameToLayer("Environment"));
-        }
-        else
-            isGrounded = false;
-    }
-
-    public void Jump()
-    {
-        if (_attack.attackState == Attack.State.Grab)
-            return;
-
-        if (!isGrounded)
-            return;
-
-        jumpVelocity = jumpStrength;
-        isGrounded = false;
-        _collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Environment"));
+        state = State.Idle;
     }
 
     public void Move(Vector2 deltaPosition)
     {
+        if (state == State.Null || state == State.Grabbed || state == State.Stunned || state == State.Attack)
+            return;
+
+        if (state != State.Jump && state != State.Grab)
+            if (deltaPosition.sqrMagnitude > 0)
+                state = State.Walk;
+            else
+                state = State.Idle;
+
         SetDirection(deltaPosition);
 
         Vector3 velocity = deltaPosition;

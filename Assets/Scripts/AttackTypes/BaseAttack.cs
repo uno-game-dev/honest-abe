@@ -40,7 +40,6 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected virtual void PrepareToLightAttack()
     {
-        attack.attackState = Attack.State.Light;
         strength = Strength.Light;
         state = State.Prepare;
         Invoke("PerformLightAttack", prepLightAttackTime);
@@ -48,7 +47,6 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected virtual void PrepareToHeavyAttack()
     {
-        attack.attackState = Attack.State.Heavy;
         strength = Strength.Heavy;
         state = State.Prepare;
         Invoke("PerformHeavyAttack", prepHeavyAttackTime);
@@ -84,7 +82,7 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected virtual void BackToIdle()
     {
-        attack.attackState = Attack.State.Null;
+        attack.FinishAttack();
         state = State.Null;
         strength = Strength.Null;
     }

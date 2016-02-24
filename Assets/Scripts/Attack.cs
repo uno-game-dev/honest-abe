@@ -20,11 +20,13 @@ public class Attack : MonoBehaviour
     private BaseAttack _attackType;
     private GameObject _grabBox;
     private Grabber _grab;
+    private Movement _movement;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _grab = GetComponent<Grabber>();
+        _movement = GetComponent<Movement>();
 
         CreateOrGetAttackBox();
         CreateOrGetGrabBox();
@@ -139,8 +141,12 @@ public class Attack : MonoBehaviour
         if (attackState != State.Null)
             return;
 
+        if (_movement.state != Movement.State.Idle && _movement.state != Movement.State.Walk)
+            return;
+
         attackState = State.Light;
         _attackType.StartLightAttack();
+        _movement.state = Movement.State.Attack;
     }
 
     public void HeavyAttack()
@@ -148,28 +154,17 @@ public class Attack : MonoBehaviour
         if (attackState != State.Null)
             return;
 
+        if (_movement.state != Movement.State.Idle && _movement.state != Movement.State.Walk)
+            return;
+
         attackState = State.Heavy;
         _attackType.StartHeavyAttack();
+        _movement.state = Movement.State.Attack;
     }
 
-    public void Grab()
+    public void FinishAttack()
     {
-        if (attackState == State.Grab)
-            _grab.Release();
-        else if (attackState != State.Null)
-            return;
-        else
-        {
-            attackState = State.Grab;
-            _grab.StartGrab();
-        }
-    }
-
-    public void Release()
-    {
-        if (attackState != State.Grab)
-            return;
-
         attackState = State.Null;
+        _movement.state = Movement.State.Idle;
     }
 }

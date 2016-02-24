@@ -688,6 +688,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75aa131fe3334c746bc00a8a671e5818, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1838022693 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136070, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+  m_PrefabInternal: {fileID: 1954916909}
+--- !u!114 &1838022694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838022693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af893658bebf327478b83394f7c996e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  animator: {fileID: 0}
+  attack: {fileID: 0}
+  attackArea: {fileID: 0}
+  strength: 0
+  state: 0
+  prepLightAttackTime: 0.2
+  prepHeavyAttackTime: 0.6
+  lightAttackTime: 0.2
+  heavyAttackTime: 0.2
+  finishLightAttackTime: 0.05
+  finishHeavyAttackTime: 0.1
 --- !u!1 &1848461375
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +871,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14.35
+      value: -12.29
       objectReference: {fileID: 0}
     - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
       propertyPath: m_LocalPosition.y
@@ -872,7 +899,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
       propertyPath: damageThresholdSlider
@@ -886,6 +913,18 @@ Prefab:
       propertyPath: amountOfDTSlider
       value: 
       objectReference: {fileID: 1780418089}
+    - target: {fileID: 11492994, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: prepareGrabTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492994, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: performGrabTime
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492994, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: finishGrabTime
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
   m_IsPrefabParent: 0

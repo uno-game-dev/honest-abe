@@ -13,6 +13,7 @@ public class Grabbable : MonoBehaviour
     private BaseCollision _collision;
     private GameObject _grabbedBy;
     private Transform _previousParent;
+    private int _myLayer;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class Grabbable : MonoBehaviour
         _movementAI = GetComponent<EnemyFollow>();
         _attackAI = GetComponent<InfantryAI>();
         _collision = GetComponent<BaseCollision>();
+        _myLayer = gameObject.layer;
     }
 
     private void Update()
@@ -38,6 +40,9 @@ public class Grabbable : MonoBehaviour
     private void OnDisable()
     {
         _collision.OnCollision -= OnCollision;
+
+        if (_grabbedBy)
+            _grabbedBy.GetComponent<Grabber>().Release();
     }
 
     private void OnCollision(RaycastHit2D hit)
@@ -52,7 +57,9 @@ public class Grabbable : MonoBehaviour
             return;
 
         state = State.Grabbed;
-        _animator.SetBool("Grabbed", true);
+        _animator.SetTrigger("Grabbed");
+        _movement.state = Movement.State.Grabbed;
+        _movement.Move(Vector2.zero);
         _movement.SetDirection(grabbedBy.GetComponent<Movement>().direction, true);
         _movementAI.enabled = false;
         _attackAI.enabled = false;
@@ -62,6 +69,9 @@ public class Grabbable : MonoBehaviour
         _previousParent = transform.parent;
         transform.parent = grabbedBy.transform;
         _grabbedBy = grabbedBy;
+
+        gameObject.layer = grabbedBy.layer;
+        GetComponent<BaseCollision>().collisionLayer = GetComponent<BaseCollision>().collisionLayer | (1 << LayerMask.NameToLayer("Enemy"));
     }
 
     public void Release()
@@ -70,18 +80,15 @@ public class Grabbable : MonoBehaviour
             return;
 
         state = State.Null;
-        _animator.SetBool("Grabbed", false);
         _movementAI.enabled = true;
         _attackAI.enabled = true;
         transform.parent = _previousParent;
+        gameObject.layer = _myLayer;
+        GetComponent<BaseCollision>().collisionLayer ^= (1 << LayerMask.NameToLayer("Enemy"));
 
         if (_grabbedBy)
             _movement.SetDirection(_grabbedBy.GetComponent<Movement>().direction);
         _movement.FlipDirection();
-
-        Grabber grabber;
-        if (grabber = GetComponent<Grabber>())
-            grabber.Release();
 
         _grabbedBy = null;
     }
