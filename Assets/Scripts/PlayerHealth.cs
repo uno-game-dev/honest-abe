@@ -95,8 +95,11 @@ public class PlayerHealth : Health {
 			}   else {
 				currentHealth = 100;
 				healthSlider.UpdateCurrentHealth(currentHealth);
-				damageThreshold = 100;
-				healthSlider.UpdateDamageThreshold(damageThreshold);
+				//Only bring the DT = 100 if it is less than 100. If it's above then just leave the same
+				if (damageThreshold < 100) {
+					damageThreshold = 100;
+					healthSlider.UpdateDamageThreshold (damageThreshold);
+				}
 			}
 		}
 	}
@@ -145,6 +148,7 @@ public class PlayerHealth : Health {
 
 					//Reset execution check
 					executionPerformed = false;
+					GlobalSettings.executionPerformed = false;
 				}
 			}
 		}else {
@@ -165,17 +169,19 @@ public class PlayerHealth : Health {
 
 				//Reset execution check
 				executionPerformed = false;
+				GlobalSettings.executionPerformed = false;
 			}
 		}
 	}
 
 	void Death(){
 		isDead = true;
+		GameManager.lost = true;
 		Debug.Log ("Abe is dead :( ");
 		//Disable PlayerMotor script 
 		gameObject.GetComponent<PlayerMotor> ().enabled = !enabled;
-		//Set animation for dead player
 		//Turn off any attack effects
-		//Alert the player that they died. Ask the player to play again
+		gameObject.GetComponent<PlayerControls> ().enabled = !enabled;
+		//Set animation for dead player
 	}
 }
