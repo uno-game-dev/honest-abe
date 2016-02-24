@@ -62,7 +62,17 @@ public class UIManager : MonoBehaviour {
 
 		if (displayWin) {
 			winUI.SetActive (true);
+			StartCoroutine (LastKillSlowMo());
 		}
+	}
+
+	IEnumerator LastKillSlowMo(){
+		if (slowMotion) {
+			Time.timeScale = 0.2f; //Slow-mo for last kill
+			yield return new WaitForSeconds (1.4f);
+			slowMotion = false;
+		}
+		Time.timeScale = 0;
 	}
 
 	public void Resume(){
