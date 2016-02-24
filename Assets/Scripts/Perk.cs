@@ -70,6 +70,7 @@ public class Perk : MonoBehaviour
 
     public void OnCollision(GameObject other)
     {
+        Debug.Log("picked up perk");
         switch (category)
         {
             case PerkCategory.AXE:
@@ -85,6 +86,7 @@ public class Perk : MonoBehaviour
                 PerkManager.TrinketPerkEffect += TrinketEffect;
                 break;
         }
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void AxeEffect()

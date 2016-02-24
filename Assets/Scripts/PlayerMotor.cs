@@ -51,11 +51,11 @@ public class PlayerMotor : MonoBehaviour
 
             if (controls.heldComplete && justCollided && controls.justClicked) {
                 GetComponent<Attack>().SetWeapon(hit.collider.gameObject.GetComponent<Weapon>());
-                //hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
 
-        if (hit.collider.tag == "Perk")
+        else if (hit.collider.tag == "Perk")
         {
             if (!justCollided)
             {

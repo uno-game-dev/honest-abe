@@ -7,6 +7,7 @@ public class AttackArea : MonoBehaviour
     private BaseCollision _collision;
     private ChainAttack _chainAttack;
     private bool _updateChainAttack;
+    private bool alreadyCollided;
 
     private void Awake()
     {
@@ -27,30 +28,28 @@ public class AttackArea : MonoBehaviour
         if (!hit && _chainAttack)
             _chainAttack.Miss();
         hit = null;
+        alreadyCollided = false;
     }
 
     private void Update()
     {
         _collision.Tick();
-
-        if (hit != null)
-        {
-            if (transform.parent.gameObject.tag == "Player")
-            {
-                //PerkManager.PerformPerkEffects();
-                Debug.Log("player");
-            }
-            hit = null;
-        }
     }
 
     private void OnCollision(RaycastHit2D hit)
     {
-        if (_updateChainAttack && _chainAttack)
-        {
-            _chainAttack.Hit();
-            _updateChainAttack = false;
+        if (!alreadyCollided) {
+            if (transform.parent.gameObject.tag == "Player") {
+                Debug.Log("perked");
+                PerkManager.PerformPerkEffects();
+            }
+
+            if (_updateChainAttack && _chainAttack) {
+                _chainAttack.Hit();
+                _updateChainAttack = false;
+            }
+            this.hit = hit.collider.gameObject;
+            alreadyCollided = true;
         }
-        this.hit = hit.collider.gameObject;
     }
 }
