@@ -30,6 +30,9 @@ public class Health : MonoBehaviour {
             //If the hit would kill the gameObject
             if ((tempHealth -= damage) <= 0) {
 				health = 0;
+				if(gameObject.tag == "Boss"){
+					GameManager.win = true; // TESTING for Win game in alpha
+				}	
 				UpdateHealth ();
 				Destroy (gameObject);
 			} else {
