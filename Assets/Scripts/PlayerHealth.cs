@@ -11,11 +11,13 @@ public class PlayerHealth : Health {
 	private float updateHealthSliderTime = 2;
 	private bool isDead;
 	[HideInInspector]
-	public bool executionPerformed = false;
+	public bool executionPerformed;
 	private HealthSlider healthSlider;
 
 	// Use this for initialization
 	void Start () {
+		GlobalSettings.executionPerformed = false;
+		executionPerformed = false;
 		damageThreshold = 100;
 		currentHealth = 100;
 		healthSlider = GetComponent<HealthSlider>();
@@ -39,8 +41,11 @@ public class PlayerHealth : Health {
 		if (Input.GetKeyDown(KeyCode.J)) {
 			Debug.Log ("HEALTH PICKUP!!!");
 			Increase (5);
+		}
+		if (Input.GetKeyDown(KeyCode.D)) {
+			Debug.Log ("Increased DT!!!");
+			IncreaseDT(10);
 		}**/
-
 		if(!isDead){
 			//Decreases the timer to know when to update the damageSlider
 			updateHealthSliderTime -= Time.deltaTime;
@@ -103,6 +108,20 @@ public class PlayerHealth : Health {
 			}
 		}
 	}
+
+	public void IncreaseDT(int amount){
+		//Temp variable for damageThreshold
+		int tempDamageThreshold = damageThreshold;
+		tempDamageThreshold += amount;
+
+		if (tempDamageThreshold <= 120) {
+			damageThreshold += amount;
+			healthSlider.UpdateDamageThreshold (damageThreshold);
+		} else {
+			damageThreshold = 120;
+			healthSlider.UpdateDamageThreshold (damageThreshold);
+		}
+	} 
 
 	public override void Decrease(int damage, float damageRate){
 		if (Time.time > nextHitToPlayer) {
