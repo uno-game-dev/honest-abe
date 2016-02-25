@@ -3,22 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerHealth : Health {
-
-    private int damageThreshold;
-    public int DamageThreshold
-    {
-        get
-        {
-            return damageThreshold;
-        }
-        set
-        {
-            damageThreshold += (value - damageThreshold);
-            if (damageThreshold > 120)
-                damageThreshold = 120;
-        }
-    }
-
+	[HideInInspector]
+	public int damageThreshold;
 	[HideInInspector]
 	public int currentHealth;
 	private float nextHitToPlayer;

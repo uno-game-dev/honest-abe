@@ -134,10 +134,8 @@ public class Perk : MonoBehaviour
     {
         if (type == PerkType.HAT_DTVAMPIRISM)
         {
-            Debug.Log(playerHealth.DamageThreshold);
-            playerHealth.DamageThreshold += (int)(GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>().weapon.lightDamage / 4);
-            Debug.Log(playerHealth.DamageThreshold);
-            Debug.Log("---------------------------");
+            playerHealth.IncreaseDT((int)(currentPlayerWeapon.lightDamage / 4));
+            Debug.Log("perk hit");
         }
     }
 
