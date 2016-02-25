@@ -47,6 +47,7 @@ public class Throw : MonoBehaviour
         Projectile projectile = _attack.weapon.gameObject.AddComponent<Projectile>();
         SetState(State.Perform);
         _attack.weapon.transform.rotation = Quaternion.identity;
+        _attack.SetWeapon(GetComponent<Weapon>());
         Invoke("FinishThrow", performThrowTime);
     }
 

@@ -10,7 +10,9 @@ public class MeleeAttack : BaseAttack
     {
         _previousAnimationSpeed = animator.speed;
         float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
-        animator.speed = animator.GetAnimationClip("Punch").length / duration;
+        AnimationClip clip = animator.GetAnimationClip("Punch");
+        if (!clip) clip = animator.GetAnimationClip("LightSwipe");
+        animator.speed = clip.length / duration;
         animator.SetTrigger("Light Punch");
         base.PrepareToLightAttack();
     }
@@ -25,7 +27,9 @@ public class MeleeAttack : BaseAttack
     {
         _previousAnimationSpeed = animator.speed;
         float duration = prepHeavyAttackTime + heavyAttackTime+ finishHeavyAttackTime;
-        animator.speed = animator.GetAnimationClip("Punch").length / duration;
+        AnimationClip clip = animator.GetAnimationClip("Punch");
+        if (!clip) clip = animator.GetAnimationClip("HeavySwipe");
+        animator.speed = clip.length / duration;
         animator.SetTrigger("Heavy Punch");
         base.PrepareToHeavyAttack();
     }

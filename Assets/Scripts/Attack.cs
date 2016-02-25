@@ -36,7 +36,7 @@ public class Attack : MonoBehaviour
         if (_leftHand == null) _leftHand = this.FindContainsInChildren("LArmHand");
         if (_rightHand == null) _rightHand = this.FindContainsInChildren("RArmHand");
 
-        Weapon weapon = this.GetOrAddComponent<Weapon>();
+        if (!weapon) weapon = this.GetOrAddComponent<Weapon>();
         SetWeapon(weapon);
 
         if (_grab)
@@ -49,8 +49,8 @@ public class Attack : MonoBehaviour
         if (_attackBox)
             return;
 
-        _attackBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
-        // _attackBox = new GameObject(); // Use this one when done debugging
+        //_attackBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
+        _attackBox = new GameObject(); // Use this one when done debugging
         _attackBox.name = "Attack Box";
         _attackBox.transform.parent = transform;
         _attackBox.transform.localPosition = new Vector3(1f, 0.5f, 0f);
@@ -69,8 +69,8 @@ public class Attack : MonoBehaviour
         if (_grabBox)
             return;
 
-        _grabBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
-        //_grabBox = new GameObject(); // Use this one when done debugging
+        //_grabBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
+        _grabBox = new GameObject(); // Use this one when done debugging
         _grabBox.name = "Grab Area";
         _grabBox.transform.parent = transform;
         _grabBox.transform.localPosition = new Vector3(1f, 0.5f, 0f);
