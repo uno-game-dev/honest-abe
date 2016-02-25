@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackArea : MonoBehaviour
@@ -8,6 +9,7 @@ public class AttackArea : MonoBehaviour
     private ChainAttack _chainAttack;
 	private Attack _attack;
     private bool _updateChainAttack;
+    private List<Collider2D> _colliders = new List<Collider2D>();
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class AttackArea : MonoBehaviour
         if (!hit && _chainAttack)
             _chainAttack.Miss();
         hit = null;
+        _colliders.Clear();
     }
 
     private void Update()
@@ -37,6 +40,11 @@ public class AttackArea : MonoBehaviour
 
     private void OnCollision(RaycastHit2D hit)
     {
+        if (_colliders.Contains(hit.collider))
+            return;
+
+        _colliders.Add(hit.collider);
+
         if (_updateChainAttack && _chainAttack)
         {
             _chainAttack.Hit();

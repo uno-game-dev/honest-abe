@@ -6,77 +6,37 @@ using UnityEngine;
 
 public class MeleeAttack : BaseAttack
 {
-    public float prepLightAttackTime = 0.3f;
-    public float prepHeavyAttackTime = 0.6f;
-    public float lightAttackTime = 0.2f;
-    public float heavyAttackTime = 0.2f;
-
-    public override void AddAttack(AttackStrength strength)
+    protected override void PrepareToLightAttack()
     {
-        if (input.Count >= maxQueueSize)
-            return;
-
-        input.Enqueue(strength);
-        if (Attack.attackState == Attack.State.Idle)
-            ProcessNextAttack();
+        _previousAnimationSpeed = animator.speed;
+        float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
+        AnimationClip clip = animator.GetAnimationClip("Punch");
+        if (!clip) clip = animator.GetAnimationClip("LightSwipe");
+        animator.speed = clip.length / duration;
+        animator.SetTrigger("Light Punch");
+        base.PrepareToLightAttack();
     }
 
-    private void ProcessNextAttack()
+    protected override void FinishLightAttack()
     {
-        if (input.Count <= 0)
-            return;
-
-        AttackStrength strength = input.Dequeue();
-        if (strength == AttackStrength.Light)
-        {
-            Animator.SetTrigger("Light Punch");
-            PrepToLightAttack();
-        }
-        else
-        {
-            Animator.SetTrigger("Heavy Punch");
-            PrepToHeavyAttack();
-        }
+        animator.speed = _previousAnimationSpeed;
+        base.FinishLightAttack();
     }
 
-    private void PrepToLightAttack()
+    protected override void PrepareToHeavyAttack()
     {
-        Attack.attackState = Attack.State.Prep;
-        AttackArea.transform.localPosition = Weapon.attackOffset;
-        AttackArea.transform.localScale = Weapon.attackSize;
-        Invoke("PerformLightAttack", prepLightAttackTime);
+        _previousAnimationSpeed = animator.speed;
+        float duration = prepHeavyAttackTime + heavyAttackTime+ finishHeavyAttackTime;
+        AnimationClip clip = animator.GetAnimationClip("Punch");
+        if (!clip) clip = animator.GetAnimationClip("HeavySwipe");
+        animator.speed = clip.length / duration;
+        animator.SetTrigger("Heavy Punch");
+        base.PrepareToHeavyAttack();
     }
 
-    private void PerformLightAttack()
+    protected override void FinishHeavyAttack()
     {
-        Attack.attackState = Attack.State.Light;
-        AttackArea.SetActive(true);
-        Invoke("Disable", lightAttackTime);
-    }
-
-    private void PrepToHeavyAttack()
-    {
-        Attack.attackState = Attack.State.Prep;
-        Invoke("PerformHeavyAttack", prepHeavyAttackTime);
-    }
-
-    private void PerformHeavyAttack()
-    {
-        Attack.attackState = Attack.State.Heavy;
-        AttackArea.SetActive(true);
-        Invoke("Disable", heavyAttackTime);
-    }
-
-    private void Disable()
-    {
-        if (AttackArea.GetComponent<AttackArea>().hit == null)
-            input.Clear();
-
-        AttackArea.SetActive(false);
-
-        if (input.Count > 0)
-            ProcessNextAttack();
-        else
-            Attack.attackState = Attack.State.Idle;
+        animator.speed = _previousAnimationSpeed;
+        base.FinishHeavyAttack();
     }
 }

@@ -6,75 +6,29 @@ using UnityEngine;
 
 class SwingAttack : BaseAttack
 {
-    public float prepLightAttackTime = 0.2f;
-    public float prepHeavyAttackTime = 0.9f;
-    public float lightAttackTime = 0.2f;
-    public float heavyAttackTime = 0.2f;
-
-    public override void AddAttack(AttackStrength strength)
+    protected override void PrepareToLightAttack()
     {
-        if (input.Count >= maxQueueSize)
-            return;
+        _previousAnimationSpeed = animator.speed;
+        float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
+        animator.speed = animator.GetAnimationClip("standing_melee_attack_horizontal").length / duration;
 
-        input.Enqueue(strength);
-        if (Attack.attackState == Attack.State.Idle)
-            ProcessNextAttack();
+        animator.SetTrigger("Light Swing");
+        base.PrepareToLightAttack();
     }
 
-    private void ProcessNextAttack()
+    protected override void PrepareToHeavyAttack()
     {
-        if (input.Count <= 0)
-            return;
+        _previousAnimationSpeed = animator.speed;
+        float duration = prepHeavyAttackTime + heavyAttackTime + finishHeavyAttackTime;
+        animator.speed = animator.GetAnimationClip("standing_melee_attack_360_high").length / duration;
 
-        AttackStrength strength = input.Dequeue();
-        if (strength == AttackStrength.Light)
-        {
-            Animator.SetTrigger("Light Swing");
-            PrepToLightAttack();
-        }
-        else
-        {
-            Animator.SetTrigger("Heavy Swing");
-            PrepToHeavyAttack();
-        }
+        animator.SetTrigger("Heavy Swing");
+        base.PrepareToHeavyAttack();
     }
 
-    private void PrepToLightAttack()
+    protected override void BackToIdle()
     {
-        Attack.attackState = Attack.State.Prep;
-        AttackArea.transform.localPosition = Weapon.attackOffset;
-        AttackArea.transform.localScale = Weapon.attackSize;
-        Invoke("PerformLightAttack", prepLightAttackTime);
-    }
-
-    private void PerformLightAttack()
-    {
-        Attack.attackState = Attack.State.Light;
-        AttackArea.SetActive(true);
-        Invoke("Disable", lightAttackTime);
-    }
-
-    private void PrepToHeavyAttack()
-    {
-        Attack.attackState = Attack.State.Prep;
-        Invoke("PerformHeavyAttack", prepHeavyAttackTime);
-    }
-
-    private void PerformHeavyAttack()
-    {
-        Attack.attackState = Attack.State.Heavy;
-        AttackArea.SetActive(true);
-        Invoke("Disable", heavyAttackTime);
-    }
-
-    private void Disable()
-    {
-        if (input.Count > 0)
-            ProcessNextAttack();
-        else
-        {
-            Attack.attackState = Attack.State.Idle;
-            AttackArea.SetActive(false);
-        }
+        animator.speed = _previousAnimationSpeed;
+        base.BackToIdle();
     }
 }
