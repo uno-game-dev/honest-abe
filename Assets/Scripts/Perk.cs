@@ -128,9 +128,7 @@ public class Perk : MonoBehaviour
     {
         if (type == PerkType.AXE_DTVAMPIRISM)
         {
-            Debug.Log(playerHealth.damageThreshold);
             playerHealth.IncreaseDT((int)(currentPlayerWeapon.lightDamage / 4));
-            Debug.Log(playerHealth.damageThreshold);
         }
     }
 
