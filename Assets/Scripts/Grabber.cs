@@ -60,7 +60,7 @@ public class Grabber : MonoBehaviour
     {
         float duration = prepareGrabTime + performGrabTime + finishGrabTime;
         _previousAnimationSpeed = _animator.speed;
-        _animator.speed = _animator.GetAnimationClip("standing_block_idle").length / duration;
+        _animator.speed = _animator.GetAnimationClip("Start Grab").length / duration;
         _characterState.SetState(CharacterState.State.Grab);
         SetState(State.Prepare);
         Invoke("PerformGrab", prepareGrabTime);

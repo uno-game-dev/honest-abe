@@ -59,7 +59,7 @@ public class Grabbable : MonoBehaviour
             return;
 
         state = State.Grabbed;
-        _animator.SetTrigger("Grabbed");
+        _animator.SetBool("Grabbed", true);
         _characterState.SetState(CharacterState.State.Grabbed);
         _movement.Move(Vector2.zero);
         _movement.SetDirection(grabbedBy.GetComponent<Movement>().direction, true);
@@ -82,6 +82,7 @@ public class Grabbable : MonoBehaviour
             return;
 
         state = State.Null;
+        _animator.SetBool("Grabbed", false);
         _characterState.SetState(CharacterState.State.Idle);
         _movementAI.enabled = true;
         _attackAI.enabled = true;
