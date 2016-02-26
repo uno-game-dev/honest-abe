@@ -44,15 +44,16 @@ GameObject:
   - 114: {fileID: 11413938}
   - 95: {fileID: 9544236}
   - 114: {fileID: 11450836}
-  - 114: {fileID: 11431614}
   - 114: {fileID: 11494644}
   - 114: {fileID: 11479578}
-  - 114: {fileID: 11438742}
   - 114: {fileID: 11469500}
   - 114: {fileID: 11499116}
+  - 114: {fileID: 11474734}
+  - 114: {fileID: 11471048}
+  - 114: {fileID: 11491776}
   m_Layer: 11
   m_Name: Bear
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -976,35 +977,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   _collider: {fileID: 0}
---- !u!114 &11431614
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85308c30f855c6e4ca70fe04d49612e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetType: 0
-  target: {fileID: 0}
-  stopDistanceX: 2
-  stopDistanceY: 0.1
---- !u!114 &11438742
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c20c5846608bd9459b936b86f288ae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementProximityDistance: 12
-  attackProximityDistanceX: 3
-  attackProximityDistanceY: 1
 --- !u!114 &11450836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1030,6 +1002,33 @@ MonoBehaviour:
   attackState: 0
   hand: 1
   weapon: {fileID: 0}
+--- !u!114 &11471048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70415d55f18f848fdab199c0a89fa6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackProximityDistanceX: 2
+  attackProximityDistanceY: 1
+  stopDistanceX: 1
+  stopDistanceY: 0
+--- !u!114 &11474734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
 --- !u!114 &11479578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1046,6 +1045,18 @@ MonoBehaviour:
   direction: 1
   velocity: {x: 0, y: 0}
   movementSmoothing: 0.115
+  state: 0
+--- !u!114 &11491776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c0fafce32656b4d855452702bc3ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   state: 0
 --- !u!114 &11494644
 MonoBehaviour:
@@ -1186,6 +1197,14 @@ Prefab:
       propertyPath: bloodSplatter
       value: 
       objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112324}
