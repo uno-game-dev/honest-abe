@@ -3,12 +3,19 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
+    public static bool perkChosen;
 	public static bool lost;
 	public static bool win;
 
+    private CameraFollow cameraFollow;
+
 	void Start(){
+        perkChosen = false;
 		lost = false;
 		win = false;
+
+        cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        if (!perkChosen) cameraFollow.lockRightEdge = true;
 	}
 
 	void Update(){

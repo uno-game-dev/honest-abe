@@ -77,7 +77,7 @@ public class PlayerMotor : MonoBehaviour
                 justCollided = true;
             }
 
-            if (justCollided)
+            if (justCollided && !GameManager.perkChosen)
             {
                 uiManager.perkText.enabled = true;
                 uiManager.perkText.text = hit.collider.GetComponent<Perk>().perkDesc;
@@ -86,6 +86,12 @@ public class PlayerMotor : MonoBehaviour
             if (controls.heldComplete && justCollided && controls.justClicked)
             {
                 hit.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+
+                if (!GameManager.perkChosen) {
+                    GameManager.perkChosen = true;
+                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
+                    uiManager.perkText.enabled = false;
+                }
             }
         }
 
@@ -97,7 +103,7 @@ public class PlayerMotor : MonoBehaviour
                 justCollided = true;
             }
 
-            if (justCollided)
+            if (justCollided && !GameManager.perkChosen)
             {
                 uiManager.perkText.enabled = true;
                 uiManager.perkText.text = hit.collider.GetComponent<Perk>().perkDesc;
@@ -108,6 +114,12 @@ public class PlayerMotor : MonoBehaviour
                 playerAttack.SetWeapon(hit.collider.gameObject.GetComponent<Weapon>());
                 hit.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 playerAttack.emptyHanded = false;
+
+                if (!GameManager.perkChosen) {
+                    GameManager.perkChosen = true;
+                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
+                    uiManager.perkText.enabled = false;
+                }
             }
         }
     }
