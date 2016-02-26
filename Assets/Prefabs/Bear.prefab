@@ -51,6 +51,7 @@ GameObject:
   - 114: {fileID: 11474734}
   - 114: {fileID: 11471048}
   - 114: {fileID: 11491776}
+  - 114: {fileID: 11416946}
   m_Layer: 11
   m_Name: Bear
   m_TagString: Boss
@@ -591,8 +592,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10, y: 0.5, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 411406}
   m_RootOrder: 0
@@ -977,6 +978,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   _collider: {fileID: 0}
+--- !u!114 &11416946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 0
+  attackSize: {x: 5, y: 5}
+  attackOffset: {x: 1, y: 0.5}
+  heldOffset: {x: 0, y: 0, z: 0}
+  heldOrientation: {x: 0, y: 0, z: 0}
+  lightDamage: 20
+  heavyDamage: 30
 --- !u!114 &11450836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1013,8 +1032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70415d55f18f848fdab199c0a89fa6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackProximityDistanceX: 2
-  attackProximityDistanceY: 1
   stopDistanceX: 1
   stopDistanceY: 0
 --- !u!114 &11474734
@@ -1028,7 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 75
 --- !u!114 &11479578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1199,11 +1216,47 @@ Prefab:
       objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
     - target: {fileID: 0}
       propertyPath: health
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heavyDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: horizontalMovementSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

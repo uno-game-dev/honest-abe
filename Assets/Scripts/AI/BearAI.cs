@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BearAI : MonoBehaviour
 {
-	public float attackProximityDistanceX = 2;
-	public float attackProximityDistanceY = 1;
+	private float attackProximityDistanceX = 5;
+	private float attackProximityDistanceY = 5;
 
 	private float movementProximityDistance = 30;
 	private GameObject _player;
@@ -100,12 +100,12 @@ public class BearAI : MonoBehaviour
 					if (Random.value > 0.25) {
 						_attack.LightAttack ();
 						swinging = true;
-						yield return new WaitForSeconds(0.5f);
+						yield return new WaitForSeconds(1.5f);
 						swinging = false;
 					} else {
 						_attack.HeavyAttack ();
 						swinging = true;
-						yield return new WaitForSeconds(1.5f);
+						yield return new WaitForSeconds(2.5f);
 						swinging = false;
 					}
 				}
