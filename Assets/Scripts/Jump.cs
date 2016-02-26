@@ -20,12 +20,14 @@ public class Jump : MonoBehaviour
     private Movement _movement;
     private Animator _animator;
     private float _previousAnimationSpeed;
+    private CharacterState _characterState;
 
     private void Start()
     {
         _collision = GetComponent<BaseCollision>();
         _movement = GetComponent<Movement>();
         _animator = GetComponent<Animator>();
+        _characterState = GetComponent<CharacterState>();
         SetState(State.Null);
     }
 
@@ -57,7 +59,7 @@ public class Jump : MonoBehaviour
 
     public void StartJump()
     {
-        if (_movement.state != Movement.State.Idle && _movement.state != Movement.State.Walk)
+        if (!_characterState.CanJump())
             return;
 
         if (!isGrounded)
@@ -68,14 +70,14 @@ public class Jump : MonoBehaviour
         _previousAnimationSpeed = _animator.speed;
         _animator.speed = _animator.GetAnimationClip("standing_jump-start").length / startJumpDuration;
 
-        _movement.state = Movement.State.Null;
+        _characterState.SetState(CharacterState.State.Null);
         Invoke("PerformJump", startJumpDuration);
     }
 
     private void PerformJump()
     {
         SetState(State.JumpUp);
-        _movement.state = Movement.State.Jump;
+        _characterState.SetState(CharacterState.State.Jump);
         _animator.speed = _previousAnimationSpeed;
         jumpVelocity = jumpStrength;
         isGrounded = false;
@@ -90,7 +92,7 @@ public class Jump : MonoBehaviour
         _previousAnimationSpeed = _animator.speed;
         _animator.speed = _animator.GetAnimationClip("standing_jump-land").length / landDuration;
 
-        _movement.state = Movement.State.Null;
+        _characterState.SetState(CharacterState.State.Null);
         isGrounded = true;
         _collision.collisionLayer = _collision.collisionLayer | (1 << LayerMask.NameToLayer("Environment"));
         _collision.collisionLayer = _collision.collisionLayer | (1 << LayerMask.NameToLayer("Enemy"));
@@ -101,8 +103,7 @@ public class Jump : MonoBehaviour
     {
         SetState(State.Null);
         _animator.speed = _previousAnimationSpeed;
-        if (_movement.state == Movement.State.Null)
-            _movement.state = Movement.State.Idle;
+        _characterState.SetState(CharacterState.State.Idle);
     }
 
     private void SetState(State newState)

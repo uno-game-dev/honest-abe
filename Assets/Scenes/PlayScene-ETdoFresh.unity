@@ -324,6 +324,60 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcaa54cf6eefeff43ac79ffbe62edee0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &905107641
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -14.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: damageThresholdSlider
+      value: 
+      objectReference: {fileID: 1780418087}
+    - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: currentHealthSlider
+      value: 
+      objectReference: {fileID: 1780418088}
+    - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: amountOfDTSlider
+      value: 
+      objectReference: {fileID: 1780418089}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1216769665
 Prefab:
   m_ObjectHideFlags: 0
@@ -408,6 +462,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bb39e4b7c7d6c142a7d9f82f77c67f3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1497890330 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136070, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+  m_PrefabInternal: {fileID: 905107641}
+--- !u!114 &1497890351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1497890330}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5c4da3254bb26429192148a7aa55a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  stunDuration: 0.5
 --- !u!1001 &1527065157
 Prefab:
   m_ObjectHideFlags: 0
@@ -834,62 +905,4 @@ Prefab:
       objectReference: {fileID: 172837489}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87e974aa6c44041ad86e0cee34e63776, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1954916909
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -14.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: damageThresholdSlider
-      value: 
-      objectReference: {fileID: 1780418087}
-    - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: currentHealthSlider
-      value: 
-      objectReference: {fileID: 1780418088}
-    - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: amountOfDTSlider
-      value: 
-      objectReference: {fileID: 1780418089}
-    - target: {fileID: 2308372, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
   m_IsPrefabParent: 0

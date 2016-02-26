@@ -18,18 +18,14 @@ public class Attack : MonoBehaviour
     private GameObject _leftHand;
     private GameObject _rightHand;
     private BaseAttack _attackType;
-    private GameObject _grabBox;
-    private Grabber _grab;
-    private Movement _movement;
+    private CharacterState _characterState;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _grab = GetComponent<Grabber>();
-        _movement = GetComponent<Movement>();
+        _characterState = GetComponent<CharacterState>();
 
         CreateOrGetAttackBox();
-        CreateOrGetGrabBox();
 
         _leftHand = this.FindContainsInChildren("LArmPalm");
         _rightHand = this.FindContainsInChildren("RArmPalm");
@@ -38,9 +34,6 @@ public class Attack : MonoBehaviour
 
         if (!weapon) weapon = this.GetOrAddComponent<Weapon>();
         SetWeapon(weapon);
-
-        if (_grab)
-            _grab.grabArea = _grabBox;
     }
 
     private void CreateOrGetAttackBox()
@@ -61,25 +54,6 @@ public class Attack : MonoBehaviour
         _attackBox.AddComponent<BaseCollision>().collisionLayer = LayerMask.GetMask("Enemy");
         _attackBox.AddComponent<AttackArea>();
         _attackBox.SetActive(false);
-    }
-
-    private void CreateOrGetGrabBox()
-    {
-        _grabBox = this.FindInChildren("Grab Area");
-        if (_grabBox)
-            return;
-
-        //_grabBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
-        _grabBox = new GameObject(); // Use this one when done debugging
-        _grabBox.name = "Grab Area";
-        _grabBox.transform.parent = transform;
-        _grabBox.transform.localPosition = new Vector3(1f, 0.5f, 0f);
-        _grabBox.tag = "Grab";
-        _grabBox.layer = gameObject.layer;
-        DestroyImmediate(_grabBox.GetComponent<MeshCollider>());
-        _grabBox.AddComponent<BoxCollider2D>().isTrigger = true;
-        _grabBox.AddComponent<BaseCollision>().collisionLayer = LayerMask.GetMask("Enemy");
-        _grabBox.SetActive(false);
     }
 
     public void SetWeapon(Weapon weapon)//, Hand hand = Hand.Right)
@@ -141,12 +115,13 @@ public class Attack : MonoBehaviour
         if (attackState != State.Null)
             return;
 
-        if (_movement.state != Movement.State.Idle && _movement.state != Movement.State.Walk)
+        if (!_characterState.CanAttack())
             return;
+
+        _characterState.SetState(CharacterState.State.Attack);
 
         attackState = State.Light;
         _attackType.StartLightAttack();
-        _movement.state = Movement.State.Attack;
     }
 
     public void HeavyAttack()
@@ -154,17 +129,18 @@ public class Attack : MonoBehaviour
         if (attackState != State.Null)
             return;
 
-        if (_movement.state != Movement.State.Idle && _movement.state != Movement.State.Walk)
+        if (!_characterState.CanAttack())
             return;
+
+        _characterState.SetState(CharacterState.State.Attack);
 
         attackState = State.Heavy;
         _attackType.StartHeavyAttack();
-        _movement.state = Movement.State.Attack;
     }
 
     public void FinishAttack()
     {
         attackState = State.Null;
-        _movement.state = Movement.State.Idle;
+        _characterState.SetState(CharacterState.State.Idle);
     }
 }

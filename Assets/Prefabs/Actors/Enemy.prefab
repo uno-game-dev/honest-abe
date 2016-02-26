@@ -644,8 +644,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 493242}
   - 61: {fileID: 6178680}
-  - 114: {fileID: 11401122}
   - 95: {fileID: 9508360}
+  - 114: {fileID: 11447112}
+  - 114: {fileID: 11401122}
   - 114: {fileID: 11451986}
   - 114: {fileID: 11493848}
   - 114: {fileID: 11462748}
@@ -656,6 +657,7 @@ GameObject:
   - 114: {fileID: 11417292}
   - 114: {fileID: 11417352}
   - 114: {fileID: 11448730}
+  - 114: {fileID: 11497228}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -1517,6 +1519,18 @@ MonoBehaviour:
   offsetFromOrigin: 2
   maxZ: 45
   yToZFactor: 2
+--- !u!114 &11447112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c0fafce32656b4d855452702bc3ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!114 &11447796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1630,6 +1644,19 @@ MonoBehaviour:
   target: {fileID: 0}
   stopDistanceX: 2
   stopDistanceY: 0.1
+--- !u!114 &11497228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5c4da3254bb26429192148a7aa55a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  stunDuration: 0.92
 --- !u!114 &11497564
 MonoBehaviour:
   m_ObjectHideFlags: 1

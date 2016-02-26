@@ -175,10 +175,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481366}
-  - 114: {fileID: 11422054}
-  - 114: {fileID: 11418610}
   - 61: {fileID: 6189650}
   - 95: {fileID: 9580994}
+  - 114: {fileID: 11401316}
+  - 114: {fileID: 11422054}
+  - 114: {fileID: 11418610}
   - 114: {fileID: 11458750}
   - 114: {fileID: 11402006}
   - 114: {fileID: 11407208}
@@ -955,7 +956,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1046,6 +1047,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11401316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c0fafce32656b4d855452702bc3ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!114 &11402006
 MonoBehaviour:
   m_ObjectHideFlags: 1

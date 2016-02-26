@@ -14,6 +14,7 @@ public class Grabbable : MonoBehaviour
     private GameObject _grabbedBy;
     private Transform _previousParent;
     private int _myLayer;
+    private CharacterState _characterState;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class Grabbable : MonoBehaviour
         _movementAI = GetComponent<EnemyFollow>();
         _attackAI = GetComponent<InfantryAI>();
         _collision = GetComponent<BaseCollision>();
+        _characterState = GetComponent<CharacterState>();
         _myLayer = gameObject.layer;
     }
 
@@ -58,7 +60,7 @@ public class Grabbable : MonoBehaviour
 
         state = State.Grabbed;
         _animator.SetTrigger("Grabbed");
-        _movement.state = Movement.State.Grabbed;
+        _characterState.SetState(CharacterState.State.Grabbed);
         _movement.Move(Vector2.zero);
         _movement.SetDirection(grabbedBy.GetComponent<Movement>().direction, true);
         _movementAI.enabled = false;
@@ -80,6 +82,7 @@ public class Grabbable : MonoBehaviour
             return;
 
         state = State.Null;
+        _characterState.SetState(CharacterState.State.Idle);
         _movementAI.enabled = true;
         _attackAI.enabled = true;
         transform.parent = _previousParent;

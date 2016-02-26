@@ -12,6 +12,7 @@ public class JumpPositionOffset : MonoBehaviour
     void Awake()
     {
         jump = GetComponentInParent<Jump>();
+        if (!jump) enabled = false;
     }
 
     // Update is called once per frame

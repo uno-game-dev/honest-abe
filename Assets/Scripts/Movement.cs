@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 
+[RequireComponent(typeof(CharacterState))]
 public class Movement : MonoBehaviour
 {
+    public enum State { Null, Walk }
     public enum Direction { Null, Left, Right }
-    public enum State { Null, Idle, Walk, Grabbed, Stunned, Jump, Attack, Grab }
 
     public float horizontalMovementSpeed = 2;
     public float vericalMovementSpeed = 1;
@@ -16,24 +16,24 @@ public class Movement : MonoBehaviour
 
     private BaseCollision _collision;
     private float velocityXSmoothing, velocityYSmoothing;
+    private CharacterState _characterState;
 
-    private void Start()
+    private void Awake()
     {
+        _characterState = GetComponent<CharacterState>();
         _collision = GetComponent<BaseCollision>();
         SetDirection(direction, true);
-        state = State.Idle;
     }
 
     public void Move(Vector2 deltaPosition)
     {
-        if (state == State.Null || state == State.Grabbed || state == State.Stunned || state == State.Attack)
+        if (!_characterState.CanMove())
             return;
 
-        if (state != State.Jump && state != State.Grab)
-            if (deltaPosition.sqrMagnitude > 0)
-                state = State.Walk;
-            else
-                state = State.Idle;
+        if (deltaPosition != Vector2.zero)
+            SetState(State.Walk);
+        else
+            SetState(State.Null);
 
         SetDirection(deltaPosition);
 
@@ -81,5 +81,18 @@ public class Movement : MonoBehaviour
             SetDirection(Direction.Right, true);
         else if (direction == Direction.Right)
             SetDirection(Direction.Left, true);
+    }
+
+    private void SetState(State newState)
+    {
+        state = newState;
+
+        if (!_characterState.CanMove())
+            return;
+
+        if (newState == State.Walk && _characterState.state == CharacterState.State.Idle)
+            _characterState.SetState(CharacterState.State.Movement);
+        else if (newState == State.Null && _characterState.state == CharacterState.State.Movement)
+            _characterState.SetState(CharacterState.State.Idle);
     }
 }

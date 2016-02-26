@@ -7,17 +7,17 @@ public class Throw : MonoBehaviour
 
     public State state;
     private Animator _animator;
-    private Movement _movement;
     private Attack _attack;
     private float prepareThrowTime = 0.3f;
     private float performThrowTime = 0.3f;
     private float finishThrowTime = 0.3f;
+    private CharacterState _characterState;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _movement = GetComponent<Movement>();
         _attack = GetComponent<Attack>();
+        _characterState = GetComponent<CharacterState>();
     }
 
     public void StartThrow()
@@ -28,7 +28,7 @@ public class Throw : MonoBehaviour
         if (_attack.weapon.attackType == Weapon.AttackType.Melee)
             return;
 
-        if (_movement.state != Movement.State.Idle && _movement.state != Movement.State.Walk)
+        if (!_characterState.CanThrow())
             return;
 
         PrepareThrow();
@@ -37,7 +37,7 @@ public class Throw : MonoBehaviour
     private void PrepareThrow()
     {
         SetState(State.Prepare);
-        _movement.state = Movement.State.Attack;
+        _characterState.SetState(CharacterState.State.Throw);
         Invoke("PerformThrow", prepareThrowTime);
     }
 
@@ -60,7 +60,7 @@ public class Throw : MonoBehaviour
     private void BackToIdle()
     {
         SetState(State.Null);
-        _movement.state = Movement.State.Idle;
+        _characterState.SetState(CharacterState.State.Idle);
     }
 
     private void SetState(State newState)
