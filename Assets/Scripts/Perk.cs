@@ -28,6 +28,12 @@ public class Perk : MonoBehaviour {
         get { return _perkName; }
     }
 
+    private string _perkDesc;
+    public string perkDesc
+    {
+        get { return _perkDesc; }
+    }
+
     // Unlocked is whether the perk is available for the player to pick up when the game starts
     // setToBeUnlocked is whether the perk was earned during the game but the player has not finished the game yet
     [HideInInspector]
@@ -51,7 +57,8 @@ public class Perk : MonoBehaviour {
         switch (type) {
             case PerkType.NONE_AXE:
                 _category = PerkCategory.NONE_AXE;
-                _perkName = null;
+                _perkName = GlobalSettings.axe_none_name;
+                _perkDesc = GlobalSettings.axe_none_desc;
                 unlocked = true;
                 break;
             case PerkType.NONE_HAT:
@@ -66,6 +73,7 @@ public class Perk : MonoBehaviour {
                 break;
             case PerkType.AXE_DTVAMPIRISM:
                 _category = PerkCategory.AXE;
+                _perkDesc = GlobalSettings.axe_dtVampirism_desc;
                 _perkName = GlobalSettings.axe_dtVampirism_name;
                 unlocked = GlobalSettings.axe_dtVampirism_unlocked;
                 break;
