@@ -4,9 +4,12 @@ public class PlayerControls : MonoBehaviour
 {
     private Attack _attack;
     private Movement _movement;
-
+    private Jump _jump;
+    private Grabber _grab;
     private float mouseHeldTime;
     private float timeToConsiderHeld;
+    private Throw _throw;
+
     [HideInInspector]
     public bool heldComplete, justClicked;
 
@@ -16,18 +19,29 @@ public class PlayerControls : MonoBehaviour
         timeToConsiderHeld = .7f;
         heldComplete = false;
         _movement = GetComponent<Movement>();
+        _jump = GetComponent<Jump>();
+        _grab = GetComponent<Grabber>();
+        _throw = GetComponent<Throw>();
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            justClicked = true;
-            _attack.LightAttack();
+            if (_grab.state == Grabber.State.Hold)
+                _grab.Punch();
+            else
+            {
+                justClicked = true;
+                _attack.LightAttack();
+            }
         }
 
         if (Input.GetButtonDown("Fire2"))
-            _attack.HeavyAttack();
+            if (_grab.state == Grabber.State.Hold)
+                _grab.Throw();
+            else
+                _attack.HeavyAttack();
 
         if (Input.GetButton("Fire1") && !heldComplete && justClicked)
         {
@@ -45,14 +59,14 @@ public class PlayerControls : MonoBehaviour
             ResetHold();
         }
 
-        if (Input.GetButtonDown("Fire3"))
-            _attack.Grab();
-
-        if (Input.GetButtonUp("Fire3"))
-            _attack.Release();
+        if (Input.GetButtonDown("Fire3") || Input.GetKeyDown(KeyCode.F))
+            _grab.StartGrab();
 
         if (Input.GetButtonDown("Jump"))
-            _movement.Jump();
+            _jump.StartJump();
+
+        if (Input.GetKeyDown(KeyCode.E))
+            _throw.StartThrow();
     }
 
     public void ResetHold()

@@ -1,88 +1,40 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 
+[RequireComponent(typeof(CharacterState))]
 public class Movement : MonoBehaviour
 {
+    public enum State { Null, Walk }
     public enum Direction { Null, Left, Right }
 
     public float horizontalMovementSpeed = 2;
     public float vericalMovementSpeed = 1;
-    public float simulatedHeight = 0;
-    public float gravityMultiplier = 8;
-    public float jumpStrength = 20;
     public Direction direction = Direction.Left;
     public Vector2 velocity;
     public float movementSmoothing = .115f;
-    public float yToZFactor = 2f;
+    public State state;
 
-    [HideInInspector]
-    public bool isGrounded;
-
-    [HideInInspector]
-    public float jumpVelocity;
-
-    private float gravity = -9.81f;
-    private float _previousHeight;
     private BaseCollision _collision;
     private float velocityXSmoothing, velocityYSmoothing;
-    private Attack _attack;
+    private CharacterState _characterState;
 
-    private void Start()
+    private void Awake()
     {
+        _characterState = GetComponent<CharacterState>();
         _collision = GetComponent<BaseCollision>();
-        _attack = GetComponent<Attack>();
         SetDirection(direction, true);
-    }
-
-    private void Update()
-    {
-        simulatedHeight += jumpVelocity * Time.deltaTime;
-        simulatedHeight = Mathf.Clamp(simulatedHeight, 0, simulatedHeight);
-
-        if (jumpVelocity <= 0)
-            CheckGrounded();
-
-        _previousHeight = simulatedHeight;
-
-        jumpVelocity += gravity * gravityMultiplier * Time.deltaTime;
-        jumpVelocity = simulatedHeight <= 0 ? 0 : jumpVelocity;
-
-        ChangeZBasedOnY();
-    }
-
-    private void ChangeZBasedOnY()
-    {
-        Vector3 localPosition = transform.localPosition;
-        localPosition.z = localPosition.y * yToZFactor;
-        transform.localPosition = localPosition;
-    }
-
-    private void CheckGrounded()
-    {
-        if (_previousHeight == simulatedHeight) {
-            isGrounded = true;
-            _collision.collisionLayer = _collision.collisionLayer | (1 << LayerMask.NameToLayer("Environment"));
-        }
-        else
-            isGrounded = false;
-    }
-
-    public void Jump()
-    {
-        if (_attack.attackState == Attack.State.Grab)
-            return;
-
-        if (!isGrounded)
-            return;
-
-        jumpVelocity = jumpStrength;
-        isGrounded = false;
-        _collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Environment"));
     }
 
     public void Move(Vector2 deltaPosition)
     {
+        if (!_characterState.CanMove())
+            return;
+
+        if (deltaPosition != Vector2.zero)
+            SetState(State.Walk);
+        else
+            SetState(State.Null);
+
         SetDirection(deltaPosition);
 
         Vector3 velocity = deltaPosition;
@@ -123,11 +75,24 @@ public class Movement : MonoBehaviour
         transform.localScale = newScale;
     }
 
-    public void Flip()
+    public void FlipDirection()
     {
         if (direction == Direction.Left)
             SetDirection(Direction.Right, true);
         else if (direction == Direction.Right)
             SetDirection(Direction.Left, true);
+    }
+
+    private void SetState(State newState)
+    {
+        state = newState;
+
+        if (!_characterState.CanMove())
+            return;
+
+        if (newState == State.Walk && _characterState.state == CharacterState.State.Idle)
+            _characterState.SetState(CharacterState.State.Movement);
+        else if (newState == State.Null && _characterState.state == CharacterState.State.Movement)
+            _characterState.SetState(CharacterState.State.Idle);
     }
 }

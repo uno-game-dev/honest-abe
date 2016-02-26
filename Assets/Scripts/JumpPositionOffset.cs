@@ -6,12 +6,13 @@ public class JumpPositionOffset : MonoBehaviour
     public float offset;
     public bool isShadow;
     private float previousOffset;
-    private Movement jump;
+    private Jump jump;
 
     // Use this for initialization
     void Awake()
     {
-        jump = GetComponentInParent<Movement>();
+        jump = GetComponentInParent<Jump>();
+        if (!jump) enabled = false;
     }
 
     // Update is called once per frame

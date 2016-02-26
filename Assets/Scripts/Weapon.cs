@@ -13,5 +13,4 @@ public class Weapon : MonoBehaviour
     public Vector3 heldOrientation = Vector3.zero;
     public float lightDamage = 10;
     public float heavyDamage = 15;
-
 }

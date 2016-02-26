@@ -55,4 +55,13 @@ public static class ExtensionFunctions
         }
         return null;
     }
+
+    public static AnimationClip GetAnimationClip(this Animator animator, string clipName)
+    {
+        foreach (var animationClip in animator.runtimeAnimatorController.animationClips)
+            if (animationClip.name == clipName)
+                return animationClip;
+
+        return null;
+    }
 }

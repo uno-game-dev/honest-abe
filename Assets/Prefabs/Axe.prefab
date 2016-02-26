@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 452048}
   - 61: {fileID: 6154940}
   - 114: {fileID: 11481524}
+  - 114: {fileID: 11462658}
   m_Layer: 13
   m_Name: Axe
   m_TagString: Weapon
@@ -197,6 +198,20 @@ BoxCollider2D:
   m_Offset: {x: -0.21729803, y: 0.72700024}
   serializedVersion: 2
   m_Size: {x: 0.9108467, y: 1.5117569}
+--- !u!114 &11462658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126218}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e631eff86fb93c488df840a98a56a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetFromOrigin: 2
+  maxZ: 45
+  yToZFactor: 2
 --- !u!114 &11481524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,8 +228,8 @@ MonoBehaviour:
   attackOffset: {x: 1, y: 0.5}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 327, y: 156, z: 218}
-  lightDamage: 10
-  heavyDamage: 15
+  lightDamage: 35
+  heavyDamage: 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
