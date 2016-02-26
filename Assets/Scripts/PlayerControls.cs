@@ -17,6 +17,9 @@ public class PlayerControls : MonoBehaviour {
     }
 
     void Update() {
+        // If the game hasn't officially started yet, don't do any update calls
+        if (!UIManager.updateActive) return;
+
         if (Input.GetButtonDown("Fire1")) {
             justClicked = true;
             _attack.LightAttack();

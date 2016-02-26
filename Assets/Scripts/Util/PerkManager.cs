@@ -37,8 +37,13 @@ public class PerkManager : MonoBehaviour
 
     public static void PerformPerkEffects()
     {
+        Debug.Log("Perk Effects Performed");
         if (activeAxePerk != null) AxePerkEffect();
         if (activeHatPerk != null) HatPerkEffect();
         if (activeTrinketPerk != null) TrinketPerkEffect();
+    }
+
+    public static void UpdatePerkStatus(string perk, int status) {
+        PlayerPrefs.SetInt(perk, status);
     }
 }

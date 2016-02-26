@@ -14,4 +14,14 @@ public class GlobalSettings : MonoBehaviour
 	
 	public static bool executionPerformed = false;
     public static bool performingHeavyAttack = false;
+
+    /*
+     * Perk Section
+     */
+
+    // Perk unlocked states
+    public static bool axe_dtVampirism_unlocked = false;
+
+    // Perk names
+    public static string axe_dtVampirism_name = "Axe_DTVampirism";
 }

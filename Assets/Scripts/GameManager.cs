@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
 		//Checks if the boss health is 0 -- for alpha
 		if(win){
 			UIManager.displayWin = true;
+            PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
 		}
 	}
 }

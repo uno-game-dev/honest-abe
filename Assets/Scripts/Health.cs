@@ -24,8 +24,6 @@ public class Health : MonoBehaviour {
 		int tempHealth = health;
 		if (Time.time > nextHit) {
 			nextHit = Time.time + damageRate;
-
-            PerkManager.PerformPerkEffects();
             
             //If the hit would kill the gameObject
             if ((tempHealth -= damage) <= 0) {

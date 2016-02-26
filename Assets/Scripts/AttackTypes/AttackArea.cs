@@ -8,6 +8,7 @@ public class AttackArea : MonoBehaviour
     private ChainAttack _chainAttack;
 	private Attack _attack;
     private bool _updateChainAttack;
+    private bool alreadyHit = false;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class AttackArea : MonoBehaviour
         if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
         {
             GlobalSettings.performingHeavyAttack = true;
+            //PerkManager.PerformPerkEffects();
         }
         _collision.OnCollision += OnCollision;
         _updateChainAttack = true;
@@ -37,6 +39,7 @@ public class AttackArea : MonoBehaviour
         if (!hit && _chainAttack)
             _chainAttack.Miss();
         hit = null;
+        alreadyHit = false;
     }
 
     private void Update()
@@ -46,6 +49,11 @@ public class AttackArea : MonoBehaviour
 
     private void OnCollision(RaycastHit2D hit)
     {
+        if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy && !alreadyHit) {
+            PerkManager.PerformPerkEffects();
+            alreadyHit = true;
+        }
+
         if (_updateChainAttack && _chainAttack)
         {
             _chainAttack.Hit();

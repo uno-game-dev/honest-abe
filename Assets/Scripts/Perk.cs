@@ -23,8 +23,7 @@ public class Perk : MonoBehaviour
         NONE_AXE,
         NONE_HAT,
         NONE_TRINKET,
-        AXE_FIRE,
-        HAT_DTVAMPIRISM
+        AXE_DTVAMPIRISM
     }
     public PerkType type;
 
@@ -49,7 +48,7 @@ public class Perk : MonoBehaviour
     void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        currentPlayerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>().weapon;
+        currentPlayerWeapon = GetComponent<Weapon>();
     }
 
     public void CheckStatus()
@@ -73,15 +72,10 @@ public class Perk : MonoBehaviour
                 _perkName = null;
                 unlocked = true;
                 break;
-            case PerkType.AXE_FIRE:
+            case PerkType.AXE_DTVAMPIRISM:
                 _category = PerkCategory.AXE;
-                _perkName = GlobalSettings.axe_fire_name;
-                unlocked = GlobalSettings.axe_fire_unlocked;
-                break;
-            case PerkType.HAT_DTVAMPIRISM:
-                _category = PerkCategory.HAT;
-                _perkName = GlobalSettings.hat_dtVampirism_name;
-                unlocked = GlobalSettings.hat_dtVampirism_unlocked;
+                _perkName = GlobalSettings.axe_dtVampirism_name;
+                unlocked = GlobalSettings.axe_dtVampirism_unlocked;
                 break;
             default:
                 break;
@@ -124,19 +118,14 @@ public class Perk : MonoBehaviour
 
     private void AxeEffect()
     {
-        if (type == PerkType.AXE_FIRE)
-        {
-            Debug.Log("you're on fire now");
+        if (type == PerkType.AXE_DTVAMPIRISM) {
+            playerHealth.IncreaseDT((int)(currentPlayerWeapon.lightDamage / 4));
         }
     }
 
     private void HatEffect()
     {
-        if (type == PerkType.HAT_DTVAMPIRISM)
-        {
-            playerHealth.IncreaseDT((int)(currentPlayerWeapon.lightDamage / 4));
-            Debug.Log("perk hit");
-        }
+        
     }
 
     private void TrinketEffect()
