@@ -36,12 +36,12 @@ public class Grabbable : MonoBehaviour
 
     private void OnEnable()
     {
-        _collision.OnCollision += OnCollision;
+        _collision.OnCollisionEnter += OnCollision;
     }
 
     private void OnDisable()
     {
-        _collision.OnCollision -= OnCollision;
+        _collision.OnCollisionEnter -= OnCollision;
 
         if (_grabbedBy)
             _grabbedBy.GetComponent<Grabber>().Release();

@@ -22,12 +22,12 @@ public class Damage : MonoBehaviour
 
     void OnEnable()
     {
-        collision.OnCollision += OnCollision;
+        collision.OnCollisionEnter += OnCollision;
     }
 
     void OnDisable()
     {
-        collision.OnCollision -= OnCollision;
+        collision.OnCollisionEnter -= OnCollision;
     }
 
     void Update()

@@ -24,7 +24,7 @@ public class AttackArea : MonoBehaviour
         {
             GlobalSettings.performingHeavyAttack = true;
         }
-        _collision.OnCollision += OnCollision;
+        _collision.OnCollisionEnter += OnCollision;
         _updateChainAttack = true;
     }
 
@@ -35,7 +35,7 @@ public class AttackArea : MonoBehaviour
             GlobalSettings.performingHeavyAttack = false;
         }
         GlobalSettings.performingHeavyAttack = false;
-        _collision.OnCollision -= OnCollision;
+        _collision.OnCollisionEnter -= OnCollision;
         if (!hit && _chainAttack)
             _chainAttack.Miss();
         hit = null;

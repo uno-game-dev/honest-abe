@@ -12,7 +12,7 @@ public class PlayerMotor : MonoBehaviour
     {
         movement = GetComponent<Movement>();
         collision = GetComponent<BaseCollision>();
-        collision.OnCollision += OnCollision;
+        collision.OnCollisionEnter += OnCollision;
         controls = GetComponent<PlayerControls>();
     }
 

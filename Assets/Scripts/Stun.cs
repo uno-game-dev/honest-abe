@@ -23,13 +23,13 @@ public class Stun : MonoBehaviour
 
     private void OnEnable()
     {
-        _collision.OnCollision += OnCollision;
+        _collision.OnCollisionEnter += OnCollision;
     }
 
     private void OnDisable()
     {
         state = State.Null;
-        _collision.OnCollision -= OnCollision;
+        _collision.OnCollisionEnter -= OnCollision;
     }
 
     private void OnCollision(RaycastHit2D hit)

@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class BaseCollision : MonoBehaviour {
+
+    public enum State { Null, CollisionStart, CollisionStay, CollisionEnd }
 
     private Vector2 velocity;
     public Vector2 Velocity {
@@ -12,15 +15,18 @@ public class BaseCollision : MonoBehaviour {
     public int verticalRayCount = 4;
     public LayerMask collisionLayer;
     public CollisionInfo collisionInfo;
+    public State state;
     [HideInInspector] public Collider2D _collider;
 
     public delegate void CollisionHandler(RaycastHit2D hit);
-    public event CollisionHandler OnCollision = delegate { };
+    public event CollisionHandler OnCollisionStay = delegate { };
     public event CollisionHandler OnCollisionEnter = delegate { };
     public event CollisionHandler OnCollisionExit = delegate { };
 
     private float horizontalRaySpacing, verticalRaySpacing;
     private RaycastOrigins raycastOrigins;
+    private Dictionary<Collider2D, State> _collisionStates = new Dictionary<Collider2D, State>();
+    private Dictionary<Collider2D, > _collisionStates = new Dictionary<Collider2D, State>();
 
     private const float skinWidth = .015f;
 
@@ -52,6 +58,17 @@ public class BaseCollision : MonoBehaviour {
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, 1);
+    }
+
+    private void OnDisable()
+    {
+        state = State.Null;
+    }
+
+    private void Update()
+    {
+        Tick();
+        LaunchCollisionEvents();
     }
 
     public void Tick() {
@@ -113,7 +130,7 @@ public class BaseCollision : MonoBehaviour {
                 collisionInfo.left = directionX == -1;
                 collisionInfo.right = directionX == 1;
 
-                OnCollision(hit);
+                LaunchCollisionEvents(hit);
             }
         }
     }
@@ -136,7 +153,7 @@ public class BaseCollision : MonoBehaviour {
                 collisionInfo.below = directionY == -1;
                 collisionInfo.above = directionY == 1;
 
-                OnCollision(hit);
+                LaunchCollisionEvents(hit);
             }
         }
     }
@@ -164,4 +181,41 @@ public class BaseCollision : MonoBehaviour {
         verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
     }
 
+    private bool HasCollided()
+    {
+        return collisionInfo.above || collisionInfo.below || collisionInfo.left || collisionInfo.right;
+    }
+
+    private void LaunchCollisionEvents(RaycastHit2D hit)
+    {
+        State state = GetCollisionState(hit);
+        if (HasCollided())
+        {
+            if (state == State.Null)
+            {
+                OnCollisionEnter(hit);
+                state = State.CollisionStart;
+            }
+            else if (state == State.CollisionStart)
+                state = State.CollisionStay;
+
+            OnCollisionStay(hit);
+        }
+        else
+        {
+            if (state == State.CollisionStay)
+            {
+                OnCollisionExit(hit);
+                state = State.CollisionEnd;
+            }
+            else if (state == State.CollisionEnd)
+                state = State.Null;
+        }
+    }
+
+    private State GetCollisionState(RaycastHit2D hit)
+    {
+        if (!_collisionStates.ContainsKey(hit.collider))
+            _collisionStates.Add(hit.collider, State.Null);
+    }
 }
