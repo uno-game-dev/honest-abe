@@ -135,7 +135,6 @@ public class PlayerHealth : Health {
 	//Updates the currentHealth and damageThreshold 
 	void UpdateHUD(){
 		//CurrentHealth is slowly decreasing to eventually equal damageThreshold 
-		executionPerformed = GlobalSettings.executionPerformed;
         if (currentHealth > damageThreshold) {
 			//Time to update currentHealthSlider
 			if (updateHealthSliderTime < 0) {
@@ -145,55 +144,40 @@ public class PlayerHealth : Health {
 					// If the player has lost all it's health
 					if (currentHealth <= 0) {
 						//Abe is dead :(
-						Death ();
+						Death();
 					}	
 					//Update currentHeathSlider
 					healthSlider.UpdateCurrentHealth(currentHealth);
 					//Reset the timer for updating the HealthSlider
 					updateHealthSliderTime = 1.5f;
-				}else {
-					//Else -- An execution has been performed
-					//Make sure damageThreshold does not go above 120
-					if (damageThreshold <= 110) {
-						//Abe performed an execution increase damageThreshold by 10
-						damageThreshold += 10;
-					}
-					else{
-						//Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
-						damageThreshold = 120;
-					}
-					//Update damageThreshold
-					healthSlider.UpdateDamageThreshold(damageThreshold);
-
-					//Reset execution check
-					executionPerformed = false;
-					GlobalSettings.executionPerformed = false;
 				}
-			}
-		}else {
-			//Else -- Abe did not get hit but performed an execution
-			//The damageThreshold is above or equal to currentHealth and Abe performed execution
-			if (executionPerformed) {
-				//Make sure damageThreshold does not go above 120
-				if (damageThreshold <= 110) {
-					//Abe performed an execution increase damageThreshold by 10
-					damageThreshold += 10;
-				}
-				else{
-					//Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
-					damageThreshold = 120;
-				}
-				//Update damageThreshold
-				healthSlider.UpdateDamageThreshold(damageThreshold);
-
-				//Reset execution check
-				executionPerformed = false;
-				GlobalSettings.executionPerformed = false;
 			}
 		}
+        if (GlobalSettings.executionPerformed)
+        {
+            GlobalSettings.executionPerformed = false;
+            Execution();
+        }
+
 	}
 
-	void Death(){
+    void Execution()
+    {
+        //Make sure damageThreshold does not go above 120
+        if (damageThreshold <= 110)
+        {
+            //Abe performed an execution increase damageThreshold by 10
+            damageThreshold += 10;
+        }
+        else {
+            //Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
+            damageThreshold = 120;
+        }
+        //Update damageThreshold
+        healthSlider.UpdateDamageThreshold(damageThreshold);
+    }
+
+    void Death(){
 		isDead = true;
 		GameManager.lost = true;
 		Debug.Log ("Abe is dead :( ");
