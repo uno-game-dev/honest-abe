@@ -1,57 +1,76 @@
 ﻿using UnityEngine;
 
-public class PlayerControls : MonoBehaviour {
+public class PlayerControls : MonoBehaviour
+{
     private Attack _attack;
     private Movement _movement;
-
+    private Jump _jump;
+    private Grabber _grab;
     private float mouseHeldTime;
     private float timeToConsiderHeld;
+    private Throw _throw;
+
     [HideInInspector]
     public bool heldComplete, justClicked;
 
-    void Start() {
+    void Start()
+    {
         _attack = GetComponent<Attack>();
         timeToConsiderHeld = .7f;
         heldComplete = false;
         _movement = GetComponent<Movement>();
+        _jump = GetComponent<Jump>();
+        _grab = GetComponent<Grabber>();
+        _throw = GetComponent<Throw>();
     }
 
-    void Update() {
-        // If the game hasn't officially started yet, don't do any update calls
-        if (!UIManager.updateActive) return;
-
-        if (Input.GetButtonDown("Fire1")) {
-            justClicked = true;
-            _attack.LightAttack();
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (_grab.state == Grabber.State.Hold)
+                _grab.Punch();
+            else
+            {
+                justClicked = true;
+                _attack.LightAttack();
+            }
         }
 
         if (Input.GetButtonDown("Fire2"))
-            _attack.HeavyAttack();
+            if (_grab.state == Grabber.State.Hold)
+                _grab.Throw();
+            else
+                _attack.HeavyAttack();
 
-        if (Input.GetButton("Fire1") && !heldComplete && justClicked) {
+        if (Input.GetButton("Fire1") && !heldComplete && justClicked)
+        {
             mouseHeldTime += Time.deltaTime;
 
-            if (mouseHeldTime >= timeToConsiderHeld) {
+            if (mouseHeldTime >= timeToConsiderHeld)
+            {
                 mouseHeldTime = 0;
                 heldComplete = true;
             }
         }
 
-        if (Input.GetButtonUp("Fire1")) {
+        if (Input.GetButtonUp("Fire1"))
+        {
             ResetHold();
         }
 
-        if (Input.GetButtonDown("Fire3"))
-            _attack.Grab();
-
-        if (Input.GetButtonUp("Fire3"))
-            _attack.Release();
+        if (Input.GetButtonDown("Fire3") || Input.GetKeyDown(KeyCode.F))
+            _grab.StartGrab();
 
         if (Input.GetButtonDown("Jump"))
-            _movement.Jump();
+            _jump.StartJump();
+
+        if (Input.GetKeyDown(KeyCode.E))
+            _throw.StartThrow();
     }
 
-    public void ResetHold() {
+    public void ResetHold()
+    {
         justClicked = false;
         heldComplete = false;
         mouseHeldTime = 0;

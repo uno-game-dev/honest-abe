@@ -15,10 +15,19 @@ public class Damage : MonoBehaviour
     private float bloodTimer;
     private float bloodRate = 0.2f;
 
-    void Start()
+    void Awake()
     {
         collision = GetComponent<BaseCollision>();
+    }
+
+    void OnEnable()
+    {
         collision.OnCollision += OnCollision;
+    }
+
+    void OnDisable()
+    {
+        collision.OnCollision -= OnCollision;
     }
 
     void Update()
@@ -32,12 +41,12 @@ public class Damage : MonoBehaviour
                 bloodTimer += Time.deltaTime;
     }
 
-    public void ExecuteDamage(GameObject toObject)
+    public void ExecuteDamage(GameObject toObject, float damageAmount, RaycastHit2D hit)
     {
-        if (!health)
-            health = toObject.GetComponent<Health>();
-        if (health)
+        if (health = toObject.GetComponent<Health>())
             health.Decrease(Convert.ToInt32(damageAmount), damageRate);
+        if (hit)
+            AddBlood(hit);
     }
 
     private void OnCollision(RaycastHit2D hit)
@@ -45,8 +54,7 @@ public class Damage : MonoBehaviour
         if (hit.collider.tag == "Damage")
         {
             damageAmount = hit.transform.GetComponentInParent<Attack>().GetDamageAmount();
-            ExecuteDamage(gameObject);
-            AddBlood(hit);
+            ExecuteDamage(gameObject, damageAmount, hit);
         }
     }
 
@@ -64,7 +72,7 @@ public class Damage : MonoBehaviour
             if (bloodFountain)
             {
                 GameObject blood = Instantiate(bloodFountain);
-                blood.transform.localPosition = hit.point;
+                blood.transform.position = hit.point;
                 Destroy(blood, 10);
             }
         }

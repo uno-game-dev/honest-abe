@@ -6,7 +6,6 @@ public class PlayerMotor : MonoBehaviour
     private Movement movement;
     private BaseCollision collision;
     private PlayerControls controls;
-    private Attack playerAttack;
     private bool justCollided;
 
     void Start()
@@ -15,13 +14,12 @@ public class PlayerMotor : MonoBehaviour
         collision = GetComponent<BaseCollision>();
         collision.OnCollision += OnCollision;
         controls = GetComponent<PlayerControls>();
-        playerAttack = GetComponent<Attack>();
     }
 
     void Update()
     {
         // If the game hasn't officially started yet, don't do any update calls
-        if (!UIManager.updateActive) return;
+        //if (!UIManager.updateActive) return;
 
         // Else run the update code
         if (movement.enabled)
@@ -40,7 +38,8 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
-    private void OnCollision(RaycastHit2D hit) {
+    private void OnCollision(RaycastHit2D hit)
+    {
         if (hit.collider.tag == "Item")
         {
             hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
@@ -54,43 +53,11 @@ public class PlayerMotor : MonoBehaviour
                 justCollided = true;
             }
 
-            if (controls.heldComplete && justCollided && controls.justClicked && playerAttack.emptyHanded)
-            {
-                playerAttack.SetWeapon(hit.collider.gameObject.GetComponent<Weapon>());
-                hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                playerAttack.emptyHanded = false;
-            }
-        }
-
-        else if (hit.collider.tag == "Perk")
-        {
-            if (!justCollided)
-            {
-                controls.ResetHold();
-                justCollided = true;
-            }
-
             if (controls.heldComplete && justCollided && controls.justClicked)
             {
-                hit.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+                GetComponent<Attack>().SetWeapon(hit.collider.gameObject.GetComponent<Weapon>());
+                //hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
-
-        else if (hit.collider.tag == "AbeAxe")
-        {
-            if (!justCollided)
-            {
-                controls.ResetHold();
-                justCollided = true;
-            }
-
-            if (controls.heldComplete && justCollided && controls.justClicked && playerAttack.emptyHanded)
-            {
-                playerAttack.SetWeapon(hit.collider.gameObject.GetComponent<Weapon>());
-                hit.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-                playerAttack.emptyHanded = false;
-            }
-        }
-
     }
 }

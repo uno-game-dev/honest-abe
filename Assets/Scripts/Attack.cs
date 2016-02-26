@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class Attack : MonoBehaviour
 {
-    public enum State { Idle, Prep, Light, Heavy, Grab }
+    public enum State { Null, Light, Heavy, Grab, Throw }
     public enum Hand { Left, Right, Both }
 
-    public State attackState = State.Idle;
+    public State attackState = State.Null;
     public Hand hand = Hand.Right;
     public Weapon weapon;
     public Dictionary<Weapon.AttackType, BaseAttack> attackTypes = new Dictionary<Weapon.AttackType, BaseAttack>();
@@ -19,22 +19,21 @@ public class Attack : MonoBehaviour
     private GameObject _leftHand;
     private GameObject _rightHand;
     private BaseAttack _attackType;
-    private GameObject _grabBox;
-    private Grab _grabbed;
+    private CharacterState _characterState;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _characterState = GetComponent<CharacterState>();
 
         CreateOrGetAttackBox();
-        CreateOrGetGrabBox();
 
         _leftHand = this.FindContainsInChildren("LArmPalm");
         _rightHand = this.FindContainsInChildren("RArmPalm");
         if (_leftHand == null) _leftHand = this.FindContainsInChildren("LArmHand");
         if (_rightHand == null) _rightHand = this.FindContainsInChildren("RArmHand");
 
-        Weapon weapon = this.GetOrAddComponent<Weapon>();
+        if (!weapon) weapon = this.GetOrAddComponent<Weapon>();
         SetWeapon(weapon);
     }
 
@@ -44,8 +43,8 @@ public class Attack : MonoBehaviour
         if (_attackBox)
             return;
 
-        _attackBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
-        // _attackBox = new GameObject(); // Use this one when done debugging
+        //_attackBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
+        _attackBox = new GameObject(); // Use this one when done debugging
         _attackBox.name = "Attack Box";
         _attackBox.transform.parent = transform;
         _attackBox.transform.localPosition = new Vector3(1f, 0.5f, 0f);
@@ -58,25 +57,6 @@ public class Attack : MonoBehaviour
         _attackBox.SetActive(false);
     }
 
-    private void CreateOrGetGrabBox()
-    {
-        _grabBox = this.FindInChildren("Grab Area");
-        if (_grabBox)
-            return;
-
-        _grabBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
-        //_grabBox = new GameObject(); // Use this one when done debugging
-        _grabBox.name = "Grab Area";
-        _grabBox.transform.parent = transform;
-        _grabBox.transform.localPosition = new Vector3(1f, 0.5f, 0f);
-        _grabBox.tag = "Grab";
-        _grabBox.layer = gameObject.layer;
-        DestroyImmediate(_grabBox.GetComponent<MeshCollider>());
-        _grabBox.AddComponent<BoxCollider2D>().isTrigger = true;
-        _grabBox.AddComponent<BaseCollision>().collisionLayer = LayerMask.GetMask("Enemy");
-        _grabBox.SetActive(false);
-    }
-
     public void SetWeapon(Weapon weapon)//, Hand hand = Hand.Right)
     {
         this.weapon = weapon;
@@ -84,12 +64,12 @@ public class Attack : MonoBehaviour
         if (attackTypes.ContainsKey(weapon.attackType))
         {
             _attackType = attackTypes[weapon.attackType];
-            _attackType.Weapon = weapon;
+            _attackType.weapon = weapon;
         }
         else
         {
             _attackType = CreateAttackType(weapon.attackType);
-            _attackType.Weapon = weapon;
+            _attackType.weapon = weapon;
             attackTypes[weapon.attackType] = _attackType;
         }
 
@@ -125,47 +105,43 @@ public class Attack : MonoBehaviour
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 
-        attack.Animator = _animator;
-        attack.Attack = this;
-        attack.AttackArea = _attackBox;
+        attack.animator = _animator;
+        attack.attack = this;
+        attack.attackArea = _attackBox;
         return attack;
     }
 
     public void LightAttack()
     {
-        _attackType.AddAttack(BaseAttack.AttackStrength.Light);
+        if (attackState != State.Null)
+            return;
+
+        if (!_characterState.CanAttack())
+            return;
+
+        _characterState.SetState(CharacterState.State.Attack);
+
+        attackState = State.Light;
+        _attackType.StartLightAttack();
     }
 
     public void HeavyAttack()
     {
-        _attackType.AddAttack(BaseAttack.AttackStrength.Heavy);
-    }
-
-    public void Grab()
-    {
-        if (attackState != State.Idle)
+        if (attackState != State.Null)
             return;
 
-        _attackType.input.Clear();
-        _grabBox.SetActive(true);
-        attackState = State.Grab;
-    }
-
-    public void FinishGrab(Grab grabbed)
-    {
-        _grabBox.SetActive(false);
-        _grabbed = grabbed;
-    }
-
-    public void Release()
-    {
-        if (attackState != State.Grab)
+        if (!_characterState.CanAttack())
             return;
 
-        if (_grabbed)
-            _grabbed.Release();
+        _characterState.SetState(CharacterState.State.Attack);
 
-        _grabBox.SetActive(false);
-        attackState = State.Idle;
+        attackState = State.Heavy;
+        _attackType.StartHeavyAttack();
+    }
+
+    public void FinishAttack()
+    {
+        attackState = State.Null;
+        _characterState.SetState(CharacterState.State.Idle);
     }
 }
