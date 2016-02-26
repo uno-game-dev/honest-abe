@@ -6,7 +6,7 @@ public class PerkManager : MonoBehaviour
 
     [HideInInspector]
     public List<Perk> perkList = new List<Perk>();
-    
+
     public static Perk activeAxePerk = null;
     public static Perk activeHatPerk = null;
     public static Perk activeTrinketPerk = null;
@@ -43,7 +43,8 @@ public class PerkManager : MonoBehaviour
         if (activeTrinketPerk != null) TrinketPerkEffect();
     }
 
-    public static void UpdatePerkStatus(string perk, int status) {
+    public static void UpdatePerkStatus(string perk, int status)
+    {
         PlayerPrefs.SetInt(perk, status);
     }
 }

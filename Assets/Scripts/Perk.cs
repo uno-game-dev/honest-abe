@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
-public class Perk : MonoBehaviour {
+public class Perk : MonoBehaviour
+{
 
-    public enum PerkCategory {
+    public enum PerkCategory
+    {
         NONE_AXE,
         NONE_HAT,
         NONE_TRINKET,
@@ -11,11 +13,13 @@ public class Perk : MonoBehaviour {
         TRINKET
     }
     private PerkCategory _category;
-    public PerkCategory category {
+    public PerkCategory category
+    {
         get { return _category; }
     }
 
-    public enum PerkType {
+    public enum PerkType
+    {
         NONE_AXE,
         NONE_HAT,
         NONE_TRINKET,
@@ -24,7 +28,8 @@ public class Perk : MonoBehaviour {
     public PerkType type;
 
     private string _perkName;
-    public string perkName {
+    public string perkName
+    {
         get { return _perkName; }
     }
 
@@ -46,15 +51,18 @@ public class Perk : MonoBehaviour {
     private PlayerHealth playerHealth;
     private Weapon currentPlayerWeapon;
 
-    void Start() {
+    void Start()
+    {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         currentPlayerWeapon = GetComponent<Weapon>();
     }
 
-    public void CheckStatus() {
+    public void CheckStatus()
+    {
         setToBeUnlocked = false;
 
-        switch (type) {
+        switch (type)
+        {
             case PerkType.NONE_AXE:
                 _category = PerkCategory.NONE_AXE;
                 _perkName = GlobalSettings.axe_none_name;
@@ -85,8 +93,10 @@ public class Perk : MonoBehaviour {
             gameObject.SetActive(false);
     }
 
-    public void OnCollision(GameObject other) {
-        switch (category) {
+    public void OnCollision(GameObject other)
+    {
+        switch (category)
+        {
             case PerkCategory.NONE_AXE:
                 PerkManager.activeAxePerk = null;
                 break;
@@ -114,19 +124,23 @@ public class Perk : MonoBehaviour {
         GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    private void AxeEffect() {
-        if (type == PerkType.AXE_DTVAMPIRISM) {
+    private void AxeEffect()
+    {
+        if (type == PerkType.AXE_DTVAMPIRISM)
+        {
             Debug.Log(playerHealth.damageThreshold);
             playerHealth.IncreaseDT((int)(currentPlayerWeapon.lightDamage / 4));
             Debug.Log(playerHealth.damageThreshold);
         }
     }
 
-    private void HatEffect() {
+    private void HatEffect()
+    {
 
     }
 
-    private void TrinketEffect() {
+    private void TrinketEffect()
+    {
 
     }
 }
