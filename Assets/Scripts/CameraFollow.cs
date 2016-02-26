@@ -34,8 +34,6 @@ public class CameraFollow : MonoBehaviour {
         bottomEdgeTransform = transform.GetChild(1);
         bottomEdgeBoundsHalfHeight = bottomEdgeTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.y / 2;
 
-        Debug.Log(transform.position);
-
         // Initial positioning of the camera on top of the player
         // This prevents the "slide in" of the camera to the player when the game starts
         Vector3 pos = new Vector3(playerTransform.position.x, playerTransform.position.y, transform.position.z);
@@ -45,8 +43,6 @@ public class CameraFollow : MonoBehaviour {
             pos.y = (verticalBounds.transform.position.y - (verticalBounds.size.y / 2) + cam.orthographicSize);
         pos.x = (playerTransform.position.x - (playerTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.x / 2) - 2) + (((2 * cam.orthographicSize) * cam.aspect) / 2);
         transform.position = pos;
-        
-        Debug.Log(transform.position);
     }
 
     void LateUpdate() {
