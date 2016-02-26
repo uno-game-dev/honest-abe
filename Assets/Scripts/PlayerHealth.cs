@@ -11,11 +11,13 @@ public class PlayerHealth : Health {
 	private float updateHealthSliderTime = 2;
 	private bool isDead;
 	[HideInInspector]
-	public bool executionPerformed = false;
+	public bool executionPerformed;
 	private HealthSlider healthSlider;
 
 	// Use this for initialization
 	void Start () {
+		GlobalSettings.executionPerformed = false;
+		executionPerformed = false;
 		damageThreshold = 100;
 		currentHealth = 100;
 		healthSlider = GetComponent<HealthSlider>();
@@ -39,8 +41,11 @@ public class PlayerHealth : Health {
 		if (Input.GetKeyDown(KeyCode.J)) {
 			Debug.Log ("HEALTH PICKUP!!!");
 			Increase (5);
+		}
+		if (Input.GetKeyDown(KeyCode.D)) {
+			Debug.Log ("Increased DT!!!");
+			IncreaseDT(10);
 		}**/
-
 		if(!isDead){
 			//Decreases the timer to know when to update the damageSlider
 			updateHealthSliderTime -= Time.deltaTime;
@@ -104,6 +109,20 @@ public class PlayerHealth : Health {
 		}
 	}
 
+	public void IncreaseDT(int amount){
+		//Temp variable for damageThreshold
+		int tempDamageThreshold = damageThreshold;
+		tempDamageThreshold += amount;
+
+		if (tempDamageThreshold <= 120) {
+			damageThreshold += amount;
+			healthSlider.UpdateDamageThreshold (damageThreshold);
+		} else {
+			damageThreshold = 120;
+			healthSlider.UpdateDamageThreshold (damageThreshold);
+		}
+	} 
+
 	public override void Decrease(int damage, float damageRate){
 		if (Time.time > nextHitToPlayer) {
 			nextHitToPlayer = Time.time + damageRate;
@@ -116,7 +135,6 @@ public class PlayerHealth : Health {
 	//Updates the currentHealth and damageThreshold 
 	void UpdateHUD(){
 		//CurrentHealth is slowly decreasing to eventually equal damageThreshold 
-		executionPerformed = GlobalSettings.executionPerformed;
         if (currentHealth > damageThreshold) {
 			//Time to update currentHealthSlider
 			if (updateHealthSliderTime < 0) {
@@ -126,55 +144,40 @@ public class PlayerHealth : Health {
 					// If the player has lost all it's health
 					if (currentHealth <= 0) {
 						//Abe is dead :(
-						Death ();
+						Death();
 					}	
 					//Update currentHeathSlider
 					healthSlider.UpdateCurrentHealth(currentHealth);
 					//Reset the timer for updating the HealthSlider
 					updateHealthSliderTime = 1.5f;
-				}else {
-					//Else -- An execution has been performed
-					//Make sure damageThreshold does not go above 120
-					if (damageThreshold <= 110) {
-						//Abe performed an execution increase damageThreshold by 10
-						damageThreshold += 10;
-					}
-					else{
-						//Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
-						damageThreshold = 120;
-					}
-					//Update damageThreshold
-					healthSlider.UpdateDamageThreshold(damageThreshold);
-
-					//Reset execution check
-					executionPerformed = false;
-					GlobalSettings.executionPerformed = false;
 				}
-			}
-		}else {
-			//Else -- Abe did not get hit but performed an execution
-			//The damageThreshold is above or equal to currentHealth and Abe performed execution
-			if (executionPerformed) {
-				//Make sure damageThreshold does not go above 120
-				if (damageThreshold <= 110) {
-					//Abe performed an execution increase damageThreshold by 10
-					damageThreshold += 10;
-				}
-				else{
-					//Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
-					damageThreshold = 120;
-				}
-				//Update damageThreshold
-				healthSlider.UpdateDamageThreshold(damageThreshold);
-
-				//Reset execution check
-				executionPerformed = false;
-				GlobalSettings.executionPerformed = false;
 			}
 		}
+        if (GlobalSettings.executionPerformed)
+        {
+            GlobalSettings.executionPerformed = false;
+            Execution();
+        }
+
 	}
 
-	void Death(){
+    void Execution()
+    {
+        //Make sure damageThreshold does not go above 120
+        if (damageThreshold <= 110)
+        {
+            //Abe performed an execution increase damageThreshold by 10
+            damageThreshold += 10;
+        }
+        else {
+            //Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
+            damageThreshold = 120;
+        }
+        //Update damageThreshold
+        healthSlider.UpdateDamageThreshold(damageThreshold);
+    }
+
+    void Death(){
 		isDead = true;
 		GameManager.lost = true;
 		Debug.Log ("Abe is dead :( ");

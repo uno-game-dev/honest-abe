@@ -20,12 +20,21 @@ public class AttackArea : MonoBehaviour
 
     private void OnEnable()
     {
+        if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
+        {
+            GlobalSettings.performingHeavyAttack = true;
+        }
         _collision.OnCollision += OnCollision;
         _updateChainAttack = true;
     }
 
     private void OnDisable()
     {
+        if (transform.parent.gameObject.tag == "Player" && GlobalSettings.performingHeavyAttack)
+        {
+            GlobalSettings.performingHeavyAttack = false;
+        }
+        GlobalSettings.performingHeavyAttack = false;
         _collision.OnCollision -= OnCollision;
         if (!hit && _chainAttack)
             _chainAttack.Miss();
@@ -50,10 +59,6 @@ public class AttackArea : MonoBehaviour
             _chainAttack.Hit();
             _updateChainAttack = false;
         }
-		if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
-		{
-			GlobalSettings.executionPerformed = true;
-		}
         this.hit = hit.collider.gameObject;
     }
 }

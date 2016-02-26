@@ -13,4 +13,5 @@ public class GlobalSettings : MonoBehaviour
     public static float playerMovementSmoothing = .115f;
 	
 	public static bool executionPerformed = false;
+    public static bool performingHeavyAttack = false;
 }
