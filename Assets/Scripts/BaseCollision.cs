@@ -16,8 +16,6 @@ public class BaseCollision : MonoBehaviour {
 
     public delegate void CollisionHandler(RaycastHit2D hit);
     public event CollisionHandler OnCollision = delegate { };
-    public event CollisionHandler OnCollisionEnter = delegate { };
-    public event CollisionHandler OnCollisionExit = delegate { };
 
     private float horizontalRaySpacing, verticalRaySpacing;
     private RaycastOrigins raycastOrigins;

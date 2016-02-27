@@ -24,8 +24,9 @@ public class Health : MonoBehaviour {
 		int tempHealth = health;
 		if (Time.time > nextHit) {
 			nextHit = Time.time + damageRate;
-			//If the hit would kill the gameObject
-			if ((tempHealth -= damage) <= 0) {
+            
+            //If the hit would kill the gameObject
+            if ((tempHealth -= damage) <= 0) {
 				health = 0;
                 // Execution Check
                 if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
@@ -43,7 +44,7 @@ public class Health : MonoBehaviour {
 			} else {
 				health -= damage;
 				UpdateHealth ();
-			}
+            }
 		}
 	}
 	//For testing purposes
