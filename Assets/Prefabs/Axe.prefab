@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 1
-  attackSize: {x: 1, y: 1}
+  attackSize: {x: 3, y: 3}
   attackOffset: {x: 1, y: 0.5}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 327, y: 156, z: 218}
@@ -255,6 +255,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: collisionLayer.m_Bits
       value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
