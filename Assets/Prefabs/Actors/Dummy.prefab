@@ -593,6 +593,7 @@ GameObject:
   - 114: {fileID: 11467968}
   - 114: {fileID: 11463338}
   - 114: {fileID: 11440518}
+  - 114: {fileID: 11492716}
   m_Layer: 11
   m_Name: Dummy
   m_TagString: Enemy
@@ -1671,7 +1672,25 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 26112
+  numberOfCollisions: 0
   _collider: {fileID: 0}
+--- !u!114 &11492716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592e45ae2c86e94e9b68477396a52d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  height: 0
+  horizontalVelocity: 10
+  gravityMultiplier: 1
+  onGroundDuration: 1
+  getUpDuration: 1
 --- !u!137 &13737520
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

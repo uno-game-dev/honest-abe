@@ -658,6 +658,7 @@ GameObject:
   - 114: {fileID: 11417352}
   - 114: {fileID: 11448730}
   - 114: {fileID: 11497228}
+  - 114: {fileID: 11407154}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -1205,7 +1206,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.73, y: -1.1, z: 0}
+  m_LocalPosition: {x: 14.666629, y: -2.9930332, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462218}
@@ -1466,6 +1467,7 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 26112
+  numberOfCollisions: 0
   _collider: {fileID: 0}
 --- !u!114 &11405632
 MonoBehaviour:
@@ -1479,6 +1481,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+--- !u!114 &11407154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592e45ae2c86e94e9b68477396a52d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  height: 0
+  horizontalVelocity: 10
+  gravityMultiplier: 1
+  onGroundDuration: 1
+  getUpDuration: 1
 --- !u!114 &11411282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1629,6 +1648,7 @@ MonoBehaviour:
   attackState: 0
   hand: 1
   weapon: {fileID: 11447796}
+  emptyHanded: 1
 --- !u!114 &11493848
 MonoBehaviour:
   m_ObjectHideFlags: 1

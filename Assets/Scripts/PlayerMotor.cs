@@ -9,7 +9,6 @@ public class PlayerMotor : MonoBehaviour
     private PlayerControls controls;
     private Attack playerAttack;
     private List<Collider2D> collidersImOn = new List<Collider2D>();
-    private Collider2D colliderClicked;
     private UIManager uiManager;
 
     void Start()
@@ -32,11 +31,6 @@ public class PlayerMotor : MonoBehaviour
         // Else run the update code
         if (movement.enabled)
         {
-            if (!collision.collisionInfo.above && !collision.collisionInfo.below && !collision.collisionInfo.right && !collision.collisionInfo.left)
-            {
-                uiManager.perkText.enabled = false;
-            }
-
             velocity = new Vector2(Input.GetAxisRaw("Horizontal") * 100, Input.GetAxisRaw("Vertical") * 100);
             movement.Move(velocity);
         }
@@ -72,8 +66,8 @@ public class PlayerMotor : MonoBehaviour
 
         else if (collider.tag == "AbeAxe")
         {
-                controls.ResetHold();
-                collidersImOn.Add(collider);
+            controls.ResetHold();
+            collidersImOn.Add(collider);
 
             if (!GameManager.perkChosen)
             {
@@ -86,42 +80,47 @@ public class PlayerMotor : MonoBehaviour
     private void OnCollisionUpdate(Collider2D collider)
     {
         if (collider.tag == "Weapon")
-        if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
-            GetComponent<Attack>().SetWeapon(collider.gameObject.GetComponent<Weapon>());
+            if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
+                GetComponent<Attack>().SetWeapon(collider.gameObject.GetComponent<Weapon>());
 
         if (collider.tag == "Perk")
-        if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
-        {
-            collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-
-            if (!GameManager.perkChosen)
+            if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
             {
-                GameManager.perkChosen = true;
-                GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
-                uiManager.perkText.enabled = false;
+                collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+
+                if (!GameManager.perkChosen)
+                {
+                    GameManager.perkChosen = true;
+                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
+                    uiManager.perkText.enabled = false;
+                }
             }
-        }
 
         if (collider.tag == "AbeAxe")
-        if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
-        {
-            playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
-            collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-            playerAttack.emptyHanded = false;
-
-            if (!GameManager.perkChosen)
+            if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
-                GameManager.perkChosen = true;
-                GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
-                uiManager.perkText.enabled = false;
+                playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
+                collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+                playerAttack.emptyHanded = false;
+
+                if (!GameManager.perkChosen)
+                {
+                    GameManager.perkChosen = true;
+                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
+                    uiManager.perkText.enabled = false;
+                }
             }
-        }
     }
 
     private void OnCollisionEnd(Collider2D collider)
     {
         if (collidersImOn.Contains(collider))
             collidersImOn.Remove(collider);
+
+        if (collider)
+            if (collider.GetComponent<Perk>())
+                if (uiManager.perkText)
+                    uiManager.perkText.enabled = false;
 
         controls.ResetHold();
         controls.justClicked = false;

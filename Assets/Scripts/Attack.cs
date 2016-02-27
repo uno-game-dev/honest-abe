@@ -90,10 +90,11 @@ public class Attack : MonoBehaviour
     public float GetDamageAmount()
     {
         _chainAttack = GetComponent<ChainAttack>();
+        float chainAttackDamage = _chainAttack ? _chainAttack.numberOfChainAttacks : 0;
         if (attackState == State.Heavy)
-            return weapon.heavyDamage + _chainAttack.numberOfChainAttacks;
+            return weapon.heavyDamage + chainAttackDamage;
         else
-            return weapon.lightDamage + _chainAttack.numberOfChainAttacks;
+            return weapon.lightDamage + chainAttackDamage;
     }
 
     private BaseAttack CreateAttackType(Weapon.AttackType attackType)
