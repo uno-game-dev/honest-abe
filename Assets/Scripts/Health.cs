@@ -34,6 +34,8 @@ public class Health : MonoBehaviour {
                     ShowExecution();
                 }
                 if (gameObject.tag == "Boss"){
+					GlobalSettings.bossFight = false;
+					GameManager.BossFight ();
 					GameManager.win = true; // TESTING for Win game in alpha
                 }
                 UpdateHealth ();
@@ -47,7 +49,7 @@ public class Health : MonoBehaviour {
 	//For testing purposes
 	public virtual void UpdateHealth(){
 		if (gameObject.tag == "Enemy") {
-			Debug.Log ("Enemy health is: " + health);
+			//Debug.Log ("Enemy health is: " + health);
 		}
     }
 

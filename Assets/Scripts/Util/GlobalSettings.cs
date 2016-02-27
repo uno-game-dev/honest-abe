@@ -14,4 +14,5 @@ public class GlobalSettings : MonoBehaviour
 	
 	public static bool executionPerformed = false;
     public static bool performingHeavyAttack = false;
+	public static bool bossFight = false;
 }

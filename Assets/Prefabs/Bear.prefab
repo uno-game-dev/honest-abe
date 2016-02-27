@@ -50,9 +50,11 @@ GameObject:
   - 114: {fileID: 11438742}
   - 114: {fileID: 11469500}
   - 114: {fileID: 11499116}
+  - 114: {fileID: 11403188}
+  - 114: {fileID: 11420480}
   m_Layer: 11
   m_Name: Bear
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -959,6 +961,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11403188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!114 &11413938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -976,6 +990,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   _collider: {fileID: 0}
+--- !u!114 &11420480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e58727fd2b4849e985ac211f70b8d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11431614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1186,6 +1211,10 @@ Prefab:
       propertyPath: bloodSplatter
       value: 
       objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112324}
