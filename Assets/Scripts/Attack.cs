@@ -20,6 +20,7 @@ public class Attack : MonoBehaviour
     private GameObject _rightHand;
     private BaseAttack _attackType;
     private CharacterState _characterState;
+    private ChainAttack _chainAttack;
 
     private void Awake()
     {
@@ -83,10 +84,11 @@ public class Attack : MonoBehaviour
 
     public float GetDamageAmount()
     {
+        _chainAttack = GetComponent<ChainAttack>();
         if (attackState == State.Heavy)
-            return weapon.heavyDamage;
+            return weapon.heavyDamage + _chainAttack.numberOfChainAttacks;
         else
-            return weapon.lightDamage;
+            return weapon.lightDamage + _chainAttack.numberOfChainAttacks;
     }
 
     private BaseAttack CreateAttackType(Weapon.AttackType attackType)

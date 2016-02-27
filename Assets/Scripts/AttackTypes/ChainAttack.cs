@@ -17,6 +17,8 @@ public class ChainAttack : MonoBehaviour
 
     public void Hit()
     {
+        if (numberOfChainAttacks == 3)
+            numberOfChainAttacks = 0;
         chainAttackTimer = 0;
         numberOfChainAttacks++;
         AddChainAttackNumberToScene();
