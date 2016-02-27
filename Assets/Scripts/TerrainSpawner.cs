@@ -37,7 +37,7 @@ public class TerrainSpawner : MonoBehaviour {
 
 		if (cam.transform.position.x >= lastPosition - startSpawnPosition && canSpawn) {
 			canSpawn = false;
-			SpawnTerrain();
+			// SpawnTerrain();
 			occupiedPositions = new List<Vector3>();
 			SpawnProp();
 			SpawnEnemy();
