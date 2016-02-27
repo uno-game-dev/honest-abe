@@ -26,7 +26,6 @@ public class AttackArea : MonoBehaviour
         }
         _collision.OnCollisionEnter += OnCollision;
         _updateChainAttack = true;
-        Debug.Log("Attack Area Enabled");
     }
 
     private void OnDisable()

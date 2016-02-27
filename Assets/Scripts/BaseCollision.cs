@@ -52,19 +52,6 @@ public class BaseCollision : MonoBehaviour
     void Awake()
     {
         _collider = GetComponent<BoxCollider2D>();
-        OnCollisionEnter += DebugOnEnter;
-        OnCollisionExit += DebugOnExit;
-    }
-
-    private void DebugOnEnter(Collider2D collider)
-    {
-        Debug.Log(string.Format("{0} has collided with {1}", gameObject.name, collider.gameObject.name));
-    }
-
-    private void DebugOnExit(Collider2D collider)
-    {
-        if (collider)
-            Debug.Log(string.Format("{0} has stopped colliding with {1}", gameObject.name, collider.gameObject.name));
     }
 
     void Start()
@@ -95,6 +82,12 @@ public class BaseCollision : MonoBehaviour
 
         foreach (Collider2D collider in _currentCollisions.Keys)
             OnCollisionStay(collider);
+    }
+
+    void OnDisable()
+    {
+        for (int i = _currentCollisions.Keys.Count - 1; i >= 0; i--)
+            RemoveCollision(_currentCollisions.Keys.ElementAt(i));
     }
 
     public void Move(Vector3 vel)

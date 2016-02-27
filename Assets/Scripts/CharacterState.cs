@@ -46,4 +46,9 @@ public class CharacterState : MonoBehaviour
     {
         return state == State.Idle || state == State.Movement;
     }
+
+    public bool CanBeGrabbed()
+    {
+        return state != State.KnockDown;
+    }
 }

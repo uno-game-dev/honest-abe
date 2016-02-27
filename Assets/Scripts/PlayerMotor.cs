@@ -12,9 +12,9 @@ public class PlayerMotor : MonoBehaviour
     {
         movement = GetComponent<Movement>();
         collision = GetComponent<BaseCollision>();
-        collision.OnCollisionEnter += OnCollisionEnter;
-        collision.OnCollisionStay += OnCollisionStay;
-        collision.OnCollisionExit += OnCollisionExit;
+        collision.OnCollisionEnter += OnCollisionStart;
+        collision.OnCollisionStay += OnCollisionUpdate;
+        collision.OnCollisionExit += OnCollisionEnd;
         controls = GetComponent<PlayerControls>();
     }
 
@@ -36,7 +36,7 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collider2D collider)
+    private void OnCollisionStart(Collider2D collider)
     {
         if (collider.tag == "Item")
         {
@@ -50,7 +50,7 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collider2D collider)
+    private void OnCollisionUpdate(Collider2D collider)
     {
         if (collider.tag != "Weapon")
             return;
@@ -59,7 +59,7 @@ public class PlayerMotor : MonoBehaviour
             GetComponent<Attack>().SetWeapon(collider.gameObject.GetComponent<Weapon>());
     }
 
-    private void OnCollisionExit(Collider2D collider)
+    private void OnCollisionEnd(Collider2D collider)
     {
         if (collider && collider.tag != "Weapon")
             return;
