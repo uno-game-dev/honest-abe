@@ -15,17 +15,20 @@ public class UIManager : MonoBehaviour {
 	private GameObject optionsUI;
 	private GameObject loseUI;
 	private GameObject winUI;
+    [HideInInspector] public Text perkText;
 
-	void Start() {
+    void Start() {
 		startGameText = GameObject.Find("StartText");
 		pauseUI = GameObject.Find("PauseUI");
 		optionsUI = GameObject.Find("OptionsCanvas");
 		loseUI = GameObject.Find("LoseUI");
 		winUI = GameObject.Find ("WinUI");
-		pauseUI.SetActive (false);
+        perkText = GameObject.Find("PerkText").GetComponent<Text>();
+        pauseUI.SetActive (false);
 		optionsUI.SetActive (false);
 		loseUI.SetActive (false);
 		winUI.SetActive (false);
+        perkText.enabled = false;
 		displayWin = false;
 		displayLost = false;
 		slowMotion = true;

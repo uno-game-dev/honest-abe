@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour
     public Hand hand = Hand.Right;
     public Weapon weapon;
     public Dictionary<Weapon.AttackType, BaseAttack> attackTypes = new Dictionary<Weapon.AttackType, BaseAttack>();
+    public bool emptyHanded = true; // This will be true when Abe has no weapon in his hand and false if he does
 
     private GameObject _attackBox;
     private Animator _animator;
@@ -19,6 +20,7 @@ public class Attack : MonoBehaviour
     private GameObject _rightHand;
     private BaseAttack _attackType;
     private CharacterState _characterState;
+    private ChainAttack _chainAttack;
 
     private void Awake()
     {
@@ -60,6 +62,11 @@ public class Attack : MonoBehaviour
     {
         this.weapon = weapon;
 
+        if (weapon.attackType != Weapon.AttackType.Melee)
+            emptyHanded = false;
+        else
+            emptyHanded = true;
+
         if (attackTypes.ContainsKey(weapon.attackType))
         {
             _attackType = attackTypes[weapon.attackType];
@@ -82,10 +89,11 @@ public class Attack : MonoBehaviour
 
     public float GetDamageAmount()
     {
+        _chainAttack = GetComponent<ChainAttack>();
         if (attackState == State.Heavy)
-            return weapon.heavyDamage;
+            return weapon.heavyDamage + _chainAttack.numberOfChainAttacks;
         else
-            return weapon.lightDamage;
+            return weapon.lightDamage + _chainAttack.numberOfChainAttacks;
     }
 
     private BaseAttack CreateAttackType(Weapon.AttackType attackType)

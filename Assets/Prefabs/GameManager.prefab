@@ -11,6 +11,8 @@ GameObject:
   - 114: {fileID: 11419552}
   - 114: {fileID: 11486112}
   - 114: {fileID: 11488790}
+  - 114: {fileID: 11421306}
+  - 114: {fileID: 11417964}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -30,6 +32,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11417964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fa6b4206db3d846a8abd3c5f37e596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11419552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,6 +54,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb2f866c93128641bbe815697b3d35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11421306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e95f1c93198a4c4fbeac826e3da27c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkList: []
 --- !u!114 &11486112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,6 +88,8 @@ MonoBehaviour:
   spawnZPos: 10
   propDensity: 3
   difficulty: 1
+  bosses:
+  - {fileID: 112324, guid: 2344d1aded5b2a9438bf739fa32fb18b, type: 2}
 --- !u!114 &11488790
 MonoBehaviour:
   m_ObjectHideFlags: 1

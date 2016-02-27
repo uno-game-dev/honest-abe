@@ -47,12 +47,15 @@ GameObject:
   - 114: {fileID: 11431614}
   - 114: {fileID: 11494644}
   - 114: {fileID: 11479578}
-  - 114: {fileID: 11438742}
   - 114: {fileID: 11469500}
   - 114: {fileID: 11499116}
+  - 114: {fileID: 11403188}
+  - 114: {fileID: 11420480}
+  - 114: {fileID: 11462894}
+  - 114: {fileID: 11412252}
   m_Layer: 11
   m_Name: Bear
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,7 +487,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.39, y: -0.58, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437400}
@@ -959,6 +962,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11403188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 75
+--- !u!114 &11412252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c0fafce32656b4d855452702bc3ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!114 &11413938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -976,6 +1003,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   _collider: {fileID: 0}
+--- !u!114 &11420480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e58727fd2b4849e985ac211f70b8d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11431614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -991,20 +1029,6 @@ MonoBehaviour:
   target: {fileID: 0}
   stopDistanceX: 2
   stopDistanceY: 0.1
---- !u!114 &11438742
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c20c5846608bd9459b936b86f288ae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementProximityDistance: 12
-  attackProximityDistanceX: 3
-  attackProximityDistanceY: 1
 --- !u!114 &11450836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1016,6 +1040,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7dfacf1bbf624a8380211d7dfc6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11462894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70415d55f18f848fdab199c0a89fa6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopDistanceX: 1
+  stopDistanceY: 0
 --- !u!114 &11469500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1030,6 +1067,7 @@ MonoBehaviour:
   attackState: 0
   hand: 1
   weapon: {fileID: 0}
+  emptyHanded: 1
 --- !u!114 &11479578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1186,6 +1224,10 @@ Prefab:
       propertyPath: bloodSplatter
       value: 
       objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112324}

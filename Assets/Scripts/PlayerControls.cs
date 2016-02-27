@@ -26,6 +26,8 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
+        if (!UIManager.updateActive) return;
+
         if (Input.GetButtonDown("Fire1"))
         {
             if (_grab.state == Grabber.State.Hold)
