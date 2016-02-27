@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
     public static bool perkChosen;
 	public static bool lost;
 	public static bool win;
+	private GameObject _camera;
 
     private CameraFollow cameraFollow;
 
@@ -14,13 +15,20 @@ public class GameManager : MonoBehaviour {
 		lost = false;
 		win = false;
 
-        cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+		_camera = GameObject.Find("Main Camera");
+        cameraFollow = _camera.GetComponent<CameraFollow>();
         if (!perkChosen) cameraFollow.lockRightEdge = true;
 	}
 
-	void Update(){
+	void Update()
+    {
 		CheckLost();
 		CheckWin();
+        
+        if (GlobalSettings.bossFight)
+        {
+            RunBossFight();
+        }
 	}
 
 	public void CheckLost(){
@@ -35,5 +43,10 @@ public class GameManager : MonoBehaviour {
 			UIManager.displayWin = true;
             PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
 		}
+	}
+
+	public void RunBossFight()
+    {
+		_camera.GetComponent<CameraFollow> ().lockRightEdge = true;
 	}
 }

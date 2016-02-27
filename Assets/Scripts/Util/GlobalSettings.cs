@@ -28,4 +28,6 @@ public class GlobalSettings : MonoBehaviour
 
     public static string axe_dtVampirism_name = "Axe_DTVampirism";
     public static string axe_dtVampirism_desc = "Perk: Restores damage threshold on all heavy attacks";
+
+	public static bool bossFight = false;
 }

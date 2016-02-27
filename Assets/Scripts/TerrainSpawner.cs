@@ -18,6 +18,9 @@ public class TerrainSpawner : MonoBehaviour {
 	private bool canSpawn = true;
 	private float lastPosition;
 	private List<Vector3> occupiedPositions;
+	private int bossSpawnCountDown;
+	public List<GameObject> bosses;
+	private int bossForLevel;
 
 	// Use this for initialization
 	void Start()
@@ -25,6 +28,8 @@ public class TerrainSpawner : MonoBehaviour {
 		lastPosition = startSpawnPosition;
 		cam = GameObject.Find("Main Camera");
 		rnd = new System.Random();
+		bossSpawnCountDown = 0;
+		bossForLevel = Application.levelCount;
 	}
 	
 	// Update is called once per frame
@@ -38,6 +43,11 @@ public class TerrainSpawner : MonoBehaviour {
 			SpawnEnemy();
 			lastPosition += startSpawnPosition;
 			canSpawn = true;
+			//Only counting down the boss for alpha
+			bossSpawnCountDown++;
+			if (bossSpawnCountDown == 7) {
+				SpawnBoss ();
+			}
 		}
 	}
 
@@ -105,5 +115,21 @@ public class TerrainSpawner : MonoBehaviour {
 		Vector3 vector = new Vector3(x, y, 1);
 		occupiedPositions.Add(vector);
 		return vector;
+	}
+
+	private void SpawnBoss(){
+		//Depends on which level the player is on will determine what boss will appear
+		switch (bossForLevel) {
+		case 1:
+			//Instatiate boss for Level 1
+			Instantiate (bosses [bossForLevel - 1], getRandomPos(), Quaternion.Euler (0, 0, 0));
+			break;
+		case 2:
+			//Instatiate boss for Level 2
+			break;
+		case 3:
+			//Instatiate boss for Level 3
+			break;
+		}
 	}
 }
