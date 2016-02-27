@@ -50,7 +50,7 @@ class SwingAttack : BaseAttack
     private void PerformLightAttack()
     {
         //FOR ALPHA ONLY!!! Audio Architecture should be refactored Post-Alpha!
-        AudioManager.instance.PlayAttackSound(2);
+        AudioManager.instance.PlayAttackSound();
 
         Attack.attackState = Attack.State.Light;
         AttackArea.SetActive(true);

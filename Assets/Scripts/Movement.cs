@@ -60,9 +60,15 @@ public class Movement : MonoBehaviour
 
     private void CheckGrounded()
     {
+		//Used to manage if character has landed
+		bool prevState = isGrounded;
+
         if (_previousHeight == simulatedHeight) {
             isGrounded = true;
             _collision.collisionLayer = _collision.collisionLayer | (1 << LayerMask.NameToLayer("Environment"));
+			//Audio Management (ALPHA)
+			if (prevState != isGrounded)
+				AudioManager.instance.PlayGenericSound (1);
         }
         else
             isGrounded = false;
@@ -79,6 +85,9 @@ public class Movement : MonoBehaviour
         jumpVelocity = jumpStrength;
         isGrounded = false;
         _collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Environment"));
+
+		//ALPHA ONLY! Refactor the Eff out of the audio architecture post alpha
+		AudioManager.instance.PlayGenericSound(0);
     }
 
     public void Move(Vector2 deltaPosition)

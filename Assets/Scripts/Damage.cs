@@ -64,6 +64,9 @@ public class Damage : MonoBehaviour
         {
             if (bloodFountain)
             {
+				//ALPHA ONLY!!
+				AudioManager.instance.PlayDamageSound();
+				AudioManager.instance.PlayDamageSound (1);
                 GameObject blood = Instantiate(bloodFountain);
                 blood.transform.localPosition = hit.point;
                 Destroy(blood, 10);
@@ -73,6 +76,9 @@ public class Damage : MonoBehaviour
         {
             if (bloodSplatter)
             {
+				//ALPHA ONLY!!
+				AudioManager.instance.PlayDamageSound(1);
+
                 GameObject blood = Instantiate(bloodSplatter);
                 blood.transform.localPosition = hit.point;
                 Destroy(blood, 10);

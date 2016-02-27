@@ -10,11 +10,11 @@ public class AudioManager : MonoBehaviour {
 
     public AudioClip[] AttackSounds = new AudioClip[2];
     public AudioClip[] DamageSounds = new AudioClip[2];
+	public AudioClip[] GenericSounds = new AudioClip[4];
 
     public Dictionary<string, AudioClip> Sounds = new Dictionary<string, AudioClip>(2);
 
     private static AudioSource CameraSource = null;
-
 	// Use this for initialization
 	void Start () {
         if (instance == null)
@@ -74,4 +74,9 @@ public class AudioManager : MonoBehaviour {
     {
         AudioSource.PlayClipAtPoint(AttackSounds[index], CameraSource.transform.position, 2f);
     }
+
+	public void PlayGenericSound(int index = 0)
+	{
+		AudioSource.PlayClipAtPoint(GenericSounds[index], CameraSource.transform.position, 2f);
+	}
 }
