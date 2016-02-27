@@ -32,9 +32,9 @@ public class Stun : MonoBehaviour
         _collision.OnCollisionEnter -= OnCollision;
     }
 
-    private void OnCollision(RaycastHit2D hit)
+    private void OnCollision(Collider2D collider)
     {
-        if (hit.collider.tag == "Damage")
+        if (collider.tag == "Damage")
             GetStunned();
     }
 

@@ -29,7 +29,6 @@ public class Grabbable : MonoBehaviour
 
     private void Update()
     {
-        _collision.Tick();
         if (state == State.Grabbed)
             transform.localPosition = new Vector3(1.5f, 0, 0);
     }
@@ -47,10 +46,10 @@ public class Grabbable : MonoBehaviour
             _grabbedBy.GetComponent<Grabber>().Release();
     }
 
-    private void OnCollision(RaycastHit2D hit)
+    private void OnCollision(Collider2D collider)
     {
-        if (hit.collider.tag == "Grab")
-            GetGrabbed(hit.collider.transform.parent.gameObject);
+        if (collider.tag == "Grab")
+            GetGrabbed(collider.transform.parent.gameObject);
     }
 
     private void GetGrabbed(GameObject grabbedBy)

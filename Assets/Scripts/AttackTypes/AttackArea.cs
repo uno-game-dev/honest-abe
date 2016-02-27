@@ -26,6 +26,7 @@ public class AttackArea : MonoBehaviour
         }
         _collision.OnCollisionEnter += OnCollision;
         _updateChainAttack = true;
+        Debug.Log("Attack Area Enabled");
     }
 
     private void OnDisable()
@@ -42,23 +43,18 @@ public class AttackArea : MonoBehaviour
         _colliders.Clear();
     }
 
-    private void Update()
+    private void OnCollision(Collider2D collider)
     {
-        _collision.Tick();
-    }
-
-    private void OnCollision(RaycastHit2D hit)
-    {
-        if (_colliders.Contains(hit.collider))
+        if (_colliders.Contains(collider))
             return;
 
-        _colliders.Add(hit.collider);
+        _colliders.Add(collider);
 
         if (_updateChainAttack && _chainAttack)
         {
             _chainAttack.Hit();
             _updateChainAttack = false;
         }
-        this.hit = hit.collider.gameObject;
+        this.hit = collider.gameObject;
     }
 }

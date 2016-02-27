@@ -112,9 +112,7 @@ public class Grabber : MonoBehaviour
 
     private void Damage()
     {
-        RaycastHit2D hit = new RaycastHit2D();
-        hit.point = _grabbed.transform.position;
-        _grabbed.GetComponent<Damage>().ExecuteDamage(_grabbed, 10, hit);
+        _grabbed.GetComponent<Damage>().ExecuteDamage(_grabbed, 10, GetComponent<Collider2D>());
     }
 
     public void Throw()

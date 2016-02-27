@@ -6,13 +6,15 @@ public class PlayerMotor : MonoBehaviour
     private Movement movement;
     private BaseCollision collision;
     private PlayerControls controls;
-    private bool justCollided;
+    private bool onWeapon;
 
     void Start()
     {
         movement = GetComponent<Movement>();
         collision = GetComponent<BaseCollision>();
-        collision.OnCollisionEnter += OnCollision;
+        collision.OnCollisionEnter += OnCollisionEnter;
+        collision.OnCollisionStay += OnCollisionStay;
+        collision.OnCollisionExit += OnCollisionExit;
         controls = GetComponent<PlayerControls>();
     }
 
@@ -24,9 +26,6 @@ public class PlayerMotor : MonoBehaviour
         // Else run the update code
         if (movement.enabled)
         {
-            if (!collision.collisionInfo.above && !collision.collisionInfo.below && !collision.collisionInfo.right && !collision.collisionInfo.left)
-                justCollided = false;
-
             velocity = new Vector2(Input.GetAxisRaw("Horizontal") * 100, Input.GetAxisRaw("Vertical") * 100);
             movement.Move(velocity);
         }
@@ -34,30 +33,39 @@ public class PlayerMotor : MonoBehaviour
         {
             velocity.x = 0;
             velocity.y = 0;
-            collision.Tick();
         }
     }
 
-    private void OnCollision(RaycastHit2D hit)
+    private void OnCollisionEnter(Collider2D collider)
     {
-        if (hit.collider.tag == "Item")
+        if (collider.tag == "Item")
         {
-            hit.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
+            collider.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
         }
 
-        else if (hit.collider.tag == "Weapon")
+        else if (collider.tag == "Weapon")
         {
-            if (!justCollided)
-            {
-                controls.ResetHold();
-                justCollided = true;
-            }
-
-            if (controls.heldComplete && justCollided && controls.justClicked)
-            {
-                GetComponent<Attack>().SetWeapon(hit.collider.gameObject.GetComponent<Weapon>());
-                //hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            }
+            controls.ResetHold();
+            onWeapon = true;
         }
+    }
+
+    private void OnCollisionStay(Collider2D collider)
+    {
+        if (collider.tag != "Weapon")
+            return;
+
+        if (controls.heldComplete && onWeapon && controls.justClicked)
+            GetComponent<Attack>().SetWeapon(collider.gameObject.GetComponent<Weapon>());
+    }
+
+    private void OnCollisionExit(Collider2D collider)
+    {
+        if (collider && collider.tag != "Weapon")
+            return;
+
+        controls.ResetHold();
+        controls.justClicked = false;
+        onWeapon = false;
     }
 }
