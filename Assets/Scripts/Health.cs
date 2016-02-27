@@ -36,8 +36,7 @@ public class Health : MonoBehaviour {
                 }
                 if (gameObject.tag == "Boss"){
 					GlobalSettings.bossFight = false;
-					GameManager.BossFight ();
-					GameManager.win = true; // TESTING for Win game in alpha
+                    GameManager.win = true; // TESTING for Win game in alpha
                 }
                 UpdateHealth ();
 				Destroy (gameObject);

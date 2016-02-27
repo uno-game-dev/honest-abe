@@ -20,9 +20,15 @@ public class GameManager : MonoBehaviour {
         if (!perkChosen) cameraFollow.lockRightEdge = true;
 	}
 
-	void Update(){
+	void Update()
+    {
 		CheckLost();
 		CheckWin();
+        
+        if (GlobalSettings.bossFight)
+        {
+            RunBossFight();
+        }
 	}
 
 	public void CheckLost(){
@@ -39,7 +45,8 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public static void BossFight(){
-		_camera.GetComponent<CameraFollow> ().lockRightEdge = GlobalSettings.bossFight;
+	public void RunBossFight()
+    {
+		_camera.GetComponent<CameraFollow> ().lockRightEdge = true;
 	}
 }
