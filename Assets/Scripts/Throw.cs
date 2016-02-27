@@ -44,10 +44,15 @@ public class Throw : MonoBehaviour
     private void PerformThrow()
     {
         _attack.weapon.transform.parent = null;
-        Projectile projectile = _attack.weapon.gameObject.AddComponent<Projectile>();
+        _attack.weapon.GetComponent<BoxCollider2D>().enabled = true;
+        Projectile projectile = null;
+        if (_attack.weapon.GetComponent<Projectile>() != null)
+            Destroy(_attack.weapon.gameObject.GetComponent<Projectile>());
+        projectile = _attack.weapon.gameObject.AddComponent<Projectile>();
         SetState(State.Perform);
         _attack.weapon.transform.rotation = Quaternion.identity;
         _attack.SetWeapon(GetComponent<Weapon>());
+        _attack.emptyHanded = true;
         Invoke("FinishThrow", performThrowTime);
     }
 

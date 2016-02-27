@@ -54,6 +54,9 @@ public class AttackArea : MonoBehaviour
 
         _colliders.Add(hit.collider);
 
+        if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
+            PerkManager.PerformPerkEffects();
+
         if (_updateChainAttack && _chainAttack)
         {
             _chainAttack.Hit();

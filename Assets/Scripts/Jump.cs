@@ -81,8 +81,8 @@ public class Jump : MonoBehaviour
         _animator.speed = _previousAnimationSpeed;
         jumpVelocity = jumpStrength;
         isGrounded = false;
-        _collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Environment"));
-        _collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Enemy"));
+        _collision.collisionLayer &= ~(1 << LayerMask.NameToLayer("Environment"));
+        _collision.collisionLayer &= ~(1 << LayerMask.NameToLayer("Enemy"));
     }
 
     private void Land()
@@ -94,8 +94,8 @@ public class Jump : MonoBehaviour
 
         _characterState.SetState(CharacterState.State.Null);
         isGrounded = true;
-        _collision.collisionLayer = _collision.collisionLayer | (1 << LayerMask.NameToLayer("Environment"));
-        _collision.collisionLayer = _collision.collisionLayer | (1 << LayerMask.NameToLayer("Enemy"));
+        _collision.collisionLayer |= (1 << LayerMask.NameToLayer("Environment"));
+        _collision.collisionLayer |= (1 << LayerMask.NameToLayer("Enemy"));
         Invoke("FinishLand", landDuration);
     }
 
