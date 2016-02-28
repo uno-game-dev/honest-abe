@@ -440,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 1
   attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1, y: 0.5}
+  attackOffset: {x: 1.5, y: 0}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 327, y: 156, z: 218}
   lightDamage: 35
@@ -472,11 +472,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 1
   attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1, y: 0.5}
+  attackOffset: {x: 1.5, y: 0}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 327, y: 156, z: 218}
-  lightDamage: 10
-  heavyDamage: 15
+  lightDamage: 30
+  heavyDamage: 45
 --- !u!114 &11455118
 MonoBehaviour:
   m_ObjectHideFlags: 1

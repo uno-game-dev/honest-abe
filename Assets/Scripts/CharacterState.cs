@@ -24,6 +24,17 @@ public class CharacterState : MonoBehaviour
         if (state == State.Idle)
             if (GetComponent<Animator>())
                 GetComponent<Animator>().SetFloat("PlaySpeed", 1);
+
+        if (state == State.Movement)
+        {
+            if (GetComponentInChildren<AudioSource>())
+                GetComponentInChildren<AudioSource>().Play();
+        }
+        else
+        {
+            if (GetComponentInChildren<AudioSource>())
+                GetComponentInChildren<AudioSource>().Stop();
+        }
     }
 
     public bool CanMove()

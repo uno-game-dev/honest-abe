@@ -65,6 +65,7 @@ public class Jump : MonoBehaviour
             return;
 
         SetState(State.StartJump);
+        AudioManager.instance.PlayGenericSound(0);
         _animator.SetFloat("PlaySpeed", _animator.GetAnimationClip("standing_jump-start").length / startJumpDuration);
         _characterState.SetState(CharacterState.State.Null);
         Invoke("PerformJump", startJumpDuration);
@@ -83,6 +84,7 @@ public class Jump : MonoBehaviour
     private void Land()
     {
         SetState(State.Land);
+        AudioManager.instance.PlayGenericSound(1);
         _animator.SetFloat("PlaySpeed", _animator.GetAnimationClip("standing_jump-land").length / landDuration);
         _characterState.SetState(CharacterState.State.Null);
         isGrounded = true;

@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour {
             instance = this;
 		source = this.gameObject.GetComponent<AudioSource>();
         CameraSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
-		source.volume = (0.7f);
+		source.volume = 1;
         initSoundLib();
 	}
 	
