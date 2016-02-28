@@ -11,9 +11,6 @@ public class Damage : MonoBehaviour
 
     private Health health;
     private BaseCollision collision;
-    private bool canAddBlood;
-    private float bloodTimer;
-    private float bloodRate = 0.2f;
 
     void Awake()
     {
@@ -22,57 +19,40 @@ public class Damage : MonoBehaviour
 
     void OnEnable()
     {
-        collision.OnCollision += OnCollision;
+        collision.OnCollisionEnter += OnCollision;
     }
 
     void OnDisable()
     {
-        collision.OnCollision -= OnCollision;
+        collision.OnCollisionEnter -= OnCollision;
     }
 
-    void Update()
-    {
-        collision.Tick();
-
-        if (!canAddBlood)
-            if (bloodTimer > bloodRate)
-                canAddBlood = transform;
-            else
-                bloodTimer += Time.deltaTime;
-    }
-
-    public void ExecuteDamage(GameObject toObject, float damageAmount, RaycastHit2D hit)
+    public void ExecuteDamage(GameObject toObject, float damageAmount, Collider2D collider)
     {
         if (health = toObject.GetComponent<Health>())
             health.Decrease(Convert.ToInt32(damageAmount), damageRate);
-        if (hit)
-            AddBlood(hit);
+        if (collider)
+            AddBlood(collider);
     }
 
-    private void OnCollision(RaycastHit2D hit)
+    private void OnCollision(Collider2D collider)
     {
-        if (hit.collider.tag == "Damage")
+        if (collider.tag == "Damage")
         {
-            damageAmount = hit.transform.GetComponentInParent<Attack>().GetDamageAmount();
-            ExecuteDamage(gameObject, damageAmount, hit);
+            damageAmount = collider.transform.GetComponentInParent<Attack>().GetDamageAmount();
+            ExecuteDamage(gameObject, damageAmount, collider);
         }
     }
 
-    private void AddBlood(RaycastHit2D hit)
+    private void AddBlood(Collider2D collider)
     {
-        if (!canAddBlood)
-            return;
-
-        bloodTimer = 0;
-        canAddBlood = false;
-
-        Weapon weapon = hit.transform.GetComponentInParent<Attack>().weapon;
+        Weapon weapon = collider.transform.GetComponentInParent<Attack>().weapon;
         if (weapon.attackType == Weapon.AttackType.Swing)
         {
             if (bloodFountain)
             {
                 GameObject blood = Instantiate(bloodFountain);
-                blood.transform.position = hit.point;
+                blood.transform.position = collider.transform.position;
                 Destroy(blood, 10);
             }
         }
@@ -81,7 +61,7 @@ public class Damage : MonoBehaviour
             if (bloodSplatter)
             {
                 GameObject blood = Instantiate(bloodSplatter);
-                blood.transform.localPosition = hit.point;
+                blood.transform.localPosition = collider.transform.position;
                 Destroy(blood, 10);
             }
         }

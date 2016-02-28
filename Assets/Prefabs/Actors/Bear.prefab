@@ -53,6 +53,7 @@ GameObject:
   - 114: {fileID: 11420480}
   - 114: {fileID: 11462894}
   - 114: {fileID: 11412252}
+  - 114: {fileID: 11448898}
   m_Layer: 11
   m_Name: Bear
   m_TagString: Boss
@@ -1002,6 +1003,7 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1536
+  numberOfCollisions: 0
   _collider: {fileID: 0}
 --- !u!114 &11420480
 MonoBehaviour:
@@ -1029,6 +1031,23 @@ MonoBehaviour:
   target: {fileID: 0}
   stopDistanceX: 2
   stopDistanceY: 0.1
+--- !u!114 &11448898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592e45ae2c86e94e9b68477396a52d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  height: 0
+  horizontalVelocity: 10
+  gravityMultiplier: 1
+  onGroundDuration: 1
+  getUpDuration: 1
 --- !u!114 &11450836
 MonoBehaviour:
   m_ObjectHideFlags: 1
