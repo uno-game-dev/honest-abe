@@ -1,15 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &130152
+--- !u!1 &122698
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 487480}
-  - 114: {fileID: 11476658}
-  - 82: {fileID: 8281340}
+  - 4: {fileID: 475414}
+  - 114: {fileID: 11473632}
+  - 82: {fileID: 8237802}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -123,14 +123,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 497826}
   m_RootOrder: 2
---- !u!4 &487480
+--- !u!4 &475414
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130152}
+  m_GameObject: {fileID: 122698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 497826}
@@ -148,7 +148,7 @@ Transform:
   - {fileID: 438750}
   - {fileID: 414954}
   - {fileID: 469996}
-  - {fileID: 487480}
+  - {fileID: 475414}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!20 &2074602
@@ -308,12 +308,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &8281340
+--- !u!82 &8237802
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130152}
+  m_GameObject: {fileID: 122698}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -481,12 +481,12 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   previousPos: {x: 0, y: 0, z: 0}
   lockRightEdge: 0
---- !u!114 &11476658
+--- !u!114 &11473632
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130152}
+  m_GameObject: {fileID: 122698}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 423a750816f599a4e8b4951ce8a31fb6, type: 3}
@@ -495,16 +495,16 @@ MonoBehaviour:
   introMusic: {fileID: 8300000, guid: 5cd3f63a692502545b3921bad1b2f8b1, type: 3}
   playMusic: {fileID: 8300000, guid: 26af0ebc85e25744c984250cd179478e, type: 3}
   AttackSounds:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
   - {fileID: 0}
   DamageSounds:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: b8b8af91eccf4234aa8d626d92f5678e, type: 3}
+  - {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
   GenericSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 6c96384674ba9ba47a7e7dda37d3438d, type: 3}
+  - {fileID: 8300000, guid: 801fcd64fb9b4c64184a470059896e4b, type: 3}
+  - {fileID: 8300000, guid: 45de4a7d1f929254699fc56160db50da, type: 3}
+  - {fileID: 8300000, guid: 1092a2094ce6bb14d8958f53addd2e41, type: 3}
 --- !u!124 &12404938
 Behaviour:
   m_ObjectHideFlags: 1
