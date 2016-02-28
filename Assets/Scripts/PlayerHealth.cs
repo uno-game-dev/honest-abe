@@ -3,23 +3,21 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerHealth : Health {
-	[HideInInspector]
-	public int damageThreshold;
-	[HideInInspector]
-	public int currentHealth;
-	private float nextHitToPlayer;
-	private float updateHealthSliderTime = 2;
-	private bool isDead;
+	public int damageThreshold = 100;
+	public int currentHealth = 100;
+    public float decreaseSecondsPerHealthPoint = 1;
 	[HideInInspector]
 	public bool executionPerformed;
+
+	private float nextHitToPlayer;
+	private float updateHealthSliderTimer = 1;
+	private bool isDead;
 	private HealthSlider healthSlider;
 
 	// Use this for initialization
 	void Start () {
 		GlobalSettings.executionPerformed = false;
 		executionPerformed = false;
-		damageThreshold = 100;
-		currentHealth = 100;
 		healthSlider = GetComponent<HealthSlider>();
 		isDead = false;
 	}
@@ -48,7 +46,7 @@ public class PlayerHealth : Health {
 		}**/
 		if(!isDead){
 			//Decreases the timer to know when to update the damageSlider
-			updateHealthSliderTime -= Time.deltaTime;
+			updateHealthSliderTimer -= Time.deltaTime;
 			//Debug.Log ("Time remaining for updating Damage: " + updateDamageSliderTime);
 		}
 		UpdateHUD ();
@@ -143,7 +141,7 @@ public class PlayerHealth : Health {
 		//CurrentHealth is slowly decreasing to eventually equal damageThreshold 
         if (currentHealth > damageThreshold) {
 			//Time to update currentHealthSlider
-			if (updateHealthSliderTime < 0) {
+			if (updateHealthSliderTimer < 0) {
 				if (!executionPerformed) {
 					//Decrease the currentHealth in increments of 5
 					currentHealth -= 1;
@@ -155,7 +153,7 @@ public class PlayerHealth : Health {
 					//Update currentHeathSlider
 					healthSlider.UpdateCurrentHealth(currentHealth);
 					//Reset the timer for updating the HealthSlider
-					updateHealthSliderTime = 1.5f;
+					updateHealthSliderTimer = decreaseSecondsPerHealthPoint;
 				}
 			}
 		}

@@ -33,6 +33,8 @@ public class Damage : MonoBehaviour
             health.Decrease(Convert.ToInt32(damageAmount), damageRate);
         if (collider)
             AddBlood(collider);
+        if (tag == "Enemy")
+            AudioManager.instance.PlayDamageSound(new System.Random().Next(2, 5));
     }
 
     private void OnCollision(Collider2D collider)

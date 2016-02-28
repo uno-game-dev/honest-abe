@@ -11,6 +11,9 @@ public class AudioManager : MonoBehaviour {
     public AudioClip[] AttackSounds = new AudioClip[2];
     public AudioClip[] DamageSounds = new AudioClip[2];
 	public AudioClip[] GenericSounds = new AudioClip[4];
+    public List<AudioClip> BossSounds = new List<AudioClip>();
+    public List<AudioClip> ItemSounds = new List<AudioClip>();
+    public List<AudioClip> WeaponSounds = new List<AudioClip>();
 
     public Dictionary<string, AudioClip> Sounds = new Dictionary<string, AudioClip>(2);
 
@@ -69,9 +72,15 @@ public class AudioManager : MonoBehaviour {
             AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 0.7f);
     }
 
-    public void PlayDamageSound( int index = 0)
+    public void PlayDamageSound(int index = 0)
     {
-        AudioSource.PlayClipAtPoint(DamageSounds[index], CameraSource.transform.position, 0.7f);
+        if (index == 0)
+            AudioSource.PlayClipAtPoint(DamageSounds[index], CameraSource.transform.position, 0.7f);
+        else
+        {
+            source.clip = DamageSounds[index];
+            source.Play();
+        }
     }
 
 	public void PlayAttackSound(int index = 0, float timeDelay = 0f)
@@ -83,8 +92,25 @@ public class AudioManager : MonoBehaviour {
 
 	public void PlayGenericSound(int index = 0, float timeDelay = 0f)
 	{
-
 		source.clip = GenericSounds[index];
 		source.PlayDelayed(timeDelay);
 	}
+
+    public void PlayBossSound(int index = 0, float timeDelay = 0f)
+    {
+        source.clip = BossSounds[index];
+        source.PlayDelayed(timeDelay);
+    }
+
+    public void PlayItemSound(int index = 0, float timeDelay = 0f)
+    {
+        source.clip = ItemSounds[index];
+        source.PlayDelayed(timeDelay);
+    }
+
+    public void PlayWeaponSound(int index = 0, float timeDelay = 0f)
+    {
+        source.clip = WeaponSounds[index];
+        source.PlayDelayed(timeDelay);
+    }
 }

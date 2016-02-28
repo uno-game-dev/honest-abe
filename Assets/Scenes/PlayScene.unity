@@ -852,6 +852,22 @@ Prefab:
       propertyPath: amountOfDTSlider
       value: 
       objectReference: {fileID: 1780418089}
+    - target: {fileID: 11440234, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440234, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: damageThreshold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440234, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440234, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: decreaseSecondsPerHealthPoint
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
   m_IsPrefabParent: 0

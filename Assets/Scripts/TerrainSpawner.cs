@@ -7,11 +7,13 @@ public class TerrainSpawner : MonoBehaviour {
 	public GameObject terrain;
 	public List<GameObject> enemies;
 	public List<GameObject> props;
+    public List<GameObject> items;
 	public float startSpawnPosition = 8f;
 	public int spawnYPos = 0;
 	public int spawnZPos = 10;
 	public int propDensity = 3;
-	public int difficulty = 1;
+    public int itemDensity = 1;
+    public int difficulty = 1;
 
 	private GameObject cam;
 	private System.Random rnd;
@@ -41,7 +43,8 @@ public class TerrainSpawner : MonoBehaviour {
 			occupiedPositions = new List<Vector3>();
 			SpawnProp();
 			SpawnEnemy();
-			lastPosition += startSpawnPosition;
+            SpawnItem();
+            lastPosition += startSpawnPosition;
 			canSpawn = true;
 			//Only counting down the boss for alpha
 			bossSpawnCountDown++;
@@ -65,7 +68,16 @@ public class TerrainSpawner : MonoBehaviour {
 		}
 	}
 
-	private void SpawnEnemy() {
+    private void SpawnItem()
+    {
+        for (int i = 0; i < itemDensity; i++)
+        {
+            int r = rnd.Next(items.Count);
+            Instantiate(items[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+        }
+    }
+
+    private void SpawnEnemy() {
 
 		int enemyDensity = 0;
 		

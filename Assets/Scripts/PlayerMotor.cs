@@ -44,7 +44,10 @@ public class PlayerMotor : MonoBehaviour
     private void OnCollisionStart(Collider2D collider)
     {
         if (collider.tag == "Item")
+        {
             collider.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
+            AudioManager.instance.PlayItemSound();
+        }
 
         else if (collider.tag == "Weapon")
         {
@@ -106,6 +109,7 @@ public class PlayerMotor : MonoBehaviour
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 playerAttack.emptyHanded = false;
+                AudioManager.instance.PlayWeaponSound();
 
                 if (!GameManager.perkChosen)
                 {
