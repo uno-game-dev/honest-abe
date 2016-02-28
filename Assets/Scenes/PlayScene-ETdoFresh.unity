@@ -124,10 +124,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11486112, guid: 7c3ca16b17f984a71821c19cf239ee02, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c3ca16b17f984a71821c19cf239ee02, type: 2}
   m_IsPrefabParent: 0
@@ -137,28 +133,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 58211470}
   m_Script: {fileID: 11500000, guid: 5cb2f866c93128641bbe815697b3d35e, type: 3}
---- !u!1 &181195874 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 139008, guid: 5e2a67eaea3a5694697cf4834007da31, type: 2}
-  m_PrefabInternal: {fileID: 475588608}
---- !u!114 &181195877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 181195874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e82b4b0da06a14ebae9e830f632cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalRayCount: 4
-  verticalRayCount: 4
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  numberOfCollisions: 0
-  _collider: {fileID: 0}
 --- !u!1001 &291720532
 Prefab:
   m_ObjectHideFlags: 0
@@ -196,7 +170,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 413746, guid: 481f15881862ba2409da4c965f72ea6a, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 481f15881862ba2409da4c965f72ea6a, type: 2}
@@ -244,8 +218,7 @@ Prefab:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11449244, guid: 5e2a67eaea3a5694697cf4834007da31, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2a67eaea3a5694697cf4834007da31, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &898250066
@@ -308,7 +281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
 --- !u!1001 &899359752
 Prefab:
   m_ObjectHideFlags: 0
@@ -596,45 +569,40 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22488046, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8333333
       objectReference: {fileID: 0}
     - target: {fileID: 22488046, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22403776, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8333333
       objectReference: {fileID: 0}
     - target: {fileID: 22403776, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22473792, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8333333
       objectReference: {fileID: 0}
     - target: {fileID: 22473792, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22417030, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.8333333
       objectReference: {fileID: 0}
     - target: {fileID: 22417030, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.8333333
       objectReference: {fileID: 0}
     - target: {fileID: 22417030, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11415866, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 74bdff2a4989dce4ba1cb81a24af550f,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b06cd9546edd4dae89db9c1c5dfd9db, type: 2}
   m_IsPrefabParent: 0
@@ -693,7 +661,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 497826, guid: 75aa131fe3334c746bc00a8a671e5818, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75aa131fe3334c746bc00a8a671e5818, type: 2}
@@ -725,7 +693,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!108 &1848461377
 Light:
   m_ObjectHideFlags: 0
@@ -882,7 +850,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 481366, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
       propertyPath: damageThresholdSlider
@@ -896,6 +864,10 @@ Prefab:
       propertyPath: amountOfDTSlider
       value: 
       objectReference: {fileID: 1780418089}
+    - target: {fileID: 2308372, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
   m_IsPrefabParent: 0

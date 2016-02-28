@@ -20,7 +20,6 @@ public abstract class BaseAttack : MonoBehaviour
     public float finishLightAttackTime = 0.1f;
     public float finishHeavyAttackTime = 0.1f;
 
-    protected float _previousAnimationSpeed;
     private CharacterState _characterState;
 
     private void Awake()

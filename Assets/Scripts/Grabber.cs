@@ -16,7 +16,6 @@ public class Grabber : MonoBehaviour
     private Animator _animator;
     private Attack _attack;
     private GameObject _grabbed;
-    private float _previousAnimationSpeed;
     private CharacterState _characterState;
 
     private void Awake()
@@ -61,8 +60,7 @@ public class Grabber : MonoBehaviour
     private void PrepareToGrab()
     {
         float duration = prepareGrabTime + performGrabTime + finishGrabTime;
-        _previousAnimationSpeed = _animator.speed;
-        _animator.speed = _animator.GetAnimationClip("Start Grab").length / duration;
+        _animator.SetFloat("PlaySpeed", _animator.GetAnimationClip("Start Grab").length / duration);
         _characterState.SetState(CharacterState.State.Grab);
         SetState(State.Prepare);
         Invoke("PerformGrab", prepareGrabTime);
@@ -77,8 +75,6 @@ public class Grabber : MonoBehaviour
 
     private void FinishGrab()
     {
-        _animator.speed = _previousAnimationSpeed;
-
         if (state != State.Perform)
             return;
 
