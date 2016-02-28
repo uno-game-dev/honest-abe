@@ -47,7 +47,7 @@ public class Attack : MonoBehaviour
         //_attackBox = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
         _attackBox = new GameObject(); // Use this one when done debugging
         _attackBox.name = "Attack Box";
-        _attackBox.transform.parent = transform;
+        _attackBox.transform.SetParent(transform, true);
         _attackBox.transform.localPosition = new Vector3(1f, 0.5f, 0f);
         _attackBox.tag = "Damage";
         _attackBox.layer = gameObject.layer;
@@ -81,7 +81,7 @@ public class Attack : MonoBehaviour
 
         if (weapon.attackType != Weapon.AttackType.Melee)
         {
-            weapon.transform.parent = _rightHand.transform;
+            weapon.transform.SetParent(_rightHand.transform, true);
             weapon.transform.localPosition = weapon.heldOffset;
             weapon.transform.localEulerAngles = weapon.heldOrientation;
         }

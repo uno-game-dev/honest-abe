@@ -204,4 +204,14 @@ public class BaseCollision : MonoBehaviour
             numberOfCollisions--;
         }
     }
+
+    public void AddCollisionLayer(string name)
+    {
+        collisionLayer |= (1 << LayerMask.NameToLayer(name));
+    }
+
+    public void RemoveCollisionLayer(string name)
+    {
+        collisionLayer &= ~(1 << LayerMask.NameToLayer(name));
+    }
 }

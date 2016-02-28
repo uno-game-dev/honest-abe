@@ -36,7 +36,7 @@ public class Grabber : MonoBehaviour
         //grabArea = GameObject.CreatePrimitive(PrimitiveType.Quad); // For Debug Purposes
         grabArea = new GameObject(); // Use this one when done debugging
         grabArea.name = "Grab Area";
-        grabArea.transform.parent = transform;
+        grabArea.transform.SetParent(transform);
         grabArea.transform.localPosition = new Vector3(1f, 0.5f, 0f);
         grabArea.tag = "Grab";
         grabArea.layer = gameObject.layer;

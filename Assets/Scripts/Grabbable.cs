@@ -75,7 +75,7 @@ public class Grabbable : MonoBehaviour
         grabbedBy.GetComponent<Grabber>().Hold(gameObject);
 
         _previousParent = transform.parent;
-        transform.parent = grabbedBy.transform;
+        transform.SetParent(grabbedBy.transform, true);
         _grabbedBy = grabbedBy;
 
         gameObject.layer = grabbedBy.layer;
@@ -95,7 +95,7 @@ public class Grabbable : MonoBehaviour
         _characterState.SetState(CharacterState.State.Idle);
         if (_movementAI) _movementAI.enabled = true;
         if (_attackAI) _attackAI.enabled = true;
-        transform.parent = _previousParent;
+        transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;
         _collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Enemy"));
 
@@ -121,7 +121,7 @@ public class Grabbable : MonoBehaviour
         _animator.SetBool("Grabbed", false);
         if (_movementAI) _movementAI.enabled = true;
         if (_attackAI) _attackAI.enabled = true;
-        transform.parent = _previousParent;
+        transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;
         _collision.collisionLayer ^= (1 << LayerMask.NameToLayer("Enemy"));
         _knockDown.StartKnockDown(_grabbedBy.GetComponent<Movement>().direction == Movement.Direction.Left ? -10 : 10);

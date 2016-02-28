@@ -6,18 +6,21 @@ public class Throw : MonoBehaviour
     public enum State { Null, Prepare, Perform, Finish }
 
     public State state;
+    public float velocity = 30;
     private Animator _animator;
     private Attack _attack;
     private float prepareThrowTime = 0.3f;
     private float performThrowTime = 0.3f;
     private float finishThrowTime = 0.3f;
     private CharacterState _characterState;
+    private Movement _movement;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _attack = GetComponent<Attack>();
         _characterState = GetComponent<CharacterState>();
+        _movement = GetComponent<Movement>();
     }
 
     public void StartThrow()
@@ -38,17 +41,18 @@ public class Throw : MonoBehaviour
     {
         SetState(State.Prepare);
         _characterState.SetState(CharacterState.State.Throw);
+        _animator.SetTrigger("Throw");
         Invoke("PerformThrow", prepareThrowTime);
     }
 
     private void PerformThrow()
     {
-        _attack.weapon.transform.parent = null;
+        _attack.weapon.transform.SetParent(null, true);
+        _attack.weapon.transform.localScale = Vector3.one;
+        _attack.weapon.transform.position = transform.position;
         _attack.weapon.GetComponent<BoxCollider2D>().enabled = true;
-        Projectile projectile = null;
-        if (_attack.weapon.GetComponent<Projectile>() != null)
-            Destroy(_attack.weapon.gameObject.GetComponent<Projectile>());
-        projectile = _attack.weapon.gameObject.AddComponent<Projectile>();
+        _attack.weapon.GetOrAddComponent<Projectile>().StartProjectile(
+            _movement.direction == Movement.Direction.Left ? -velocity : velocity);
         SetState(State.Perform);
         _attack.weapon.transform.rotation = Quaternion.identity;
         _attack.SetWeapon(GetComponent<Weapon>());
@@ -58,6 +62,7 @@ public class Throw : MonoBehaviour
 
     private void FinishThrow()
     {
+        _attack.emptyHanded = true;
         SetState(State.Finish);
         Invoke("BackToIdle", finishThrowTime);
     }

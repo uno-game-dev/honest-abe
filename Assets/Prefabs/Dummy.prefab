@@ -106,6 +106,7 @@ GameObject:
   - 114: {fileID: 11414776}
   - 114: {fileID: 11446878}
   - 114: {fileID: 11448088}
+  - 114: {fileID: 11480820}
   m_Layer: 11
   m_Name: Dummy
   m_TagString: Enemy
@@ -834,7 +835,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.28, y: -1.7, z: -10}
+  m_LocalPosition: {x: 4.391614, y: -2.3153412, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499874}
@@ -1177,6 +1178,23 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   movementSmoothing: 0.115
   state: 0
+--- !u!114 &11480820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592e45ae2c86e94e9b68477396a52d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  height: 0
+  horizontalVelocity: 10
+  gravityMultiplier: 1
+  onGroundDuration: 1
+  getUpDuration: 1
 --- !u!114 &11499884
 MonoBehaviour:
   m_ObjectHideFlags: 1

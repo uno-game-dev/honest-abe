@@ -81,7 +81,10 @@ public class PlayerMotor : MonoBehaviour
     {
         if (collider.tag == "Weapon")
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
+            {
                 GetComponent<Attack>().SetWeapon(collider.gameObject.GetComponent<Weapon>());
+                collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
+            }
 
         if (collider.tag == "Perk")
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
@@ -100,6 +103,7 @@ public class PlayerMotor : MonoBehaviour
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
                 playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
+                collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 playerAttack.emptyHanded = false;
 
