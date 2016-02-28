@@ -49,6 +49,10 @@ public class Damage : MonoBehaviour
         Weapon weapon = collider.transform.GetComponentInParent<Attack>().weapon;
         if (weapon.attackType == Weapon.AttackType.Swing)
         {
+			//ALPHA ONLY
+			AudioManager.instance.PlayDamageSound(0);
+			AudioManager.instance.PlayDamageSound(1);
+
             if (bloodFountain)
             {
                 GameObject blood = Instantiate(bloodFountain);
@@ -58,6 +62,8 @@ public class Damage : MonoBehaviour
         }
         else
         {
+			//ALPHA ONLY
+			AudioManager.instance.PlayDamageSound();
             if (bloodSplatter)
             {
                 GameObject blood = Instantiate(bloodSplatter);
