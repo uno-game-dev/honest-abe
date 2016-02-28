@@ -9,6 +9,8 @@ public class Grabber : MonoBehaviour
     public float prepareGrabTime = 0.3f;
     public float performGrabTime = 0.3f;
     public float finishGrabTime = 0.3f;
+    public float grabThrowTime = 0.5f;
+    public float grabThrowDamage = 25f;
     public State state;
 
     private Animator _animator;
@@ -112,9 +114,8 @@ public class Grabber : MonoBehaviour
 
     private void Damage()
     {
-        RaycastHit2D hit = new RaycastHit2D();
-        hit.point = _grabbed.transform.position;
-        _grabbed.GetComponent<Damage>().ExecuteDamage(_grabbed, 10, hit);
+        Damage damage = _grabbed.GetComponent<Damage>();
+        if (damage) damage.ExecuteDamage(_grabbed, 10, GetComponent<Collider2D>());
     }
 
     public void Throw()
@@ -123,13 +124,20 @@ public class Grabber : MonoBehaviour
             return;
 
         _animator.SetTrigger("Grab Throw");
-        _grabbed.transform.localPosition += new Vector3(5, 0, 0);
-        Release();
+
+        _grabbed.GetComponent<Grabbable>().Throw();
+
+        if (_grabbed.GetComponent<Damage>())
+            _grabbed.GetComponent<Damage>().ExecuteDamage(_grabbed, grabThrowDamage, GetComponent<Collider2D>());
+        _grabbed = null;
+        Invoke("BackToIdle", grabThrowTime);
     }
 
     public void Release()
     {
-        _grabbed.GetComponent<Grabbable>().Release();
+        if (_grabbed)
+            if (_grabbed.GetComponent<Grabbable>())
+                _grabbed.GetComponent<Grabbable>().Release();
         _grabbed = null;
         BackToIdle();
     }

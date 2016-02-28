@@ -21,6 +21,12 @@ public abstract class BaseAttack : MonoBehaviour
     public float finishHeavyAttackTime = 0.1f;
 
     protected float _previousAnimationSpeed;
+    private CharacterState _characterState;
+
+    private void Awake()
+    {
+        _characterState = GetComponent<CharacterState>();
+    }
 
     public void StartLightAttack()
     {
@@ -59,14 +65,16 @@ public abstract class BaseAttack : MonoBehaviour
     protected virtual void PerformLightAttack()
     {
         state = State.Perform;
-        attackArea.SetActive(true);
+        if (_characterState.state == CharacterState.State.Attack)
+            attackArea.SetActive(true);
         Invoke("FinishLightAttack", lightAttackTime);
     }
 
     protected virtual void PerformHeavyAttack()
     {
         state = State.Perform;
-        attackArea.SetActive(true);
+        if (_characterState.state == CharacterState.State.Attack)
+            attackArea.SetActive(true);
         Invoke("FinishHeavyAttack", heavyAttackTime);
     }
 

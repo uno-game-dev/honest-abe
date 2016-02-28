@@ -24,7 +24,7 @@ public class AttackArea : MonoBehaviour
         {
             GlobalSettings.performingHeavyAttack = true;
         }
-        _collision.OnCollision += OnCollision;
+        _collision.OnCollisionEnter += OnCollision;
         _updateChainAttack = true;
     }
 
@@ -35,24 +35,19 @@ public class AttackArea : MonoBehaviour
             GlobalSettings.performingHeavyAttack = false;
         }
         GlobalSettings.performingHeavyAttack = false;
-        _collision.OnCollision -= OnCollision;
+        _collision.OnCollisionEnter -= OnCollision;
         if (!hit && _chainAttack)
             _chainAttack.Miss();
         hit = null;
         _colliders.Clear();
     }
 
-    private void Update()
+    private void OnCollision(Collider2D collider)
     {
-        _collision.Tick();
-    }
-
-    private void OnCollision(RaycastHit2D hit)
-    {
-        if (_colliders.Contains(hit.collider))
+        if (_colliders.Contains(collider))
             return;
 
-        _colliders.Add(hit.collider);
+        _colliders.Add(collider);
 
         if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
             PerkManager.PerformPerkEffects();
@@ -62,6 +57,6 @@ public class AttackArea : MonoBehaviour
             _chainAttack.Hit();
             _updateChainAttack = false;
         }
-        this.hit = hit.collider.gameObject;
+        this.hit = collider.gameObject;
     }
 }

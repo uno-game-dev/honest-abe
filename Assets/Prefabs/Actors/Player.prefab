@@ -194,6 +194,7 @@ GameObject:
   - 114: {fileID: 11451924}
   - 114: {fileID: 11417068}
   - 114: {fileID: 11495206}
+  - 114: {fileID: 11497030}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1151,6 +1152,7 @@ MonoBehaviour:
   attackState: 0
   hand: 1
   weapon: {fileID: 0}
+  emptyHanded: 1
 --- !u!114 &11422054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1167,6 +1169,7 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 31488
+  numberOfCollisions: 0
   _collider: {fileID: 0}
 --- !u!114 &11440234
 MonoBehaviour:
@@ -1288,6 +1291,8 @@ MonoBehaviour:
   prepareGrabTime: 0.1
   performGrabTime: 0.6
   finishGrabTime: 0.1
+  grabThrowTime: 0.5
+  grabThrowDamage: 25
   state: 0
 --- !u!114 &11495206
 MonoBehaviour:
@@ -1315,6 +1320,23 @@ MonoBehaviour:
   numberOfChainAttacks: 0
   chainAttackTimer: 0
   chainAttackResetsIn: 1
+--- !u!114 &11497030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592e45ae2c86e94e9b68477396a52d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  height: 0
+  horizontalVelocity: 10
+  gravityMultiplier: 1
+  onGroundDuration: 1
+  getUpDuration: 1
 --- !u!137 &13700022
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
