@@ -20,6 +20,10 @@ public class CharacterState : MonoBehaviour
     public void SetState(State newState)
     {
         state = newState;
+
+        if (state == State.Idle)
+            if (GetComponent<Animator>())
+                GetComponent<Animator>().SetFloat("PlaySpeed", 1);
     }
 
     public bool CanMove()

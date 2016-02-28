@@ -19,7 +19,6 @@ public class Jump : MonoBehaviour
     private BaseCollision _collision;
     private Movement _movement;
     private Animator _animator;
-    private float _previousAnimationSpeed;
     private CharacterState _characterState;
 
     private void Start()
@@ -66,10 +65,7 @@ public class Jump : MonoBehaviour
             return;
 
         SetState(State.StartJump);
-
-        _previousAnimationSpeed = _animator.speed;
-        _animator.speed = _animator.GetAnimationClip("standing_jump-start").length / startJumpDuration;
-
+        _animator.SetFloat("PlaySpeed", _animator.GetAnimationClip("standing_jump-start").length / startJumpDuration);
         _characterState.SetState(CharacterState.State.Null);
         Invoke("PerformJump", startJumpDuration);
     }
@@ -78,31 +74,26 @@ public class Jump : MonoBehaviour
     {
         SetState(State.JumpUp);
         _characterState.SetState(CharacterState.State.Jump);
-        _animator.speed = _previousAnimationSpeed;
         jumpVelocity = jumpStrength;
         isGrounded = false;
-        _collision.collisionLayer &= ~(1 << LayerMask.NameToLayer("Environment"));
-        _collision.collisionLayer &= ~(1 << LayerMask.NameToLayer("Enemy"));
+        _collision.RemoveCollisionLayer("Environment");
+        _collision.RemoveCollisionLayer("Enemy");
     }
 
     private void Land()
     {
         SetState(State.Land);
-
-        _previousAnimationSpeed = _animator.speed;
-        _animator.speed = _animator.GetAnimationClip("standing_jump-land").length / landDuration;
-
+        _animator.SetFloat("PlaySpeed", _animator.GetAnimationClip("standing_jump-land").length / landDuration);
         _characterState.SetState(CharacterState.State.Null);
         isGrounded = true;
-        _collision.collisionLayer |= (1 << LayerMask.NameToLayer("Environment"));
-        _collision.collisionLayer |= (1 << LayerMask.NameToLayer("Enemy"));
+        _collision.AddCollisionLayer("Environment");
+        _collision.AddCollisionLayer("Enemy");
         Invoke("FinishLand", landDuration);
     }
 
     private void FinishLand()
     {
         SetState(State.Null);
-        _animator.speed = _previousAnimationSpeed;
         _characterState.SetState(CharacterState.State.Idle);
     }
 

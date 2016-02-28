@@ -73,15 +73,17 @@ public class BaseCollision : MonoBehaviour
         foreach (Collider2D collider in currentCollisions)
             AddCollision(collider);
 
+        foreach (Collider2D collider in _currentCollisions.Keys)
+            if (collider)
+                OnCollisionStay(collider);
+
         for (int i = _currentCollisions.Keys.Count - 1; i >= 0; i--)
         {
             Collider2D collider = _currentCollisions.Keys.ElementAt(i);
-            if (!currentCollisions.Contains(collider))
-                RemoveCollision(collider);
+            if (collider)
+                if (!currentCollisions.Contains(collider))
+                    RemoveCollision(collider);
         }
-
-        foreach (Collider2D collider in _currentCollisions.Keys)
-            OnCollisionStay(collider);
     }
 
     void OnDisable()
@@ -203,5 +205,15 @@ public class BaseCollision : MonoBehaviour
             _currentCollisions.Remove(collider);
             numberOfCollisions--;
         }
+    }
+
+    public void AddCollisionLayer(string name)
+    {
+        collisionLayer |= (1 << LayerMask.NameToLayer(name));
+    }
+
+    public void RemoveCollisionLayer(string name)
+    {
+        collisionLayer &= ~(1 << LayerMask.NameToLayer(name));
     }
 }
