@@ -44,10 +44,10 @@ public class ScrollingBackground : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //We only want the background texture to move if the camera is moving forward
-		if ( cameraFollow.velocity.x > 0f && cameraFollow.velocity.magnitude > 0f) {
+		if ( cameraFollow.velocity.x > 0f  ) {
             //Calculate how far backward or forward along the x-axis the texture should move
             // Basically new-x = old-x + (scrollSpeed * (cameraspeed scaled with deltatime))
-            float step = (scrollSpeed * (cameraFollow.velocity.magnitude * Time.deltaTime)) * directionScalar;
+            float step = (scrollSpeed * (cameraFollow.velocity.x * Time.deltaTime)) * directionScalar;
             float x = Mathf.Repeat(renderer.material.mainTextureOffset.x + step, 1);
            
             Vector2 offset = new Vector2 (x, savedOffset.y);
