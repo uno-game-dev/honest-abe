@@ -15,11 +15,15 @@ public class AudioManager : MonoBehaviour {
     public Dictionary<string, AudioClip> Sounds = new Dictionary<string, AudioClip>(2);
 
     private static AudioSource CameraSource = null;
+	private static AudioSource source = null;
+
 	// Use this for initialization
 	void Start () {
         if (instance == null)
             instance = this;
+		source = this.gameObject.GetComponent<AudioSource>();
         CameraSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+		source.volume = (0.7f);
         initSoundLib();
 	}
 	
@@ -70,13 +74,17 @@ public class AudioManager : MonoBehaviour {
         AudioSource.PlayClipAtPoint(DamageSounds[index], CameraSource.transform.position, 0.7f);
     }
 
-    public void PlayAttackSound(int index = 0)
+	public void PlayAttackSound(int index = 0, float timeDelay = 0f)
     {
-        AudioSource.PlayClipAtPoint(AttackSounds[index], CameraSource.transform.position, 2f);
+		source.clip = AttackSounds[index];
+		source.PlayDelayed(timeDelay);
+        //AudioSource.PlayClipAtPoint(AttackSounds[index], CameraSource.transform.position, 2f);
     }
 
-	public void PlayGenericSound(int index = 0)
+	public void PlayGenericSound(int index = 0, float timeDelay = 0f)
 	{
-		AudioSource.PlayClipAtPoint(GenericSounds[index], CameraSource.transform.position, 2f);
+
+		source.clip = GenericSounds[index];
+		source.PlayDelayed(timeDelay);
 	}
 }

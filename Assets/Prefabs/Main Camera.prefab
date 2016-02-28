@@ -53,6 +53,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &157854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432548}
+  - 114: {fileID: 11441846}
+  - 82: {fileID: 8269824}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &171102
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,6 +98,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 497826}
   m_RootOrder: 0
+--- !u!4 &432548
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497826}
+  m_RootOrder: 3
 --- !u!4 &438750
 Transform:
   m_ObjectHideFlags: 1
@@ -118,6 +147,7 @@ Transform:
   - {fileID: 414954}
   - {fileID: 469996}
   - {fileID: 438750}
+  - {fileID: 432548}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!20 &2074602
@@ -203,6 +233,80 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146904}
   m_Enabled: 1
+--- !u!82 &8269824
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157854}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!82 &8299874
 AudioSource:
   m_ObjectHideFlags: 1
@@ -284,6 +388,30 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146904}
   m_Enabled: 1
+--- !u!114 &11441846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423a750816f599a4e8b4951ce8a31fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introMusic: {fileID: 8300000, guid: 5cd3f63a692502545b3921bad1b2f8b1, type: 3}
+  playMusic: {fileID: 8300000, guid: 26af0ebc85e25744c984250cd179478e, type: 3}
+  AttackSounds:
+  - {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+  - {fileID: 0}
+  DamageSounds:
+  - {fileID: 8300000, guid: b8b8af91eccf4234aa8d626d92f5678e, type: 3}
+  - {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
+  GenericSounds:
+  - {fileID: 8300000, guid: 6c96384674ba9ba47a7e7dda37d3438d, type: 3}
+  - {fileID: 8300000, guid: 801fcd64fb9b4c64184a470059896e4b, type: 3}
+  - {fileID: 8300000, guid: 45de4a7d1f929254699fc56160db50da, type: 3}
+  - {fileID: 8300000, guid: 1092a2094ce6bb14d8958f53addd2e41, type: 3}
 --- !u!114 &11450828
 MonoBehaviour:
   m_ObjectHideFlags: 1
