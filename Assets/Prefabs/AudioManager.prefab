@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,8 +39,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423a750816f599a4e8b4951ce8a31fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introMusic: {fileID: 8300000, guid: e5c15a917b579294a829bc1337a26862, type: 3}
-  playMusic: {fileID: 8300000, guid: a6aafc935e47ec24190e9cf5f847814a, type: 3}
+  introMusic: {fileID: 8300000, guid: 5cd3f63a692502545b3921bad1b2f8b1, type: 3}
+  playMusic: {fileID: 8300000, guid: 26af0ebc85e25744c984250cd179478e, type: 3}
+  AttackSounds:
+  - {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+  - {fileID: 0}
+  DamageSounds:
+  - {fileID: 8300000, guid: b8b8af91eccf4234aa8d626d92f5678e, type: 3}
+  - {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
+  GenericSounds:
+  - {fileID: 8300000, guid: 6c96384674ba9ba47a7e7dda37d3438d, type: 3}
+  - {fileID: 8300000, guid: 801fcd64fb9b4c64184a470059896e4b, type: 3}
+  - {fileID: 8300000, guid: 45de4a7d1f929254699fc56160db50da, type: 3}
+  - {fileID: 8300000, guid: 1092a2094ce6bb14d8958f53addd2e41, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
