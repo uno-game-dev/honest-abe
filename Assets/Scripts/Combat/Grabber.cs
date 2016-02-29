@@ -19,6 +19,8 @@ public class Grabber : MonoBehaviour
     private Attack _attack;
     private GameObject _grabbed;
     private CharacterState _characterState;
+    private Weapon _weapon;
+    private int _weaponDamage;
 
     private void Awake()
     {
@@ -123,7 +125,11 @@ public class Grabber : MonoBehaviour
     private void Damage()
     {
         Damage damage = _grabbed.GetComponent<Damage>();
-        if (damage) damage.ExecuteDamage(10, GetComponent<Collider2D>());
+        if (damage)
+        {
+            _weaponDamage = (int)GetComponent<Weapon>().lightDamage;
+            damage.ExecuteDamage(_weaponDamage, GetComponent<Collider2D>());
+        }
     }
 
     public void Throw()
