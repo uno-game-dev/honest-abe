@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackArea : MonoBehaviour
@@ -7,7 +6,7 @@ public class AttackArea : MonoBehaviour
     public GameObject hit;
     private BaseCollision _collision;
     private ChainAttack _chainAttack;
-	private Attack _attack;
+    private Attack _attack;
     private bool _updateChainAttack;
     private List<Collider2D> _colliders = new List<Collider2D>();
 
@@ -15,7 +14,7 @@ public class AttackArea : MonoBehaviour
     {
         _collision = GetComponent<BaseCollision>();
         _chainAttack = GetComponentInParent<ChainAttack>();
-		_attack = GetComponentInParent<Attack>();
+        _attack = GetComponentInParent<Attack>();
     }
 
     private void OnEnable()
@@ -25,7 +24,7 @@ public class AttackArea : MonoBehaviour
             GlobalSettings.performingHeavyAttack = true;
         }
         _collision.OnCollisionEnter += OnCollision;
-        
+
         if (_chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
             _updateChainAttack = false;
         else

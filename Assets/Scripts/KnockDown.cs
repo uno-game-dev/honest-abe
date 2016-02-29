@@ -33,7 +33,7 @@ public class KnockDown : MonoBehaviour
             height += GRAVITY * Time.deltaTime * gravityMultiplier;
 
             if (height <= 0)
-                HitGround();            
+                HitGround();
         }
         if (state == State.OnGround)
         {

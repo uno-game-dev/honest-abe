@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class CameraFollow : MonoBehaviour {
-
+public class CameraFollow : MonoBehaviour
+{
     public float smoothTime = 0.15f;
     [HideInInspector]
     public float leftEdge, rightEdge, bottomEdge;
@@ -14,7 +14,8 @@ public class CameraFollow : MonoBehaviour {
     private Camera cam;
     private float smoothVelX, smoothVelY, leftEdgeBoundsHalfWidth, bottomEdgeBoundsHalfHeight, rightEdgeBoundsHalfWidth;
 
-    void Start() {
+    void Start()
+    {
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
         verticalBounds = GameObject.Find("VerticalBounds").GetComponent<BoxCollider2D>();
         cam = GetComponent<Camera>();
@@ -45,7 +46,8 @@ public class CameraFollow : MonoBehaviour {
         transform.position = pos;
     }
 
-    void LateUpdate() {
+    void LateUpdate()
+    {
         previousPos = transform.position;
         Vector3 pos = transform.position;
 
@@ -82,23 +84,28 @@ public class CameraFollow : MonoBehaviour {
          */
 
         // Prevents the camera from going above the bounds of the level
-        if (pos.y + cam.orthographicSize > verticalBounds.transform.position.y + (verticalBounds.size.y / 2)) {
+        if (pos.y + cam.orthographicSize > verticalBounds.transform.position.y + (verticalBounds.size.y / 2))
+        {
             pos.y = (verticalBounds.transform.position.y + (verticalBounds.size.y / 2) - cam.orthographicSize);
         }
 
         // Prevents the camera from going below the bounds of the level
-        else if (pos.y - cam.orthographicSize < verticalBounds.transform.position.y - (verticalBounds.size.y / 2)) {
+        else if (pos.y - cam.orthographicSize < verticalBounds.transform.position.y - (verticalBounds.size.y / 2))
+        {
             pos.y = (verticalBounds.transform.position.y - (verticalBounds.size.y / 2) + cam.orthographicSize);
         }
 
         // Prevents the camera from going backwards
-        if (pos.x - (((2 * cam.orthographicSize) * cam.aspect) / 2) < leftEdge) {
+        if (pos.x - (((2 * cam.orthographicSize) * cam.aspect) / 2) < leftEdge)
+        {
             pos.x = leftEdge + (((2 * cam.orthographicSize) * cam.aspect) / 2);
         }
 
         // If we want to lock the right edge
-        if (lockRightEdge) {
-            if (pos.x + (((2 * cam.orthographicSize) * cam.aspect) / 2) > rightEdge) {
+        if (lockRightEdge)
+        {
+            if (pos.x + (((2 * cam.orthographicSize) * cam.aspect) / 2) > rightEdge)
+            {
                 pos.x = rightEdge - (((2 * cam.orthographicSize) * cam.aspect) / 2);
             }
         }
@@ -107,7 +114,6 @@ public class CameraFollow : MonoBehaviour {
         velocity.y = (pos.y - previousPos.y) / Time.deltaTime;
 
         transform.position = pos;
-
     }
 
 }

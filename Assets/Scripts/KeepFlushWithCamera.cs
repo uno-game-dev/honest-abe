@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class KeepFlushWithCamera : MonoBehaviour {
+public class KeepFlushWithCamera : MonoBehaviour
+{
+    // Use this for initialization
+    void Start()
+    {
 
-	// Use this for initialization
-	void Start () {
-	    
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        this.transform.position = new Vector3(  GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().position.x , transform.position.y, transform.position.z);
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        this.transform.position = new Vector3(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().position.x, transform.position.y, transform.position.z);
+    }
 }

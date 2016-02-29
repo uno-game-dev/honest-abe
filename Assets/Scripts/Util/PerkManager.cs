@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class PerkManager : MonoBehaviour
 {
-
     [HideInInspector]
     public List<Perk> perkList = new List<Perk>();
 

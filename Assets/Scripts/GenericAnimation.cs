@@ -12,7 +12,7 @@ public class GenericAnimation : MonoBehaviour
         _animator = GetComponent<Animator>();
         _baseCollision = GetComponent<BaseCollision>();
     }
-    
+
     void Update()
     {
         _animator.SetFloat("Horizontal Velocity", _baseCollision.Velocity.x / Time.deltaTime);

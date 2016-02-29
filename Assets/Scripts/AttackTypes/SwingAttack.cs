@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
-
-class SwingAttack : BaseAttack
+﻿class SwingAttack : BaseAttack
 {
     protected override void PrepareToLightAttack()
     {
@@ -13,8 +7,8 @@ class SwingAttack : BaseAttack
         animator.SetTrigger("Light Swing");
         base.PrepareToLightAttack();
 
-		//ALPHA ONLY
-		AudioManager.instance.PlayAttackSound();
+        //ALPHA ONLY
+        AudioManager.instance.PlayAttackSound();
     }
 
     protected override void PrepareToHeavyAttack()
@@ -24,8 +18,8 @@ class SwingAttack : BaseAttack
         animator.SetTrigger("Heavy Swing");
         base.PrepareToHeavyAttack();
 
-		//ALPHA ONLY
-		AudioManager.instance.PlayAttackSound(0, 0.5f);
+        //ALPHA ONLY
+        AudioManager.instance.PlayAttackSound(0, 0.5f);
     }
 
     protected override void BackToIdle()

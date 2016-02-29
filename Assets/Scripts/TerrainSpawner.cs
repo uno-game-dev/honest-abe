@@ -2,151 +2,166 @@
 using System;
 using System.Collections.Generic;
 
-public class TerrainSpawner : MonoBehaviour {
+public class TerrainSpawner : MonoBehaviour
+{
 
-	public GameObject terrain;
-	public List<GameObject> enemies;
-	public List<GameObject> props;
+    public GameObject terrain;
+    public List<GameObject> enemies;
+    public List<GameObject> props;
     public List<GameObject> items;
-	public float startSpawnPosition = 8f;
-	public int spawnYPos = 0;
-	public int spawnZPos = 10;
-	public int propDensity = 3;
+    public List<GameObject> bosses;
+    public float startSpawnPosition = 8f;
+    public int spawnYPos = 0;
+    public int spawnZPos = 10;
+    public int propDensity = 3;
     public int itemDensity = 1;
     public int difficulty = 1;
     public int screensBeforeSecondEnemy = 2;
     public int screensBeforeBoss = 4;
 
-	private GameObject cam;
-	private System.Random rnd;
-	private bool canSpawn = true;
-	private float lastPosition;
-	private List<Vector3> occupiedPositions;
-	private int bossSpawnCountDown;
-	public List<GameObject> bosses;
-	private int bossForLevel;
+    private GameObject _camera;
+    private System.Random _rnd;
+    private bool _canSpawn = true;
+    private float _lastXPos;
+    private List<Vector3> _occupiedPos;
+    private int _screenCount;
+    private int _bossToSpawn;
 
-	// Use this for initialization
-	void Start()
-	{
-		lastPosition = startSpawnPosition;
-		cam = GameObject.Find("Main Camera");
-		rnd = new System.Random();
-		bossSpawnCountDown = 0;
-		bossForLevel = Application.levelCount;
-	}
-	
-	// Update is called once per frame
-	void Update() {
+    // Use this for initialization
+    void Start()
+    {
+        _lastXPos = startSpawnPosition;
+        _camera = GameObject.Find("Main Camera");
+        _rnd = new System.Random();
+        _screenCount = 0;
+        _bossToSpawn = Application.levelCount;
+    }
 
-		if (cam.transform.position.x >= lastPosition - startSpawnPosition && canSpawn) {
-			canSpawn = false;
-			// SpawnTerrain();
-			occupiedPositions = new List<Vector3>();
-			SpawnProp();
-            if (bossSpawnCountDown < screensBeforeSecondEnemy)
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (_camera.transform.position.x >= _lastXPos - startSpawnPosition && _canSpawn)
+        {
+            _canSpawn = false;
+            // SpawnTerrain();
+            _occupiedPos = new List<Vector3>();
+            SpawnProp();
+            if (_screenCount < screensBeforeSecondEnemy)
                 SpawnEnemies(new List<GameObject>() { enemies[0] }); // Only Unarmed Enemies
             else
                 SpawnEnemies(); // All Enemies
             SpawnItem();
-            lastPosition += startSpawnPosition;
-			canSpawn = true;
-			//Only counting down the boss for alpha
-			bossSpawnCountDown++;
-			if (bossSpawnCountDown == screensBeforeBoss) {
-				SpawnBoss ();
-			}
-		}
-	}
+            _lastXPos += startSpawnPosition;
+            _canSpawn = true;
+            //Only counting down the boss for alpha
+            _screenCount++;
+            if (_screenCount == screensBeforeBoss)
+            {
+                SpawnBoss();
+            }
+        }
+    }
 
-	private void SpawnTerrain() {
+    private void SpawnTerrain()
+    {
 
-		Instantiate(terrain, new Vector3(lastPosition, spawnYPos, spawnZPos), Quaternion.Euler(0, 0, 0));
-	}
+        Instantiate(terrain, new Vector3(_lastXPos, spawnYPos, spawnZPos), Quaternion.Euler(0, 0, 0));
+    }
 
-	private void SpawnProp() {
+    private void SpawnProp()
+    {
 
-		for (int i = 0; i < propDensity; i++)
-		{
-			int r = rnd.Next(props.Count);
-			Instantiate(props[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
-		}
-	}
+        for (int i = 0; i < propDensity; i++)
+        {
+            int r = _rnd.Next(props.Count);
+            Instantiate(props[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+        }
+    }
 
     private void SpawnItem()
     {
         for (int i = 0; i < itemDensity; i++)
         {
-            int r = rnd.Next(items.Count);
+            int r = _rnd.Next(items.Count);
             Instantiate(items[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
         }
     }
 
-    private void SpawnEnemies(List<GameObject> enemies = null) {
-		int enemyDensity = 0;
+    private void SpawnEnemies(List<GameObject> enemies = null)
+    {
+        int enemyDensity = 0;
         enemies = enemies == null ? this.enemies : enemies;
-		
-		switch (difficulty) {
-			case 1:
-				enemyDensity = rnd.Next(5, 8);
-				break;
-			case 2:
-				enemyDensity = rnd.Next(8, 12);
-				break;
-			case 3:
-				enemyDensity = rnd.Next(12, 16);
-				break;
-		}
-		
-		for (int i = 0; i < enemyDensity; i++) {
-			int r = rnd.Next(enemies.Count);
-			Instantiate(enemies[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
-		}
-	}
 
-	private Vector3 getRandomPos() {
+        switch (difficulty)
+        {
+            case 1:
+                enemyDensity = _rnd.Next(5, 8);
+                break;
+            case 2:
+                enemyDensity = _rnd.Next(8, 12);
+                break;
+            case 3:
+                enemyDensity = _rnd.Next(12, 16);
+                break;
+        }
 
-		RectTransform area = (RectTransform)terrain.transform;
-		double width = area.rect.width;
-		double height = area.rect.height * 0.5;
+        for (int i = 0; i < enemyDensity; i++)
+        {
+            int r = _rnd.Next(enemies.Count);
+            Instantiate(enemies[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+        }
+    }
 
-		float x = 0;
-		float y = 0;
-		bool occupied = true;
+    private Vector3 getRandomPos()
+    {
 
-		while (occupied) {
-			occupied = false;
+        RectTransform area = (RectTransform)terrain.transform;
+        double width = area.rect.width;
+        double height = area.rect.height * 0.5;
 
-			x = (float)((width * rnd.NextDouble() * 2) - width + lastPosition);
-			y = (float)(height * rnd.NextDouble() - height);
+        float x = 0;
+        float y = 0;
+        bool occupied = true;
 
-			foreach (Vector3 pos in occupiedPositions) {
-				if ((Math.Abs((double)(x - pos.x)) < 1.0) && (Math.Abs((double)(y - pos.y)) < 1.0)) {
-					occupied = true;
-					Debug.Log("OVERLAP!");
-					break;
-				}
-			}
-		}
+        while (occupied)
+        {
+            occupied = false;
 
-		Vector3 vector = new Vector3(x, y, 1);
-		occupiedPositions.Add(vector);
-		return vector;
-	}
+            x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
+            y = (float)(height * _rnd.NextDouble() - height);
 
-	private void SpawnBoss(){
-		//Depends on which level the player is on will determine what boss will appear
-		switch (bossForLevel) {
-		case 1:
-			//Instatiate boss for Level 1
-			Instantiate (bosses [bossForLevel - 1], getRandomPos(), Quaternion.Euler (0, 0, 0));
-			break;
-		case 2:
-			//Instatiate boss for Level 2
-			break;
-		case 3:
-			//Instatiate boss for Level 3
-			break;
-		}
-	}
+            foreach (Vector3 pos in _occupiedPos)
+            {
+                if ((Math.Abs((double)(x - pos.x)) < 1.0) && (Math.Abs((double)(y - pos.y)) < 1.0))
+                {
+                    occupied = true;
+                    Debug.Log("OVERLAP!");
+                    break;
+                }
+            }
+        }
+
+        Vector3 vector = new Vector3(x, y, 1);
+        _occupiedPos.Add(vector);
+        return vector;
+    }
+
+    private void SpawnBoss()
+    {
+        //Depends on which level the player is on will determine what boss will appear
+        switch (_bossToSpawn)
+        {
+            case 1:
+                //Instatiate boss for Level 1
+                Instantiate(bosses[_bossToSpawn - 1], getRandomPos(), Quaternion.Euler(0, 0, 0));
+                break;
+            case 2:
+                //Instatiate boss for Level 2
+                break;
+            case 3:
+                //Instatiate boss for Level 3
+                break;
+        }
+    }
 }

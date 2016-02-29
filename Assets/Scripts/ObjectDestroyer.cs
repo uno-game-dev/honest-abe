@@ -1,25 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ObjectDestroyer : MonoBehaviour {
+public class ObjectDestroyer : MonoBehaviour
+{
 
-	bool seen = false;
+    bool seen = false;
 
-	// Use this for initialization
-	void Start() {
-	}
+    // Use this for initialization
+    void Start()
+    {
+    }
 
-	// Update is called once per frame
+    // Update is called once per frame
 
-	void Update() {
+    void Update()
+    {
 
-		if (GetComponent<Renderer>().isVisible) {
-			seen = true;
-		}
+        if (GetComponent<Renderer>().isVisible)
+        {
+            seen = true;
+        }
 
-		if (seen && !GetComponent<Renderer>().isVisible)
-		{
-			Destroy(gameObject);
-		}
-	}
+        if (seen && !GetComponent<Renderer>().isVisible)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 
 /// <summary>
 /// Enemy Follow
@@ -47,7 +45,7 @@ public class EnemyFollow : MonoBehaviour
         else if (targetType == TargetType.Player)
             FollowPlayer();
         else if (targetType == TargetType.TargetGameObject)
-            FollowTargetGameObject();            
+            FollowTargetGameObject();
     }
 
     /// <summary>Moves GameObject towards Mouse</summary>
