@@ -127,7 +127,7 @@ public class Grabber : MonoBehaviour
         Damage damage = _grabbed.GetComponent<Damage>();
         if (damage)
         {
-            _weaponDamage = (int)GetComponent<Weapon>().lightDamage;
+            _weaponDamage = (int)_attack.GetComponent<Weapon>().lightDamage;
             damage.ExecuteDamage(_weaponDamage, GetComponent<Collider2D>());
         }
     }
