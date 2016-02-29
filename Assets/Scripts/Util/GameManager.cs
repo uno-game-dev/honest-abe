@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
         _camera = GameObject.Find("Main Camera");
         cameraFollow = _camera.GetComponent<CameraFollow>();
         if (!perkChosen) cameraFollow.lockRightEdge = true;
+
+        GlobalSettings.bossFight = false;
     }
 
     void Update()

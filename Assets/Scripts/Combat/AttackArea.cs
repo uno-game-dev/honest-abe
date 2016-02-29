@@ -25,7 +25,7 @@ public class AttackArea : MonoBehaviour
         }
         _collision.OnCollisionEnter += OnCollision;
 
-        if (_chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
+        if (_chainAttack && _chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
             _updateChainAttack = false;
         else
             _updateChainAttack = true;

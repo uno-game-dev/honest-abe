@@ -26,7 +26,7 @@ public class GlobalSettings : MonoBehaviour
     public static string axe_none_desc = "Abe's Regular Axe";
 
     public static string axe_dtVampirism_name = "Axe_DTVampirism";
-    public static string axe_dtVampirism_desc = "Perk: Restores damage threshold on all heavy attacks";
+    public static string axe_dtVampirism_desc = "Perk: Vampirism\nRestores damage threshold on all heavy attacks";
 
     public static bool bossFight = false;
 }

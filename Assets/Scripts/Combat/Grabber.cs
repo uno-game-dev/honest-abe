@@ -124,6 +124,9 @@ public class Grabber : MonoBehaviour
 
     private void Damage()
     {
+        if (!_grabbed)
+            return;
+
         Damage damage = _grabbed.GetComponent<Damage>();
         if (damage)
         {

@@ -27,7 +27,8 @@ public class CharacterState : MonoBehaviour
     public void SetState(State newState)
     {
         state = newState;
-        _animator.SetInteger("Character State", (int)newState);
+        if (_animator)
+            _animator.SetInteger("Character State", (int)newState);
 
         if (state == State.Idle)
             if (GetComponent<Animator>())
