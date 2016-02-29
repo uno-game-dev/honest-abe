@@ -4,23 +4,33 @@ using System.Collections;
 public class Health : MonoBehaviour
 {
     public int health;
+    public int additionalHealthFloor;
+    public int additionalHealthCeiling;
+    private System.Random _rnd;
 
     // Use this for initialization
     void Start()
     {
-        UpdateHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
 
+    void Awake()
+    {
+        _rnd = new System.Random();
+        health += _rnd.Next(additionalHealthFloor, additionalHealthCeiling + 1);
+    }
+
+    public void RandomizeHealth()
+    {
     }
 
     public virtual void Increase(int amount)
     {
         health += amount;
-        UpdateHealth();
     }
 
     public virtual void Decrease(int damage)
@@ -43,12 +53,6 @@ public class Health : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        UpdateHealth();
-    }
-
-    //For testing purposes
-    public virtual void UpdateHealth()
-    {
     }
 
     public void ShowExecution()
