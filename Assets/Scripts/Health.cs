@@ -5,6 +5,7 @@ public class Health : MonoBehaviour
     public int health;
     public int additionalHealthFloor;
     public int additionalHealthCeiling;
+
     private System.Random _rnd;
 
     // Use this for initialization

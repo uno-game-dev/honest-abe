@@ -4,100 +4,92 @@ using System;
 public class PlayerHealth : Health
 {
     public int damageThreshold = 100;
-    public int currentHealth = 100;
     public float decreaseSecondsPerHealthPoint = 1;
-    [HideInInspector]
-    private float updateHealthSliderTimer = 1;
-    private bool isDead;
-    private HealthSlider healthSlider;
 
-    // Use this for initialization
+    [HideInInspector]
+    private int _tempHealth;
+    private int _tempDamageThreshold;
+    private float _updateSliderTime = 1;
+    private bool _dead;
+    private HealthSlider _slider;
+
     void Start()
     {
         GlobalSettings.executionsPerformed = 0;
-        healthSlider = GetComponent<HealthSlider>();
-        isDead = false;
+        _slider = GetComponent<HealthSlider>();
+        _dead = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (currentHealth <= 0)
-        {
-            //Abe is dead :(
+        if (health <= 0)
             Death();
-        }
-        if (!isDead)
-        {
-            //Decreases the timer to know when to update the damageSlider
-            updateHealthSliderTimer -= Time.deltaTime;
-            //Debug.Log ("Time remaining for updating Damage: " + updateDamageSliderTime);
-        }
+        if (!_dead)
+            // Decreases the timer to know when to update the damageSlider
+            _updateSliderTime -= Time.deltaTime;
         UpdateHUD();
     }
 
     public override void Increase(int amount)
     {
-        //Temp variable for currentHealth
-        int tempCurrentHealth = currentHealth;
-        tempCurrentHealth += amount;
-
-        //If damageThreshold is equal OR currentHealth is greater than damageThreshold(i.e. currentHealh is slowly decreasing)
-        if ((damageThreshold == currentHealth) || (currentHealth > damageThreshold))
+        _tempHealth = health;
+        _tempHealth += amount;
+        // If damageThreshold is equal OR health is greater than damageThreshold(i.e. currentHealh is slowly decreasing)
+        if ((damageThreshold == health) || (health > damageThreshold))
         {
-            //If the damageThreshold and currentHealth are both equal at 100 then do not increase anything
-            if ((damageThreshold != 100) && (currentHealth != 100))
+            // If the damageThreshold and health are both equal at 100 then do not increase anything
+            if ((damageThreshold != 100) && (health != 100))
             {
-                //Check to make sure CurrentHealth never goes over 100. If it will be 100 then set both to 100
-                if ((tempCurrentHealth) <= 100)
+                // Check to make sure CurrentHealth never goes over 100. If it will be 100 then set both to 100
+                if ((_tempHealth) <= 100)
                 {
-                    currentHealth += amount;
-                    healthSlider.UpdateCurrentHealth(currentHealth);
+                    health += amount;
+                    _slider.UpdateCurrentHealth(health);
                     damageThreshold += amount;
-                    healthSlider.UpdateDamageThreshold(damageThreshold);
+                    _slider.UpdateDamageThreshold(damageThreshold);
                 }
                 else {
-                    currentHealth = 100;
-                    healthSlider.UpdateCurrentHealth(currentHealth);
+                    health = 100;
+                    _slider.UpdateCurrentHealth(health);
                     damageThreshold = 100;
-                    healthSlider.UpdateDamageThreshold(damageThreshold);
+                    _slider.UpdateDamageThreshold(damageThreshold);
                 }
             }
         }
-        //ELSE-IF--The currentHealth starts off less than damageThreshold(2 cases)
-        //The currentHealth AFTER the health increase is less than the damageThreshold 
-        else if ((tempCurrentHealth) <= damageThreshold)
+        // ELSE-IF--The health starts off less than damageThreshold(2 cases)
+        // The health AFTER the health increase is less than the damageThreshold 
+        else if ((_tempHealth) <= damageThreshold)
         {
-            //Check to make sure CurrentHealth never goes over 100
-            if ((tempCurrentHealth) <= 100)
+            // Check to make sure CurrentHealth never goes over 100
+            if ((_tempHealth) <= 100)
             {
-                currentHealth += amount;
-                healthSlider.UpdateCurrentHealth(currentHealth);
+                health += amount;
+                _slider.UpdateCurrentHealth(health);
             }
             else {
-                currentHealth = 100;
-                healthSlider.UpdateCurrentHealth(currentHealth);
+                health = 100;
+                _slider.UpdateCurrentHealth(health);
             }
         }
-        //The currentHealth AFTER the health increase is greater than damageThreshold
-        else if ((tempCurrentHealth) > damageThreshold)
+        // The health AFTER the health increase is greater than damageThreshold
+        else if ((_tempHealth) > damageThreshold)
         {
-            //Check to make sure CurrentHealth never goes over 100. If it will be 100 then set both to 100
-            if ((tempCurrentHealth) <= 100)
+            // Check to make sure CurrentHealth never goes over 100. If it will be 100 then set both to 100
+            if ((_tempHealth) <= 100)
             {
-                currentHealth += amount;
-                healthSlider.UpdateCurrentHealth(currentHealth);
-                damageThreshold = currentHealth;
-                healthSlider.UpdateDamageThreshold(damageThreshold);
+                health += amount;
+                _slider.UpdateCurrentHealth(health);
+                damageThreshold = health;
+                _slider.UpdateDamageThreshold(damageThreshold);
             }
             else {
-                currentHealth = 100;
-                healthSlider.UpdateCurrentHealth(currentHealth);
-                //Only bring the DT = 100 if it is less than 100. If it's above then just leave the same
+                health = 100;
+                _slider.UpdateCurrentHealth(health);
+                // Only bring the DT = 100 if it is less than 100. If it's above then just leave the same
                 if (damageThreshold < 100)
                 {
                     damageThreshold = 100;
-                    healthSlider.UpdateDamageThreshold(damageThreshold);
+                    _slider.UpdateDamageThreshold(damageThreshold);
                 }
             }
         }
@@ -105,53 +97,52 @@ public class PlayerHealth : Health
 
     public void IncreaseDT(int amount)
     {
-        //Temp variable for damageThreshold
-        int tempDamageThreshold = damageThreshold;
-        tempDamageThreshold += amount;
+        _tempDamageThreshold = damageThreshold;
+        _tempDamageThreshold += amount;
 
-        if (tempDamageThreshold <= 120)
+        if (_tempDamageThreshold <= 120)
         {
             damageThreshold += amount;
-            healthSlider.UpdateDamageThreshold(damageThreshold);
+            _slider.UpdateDamageThreshold(damageThreshold);
         }
         else {
             damageThreshold = 120;
-            healthSlider.UpdateDamageThreshold(damageThreshold);
+            _slider.UpdateDamageThreshold(damageThreshold);
         }
     }
 
     public override void Decrease(int damage)
     {
-        //Temp variable for damageThreshold
-        int tempDamageThreshold = damageThreshold - damage;
-        if (tempDamageThreshold <= 0)
+        // Temp variable for damageThreshold
+        _tempDamageThreshold = damageThreshold - damage;
+        if (_tempDamageThreshold <= 0)
         {
-            currentHealth -= Math.Abs(tempDamageThreshold);
-            healthSlider.UpdateCurrentHealth(currentHealth);
+            health -= Math.Abs(_tempDamageThreshold);
+            _slider.UpdateCurrentHealth(health);
             damageThreshold = 0;
         }
         else {
             damageThreshold -= damage;
         }
-        healthSlider.UpdateDamageThreshold(damageThreshold);
+        _slider.UpdateDamageThreshold(damageThreshold);
     }
 
-    //Updates the currentHealth and damageThreshold 
+    // Updates the health and damageThreshold 
     void UpdateHUD()
     {
-        //CurrentHealth is slowly decreasing to eventually equal damageThreshold 
-        if (currentHealth > damageThreshold)
+        // CurrentHealth is slowly decreasing to eventually equal damageThreshold 
+        if (health > damageThreshold)
         {
-            //Time to update currentHealthSlider
-            if (updateHealthSliderTimer < 0)
+            // Time to update currentHealthSlider
+            if (_updateSliderTime < 0)
             {
-                //Decrease the currentHealth in increments of 5
-                currentHealth -= 1;
+                // Decrease the health in increments of 5
+                health -= 1;
                 // If the player has lost all it's health
-                //Update currentHeathSlider
-                healthSlider.UpdateCurrentHealth(currentHealth);
-                //Reset the timer for updating the HealthSlider
-                updateHealthSliderTimer = decreaseSecondsPerHealthPoint;
+                // Update currentHeathSlider
+                _slider.UpdateCurrentHealth(health);
+                // Reset the timer for updating the HealthSlider
+                _updateSliderTime = decreaseSecondsPerHealthPoint;
             }
         }
         if (GlobalSettings.executionsPerformed > 0)
@@ -164,29 +155,25 @@ public class PlayerHealth : Health
 
     void Execution()
     {
-        //Make sure damageThreshold does not go above 120
+        // Make sure damageThreshold does not go above 120
         if (damageThreshold <= 110)
-        {
-            //Abe performed an execution increase damageThreshold by 10
+            // Abe performed an execution increase damageThreshold by 10
             damageThreshold += 10;
-        }
-        else {
-            //Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
+        else 
+            // Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
             damageThreshold = 120;
-        }
-        //Update damageThreshold
-        healthSlider.UpdateDamageThreshold(damageThreshold);
+        // Update damageThreshold
+        _slider.UpdateDamageThreshold(damageThreshold);
     }
 
     void Death()
     {
-        isDead = true;
+        _dead = true;
         GameManager.lost = true;
-        Debug.Log("Abe is dead :( ");
-        //Disable PlayerMotor script 
-        gameObject.GetComponent<PlayerMotor>().enabled = !enabled;
-        //Turn off any attack effects
-        gameObject.GetComponent<PlayerControls>().enabled = !enabled;
-        //Set animation for dead player
+        // Disable PlayerMotor script 
+        gameObject.GetComponent<PlayerMotor>().enabled = false;
+        // Turn off any attack effects
+        gameObject.GetComponent<PlayerControls>().enabled = false;
+        // Set animation for dead player
     }
 }
