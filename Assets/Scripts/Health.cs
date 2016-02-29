@@ -59,7 +59,7 @@ public class Health : MonoBehaviour
         GameObject number = new GameObject();
         number.name = "Execution";
         TextMesh tm = number.AddComponent<TextMesh>();
-        tm.text = "R.I.P.";
+        tm.text = "RIP";
         tm.fontSize = 24;
         tm.color = Color.red;
         tm.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
