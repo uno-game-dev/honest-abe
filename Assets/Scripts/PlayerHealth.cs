@@ -7,41 +7,21 @@ public class PlayerHealth : Health {
 	public int currentHealth = 100;
     public float decreaseSecondsPerHealthPoint = 1;
 	[HideInInspector]
-	public bool executionPerformed;
 	private float updateHealthSliderTimer = 1;
 	private bool isDead;
 	private HealthSlider healthSlider;
 
 	// Use this for initialization
-	void Start () {
-		GlobalSettings.executionPerformed = false;
-		executionPerformed = false;
+	void Start ()
+    {
+		GlobalSettings.executionsPerformed = 0;
 		healthSlider = GetComponent<HealthSlider>();
 		isDead = false;
 	}
 
 	// Update is called once per frame
-	void Update () {
-		/**
-		//TESTING PURPOSES
-		//Test execution
-		if (Input.GetKeyDown(KeyCode.E)) {
-			Debug.Log ("Performed EXECUTION!!!");
-			executionPerformed = true;
-		}	
-		//Test healthpickup
-		if (Input.GetKeyDown(KeyCode.H)) {
-			Debug.Log ("HEALTH PICKUP!!!");
-			Increase (10);
-		}	
-		if (Input.GetKeyDown(KeyCode.J)) {
-			Debug.Log ("HEALTH PICKUP!!!");
-			Increase (5);
-		}
-		if (Input.GetKeyDown(KeyCode.D)) {
-			Debug.Log ("Increased DT!!!");
-			IncreaseDT(10);
-		}**/
+	void Update ()
+    {
 		if(!isDead){
 			//Decreases the timer to know when to update the damageSlider
 			updateHealthSliderTimer -= Time.deltaTime;
@@ -136,24 +116,22 @@ public class PlayerHealth : Health {
         if (currentHealth > damageThreshold) {
 			//Time to update currentHealthSlider
 			if (updateHealthSliderTimer < 0) {
-				if (!executionPerformed) {
-					//Decrease the currentHealth in increments of 5
-					currentHealth -= 1;
-					// If the player has lost all it's health
-					if (currentHealth <= 0) {
-						//Abe is dead :(
-						Death();
-					}	
-					//Update currentHeathSlider
-					healthSlider.UpdateCurrentHealth(currentHealth);
-					//Reset the timer for updating the HealthSlider
-					updateHealthSliderTimer = decreaseSecondsPerHealthPoint;
-				}
+			    //Decrease the currentHealth in increments of 5
+			    currentHealth -= 1;
+			    // If the player has lost all it's health
+			    if (currentHealth <= 0) {
+				    //Abe is dead :(
+				    Death();
+			    }	
+			    //Update currentHeathSlider
+			    healthSlider.UpdateCurrentHealth(currentHealth);
+			    //Reset the timer for updating the HealthSlider
+			    updateHealthSliderTimer = decreaseSecondsPerHealthPoint;
 			}
 		}
-        if (GlobalSettings.executionPerformed)
+        if (GlobalSettings.executionsPerformed > 0)
         {
-            GlobalSettings.executionPerformed = false;
+            GlobalSettings.executionsPerformed--;
             Execution();
         }
 

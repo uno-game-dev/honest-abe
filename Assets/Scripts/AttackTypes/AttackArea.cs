@@ -25,7 +25,11 @@ public class AttackArea : MonoBehaviour
             GlobalSettings.performingHeavyAttack = true;
         }
         _collision.OnCollisionEnter += OnCollision;
-        _updateChainAttack = true;
+        
+        if (_chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
+            _updateChainAttack = false;
+        else
+            _updateChainAttack = true;
     }
 
     private void OnDisable()
@@ -54,7 +58,10 @@ public class AttackArea : MonoBehaviour
 
         if (_updateChainAttack && _chainAttack)
         {
-            _chainAttack.Hit();
+            if (_attack.attackState == Attack.State.Heavy)
+                _chainAttack.ShowComboBreak();
+            else
+                _chainAttack.Hit();
             _updateChainAttack = false;
         }
         this.hit = collider.gameObject;

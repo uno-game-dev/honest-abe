@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
             // Execution Check
             if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
             {
-                GlobalSettings.executionPerformed = true;
+                GlobalSettings.executionsPerformed++;
                 ShowExecution();
             }
             if (gameObject.tag == "Boss")
