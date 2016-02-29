@@ -68,5 +68,4 @@ public class Health : MonoBehaviour
         f.floatGravityMultiplier = 0.5f;
         f.floatVelocity = 2;
     }
-
 }

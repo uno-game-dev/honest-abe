@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+using System;
 
 public class PlayerHealth : Health
 {
@@ -23,6 +22,11 @@ public class PlayerHealth : Health
     // Update is called once per frame
     void Update()
     {
+        if (currentHealth <= 0)
+        {
+            //Abe is dead :(
+            Death();
+        }
         if (!isDead)
         {
             //Decreases the timer to know when to update the damageSlider
@@ -122,6 +126,8 @@ public class PlayerHealth : Health
         int tempDamageThreshold = damageThreshold - damage;
         if (tempDamageThreshold <= 0)
         {
+            currentHealth -= Math.Abs(tempDamageThreshold);
+            healthSlider.UpdateCurrentHealth(currentHealth);
             damageThreshold = 0;
         }
         else {
@@ -142,11 +148,6 @@ public class PlayerHealth : Health
                 //Decrease the currentHealth in increments of 5
                 currentHealth -= 1;
                 // If the player has lost all it's health
-                if (currentHealth <= 0)
-                {
-                    //Abe is dead :(
-                    Death();
-                }
                 //Update currentHeathSlider
                 healthSlider.UpdateCurrentHealth(currentHealth);
                 //Reset the timer for updating the HealthSlider

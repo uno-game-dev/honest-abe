@@ -136,7 +136,6 @@ public class TerrainSpawner : MonoBehaviour
                 if ((Math.Abs((double)(x - pos.x)) < 1.0) && (Math.Abs((double)(y - pos.y)) < 1.0))
                 {
                     occupied = true;
-                    Debug.Log("OVERLAP!");
                     break;
                 }
             }
