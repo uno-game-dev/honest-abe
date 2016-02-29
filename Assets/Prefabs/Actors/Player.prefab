@@ -152,6 +152,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &129100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 494724}
+  - 82: {fileID: 8294752}
+  m_Layer: 10
+  m_Name: FootSteps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &130966
 GameObject:
   m_ObjectHideFlags: 1
@@ -194,6 +210,7 @@ GameObject:
   - 114: {fileID: 11451924}
   - 114: {fileID: 11417068}
   - 114: {fileID: 11495206}
+  - 114: {fileID: 11497030}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -886,6 +903,7 @@ Transform:
   - {fileID: 432284}
   - {fileID: 462626}
   - {fileID: 425808}
+  - {fileID: 494724}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &482638
@@ -937,6 +955,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 434038}
   m_RootOrder: 0
+--- !u!4 &494724
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 481366}
+  m_RootOrder: 3
 --- !u!4 &497080
 Transform:
   m_ObjectHideFlags: 1
@@ -1030,6 +1060,80 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!82 &8294752
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129100}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f2eea09a81c196347901c00e6b127833, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &9580994
 Animator:
   serializedVersion: 3
@@ -1151,6 +1255,7 @@ MonoBehaviour:
   attackState: 0
   hand: 1
   weapon: {fileID: 0}
+  emptyHanded: 1
 --- !u!114 &11422054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1167,6 +1272,7 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 31488
+  numberOfCollisions: 0
   _collider: {fileID: 0}
 --- !u!114 &11440234
 MonoBehaviour:
@@ -1179,10 +1285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8e20df90a4747ddacb80ec1c45e3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  damageThreshold: 0
-  currentHealth: 0
-  executionPerformed: 0
+  health: 100
+  damageThreshold: 100
+  currentHealth: 100
+  decreaseSecondsPerHealthPoint: 0.2
 --- !u!114 &11451924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1249,11 +1355,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 0
   attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1, y: 0.5}
+  attackOffset: {x: 1, y: 0}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
-  lightDamage: 10
-  heavyDamage: 15
+  lightDamage: 2
+  heavyDamage: 3
 --- !u!114 &11469688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1285,9 +1391,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabArea: {fileID: 0}
-  prepareGrabTime: 0.1
-  performGrabTime: 0.6
-  finishGrabTime: 0.1
+  prepareGrabTime: 0.05
+  performGrabTime: 0.3
+  finishGrabTime: 0.05
+  grabPunchTime: 0.5
+  grabThrowTime: 0.5
+  grabLoseTime: 0.5
+  grabThrowDamage: 25
   state: 0
 --- !u!114 &11495206
 MonoBehaviour:
@@ -1301,6 +1411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  velocity: 30
 --- !u!114 &11497008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1315,6 +1426,23 @@ MonoBehaviour:
   numberOfChainAttacks: 0
   chainAttackTimer: 0
   chainAttackResetsIn: 1
+--- !u!114 &11497030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592e45ae2c86e94e9b68477396a52d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  height: 0
+  horizontalVelocity: 10
+  gravityMultiplier: 1
+  onGroundDuration: 1
+  getUpDuration: 1
 --- !u!137 &13700022
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
