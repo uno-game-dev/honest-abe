@@ -7,6 +7,13 @@ public class CharacterState : MonoBehaviour
 
     public State state;
 
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     private void OnEnable()
     {
         SetState(State.Idle);
@@ -20,6 +27,7 @@ public class CharacterState : MonoBehaviour
     public void SetState(State newState)
     {
         state = newState;
+        _animator.SetInteger("Character State", (int)newState);
 
         if (state == State.Idle)
             if (GetComponent<Animator>())

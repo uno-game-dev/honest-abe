@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class Grabber : MonoBehaviour
 {
-    public enum State { Null, Prepare, Perform, Hold, Finish }
+    public enum State { Null, Prepare, Perform, Hold, Punch, Throw, Lose, Finish }
 
     public GameObject grabArea;
     public float prepareGrabTime = 0.3f;
     public float performGrabTime = 0.3f;
     public float finishGrabTime = 0.3f;
+    public float grabPunchTime = 0.5f;
     public float grabThrowTime = 0.5f;
+    public float grabLoseTime = 0.5f;
     public float grabThrowDamage = 25f;
     public State state;
 
@@ -36,7 +38,7 @@ public class Grabber : MonoBehaviour
         grabArea = new GameObject(); // Use this one when done debugging
         grabArea.name = "Grab Area";
         grabArea.transform.SetParent(transform);
-        grabArea.transform.localPosition = new Vector3(1f, 0.5f, 0f);
+        grabArea.transform.localPosition = new Vector3(1, 0, 0);
         grabArea.tag = "Grab";
         grabArea.layer = gameObject.layer;
         DestroyImmediate(grabArea.GetComponent<MeshCollider>());
@@ -104,14 +106,24 @@ public class Grabber : MonoBehaviour
         if (state != State.Hold)
             return;
 
+        state = State.Punch;
         _animator.SetTrigger("Grab Punch");
         Damage();
+        Invoke("FinishPunch", grabPunchTime);
+    }
+
+    private void FinishPunch()
+    {
+        if (state != State.Punch)
+            return;
+
+        state = State.Hold;
     }
 
     private void Damage()
     {
         Damage damage = _grabbed.GetComponent<Damage>();
-        if (damage) damage.ExecuteDamage(_grabbed, 10, GetComponent<Collider2D>());
+        if (damage) damage.ExecuteDamage(10, GetComponent<Collider2D>());
     }
 
     public void Throw()
@@ -124,7 +136,7 @@ public class Grabber : MonoBehaviour
         _grabbed.GetComponent<Grabbable>().Throw();
 
         if (_grabbed.GetComponent<Damage>())
-            _grabbed.GetComponent<Damage>().ExecuteDamage(_grabbed, grabThrowDamage, GetComponent<Collider2D>());
+            _grabbed.GetComponent<Damage>().ExecuteDamage(grabThrowDamage, GetComponent<Collider2D>());
         _grabbed = null;
         Invoke("BackToIdle", grabThrowTime);
     }

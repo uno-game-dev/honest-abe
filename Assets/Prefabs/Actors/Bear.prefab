@@ -54,6 +54,7 @@ GameObject:
   - 114: {fileID: 11462894}
   - 114: {fileID: 11412252}
   - 114: {fileID: 11448898}
+  - 114: {fileID: 11466536}
   m_Layer: 11
   m_Name: Bear
   m_TagString: Boss
@@ -974,7 +975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 75
+  health: 200
 --- !u!114 &11412252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1072,6 +1073,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopDistanceX: 1
   stopDistanceY: 0
+--- !u!114 &11466536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 0
+  attackSize: {x: 3, y: 2}
+  attackOffset: {x: 2, y: 0}
+  heldOffset: {x: 0, y: 0, z: 0}
+  heldOrientation: {x: 0, y: 0, z: 0}
+  lightDamage: 40
+  heavyDamage: 100
 --- !u!114 &11469500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1250,6 +1269,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackOffset.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightDamage
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heavyDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

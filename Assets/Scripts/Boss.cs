@@ -15,14 +15,11 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Renderer>().isVisible)
+        abeLocation = GameObject.Find("Player").transform.position;
+        if ((gameObject.transform.position.x - abeLocation.x) < 10)
         {
-            abeLocation = GameObject.Find("Player").transform.position;
-            if ((gameObject.transform.position.x - abeLocation.x) < 10)
-            {
-                //The boss is in the scene with Abe so lock the camera
-                GlobalSettings.bossFight = true;
-            }
+            //The boss is in the scene with Abe so lock the camera
+            GlobalSettings.bossFight = true;
         }
     }
 }

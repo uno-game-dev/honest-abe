@@ -14,6 +14,8 @@ public class TerrainSpawner : MonoBehaviour {
 	public int propDensity = 3;
     public int itemDensity = 1;
     public int difficulty = 1;
+    public int screensBeforeSecondEnemy = 2;
+    public int screensBeforeBoss = 4;
 
 	private GameObject cam;
 	private System.Random rnd;
@@ -42,13 +44,16 @@ public class TerrainSpawner : MonoBehaviour {
 			// SpawnTerrain();
 			occupiedPositions = new List<Vector3>();
 			SpawnProp();
-			SpawnEnemy();
+            if (bossSpawnCountDown < screensBeforeSecondEnemy)
+                SpawnEnemies(new List<GameObject>() { enemies[0] }); // Only Unarmed Enemies
+            else
+                SpawnEnemies(); // All Enemies
             SpawnItem();
             lastPosition += startSpawnPosition;
 			canSpawn = true;
 			//Only counting down the boss for alpha
 			bossSpawnCountDown++;
-			if (bossSpawnCountDown == 7) {
+			if (bossSpawnCountDown == screensBeforeBoss) {
 				SpawnBoss ();
 			}
 		}
@@ -77,9 +82,9 @@ public class TerrainSpawner : MonoBehaviour {
         }
     }
 
-    private void SpawnEnemy() {
-
+    private void SpawnEnemies(List<GameObject> enemies = null) {
 		int enemyDensity = 0;
+        enemies = enemies == null ? this.enemies : enemies;
 		
 		switch (difficulty) {
 			case 1:

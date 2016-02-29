@@ -44,10 +44,10 @@ public class Projectile : MonoBehaviour
     private void OnCollide(Collider2D collider)
     {
         velocity = 0;
-        if (collider.GetComponent<Damage>())
-            collider.GetComponent<Damage>().ExecuteDamage(collider.gameObject, 30, collider);
         if (collider.GetComponent<Stun>())
             collider.GetComponent<Stun>().GetStunned();
+        if (collider.GetComponent<Damage>())
+            collider.GetComponent<Damage>().ExecuteDamage(30, collider);
     }
 
     public void StartProjectile(float velocity = 25)

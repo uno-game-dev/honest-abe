@@ -107,8 +107,9 @@ GameObject:
   - 114: {fileID: 11446878}
   - 114: {fileID: 11448088}
   - 114: {fileID: 11480820}
+  - 114: {fileID: 11492148}
   m_Layer: 11
-  m_Name: Dummy
+  m_Name: Dummy(Unarmed)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -835,7 +836,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.391614, y: -2.3153412, z: -10}
+  m_LocalPosition: {x: -9.843517, y: -2.521143, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499874}
@@ -1195,6 +1196,21 @@ MonoBehaviour:
   gravityMultiplier: 1
   onGroundDuration: 1
   getUpDuration: 1
+--- !u!114 &11492148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc81c0bf69632439683fbfeb04abd95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 0
+  damageRate: 0.2
+  bloodSplatter: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+  bloodFountain: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
 --- !u!114 &11499884
 MonoBehaviour:
   m_ObjectHideFlags: 1

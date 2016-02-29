@@ -8,8 +8,6 @@ public class PlayerHealth : Health {
     public float decreaseSecondsPerHealthPoint = 1;
 	[HideInInspector]
 	public bool executionPerformed;
-
-	private float nextHitToPlayer;
 	private float updateHealthSliderTimer = 1;
 	private bool isDead;
 	private HealthSlider healthSlider;
@@ -121,19 +119,15 @@ public class PlayerHealth : Health {
 		}
 	} 
 
-	public override void Decrease(int damage, float damageRate){
+	public override void Decrease(int damage){
 		//Temp variable for damageThreshold
 		int tempDamageThreshold = damageThreshold - damage;
-		if (Time.time > nextHitToPlayer) {
-			nextHitToPlayer = Time.time + damageRate;
-			if (tempDamageThreshold <= 0) {
-				damageThreshold = 0;
-			} else {
-				damageThreshold -= damage;
-			}
-			healthSlider.UpdateDamageThreshold(damageThreshold);
-			Debug.Log (damageThreshold);
+		if (tempDamageThreshold <= 0) {
+			damageThreshold = 0;
+		} else {
+			damageThreshold -= damage;
 		}
+		healthSlider.UpdateDamageThreshold(damageThreshold);
 	}
 
 	//Updates the currentHealth and damageThreshold 

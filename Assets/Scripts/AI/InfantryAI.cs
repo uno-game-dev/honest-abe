@@ -11,9 +11,9 @@ public class InfantryAI : MonoBehaviour
 	private GameObject _player;
 	private Attack _attack;
 	private bool seenPlayer = false;
-	private bool swinging = false;
+    private CharacterState _characterState;
 
-	private void Start()
+    private void Start()
 	{
 		_enemyFollow = GetComponent<EnemyFollow>();
 	}
@@ -23,6 +23,7 @@ public class InfantryAI : MonoBehaviour
 		_enemyFollow = GetComponent<EnemyFollow>();
 		_attack = GetComponent<Attack>();
 		_player = GameObject.Find("Player");
+        _characterState = GetComponent<CharacterState>();
 	}
 
 	void OnEnable()
@@ -57,7 +58,7 @@ public class InfantryAI : MonoBehaviour
 		while (true)
 		{
 			if (seenPlayer) {
-				if (swinging) {
+				if (_characterState.state == CharacterState.State.Attack) {
 					_enemyFollow.targetType = EnemyFollow.TargetType.Null;
 				} else {
 					if (!AttackProximityCheck ()) {
@@ -65,14 +66,10 @@ public class InfantryAI : MonoBehaviour
 					} else {
 						if (Random.value > 0.35) {
 							_attack.LightAttack ();
-							swinging = true;
 							yield return new WaitForSeconds(0.5f);
-							swinging = false;
 						} else {
 							_attack.HeavyAttack ();
-							swinging = true;
 							yield return new WaitForSeconds(2f);
-							swinging = false;
 						}
 					}
 				}

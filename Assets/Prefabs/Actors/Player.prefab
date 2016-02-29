@@ -1285,9 +1285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8e20df90a4747ddacb80ec1c45e3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  damageThreshold: 0
-  currentHealth: 0
+  health: 100
+  damageThreshold: 100
+  currentHealth: 100
+  decreaseSecondsPerHealthPoint: 0.2
   executionPerformed: 0
 --- !u!114 &11451924
 MonoBehaviour:
@@ -1355,7 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 0
   attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1, y: 0.5}
+  attackOffset: {x: 1, y: 0}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 10
@@ -1391,10 +1392,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabArea: {fileID: 0}
-  prepareGrabTime: 0.1
-  performGrabTime: 0.6
-  finishGrabTime: 0.1
+  prepareGrabTime: 0.05
+  performGrabTime: 0.3
+  finishGrabTime: 0.05
+  grabPunchTime: 0.5
   grabThrowTime: 0.5
+  grabLoseTime: 0.5
   grabThrowDamage: 25
   state: 0
 --- !u!114 &11495206

@@ -27,14 +27,19 @@ public class Damage : MonoBehaviour
         collision.OnCollisionEnter -= OnCollision;
     }
 
-    public void ExecuteDamage(GameObject toObject, float damageAmount, Collider2D collider)
+    public void ExecuteDamage(float damageAmount, Collider2D collider)
     {
-        if (health = toObject.GetComponent<Health>())
-            health.Decrease(Convert.ToInt32(damageAmount), damageRate);
-        if (collider)
-            AddBlood(collider);
         if (tag == "Enemy")
             AudioManager.instance.PlayDamageSound(new System.Random().Next(2, 5));
+        if (tag == "Boss")
+            if (UnityEngine.Random.value > 0.5)
+                AudioManager.instance.PlayBossSound(0);
+            else
+                AudioManager.instance.PlayBossSound(1);
+        if (collider)
+            AddBlood(collider);
+        if (health = GetComponent<Health>())
+            health.Decrease(Convert.ToInt32(damageAmount));
     }
 
     private void OnCollision(Collider2D collider)
@@ -42,36 +47,36 @@ public class Damage : MonoBehaviour
         if (collider.tag == "Damage")
         {
             damageAmount = collider.transform.GetComponentInParent<Attack>().GetDamageAmount();
-            ExecuteDamage(gameObject, damageAmount, collider);
+            ExecuteDamage(damageAmount, collider);
         }
     }
 
     private void AddBlood(Collider2D collider)
     {
-        Weapon weapon = collider.transform.GetComponentInParent<Attack>().weapon;
-        if (weapon.attackType == Weapon.AttackType.Swing)
-        {
-			//ALPHA ONLY
-			AudioManager.instance.PlayDamageSound(0);
-			AudioManager.instance.PlayDamageSound(1);
+        if (collider.GetComponentInParent<Attack>())
+            if (collider.GetComponentInParent<Attack>().weapon)
+                if (collider.GetComponentInParent<Attack>().weapon.attackType == Weapon.AttackType.Swing)
+                {
+                    //ALPHA ONLY
+                    AudioManager.instance.PlayDamageSound();
 
-            if (bloodFountain)
-            {
-                GameObject blood = Instantiate(bloodFountain);
-                blood.transform.position = collider.transform.position;
-                Destroy(blood, 10);
-            }
-        }
-        else
+                    if (bloodFountain)
+                    {
+                        GameObject blood = Instantiate(bloodFountain);
+                        blood.transform.position = collider.transform.position;
+                        Destroy(blood, 10);
+                    }
+
+                    return;
+                }
+
+        //ALPHA ONLY
+        AudioManager.instance.PlayDamageSound();
+        if (bloodSplatter)
         {
-			//ALPHA ONLY
-			AudioManager.instance.PlayDamageSound();
-            if (bloodSplatter)
-            {
-                GameObject blood = Instantiate(bloodSplatter);
-                blood.transform.localPosition = collider.transform.position;
-                Destroy(blood, 10);
-            }
+            GameObject blood = Instantiate(bloodSplatter);
+            blood.transform.localPosition = collider.transform.position;
+            Destroy(blood, 10);
         }
     }
 }
