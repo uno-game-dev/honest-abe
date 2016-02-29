@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 
-public class TerrainSpawner : MonoBehaviour
+public class WorldGenerator : MonoBehaviour
 {
-
     public GameObject terrain;
     public List<GameObject> enemies;
     public List<GameObject> props;
@@ -65,7 +64,6 @@ public class TerrainSpawner : MonoBehaviour
 
     private void SpawnTerrain()
     {
-
         Instantiate(terrain, new Vector3(_lastXPos, spawnYPos, spawnZPos), Quaternion.Euler(0, 0, 0));
     }
 
