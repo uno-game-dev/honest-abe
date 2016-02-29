@@ -63,7 +63,7 @@ GameObject:
   - 114: {fileID: 11434936}
   - 114: {fileID: 11497070}
   - 114: {fileID: 11432906}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Musket
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -296,8 +296,8 @@ MonoBehaviour:
   attackOffset: {x: 1.5, y: 0}
   heldOffset: {x: -0.5, y: -0.013, z: -0.113}
   heldOrientation: {x: 35, y: 350, z: 198}
-  lightDamage: 30
-  heavyDamage: 50
+  lightDamage: 4
+  heavyDamage: 7
 --- !u!114 &11497070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,7 +318,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: lightDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heavyDamage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155526}

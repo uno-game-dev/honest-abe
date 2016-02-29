@@ -1289,7 +1289,6 @@ MonoBehaviour:
   damageThreshold: 100
   currentHealth: 100
   decreaseSecondsPerHealthPoint: 0.2
-  executionPerformed: 0
 --- !u!114 &11451924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1359,8 +1358,8 @@ MonoBehaviour:
   attackOffset: {x: 1, y: 0}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
-  lightDamage: 10
-  heavyDamage: 15
+  lightDamage: 2
+  heavyDamage: 3
 --- !u!114 &11469688
 MonoBehaviour:
   m_ObjectHideFlags: 1
