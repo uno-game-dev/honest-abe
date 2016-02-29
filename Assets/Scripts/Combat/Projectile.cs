@@ -13,6 +13,10 @@ public class Projectile : MonoBehaviour
     public float torque = 20;
     public State state;
     private BaseCollision _collision;
+    private float _startXPos;
+    private float _endXPos;
+    private int _damage;
+    private int _distance;
 
     void Awake()
     {
@@ -42,11 +46,19 @@ public class Projectile : MonoBehaviour
 
     private void OnCollide(Collider2D collider)
     {
+        _endXPos = transform.position.x;
         velocity = 0;
         if (collider.GetComponent<Stun>())
             collider.GetComponent<Stun>().GetStunned();
         if (collider.GetComponent<Damage>())
-            collider.GetComponent<Damage>().ExecuteDamage(30, collider);
+        {
+            _distance = Math.Abs((int)(_startXPos - _endXPos));
+            _damage = 10 - (_distance / 2);
+            if (_damage < 0)
+                _damage = 0;
+            Debug.Log("Projectile Damge: " + _damage);
+            collider.GetComponent<Damage>().ExecuteDamage(_damage, collider);
+        }
     }
 
     public void StartProjectile(float velocity = 25)
@@ -54,6 +66,7 @@ public class Projectile : MonoBehaviour
         if (state == State.InAir)
             return;
 
+        _startXPos = transform.position.x;
         state = State.InAir;
         sign = Mathf.Sign(velocity);
         this.velocity = Mathf.Abs(velocity);
