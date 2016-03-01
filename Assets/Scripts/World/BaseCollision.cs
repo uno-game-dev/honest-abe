@@ -147,6 +147,17 @@ public class BaseCollision : MonoBehaviour
             RemoveCollision(_currentCollisions.Keys.ElementAt(i));
     }
 
+    /**
+     * This the method all moving objects with BaseCollision should use to move
+     *
+     * For each frame, we first check a radius around the object - if something falls in this radius, cast rays
+     * First we update the raycast origins to make sure they're being accurately fired
+     * Then we reset the collision info so that we have up-to-date information by the end of the frame
+     * Then we check for horizontal collisions and vertical collisions
+     * Then we translate the transform of the object using the provided velocity
+     *
+     * @parameter: A reference to the velocity of the object, used to determine the direction the object is moving
+     */
     public void Move(Vector3 vel)
     {
         velocity = vel;
@@ -167,6 +178,11 @@ public class BaseCollision : MonoBehaviour
         transform.Translate(vel);
     }
 
+    /**
+     * This checks for collisions along the horizontal axis
+     *
+     * @parameter: A reference to the velocity of the object, used to determine the direction the object is moving
+     */
     private void HorizontalCollisions(ref Vector3 vel)
     {
         float directionX = Mathf.Sign(vel.x);
@@ -191,6 +207,11 @@ public class BaseCollision : MonoBehaviour
         }
     }
 
+    /**
+     * This checks for collisions along the horizontal axis
+     *
+     * @parameter: A reference to the velocity of the object, used to determine the direction the object is moving
+     */
     private void VerticalCollisions(ref Vector3 vel)
     {
         float directionY = Mathf.Sign(vel.y);
@@ -215,6 +236,9 @@ public class BaseCollision : MonoBehaviour
         }
     }
 
+    /**
+     * Update the four corners that our raycasts should start shooting from using the collider's current bounds
+     */
     private void UpdateRaycastOrigins()
     {
         Bounds bounds = _collider.bounds;
@@ -226,6 +250,12 @@ public class BaseCollision : MonoBehaviour
         raycastOrigins.topRight = new Vector2(bounds.max.x, bounds.max.y);
     }
 
+    /**
+     * Once the object is created, calculate the spacing that should be between each rays to make sure they're
+     *     equally spaced from one corner to the other
+     * This only has to be run once since the number of rays won't change throughout the object's life,
+     *     therefore the spacing won't have to be calculated again
+     */
     private void CalculateRaySpacing()
     {
         Bounds bounds = _collider.bounds;
@@ -238,6 +268,12 @@ public class BaseCollision : MonoBehaviour
         verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
     }
 
+    /*
+     * Once a collision with an object begins, add the collision to the list of current collisions
+     * This will run the OnCollisionEnter event first, add to the total number of collisions,
+     *     then add the collision to the list of collisions, preventing the OnCollisionEnter
+     *     event from being fired again
+     */
     private void AddCollision(Collider2D collider)
     {
         if (collider == _collider) return;
@@ -250,6 +286,11 @@ public class BaseCollision : MonoBehaviour
         }
     }
 
+    /*
+     * Once a collision with an object ends, remove the collision from the list of current collisions
+     * This will run the OnCollisionExit event first, remove from the total number of collisions,
+     *     then remove the collision from the list of collisions
+     */
     private void RemoveCollision(Collider2D collider)
     {
         if (collider == _collider) return;
@@ -263,11 +304,17 @@ public class BaseCollision : MonoBehaviour
         }
     }
 
+    /**
+     * A convenient helper method for adding a layer to the object's collision mask
+     */
     public void AddCollisionLayer(string name)
     {
         collisionLayer |= (1 << LayerMask.NameToLayer(name));
     }
 
+    /**
+     * A convenient helper method for removing a layer from the object's collision mask
+     */
     public void RemoveCollisionLayer(string name)
     {
         collisionLayer &= ~(1 << LayerMask.NameToLayer(name));
