@@ -169,7 +169,7 @@ public class PlayerHealth : Health
     void Death()
     {
         _dead = true;
-        GameManager.lost = true;
+        GameManager.lose = true;
         // Disable PlayerMotor script 
         gameObject.GetComponent<PlayerMotor>().enabled = false;
         // Turn off any attack effects

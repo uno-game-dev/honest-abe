@@ -5,6 +5,7 @@ public class Health : MonoBehaviour
     public int health;
     public int additionalHealthFloor;
     public int additionalHealthCeiling;
+	public bool alive;
 
     private System.Random _rnd;
 
@@ -19,8 +20,9 @@ public class Health : MonoBehaviour
     }
 
     void Awake()
-    {
-        _rnd = new System.Random();
+	{
+		alive = true;
+		_rnd = new System.Random();
         health += _rnd.Next(additionalHealthFloor, additionalHealthCeiling + 1);
     }
 
@@ -39,17 +41,13 @@ public class Health : MonoBehaviour
         //If the hit would kill the gameObject
         if (health <= 0)
         {
+			alive = false;
             health = 0;
             // Execution Check
             if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
             {
                 GlobalSettings.executionsPerformed++;
                 ShowExecution();
-            }
-            if (gameObject.tag == "Boss")
-            {
-                GlobalSettings.bossFight = false;
-                GameManager.win = true; // TESTING for Win game in alpha
             }
             Destroy(gameObject);
         }
