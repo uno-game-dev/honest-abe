@@ -12,12 +12,14 @@ public class PlayerHealth : Health
     private float _updateSliderTime = 1;
     private bool _dead;
     private HealthSlider _slider;
+	private GameManager _gameManager;
 
-    void Start()
-    {
-        GlobalSettings.executionsPerformed = 0;
+	void Start()
+	{
+		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
         _dead = false;
+		GlobalSettings.executionsPerformed = 0;
     }
 
     void Update()
@@ -169,9 +171,9 @@ public class PlayerHealth : Health
     void Death()
     {
         _dead = true;
-        GameManager.lose = true;
-        // Disable PlayerMotor script 
-        gameObject.GetComponent<PlayerMotor>().enabled = false;
+		_gameManager.lose = true;
+		// Disable PlayerMotor script 
+		gameObject.GetComponent<PlayerMotor>().enabled = false;
         // Turn off any attack effects
         gameObject.GetComponent<PlayerControls>().enabled = false;
         // Set animation for dead player

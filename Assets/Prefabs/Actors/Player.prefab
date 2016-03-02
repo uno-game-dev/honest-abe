@@ -199,6 +199,7 @@ GameObject:
   - 114: {fileID: 11458750}
   - 114: {fileID: 11402006}
   - 114: {fileID: 11407208}
+  - 114: {fileID: 11415730}
   - 114: {fileID: 11413764}
   - 114: {fileID: 11420284}
   - 114: {fileID: 11440234}
@@ -1201,6 +1202,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldComplete: 0
   justClicked: 0
+--- !u!114 &11415730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e6a832d951841b184806510006e0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageThresholdSlider: {fileID: 0}
+  currentHealthSlider: {fileID: 0}
+  amountOfDTSlider: {fileID: 0}
 --- !u!114 &11417068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1258,6 +1273,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 31488
   numberOfCollisions: 0
+  _collider: {fileID: 0}
 --- !u!114 &11440234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1272,6 +1288,7 @@ MonoBehaviour:
   health: 100
   additionalHealthFloor: 0
   additionalHealthCeiling: 0
+  alive: 0
   damageThreshold: 100
   decreaseSecondsPerHealthPoint: 0.2
 --- !u!114 &11451924
@@ -1382,7 +1399,7 @@ MonoBehaviour:
   grabPunchTime: 0.5
   grabThrowTime: 0.5
   grabLoseTime: 0.5
-  grabThrowDamage: 2
+  grabThrowDamage: 25
   state: 0
 --- !u!114 &11495206
 MonoBehaviour:

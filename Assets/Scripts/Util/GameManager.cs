@@ -3,21 +3,19 @@
 public class GameManager : MonoBehaviour
 {
     public static bool perkChosen;
-    public static bool lose;
-    public static bool win;
-    private GameObject _camera;
-
-    private CameraFollow cameraFollow;
+    public bool lose;
+    public bool win;
+    private CameraFollow _cameraFollow;
 
     void Start()
     {
         perkChosen = false;
 		lose = false;
         win = false;
-
-        _camera = GameObject.Find("Main Camera");
-        cameraFollow = _camera.GetComponent<CameraFollow>();
-        if (!perkChosen) cameraFollow.lockRightEdge = true;
+		
+        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        if (!perkChosen)
+			_cameraFollow.lockRightEdge = true;
     }
 
     void Update()
