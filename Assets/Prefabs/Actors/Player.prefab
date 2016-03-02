@@ -1286,8 +1286,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  additionalHealthFloor: 0
+  additionalHealthCeiling: 0
+  alive: 0
   damageThreshold: 100
-  currentHealth: 100
   decreaseSecondsPerHealthPoint: 0.2
 --- !u!114 &11451924
 MonoBehaviour:
