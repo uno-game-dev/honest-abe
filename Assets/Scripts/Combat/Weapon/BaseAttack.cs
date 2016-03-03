@@ -19,10 +19,12 @@ public abstract class BaseAttack : MonoBehaviour
     public float finishHeavyAttackTime = 0.1f;
 
     private CharacterState _characterState;
+    protected BaseCollision _collision;
 
     private void Awake()
     {
         _characterState = GetComponent<CharacterState>();
+        _collision = GetComponent<BaseCollision>();
     }
 
     public void StartLightAttack()

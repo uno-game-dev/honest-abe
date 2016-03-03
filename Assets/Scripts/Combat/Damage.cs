@@ -44,6 +44,10 @@ public class Damage : MonoBehaviour
 
     private void OnCollision(Collider2D collider)
     {
+        AttackArea attackArea = collider.GetComponent<AttackArea>();
+        if (attackArea && attackArea.IsShootType())
+            return;
+
         if (collider.tag == "Damage")
         {
             damageAmount = collider.transform.GetComponentInParent<Attack>().GetDamageAmount();
@@ -63,7 +67,7 @@ public class Damage : MonoBehaviour
                     if (bloodFountain)
                     {
                         GameObject blood = Instantiate(bloodFountain);
-                        blood.transform.position = collider.transform.position;
+                        blood.transform.position = transform.position;
                         Destroy(blood, 10);
                     }
 
@@ -75,7 +79,7 @@ public class Damage : MonoBehaviour
         if (bloodSplatter)
         {
             GameObject blood = Instantiate(bloodSplatter);
-            blood.transform.localPosition = collider.transform.position;
+            blood.transform.localPosition = transform.position;
             Destroy(blood, 10);
         }
     }

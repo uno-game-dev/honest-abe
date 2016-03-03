@@ -9,10 +9,12 @@ public class AttackArea : MonoBehaviour
     private Attack _attack;
     private bool _updateChainAttack;
     private List<Collider2D> _colliders = new List<Collider2D>();
+    private BoxCollider2D _collider;
 
     private void Awake()
     {
         _collision = GetComponent<BaseCollision>();
+        _collider = GetComponent<BoxCollider2D>();
         _chainAttack = GetComponentInParent<ChainAttack>();
         _attack = GetComponentInParent<Attack>();
     }
@@ -64,5 +66,10 @@ public class AttackArea : MonoBehaviour
             _updateChainAttack = false;
         }
         this.hit = collider.gameObject;
+    }
+
+    public bool IsShootType()
+    {
+        return _attack.weapon.attackType == Weapon.AttackType.Shoot;
     }
 }
