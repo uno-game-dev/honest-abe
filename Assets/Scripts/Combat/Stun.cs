@@ -34,6 +34,10 @@ public class Stun : MonoBehaviour
 
     private void OnCollision(Collider2D collider)
     {
+        AttackArea attackArea = collider.GetComponent<AttackArea>();
+        if (attackArea && attackArea.IsShootType())
+            return;
+
         if (collider.tag == "Damage")
             GetStunned();
     }

@@ -2,7 +2,7 @@
 
 public class Weapon : MonoBehaviour
 {
-    public enum AttackType { Melee, Swing, Jab, Gun, Projectile }
+    public enum AttackType { Melee, Swing, Jab, Shoot, Projectile }
 
     public AttackType attackType = AttackType.Melee;
     public Vector2 attackSize = Vector2.one;

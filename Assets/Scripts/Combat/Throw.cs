@@ -54,6 +54,7 @@ public class Throw : MonoBehaviour
             _movement.direction == Movement.Direction.Left ? -velocity : velocity);
         SetState(State.Perform);
         _attack.weapon.transform.rotation = Quaternion.identity;
+        _attack.weapon.gameObject.layer = LayerMask.NameToLayer("Items");
         _attack.SetWeapon(GetComponent<Weapon>());
         _attack.emptyHanded = true;
         Invoke("FinishThrow", performThrowTime);
