@@ -82,6 +82,8 @@ public class Attack : MonoBehaviour
             weapon.transform.SetParent(_rightHand.transform, true);
             weapon.transform.localPosition = weapon.heldOffset;
             weapon.transform.localEulerAngles = weapon.heldOrientation;
+            weapon.transform.GetChild(0).localRotation = Quaternion.identity;
+            weapon.transform.GetChild(0).localPosition = Vector3.zero;
             weapon.gameObject.layer = gameObject.layer;
         }
     }
