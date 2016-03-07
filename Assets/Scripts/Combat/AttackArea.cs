@@ -23,7 +23,7 @@ public class AttackArea : MonoBehaviour
     {
         if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
         {
-            GlobalSettings.performingHeavyAttack = true;
+            EventHandler.SendEvent(EventHandler.Events.HEAVY_SWING);
         }
         _collision.OnCollisionEnter += OnCollision;
 
@@ -54,8 +54,11 @@ public class AttackArea : MonoBehaviour
 
         _colliders.Add(collider);
 
-        if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
-            PerkManager.PerformPerkEffects(Perk.PerkCategory.AXE);
+        if (transform.parent.gameObject.tag == "Player")
+        {
+            if (_attack.attackState == Attack.State.Heavy) EventHandler.SendEvent(EventHandler.Events.HEAVY_HIT);
+            else if ( _attack.attackState == Attack.State.Light) EventHandler.SendEvent(EventHandler.Events.LIGHT_HIT);
+        }
 
         if (_updateChainAttack && _chainAttack)
         {

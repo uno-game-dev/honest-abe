@@ -10,16 +10,7 @@ public class Health : MonoBehaviour
 	private Boss _boss;
 
 	private System.Random _rnd;
-
-    // Use this for initialization
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    private Attack playerAttack;
 
     void Awake()
 	{
@@ -28,6 +19,8 @@ public class Health : MonoBehaviour
 		alive = true;
 		_rnd = new System.Random();
         health += _rnd.Next(additionalHealthFloor, additionalHealthCeiling + 1);
+
+        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
     }
 
     public void RandomizeHealth()
@@ -52,12 +45,19 @@ public class Health : MonoBehaviour
 			{
 				_gameManager.win = true;
 			}
+            else if (gameObject.tag == "Enemy")
+            {
 			if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
             {
                 GlobalSettings.executionsPerformed++;
                 ShowExecution();
-			}
-			Destroy(gameObject);
+            }
+                if (playerAttack.attackState == Attack.State.Heavy) EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);            else if (gameObject.tag == "Enemy")
+            {
+                if (playerAttack.attackState == Attack.State.Heavy) EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
+                else if (playerAttack.attackState == Attack.State.Light) EventHandler.SendEvent(EventHandler.Events.LIGHT_KILL);
+            }
+            Destroy(gameObject);
         }
     }
 
