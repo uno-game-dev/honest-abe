@@ -20,7 +20,7 @@ public class PlayerMotor : MonoBehaviour
         collision.OnCollisionExit += OnCollisionEnd;
         controls = GetComponent<PlayerControls>();
         playerAttack = GetComponent<Attack>();
-        uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
+        uiManager = GameObject.Find("UI").GetComponent<UIManager>();
     }
 
     void Update()

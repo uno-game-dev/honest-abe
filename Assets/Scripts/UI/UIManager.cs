@@ -18,16 +18,19 @@ public class UIManager : MonoBehaviour
     private GameObject __optionsUI;
     private GameObject _loseUI;
     private GameObject _winUI;
+	private LevelManager _levelManager;
 
-    void Start()
+	void Start()
     {
+		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
         _startGameText = GameObject.Find("StartText");
         _pauseUI = GameObject.Find("PauseUI");
         __optionsUI = GameObject.Find("OptionsCanvas");
         _loseUI = GameObject.Find("LoseUI");
         _winUI = GameObject.Find("WinUI");
         perkText = GameObject.Find("PerkText").GetComponent<Text>();
-        _pauseUI.SetActive(false);
+		_startGameText.SetActive(true);
+		_pauseUI.SetActive(false);
         __optionsUI.SetActive(false);
         _loseUI.SetActive(false);
         _winUI.SetActive(false);
@@ -104,7 +107,7 @@ public class UIManager : MonoBehaviour
 
     public void Restart()
     {
-        Application.LoadLevel(Application.loadedLevel);
+		_levelManager.loadCurrentLevel();
         updateActive = false;
     }
 
@@ -122,9 +125,9 @@ public class UIManager : MonoBehaviour
     //After Losing
     public void RetryYes()
     {
-        //Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
-        Application.LoadLevel(Application.loadedLevel);
-        _loseUI.SetActive(false);
+		//Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
+		_levelManager.loadCurrentLevel();
+		_loseUI.SetActive(false);
         updateActive = false;
     }
 
@@ -138,9 +141,9 @@ public class UIManager : MonoBehaviour
     //After Win
     public void PlayAgainYes()
     {
-        //Need to restart the game, but for the alpha since it's only one scene it will restart the level
-        Application.LoadLevel(Application.loadedLevel);
-        _winUI.SetActive(false);
+		//Need to restart the game, but for the alpha since it's only one scene it will restart the level
+		_levelManager.loadCurrentLevel();
+		_winUI.SetActive(false);
         updateActive = false;
     }
 
