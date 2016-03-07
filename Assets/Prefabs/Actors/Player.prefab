@@ -1216,6 +1216,7 @@ MonoBehaviour:
   damageThresholdSlider: {fileID: 0}
   currentHealthSlider: {fileID: 0}
   amountOfDTSlider: {fileID: 0}
+  nonDecreasingHealthSlider: {fileID: 0}
 --- !u!114 &11417068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1273,7 +1274,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 31488
   numberOfCollisions: 0
-  _collider: {fileID: 0}
 --- !u!114 &11440234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1286,8 +1286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  additionalHealthFloor: 0
+  additionalHealthCeiling: 0
   damageThreshold: 100
-  currentHealth: 100
   decreaseSecondsPerHealthPoint: 0.2
 --- !u!114 &11451924
 MonoBehaviour:
@@ -1397,7 +1398,7 @@ MonoBehaviour:
   grabPunchTime: 0.5
   grabThrowTime: 0.5
   grabLoseTime: 0.5
-  grabThrowDamage: 25
+  grabThrowDamage: 2
   state: 0
 --- !u!114 &11495206
 MonoBehaviour:
