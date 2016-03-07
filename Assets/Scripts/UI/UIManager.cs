@@ -5,23 +5,23 @@ using System.Collections;
 public class UIManager : MonoBehaviour
 {
     public static bool updateActive = false;
-    public static bool displayLost;
-    public static bool displayWin;
     [HideInInspector]
     public Text perkText;
 
     private bool _paused = false;
     private bool _options = false;
-    private bool _slowMotion;
     private GameObject _startGameText;
     private GameObject _pauseUI;
     private GameObject __optionsUI;
     private GameObject _loseUI;
     private GameObject _winUI;
+	private GameManager _gameManager;
 	private LevelManager _levelManager;
 
-	void Start()
+	void Awake()
     {
+		updateActive = false;	
+		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
         _startGameText = GameObject.Find("StartText");
         _pauseUI = GameObject.Find("PauseUI");
@@ -35,13 +35,20 @@ public class UIManager : MonoBehaviour
         _loseUI.SetActive(false);
         _winUI.SetActive(false);
         perkText.enabled = false;
-        displayWin = false;
-        displayLost = false;
-        _slowMotion = true;
     }
 
     void Update()
     {
+		if (_gameManager.win)
+		{
+			_winUI.SetActive(true);
+		}
+
+		if (_gameManager.lose)
+		{
+			_loseUI.SetActive(true);
+		}
+
         if (!updateActive && Input.GetKeyDown(KeyCode.Return))
         {
             updateActive = true;
@@ -70,60 +77,38 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(false);
             Time.timeScale = 1;
         }
-
-        if (displayLost)
-        {
-            _loseUI.SetActive(true);
-        }
-
-        if (displayWin)
-        {
-            _winUI.SetActive(true);
-            StartCoroutine(LastKillSlowMo());
-        }
     }
 
-    IEnumerator LastKillSlowMo()
-    {
-        if (_slowMotion)
-        {
-            Time.timeScale = 0.2f; //Slow-mo for last kill
-            yield return new WaitForSeconds(1.4f);
-            _slowMotion = false;
-        }
-        Time.timeScale = 0;
-    }
-
-    public void Resume()
+    public void OnResume()
     {
         _paused = false;
     }
 
-    public void Options()
+    public void OnOptions()
     {
         //Fill in functionality of the _options button in Pause menu
         _options = true;
     }
 
-    public void Restart()
+    public void OnRestart()
     {
 		_levelManager.loadCurrentLevel();
         updateActive = false;
     }
 
-    public void Quit()
+    public void OnQuit()
     {
         Application.Quit(); //Only works when the project is built
     }
 
-    public void Exit_options()
+    public void OnOptionsBack()
     {
         _options = false;
         _paused = true;
     }
 
     //After Losing
-    public void RetryYes()
+    public void OnRetryYes()
     {
 		//Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
 		_levelManager.loadCurrentLevel();
@@ -132,7 +117,7 @@ public class UIManager : MonoBehaviour
     }
 
     //After Losing
-    public void RetryNo()
+    public void OnRetryNo()
     {
         //Need to go back to the main menu, but for the alpha just quit the game
         Application.Quit(); //Only works when the project is built

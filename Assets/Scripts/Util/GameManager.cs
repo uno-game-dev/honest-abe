@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public static bool perkChosen;
     public bool lose;
     public bool win;
-    private CameraFollow _cameraFollow;
+	private CameraFollow _cameraFollow;
 	private LevelManager _levelManager;
 
 	void Start()
     {
-
         perkChosen = false;
 		lose = false;
         win = false;
@@ -33,15 +33,16 @@ public class GameManager : MonoBehaviour
 		if (win)
 		{
 			win = false;
-			// UIManager.displayWin = true;
 			PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
-			_levelManager.loadNextLevel();
+			// _levelManager.loadNextLevel();
         }
 	}
 
 	public void CheckIfLost()
     {
-        if (lose)
-            UIManager.displayLost = true;
-    }
-}
+		if (lose)
+		{
+			lose = false;
+			_levelManager.loadCurrentLevel();
+		}
+	}
