@@ -16,7 +16,7 @@ public class PlayerHealth : Health
     void Start()
     {
         GlobalSettings.executionsPerformed = 0;
-        _slider = GetComponent<HealthSlider>();
+        _slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
         _dead = false;
     }
 
