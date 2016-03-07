@@ -17,7 +17,7 @@ public class PlayerHealth : Health
 	void Start()
 	{
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        _slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
+		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
         _dead = false;
 		GlobalSettings.executionsPerformed = 0;
     }
@@ -171,9 +171,9 @@ public class PlayerHealth : Health
     void Death()
     {
         _dead = true;
-		_gameManager.lose = true;
-		// Disable PlayerMotor script 
-		gameObject.GetComponent<PlayerMotor>().enabled = false;
+        _gameManager.lose = true;
+        // Disable PlayerMotor script 
+        gameObject.GetComponent<PlayerMotor>().enabled = false;
         // Turn off any attack effects
         gameObject.GetComponent<PlayerControls>().enabled = false;
         // Set animation for dead player

@@ -23,11 +23,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        CheckLost();
-        CheckWin();
+        CheckIfLost();
+        CheckIfWon();
 	}
 
-	public void CheckWin()
+	public void CheckIfWon()
 	{
 		//Checks if the boss health is 0 -- for alpha
 		if (win)
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         }
 	}
 
-	public void CheckLost()
+	public void CheckIfLost()
     {
         if (lose)
             UIManager.displayLost = true;
