@@ -76,6 +76,7 @@ GameObject:
   - 224: {fileID: 22426952}
   - 222: {fileID: 22280214}
   - 114: {fileID: 11484080}
+  - 114: {fileID: 11401444}
   m_Layer: 5
   m_Name: HealthUI
   m_TagString: Untagged
@@ -441,6 +442,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11401444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e6a832d951841b184806510006e0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageThresholdSlider: {fileID: 11434470}
+  currentHealthSlider: {fileID: 11473296}
+  amountOfDTSlider: {fileID: 11453800}
+  nonDecreasingHealthSlider: {fileID: 11489940}
 --- !u!114 &11410802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1221,7 +1237,7 @@ RectTransform:
   - {fileID: 22427254}
   - {fileID: 22450700}
   m_Father: {fileID: 22426952}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -50, y: -5}
@@ -1241,7 +1257,7 @@ RectTransform:
   - {fileID: 22452354}
   - {fileID: 22476450}
   m_Father: {fileID: 22426952}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -50, y: -5}
@@ -1326,10 +1342,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
-  - {fileID: 22451804}
   - {fileID: 22409740}
   - {fileID: 22405774}
   - {fileID: 22456140}
+  - {fileID: 22451804}
   m_Father: {fileID: 22450392}
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: 1}
@@ -1440,7 +1456,7 @@ RectTransform:
   - {fileID: 22485078}
   - {fileID: 22425548}
   m_Father: {fileID: 22426952}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -50, y: -5}
@@ -1478,7 +1494,7 @@ RectTransform:
   - {fileID: 22491886}
   - {fileID: 22470816}
   m_Father: {fileID: 22426952}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -54, y: -5}
