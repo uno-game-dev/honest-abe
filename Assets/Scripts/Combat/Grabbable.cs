@@ -64,6 +64,7 @@ public class Grabbable : MonoBehaviour
         if (!_characterState.CanBeGrabbed())
             return;
 
+        if (gameObject.tag == "Enemy") EventHandler.SendEvent(EventHandler.Events.ENEMY_GRAB);
         state = State.Grabbed;
         _animator.SetBool("Grabbed", true);
         _characterState.SetState(CharacterState.State.Grabbed);

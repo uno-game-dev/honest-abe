@@ -21,10 +21,6 @@ public class AttackArea : MonoBehaviour
 
     private void OnEnable()
     {
-        if (transform.parent.gameObject.tag == "Player" && _attack.attackState == Attack.State.Heavy)
-        {
-            EventHandler.SendEvent(EventHandler.Events.HEAVY_SWING);
-        }
         _collision.OnCollisionEnter += OnCollision;
 
         if (_chainAttack && _chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)

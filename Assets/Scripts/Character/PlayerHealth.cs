@@ -170,8 +170,9 @@ public class PlayerHealth : Health
 
     void Death()
     {
+        EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
         _dead = true;
-        _gameManager.lose = true;
+        _gameManager.lost = true;
         // Disable PlayerMotor script 
         gameObject.GetComponent<PlayerMotor>().enabled = false;
         // Turn off any attack effects

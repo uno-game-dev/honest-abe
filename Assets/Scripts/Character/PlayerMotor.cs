@@ -47,6 +47,7 @@ public class PlayerMotor : MonoBehaviour
     {
         if (collider.tag == "Item")
         {
+            EventHandler.SendEvent(EventHandler.Events.ITEM_PICKUP);
             collider.transform.gameObject.GetComponent<Item>().OnCollision(gameObject);
             AudioManager.instance.PlayItemSound();
         }
@@ -87,6 +88,7 @@ public class PlayerMotor : MonoBehaviour
         if (collider.tag == "Weapon")
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
+                EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP);
                 GetComponent<Attack>().SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
             }
@@ -94,6 +96,7 @@ public class PlayerMotor : MonoBehaviour
         if (collider.tag == "Perk")
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
             {
+                EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP);
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
 
                 if (!_gameManager.perkChosen)
@@ -106,6 +109,7 @@ public class PlayerMotor : MonoBehaviour
         if (collider.tag == "AbeAxe")
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
+                EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP);
                 playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);

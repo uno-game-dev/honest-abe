@@ -9,16 +9,15 @@ public class Health : MonoBehaviour
 	private GameManager _gameManager;
 	private Boss _boss;
 
-	private System.Random _rnd;
+    private System.Random _rnd;
     private Attack playerAttack;
 
     void Awake()
-	{
+    {
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		_boss = GetComponent<Boss>();
-		alive = true;
-		_rnd = new System.Random();
+        _rnd = new System.Random();
         health += _rnd.Next(additionalHealthFloor, additionalHealthCeiling + 1);
+		alive = true;
 
         playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
     }
@@ -38,24 +37,22 @@ public class Health : MonoBehaviour
         //If the hit would kill the gameObject
         if (health <= 0)
         {
-			alive = false;
             health = 0;
-			// Execution Check
-			if (gameObject.tag == "Boss")
-			{
+            if (gameObject.tag == "Boss")
+            {
 				_gameManager.win = true;
-			}
+                EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
+            }
             else if (gameObject.tag == "Enemy")
             {
-			if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
+            // Execution Check
+            if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
             {
-                GlobalSettings.executionsPerformed++;
                 ShowExecution();
+                EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
             }
-                if (playerAttack.attackState == Attack.State.Heavy) EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);            else if (gameObject.tag == "Enemy")
-            {
-                if (playerAttack.attackState == Attack.State.Heavy) EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
-                else if (playerAttack.attackState == Attack.State.Light) EventHandler.SendEvent(EventHandler.Events.LIGHT_KILL);
+                if (playerAttack.attackState == Attack.State.Light)
+                    EventHandler.SendEvent(EventHandler.Events.LIGHT_KILL);
             }
             Destroy(gameObject);
         }
