@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 		{
 			win = false;
 			PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
-			// _levelManager.loadNextLevel();
+			_levelManager.loadNextLevel();
 		}
 	}
 
