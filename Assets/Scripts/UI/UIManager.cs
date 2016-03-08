@@ -53,15 +53,9 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-		if (_gameManager.win)
-		{
-			_winUI.SetActive(true);
-		}
 
 		if (_gameManager.lose)
-		{
 			_loseUI.SetActive(true);
-		}
 
         if (!updateActive && Input.GetKeyDown(KeyCode.Return))
         {
@@ -70,9 +64,7 @@ public class UIManager : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Pause"))
-        {
             _paused = !_paused;
-        }
 
         if (_paused)
         {
@@ -106,14 +98,6 @@ public class UIManager : MonoBehaviour
 		_pauseUIOptionsButton.onClick.AddListener(OnOptions);
 		_pauseUIRestartButton.onClick.AddListener(OnRestart);
 		_pauseUIQuitButton.onClick.AddListener(OnQuit);
-
-		if (_pauseUIResumeButton != null)
-		{
-			Debug.Log("Found");
-		}
-		else Debug.Log("Not Found");
-
-		_pauseUI.SetActive(false);
 	}
 
 	private void SetListenersForOptionsUI()
