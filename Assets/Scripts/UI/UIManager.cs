@@ -5,35 +5,49 @@ using System.Collections;
 public class UIManager : MonoBehaviour
 {
     public static bool updateActive = false;
+
     [HideInInspector]
     public Text perkText;
 
-    private bool _paused = false;
-    private bool _options = false;
-    private GameObject _startGameText;
-    private GameObject _pauseUI;
-    private GameObject __optionsUI;
-    private GameObject _loseUI;
-    private GameObject _winUI;
 	private GameManager _gameManager;
 	private LevelManager _levelManager;
+	private GameObject _startGameText;
+	private bool _paused = false;
+	private bool _options = false;
+
+	// Pause UI
+	private GameObject _pauseUI;
+	private Button _pauseUIResumeButton;
+	private Button _pauseUIOptionsButton;
+	private Button _pauseUIRestartButton;
+	private Button _pauseUIQuitButton;
+
+	// Options UI
+	private GameObject _optionsUI;
+	private Button _optionsUIBackButton;
+
+	// Win UI
+	private GameObject _winUI;
+	private Button _winUIYesButton;
+	private Button _winUINoButton;
+	
+	// Lose UI
+	private GameObject _loseUI;
+	private Button _loseUIYesButton;
+	private Button _loseUINoButton;
 
 	void Awake()
-    {
-		updateActive = false;	
+	{
+		updateActive = false;
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
-        _startGameText = GameObject.Find("StartText");
-        _pauseUI = GameObject.Find("PauseUI");
-        __optionsUI = GameObject.Find("OptionsCanvas");
-        _loseUI = GameObject.Find("LoseUI");
-        _winUI = GameObject.Find("WinUI");
-        perkText = GameObject.Find("PerkText").GetComponent<Text>();
+		_startGameText = GameObject.Find("StartText");
 		_startGameText.SetActive(true);
-		_pauseUI.SetActive(false);
-        __optionsUI.SetActive(false);
-        _loseUI.SetActive(false);
-        _winUI.SetActive(false);
+		SetListenersForPauseUI();
+		SetListenersForOptionsUI();
+		SetListenersForWinUI();
+		SetListenersForLoseUI();
+		perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
     }
 
@@ -65,11 +79,11 @@ public class UIManager : MonoBehaviour
             if (_options)
             {
                 _pauseUI.SetActive(false);
-                __optionsUI.SetActive(true);
+                _optionsUI.SetActive(true);
             }
             else {
                 _pauseUI.SetActive(true);
-                __optionsUI.SetActive(false);
+                _optionsUI.SetActive(false);
                 Time.timeScale = 0;
             }
         }
@@ -79,7 +93,67 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void OnResume()
+	private void SetListenersForPauseUI()
+	{
+		_pauseUI = GameObject.Find("PauseUI");
+
+		_pauseUIResumeButton = _pauseUI.transform.Find("Resume").GetComponent<Button>();
+		_pauseUIOptionsButton = _pauseUI.transform.Find("Options").GetComponent<Button>();
+		_pauseUIRestartButton = _pauseUI.transform.Find("Restart").GetComponent<Button>();
+		_pauseUIQuitButton = _pauseUI.transform.Find("Quit").GetComponent<Button>();
+
+		_pauseUIResumeButton.onClick.AddListener(OnResume);
+		_pauseUIOptionsButton.onClick.AddListener(OnOptions);
+		_pauseUIRestartButton.onClick.AddListener(OnRestart);
+		_pauseUIQuitButton.onClick.AddListener(OnQuit);
+
+		if (_pauseUIResumeButton != null)
+		{
+			Debug.Log("Found");
+		}
+		else Debug.Log("Not Found");
+
+		_pauseUI.SetActive(false);
+	}
+
+	private void SetListenersForOptionsUI()
+	{
+		_optionsUI = GameObject.Find("OptionsUI");
+
+		_optionsUIBackButton = _optionsUI.transform.Find("Back").GetComponent<Button>();
+
+		_optionsUIBackButton.onClick.AddListener(OnOptionsBack);
+
+		_optionsUI.SetActive(false);
+	}
+
+	private void SetListenersForWinUI()
+	{
+		_winUI = GameObject.Find("WinUI");
+
+		_winUIYesButton = _winUI.transform.Find("Yes").GetComponent<Button>();
+		_winUINoButton = _winUI.transform.Find("No").GetComponent<Button>();
+
+		_winUIYesButton.onClick.AddListener(OnWinYes);
+		_winUINoButton.onClick.AddListener(OnWinNo);
+
+		_winUI.SetActive(false);
+	}
+
+	private void SetListenersForLoseUI()
+	{
+		_loseUI = GameObject.Find("LoseUI");
+
+		_loseUIYesButton = _loseUI.transform.Find("Yes").GetComponent<Button>();
+		_loseUINoButton = _loseUI.transform.Find("No").GetComponent<Button>();
+
+		_loseUIYesButton.onClick.AddListener(OnLoseYes);
+		_loseUINoButton.onClick.AddListener(OnLoseNo);
+
+		_loseUI.SetActive(false);
+	}
+
+	public void OnResume()
     {
         _paused = false;
     }
@@ -108,7 +182,7 @@ public class UIManager : MonoBehaviour
     }
 
     //After Losing
-    public void OnRetryYes()
+    public void OnLoseYes()
     {
 		//Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
 		_levelManager.loadCurrentLevel();
@@ -117,14 +191,14 @@ public class UIManager : MonoBehaviour
     }
 
     //After Losing
-    public void OnRetryNo()
+    public void OnLoseNo()
     {
         //Need to go back to the main menu, but for the alpha just quit the game
         Application.Quit(); //Only works when the project is built
     }
 
     //After Win
-    public void PlayAgainYes()
+    public void OnWinYes()
     {
 		//Need to restart the game, but for the alpha since it's only one scene it will restart the level
 		_levelManager.loadCurrentLevel();
@@ -133,7 +207,7 @@ public class UIManager : MonoBehaviour
     }
 
     //After Win
-    public void PlayAgainNo()
+    public void OnWinNo()
     {
         //Need to go back to the main menu, but for the alpha just quit the game
         Application.Quit(); //Only works when the project is built	
