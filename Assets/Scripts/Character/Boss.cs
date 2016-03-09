@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Boss : MonoBehaviour
 {
-    private Vector3 abeLocation;
-    private GameObject cam;
+	private CameraFollow _cameraFollow;
+	private Vector3 _playerPosition;
+	private Health _health;
 
     // Use this for initialization
     void Start()
-    {
-        AudioManager.instance.PlayBossSound(1);
+	{
+		_cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+		_health = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        abeLocation = GameObject.Find("Player").transform.position;
-        if ((gameObject.transform.position.x - abeLocation.x) < 10)
+		_playerPosition = GameObject.Find("Player").transform.position;
+        if ((gameObject.transform.position.x - _playerPosition.x) < 10)
         {
-            //The boss is in the scene with Abe so lock the camera
-            GlobalSettings.bossFight = true;
-        }
+			//The boss is in the scene with Abe so lock the camera
+			_cameraFollow.lockRightEdge = true;
+		}
     }
 }

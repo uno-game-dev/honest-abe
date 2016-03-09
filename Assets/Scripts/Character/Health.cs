@@ -5,8 +5,11 @@ public class Health : MonoBehaviour
     public int health;
     public int additionalHealthFloor;
     public int additionalHealthCeiling;
+	public bool alive;
+	private GameManager _gameManager;
+	private Boss _boss;
 
-    private System.Random _rnd;
+	private System.Random _rnd;
 
     // Use this for initialization
     void Start()
@@ -19,8 +22,11 @@ public class Health : MonoBehaviour
     }
 
     void Awake()
-    {
-        _rnd = new System.Random();
+	{
+		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		_boss = GetComponent<Boss>();
+		alive = true;
+		_rnd = new System.Random();
         health += _rnd.Next(additionalHealthFloor, additionalHealthCeiling + 1);
     }
 
@@ -39,19 +45,19 @@ public class Health : MonoBehaviour
         //If the hit would kill the gameObject
         if (health <= 0)
         {
+			alive = false;
             health = 0;
-            // Execution Check
-            if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
+			// Execution Check
+			if (gameObject.tag == "Boss")
+			{
+				_gameManager.win = true;
+			}
+			if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
             {
                 GlobalSettings.executionsPerformed++;
                 ShowExecution();
-            }
-            if (gameObject.tag == "Boss")
-            {
-                GlobalSettings.bossFight = false;
-                GameManager.win = true; // TESTING for Win game in alpha
-            }
-            Destroy(gameObject);
+			}
+			Destroy(gameObject);
         }
     }
 
