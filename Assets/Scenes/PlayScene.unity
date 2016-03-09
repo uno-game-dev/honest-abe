@@ -1044,12 +1044,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1780418086}
   m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!114 &1780418090 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11434470, guid: 4b06cd9546edd4dae89db9c1c5dfd9db,
-    type: 2}
-  m_PrefabInternal: {fileID: 1780418086}
-  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1848461375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1237,7 @@ Prefab:
     - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
       propertyPath: damageThresholdSlider
       value: 
-      objectReference: {fileID: 1780418090}
+      objectReference: {fileID: 1780418087}
     - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
       propertyPath: currentHealthSlider
       value: 
@@ -1256,10 +1250,6 @@ Prefab:
       propertyPath: grabThrowDamage
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 11415730, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
-      propertyPath: nonDecreasingHealthSlider
-      value: 
-      objectReference: {fileID: 1780418087}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb5182aae6784024d8f85c4935247bed, type: 2}
   m_IsPrefabParent: 0
