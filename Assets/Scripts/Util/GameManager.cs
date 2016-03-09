@@ -2,53 +2,61 @@
 
 public class GameManager : MonoBehaviour
 {
-    public static bool perkChosen;
-    public static bool lost;
-    public static bool win;
-    private GameObject _camera;
+	public static bool perkChosen;
 
-    private CameraFollow cameraFollow;
+    public bool lose;
+	public bool win;
+
+    private static GameManager _instance;
+
+    private CameraFollow _cameraFollow;
+    private LevelManager _levelManager;
+
+    void Awake()
+    {
+        if (_instance == null)
+            _instance = this;
+        else if (_instance != this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
+        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        _levelManager = GetComponent<LevelManager>();
+
         perkChosen = false;
-        lost = false;
-        win = false;
+        lose = false;
+		win = false;
 
-        _camera = GameObject.Find("Main Camera");
-        cameraFollow = _camera.GetComponent<CameraFollow>();
-        if (!perkChosen) cameraFollow.lockRightEdge = true;
-
-        GlobalSettings.bossFight = false;
+        if (!perkChosen)
+			_cameraFollow.lockRightEdge = true;
     }
 
-    void Update()
-    {
-        CheckLost();
-        CheckWin();
+	void Update()
+	{
+		CheckIfLost();
+		CheckIfWon();
+	}
 
-        if (GlobalSettings.bossFight)
-            RunBossFight();
-    }
+	public void CheckIfWon()
+	{
+		//Checks if the boss health is 0 -- for alpha
+		if (win)
+		{
+			win = false;
+			PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+            _levelManager.loadNextLevel();
+		}
+	}
 
-    public void CheckLost()
-    {
-        if (lost)
-            UIManager.displayLost = true;
-    }
-
-    public void CheckWin()
-    {
-        //Checks if the boss health is 0 -- for alpha
-        if (win)
-        {
-            UIManager.displayWin = true;
-            PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
-        }
-    }
-
-    public void RunBossFight()
-    {
-        _camera.GetComponent<CameraFollow>().lockRightEdge = true;
+	public void CheckIfLost()
+	{
+		if (lose)
+		{
+			lose = false;
+            _levelManager.loadCurrentLevel();
+		}
     }
 }
