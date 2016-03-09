@@ -24,15 +24,15 @@ public class CameraFollow : MonoBehaviour
         bgBounds.localScale = new Vector3(((2 * cam.orthographicSize) * cam.aspect), 1, 1);
 
         leftEdge = transform.position.x - (((2 * cam.orthographicSize) * cam.aspect) / 2);
-        leftEdgeTransform = transform.GetChild(0);
+        leftEdgeTransform = transform.Find("LeftEdge");
         leftEdgeBoundsHalfWidth = leftEdgeTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.x / 2;
 
         rightEdge = transform.position.x + (((2 * cam.orthographicSize) * cam.aspect) / 2);
-        rightEdgeTransform = transform.GetChild(2);
+        rightEdgeTransform = transform.Find("RightEdge");
         rightEdgeBoundsHalfWidth = rightEdgeTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.x / 2;
 
         bottomEdge = transform.position.y - cam.orthographicSize;
-        bottomEdgeTransform = transform.GetChild(1);
+        bottomEdgeTransform = transform.Find("BottomEdge");
         bottomEdgeBoundsHalfHeight = bottomEdgeTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.y / 2;
 
         // Initial positioning of the camera on top of the player
