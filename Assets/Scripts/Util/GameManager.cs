@@ -23,12 +23,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        _levelManager = GetComponent<LevelManager>();
+
         perkChosen = false;
-		lose = false;
+        lose = false;
 		win = false;
 
-        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
-		if (!perkChosen)
+        if (!perkChosen)
 			_cameraFollow.lockRightEdge = true;
     }
 
