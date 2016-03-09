@@ -170,7 +170,8 @@ public class PlayerHealth : Health
 
     void Death()
     {
-        EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
+        GameManager.lost = true;
+        GameManager.win = false;
         _dead = true;
         _gameManager.lost = true;
         // Disable PlayerMotor script 

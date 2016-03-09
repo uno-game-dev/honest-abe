@@ -24,6 +24,11 @@ public class EventHandler : MonoBehaviour {
 
     public static void SendEvent(Events e)
     {
+        SendEvent(e, null);
+    }
+
+    public static void SendEvent(Events e, GameObject other)
+    {
         switch (e)
         {
             case Events.LIGHT_SWING:
@@ -60,6 +65,10 @@ public class EventHandler : MonoBehaviour {
                 break;
             case Events.ITEM_PICKUP:
                 Debug.Log("Item Pickup");
+                if (other != null)
+                {
+                    Debug.Log(other.name);
+                }
                 break;
             case Events.WEAPON_PICKUP:
                 Debug.Log("Weapon Pickup");
@@ -69,14 +78,13 @@ public class EventHandler : MonoBehaviour {
                 break;
             case Events.GAME_LOSE:
                 Debug.Log("Game Lose");
-                GameManager.lost = true;
-                GameManager.win = false;
+                UIManager.displayLost = true;
                 break;
             case Events.GAME_WIN:
                 Debug.Log("Game Win");
                 GlobalSettings.bossFight = false;
-                GameManager.win = true; // TESTING for Win game in alpha
-                GameManager.lost = false;
+                UIManager.displayWin = true;
+                PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
                 break;
             case Events.JUMP:
                 Debug.Log("Jump");
