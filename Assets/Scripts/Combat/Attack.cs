@@ -82,6 +82,9 @@ public class Attack : MonoBehaviour
             weapon.transform.SetParent(_rightHand.transform, true);
             weapon.transform.localPosition = weapon.heldOffset;
             weapon.transform.localEulerAngles = weapon.heldOrientation;
+            weapon.transform.GetChild(0).localRotation = Quaternion.identity;
+            weapon.transform.GetChild(0).localPosition = Vector3.zero;
+            weapon.gameObject.layer = gameObject.layer;
         }
     }
 
@@ -108,6 +111,8 @@ public class Attack : MonoBehaviour
             attack = this.GetOrAddComponent<SwingAttack>();
         else if (attackType == Weapon.AttackType.Jab)
             attack = this.GetOrAddComponent<JabAttack>();
+        else if (attackType == Weapon.AttackType.Shoot)
+            attack = this.GetOrAddComponent<ShootAttack>();
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 

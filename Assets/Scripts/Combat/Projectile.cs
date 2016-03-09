@@ -4,6 +4,7 @@ using System;
 public class Projectile : MonoBehaviour
 {
     public enum State { Null, InAir, OnGround }
+    public enum SpinDirection { Clockwise, Counterclockwise, DoNotSpin }
 
     private static float gravity = -9.81f;
     public float gravityMultiplier = 1;
@@ -11,16 +12,19 @@ public class Projectile : MonoBehaviour
     public float velocity = 25;
     public float decelerration = 30;
     public float torque = 20;
+    public SpinDirection spinDirection;
     public State state;
     private BaseCollision _collision;
     private float _startXPos;
     private float _endXPos;
     private int _damage;
     private int _distance;
+    private Transform _child;
 
     void Awake()
     {
         _collision = this.GetOrAddComponent<BaseCollision>();
+        _child = transform.GetChild(0);
     }
 
     void OnEnable()
@@ -76,8 +80,7 @@ public class Projectile : MonoBehaviour
     private void MoveHorizontal()
     {
         transform.Translate(sign * velocity * Time.deltaTime, 0, 0);
-        //transform.Rotate(0, torque, 0);
-        //transform.Rotate(0, 0, torque); // But need to change pivot point
+        _child.RotateAround(transform.position + new Vector3(0, 0.5f), Vector3.back, GetSpinDirection() * torque);
 
         velocity -= decelerration * Time.deltaTime;
         velocity = Math.Max(velocity, 0);
@@ -85,12 +88,21 @@ public class Projectile : MonoBehaviour
         if (velocity == 0)
         {
             state = State.OnGround;
-            transform.localRotation = Quaternion.identity;
             enabled = false;
         }
     }
 
     private void MoveVertical()
     {
+    }
+
+    private float GetSpinDirection()
+    {
+        if (spinDirection == SpinDirection.Clockwise)
+            return 1;
+        else if (spinDirection == SpinDirection.Counterclockwise)
+            return -1;
+        else
+            return 0;
     }
 }

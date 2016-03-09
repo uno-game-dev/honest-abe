@@ -2,6 +2,8 @@
 
 public static class ExtensionFunctions
 {
+    private static System.Random random = new System.Random();
+
     public static T GetOrAddComponent<T>(this Component component) where T : Component
     {
         T comp = component.GetComponent<T>();
@@ -59,5 +61,10 @@ public static class ExtensionFunctions
                 return animationClip;
 
         return null;
+    }
+
+    public static int Random(int min, int max)
+    {
+        return random.Next(min, max + 1);
     }
 }
