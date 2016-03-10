@@ -53,6 +53,8 @@ public class WorldGenerator : MonoBehaviour
             _occupiedPos = new List<Vector3>();
             SpawnProps();
             SpawnDecals();
+            if (_screenCount < screensBeforeSecondEnemy)
+                SpawnEnemies(new List<GameObject>() { enemies[0] }); // Only Unarmed Enemies
             else
                 SpawnEnemies(); // All Enemies
             SpawnItems();
