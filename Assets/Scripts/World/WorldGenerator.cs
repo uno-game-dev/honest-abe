@@ -8,14 +8,20 @@ public class WorldGenerator : MonoBehaviour
     public GameObject terrain;
     public List<GameObject> enemies;
     public List<GameObject> props;
+    public List<GameObject> decals;
     public List<GameObject> items;
     public List<GameObject> bosses;
+
     public float startSpawnPosition = 8f;
+
     public int spawnYPos = 0;
     public int spawnZPos = 10;
+
     public int propDensity = 3;
+    public int decalDensity = 10;
     public int itemDensity = 1;
     public int difficulty = 1;
+
     public int screensBeforeSecondEnemy = 2;
     public int screensBeforeBoss = 4;
 
@@ -46,6 +52,13 @@ public class WorldGenerator : MonoBehaviour
             _canSpawn = false;
             _occupiedPos = new List<Vector3>();
             SpawnProps();
+            SpawnDecals();
+            else
+                SpawnEnemies(); // All Enemies
+            SpawnItems();
+            _lastXPos += startSpawnPosition;
+            //Only counting down the boss for alpha
+            _screenCount++;
             if (_screenCount == screensBeforeBoss)
                 SpawnBoss();
             else
@@ -58,7 +71,6 @@ public class WorldGenerator : MonoBehaviour
                     // Spawn all enemies
                     SpawnEnemies();
                 _canSpawn = true;
-            }
             _screenCount++;
             _lastXPos += startSpawnPosition;
         }
@@ -71,11 +83,19 @@ public class WorldGenerator : MonoBehaviour
 
     private void SpawnProps()
     {
-
         for (int i = 0; i < propDensity; i++)
         {
             int r = _rnd.Next(props.Count);
-            Instantiate(props[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+            Instantiate(props[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+        }
+    }
+
+    private void SpawnDecals()
+    {
+        for (int i = 0; i < decalDensity; i++)
+        {
+            int r = _rnd.Next(decals.Count);
+            Instantiate(decals[r], getRandomEmptyPos(0.5f), Quaternion.Euler(0, 0, 0));
         }
     }
 
@@ -84,7 +104,7 @@ public class WorldGenerator : MonoBehaviour
         for (int i = 0; i < itemDensity; i++)
         {
             int r = _rnd.Next(items.Count);
-            Instantiate(items[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+            Instantiate(items[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         }
     }
 
@@ -109,11 +129,29 @@ public class WorldGenerator : MonoBehaviour
         for (int i = 0; i < enemyDensity; i++)
         {
             int r = _rnd.Next(enemies.Count);
-            Instantiate(enemies[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+            Instantiate(enemies[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         }
     }
 
-    private Vector3 getRandomPos()
+    private void SpawnBoss()
+    {
+        //Depends on which level the player is on will determine what boss will appear
+        switch (_bossToSpawn)
+        {
+            case 1:
+                //Instatiate boss for Level 1
+                Instantiate(bosses[_bossToSpawn - 1], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+                break;
+            case 2:
+                //Instatiate boss for Level 2
+                break;
+            case 3:
+                //Instatiate boss for Level 3
+                break;
+        }
+    }
+
+    private Vector3 getRandomEmptyPos(float z)
     {
 
         RectTransform area = (RectTransform)terrain.transform;
@@ -141,7 +179,7 @@ public class WorldGenerator : MonoBehaviour
             }
         }
 
-        Vector3 vector = new Vector3(x, y, 1);
+        Vector3 vector = new Vector3(x, y, z);
         _occupiedPos.Add(vector);
         return vector;
     }
