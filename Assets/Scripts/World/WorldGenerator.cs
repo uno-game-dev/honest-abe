@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
 
@@ -23,8 +24,8 @@ public class WorldGenerator : MonoBehaviour
     private bool _canSpawn = true;
     private float _lastXPos;
     private List<Vector3> _occupiedPos;
-    private int _screenCount;
-    private int _bossToSpawn;
+    public int _screenCount;
+    public int _bossIndex;
 
     // Use this for initialization
     void Start()
@@ -33,7 +34,7 @@ public class WorldGenerator : MonoBehaviour
         _camera = GameObject.Find("Main Camera");
         _rnd = new System.Random();
         _screenCount = 0;
-        _bossToSpawn = Application.levelCount;
+        _bossIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -43,22 +44,23 @@ public class WorldGenerator : MonoBehaviour
         if (_camera.transform.position.x >= _lastXPos - startSpawnPosition && _canSpawn)
         {
             _canSpawn = false;
-            // SpawnTerrain();
             _occupiedPos = new List<Vector3>();
-            SpawnProp();
-            if (_screenCount < screensBeforeSecondEnemy)
-                SpawnEnemies(new List<GameObject>() { enemies[0] }); // Only Unarmed Enemies
-            else
-                SpawnEnemies(); // All Enemies
-            SpawnItem();
-            _lastXPos += startSpawnPosition;
-            _canSpawn = true;
-            //Only counting down the boss for alpha
-            _screenCount++;
+            SpawnProps();
             if (_screenCount == screensBeforeBoss)
-            {
                 SpawnBoss();
+            else
+            {
+                SpawnItems();
+                if (_screenCount < screensBeforeSecondEnemy)
+                    // Only spawn first enemy
+                    SpawnEnemies(new List<GameObject>() { enemies[0] }); 
+                else
+                    // Spawn all enemies
+                    SpawnEnemies();
+                _canSpawn = true;
             }
+            _screenCount++;
+            _lastXPos += startSpawnPosition;
         }
     }
 
@@ -67,7 +69,7 @@ public class WorldGenerator : MonoBehaviour
         Instantiate(terrain, new Vector3(_lastXPos, spawnYPos, spawnZPos), Quaternion.Euler(0, 0, 0));
     }
 
-    private void SpawnProp()
+    private void SpawnProps()
     {
 
         for (int i = 0; i < propDensity; i++)
@@ -77,7 +79,7 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
-    private void SpawnItem()
+    private void SpawnItems()
     {
         for (int i = 0; i < itemDensity; i++)
         {
@@ -146,19 +148,6 @@ public class WorldGenerator : MonoBehaviour
 
     private void SpawnBoss()
     {
-        //Depends on which level the player is on will determine what boss will appear
-        switch (_bossToSpawn)
-        {
-            case 1:
-                //Instatiate boss for Level 1
-                Instantiate(bosses[_bossToSpawn - 1], getRandomPos(), Quaternion.Euler(0, 0, 0));
-                break;
-            case 2:
-                //Instatiate boss for Level 2
-                break;
-            case 3:
-                //Instatiate boss for Level 3
-                break;
-        }
+        Instantiate(bosses[_bossIndex], getRandomPos(), Quaternion.Euler(0, 0, 0));
     }
 }
