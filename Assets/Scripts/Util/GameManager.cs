@@ -2,12 +2,14 @@
 
 public class GameManager : MonoBehaviour
 {
-	public static bool perkChosen;
+	public bool perkChosen;
 
     public bool lose;
 	public bool win;
 
-    private static GameManager _instance;
+    public bool sceneIsNew;
+
+    private static GameObject _instance;
 
     private CameraFollow _cameraFollow;
     private LevelManager _levelManager;
@@ -15,30 +17,38 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (_instance == null)
-            _instance = this;
-        else if (_instance != this)
+            _instance = gameObject;
+        else if (_instance != gameObject)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
-        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
         _levelManager = GetComponent<LevelManager>();
 
-        perkChosen = false;
-        lose = false;
-		win = false;
-
-        if (!perkChosen)
-			_cameraFollow.lockRightEdge = true;
+        if (sceneIsNew)
+            InitializeLevel();
     }
 
 	void Update()
-	{
-		CheckIfLost();
+    {
+        if (_levelManager.currentSceneIsNew)
+            InitializeLevel();
+        if (!perkChosen)
+            _cameraFollow.lockRightEdge = true;
+        CheckIfLost();
 		CheckIfWon();
 	}
+
+    // Runs when a scene is loaded
+    public void InitializeLevel()
+    {
+        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        perkChosen = false;
+        lose = false;
+        win = false;
+    }
 
 	public void CheckIfWon()
 	{

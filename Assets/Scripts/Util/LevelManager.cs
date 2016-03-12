@@ -6,11 +6,13 @@ public class LevelManager : MonoBehaviour
 {
     public int startingScene;
     public int currentScene;
+    public bool currentSceneIsNew;
 
     // Use this for initialization
     void Start()
     {
         currentScene = startingScene;
+        currentSceneIsNew = true;
         SceneManager.LoadScene(currentScene);
     }
 	
@@ -27,6 +29,7 @@ public class LevelManager : MonoBehaviour
     public void loadNextLevel()
     {
         currentScene++;
+        currentSceneIsNew = true;
         SceneManager.LoadScene(currentScene);
     }
 }
