@@ -36,12 +36,17 @@ public class UIManager : MonoBehaviour
 	private Button _loseUIYesButton;
 	private Button _loseUINoButton;
 
+	// Boss UI
+	[HideInInspector]
+	public static Canvas _bossHealthUI;
+
 	void Awake()
 	{
 		updateActive = false;
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
 		_startGameText = GameObject.Find("StartText");
+		_bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
 		_startGameText.SetActive(true);
 		SetListenersForPauseUI();
 		SetListenersForOptionsUI();
@@ -49,6 +54,7 @@ public class UIManager : MonoBehaviour
 		SetListenersForLoseUI();
 		perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
+		_bossHealthUI.enabled = false;
     }
 
     void Update()
