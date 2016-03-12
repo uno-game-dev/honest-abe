@@ -7,13 +7,13 @@ public class BossHealth : Health
 	private BossHealthSlider bossHealthSlider;
 	[HideInInspector]
 	public bool isDead;
+	private GameManager _gameManager;
 
 	// Use this for initialization
 	void Start () {
 		isDead = false;
 		bossHealthSlider = GameObject.Find ("BossHealthUI").GetComponent<BossHealthSlider> ();
 		bossHealthSlider.Reset(health);
-		Debug.Log ("Did we find the bossUI: " + bossHealthSlider);
 	}
 
 	// Update is called once per frame
@@ -31,7 +31,6 @@ public class BossHealth : Health
 		}
 
 		bossHealthSlider.UpdateBossHealth (health);
-		Debug.Log ("The bear's health is: " + health);
 	}
 
 	public override void Decrease(int amount){
@@ -46,20 +45,18 @@ public class BossHealth : Health
 		}
 
 		bossHealthSlider.UpdateBossHealth(health);
-		Debug.Log ("The bear's health is: " + health);
 	}
 
 	public void Dead(){
 		isDead = true;
 		//Need to check if the FINAL BOSS just died once more bosses are implemented
-		GlobalSettings.bossFight = false;
+		/**
 		if(gameObject.tag == "Boss"){ // Testing if statement -- need to erase
-			GameManager.win = true; // TESTING for Win game in alpha
-		}
+			_gameManager.win = true; // TESTING for Win game in alpha
+		}**/
+
 		//Need to check which boss was just destroyed to transition to the next scene
 		Destroy(gameObject);
-		//UIManager._bossHealthUI.SetActive(false);
 		UIManager._bossHealthUI.enabled = false;
 	}
-
 }

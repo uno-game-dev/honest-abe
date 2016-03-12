@@ -14,7 +14,6 @@ public class BossHealthSlider : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//bossHealth.value = 100;
 		//Provides a visual aid for the player to see the percentage of the boss's health
 		_75PercentHealth.value = 75;
 		_50PercentHealth.value = 50;
@@ -29,15 +28,9 @@ public class BossHealthSlider : MonoBehaviour {
 	public void UpdateBossHealth(int newValue){
 		bossHealth.value = newValue;
 	}
-	/**
-	public void Reset(){
-		bossHealth.value = 100;
-		Debug.Log("Reset");
-	}**/
 
 	public void Reset(int startHealth){
 		bossHealth.maxValue = startHealth;
 		bossHealth.value = startHealth;
-		Debug.Log ("Reset");
 	}
 }
