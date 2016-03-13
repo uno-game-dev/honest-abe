@@ -54,9 +54,6 @@ public class GameManager : MonoBehaviour
 	public void CheckIfLost()
 	{
 		if (lose)
-		{
 			lose = false;
-            _levelManager.loadCurrentLevel();
-		}
     }
 }
