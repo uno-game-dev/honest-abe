@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
     public bool lose;
 	public bool win;
 
-    public bool sceneIsNew;
-
     private static GameObject _instance;
 
     private CameraFollow _cameraFollow;
@@ -26,28 +24,29 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _levelManager = GetComponent<LevelManager>();
-
-        if (sceneIsNew)
-            InitializeLevel();
     }
 
 	void Update()
     {
-        if (_levelManager.currentSceneIsNew)
-            InitializeLevel();
+        if (GlobalSettings.currentSceneIsNew)
+            Initialize();
         if (!perkChosen)
             _cameraFollow.lockRightEdge = true;
+        else
+            _cameraFollow.lockRightEdge = false;
         CheckIfLost();
 		CheckIfWon();
 	}
 
+
     // Runs when a scene is loaded
-    public void InitializeLevel()
+    public void Initialize()
     {
         _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
         perkChosen = false;
         lose = false;
         win = false;
+        GlobalSettings.currentSceneIsNew = false;
     }
 
 	public void CheckIfWon()

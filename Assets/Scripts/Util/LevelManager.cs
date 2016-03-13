@@ -6,19 +6,24 @@ public class LevelManager : MonoBehaviour
 {
     public int startingScene;
     public int currentScene;
-    public bool currentSceneIsNew;
+
+    void Awake()
+    {
+        GlobalSettings.currentSceneIsNew = true;
+    }
 
     // Use this for initialization
     void Start()
     {
         currentScene = startingScene;
-        currentSceneIsNew = true;
         SceneManager.LoadScene(currentScene);
     }
 	
 	// Update is called once per frame
 	void Update()
 	{
+        if (currentScene != SceneManager.GetActiveScene().buildIndex)
+            loadCurrentLevel();
     }
 
     public void loadCurrentLevel()
@@ -29,7 +34,6 @@ public class LevelManager : MonoBehaviour
     public void loadNextLevel()
     {
         currentScene++;
-        currentSceneIsNew = true;
         SceneManager.LoadScene(currentScene);
     }
 }

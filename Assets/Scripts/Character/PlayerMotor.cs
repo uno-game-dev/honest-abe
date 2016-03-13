@@ -99,7 +99,6 @@ public class PlayerMotor : MonoBehaviour
                 if (!_gameManager.perkChosen)
                 {
                     _gameManager.perkChosen = true;
-                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
                     uiManager.perkText.enabled = false;
                 }
             }
@@ -116,7 +115,6 @@ public class PlayerMotor : MonoBehaviour
                 if (!_gameManager.perkChosen)
                 {
                     _gameManager.perkChosen = true;
-                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
                     uiManager.perkText.enabled = false;
                 }
             }
