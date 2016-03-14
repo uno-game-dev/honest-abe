@@ -43,6 +43,7 @@ public class BossHealth : Health
 		{
 			health = 0;
 			alive = false;
+			EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
 			Destroy(gameObject);
 		}
 		else
