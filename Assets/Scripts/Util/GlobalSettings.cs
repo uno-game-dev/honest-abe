@@ -2,6 +2,12 @@
 
 public class GlobalSettings : MonoBehaviour
 {
+    // Levels
+
+    public static bool currentSceneIsNew = true;
+
+    // Player
+
     public static int healthIncreaseAmount = 20;
 
     public static float gravityMultiplier = 1f;

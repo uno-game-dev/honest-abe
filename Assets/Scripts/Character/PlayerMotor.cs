@@ -10,6 +10,7 @@ public class PlayerMotor : MonoBehaviour
     private Attack playerAttack;
     private List<Collider2D> collidersImOn = new List<Collider2D>();
     private UIManager uiManager;
+    private GameManager _gameManager;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class PlayerMotor : MonoBehaviour
         collision.OnCollisionExit += OnCollisionEnd;
         controls = GetComponent<PlayerControls>();
         playerAttack = GetComponent<Attack>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         uiManager = GameObject.Find("UI").GetComponent<UIManager>();
     }
 
@@ -60,7 +62,7 @@ public class PlayerMotor : MonoBehaviour
             collidersImOn.Add(collider);
             controls.ResetHold();
 
-            if (!GameManager.perkChosen)
+            if (!_gameManager.perkChosen)
             {
                 uiManager.perkText.enabled = true;
                 uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
@@ -72,7 +74,7 @@ public class PlayerMotor : MonoBehaviour
             controls.ResetHold();
             collidersImOn.Add(collider);
 
-            if (!GameManager.perkChosen)
+            if (!_gameManager.perkChosen)
             {
                 uiManager.perkText.enabled = true;
                 uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
@@ -94,10 +96,9 @@ public class PlayerMotor : MonoBehaviour
             {
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
 
-                if (!GameManager.perkChosen)
+                if (!_gameManager.perkChosen)
                 {
-                    GameManager.perkChosen = true;
-                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
+                    _gameManager.perkChosen = true;
                     uiManager.perkText.enabled = false;
                 }
             }
@@ -111,10 +112,9 @@ public class PlayerMotor : MonoBehaviour
                 playerAttack.emptyHanded = false;
                 AudioManager.instance.PlayWeaponSound();
 
-                if (!GameManager.perkChosen)
+                if (!_gameManager.perkChosen)
                 {
-                    GameManager.perkChosen = true;
-                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().lockRightEdge = false;
+                    _gameManager.perkChosen = true;
                     uiManager.perkText.enabled = false;
                 }
             }
