@@ -21,7 +21,7 @@ public class Boss : MonoBehaviour
         {
 			//The boss is in the scene with Abe so lock the camera
 			_cameraFollow.lockRightEdge = true;
-			UIManager._bossHealthUI.enabled = true;
+			GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = true;
 		}
 		if (!_health.alive) {
 			EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
