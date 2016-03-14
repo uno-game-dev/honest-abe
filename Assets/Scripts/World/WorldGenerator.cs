@@ -61,18 +61,19 @@ public class WorldGenerator : MonoBehaviour
             _lastXPos += startSpawnPosition;
             //Only counting down the boss for alpha
             _screenCount++;
-            if (_screenCount == screensBeforeBoss)
-                SpawnBoss();
-            else
-            {
-                SpawnItems();
-                if (_screenCount < screensBeforeSecondEnemy)
-                    // Only spawn first enemy
-                    SpawnEnemies(new List<GameObject>() { enemies[0] }); 
-                else
-                    // Spawn all enemies
-                    SpawnEnemies();
-                _canSpawn = true;
+			if (_screenCount == screensBeforeBoss)
+				SpawnBoss();
+			else
+			{
+				SpawnItems();
+				if (_screenCount < screensBeforeSecondEnemy)
+					// Only spawn first enemy
+					SpawnEnemies(new List<GameObject>() { enemies[0] });
+				else
+					// Spawn all enemies
+					SpawnEnemies();
+				_canSpawn = true;
+			}
             _screenCount++;
             _lastXPos += startSpawnPosition;
         }
@@ -133,27 +134,14 @@ public class WorldGenerator : MonoBehaviour
             int r = _rnd.Next(enemies.Count);
             Instantiate(enemies[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         }
-    }
+	}
 
-    private void SpawnBoss()
-    {
-        //Depends on which level the player is on will determine what boss will appear
-        switch (_bossToSpawn)
-        {
-            case 1:
-                //Instatiate boss for Level 1
-                Instantiate(bosses[_bossToSpawn - 1], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
-                break;
-            case 2:
-                //Instatiate boss for Level 2
-                break;
-            case 3:
-                //Instatiate boss for Level 3
-                break;
-        }
-    }
+	private void SpawnBoss()
+	{
+		Instantiate(bosses[_bossIndex], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+	}
 
-    private Vector3 getRandomEmptyPos(float z)
+	private Vector3 getRandomEmptyPos(float z)
     {
 
         RectTransform area = (RectTransform)terrain.transform;
@@ -184,10 +172,5 @@ public class WorldGenerator : MonoBehaviour
         Vector3 vector = new Vector3(x, y, z);
         _occupiedPos.Add(vector);
         return vector;
-    }
-
-    private void SpawnBoss()
-    {
-        Instantiate(bosses[_bossIndex], getRandomPos(), Quaternion.Euler(0, 0, 0));
     }
 }
