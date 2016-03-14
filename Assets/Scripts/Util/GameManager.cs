@@ -4,9 +4,6 @@ public class GameManager : MonoBehaviour
 {
 	public bool perkChosen;
 
-    public bool lose;
-	public bool win;
-
     private static GameObject _instance;
 
     private CameraFollow _cameraFollow;
@@ -44,17 +41,17 @@ public class GameManager : MonoBehaviour
     {
         _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
         perkChosen = false;
-        lose = false;
-        win = false;
+        GlobalSettings.loseCondition = false;
+        GlobalSettings.winCondition = false;
         GlobalSettings.currentSceneIsNew = false;
     }
 
 	public void CheckIfWon()
 	{
 		//Checks if the boss health is 0 -- for alpha
-		if (win)
+		if (GlobalSettings.winCondition)
 		{
-			win = false;
+			GlobalSettings.winCondition = false;
 			PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
             _levelManager.loadNextLevel();
 		}
@@ -62,7 +59,7 @@ public class GameManager : MonoBehaviour
 
 	public void CheckIfLost()
 	{
-		if (lose)
-			lose = false;
+		if (GlobalSettings.loseCondition)
+			GlobalSettings.loseCondition = false;
     }
 }
