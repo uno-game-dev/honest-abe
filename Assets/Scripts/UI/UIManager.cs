@@ -54,10 +54,9 @@ public class UIManager : MonoBehaviour
     void Update()
     {
 
-		if (_gameManager.lose)
+		if (GlobalSettings.loseCondition)
 			_loseUI.SetActive(true);
-
-        if (!updateActive && Input.GetKeyDown(KeyCode.Return))
+		if (!updateActive && Input.GetKeyDown(KeyCode.Return))
         {
             updateActive = true;
             _startGameText.SetActive(false);

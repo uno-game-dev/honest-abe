@@ -2,8 +2,10 @@
 
 public class GlobalSettings : MonoBehaviour
 {
-    // Levels
+	// Levels
 
+	public static bool winCondition = false;
+	public static bool loseCondition = false;
     public static bool currentSceneIsNew = true;
 
     // Player

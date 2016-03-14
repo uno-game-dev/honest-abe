@@ -6,15 +6,13 @@ public class Health : MonoBehaviour
     public int additionalHealthFloor;
     public int additionalHealthCeiling;
 	public bool alive;
-
-	private GameManager _gameManager;
+	
 	private Boss _boss;
     private System.Random _rnd;
     private Attack playerAttack;
 
     void Awake()
     {
-		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rnd = new System.Random();
         health += _rnd.Next(additionalHealthFloor, additionalHealthCeiling + 1);
 		alive = true;
@@ -46,8 +44,6 @@ public class Health : MonoBehaviour
             }
             else if (gameObject.tag == "Boss")
             {
-				_gameManager.win = true;
-				_gameManager.lose = false;
                 EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
             }
             else if (gameObject.tag == "Enemy")

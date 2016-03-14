@@ -2,6 +2,8 @@
 
 public class EventHandler : MonoBehaviour {
 
+	private GameManager _gameManager;
+
 	public enum Events
     {
         LIGHT_SWING,
@@ -66,9 +68,7 @@ public class EventHandler : MonoBehaviour {
             case Events.ITEM_PICKUP:
                 Debug.Log("Item Pickup");
                 if (other != null)
-                {
                     Debug.Log(other.name);
-                }
                 break;
             case Events.WEAPON_PICKUP:
                 Debug.Log("Weapon Pickup");
@@ -78,12 +78,11 @@ public class EventHandler : MonoBehaviour {
                 break;
             case Events.GAME_LOSE:
                 Debug.Log("Game Lose");
-                UIManager.displayLost = true;
+				GlobalSettings.loseCondition = true;
                 break;
             case Events.GAME_WIN:
                 Debug.Log("Game Win");
-                GlobalSettings.bossFight = false;
-                UIManager.displayWin = true;
+				GlobalSettings.winCondition = true;
                 PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
                 break;
             case Events.JUMP:
