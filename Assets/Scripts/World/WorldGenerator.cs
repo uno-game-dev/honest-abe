@@ -52,15 +52,13 @@ public class WorldGenerator : MonoBehaviour
             _canSpawn = false;
             _occupiedPos = new List<Vector3>();
             SpawnProps();
-            SpawnDecals();
+            // SpawnDecals(); - Disabled until art assets are ready
             if (_screenCount < screensBeforeSecondEnemy)
                 SpawnEnemies(new List<GameObject>() { enemies[0] }); // Only Unarmed Enemies
             else
                 SpawnEnemies(); // All Enemies
             SpawnItems();
-            _lastXPos += startSpawnPosition;
             //Only counting down the boss for alpha
-            _screenCount++;
 			if (_screenCount == screensBeforeBoss)
 				SpawnBoss();
 			else
@@ -74,9 +72,9 @@ public class WorldGenerator : MonoBehaviour
 					SpawnEnemies();
 				_canSpawn = true;
 			}
-            _screenCount++;
-            _lastXPos += startSpawnPosition;
-        }
+			_screenCount++;
+			_lastXPos += startSpawnPosition;
+		}
     }
 
     private void SpawnTerrain()
