@@ -130,6 +130,8 @@ public class Attack : MonoBehaviour
         if (!_characterState.CanAttack())
             return;
 
+        if (gameObject.tag == "Player") EventHandler.SendEvent(EventHandler.Events.LIGHT_SWING);
+
         _characterState.SetState(CharacterState.State.Attack);
 
         attackState = State.Light;
@@ -143,6 +145,8 @@ public class Attack : MonoBehaviour
 
         if (!_characterState.CanAttack())
             return;
+
+        if (gameObject.tag == "Player") EventHandler.SendEvent(EventHandler.Events.HEAVY_SWING);
 
         _characterState.SetState(CharacterState.State.Attack);
 

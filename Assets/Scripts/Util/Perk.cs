@@ -49,12 +49,14 @@ public class Perk : MonoBehaviour
      * References to scripts affected by the perks
      */
     private PlayerHealth playerHealth;
-    private Weapon currentPlayerWeapon;
+    private Weapon weapon;
+    private Attack playerAttack;
 
     void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        currentPlayerWeapon = GetComponent<Weapon>();
+        weapon = null;
+        playerAttack = null;
     }
 
     public void CheckStatus()
@@ -107,6 +109,8 @@ public class Perk : MonoBehaviour
                 PerkManager.activeTrinketPerk = null;
                 break;
             case PerkCategory.AXE:
+                playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
+                weapon = GetComponent<Weapon>();
                 PerkManager.activeAxePerk = this;
                 PerkManager.AxePerkEffect += AxeEffect;
                 break;
@@ -126,9 +130,9 @@ public class Perk : MonoBehaviour
 
     private void AxeEffect()
     {
-        if (type == PerkType.AXE_DTVAMPIRISM)
+        if (type == PerkType.AXE_DTVAMPIRISM && playerAttack.attackState == Attack.State.Heavy)
         {
-            playerHealth.IncreaseDT((int)(currentPlayerWeapon.lightDamage / 4));
+            playerHealth.IncreaseDT((int)(weapon.lightDamage / 2));
         }
     }
 
