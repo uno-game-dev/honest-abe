@@ -49,12 +49,12 @@ GameObject:
   - 114: {fileID: 11479578}
   - 114: {fileID: 11469500}
   - 114: {fileID: 11499116}
-  - 114: {fileID: 11403188}
   - 114: {fileID: 11420480}
   - 114: {fileID: 11462894}
   - 114: {fileID: 11412252}
   - 114: {fileID: 11448898}
   - 114: {fileID: 11466536}
+  - 114: {fileID: 11478744}
   m_Layer: 11
   m_Name: Bear
   m_TagString: Boss
@@ -964,20 +964,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11403188
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 80
-  additionalHealthFloor: 0
-  additionalHealthCeiling: 0
 --- !u!114 &11412252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1007,7 +993,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   numberOfCollisions: 0
-  _collider: {fileID: 0}
 --- !u!114 &11420480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1108,6 +1093,22 @@ MonoBehaviour:
   hand: 1
   weapon: {fileID: 0}
   emptyHanded: 1
+--- !u!114 &11478744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0230f66eb00a64fb8986d61f3c1b17fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 80
+  additionalHealthFloor: 0
+  additionalHealthCeiling: 0
+  alive: 0
+  isDead: 0
 --- !u!114 &11479578
 MonoBehaviour:
   m_ObjectHideFlags: 1
