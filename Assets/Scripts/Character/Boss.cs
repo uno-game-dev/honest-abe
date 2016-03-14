@@ -10,7 +10,7 @@ public class Boss : MonoBehaviour
     void Start()
 	{
 		_cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
-		_health = GetComponent<Health>();
+		_health = GetComponent<BossHealth>();
     }
 
     // Update is called once per frame
