@@ -23,5 +23,8 @@ public class Boss : MonoBehaviour
 			_cameraFollow.lockRightEdge = true;
 			UIManager._bossHealthUI.enabled = true;
 		}
+		if (!_health.alive) {
+			EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
+		}
     }
 }
