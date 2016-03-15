@@ -12,7 +12,7 @@ public class WorldGenerator : MonoBehaviour
     public List<GameObject> items;
     public List<GameObject> bosses;
 
-    public float startSpawnPosition = 8f;
+    public float startSpawnPosition;
 
     public int spawnYPos = 0;
     public int spawnZPos = 10;
@@ -53,10 +53,6 @@ public class WorldGenerator : MonoBehaviour
             _occupiedPos = new List<Vector3>();
             SpawnProps();
             // SpawnDecals(); - Disabled until art assets are ready
-            if (_screenCount < screensBeforeSecondEnemy)
-                SpawnEnemies(new List<GameObject>() { enemies[0] }); // Only Unarmed Enemies
-            else
-                SpawnEnemies(); // All Enemies
             SpawnItems();
             //Only counting down the boss for alpha
 			if (_screenCount == screensBeforeBoss)
