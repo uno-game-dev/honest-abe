@@ -31,8 +31,9 @@ public class GameManager : MonoBehaviour
             _cameraFollow.lockRightEdge = true;
         else
             _cameraFollow.lockRightEdge = false;
-        CheckIfLost();
-		CheckIfWon();
+		if (GlobalSettings.winCondition)
+			Win();
+
 	}
 
 
@@ -46,20 +47,10 @@ public class GameManager : MonoBehaviour
         GlobalSettings.currentSceneIsNew = false;
     }
 
-	public void CheckIfWon()
+	public void Win()
 	{
-		//Checks if the boss health is 0 -- for alpha
-		if (GlobalSettings.winCondition)
-		{
-			GlobalSettings.winCondition = false;
-			PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
-            _levelManager.loadNextLevel();
-		}
+		GlobalSettings.winCondition = false;
+		PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+        _levelManager.loadNextLevel();
 	}
-
-	public void CheckIfLost()
-	{
-		if (GlobalSettings.loseCondition)
-			GlobalSettings.loseCondition = false;
-    }
 }
