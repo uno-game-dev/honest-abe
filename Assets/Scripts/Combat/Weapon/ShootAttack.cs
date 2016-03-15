@@ -7,7 +7,7 @@ class ShootAttack : BaseAttack
     protected override void PrepareToLightAttack()
     {
         float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
-        animator.SetFloat("PlaySpeed", 1);
+        animator.SetFloat("PlaySpeed", 5);
         animator.SetTrigger("Light Shoot");
         base.PrepareToLightAttack();
     }

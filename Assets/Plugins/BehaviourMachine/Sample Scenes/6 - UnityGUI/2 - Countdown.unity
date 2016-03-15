@@ -1,0 +1,516 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+SceneSettings:
+  m_ObjectHideFlags: 0
+  m_PVSData: 
+  m_PVSObjectsArray: []
+  m_PVSPortalsArray: []
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_AmbientEquatorColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_AmbientGroundColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 3
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+--- !u!157 &4
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_GIWorkflowMode: 1
+  m_LightmapsMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_TemporalCoherenceThreshold: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 3
+    m_Resolution: 1
+    m_BakeResolution: 50
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
+    m_AOMaxDistance: 1
+    m_Padding: 2
+    m_CompAOExponent: 0
+    m_LightmapParameters: {fileID: 0}
+    m_TextureCompression: 0
+    m_FinalGather: 0
+    m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
+  m_LightingDataAsset: {fileID: 0}
+  m_RuntimeCPUUsage: 25
+--- !u!196 &5
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    accuratePlacement: 0
+    minRegionArea: 2
+    cellSize: 0.16666666
+    manualCellSize: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &119108658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 119108663}
+  - 20: {fileID: 119108662}
+  - 92: {fileID: 119108661}
+  - 124: {fileID: 119108660}
+  - 81: {fileID: 119108659}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &119108659
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 119108658}
+  m_Enabled: 1
+--- !u!124 &119108660
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 119108658}
+  m_Enabled: 1
+--- !u!92 &119108661
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 119108658}
+  m_Enabled: 1
+--- !u!20 &119108662
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 119108658}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 100
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
+--- !u!4 &119108663
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 119108658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!1 &1860365205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1860365206}
+  - 114: {fileID: 1860365208}
+  - 114: {fileID: 1860365207}
+  - 114: {fileID: 1860365209}
+  - 114: {fileID: 1860365210}
+  - 114: {fileID: 1860365211}
+  m_Layer: 0
+  m_Name: Countdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1860365206
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1860365205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &1860365207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1860365205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27b962ddfa21461eb78fac1cb2f955f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 1860365208}
+  m_Parent: {fileID: 0}
+  m_StateName: 46736d4265686176696f7572
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 0, y: 0}
+  m_Transitions: []
+  m_CachedInstanceID: 9084
+  m_Description: 446973706c61797320612074696d6572
+  m_EnabledState: {fileID: 0}
+  m_LastEnabledState: {fileID: 0}
+  m_StartState: {fileID: 1860365209}
+  m_AnyState: {fileID: 0}
+  m_ConcurrentState: {fileID: 0}
+--- !u!114 &1860365208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1860365205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634db10235c0241d6ad43433a106016d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FloatVars: []
+  m_IntVars:
+  - m_ID: 1995160641
+    m_Name: 436f756e74
+    m_Blackboard: {fileID: 1860365208}
+    m_IsConstant: 0
+    value: 5
+  m_BoolVars: []
+  m_StringVars: []
+  m_Vector3Vars: []
+  m_RectVars: []
+  m_ColorVars: []
+  m_QuaternionVars: []
+  m_GameObjectVars: []
+  m_TextureVars: []
+  m_MaterialVars: []
+  m_ObjectVars: []
+  m_DynamicLists: []
+  m_FsmEvents: []
+  m_ConcreteFsmEvents:
+  - m_ID: 1217616423
+    m_Name: 4f6e205375627472616374
+    m_Blackboard: {fileID: 1860365208}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  m_Namespace: 
+--- !u!114 &1860365209
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1860365205}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 1860365208}
+  m_Parent: {fileID: 1860365207}
+  m_StateName: 436f756e74
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 40, y: 40}
+  m_Transitions:
+  - m_Destination: {fileID: 1860365211}
+    m_EventID: -10
+  - m_Destination: {fileID: 1860365210}
+    m_EventID: 1217616423
+  m_CachedInstanceID: 9088
+  m_Description: 57616974206f6e65207365636f6e647320616e64207468656e2073656e647320746865206576656e74204f6e2053756274726163742e20496620436f756e74206973207a65726f207468656e2073656e6420746865206576656e742046494e49534845442e
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - 4265686176696f75724d616368696e652e4f6e456e61626c65
+    - 4265686176696f75724d616368696e652e436f6d6d656e74
+    - 4265686176696f75724d616368696e652e4973496e744c6573734f72457175616c
+    - 4265686176696f75724d616368696e652e557064617465
+    - 4265686176696f75724d616368696e652e53656e644576656e74
+    - 4265686176696f75724d616368696e652e4f6e475549
+    - 4265686176696f75724d616368696e652e4c61796f757443656e7465726564
+    - 4265686176696f75724d616368696e652e4c6162656c
+    m_NodeTypeHash: 89ef82104f7b6eafecce3d4b89ef82100ee2ebc60548002e3ba7fbe6f2ca3847
+    m_NodeFieldStartIndex: 0000000003000000070000000d00000010000000170000001c0000002000000028000000
+    m_BranchIndex: ffffffff0000000000000000ffffffff03000000ffffffff0500000006000000
+    m_UnityObjectValue: []
+    m_IntValue: 0600000001000000070000000100000008000000f6ffffff41bceb7600000000040000000100000005000000275a934801000000010000000200000001000000010000000300000041bceb76
+    m_FloatValue:
+    - 1
+    m_StringValue:
+    - 4f6e456e61626c65
+    - 436f6d6d656e74
+    - 436865636b20696620436f756e74206973206c657373206f7220657175616c7320746f207a65726f2e
+    - 4973496e744c6573734f72457175616c
+    - 557064617465
+    - 53656e644576656e74
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465426f6f6c566172
+    - 4f6e475549
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4c61796f757443656e7465726564
+    - 4c6162656c
+    - 4265686176696f75724d616368696e652e436f6e637265746554657874757265566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465537472696e67566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465537472696e67566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465537472696e67566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    m_CurveValue: []
+    m_GenericFieldType:
+    - 4265686176696f75724d616368696e652e436f6e6372657465496e74566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    m_GenericFieldHash: febf8949264ce8ef
+    m_GenericFieldSize: 0100000001000000
+    m_FieldIndex: 000000000000000001000000020000000100000003000000020000000400000003000000050000000600000000000000070000000800000004000000090000000a000000050000000b000000010000000000000006000000070000000c000000080000000d000000090000000a0000000e0000000b0000000f00000010000000110000000c0000000d0000000e0000000f000000100000001100000012000000
+    m_FieldType: 0100000002000000050000000100000002000000040000000200000001000000020000001e00000013000000100000000100000001000000020000000500000001000000020000001e000000100000000300000011000000110000000100000002000000050000001100000011000000010000000200000005000000050000000100000002000000110000001100000011000000110000001100000013000000
+    m_FieldPath:
+    - 696e7374616e63654944
+    - 6e616d65
+    - 656e61626c6564
+    - 696e7374616e63654944
+    - 6e616d65
+    - 72657475726e6564537461747573
+    - 636f6d6d656e74
+    - 696e7374616e63654944
+    - 6e616d65
+    - 6f6e53756363657373
+    - 61
+    - 62
+    - 622e76616c7565
+    - 696e7374616e63654944
+    - 6e616d65
+    - 656e61626c6564
+    - 696e7374616e63654944
+    - 6e616d65
+    - 6576656e74546f53656e64
+    - 64656c6179
+    - 64656c61792e76616c7565
+    - 73746f726544656c617954696d65
+    - 73746f72654576656e7455736564
+    - 696e7374616e63654944
+    - 6e616d65
+    - 656e61626c6564
+    - 64656661756c745769647468
+    - 64656661756c74486569676874
+    - 696e7374616e63654944
+    - 6e616d65
+    - 686f72697a6f6e74616c
+    - 766572746963616c
+    - 696e7374616e63654944
+    - 6e616d65
+    - 74657874757265
+    - 74657874
+    - 746f6f6c746970
+    - 6775695374796c65
+    - 666c6f6174566172
+    - 696e74566172
+--- !u!114 &1860365210
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1860365205}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22f108f25b8d4045879dfff227bb81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 1860365208}
+  m_Parent: {fileID: 1860365207}
+  m_StateName: 5375627472616374
+  m_Color: 1
+  m_HideScript: 1
+  m_Position: {x: 260, y: 40}
+  m_Transitions:
+  - m_Destination: {fileID: 1860365209}
+    m_EventID: -10
+  m_CachedInstanceID: 9090
+  m_NodeSerialization:
+    m_NodeTypes:
+    - 4265686176696f75724d616368696e652e496e74416464
+    - 4265686176696f75724d616368696e652e53656e644576656e74
+    - 4265686176696f75724d616368696e652e557064617465
+    m_NodeTypeHash: a799b3940ee2ebc689ef8210
+    m_NodeFieldStartIndex: 00000000060000000c0000000f000000
+    m_BranchIndex: ffffffffffffffffffffffff
+    m_UnityObjectValue: []
+    m_IntValue: 0200000041bceb76ffffffff0000000003000000f6ffffff0100000001000000
+    m_FloatValue: []
+    m_StringValue:
+    - 496e74416464
+    - 53656e644576656e74
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465426f6f6c566172
+    - 557064617465
+    m_CurveValue: []
+    m_GenericFieldType:
+    - 4265686176696f75724d616368696e652e436f6e6372657465496e74566172
+    m_GenericFieldHash: febf8949
+    m_GenericFieldSize: 01000000
+    m_FieldIndex: 000000000000000001000000000000000200000003000000040000000100000005000000020000000300000004000000060000000500000007000000
+    m_FieldType: 01000000020000001300000010000000010000000500000001000000020000001e000000110000001100000011000000010000000200000005000000
+    m_FieldPath:
+    - 696e7374616e63654944
+    - 6e616d65
+    - 7661726961626c65
+    - 6164644279
+    - 61646442792e76616c7565
+    - 7065725365636f6e64
+    - 696e7374616e63654944
+    - 6e616d65
+    - 6576656e74546f53656e64
+    - 64656c6179
+    - 73746f726544656c617954696d65
+    - 73746f72654576656e7455736564
+    - 696e7374616e63654944
+    - 6e616d65
+    - 656e61626c6564
+  m_Description: 53756274726163747320312066726f6d2074686520436f756e74207661726961626c652e
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+--- !u!114 &1860365211
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1860365205}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 1860365208}
+  m_Parent: {fileID: 1860365207}
+  m_StateName: 476f2121
+  m_Color: 2
+  m_HideScript: 1
+  m_Position: {x: 40, y: 150}
+  m_Transitions: []
+  m_CachedInstanceID: 9092
+  m_Description: 476f2121
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - 4265686176696f75724d616368696e652e4f6e475549
+    - 4265686176696f75724d616368696e652e4c61796f757443656e7465726564
+    - 4265686176696f75724d616368696e652e4c6162656c
+    m_NodeTypeHash: 0548002e3ba7fbe6f2ca3847
+    m_NodeFieldStartIndex: 00000000050000000900000012000000
+    m_BranchIndex: ffffffff0000000001000000
+    m_UnityObjectValue: []
+    m_IntValue: 010000000100000002000000010000000100000003000000
+    m_FloatValue: []
+    m_StringValue:
+    - 4f6e475549
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4c61796f757443656e7465726564
+    - 4c6162656c
+    - 4265686176696f75724d616368696e652e436f6e637265746554657874757265566172
+    - 476f2121
+    - 4265686176696f75724d616368696e652e436f6e6372657465537472696e67566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465537472696e67566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
+    - 4265686176696f75724d616368696e652e436f6e6372657465496e74566172
+    m_CurveValue: []
+    m_GenericFieldType:
+    - 4265686176696f75724d616368696e652e436f6e6372657465537472696e67566172
+    m_GenericFieldHash: 7de9e602
+    m_GenericFieldSize: 01000000
+    m_FieldIndex: 00000000000000000100000001000000020000000200000003000000030000000400000005000000040000000500000000000000060000000700000008000000090000000a000000
+    m_FieldType: 010000000200000005000000110000001100000001000000020000000500000005000000010000000200000011000000100000000200000011000000110000001100000011000000
+    m_FieldPath:
+    - 696e7374616e63654944
+    - 6e616d65
+    - 656e61626c6564
+    - 64656661756c745769647468
+    - 64656661756c74486569676874
+    - 696e7374616e63654944
+    - 6e616d65
+    - 686f72697a6f6e74616c
+    - 766572746963616c
+    - 696e7374616e63654944
+    - 6e616d65
+    - 74657874757265
+    - 74657874
+    - 746578742e76616c7565
+    - 746f6f6c746970
+    - 6775695374796c65
+    - 666c6f6174566172
+    - 696e74566172
