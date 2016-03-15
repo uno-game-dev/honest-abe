@@ -10,9 +10,6 @@ class ShootAttack : BaseAttack
         animator.SetFloat("PlaySpeed", 1);
         animator.SetTrigger("Light Shoot");
         base.PrepareToLightAttack();
-
-        //ALPHA ONLY
-        AudioManager.instance.PlayAttackSound(1, 0);
     }
 
     protected override void PrepareToHeavyAttack()
@@ -22,8 +19,6 @@ class ShootAttack : BaseAttack
         animator.SetTrigger("Heavy Shoot");
         base.PrepareToHeavyAttack();
 
-        //ALPHA ONLY
-        AudioManager.instance.PlayAttackSound(1, 0);
     }
 
     protected override void PerformLightAttack()

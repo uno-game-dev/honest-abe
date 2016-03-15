@@ -6,9 +6,6 @@
         animator.SetFloat("PlaySpeed", animator.GetAnimationClip("standing_melee_attack_horizontal").length / duration);
         animator.SetTrigger("Light Swing");
         base.PrepareToLightAttack();
-
-        //ALPHA ONLY
-        AudioManager.instance.PlayAttackSound();
     }
 
     protected override void PrepareToHeavyAttack()
@@ -18,8 +15,6 @@
         animator.SetTrigger("Heavy Swing");
         base.PrepareToHeavyAttack();
 
-        //ALPHA ONLY
-        AudioManager.instance.PlayAttackSound(0, 0.5f);
     }
 
     protected override void BackToIdle()
