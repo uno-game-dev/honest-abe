@@ -144,7 +144,7 @@ public class WorldGenerator : MonoBehaviour
 
         RectTransform area = (RectTransform)terrain.transform;
         double width = area.rect.width;
-        double height = area.rect.height * 0.5;
+        double height = area.rect.height;
 
         float x = 0;
         float y = 0;
