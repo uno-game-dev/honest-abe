@@ -1622,12 +1622,13 @@ MonoBehaviour:
   attackArea: {fileID: 0}
   strength: 0
   state: 0
-  prepLightAttackTime: 0.2
+  prepLightAttackTime: 0.05
   prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.2
+  lightAttackTime: 0.1
   heavyAttackTime: 0.2
   finishLightAttackTime: 0.05
   finishHeavyAttackTime: 0.1
+  _hand: 0
 --- !u!114 &11453790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1685,7 +1686,7 @@ MonoBehaviour:
   attackOffset: {x: 1, y: 0}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
-  lightDamage: 2
+  lightDamage: 5
   heavyDamage: 3
 --- !u!114 &11469688
 MonoBehaviour:
@@ -1704,7 +1705,7 @@ MonoBehaviour:
   isGrounded: 1
   jumpVelocity: 0
   state: 0
-  startJumpDuration: 0.15
+  startJumpDuration: 0.05
   landDuration: 0.25
 --- !u!114 &11474242
 MonoBehaviour:
