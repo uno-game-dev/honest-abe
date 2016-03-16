@@ -3,11 +3,12 @@
 class ShootAttack : BaseAttack
 {
     public GameObject bulletSpark = null;
+	private CharacterState characterState;
 
     protected override void PrepareToLightAttack()
     {
         float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
-        animator.SetFloat("PlaySpeed", 1);
+        animator.SetFloat("PlaySpeed", duration);
         animator.SetTrigger("Light Shoot");
         base.PrepareToLightAttack();
 
@@ -18,7 +19,7 @@ class ShootAttack : BaseAttack
     protected override void PrepareToHeavyAttack()
     {
         float duration = prepHeavyAttackTime + heavyAttackTime + finishHeavyAttackTime;
-        animator.SetFloat("PlaySpeed", 1);
+        animator.SetFloat("PlaySpeed", duration);
         animator.SetTrigger("Heavy Shoot");
         base.PrepareToHeavyAttack();
 
@@ -42,12 +43,15 @@ class ShootAttack : BaseAttack
 				stun.GetStunned ();
 			if (bulletSpark)
 				Instantiate (bulletSpark, hit.point, Quaternion.identity);
-			base.PerformLightAttack ();
 		}
+		base.PerformLightAttack ();
     }
 
     protected override void BackToIdle()
     {
-        base.BackToIdle();
-    }
+        //characterState = GetComponent<CharacterState>();
+		//characterState.SetState(CharacterState.State.Idle);
+		base.BackToIdle();
+
+	}
 }
