@@ -23,6 +23,7 @@ public abstract class BaseAttack : MonoBehaviour
 
     private void Awake()
     {
+		animator = GetComponent<Animator> ();
         _characterState = GetComponent<CharacterState>();
         _collision = GetComponent<BaseCollision>();
     }
