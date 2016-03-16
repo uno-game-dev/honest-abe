@@ -8,14 +8,20 @@ public class WorldGenerator : MonoBehaviour
     public GameObject terrain;
     public List<GameObject> enemies;
     public List<GameObject> props;
+    public List<GameObject> decals;
     public List<GameObject> items;
     public List<GameObject> bosses;
-    public float startSpawnPosition = 8f;
+
+    public float startSpawnPosition;
+
     public int spawnYPos = 0;
     public int spawnZPos = 10;
+
     public int propDensity = 3;
+    public int decalDensity = 10;
     public int itemDensity = 1;
     public int difficulty = 1;
+
     public int screensBeforeSecondEnemy = 2;
     public int screensBeforeBoss = 4;
 
@@ -46,22 +52,25 @@ public class WorldGenerator : MonoBehaviour
             _canSpawn = false;
             _occupiedPos = new List<Vector3>();
             SpawnProps();
-            if (_screenCount == screensBeforeBoss)
-                SpawnBoss();
-            else
-            {
-                SpawnItems();
-                if (_screenCount < screensBeforeSecondEnemy)
-                    // Only spawn first enemy
-                    SpawnEnemies(new List<GameObject>() { enemies[0] }); 
-                else
-                    // Spawn all enemies
-                    SpawnEnemies();
-                _canSpawn = true;
-            }
-            _screenCount++;
-            _lastXPos += startSpawnPosition;
-        }
+            // SpawnDecals(); - Disabled until art assets are ready
+            SpawnItems();
+            //Only counting down the boss for alpha
+			if (_screenCount == screensBeforeBoss)
+				SpawnBoss();
+			else
+			{
+				SpawnItems();
+				if (_screenCount < screensBeforeSecondEnemy)
+					// Only spawn first enemy
+					SpawnEnemies(new List<GameObject>() { enemies[0] });
+				else
+					// Spawn all enemies
+					SpawnEnemies();
+				_canSpawn = true;
+			}
+			_screenCount++;
+			_lastXPos += startSpawnPosition;
+		}
     }
 
     private void SpawnTerrain()
@@ -71,11 +80,19 @@ public class WorldGenerator : MonoBehaviour
 
     private void SpawnProps()
     {
-
         for (int i = 0; i < propDensity; i++)
         {
             int r = _rnd.Next(props.Count);
-            Instantiate(props[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+            Instantiate(props[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+        }
+    }
+
+    private void SpawnDecals()
+    {
+        for (int i = 0; i < decalDensity; i++)
+        {
+            int r = _rnd.Next(decals.Count);
+            Instantiate(decals[r], getRandomEmptyPos(0.5f), Quaternion.Euler(0, 0, 0));
         }
     }
 
@@ -84,7 +101,7 @@ public class WorldGenerator : MonoBehaviour
         for (int i = 0; i < itemDensity; i++)
         {
             int r = _rnd.Next(items.Count);
-            Instantiate(items[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+            Instantiate(items[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         }
     }
 
@@ -109,16 +126,21 @@ public class WorldGenerator : MonoBehaviour
         for (int i = 0; i < enemyDensity; i++)
         {
             int r = _rnd.Next(enemies.Count);
-            Instantiate(enemies[r], getRandomPos(), Quaternion.Euler(0, 0, 0));
+            Instantiate(enemies[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         }
-    }
+	}
 
-    private Vector3 getRandomPos()
+	private void SpawnBoss()
+	{
+		Instantiate(bosses[_bossIndex], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+	}
+
+	private Vector3 getRandomEmptyPos(float z)
     {
 
         RectTransform area = (RectTransform)terrain.transform;
         double width = area.rect.width;
-        double height = area.rect.height * 0.5;
+        double height = area.rect.height;
 
         float x = 0;
         float y = 0;
@@ -141,13 +163,8 @@ public class WorldGenerator : MonoBehaviour
             }
         }
 
-        Vector3 vector = new Vector3(x, y, 1);
+        Vector3 vector = new Vector3(x, y, z);
         _occupiedPos.Add(vector);
         return vector;
-    }
-
-    private void SpawnBoss()
-    {
-        Instantiate(bosses[_bossIndex], getRandomPos(), Quaternion.Euler(0, 0, 0));
     }
 }

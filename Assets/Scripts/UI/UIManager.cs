@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public Text perkText;
 
+	// Boss UI
+	[HideInInspector]
+	public Canvas bossHealthUI;
+
 	private GameManager _gameManager;
 	private LevelManager _levelManager;
 	private GameObject _startGameText;
@@ -49,15 +53,15 @@ public class UIManager : MonoBehaviour
 		SetListenersForLoseUI();
 		perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
+		bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
+		bossHealthUI.enabled = false;
     }
 
     void Update()
     {
-
-		if (_gameManager.lose)
+		if (GlobalSettings.loseCondition)
 			_loseUI.SetActive(true);
-
-        if (!updateActive && Input.GetKeyDown(KeyCode.Return))
+		if (!updateActive && Input.GetKeyDown(KeyCode.Return))
         {
             updateActive = true;
             _startGameText.SetActive(false);

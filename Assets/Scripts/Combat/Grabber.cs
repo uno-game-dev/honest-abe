@@ -140,6 +140,8 @@ public class Grabber : MonoBehaviour
         if (state != State.Hold)
             return;
 
+        EventHandler.SendEvent(EventHandler.Events.ENEMY_THROW);
+
         _animator.SetTrigger("Grab Throw");
 
         _grabbed.GetComponent<Grabbable>().Throw();
