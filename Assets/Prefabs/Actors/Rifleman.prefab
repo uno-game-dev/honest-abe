@@ -545,7 +545,6 @@ GameObject:
   - 114: {fileID: 11411262}
   - 114: {fileID: 11441072}
   - 114: {fileID: 11456274}
-  - 114: {fileID: 11472960}
   - 114: {fileID: 11492716}
   - 114: {fileID: 11438050}
   - 114: {fileID: 11471440}
@@ -564,6 +563,7 @@ GameObject:
   - 114: {fileID: 11413808}
   - 114: {fileID: 11448032}
   - 114: {fileID: 11422952}
+  - 114: {fileID: 11413450}
   m_Layer: 11
   m_Name: Rifleman
   m_TagString: Enemy
@@ -1647,6 +1647,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   stunDuration: 0.92
+--- !u!114 &11413450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58544273158a1fd4b9f12cad75855e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  animator: {fileID: 0}
+  attack: {fileID: 0}
+  attackArea: {fileID: 0}
+  strength: 0
+  state: 0
+  prepLightAttackTime: 0.3
+  prepHeavyAttackTime: 0.6
+  lightAttackTime: 0.2
+  heavyAttackTime: 0.2
+  finishLightAttackTime: 0.1
+  finishHeavyAttackTime: 0.1
 --- !u!114 &11413550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1761,17 +1784,17 @@ MonoBehaviour:
     m_NodeTypes:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
-    - Aim
+    - Reload
     m_NodeTypeHash: 89ef821089ef82104a2bcb23
     m_NodeFieldStartIndex: 00000000030000000600000009000000
     m_BranchIndex: ffffffffffffffff01000000
     m_UnityObjectValue: []
-    m_IntValue: 01000000010000000200000001000000030000006fb2bb2f
+    m_IntValue: 01000000010000000200000001000000050000006fb2bb2f
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
-    - Aim
+    - Reload
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
@@ -2041,34 +2064,34 @@ MonoBehaviour:
   m_NodeSerialization:
     m_NodeTypes:
     - BehaviourMachine.OnEnable
-    - BehaviourMachine.Update
     - ShootRifle
-    m_NodeTypeHash: 89ef821089ef82104a2bcb23
+    - BehaviourMachine.Update
+    m_NodeTypeHash: 89ef82104a2bcb2389ef8210
     m_NodeFieldStartIndex: 00000000030000000600000009000000
-    m_BranchIndex: ffffffffffffffff01000000
+    m_BranchIndex: ffffffff00000000ffffffff
     m_UnityObjectValue: []
-    m_IntValue: 0100000001000000020000000100000003000000305ed23b
+    m_IntValue: 010000000100000003000000305ed23b0200000001000000
     m_FloatValue: []
     m_StringValue:
     - OnEnable
-    - Update
     - ShootRifle
+    - Update
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
     m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000
-    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000
+    m_FieldType: 01000000020000000500000001000000020000001e000000010000000200000005000000
     m_FieldPath:
     - instanceID
     - name
     - enabled
     - instanceID
     - name
-    - enabled
+    - onSuccess
     - instanceID
     - name
-    - onSuccess
+    - enabled
 --- !u!114 &11448850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2237,10 +2260,10 @@ MonoBehaviour:
   attackArea: {fileID: 138752}
   strength: 0
   state: 0
-  prepLightAttackTime: 0.3
+  prepLightAttackTime: 0.5
   prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.2
-  heavyAttackTime: 0.2
+  lightAttackTime: 0.8
+  heavyAttackTime: 1
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
   bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
@@ -2261,20 +2284,6 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   movementSmoothing: 0.115
   state: 0
---- !u!114 &11472960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c20c5846608bd9459b936b86f288ae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementProximityDistance: 20
-  attackProximityDistanceX: 10
-  attackProximityDistanceY: 1
 --- !u!114 &11483412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2692,8 +2701,48 @@ Prefab:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_GenericFieldType.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_GenericFieldHash.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_GenericFieldSize.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Blackboard
@@ -2713,35 +2762,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[6]
-      value: 1997708586
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[7]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_NodeSerialization.m_StringValue.Array.data[4]
-      value: AttackPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[10]
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[11]
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[12]
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_StringValue.Array.data[4]
+      value: PlayAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[10]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[11]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[12]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[10]
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[5]
-      value: 124258149
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[8]
@@ -2757,7 +2806,7 @@ Prefab:
       objectReference: {fileID: 11403564}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[8]
-      value: 977896394
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[9]
@@ -2765,27 +2814,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[5]
-      value: AttackPlayer
+      value: BehaviourMachine.ConcreteGameObjectVar
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[13]
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[14]
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[15]
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[13]
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[11]
-      value: 30
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Name
@@ -2797,11 +2846,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[6]
-      value: ChasePlayer
+      value: HeavySwing
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[7]
-      value: ChasePlayer
+      value: HeavySwing
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ConcreteFsmEvents.Array.data[4].m_Name
@@ -2834,6 +2883,190 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[4].value
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[4]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[12]
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[13]
+      value: animationName.value
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[3]
+      value: BehaviourMachine.PlayAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[3]
+      value: 684285700
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_GenericFieldType.Array.data[0]
+      value: BehaviourMachine.ConcreteStringVar
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_GenericFieldHash.Array.data[0]
+      value: 48687485
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_GenericFieldSize.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[9]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[9]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[14]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[9]
+      value: instanceID
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[10]
+      value: name
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[11]
+      value: gameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[12]
+      value: animationName
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[14]
+      value: playMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[1]
+      value: ShootRifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[2]
+      value: Reload
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[1]
+      value: 600517450
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[2]
+      value: 277016457
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[2]
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_IntValue.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_IntValue.Array.data[3]
+      value: 1003642416
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_IntValue.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_StringValue.Array.data[1]
+      value: ShootRifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_StringValue.Array.data[2]
+      value: Reload
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[5]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[5]
+      value: onSuccess
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[8]
+      value: enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[4]
+      value: BehaviourMachine.PlayAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[4]
+      value: 684285700
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[16]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[17]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[15]
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[17]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[15]
+      value: animationName
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[16]
+      value: animationName.value
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[17]
+      value: playMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[5]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[16]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightAttackTime
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heavyAttackTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: prepLightAttackTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
