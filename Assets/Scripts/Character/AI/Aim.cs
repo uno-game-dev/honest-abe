@@ -6,7 +6,7 @@ public class Aim : ConditionNode {
 
 	// Use this for initialization
 	override public void Start () {
-		spin (500f);
+
 	}
 
 	// Update is called once per frame
@@ -14,9 +14,5 @@ public class Aim : ConditionNode {
 		if (onSuccess.id != 0)
 			owner.root.SendEvent(onSuccess.id);
 		return Status.Success;
-	}
-
-	public IEnumerator spin(float n){
-		yield return new WaitForSeconds (n);
 	}
 }
