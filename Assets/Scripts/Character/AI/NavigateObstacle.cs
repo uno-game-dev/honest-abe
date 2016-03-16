@@ -18,6 +18,107 @@ public class NavigateObstacle : ConditionNode {
 	private Vector2 deltaPosition;
 	private Movement movement;
 
+	override public void Start(){
+		enemyFollow = self.GetComponent<EnemyFollow> ();
+		enemyFollow.targetType = EnemyFollow.TargetType.Null;
+		player = GameObject.Find("Player");
+		selfPosition = self.transform.position;
+		playerPosition = player.transform.position;
+		direction = playerPosition - selfPosition;
+		xDiff = Mathf.Abs (playerPosition.x - selfPosition.x);
+		yDiff = Mathf.Abs (playerPosition.y - selfPosition.y);
+		distanceToPlayer = Mathf.Sqrt (Mathf.Pow(xDiff,2) + Mathf.Pow(yDiff,2));
+		layerMask = LayerMask.GetMask("Environment");
+		movement = self.GetComponent<Movement> ();
+
+		// Fire 2 raycasts again and see which ones hit the obstacle
+		if (xDiff > yDiff) {
+			// Fire a ray above
+			RaycastHit2D topHit = Physics2D.Raycast (selfPosition + new Vector2 (0, 1), direction, distanceToPlayer, layerMask);
+			Debug.DrawRay (selfPosition + new Vector2 (0, 1), direction);
+			// Fire a ray below
+			RaycastHit2D bottomHit = Physics2D.Raycast (selfPosition + new Vector2 (0, -1), direction, distanceToPlayer, layerMask);
+			Debug.DrawRay (selfPosition + new Vector2 (0, -1), direction);
+
+			// If only the bottom one hits, veer up
+			if (bottomHit && bottomHit.collider.tag=="Obstacle") {
+				if (!(topHit && topHit.collider.tag == "Obstacle")) {
+					veerUp ();
+					return;
+				} else navigate ('y'); // If they both hit, navigate around the obstacle
+			// If only the top one hits, veer down
+			} else {
+				if (topHit && topHit.collider.tag=="Obstacle") {
+					veerDown ();
+					return;
+				} else navigate('y'); // Should be clear but let's do this anyway
+			}
+		} else {
+			// Fire a ray to the right
+			RaycastHit2D rightHit = Physics2D.Raycast (selfPosition + new Vector2 (1, 0), direction, distanceToPlayer, layerMask);
+			Debug.DrawRay (selfPosition + new Vector2 (1, 0), direction);
+			// Fire a ray to the left
+			RaycastHit2D leftHit = Physics2D.Raycast (selfPosition + new Vector2 (-1, 0), direction, distanceToPlayer, layerMask);
+			Debug.DrawRay (selfPosition + new Vector2 (-1, 0), direction);
+
+			// If only the left one hits, veer right
+			if (leftHit && leftHit.collider.tag=="Obstacle") {
+				if (!(rightHit && rightHit.collider.tag=="Obstacle")) {
+					veerRight ();
+					return;
+				} else navigate('x'); // If they both hit, navigate around the obstacle
+			// If only the right one hits, veer left
+			} else {
+				if (rightHit && rightHit.collider.tag=="Obstacle") {
+					veerLeft ();
+					return;
+				} else navigate('x');
+			}
+		}
+	}
+
+	public override Status Update () {	
+		if (onSuccess.id != 0)
+			owner.root.SendEvent (onSuccess.id);
+		return Status.Success;
+	}
+
+	/*
+	 * Navigate around an obstacle using the specified axis
+	 */ 
+	public void navigate(char axis){
+		int i = 1;
+		if (axis == 'y') {
+			while (i < 20) {
+				if (checkUp (i)) {
+					deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (0, i + 1), 0.07f);
+					self.transform.position = selfPosition + deltaPosition;
+					return;
+				}
+				if (checkDown (i)) {
+					deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (0, -i - 1), 0.07f);
+					self.transform.position = selfPosition + deltaPosition;
+					return;
+				}
+				i++;
+			}
+		} else {
+			while (i < 20) {
+				if (checkRight (i)) {
+					deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (i + 1, 0), 0.07f);
+					self.transform.position = selfPosition + deltaPosition;
+					return;
+				}
+				if (checkLeft (i)) {
+					deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (-i - 1, 0), 0.07f);
+					self.transform.position = selfPosition + deltaPosition;
+					return;
+				}
+				i++;
+			}
+		}
+	}
+
 	public void veerRight(){
 		if (playerPosition.y > selfPosition.y)
 			deltaPosition = new Vector2 (0.07f, 0.07f);
@@ -52,153 +153,6 @@ public class NavigateObstacle : ConditionNode {
 		else
 			deltaPosition = new Vector2 (-0.07f, -0.07f);
 		self.transform.position = (Vector2) selfPosition + deltaPosition;
-	}
-
-	override public void Start(){
-
-		// Definitely need these
-		enemyFollow = self.GetComponent<EnemyFollow> ();
-		enemyFollow.targetType = EnemyFollow.TargetType.Null;
-		player = GameObject.Find("Player");
-		selfPosition = self.transform.position;
-		playerPosition = player.transform.position;
-		direction = playerPosition - selfPosition;
-		xDiff = Mathf.Abs (playerPosition.x - selfPosition.x);
-		yDiff = Mathf.Abs (playerPosition.y - selfPosition.y);
-		distanceToPlayer = Mathf.Sqrt (Mathf.Pow(xDiff,2) + Mathf.Pow(yDiff,2));
-		layerMask = LayerMask.GetMask("Environment");
-
-		// Not sure if I need these
-		//enemyFollow.stopDistanceX = 0;
-		movement = self.GetComponent<Movement> ();
-		//direction = Vector2.Scale(direction, new Vector2(0.07f, 0.07f)); // scale direction vector, for DrawRay?
-		//GameObject obj = new GameObject();
-
-		// Fire 2 outer raycasts again and see which ones hit the obstacle
-		if (xDiff > yDiff) {
-			// Fire a ray above
-			RaycastHit2D topHit = Physics2D.Raycast (selfPosition + new Vector2 (0, 1), direction, distanceToPlayer, layerMask);
-			Debug.DrawRay (selfPosition + new Vector2 (0, 1), direction);
-			// Fire a ray below
-			RaycastHit2D bottomHit = Physics2D.Raycast (selfPosition + new Vector2 (0, -1), direction, distanceToPlayer, layerMask);
-			Debug.DrawRay (selfPosition + new Vector2 (0, -1), direction);
-
-			// If only the bottom one hits, veer up
-			if (bottomHit && bottomHit.collider.tag=="Obstacle") {
-				if (!(topHit && topHit.collider.tag=="Obstacle")) {
-					veerUp ();
-					return;
-				} else {
-					// If they both hit, navigate around the obstacle:
-					int i = 1;
-					while (i < 20) {
-						if (checkUp (i)) {
-							deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (0, i + 1), 0.07f);
-							self.transform.position = selfPosition + deltaPosition;
-							return;
-						}
-						if (checkDown (i)) {
-							//newTarget = direction + new Vector2 (0, -i-1);
-							deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (0, -i - 1), 0.07f);
-							self.transform.position = selfPosition + deltaPosition;
-							return;
-						}
-						i++;
-					}
-				}
-				// If only the top one hits, veer down
-			} else {
-				if (topHit && topHit.collider.tag=="Obstacle") {
-					veerDown ();
-					return;
-				} else {
-					// Should be clear, but you might be colliding with an obstacle. Copying nav code:
-					int i = 1;
-					while (i < 20) {
-						if (checkUp (i)) {
-							//newTarget = direction + new Vector2 (0, i+1);
-							deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (0, i + 1), 0.07f);
-							self.transform.position = selfPosition + deltaPosition;
-							return;
-						}
-						if (checkDown (i)) {
-							//newTarget = direction + new Vector2 (0, -i-1);
-							deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (0, -i - 1), 0.07f);
-							self.transform.position = selfPosition + deltaPosition;
-							return;
-						}
-						i++;
-					}
-				}
-			}
-
-		} else if (yDiff > xDiff) {
-			// Fire a ray to the right
-			RaycastHit2D rightHit = Physics2D.Raycast (selfPosition + new Vector2 (1, 0), direction, distanceToPlayer, layerMask);
-			Debug.DrawRay (selfPosition + new Vector2 (1, 0), direction);
-			// Fire a ray to the left
-			RaycastHit2D leftHit = Physics2D.Raycast (selfPosition + new Vector2 (-1, 0), direction, distanceToPlayer, layerMask);
-			Debug.DrawRay (selfPosition + new Vector2 (-1, 0), direction);
-
-			// If only the left one hits, veer right
-			if (leftHit && leftHit.collider.tag=="Obstacle") {
-				if (!(rightHit && rightHit.collider.tag=="Obstacle")) {
-					veerRight ();
-					return;
-				} else {
-					// If they both hit, navigate around the obstacle:
-					int i = 1;
-					while (i < 20) {
-						if (checkRight (i)) {
-							//newTarget = direction + new Vector2 (i+1, 0);
-							deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (i + 1, 0), 0.07f);
-							self.transform.position = selfPosition + deltaPosition;
-							return;
-						}
-						if (checkLeft (i)) {
-							//newTarget = direction + new Vector2 (-i-1, 0);
-							deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (-i - 1, 0), 0.07f);
-							self.transform.position = selfPosition + deltaPosition;
-							return;
-						}
-						i++;
-					}
-				}
-				// If only the right one hits, veer left
-			} else {
-				if (rightHit && rightHit.collider.tag=="Obstacle") {
-					veerLeft ();
-					return;
-				} else {
-					// Should be clear, but you might be colliding with an obstacle. Copying nav code:
-					int i = 1;
-					while (i < 20) {
-						if (checkRight (i)) {
-							//newTarget = direction + new Vector2 (i+1, 0);
-							deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (i + 1, 0), 0.07f);
-							self.transform.position = selfPosition + deltaPosition;
-							return;
-						}
-						if (checkLeft (i)) {
-							//newTarget = direction + new Vector2 (-i-1, 0);
-							deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (-i - 1, 0), 0.07f);
-							self.transform.position = selfPosition + deltaPosition;
-							return;
-						}
-						i++;
-					}
-				}
-			}
-
-		} else {
-			Debug.Log ("Diagonal");
-		}
-	}
-
-	public override Status Update () {	
-		if (onSuccess.id != 0)
-			owner.root.SendEvent (onSuccess.id);
-		return Status.Success;
 	}
 
 	/* Fires the uppermost ray one step (of size i) up from the original direction. 
