@@ -4,9 +4,14 @@ using BehaviourMachine;
 
 public class ChasePlayer : ActionNode {
 
-	public override Status Update () {
+	private EnemyFollow enemyFollow;
 
-		self.GetComponent<EnemyFollow> ().targetType = EnemyFollow.TargetType.Player;
+	public override void Start(){
+		enemyFollow = self.GetComponent<EnemyFollow> ();
+	}
+
+	public override Status Update () {
+		enemyFollow.targetType = EnemyFollow.TargetType.Player;
 		return Status.Running;
 	}
 }

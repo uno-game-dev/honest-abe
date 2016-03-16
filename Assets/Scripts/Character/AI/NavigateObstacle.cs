@@ -16,7 +16,7 @@ public class NavigateObstacle : ConditionNode {
 	private LayerMask layerMask;
 	private RaycastHit2D hit;
 	private Vector2 deltaPosition;
-	private Movement movement;
+	private BaseCollision baseCollision;
 
 	override public void Start(){
 		enemyFollow = self.GetComponent<EnemyFollow> ();
@@ -29,7 +29,7 @@ public class NavigateObstacle : ConditionNode {
 		yDiff = Mathf.Abs (playerPosition.y - selfPosition.y);
 		distanceToPlayer = Mathf.Sqrt (Mathf.Pow(xDiff,2) + Mathf.Pow(yDiff,2));
 		layerMask = LayerMask.GetMask("Environment");
-		movement = self.GetComponent<Movement> ();
+		baseCollision = self.GetComponent<BaseCollision> ();
 
 		// Fire 2 raycasts again and see which ones hit the obstacle
 		if (xDiff > yDiff) {
@@ -91,12 +91,13 @@ public class NavigateObstacle : ConditionNode {
 		if (axis == 'y') {
 			while (i < 20) {
 				if (checkUp (i)) {
-					deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (0, i + 1), 0.07f);
+					deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (0, i + 1, 0), 0.07f);
 					self.transform.position = selfPosition + deltaPosition;
+					baseCollision.Move (deltaPosition);
 					return;
 				}
 				if (checkDown (i)) {
-					deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (0, -i - 1), 0.07f);
+					deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (0, -i - 1, 0), 0.07f);
 					self.transform.position = selfPosition + deltaPosition;
 					return;
 				}
@@ -105,12 +106,12 @@ public class NavigateObstacle : ConditionNode {
 		} else {
 			while (i < 20) {
 				if (checkRight (i)) {
-					deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (i + 1, 0), 0.07f);
+					deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (i + 1, 0, 0), 0.07f);
 					self.transform.position = selfPosition + deltaPosition;
 					return;
 				}
 				if (checkLeft (i)) {
-					deltaPosition = Vector2.ClampMagnitude(direction + new Vector2 (-i - 1, 0), 0.07f);
+					deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (-i - 1, 0, 0), 0.07f);
 					self.transform.position = selfPosition + deltaPosition;
 					return;
 				}
@@ -120,28 +121,34 @@ public class NavigateObstacle : ConditionNode {
 	}
 
 	public void veerRight(){
-		if (playerPosition.y > selfPosition.y)
-			deltaPosition = new Vector2 (0.07f, 0.07f);
-		else
-			deltaPosition = new Vector2 (0.07f, -0.07f);
-		self.transform.position = (Vector2) selfPosition + deltaPosition;
+		if (playerPosition.y > selfPosition.y) {
+			deltaPosition = new Vector3 (0.07f, 0.07f, 0);
+		} else {
+			deltaPosition = new Vector3 (0.07f, -0.07f, 0);
+		}
+		self.GetComponent<BaseCollision> ().Move (deltaPosition);
+		//self.transform.position = (Vector2) selfPosition + deltaPosition;
 	}
 
 	public void veerLeft(){
 		if (playerPosition.y > selfPosition.y)
-			deltaPosition = new Vector2 (-0.07f, 0.07f);
+			deltaPosition = new Vector3 (-0.07f, 0.07f, 0);
 		else
-			deltaPosition = new Vector2 (-0.07f, -0.07f);
-		self.transform.position = (Vector2) selfPosition + deltaPosition;
+			deltaPosition = new Vector3 (-0.07f, -0.07f, 0);
+		//self.transform.position = (Vector2) selfPosition + deltaPosition;
+		self.GetComponent<BaseCollision> ().Move (deltaPosition);
+
 	}
 
 	public void veerUp(){
 		if (selfPosition.y + 0.07f < 0) { // because they have to stay on the ground
-			if (playerPosition.x > selfPosition.x)
-				deltaPosition = new Vector2 (0.07f, 0.07f);
-			else
-				deltaPosition = new Vector2 (-0.07f, 0.07f);
-			self.transform.position = (Vector2) selfPosition + deltaPosition;
+			if (playerPosition.x > selfPosition.x) {
+				deltaPosition = new Vector3 (0.07f, 0.07f, 0);
+			} else {
+				deltaPosition = new Vector3 (-0.07f, 0.07f, 0);
+			}
+			self.GetComponent<BaseCollision> ().Move (deltaPosition);
+			//self.transform.position = (Vector2) selfPosition + deltaPosition;
 		} else {
 			veerDown ();
 		}
@@ -149,10 +156,11 @@ public class NavigateObstacle : ConditionNode {
 
 	public void veerDown(){
 		if (playerPosition.x > selfPosition.x)
-			deltaPosition = new Vector2 (0.07f, -0.07f);
+			deltaPosition = new Vector3 (0.07f, -0.07f, 0);
 		else
-			deltaPosition = new Vector2 (-0.07f, -0.07f);
-		self.transform.position = (Vector2) selfPosition + deltaPosition;
+			deltaPosition = new Vector3 (-0.07f, -0.07f, 0);
+		//self.transform.position = (Vector2) selfPosition + deltaPosition;
+		self.GetComponent<BaseCollision> ().Move (deltaPosition);
 	}
 
 	/* Fires the uppermost ray one step (of size i) up from the original direction. 

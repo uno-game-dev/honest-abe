@@ -676,7 +676,6 @@ GameObject:
   - 114: {fileID: 11407154}
   - 114: {fileID: 11479306}
   - 114: {fileID: 11471474}
-  - 114: {fileID: 11439176}
   - 114: {fileID: 11407396}
   - 114: {fileID: 11410926}
   - 114: {fileID: 11414076}
@@ -1753,30 +1752,6 @@ MonoBehaviour:
   offsetFromOrigin: 2
   maxZ: 45
   yToZFactor: 2
---- !u!114 &11439176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4898cbcf71ead9b479ea5d7b22b74e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 11434936, guid: 481f15881862ba2409da4c965f72ea6a, type: 2}
-  animator: {fileID: 0}
-  attack: {fileID: 0}
-  attackArea: {fileID: 154982}
-  strength: 0
-  state: 0
-  prepLightAttackTime: 0.3
-  prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.2
-  heavyAttackTime: 0.2
-  finishLightAttackTime: 0.1
-  finishHeavyAttackTime: 0.1
-  bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
 --- !u!114 &11447112
 MonoBehaviour:
   m_ObjectHideFlags: 1
