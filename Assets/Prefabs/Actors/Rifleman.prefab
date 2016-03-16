@@ -563,7 +563,6 @@ GameObject:
   - 114: {fileID: 11413808}
   - 114: {fileID: 11448032}
   - 114: {fileID: 11422952}
-  - 114: {fileID: 11413450}
   m_Layer: 11
   m_Name: Rifleman
   m_TagString: Enemy
@@ -1647,29 +1646,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   stunDuration: 0.92
---- !u!114 &11413450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58544273158a1fd4b9f12cad75855e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  animator: {fileID: 0}
-  attack: {fileID: 0}
-  attackArea: {fileID: 0}
-  strength: 0
-  state: 0
-  prepLightAttackTime: 0.3
-  prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.2
-  heavyAttackTime: 0.2
-  finishLightAttackTime: 0.1
-  finishHeavyAttackTime: 0.1
 --- !u!114 &11413550
 MonoBehaviour:
   m_ObjectHideFlags: 1
