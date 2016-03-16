@@ -570,6 +570,8 @@ MonoBehaviour:
   props:
   - {fileID: 127602, guid: ddd4c3ec236339342a41b55ddc0cd76b, type: 2}
   - {fileID: 124166, guid: ae79f3def7a20c44eb9ac81db6e51333, type: 2}
+  decals:
+  - {fileID: 126218, guid: 1bb39e4b7c7d6c142a7d9f82f77c67f3, type: 2}
   items:
   - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
   bosses:
@@ -578,10 +580,13 @@ MonoBehaviour:
   spawnYPos: 0
   spawnZPos: 10
   propDensity: 3
+  decalDensity: 10
   itemDensity: 1
   difficulty: 1
   screensBeforeSecondEnemy: 2
   screensBeforeBoss: 4
+  _screenCount: 0
+  _bossIndex: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
