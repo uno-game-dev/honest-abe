@@ -40,6 +40,58 @@ ModelImporter:
     100064: LeftLeg
     100066: RightArm
     100068: RightLeg
+    100070: SoldierRigChest
+    100072: SoldierRigHead
+    100074: SoldierRigLArm1
+    100076: SoldierRigLArm2
+    100078: SoldierRigLArmDigit11
+    100080: SoldierRigLArmDigit21
+    100082: SoldierRigLArmHand
+    100084: SoldierRigLArmShoulder
+    100086: SoldierRigLLeg1
+    100088: SoldierRigLLeg2
+    100090: SoldierRigLLegAnkle
+    100092: SoldierRigLLegDigit11
+    100094: SoldierRigNeck
+    100096: SoldierRigPelvis
+    100098: SoldierRigRArm1
+    100100: SoldierRigRArm2
+    100102: SoldierRigRArmDigit11
+    100104: SoldierRigRArmDigit21
+    100106: SoldierRigRArmHand
+    100108: SoldierRigRArmShoulder
+    100110: SoldierRigRLeg1
+    100112: SoldierRigRLeg2
+    100114: SoldierRigRLegAnkle
+    100116: SoldierRigRLegDigit11
+    100118: SoldierRigSpine1
+    100120: SoldierRigSpine2
+    100122: BushwhackerRigChest
+    100124: BushwhackerRigHead
+    100126: BushwhackerRigHips
+    100128: BushwhackerRigLArm1
+    100130: BushwhackerRigLArm2
+    100132: BushwhackerRigLArmDigit11
+    100134: BushwhackerRigLArmDigit21
+    100136: BushwhackerRigLArmHand
+    100138: BushwhackerRigLArmShoulder
+    100140: BushwhackerRigLLeg1
+    100142: BushwhackerRigLLeg2
+    100144: BushwhackerRigLLegAnkle
+    100146: BushwhackerRigLLegDigit11
+    100148: BushwhackerRigNeck
+    100150: BushwhackerRigRArm1
+    100152: BushwhackerRigRArm2
+    100154: BushwhackerRigRArmDigit11
+    100156: BushwhackerRigRArmDigit21
+    100158: BushwhackerRigRArmHand
+    100160: BushwhackerRigRArmShoulder
+    100162: BushwhackerRigRLeg1
+    100164: BushwhackerRigRLeg2
+    100166: BushwhackerRigRLegAnkle
+    100168: BushwhackerRigRLegDigit11
+    100170: BushwhackerRigSpine1
+    100172: BushwhackerRigSpine2
     400000: Body
     400002: //RootNode
     400004: Bushwhacker
@@ -75,6 +127,58 @@ ModelImporter:
     400064: LeftLeg
     400066: RightArm
     400068: RightLeg
+    400070: SoldierRigChest
+    400072: SoldierRigHead
+    400074: SoldierRigLArm1
+    400076: SoldierRigLArm2
+    400078: SoldierRigLArmDigit11
+    400080: SoldierRigLArmDigit21
+    400082: SoldierRigLArmHand
+    400084: SoldierRigLArmShoulder
+    400086: SoldierRigLLeg1
+    400088: SoldierRigLLeg2
+    400090: SoldierRigLLegAnkle
+    400092: SoldierRigLLegDigit11
+    400094: SoldierRigNeck
+    400096: SoldierRigPelvis
+    400098: SoldierRigRArm1
+    400100: SoldierRigRArm2
+    400102: SoldierRigRArmDigit11
+    400104: SoldierRigRArmDigit21
+    400106: SoldierRigRArmHand
+    400108: SoldierRigRArmShoulder
+    400110: SoldierRigRLeg1
+    400112: SoldierRigRLeg2
+    400114: SoldierRigRLegAnkle
+    400116: SoldierRigRLegDigit11
+    400118: SoldierRigSpine1
+    400120: SoldierRigSpine2
+    400122: BushwhackerRigChest
+    400124: BushwhackerRigHead
+    400126: BushwhackerRigHips
+    400128: BushwhackerRigLArm1
+    400130: BushwhackerRigLArm2
+    400132: BushwhackerRigLArmDigit11
+    400134: BushwhackerRigLArmDigit21
+    400136: BushwhackerRigLArmHand
+    400138: BushwhackerRigLArmShoulder
+    400140: BushwhackerRigLLeg1
+    400142: BushwhackerRigLLeg2
+    400144: BushwhackerRigLLegAnkle
+    400146: BushwhackerRigLLegDigit11
+    400148: BushwhackerRigNeck
+    400150: BushwhackerRigRArm1
+    400152: BushwhackerRigRArm2
+    400154: BushwhackerRigRArmDigit11
+    400156: BushwhackerRigRArmDigit21
+    400158: BushwhackerRigRArmHand
+    400160: BushwhackerRigRArmShoulder
+    400162: BushwhackerRigRLeg1
+    400164: BushwhackerRigRLeg2
+    400166: BushwhackerRigRLegAnkle
+    400168: BushwhackerRigRLegDigit11
+    400170: BushwhackerRigSpine1
+    400172: BushwhackerRigSpine2
     4300000: Body
     4300002: Head
     4300004: LeftArm
@@ -137,7 +241,7 @@ ModelImporter:
   copyAvatar: 0
   humanDescription:
     human:
-    - boneName: GenericHumanRigPelvis
+    - boneName: BushwhackerRigHips
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -145,7 +249,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLLeg1
+    - boneName: BushwhackerRigLLeg1
       humanName: LeftUpperLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -153,7 +257,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRLeg1
+    - boneName: BushwhackerRigRLeg1
       humanName: RightUpperLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -161,7 +265,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLLeg2
+    - boneName: BushwhackerRigLLeg2
       humanName: LeftLowerLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -169,7 +273,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRLeg2
+    - boneName: BushwhackerRigRLeg2
       humanName: RightLowerLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -177,7 +281,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLLegAnkle
+    - boneName: BushwhackerRigLLegAnkle
       humanName: LeftFoot
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -185,7 +289,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRLegAnkle
+    - boneName: BushwhackerRigRLegAnkle
       humanName: RightFoot
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -193,7 +297,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigSpine2
+    - boneName: BushwhackerRigSpine2
       humanName: Spine
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -201,7 +305,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigNeck
+    - boneName: BushwhackerRigNeck
       humanName: Neck
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -209,7 +313,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigHead
+    - boneName: BushwhackerRigHead
       humanName: Head
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -217,7 +321,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLArm1
+    - boneName: BushwhackerRigLArm1
       humanName: LeftUpperArm
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -225,7 +329,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRArm1
+    - boneName: BushwhackerRigRArm1
       humanName: RightUpperArm
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -233,7 +337,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLArm2
+    - boneName: BushwhackerRigLArm2
       humanName: LeftLowerArm
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -241,7 +345,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRArm2
+    - boneName: BushwhackerRigRArm2
       humanName: RightLowerArm
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -249,7 +353,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLArmHand
+    - boneName: BushwhackerRigLArmHand
       humanName: LeftHand
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -257,7 +361,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRArmHand
+    - boneName: BushwhackerRigRArmHand
       humanName: RightHand
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -265,7 +369,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLLegDigit11
+    - boneName: BushwhackerRigLLegDigit11
       humanName: LeftToes
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -273,7 +377,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRLegDigit11
+    - boneName: BushwhackerRigRLegDigit11
       humanName: RightToes
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -288,174 +392,174 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Bushwhacker
-      position: {x: 0.00000012111664, y: 0, z: 0}
+      position: {x: 0.0000006782532, y: 0, z: 0}
       rotation: {x: 0.000000021855694, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Body
-      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      position: {x: -0.05567654, y: 0.007740564, z: -0.034800734}
       rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
     - name: BushwhackerHat
-      position: {x: -0.00000012111664, y: 0.8361904, z: 0}
+      position: {x: -0.0000006782532, y: 0.8361904, z: 0}
       rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Head
-      position: {x: -0.00000012111664, y: 0.55650944, z: 0.000000048446655}
+      position: {x: -0.0000006782532, y: 0.55650944, z: 0.00000009689331}
       rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
       scale: {x: 1.17756, y: 1, z: 1}
       transformModified: 1
     - name: LeftArm
-      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      position: {x: -0.05567654, y: 0.007740564, z: -0.034800734}
       rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
     - name: LeftLeg
-      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      position: {x: -0.05567654, y: 0.007740564, z: -0.034800734}
       rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
     - name: RightArm
-      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      position: {x: -0.05567654, y: 0.007740564, z: -0.034800734}
       rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
     - name: RightLeg
-      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      position: {x: -0.05567654, y: 0.007740564, z: -0.034800734}
       rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
-    - name: GenericHumanRigPelvis
+    - name: BushwhackerRigHips
       position: {x: 2.598881e-14, y: 0.28419182, z: -0.012792868}
       rotation: {x: 0.50000006, y: -0.5, z: -0.4999999, w: 0.5}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigLLeg1
+    - name: BushwhackerRigLLeg1
       position: {x: 0.0003496395, y: -0.007242669, z: 0.03398059}
-      rotation: {x: 0.031879626, y: 0.99749553, z: 0.002574826, w: 0.063085094}
+      rotation: {x: 0.03187961, y: 0.99749553, z: 0.0025748268, w: 0.063085094}
       scale: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
       transformModified: 1
-    - name: GenericHumanRigLLeg2
-      position: {x: -0.122438975, y: 0.00000031490325, z: -0.0000004965782}
-      rotation: {x: -0.026355997, y: 0.038163695, z: 0.0025449248, w: 0.9989206}
-      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: BushwhackerRigLLeg2
+      position: {x: -0.122438975, y: 0.00000031187534, z: -0.0000004965782}
+      rotation: {x: -0.026339872, y: 0.03805766, z: 0.0026812651, w: 0.9989248}
+      scale: {x: 1.0000002, y: 1.0000001, z: 0.9999999}
       transformModified: 1
-    - name: GenericHumanRigLLegAnkle
-      position: {x: -0.099368446, y: 0.000000003027916, z: 0}
-      rotation: {x: 0.022748154, y: 0.031839985, z: -0.27848727, w: 0.9596424}
-      scale: {x: 1.0000004, y: 0.99999994, z: 1.0000001}
+    - name: BushwhackerRigLLegAnkle
+      position: {x: -0.09936845, y: 0.000000003027916, z: 0}
+      rotation: {x: 0.022750353, y: 0.03209728, z: -0.27879176, w: 0.9595454}
+      scale: {x: 1.0000002, y: 0.9999998, z: 1}
       transformModified: 1
-    - name: GenericHumanRigLLegDigit11
-      position: {x: -0.062626004, y: -0.000000003784895, z: -0.000000006055832}
-      rotation: {x: -0.00032798763, y: 0.0005534033, z: -0.51037407, w: 0.8599523}
-      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: BushwhackerRigLLegDigit11
+      position: {x: -0.062626, y: -0.000000001513958, z: 0}
+      rotation: {x: -0.0002462572, y: 0.00041546, z: -0.5102158, w: 0.86004627}
+      scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigSpine1
+    - name: BushwhackerRigRLeg1
+      position: {x: 0.0003496395, y: -0.007242669, z: -0.03398059}
+      rotation: {x: 0.031879455, y: 0.99749565, z: -0.0025749526, w: -0.06308327}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: BushwhackerRigRLeg2
+      position: {x: -0.12243899, y: 0.00000031490325, z: 0.0000004965782}
+      rotation: {x: 0.026345378, y: -0.03814706, z: 0.0025262628, w: 0.9989216}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000004}
+      transformModified: 1
+    - name: BushwhackerRigRLegAnkle
+      position: {x: -0.099368446, y: 0, z: 0.000000006055832}
+      rotation: {x: -0.022740657, y: -0.031875793, z: -0.27845052, w: 0.95965207}
+      scale: {x: 0.9999995, y: 1.0000001, z: 1}
+      transformModified: 1
+    - name: BushwhackerRigRLegDigit11
+      position: {x: -0.06262599, y: -0.0000000011354685, z: 0}
+      rotation: {x: 0.0003146456, y: -0.00053093216, z: -0.5103912, w: 0.85994214}
+      scale: {x: 0.99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: BushwhackerRigSpine1
       position: {x: 0, y: 0, z: -0}
       rotation: {x: 7.10543e-15, y: 2.5571745e-14, z: 7.1054274e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigSpine2
+    - name: BushwhackerRigSpine2
       position: {x: -0.100796945, y: -0.000000001513958, z: 2.52669e-15}
       rotation: {x: 0, y: 1.2300171e-14, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigChest
+    - name: BushwhackerRigChest
       position: {x: -0.100796945, y: 0, z: 2.52669e-15}
       rotation: {x: -7.1054274e-15, y: -1.3271574e-14, z: -7.1054274e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigLArmShoulder
+    - name: BushwhackerRigLArmShoulder
       position: {x: -0, y: 0, z: 0.037486333}
-      rotation: {x: 0.000000045151744, y: 0.7038513, z: 0.000000045162686, w: 0.7103474}
+      rotation: {x: 0.000000058422494, y: 0.6191999, z: 0.000000048641414, w: 0.78523344}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigLArm1
-      position: {x: -0.0544178, y: 0.000000001513958, z: 0.000000048446655}
-      rotation: {x: -0.0015267262, y: 0.024252426, z: 0.035575073, w: 0.99907154}
+    - name: BushwhackerRigLArm1
+      position: {x: -0.045660973, y: -0.000000001513958, z: 0}
+      rotation: {x: -0.0023554736, y: 0.1567704, z: -0.0008281694, w: 0.987632}
       scale: {x: 0.99999994, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigLArm2
-      position: {x: -0.16361193, y: -0.00000006774962, z: 0}
-      rotation: {x: -0.0016073531, y: -0.02274443, z: -0.07645496, w: 0.99681234}
-      scale: {x: 0.9999998, y: 1.0000002, z: 1}
+    - name: BushwhackerRigLArm2
+      position: {x: -0.17494717, y: -0.00000071837303, z: 0.000001404953}
+      rotation: {x: -0.0011186204, y: -0.077526875, z: 0.010470477, w: 0.9969347}
+      scale: {x: 0.99999523, y: 0.99999946, z: 1.0000052}
       transformModified: 1
-    - name: GenericHumanRigLArmHand
-      position: {x: -0.11127969, y: -0.000000048446655, z: 0.000000048446655}
-      rotation: {x: 0.9948693, y: 0.04045127, z: -0.08238018, w: -0.042571403}
-      scale: {x: 0.9999997, y: 1.0000001, z: 1}
+    - name: BushwhackerRigLArmHand
+      position: {x: -0.11070979, y: -0.0000007620886, z: 0.000001259613}
+      rotation: {x: -0.70087606, y: 0.0032031417, z: 0.07983476, w: 0.70879406}
+      scale: {x: 0.99999833, y: 1.0000038, z: 0.9999979}
       transformModified: 1
-    - name: GenericHumanRigLArmDigit11
-      position: {x: -0.010418671, y: 0.0067852386, z: 0.030744635}
-      rotation: {x: -0.040559303, y: 0.56426096, z: -0.044135414, w: 0.8234176}
-      scale: {x: 0.99999964, y: 1.0000005, z: 0.99999994}
+    - name: BushwhackerRigLArmDigit21
+      position: {x: -0.035113312, y: -0.00000038757324, z: -0.0000002452612}
+      rotation: {x: -0.00000058771315, y: -0.0000035036053, z: 0.0000062547715, w: 1}
+      scale: {x: 0.9999982, y: 1.0000038, z: 0.99999785}
       transformModified: 1
-    - name: GenericHumanRigLArmDigit21
-      position: {x: -0.03511341, y: -0.00000009689331, z: -0.000000048446655}
-      rotation: {x: -0.00000021979199, y: -0.00000007450611, z: 0.0000012796376, w: 1}
-      scale: {x: 0.9999997, y: 1.0000002, z: 1.0000001}
+    - name: BushwhackerRigLArmDigit11
+      position: {x: -0.010592958, y: -0.0048517874, z: 0.030740947}
+      rotation: {x: -0.040557772, y: 0.5642634, z: -0.04413465, w: 0.82341605}
+      scale: {x: 0.9999921, y: 1.0000046, z: 1.0000033}
       transformModified: 1
-    - name: GenericHumanRigRArmShoulder
+    - name: BushwhackerRigRArmShoulder
       position: {x: -0, y: 0, z: -0.037486333}
-      rotation: {x: -0.000000045150657, y: -0.7038513, z: 0.000000045163784, w: 0.7103474}
+      rotation: {x: -0.00000005842116, y: -0.6191999, z: 0.000000048642736, w: 0.78523344}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigRArm1
-      position: {x: -0.0544178, y: 0.000000003027916, z: -0.000000048446655}
-      rotation: {x: 0.0015267127, y: -0.024252513, z: 0.035574865, w: 0.99907154}
-      scale: {x: 1, y: 1, z: 1}
+    - name: BushwhackerRigRArm1
+      position: {x: -0.04566096, y: 0, z: 0}
+      rotation: {x: 0.0023540258, y: -0.15677883, z: -0.0008276403, w: 0.9876306}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
       transformModified: 1
-    - name: GenericHumanRigRArm2
-      position: {x: -0.1636119, y: 0.00000006812811, z: 0}
-      rotation: {x: 0.0016073287, y: 0.022744313, z: -0.076454215, w: 0.9968124}
-      scale: {x: 1.0000002, y: 0.99999994, z: 1}
+    - name: BushwhackerRigRArm2
+      position: {x: -0.17494719, y: 0.00000071761605, z: 0.0000013565063}
+      rotation: {x: 0.0011193453, y: 0.07752515, z: 0.01047059, w: 0.9969348}
+      scale: {x: 1.0000046, y: 1.0000005, z: 0.9999949}
       transformModified: 1
-    - name: GenericHumanRigRArmHand
-      position: {x: -0.11127974, y: 0.000000045418737, z: -0.000000048446655}
-      rotation: {x: 0.99486923, y: 0.040452354, z: 0.082380034, w: 0.042571336}
-      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: BushwhackerRigRArmHand
+      position: {x: -0.110711046, y: 0.0000007622778, z: 0.0000012111664}
+      rotation: {x: 0.70087624, y: -0.003199402, z: 0.07982099, w: 0.70879537}
+      scale: {x: 1.0000014, y: 0.9999964, z: 1.000002}
       transformModified: 1
-    - name: GenericHumanRigRArmDigit21
-      position: {x: -0.035113383, y: 0.000000090837474, z: 0}
-      rotation: {x: -0.0000002123416, y: -0.00000005960437, z: -0.0000012805685, w: 1}
-      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: BushwhackerRigRArmDigit11
+      position: {x: -0.010593345, y: -0.004851448, z: -0.030741198}
+      rotation: {x: 0.04055897, y: -0.564258, z: -0.044138957, w: 0.8234195}
+      scale: {x: 1.0000077, y: 0.9999956, z: 0.9999964}
       transformModified: 1
-    - name: GenericHumanRigRArmDigit11
-      position: {x: -0.01041872, y: 0.0067853234, z: -0.030744683}
-      rotation: {x: 0.040557418, y: -0.56426036, z: -0.0441382, w: 0.82341796}
-      scale: {x: 1.0000005, y: 0.99999994, z: 0.9999999}
+    - name: BushwhackerRigRArmDigit21
+      position: {x: -0.035113458, y: 0.00000038757324, z: -0.0000002482891}
+      rotation: {x: -0.0000005850982, y: -0.0000035015257, z: -0.0000062277472, w: 1}
+      scale: {x: 1.0000014, y: 0.9999964, z: 1.000002}
       transformModified: 1
-    - name: GenericHumanRigNeck
+    - name: BushwhackerRigNeck
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 4.6958202e-15, y: -0.000000002449018, z: -0.016219283, w: 0.99986845}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigHead
+    - name: BushwhackerRigHead
       position: {x: -0.25373268, y: -0.000000003027916, z: 0}
       rotation: {x: -8.687678e-15, y: 0.000000002449018, z: 0.016219283, w: 0.99986845}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigRLeg1
-      position: {x: 0.0003496395, y: -0.007242669, z: -0.03398059}
-      rotation: {x: 0.031879447, y: 0.99749565, z: -0.002574953, w: -0.06308327}
-      scale: {x: 0.9999999, y: 1, z: 0.99999994}
-      transformModified: 1
-    - name: GenericHumanRigRLeg2
-      position: {x: -0.12243899, y: 0.00000031490325, z: 0.0000004965782}
-      rotation: {x: 0.02634374, y: -0.038182568, z: 0.002555345, w: 0.9989202}
-      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000004}
-      transformModified: 1
-    - name: GenericHumanRigRLegAnkle
-      position: {x: -0.099368446, y: 0.000000003027916, z: -0.000000006055832}
-      rotation: {x: -0.022748467, y: -0.031846076, z: -0.2785671, w: 0.95961905}
-      scale: {x: 0.9999997, y: 1.0000001, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigRLegDigit11
-      position: {x: -0.06262601, y: 0.0000000041633843, z: 0.000000006055832}
-      rotation: {x: 0.00031341676, y: -0.0005287733, z: -0.5103118, w: 0.8599892}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1}
       transformModified: 1
     armTwist: 0.5
     foreArmTwist: 0.5
