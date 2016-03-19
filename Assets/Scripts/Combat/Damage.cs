@@ -30,12 +30,9 @@ public class Damage : MonoBehaviour
     public void ExecuteDamage(float damageAmount, Collider2D collider)
     {
         if (tag == "Enemy")
-            AudioManager.instance.PlayDamageSound(new System.Random().Next(2, 5));
+			;
         if (tag == "Boss")
-            if (UnityEngine.Random.value > 0.5)
-                AudioManager.instance.PlayBossSound(0);
-            else
-                AudioManager.instance.PlayBossSound(1);
+			;
         if (collider)
             AddBlood(collider);
         if (health = GetComponent<Health>())
@@ -61,8 +58,6 @@ public class Damage : MonoBehaviour
             if (collider.GetComponentInParent<Attack>().weapon)
                 if (collider.GetComponentInParent<Attack>().weapon.attackType == Weapon.AttackType.Swing)
                 {
-                    //ALPHA ONLY
-                    AudioManager.instance.PlayDamageSound();
 
                     if (bloodFountain)
                     {
@@ -73,9 +68,7 @@ public class Damage : MonoBehaviour
 
                     return;
                 }
-
-        //ALPHA ONLY
-        AudioManager.instance.PlayDamageSound();
+			
         if (bloodSplatter)
         {
             GameObject blood = Instantiate(bloodSplatter);
