@@ -44,6 +44,7 @@ public class AnimationTester : MonoBehaviour
             return;
 
         _currentModelId = (_currentModelId - 1) % models.Length;
+        _currentModelId = _currentModelId < 0 ? models.Length - 1 : _currentModelId;
 
         DestroyPreviousModel();
         LoadCurrentModel();
@@ -95,6 +96,7 @@ public class AnimationTester : MonoBehaviour
             return;
 
         _currentAnimationId = (_currentAnimationId - 1) % numberOfAnimations;
+        _currentAnimationId = _currentAnimationId < 0 ? numberOfAnimations - 1 : _currentAnimationId;
         StartAnimation();
     }
 
