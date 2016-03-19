@@ -44,8 +44,6 @@ ModelImporter:
     100072: WomanRigLArmThumb1
     100074: WomanRigRArmFingers1
     100076: WomanRigRArmThumb1
-    100078: Dress
-    100080: HairBun
     400000: //RootNode
     400002: Woman
     400004: WomanGroup
@@ -85,16 +83,10 @@ ModelImporter:
     400072: WomanRigLArmThumb1
     400074: WomanRigRArmFingers1
     400076: WomanRigRArmThumb1
-    400078: Dress
-    400080: HairBun
     2300000: //RootNode
     2300002: Head
-    2300004: Dress
-    2300006: HairBun
     3300000: //RootNode
     3300002: Head
-    3300004: Dress
-    3300006: HairBun
     4300000: Woman
     4300002: Head
     4300004: LeftArm
@@ -102,8 +94,6 @@ ModelImporter:
     4300008: RightArm
     4300010: RightLeg
     4300012: Torso
-    4300014: Dress
-    4300016: HairBun
     9500000: //RootNode
     13700000: Woman
     13700002: Head
@@ -112,11 +102,9 @@ ModelImporter:
     13700008: RightArm
     13700010: RightLeg
     13700012: Torso
-    13700014: Dress
-    13700016: HairBun
   materials:
     importMaterials: 1
-    materialName: 1
+    materialName: 0
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
@@ -124,10 +112,14 @@ ModelImporter:
     resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
-    animationImportWarnings: "\nDefault bone length found in this file is different
-      form the one found in the source avatar:\n\t'WomanRigNeck' : position error
-      = 67.917839 mm\n\t'WomanRigHead' : position error = 347.904724 mm\n"
+    animationImportErrors: '
+
+      Imported file ''Woman'' conversion failed: Transform ''WomanRigHead'' for human
+      bone ''Head'' not found
+
+
+'
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
