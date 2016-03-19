@@ -1,0 +1,58 @@
+This is the software setup/structure I like to use. - ET
+
+---------------------------
+FOLDER STRUCTURE
+---------------------------
+
+/
+  - This is the root of the Unity Project Folder
+  - This is also the root of my git branch
+
+/Assets
+  - This is where all Unity User files are (Scripts, Art, Music, Scenes, etc)
+
+/Documents
+  - This contains all documents related to the project
+
+/3dsmax
+  - This contains a 3dsmax Project related to the project
+
+/Mudbox
+  - This contains a Mudbox Project related to the project
+
+/Vector
+  - This contains all vector art
+
+/Sounds
+  - This contains all raw sounds
+
+---------------------------
+SOFTWARE USED
+---------------------------
+- Unity
+- Visual Studio
+- 3dsmax
+- Mudbox
+- Inkscape
+- Sounds?
+- SourceTree
+
+---------------------------
+Unity + Visual Studio
+---------------------------
+As mentioned, I like to use Visual Studio. To setup Unity with Visual Studio
+In Unity, Edit Menu > Preferences > External Tools > Change Script Editor to Visual Studio (by browsing to it)
+
+---------------------------
+SourceTree + Visual Studio
+---------------------------
+Visual Studio also has a built-in DIFF comparer (for those times you are merging branches)
+Tools Menu > Option > Diff > External Diff/Merge Section
+
+External Diff Tool: Custom
+Diff Command: C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\vsDiffMerge.exe (Something like that)
+Arguments: $LOCAL $REMOTE //t
+
+Merge Tool: Custom
+Diff Command: C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\vsDiffMerge.exe
+Arguments: $REMOTE $LOCAL $BASE $MERGED //m
