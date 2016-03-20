@@ -32,8 +32,12 @@ public class ModelLoader : MonoBehaviour
         loadedModel.transform.localScale = localScale;
 
         Animator modelAnimator = loadedModel.GetComponent<Animator>();
+        Avatar avatar = null;
         if (_animator && modelAnimator)
-            _animator.avatar = modelAnimator.avatar;
+            avatar = modelAnimator.avatar;
+
+        DestroyImmediate(modelAnimator);
+        _animator.avatar = avatar;
     }
 
     void OnDisable()
