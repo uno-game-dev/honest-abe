@@ -32,6 +32,7 @@ GameObject:
   - 114: {fileID: 11448088}
   - 114: {fileID: 11480820}
   - 114: {fileID: 11492148}
+  - 114: {fileID: 11441402}
   m_Layer: 11
   m_Name: Dummy(Unarmed)
   m_TagString: Enemy
@@ -1150,6 +1151,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   stunDuration: 0.92
+--- !u!114 &11441402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84663da7daa15a46b84c5ee300646a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 100002, guid: 529ea5cf4288ec840b986e88adcb0e60, type: 3}
+  localPosition: {x: 0, y: -0.5, z: 0}
+  localRotation: {x: 0, y: 145, z: 0}
+  localScale: {x: 3, y: 3, z: 3}
+  loadedModel: {fileID: 145316}
+  runtimeAnimationController: {fileID: 0}
 --- !u!114 &11446878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1211,6 +1229,7 @@ MonoBehaviour:
   height: 0
   horizontalVelocity: 10
   gravityMultiplier: 1
+  landDuration: 0.5
   onGroundDuration: 1
   getUpDuration: 1
 --- !u!114 &11492148

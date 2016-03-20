@@ -500,6 +500,7 @@ GameObject:
   - 114: {fileID: 11448730}
   - 114: {fileID: 11497228}
   - 114: {fileID: 11407154}
+  - 114: {fileID: 11433344}
   m_Layer: 11
   m_Name: Soldier-Melee
   m_TagString: Enemy
@@ -1297,6 +1298,23 @@ MonoBehaviour:
   offsetFromOrigin: 2
   maxZ: 45
   yToZFactor: 2
+--- !u!114 &11433344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84663da7daa15a46b84c5ee300646a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 100004, guid: e90fd4c5978122f43aac6279640c2fe3, type: 3}
+  localPosition: {x: 0, y: -0.5, z: 0}
+  localRotation: {x: 0, y: 145, z: 0}
+  localScale: {x: 3, y: 3, z: 3}
+  loadedModel: {fileID: 190862}
+  runtimeAnimationController: {fileID: 0}
 --- !u!114 &11447112
 MonoBehaviour:
   m_ObjectHideFlags: 1
