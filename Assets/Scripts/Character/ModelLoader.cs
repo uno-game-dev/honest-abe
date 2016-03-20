@@ -30,6 +30,7 @@ public class ModelLoader : MonoBehaviour
         loadedModel.transform.localPosition = localPosition;
         loadedModel.transform.localEulerAngles = localRotation;
         loadedModel.transform.localScale = localScale;
+        loadedModel.AddComponent<JumpPositionOffset>();
 
         Animator modelAnimator = loadedModel.GetComponent<Animator>();
         Avatar avatar = null;

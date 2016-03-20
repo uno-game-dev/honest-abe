@@ -276,6 +276,7 @@ GameObject:
   - 114: {fileID: 11495206}
   - 114: {fileID: 11497030}
   - 114: {fileID: 11453790}
+  - 114: {fileID: 11418594}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1528,6 +1529,23 @@ MonoBehaviour:
   offsetFromOrigin: 2
   maxZ: 45
   yToZFactor: 2
+--- !u!114 &11418594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84663da7daa15a46b84c5ee300646a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 100002, guid: c9d3ebb002f764948a20e09aa8f4026f, type: 3}
+  localPosition: {x: 0, y: -0.5, z: 0}
+  localRotation: {x: 0, y: 145, z: 0}
+  localScale: {x: 3, y: 3, z: 3}
+  loadedModel: {fileID: 176804}
+  runtimeAnimationController: {fileID: 0}
 --- !u!114 &11418610
 MonoBehaviour:
   m_ObjectHideFlags: 1
