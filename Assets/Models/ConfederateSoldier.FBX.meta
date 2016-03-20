@@ -1,0 +1,617 @@
+fileFormatVersion: 2
+guid: e90fd4c5978122f43aac6279640c2fe3
+timeCreated: 1455152647
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body
+    100002: ConfederateCap
+    100004: //RootNode
+    100006: Head
+    100008: LeftArm
+    100010: LeftLeg
+    100012: RightArm
+    100014: RightLeg
+    100016: Base HumanChest
+    100018: Base HumanHead
+    100020: Base HumanLArm1
+    100022: Base HumanLArm2
+    100024: Base HumanLArmDigit11
+    100026: Base HumanLArmDigit21
+    100028: Base HumanLArmHand
+    100030: Base HumanLArmShoulder
+    100032: Base HumanLLeg1
+    100034: Base HumanLLeg2
+    100036: Base HumanLLegFoot
+    100038: Base HumanLLegToe1
+    100040: Base HumanNeck
+    100042: Base HumanPelvis
+    100044: Base HumanRArm1
+    100046: Base HumanRArm2
+    100048: Base HumanRArmDigit11
+    100050: Base HumanRArmDigit21
+    100052: Base HumanRArmHand
+    100054: Base HumanRArmShoulder
+    100056: Base HumanRLeg1
+    100058: Base HumanRLeg2
+    100060: Base HumanRLegFoot
+    100062: Base HumanRLegToe1
+    100064: Base HumanSpine1
+    100066: Base HumanSpine2
+    100068: ConfederateSoldier
+    100070: Base HumanHub001
+    100072: Base HumanHub002
+    100074: Base HumanHub003
+    100076: Base HumanLArmCollarbone
+    100078: Base HumanLArmPalm
+    100080: Base HumanLLegAnkle
+    100082: Base HumanLLegDigit11
+    100084: Base HumanRArmCollarbone
+    100086: Base HumanRArmPalm
+    100088: Base HumanRLegAnkle
+    100090: Base HumanRLegDigit11
+    100092: Base HumanSpine
+    100094: GenericHumanRigChest
+    100096: GenericHumanRigHead
+    100098: GenericHumanRigLArm1
+    100100: GenericHumanRigLArm2
+    100102: GenericHumanRigLArmDigit11
+    100104: GenericHumanRigLArmDigit21
+    100106: GenericHumanRigLArmHand
+    100108: GenericHumanRigLArmShoulder
+    100110: GenericHumanRigLLeg1
+    100112: GenericHumanRigLLeg2
+    100114: GenericHumanRigLLegAnkle
+    100116: GenericHumanRigLLegDigit11
+    100118: GenericHumanRigNeck
+    100120: GenericHumanRigPelvis
+    100122: GenericHumanRigRArm1
+    100124: GenericHumanRigRArm2
+    100126: GenericHumanRigRArmDigit11
+    100128: GenericHumanRigRArmDigit21
+    100130: GenericHumanRigRArmHand
+    100132: GenericHumanRigRArmShoulder
+    100134: GenericHumanRigRLeg1
+    100136: GenericHumanRigRLeg2
+    100138: GenericHumanRigRLegAnkle
+    100140: GenericHumanRigRLegDigit11
+    100142: GenericHumanRigSpine1
+    100144: GenericHumanRigSpine2
+    100146: SoldierRigChest
+    100148: SoldierRigHead
+    100150: SoldierRigLArm1
+    100152: SoldierRigLArm2
+    100154: SoldierRigLArmDigit11
+    100156: SoldierRigLArmDigit21
+    100158: SoldierRigLArmHand
+    100160: SoldierRigLArmShoulder
+    100162: SoldierRigLLeg1
+    100164: SoldierRigLLeg2
+    100166: SoldierRigLLegAnkle
+    100168: SoldierRigLLegDigit11
+    100170: SoldierRigNeck
+    100172: SoldierRigPelvis
+    100174: SoldierRigRArm1
+    100176: SoldierRigRArm2
+    100178: SoldierRigRArmDigit11
+    100180: SoldierRigRArmDigit21
+    100182: SoldierRigRArmHand
+    100184: SoldierRigRArmShoulder
+    100186: SoldierRigRLeg1
+    100188: SoldierRigRLeg2
+    100190: SoldierRigRLegAnkle
+    100192: SoldierRigRLegDigit11
+    100194: SoldierRigSpine1
+    100196: SoldierRigSpine2
+    400000: Body
+    400002: ConfederateCap
+    400004: //RootNode
+    400006: Head
+    400008: LeftArm
+    400010: LeftLeg
+    400012: RightArm
+    400014: RightLeg
+    400016: Base HumanChest
+    400018: Base HumanHead
+    400020: Base HumanLArm1
+    400022: Base HumanLArm2
+    400024: Base HumanLArmDigit11
+    400026: Base HumanLArmDigit21
+    400028: Base HumanLArmHand
+    400030: Base HumanLArmShoulder
+    400032: Base HumanLLeg1
+    400034: Base HumanLLeg2
+    400036: Base HumanLLegFoot
+    400038: Base HumanLLegToe1
+    400040: Base HumanNeck
+    400042: Base HumanPelvis
+    400044: Base HumanRArm1
+    400046: Base HumanRArm2
+    400048: Base HumanRArmDigit11
+    400050: Base HumanRArmDigit21
+    400052: Base HumanRArmHand
+    400054: Base HumanRArmShoulder
+    400056: Base HumanRLeg1
+    400058: Base HumanRLeg2
+    400060: Base HumanRLegFoot
+    400062: Base HumanRLegToe1
+    400064: Base HumanSpine1
+    400066: Base HumanSpine2
+    400068: ConfederateSoldier
+    400070: Base HumanHub001
+    400072: Base HumanHub002
+    400074: Base HumanHub003
+    400076: Base HumanLArmCollarbone
+    400078: Base HumanLArmPalm
+    400080: Base HumanLLegAnkle
+    400082: Base HumanLLegDigit11
+    400084: Base HumanRArmCollarbone
+    400086: Base HumanRArmPalm
+    400088: Base HumanRLegAnkle
+    400090: Base HumanRLegDigit11
+    400092: Base HumanSpine
+    400094: GenericHumanRigChest
+    400096: GenericHumanRigHead
+    400098: GenericHumanRigLArm1
+    400100: GenericHumanRigLArm2
+    400102: GenericHumanRigLArmDigit11
+    400104: GenericHumanRigLArmDigit21
+    400106: GenericHumanRigLArmHand
+    400108: GenericHumanRigLArmShoulder
+    400110: GenericHumanRigLLeg1
+    400112: GenericHumanRigLLeg2
+    400114: GenericHumanRigLLegAnkle
+    400116: GenericHumanRigLLegDigit11
+    400118: GenericHumanRigNeck
+    400120: GenericHumanRigPelvis
+    400122: GenericHumanRigRArm1
+    400124: GenericHumanRigRArm2
+    400126: GenericHumanRigRArmDigit11
+    400128: GenericHumanRigRArmDigit21
+    400130: GenericHumanRigRArmHand
+    400132: GenericHumanRigRArmShoulder
+    400134: GenericHumanRigRLeg1
+    400136: GenericHumanRigRLeg2
+    400138: GenericHumanRigRLegAnkle
+    400140: GenericHumanRigRLegDigit11
+    400142: GenericHumanRigSpine1
+    400144: GenericHumanRigSpine2
+    400146: SoldierRigChest
+    400148: SoldierRigHead
+    400150: SoldierRigLArm1
+    400152: SoldierRigLArm2
+    400154: SoldierRigLArmDigit11
+    400156: SoldierRigLArmDigit21
+    400158: SoldierRigLArmHand
+    400160: SoldierRigLArmShoulder
+    400162: SoldierRigLLeg1
+    400164: SoldierRigLLeg2
+    400166: SoldierRigLLegAnkle
+    400168: SoldierRigLLegDigit11
+    400170: SoldierRigNeck
+    400172: SoldierRigPelvis
+    400174: SoldierRigRArm1
+    400176: SoldierRigRArm2
+    400178: SoldierRigRArmDigit11
+    400180: SoldierRigRArmDigit21
+    400182: SoldierRigRArmHand
+    400184: SoldierRigRArmShoulder
+    400186: SoldierRigRLeg1
+    400188: SoldierRigRLeg2
+    400190: SoldierRigRLegAnkle
+    400192: SoldierRigRLegDigit11
+    400194: SoldierRigSpine1
+    400196: SoldierRigSpine2
+    2300000: Body
+    2300002: ConfederateCap
+    2300004: Head
+    2300006: LeftArm
+    2300008: LeftLeg
+    2300010: RightArm
+    2300012: RightLeg
+    3300000: Body
+    3300002: ConfederateCap
+    3300004: Head
+    3300006: LeftArm
+    3300008: LeftLeg
+    3300010: RightArm
+    3300012: RightLeg
+    4300000: LeftLeg
+    4300002: RightArm
+    4300004: Body
+    4300006: RightLeg
+    4300008: LeftArm
+    4300010: ConfederateCap
+    4300012: Head
+    9500000: //RootNode
+    13700000: Body
+    13700002: ConfederateCap
+    13700004: Head
+    13700006: LeftArm
+    13700008: LeftLeg
+    13700010: RightArm
+    13700012: RightLeg
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 90
+    normalImportMode: 1
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: SoldierRigPelvis
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigLLeg1
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigRLeg1
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigLLeg2
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigRLeg2
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigLLegAnkle
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigRLegAnkle
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigSpine2
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigNeck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigHead
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigLArm1
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigRArm1
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigLArm2
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigRArm2
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigLArmHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigRArmHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigLLegDigit11
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: SoldierRigRLegDigit11
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: ConfederateSoldier(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ConfederateSoldier
+      position: {x: 0.00000012111664, y: 0, z: 0}
+      rotation: {x: 0.000000021855694, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Body
+      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
+      transformModified: 1
+    - name: ConfederateCap
+      position: {x: -0.00000011997761, y: 0.7324297, z: 0.024514541}
+      rotation: {x: -0.7933534, y: 0, z: 0, w: 0.6087614}
+      scale: {x: 1.2704667, y: 1.0788977, z: 1.0788977}
+      transformModified: 1
+    - name: Head
+      position: {x: -0.00000012111664, y: 0.55650944, z: 0.000000048446655}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 1.17756, y: 1, z: 1}
+      transformModified: 1
+    - name: LeftArm
+      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
+      transformModified: 1
+    - name: LeftLeg
+      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
+      transformModified: 1
+    - name: RightArm
+      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
+      transformModified: 1
+    - name: RightLeg
+      position: {x: -0.05567598, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
+      transformModified: 1
+    - name: SoldierRigPelvis
+      position: {x: 2.598881e-14, y: 0.28419182, z: -0.012792868}
+      rotation: {x: 0.50000006, y: -0.5, z: -0.4999999, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigLLeg1
+      position: {x: 0.0003496395, y: -0.007242669, z: 0.03398059}
+      rotation: {x: 0.031879447, y: 0.99749553, z: 0.0025748627, w: 0.063085385}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigLLeg2
+      position: {x: -0.12243895, y: 0.00000031187534, z: -0.00000050263407}
+      rotation: {x: -0.026339153, y: 0.038058564, z: 0.0026728595, w: 0.9989248}
+      scale: {x: 1.0000002, y: 1.0000001, z: 0.9999998}
+      transformModified: 1
+    - name: SoldierRigLLegAnkle
+      position: {x: -0.09936849, y: 0.00000014533997, z: 0.00000006055832}
+      rotation: {x: 0.02274954, y: 0.03209665, z: -0.2787841, w: 0.95954764}
+      scale: {x: 1.000001, y: 0.99999946, z: 0.9999997}
+      transformModified: 1
+    - name: SoldierRigLLegDigit11
+      position: {x: -0.062626, y: 0.000000002270937, z: 0}
+      rotation: {x: -0.00024625697, y: 0.0004154596, z: -0.5102158, w: 0.86004627}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigRLeg1
+      position: {x: 0.0003496395, y: -0.007242669, z: -0.03398059}
+      rotation: {x: 0.03187955, y: 0.9974956, z: -0.002574857, w: -0.06308472}
+      scale: {x: 1, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: SoldierRigRLeg2
+      position: {x: -0.12243899, y: 0.00000031187534, z: 0.0000004965782}
+      rotation: {x: 0.02634778, y: -0.03814027, z: 0.0025218339, w: 0.9989218}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000002}
+      transformModified: 1
+    - name: SoldierRigRLegAnkle
+      position: {x: -0.099368446, y: 0.000000003027916, z: 0}
+      rotation: {x: -0.022744797, y: -0.031898376, z: -0.2784369, w: 0.9596552}
+      scale: {x: 1, y: 0.99999964, z: 0.9999999}
+      transformModified: 1
+    - name: SoldierRigRLegDigit11
+      position: {x: -0.062626004, y: -0.0000000011354685, z: 0}
+      rotation: {x: 0.00030703572, y: -0.00051811297, z: -0.510399, w: 0.8599375}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+      transformModified: 1
+    - name: SoldierRigSpine1
+      position: {x: 0, y: 0, z: -0}
+      rotation: {x: 7.10543e-15, y: 2.5571745e-14, z: 7.1054274e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigSpine2
+      position: {x: -0.100796945, y: -0.000000001513958, z: 2.52669e-15}
+      rotation: {x: 0, y: 1.2300171e-14, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigChest
+      position: {x: -0.100796945, y: 0, z: 2.52669e-15}
+      rotation: {x: -7.1054274e-15, y: -1.3271574e-14, z: -7.1054274e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigLArmShoulder
+      position: {x: -0, y: 0, z: 0.037486333}
+      rotation: {x: 0.000000058421126, y: 0.6191999, z: 0.000000048642782, w: 0.78523344}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigLArm1
+      position: {x: -0.045660973, y: -0.000000001513958, z: 0}
+      rotation: {x: -0.0023544657, y: 0.1567757, z: -0.0008278191, w: 0.9876311}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: SoldierRigLArm2
+      position: {x: -0.17494717, y: 0.00000023844837, z: -0.0000004360199}
+      rotation: {x: -0.0011190998, y: -0.07752589, z: 0.010470466, w: 0.9969347}
+      scale: {x: 1.0000011, y: 1.0000001, z: 0.99999875}
+      transformModified: 1
+    - name: SoldierRigLArmHand
+      position: {x: -0.11071052, y: 0.00000015196353, z: -0.00000029067994}
+      rotation: {x: -0.7008762, y: 0.0032008872, z: 0.07982649, w: 0.70879483}
+      scale: {x: 1.0000002, y: 0.9999992, z: 1.0000005}
+      transformModified: 1
+    - name: SoldierRigLArmDigit21
+      position: {x: -0.035113383, y: 0.000000048446655, z: 0.000000051474572}
+      rotation: {x: 0.0000001169838, y: 0.00000069489755, z: -0.0000012475064, w: 1}
+      scale: {x: 1.0000002, y: 0.9999993, z: 1.0000004}
+      transformModified: 1
+    - name: SoldierRigLArmDigit11
+      position: {x: -0.0105932, y: -0.0048516416, z: 0.030741097}
+      rotation: {x: -0.040558666, y: 0.5642601, z: -0.044137087, w: 0.82341814}
+      scale: {x: 1.0000015, y: 0.9999991, z: 0.9999993}
+      transformModified: 1
+    - name: SoldierRigRArmShoulder
+      position: {x: -0, y: 0, z: -0.037486333}
+      rotation: {x: -0.000000058422533, y: -0.6191999, z: 0.000000048641365, w: 0.78523344}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigRArm1
+      position: {x: -0.04566096, y: 0, z: 0}
+      rotation: {x: 0.00235492, y: -0.1567734, z: -0.00082803704, w: 0.9876315}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigRArm2
+      position: {x: -0.17494719, y: -0.00000023920535, z: -0.0000004360199}
+      rotation: {x: 0.0011189877, y: 0.077525504, z: 0.010470564, w: 0.9969348}
+      scale: {x: 0.999999, y: 0.9999998, z: 1.0000013}
+      transformModified: 1
+    - name: SoldierRigRArmHand
+      position: {x: -0.11071029, y: -0.00000015082806, z: -0.00000024223328}
+      rotation: {x: 0.7008761, y: -0.0032016665, z: 0.07982923, w: 0.70879453}
+      scale: {x: 0.99999976, y: 1.0000008, z: 0.9999995}
+      transformModified: 1
+    - name: SoldierRigRArmDigit11
+      position: {x: -0.010593127, y: -0.00485169, z: -0.030741053}
+      rotation: {x: 0.040558238, y: -0.56426114, z: -0.044136398, w: 0.8234175}
+      scale: {x: 0.99999833, y: 1.000001, z: 1.0000007}
+      transformModified: 1
+    - name: SoldierRigRArmDigit21
+      position: {x: -0.03511341, y: -0.00000009689331, z: 0.000000045418737}
+      rotation: {x: 0.00000011977585, y: 0.00000068206066, z: 0.0000012647363, w: 1}
+      scale: {x: 0.99999976, y: 1.0000008, z: 0.9999995}
+      transformModified: 1
+    - name: SoldierRigNeck
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 4.6958202e-15, y: -0.000000002449018, z: -0.016219283, w: 0.99986845}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: SoldierRigHead
+      position: {x: -0.25373268, y: -0.000000003027916, z: 0}
+      rotation: {x: -8.687678e-15, y: 0.000000002449018, z: 0.016219283, w: 0.99986845}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

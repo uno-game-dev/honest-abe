@@ -33,6 +33,7 @@ public class Throw : MonoBehaviour
         if (!_characterState.CanThrow())
             return;
 
+        EventHandler.SendEvent(EventHandler.Events.WEAPON_THROW);
         PrepareThrow();
     }
 
@@ -54,6 +55,7 @@ public class Throw : MonoBehaviour
             _movement.direction == Movement.Direction.Left ? -velocity : velocity);
         SetState(State.Perform);
         _attack.weapon.transform.rotation = Quaternion.identity;
+        _attack.weapon.gameObject.layer = LayerMask.NameToLayer("Items");
         _attack.SetWeapon(GetComponent<Weapon>());
         _attack.emptyHanded = true;
         Invoke("FinishThrow", performThrowTime);

@@ -8,11 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491944}
-  - 114: {fileID: 11419552}
-  - 114: {fileID: 11486112}
   - 114: {fileID: 11488790}
   - 114: {fileID: 11421306}
-  - 114: {fileID: 11417964}
+  - 114: {fileID: 11496156}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -32,29 +30,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11417964
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0fa6b4206db3d846a8abd3c5f37e596, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11419552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cb2f866c93128641bbe815697b3d35e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  perkText: {fileID: 0}
 --- !u!114 &11421306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,36 +42,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkList: []
---- !u!114 &11486112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc7e6883609f3f44eb87a21191666dfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrain: {fileID: 127990, guid: adf920ea3adcf61499ef430d5f5cbab4, type: 2}
-  enemies:
-  - {fileID: 188124, guid: f7cc6c9782046944c9737c3bc517099c, type: 2}
-  - {fileID: 188124, guid: 3902e28db3726314f96ae48a242ffafc, type: 2}
-  props:
-  - {fileID: 127602, guid: ddd4c3ec236339342a41b55ddc0cd76b, type: 2}
-  - {fileID: 124166, guid: ae79f3def7a20c44eb9ac81db6e51333, type: 2}
-  items:
-  - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
-  bosses:
-  - {fileID: 112324, guid: 2344d1aded5b2a9438bf739fa32fb18b, type: 2}
-  startSpawnPosition: 38
-  spawnYPos: 0
-  spawnZPos: 10
-  propDensity: 3
-  itemDensity: 1
-  difficulty: 1
-  screensBeforeSecondEnemy: 2
-  screensBeforeBoss: 4
 --- !u!114 &11488790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,6 +53,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86b8d23e6eb747a087dcb6dda9ba7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perkChosen: 0
+  lose: 0
+  win: 0
+  sceneIsNew: 0
+--- !u!114 &11496156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88c5d4496eb08648a804cc13ec98ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingScene: 0
+  currentScene: 0
+  currentSceneIsNew: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

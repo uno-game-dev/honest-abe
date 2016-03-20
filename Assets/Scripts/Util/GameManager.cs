@@ -2,53 +2,55 @@
 
 public class GameManager : MonoBehaviour
 {
-    public static bool perkChosen;
-    public static bool lost;
-    public static bool win;
-    private GameObject _camera;
+	public bool perkChosen;
 
-    private CameraFollow cameraFollow;
+    private static GameObject _instance;
+
+    private CameraFollow _cameraFollow;
+    private LevelManager _levelManager;
+
+    void Awake()
+    {
+        if (_instance == null)
+            _instance = gameObject;
+        else if (_instance != gameObject)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
+        _levelManager = GetComponent<LevelManager>();
+    }
+
+	void Update()
+    {
+        if (GlobalSettings.currentSceneIsNew)
+            Initialize();
+        if (!perkChosen)
+            _cameraFollow.lockRightEdge = true;
+        else
+            _cameraFollow.lockRightEdge = false;
+		if (GlobalSettings.winCondition)
+			Win();
+
+	}
+
+
+    // Runs when a scene is loaded
+    public void Initialize()
+    {
+        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
         perkChosen = false;
-        lost = false;
-        win = false;
-
-        _camera = GameObject.Find("Main Camera");
-        cameraFollow = _camera.GetComponent<CameraFollow>();
-        if (!perkChosen) cameraFollow.lockRightEdge = true;
-
-        GlobalSettings.bossFight = false;
+        GlobalSettings.loseCondition = false;
+        GlobalSettings.winCondition = false;
+        GlobalSettings.currentSceneIsNew = false;
     }
 
-    void Update()
-    {
-        CheckLost();
-        CheckWin();
-
-        if (GlobalSettings.bossFight)
-            RunBossFight();
-    }
-
-    public void CheckLost()
-    {
-        if (lost)
-            UIManager.displayLost = true;
-    }
-
-    public void CheckWin()
-    {
-        //Checks if the boss health is 0 -- for alpha
-        if (win)
-        {
-            UIManager.displayWin = true;
-            PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
-        }
-    }
-
-    public void RunBossFight()
-    {
-        _camera.GetComponent<CameraFollow>().lockRightEdge = true;
-    }
+	public void Win()
+	{
+		GlobalSettings.winCondition = false;
+		PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+        _levelManager.loadNextLevel();
+	}
 }

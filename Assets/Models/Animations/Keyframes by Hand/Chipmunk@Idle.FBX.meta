@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: cd2b504024aa05b46b73bff2a2df827f
+timeCreated: 1453570649
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ChipmunkRigChest
+    100004: ChipmunkRigHead
+    100006: ChipmunkRigHips
+    100008: ChipmunkRigLArm1
+    100010: ChipmunkRigLArm2
+    100012: ChipmunkRigLArmHand
+    100014: ChipmunkRigLArmShoulder
+    100016: ChipmunkRigLLeg1
+    100018: ChipmunkRigLLeg2
+    100020: ChipmunkRigLLegAnkle
+    100022: ChipmunkRigNeck
+    100024: ChipmunkRigRArm1
+    100026: ChipmunkRigRArm2
+    100028: ChipmunkRigRArmHand
+    100030: ChipmunkRigRArmShoulder
+    100032: ChipmunkRigRLeg1
+    100034: ChipmunkRigRLeg2
+    100036: ChipmunkRigRLegAnkle
+    100038: ChipmunkRigSpine
+    100040: ChipmunkRigTail1
+    100042: ChipmunkRigTail2
+    100044: ChipmunkRigTail3
+    100046: ChipmunkRigTail4
+    100048: ChipmunkRigTail5
+    400000: //RootNode
+    400002: ChipmunkRigChest
+    400004: ChipmunkRigHead
+    400006: ChipmunkRigHips
+    400008: ChipmunkRigLArm1
+    400010: ChipmunkRigLArm2
+    400012: ChipmunkRigLArmHand
+    400014: ChipmunkRigLArmShoulder
+    400016: ChipmunkRigLLeg1
+    400018: ChipmunkRigLLeg2
+    400020: ChipmunkRigLLegAnkle
+    400022: ChipmunkRigNeck
+    400024: ChipmunkRigRArm1
+    400026: ChipmunkRigRArm2
+    400028: ChipmunkRigRArmHand
+    400030: ChipmunkRigRArmShoulder
+    400032: ChipmunkRigRLeg1
+    400034: ChipmunkRigRLeg2
+    400036: ChipmunkRigRLegAnkle
+    400038: ChipmunkRigSpine
+    400040: ChipmunkRigTail1
+    400042: ChipmunkRigTail2
+    400044: ChipmunkRigTail3
+    400046: ChipmunkRigTail4
+    400048: ChipmunkRigTail5
+    7400000: Idle
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ChipmunkRigHips
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigLLeg1
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigLLeg1/ChipmunkRigLLeg2
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigLLeg1/ChipmunkRigLLeg2/ChipmunkRigLLegAnkle
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigRLeg1
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigRLeg1/ChipmunkRigRLeg2
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigRLeg1/ChipmunkRigRLeg2/ChipmunkRigRLegAnkle
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigLArmShoulder
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigLArmShoulder/ChipmunkRigLArm1
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigLArmShoulder/ChipmunkRigLArm1/ChipmunkRigLArm2
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigLArmShoulder/ChipmunkRigLArm1/ChipmunkRigLArm2/ChipmunkRigLArmHand
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigNeck
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigNeck/ChipmunkRigHead
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigRArmShoulder
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigRArmShoulder/ChipmunkRigRArm1
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigRArmShoulder/ChipmunkRigRArm1/ChipmunkRigRArm2
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigSpine/ChipmunkRigChest/ChipmunkRigRArmShoulder/ChipmunkRigRArm1/ChipmunkRigRArm2/ChipmunkRigRArmHand
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigTail1
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigTail1/ChipmunkRigTail2
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigTail1/ChipmunkRigTail2/ChipmunkRigTail3
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigTail1/ChipmunkRigTail2/ChipmunkRigTail3/ChipmunkRigTail4
+        weight: 1
+      - path: ChipmunkRigHips/ChipmunkRigTail1/ChipmunkRigTail2/ChipmunkRigTail3/ChipmunkRigTail4/ChipmunkRigTail5
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
