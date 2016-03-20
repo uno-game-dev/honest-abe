@@ -14,7 +14,6 @@ public class ModelLoader : MonoBehaviour
     void Awake()
     {
         _animator = GetComponent<Animator>();
-        _animator.avatar = null;
     }
 
     void OnEnable()

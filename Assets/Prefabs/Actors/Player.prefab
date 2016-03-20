@@ -277,6 +277,7 @@ GameObject:
   - 114: {fileID: 11497030}
   - 114: {fileID: 11453790}
   - 114: {fileID: 11418594}
+  - 114: {fileID: 11413124}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1502,6 +1503,21 @@ MonoBehaviour:
   damageRate: 0.2
   bloodSplatter: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
   bloodFountain: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
+--- !u!114 &11413124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86a798feb21dca418e4e21e0bbf0c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRadius: 50
+  _horizontalAxisValue: 0
+  _verticalAxisValue: 0
+  _lastAction: 0
 --- !u!114 &11413764
 MonoBehaviour:
   m_ObjectHideFlags: 1
