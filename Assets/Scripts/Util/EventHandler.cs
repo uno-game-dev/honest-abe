@@ -10,8 +10,9 @@ public class EventHandler : MonoBehaviour {
         LIGHT_HIT,
         LIGHT_KILL,
         HEAVY_SWING,
-        HEAVY_HIT,
-        HEAVY_KILL,
+		HEAVY_SWING_END,
+		HEAVY_HIT,
+		HEAVY_KILL,
         WEAPON_THROW,
         ENEMY_THROW,
         ENEMY_GRAB,
@@ -51,7 +52,11 @@ public class EventHandler : MonoBehaviour {
                 Debug.Log("Heavy Swing");
                 GlobalSettings.performingHeavyAttack = true;
                 break;
-            case Events.HEAVY_HIT:
+			case Events.HEAVY_SWING_END:
+				Debug.Log("Heavy Swing End");
+				GlobalSettings.performingHeavyAttack = false;
+				break;
+			case Events.HEAVY_HIT:
                 Debug.Log("Heavy Hit");
 				AudioManager.instance.PlaySound("Stab_2");
 				AudioManager.instance.PlaySound("Hit_Crack");
@@ -62,8 +67,8 @@ public class EventHandler : MonoBehaviour {
 				AudioManager.instance.PlaySound("Hit_Crack");
 				AudioManager.instance.PlaySound("Gore_1");
                 GlobalSettings.enemiesKilled++;
-                GlobalSettings.executionsPerformed++;
-                break;
+				GameObject.Find("Player").GetComponent<PlayerHealth>().executionsPerformed++;
+				break;
             case Events.WEAPON_THROW:
                 Debug.Log("Weapon Throw");
                 break;

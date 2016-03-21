@@ -31,12 +31,8 @@ public class AttackArea : MonoBehaviour
 
     private void OnDisable()
     {
-        if (transform.parent.gameObject.tag == "Player" && GlobalSettings.performingHeavyAttack)
-        {
-            GlobalSettings.performingHeavyAttack = false;
-        }
-        GlobalSettings.performingHeavyAttack = false;
-        _collision.OnCollisionEnter -= OnCollision;
+		EventHandler.SendEvent(EventHandler.Events.HEAVY_SWING_END);
+		_collision.OnCollisionEnter -= OnCollision;
         if (!hit && _chainAttack)
             _chainAttack.Miss();
         hit = null;

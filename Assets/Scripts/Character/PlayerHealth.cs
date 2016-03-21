@@ -12,6 +12,7 @@ public class PlayerHealth : Health
     private float _updateSliderTime = 1;
     private HealthSlider _slider;
 	private GameManager _gameManager;
+	public int executionsPerformed;
 
 	void Start()
 	{
@@ -25,10 +26,15 @@ public class PlayerHealth : Health
     {
         if (health <= 0)
             Death();
-        if (!alive)
-            // Decreases the timer to know when to update the damageSlider
-            _updateSliderTime -= Time.deltaTime;
-        UpdateHUD();
+		if (!alive)
+			// Decreases the timer to know when to update the damageSlider
+			_updateSliderTime -= Time.deltaTime;
+		UpdateHUD();
+		if (executionsPerformed > 0)
+		{
+			executionsPerformed--;
+			Execution();
+		}
     }
 
     public override void Increase(int amount)
@@ -56,6 +62,7 @@ public class PlayerHealth : Health
                     _slider.UpdateDamageThreshold(damageThreshold);
                 }
             }
+
         }
         // ELSE-IF--The health starts off less than damageThreshold(2 cases)
         // The health AFTER the health increase is less than the damageThreshold 
@@ -129,7 +136,7 @@ public class PlayerHealth : Health
     }
 
     // Updates the health and damageThreshold 
-    void UpdateHUD()
+    private void UpdateHUD()
     {
         // CurrentHealth is slowly decreasing to eventually equal damageThreshold 
         if (health > damageThreshold)
@@ -146,15 +153,14 @@ public class PlayerHealth : Health
                 _updateSliderTime = decreaseSecondsPerHealthPoint;
             }
         }
-		// Allows Execution function to run multiple times when more than one enemy is executed
-        if (GlobalSettings.executionsPerformed > 0)
-        {
-            GlobalSettings.executionsPerformed--;
-            Execution();
-        }
     }
 
-    void Execution()
+	public void AddExecution()
+	{
+		executionsPerformed++;
+	}
+
+    private void Execution()
     {
         // Make sure damageThreshold does not go above 120
         if (damageThreshold <= 110)
@@ -167,7 +173,7 @@ public class PlayerHealth : Health
         _slider.UpdateDamageThreshold(damageThreshold);
     }
 
-    void Death()
+    private void Death()
 	{
 		alive = true;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
