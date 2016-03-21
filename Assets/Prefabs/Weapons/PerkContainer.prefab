@@ -165,6 +165,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433338}
+  - 114: {fileID: 11427082}
   m_Layer: 0
   m_Name: PerkContainer
   m_TagString: Untagged
@@ -293,7 +294,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69, y: 4.02, z: 0}
+  m_LocalPosition: {x: 0.69000006, y: 4.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419286}
@@ -660,7 +661,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   numberOfCollisions: 0
-  _collider: {fileID: 0}
 --- !u!114 &11412634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -696,7 +696,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   numberOfCollisions: 0
-  _collider: {fileID: 0}
 --- !u!114 &11423002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -729,6 +728,17 @@ MonoBehaviour:
   offsetFromOrigin: 2
   maxZ: 45
   yToZFactor: 2
+--- !u!114 &11427082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e95f1c93198a4c4fbeac826e3da27c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11433472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -775,8 +785,8 @@ MonoBehaviour:
   attackType: 3
   attackSize: {x: 60, y: 0.1}
   attackOffset: {x: 30, y: 0}
-  heldOffset: {x: -0.5, y: -0.013, z: -0.113}
-  heldOrientation: {x: 35, y: 350, z: 198}
+  heldOffset: {x: -0.21, y: 0.31, z: -0.065}
+  heldOrientation: {x: 17.2, y: 323.5, z: 144}
   lightDamage: 20
   heavyDamage: 20
 --- !u!114 &11476048
@@ -810,7 +820,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   numberOfCollisions: 0
-  _collider: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

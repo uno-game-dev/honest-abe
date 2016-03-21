@@ -10,7 +10,6 @@ public class PlayerHealth : Health
     private int _tempHealth;
     private int _tempDamageThreshold;
     private float _updateSliderTime = 1;
-    private bool _dead;
     private HealthSlider _slider;
 	private GameManager _gameManager;
 
@@ -18,7 +17,7 @@ public class PlayerHealth : Health
 	{
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
-        _dead = false;
+        alive = false;
 		GlobalSettings.executionsPerformed = 0;
     }
 
@@ -26,7 +25,7 @@ public class PlayerHealth : Health
     {
         if (health <= 0)
             Death();
-        if (!_dead)
+        if (!alive)
             // Decreases the timer to know when to update the damageSlider
             _updateSliderTime -= Time.deltaTime;
         UpdateHUD();
@@ -147,12 +146,12 @@ public class PlayerHealth : Health
                 _updateSliderTime = decreaseSecondsPerHealthPoint;
             }
         }
+		// Allows Execution function to run multiple times when more than one enemy is executed
         if (GlobalSettings.executionsPerformed > 0)
         {
             GlobalSettings.executionsPerformed--;
             Execution();
         }
-
     }
 
     void Execution()
@@ -169,11 +168,11 @@ public class PlayerHealth : Health
     }
 
     void Death()
-    {
-        _dead = true;
-        _gameManager.lose = true;
-        // Disable PlayerMotor script 
-        gameObject.GetComponent<PlayerMotor>().enabled = false;
+	{
+		alive = true;
+		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
+		// Disable PlayerMotor script 
+		gameObject.GetComponent<PlayerMotor>().enabled = false;
         // Turn off any attack effects
         gameObject.GetComponent<PlayerControls>().enabled = false;
         // Set animation for dead player

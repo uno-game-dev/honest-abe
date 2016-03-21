@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class PerkManager : MonoBehaviour
 {
-    [HideInInspector]
-    public List<Perk> perkList = new List<Perk>();
-
     public static Perk activeAxePerk = null;
     public static Perk activeHatPerk = null;
     public static Perk activeTrinketPerk = null;
@@ -22,7 +18,6 @@ public class PerkManager : MonoBehaviour
         {
             Perk p = perksInLevel[i].GetComponent<Perk>();
             p.CheckStatus();
-            perkList.Add(p);
         }
 
         GameObject[] axePerksInLevel = GameObject.FindGameObjectsWithTag("AbeAxe");
@@ -30,15 +25,23 @@ public class PerkManager : MonoBehaviour
         {
             Perk p = axePerksInLevel[i].GetComponent<Perk>();
             p.CheckStatus();
-            perkList.Add(p);
         }
     }
 
-    public static void PerformPerkEffects()
+    public static void PerformPerkEffects(Perk.PerkCategory type)
     {
-        if (activeAxePerk != null) AxePerkEffect();
-        if (activeHatPerk != null) HatPerkEffect();
-        if (activeTrinketPerk != null) TrinketPerkEffect();
+        if (type == Perk.PerkCategory.AXE)
+        {
+            if (activeAxePerk != null) AxePerkEffect();
+        }
+        else if (type == Perk.PerkCategory.HAT)
+        {
+            if (activeHatPerk != null) HatPerkEffect();
+        }
+        else if (type == Perk.PerkCategory.TRINKET)
+        {
+            if (activeTrinketPerk != null) TrinketPerkEffect();
+        }
     }
 
     public static void UpdatePerkStatus(string perk, int status)

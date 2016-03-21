@@ -2,12 +2,9 @@
 
 public class GameManager : MonoBehaviour
 {
-	public static bool perkChosen;
+	public bool perkChosen;
 
-    public bool lose;
-	public bool win;
-
-    private static GameManager _instance;
+    private static GameObject _instance;
 
     private CameraFollow _cameraFollow;
     private LevelManager _levelManager;
@@ -15,45 +12,45 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (_instance == null)
-            _instance = this;
-        else if (_instance != this)
+            _instance = gameObject;
+        else if (_instance != gameObject)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
-        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
         _levelManager = GetComponent<LevelManager>();
-
-        perkChosen = false;
-        lose = false;
-		win = false;
-
-        if (!perkChosen)
-			_cameraFollow.lockRightEdge = true;
     }
 
 	void Update()
-	{
-		CheckIfLost();
-		CheckIfWon();
+    {
+        if (GlobalSettings.currentSceneIsNew)
+            Initialize();
+        if (!perkChosen)
+            _cameraFollow.lockRightEdge = true;
+        else
+            _cameraFollow.lockRightEdge = false;
+		if (GlobalSettings.winCondition)
+			Win();
+
 	}
 
-	public void CheckIfWon()
-	{
-		//Checks if the boss health is 0 -- for alpha
-		if (win)
-		{
-			win = false;
-			PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
-            _levelManager.loadNextLevel();
-		}
-	}
 
-	public void CheckIfLost()
-	{
-		if (lose)
-			lose = false;
+    // Runs when a scene is loaded
+    public void Initialize()
+    {
+        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        perkChosen = false;
+        GlobalSettings.loseCondition = false;
+        GlobalSettings.winCondition = false;
+        GlobalSettings.currentSceneIsNew = false;
     }
+
+	public void Win()
+	{
+		GlobalSettings.winCondition = false;
+		PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+        _levelManager.loadNextLevel();
+	}
 }

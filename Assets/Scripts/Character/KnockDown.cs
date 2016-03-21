@@ -4,12 +4,13 @@ using System.Collections;
 public class KnockDown : MonoBehaviour
 {
     public const float GRAVITY = -9.81f;
-    public enum State { Null, InAir, OnGround, GettingUp }
+    public enum State { Null, InAir, Land, OnGround, GettingUp }
 
     public State state;
     public float height;
     public float horizontalVelocity = 10;
     public float gravityMultiplier = 1;
+    public float landDuration = 0.5f;
     public float onGroundDuration = 1;
     public float getUpDuration = 1;
     private CharacterState _characterState;
@@ -35,7 +36,7 @@ public class KnockDown : MonoBehaviour
             if (height <= 0)
                 HitGround();
         }
-        if (state == State.OnGround)
+        if (state == State.OnGround || state == State.Land)
         {
             horizontalVelocity += GRAVITY * Time.deltaTime * gravityMultiplier;
             horizontalVelocity = Mathf.Clamp(horizontalVelocity, 0, horizontalVelocity);
@@ -59,6 +60,12 @@ public class KnockDown : MonoBehaviour
     private void HitGround()
     {
         height = 0;
+        SetState(State.Land);
+        Invoke("Land", landDuration);
+    }
+
+    private void Land()
+    {
         SetState(State.OnGround);
         Invoke("GetUp", onGroundDuration);
     }

@@ -8,8 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 408268}
-  - 114: {fileID: 11491484}
   - 82: {fileID: 8201942}
+  - 114: {fileID: 11412160}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -103,7 +103,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &11491484
+--- !u!114 &11412160
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -116,28 +116,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introMusic: {fileID: 8300000, guid: 5cd3f63a692502545b3921bad1b2f8b1, type: 3}
   playMusic: {fileID: 8300000, guid: 26af0ebc85e25744c984250cd179478e, type: 3}
-  AttackSounds:
-  - {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
-  - {fileID: 0}
-  DamageSounds:
-  - {fileID: 8300000, guid: b8b8af91eccf4234aa8d626d92f5678e, type: 3}
-  - {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
-  - {fileID: 8300000, guid: b2b82e3a69187f440949cc82b1c90458, type: 3}
-  - {fileID: 8300000, guid: 095284c91d7dfc445be13e73bd60cab8, type: 3}
-  - {fileID: 8300000, guid: 74fcba1ced7a094419196c126082b1f4, type: 3}
-  GenericSounds:
-  - {fileID: 8300000, guid: 6c96384674ba9ba47a7e7dda37d3438d, type: 3}
-  - {fileID: 8300000, guid: f87f3968f6957344a9624f4da1dee1e0, type: 3}
-  - {fileID: 8300000, guid: 45de4a7d1f929254699fc56160db50da, type: 3}
-  - {fileID: 8300000, guid: 1092a2094ce6bb14d8958f53addd2e41, type: 3}
-  - {fileID: 8300000, guid: f2eea09a81c196347901c00e6b127833, type: 3}
-  BossSounds:
-  - {fileID: 8300000, guid: b8e44cbc2d9475d4fba832e445930b20, type: 3}
-  - {fileID: 8300000, guid: bbdf9ae54fdc28542b8476998f1f5ab4, type: 3}
-  ItemSounds:
-  - {fileID: 8300000, guid: 7973f20d52bb2bb42b516a6f32d13180, type: 3}
-  WeaponSounds:
-  - {fileID: 8300000, guid: db676886c74f6ef48a12c474cdb8aef4, type: 3}
+  SoundArray:
+  - name: Light_Slash
+    sound: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+  - name: Heavy_Slash
+    sound: {fileID: 8300000, guid: f390e9ddbf09a324db7200d054f90e60, type: 3}
+  - name: Stab_1
+    sound: {fileID: 8300000, guid: 7016724e414a3124fabf245522e3de2f, type: 3}
+  - name: Stab_2
+    sound: {fileID: 8300000, guid: 88d6f6363f2670749bbf36b21a4c47d6, type: 3}
+  - name: Stab_6
+    sound: {fileID: 8300000, guid: 737a15aa3b6e76642afbf61dd5b89a7b, type: 3}
+  - name: Stab_5
+    sound: {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
+  - name: Rifle_1
+    sound: {fileID: 8300000, guid: 1f2d5c4edb045c44c8e00d466570d6b7, type: 3}
+  - name: Rifle_2
+    sound: {fileID: 8300000, guid: d81b998f0426f7d4991845f050bc8291, type: 3}
+  - name: Hit_Crack
+    sound: {fileID: 8300000, guid: 7b9e7030b5f4fac4f9582997a68df0a4, type: 3}
+  - name: Punch_1
+    sound: {fileID: 8300000, guid: b8b8af91eccf4234aa8d626d92f5678e, type: 3}
+  - name: Punch_2
+    sound: {fileID: 8300000, guid: 5a0cc153fdcb8a146994043478613f62, type: 3}
+  - name: Gore_1
+    sound: {fileID: 8300000, guid: d3c9e3df60f992648ba40fbef9d3b279, type: 3}
+  - name: Jump
+    sound: {fileID: 8300000, guid: 6c96384674ba9ba47a7e7dda37d3438d, type: 3}
+  - name: Landing
+    sound: {fileID: 8300000, guid: 801fcd64fb9b4c64184a470059896e4b, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
