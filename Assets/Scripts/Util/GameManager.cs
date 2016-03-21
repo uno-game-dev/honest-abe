@@ -2,7 +2,7 @@
 
 public class GameManager : MonoBehaviour
 {
-	public bool perkChosen;
+    public bool perkChosen;
 
     private static GameObject _instance;
 
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         _levelManager = GetComponent<LevelManager>();
     }
 
-	void Update()
+    void Update()
     {
         if (GlobalSettings.currentSceneIsNew)
             Initialize();
@@ -31,10 +31,10 @@ public class GameManager : MonoBehaviour
             _cameraFollow.lockRightEdge = true;
         else
             _cameraFollow.lockRightEdge = false;
-		if (GlobalSettings.winCondition)
-			Win();
+        if (GlobalSettings.winCondition)
+            Win();
 
-	}
+    }
 
 
     // Runs when a scene is loaded
@@ -47,10 +47,15 @@ public class GameManager : MonoBehaviour
         GlobalSettings.currentSceneIsNew = false;
     }
 
-	public void Win()
-	{
-		GlobalSettings.winCondition = false;
-		PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+    public void Win()
+    {
+        GlobalSettings.winCondition = false;
+
+        foreach (Perk p in PerkManager.perkList)
+        {
+            if (p.setToBeUnlocked)
+                PerkManager.UpdatePerkStatus(p.perkName, 1);
+        }
         _levelManager.loadNextLevel();
-	}
+    }
 }

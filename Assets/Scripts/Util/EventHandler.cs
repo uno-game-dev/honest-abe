@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
-public class EventHandler : MonoBehaviour {
+public class EventHandler : MonoBehaviour
+{
 
-	private GameManager _gameManager;
-
-	public enum Events
+    public enum Events
     {
         LIGHT_SWING,
         LIGHT_HIT,
@@ -21,7 +20,9 @@ public class EventHandler : MonoBehaviour {
         GAME_LOSE,
         GAME_WIN,
         JUMP,
-        LAND
+        LAND,
+        BEAR_HIT,
+		ROBERT_E_LEE_KILL
     }
 
     public static void SendEvent(Events e)
@@ -34,34 +35,35 @@ public class EventHandler : MonoBehaviour {
         switch (e)
         {
             case Events.LIGHT_SWING:
-				AudioManager.instance.PlaySound("Light_Slash");
+                AudioManager.instance.PlaySound("Light_Slash");
                 Debug.Log("Light Swing");
                 break;
             case Events.LIGHT_HIT:
-				AudioManager.instance.PlaySound("Stab_2");
-			AudioManager.instance.PlaySound("Impact");
+                AudioManager.instance.PlaySound("Stab_2");
+                AudioManager.instance.PlaySound("Impact");
                 Debug.Log("Light Hit");
                 break;
             case Events.LIGHT_KILL:
                 Debug.Log("Light Kill");
-                GlobalSettings.enemiesKilled++;
+                PerkManager.enemiesKilled++;
                 break;
             case Events.HEAVY_SWING:
-				AudioManager.instance.PlaySound("Heavy_Slash");
+                AudioManager.instance.PlaySound("Heavy_Slash");
                 Debug.Log("Heavy Swing");
                 GlobalSettings.performingHeavyAttack = true;
                 break;
             case Events.HEAVY_HIT:
                 Debug.Log("Heavy Hit");
-				AudioManager.instance.PlaySound("Stab_2");
-				AudioManager.instance.PlaySound("Hit_Crack");
+                AudioManager.instance.PlaySound("Stab_2");
+                AudioManager.instance.PlaySound("Hit_Crack");
                 PerkManager.PerformPerkEffects(Perk.PerkCategory.AXE);
                 break;
             case Events.HEAVY_KILL:
                 Debug.Log("Heavy Kill");
-				AudioManager.instance.PlaySound("Hit_Crack");
-				AudioManager.instance.PlaySound("Gore_1");
-                GlobalSettings.enemiesKilled++;
+                AudioManager.instance.PlaySound("Hit_Crack");
+                AudioManager.instance.PlaySound("Gore_1");
+				PerkManager.enemiesKilled++;
+				PerkManager.enemiesKilled++;
                 GlobalSettings.executionsPerformed++;
                 break;
             case Events.WEAPON_THROW:
@@ -83,24 +85,48 @@ public class EventHandler : MonoBehaviour {
                 break;
             case Events.PERK_PICKUP:
                 Debug.Log("Perk Pickup");
+                if (other != null && other.GetComponent<Perk>() != null)
+                {
+                    // Activate the perk
+                    // If the perk is not one that needs to be activated,
+                    //     then this will have no effect
+                    other.GetComponent<Perk>().Activate();
+                }
                 break;
             case Events.GAME_LOSE:
                 Debug.Log("Game Lose");
-				GlobalSettings.loseCondition = true;
+                GlobalSettings.loseCondition = true;
                 break;
             case Events.GAME_WIN:
                 Debug.Log("Game Win");
-				GlobalSettings.winCondition = true;
-                PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+                PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
+                GlobalSettings.winCondition = true;
                 break;
             case Events.JUMP:
                 Debug.Log("Jump");
-				AudioManager.instance.PlaySound("Jump");
+                AudioManager.instance.PlaySound("Jump");
                 break;
             case Events.LAND:
-				AudioManager.instance.PlaySound("Land");
+                AudioManager.instance.PlaySound("Land");
                 Debug.Log("Land");
                 break;
+            case Events.BEAR_HIT:
+                Debug.Log("BEAR HIT");
+                // When we hit the bear, check to see if we have an Attack component (other == Player G.O.)
+                if (other != null && other.GetComponent<Attack>() != null)
+                {
+                    // Every time we hit the bear, see if we're hitting him empty-handed
+                    if (!other.GetComponent<Attack>().emptyHanded)
+                    {
+                        // If we hit him with a weapon, cancel out the ability to earn the perk
+                        PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.hat_bearHands_name)).setToBeUnlocked = false;
+                    }
+                }
+                break;
+			case Events.ROBERT_E_LEE_KILL:
+				Debug.Log ("Killed Robert E. Lee");
+				PerkManager.UpdatePerkStatus (PerkManager.trinket_agressionBuddy_name, 1);
+				break;
         }
     }
 

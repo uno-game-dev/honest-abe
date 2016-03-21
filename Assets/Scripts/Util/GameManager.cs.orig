@@ -1,0 +1,69 @@
+﻿using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    public bool perkChosen;
+
+    private static GameObject _instance;
+
+    private CameraFollow _cameraFollow;
+    private LevelManager _levelManager;
+
+    void Awake()
+    {
+        if (_instance == null)
+            _instance = gameObject;
+        else if (_instance != gameObject)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {
+        _levelManager = GetComponent<LevelManager>();
+    }
+
+    void Update()
+    {
+        if (GlobalSettings.currentSceneIsNew)
+            Initialize();
+        if (!perkChosen)
+            _cameraFollow.lockRightEdge = true;
+        else
+            _cameraFollow.lockRightEdge = false;
+        if (GlobalSettings.winCondition)
+            Win();
+
+    }
+
+
+    // Runs when a scene is loaded
+    public void Initialize()
+    {
+        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        perkChosen = false;
+        GlobalSettings.loseCondition = false;
+        GlobalSettings.winCondition = false;
+        GlobalSettings.currentSceneIsNew = false;
+    }
+
+<<<<<<< be387fa62fcda785b129cdf86f2e724d6597124a
+	public void Win()
+	{
+		GlobalSettings.winCondition = false;
+		PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
+=======
+    public void Win()
+    {
+        GlobalSettings.winCondition = false;
+
+        foreach (Perk p in PerkManager.perkList)
+        {
+            if (p.setToBeUnlocked)
+                PerkManager.UpdatePerkStatus(p.perkName, 1);
+        }
+
+>>>>>>> Purged old BearAbe branch since it had lots of issues; Bear Abe perk is fully functioning
+        _levelManager.loadNextLevel();
+    }
+}

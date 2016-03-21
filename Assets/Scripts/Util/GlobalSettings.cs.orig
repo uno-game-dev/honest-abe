@@ -1,0 +1,31 @@
+﻿using UnityEngine;
+
+public class GlobalSettings : MonoBehaviour
+{
+    // Levels
+
+    public static bool winCondition = false;
+    public static bool loseCondition = false;
+    public static bool currentSceneIsNew = true;
+
+    // Player
+
+    public static int healthIncreaseAmount = 20;
+
+    public static float gravityMultiplier = 1f;
+    public static float gravity = -9.81f;
+
+    public static float playerMoveSpeedH = 8;
+    public static float playerMoveSpeedV = 6;
+    public static float playerMovementSmoothing = .115f;
+    public static float playerDefaultUnarmedLightDamage = 2;
+    public static float playerDefaultUnarmedHeavyDamage = 3;
+
+    public static int executionsPerformed = 0;
+    public static bool performingHeavyAttack = false;
+<<<<<<< be387fa62fcda785b129cdf86f2e724d6597124a
+}
+=======
+
+}
+>>>>>>> Purged old BearAbe branch since it had lots of issues; Bear Abe perk is fully functioning
