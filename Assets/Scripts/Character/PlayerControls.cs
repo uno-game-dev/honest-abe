@@ -30,7 +30,7 @@ public class PlayerControls : MonoBehaviour
 
         MobileInput.Action mobileAction = MobileInput.GetAction();
 
-        if (Input.GetButtonDown("Fire1") || mobileAction == MobileInput.Action.LightAttack)
+        if (mobileAction == MobileInput.Action.LightAttack)
         {
             if (_grab.state == Grabber.State.Hold)
                 _grab.Punch();
@@ -41,7 +41,7 @@ public class PlayerControls : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire2") || mobileAction == MobileInput.Action.HeavyAttack)
+        if (mobileAction == MobileInput.Action.HeavyAttack)
             if (_grab.state == Grabber.State.Hold)
                 _grab.Throw();
             else
@@ -63,13 +63,13 @@ public class PlayerControls : MonoBehaviour
             ResetHold();
         }
 
-        if (Input.GetButtonDown("Fire3") || Input.GetKeyDown(KeyCode.F) || mobileAction == MobileInput.Action.Grab)
+        if (mobileAction == MobileInput.Action.Grab)
             _grab.StartGrab();
 
-        if (Input.GetButtonDown("Jump") || mobileAction == MobileInput.Action.Jump)
+        if (mobileAction == MobileInput.Action.Jump)
             _jump.StartJump();
 
-        if (Input.GetKeyDown(KeyCode.E) || mobileAction == MobileInput.Action.Throw)
+        if (mobileAction == MobileInput.Action.Throw)
             _throw.StartThrow();
     }
 

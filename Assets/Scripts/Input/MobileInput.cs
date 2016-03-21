@@ -29,6 +29,8 @@ public class MobileInput : MonoBehaviour
         {
             foreach(Touch touch in Input.touches)
             {
+                Debug.LogErrorFormat("Touch #{0}: {1} {2}", touch.fingerId, touch.phase, touch.position);
+
                 if (isMoveTouch(touch))
                 {
                     if (touch.phase == TouchPhase.Began)
@@ -38,7 +40,7 @@ public class MobileInput : MonoBehaviour
                     else if (touch.phase == TouchPhase.Canceled || touch.phase == TouchPhase.Ended)
                         startMoveTouch = nullTouch;
                 }
-                else
+                else if (isActionTouch(touch))
                 {
                     if (touch.phase == TouchPhase.Began)
                         SetActionTouch(touch);
@@ -52,7 +54,28 @@ public class MobileInput : MonoBehaviour
             _horizontalAxisValue = Input.GetAxisRaw("Horizontal");
             _verticalAxisValue = Input.GetAxisRaw("Vertical");
 
+            if (Input.GetMouseButtonDown(0))
+                _lastAction = Action.LightAttack;
+            else if (Input.GetMouseButtonDown(1))
+                _lastAction = Action.HeavyAttack;
+            else if (Input.GetKeyDown(KeyCode.Space))
+                _lastAction = Action.Jump;
+            else if (Input.GetMouseButtonDown(2))
+                _lastAction = Action.Grab;
+            else if (Input.GetKeyDown(KeyCode.F))
+                _lastAction = Action.Grab;
+            else
+                _lastAction = Action.Null;
         }
+    }
+
+    private bool isActionTouch(Touch touch)
+    {
+        if (!startActionTouch.Equals(nullTouch))
+            if (startActionTouch.fingerId == touch.fingerId)
+                return true;
+
+        return touch.position.x > Screen.width / 2;
     }
 
     public static Action GetAction()
@@ -68,13 +91,16 @@ public class MobileInput : MonoBehaviour
         if (deltaPosition.magnitude < 10)
             _lastAction = Action.LightAttack;
         else if (SwipeLeft(deltaPosition))
-            _lastAction = Action.Grab;
+            _lastAction = Action.HeavyAttack;
         else if (SwipeRight(deltaPosition))
-            _lastAction = Action.Throw;
+            _lastAction = Action.HeavyAttack;
         else if (SwipeUp(deltaPosition))
             _lastAction = Action.Jump;
         else // if (SwipeDown(deltaPosition))
-            _lastAction = Action.HeavyAttack;
+            _lastAction = Action.Grab;
+
+        startActionTouch = nullTouch;
+        Debug.LogErrorFormat("{0} {1}", _lastAction, deltaPosition);
     }
 
     private bool SwipeLeft(Vector2 deltaPosition)
@@ -98,7 +124,7 @@ public class MobileInput : MonoBehaviour
     private bool SwipeUp(Vector2 deltaPosition)
     {
         if (Math.Abs(deltaPosition.y) >= Math.Abs(deltaPosition.x))
-            if (deltaPosition.y < 0)
+            if (deltaPosition.y > 0)
                 return true;
 
         return false;
@@ -109,12 +135,12 @@ public class MobileInput : MonoBehaviour
         _horizontalAxisValue = moveTouch.position.x;
         _horizontalAxisValue -= startMoveTouch.position.x;
         _horizontalAxisValue /= moveRadius;
-        _horizontalAxisValue = Mathf.Clamp01(_horizontalAxisValue);
+        _horizontalAxisValue = Mathf.Clamp(_horizontalAxisValue, -1, 1);
 
         _verticalAxisValue = moveTouch.position.y;
         _verticalAxisValue -= startMoveTouch.position.y;
         _verticalAxisValue /= moveRadius;
-        _verticalAxisValue = Mathf.Clamp01(_verticalAxisValue);
+        _verticalAxisValue = Mathf.Clamp(_verticalAxisValue, -1, 1);
     }
 
     private void SetActionTouch(Touch touch)
@@ -135,6 +161,10 @@ public class MobileInput : MonoBehaviour
 
     private bool isMoveTouch(Touch touch)
     {
+        if (!startMoveTouch.Equals(nullTouch))
+            if (startMoveTouch.fingerId == touch.fingerId)
+                return true;
+
         return touch.position.x <= Screen.width / 2;
     }
 
