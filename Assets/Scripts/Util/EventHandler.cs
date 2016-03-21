@@ -99,9 +99,8 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.GAME_WIN:
                 Debug.Log("Game Win");
-				Glettings.axe_dtVampirism_name, 1);
                 PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
-                GlManager.axe_dtVampirism_name, 1);
+                GlobalSettings.winCondition = true;
                 break;
             case Events.JUMP:
                 Debug.Log("Jump");
