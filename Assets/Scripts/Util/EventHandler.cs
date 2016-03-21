@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class EventHandler : MonoBehaviour {
 
@@ -47,7 +48,7 @@ public class EventHandler : MonoBehaviour {
                 Debug.Log("Light Kill");
                 break;
             case Events.HEAVY_SWING:
-				AudioManager.instance.PlaySound("Heavy_Slash");
+                AudioManager.instance.PlaySound("Heavy_Slash", .25f); 
                 Debug.Log("Heavy Swing");
                 break;
 			case Events.HEAVY_HIT:
