@@ -71,6 +71,10 @@ public class PlayerControls : MonoBehaviour
 
         if (mobileAction == MobileInput.Action.Throw)
             _throw.StartThrow();
+
+		if(Input.GetKeyDown(KeyCode.R)){
+			EventHandler.SendEvent(EventHandler.Events.ACTIVATE_TRINKET_PERK);
+		}
     }
 
     public void ResetHold()

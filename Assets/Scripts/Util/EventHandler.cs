@@ -21,7 +21,9 @@ public class EventHandler : MonoBehaviour {
         GAME_LOSE,
         GAME_WIN,
         JUMP,
-        LAND
+        LAND,
+		ROBERT_E_LEE_KILL,
+		ACTIVATE_TRINKET_PERK
     }
 
     public static void SendEvent(Events e)
@@ -91,7 +93,7 @@ public class EventHandler : MonoBehaviour {
             case Events.GAME_WIN:
                 Debug.Log("Game Win");
 				GlobalSettings.winCondition = true;
-                PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+				PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
                 break;
             case Events.JUMP:
                 Debug.Log("Jump");
@@ -101,6 +103,14 @@ public class EventHandler : MonoBehaviour {
 				AudioManager.instance.PlaySound("Land");
                 Debug.Log("Land");
                 break;
+			case Events.ROBERT_E_LEE_KILL:
+				Debug.Log ("Killed Robert E. Lee");
+				PerkManager.UpdatePerkStatus (PerkManager.trinket_agressionBuddy_name, 1);
+				break;
+			case Events.ACTIVATE_TRINKET_PERK:
+				Debug.Log ("Activate Trinket Perk");
+				PerkManager.PerformPerkEffects (Perk.PerkCategory.TRINKET);
+				break;
         }
     }
 
