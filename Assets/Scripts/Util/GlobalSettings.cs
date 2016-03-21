@@ -21,7 +21,4 @@ public class GlobalSettings : MonoBehaviour
 
     public static int executionsPerformed = 0;
     public static bool performingHeavyAttack = false;
-
-    // Section for variables that will determine unlocking perks
-    public static int enemiesKilled = 0;
 }

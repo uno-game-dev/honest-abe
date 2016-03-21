@@ -46,7 +46,7 @@ public class EventHandler : MonoBehaviour {
                 break;
             case Events.LIGHT_KILL:
                 Debug.Log("Light Kill");
-                GlobalSettings.enemiesKilled++;
+				PerkManager.enemiesKilled++;
                 break;
             case Events.HEAVY_SWING:
 				AudioManager.instance.PlaySound("Heavy_Slash");
@@ -63,7 +63,7 @@ public class EventHandler : MonoBehaviour {
                 Debug.Log("Heavy Kill");
 				AudioManager.instance.PlaySound("Hit_Crack");
 				AudioManager.instance.PlaySound("Gore_1");
-                GlobalSettings.enemiesKilled++;
+				PerkManager.enemiesKilled++;
                 GlobalSettings.executionsPerformed++;
                 break;
             case Events.WEAPON_THROW:
@@ -106,10 +106,6 @@ public class EventHandler : MonoBehaviour {
 			case Events.ROBERT_E_LEE_KILL:
 				Debug.Log ("Killed Robert E. Lee");
 				PerkManager.UpdatePerkStatus (PerkManager.trinket_agressionBuddy_name, 1);
-				break;
-			case Events.ACTIVATE_TRINKET_PERK:
-				Debug.Log ("Activate Trinket Perk");
-				PerkManager.PerformPerkEffects (Perk.PerkCategory.TRINKET);
 				break;
         }
     }

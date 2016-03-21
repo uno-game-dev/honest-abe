@@ -6,6 +6,9 @@ public class PerkManager : MonoBehaviour
 	public static bool axe_dtVampirism_unlocked = false;
 	public static bool trinket_agressionBuddy_unlocked = false;
 
+	// Section for variables that will determine unlocking perks
+	public static int enemiesKilled = 0;
+
 	// Perk names
 	public static string axe_none_name = "Axe_None";
 	public static string axe_none_desc = "Abe's Regular Axe";

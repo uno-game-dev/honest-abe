@@ -73,7 +73,7 @@ public class PlayerControls : MonoBehaviour
             _throw.StartThrow();
 
 		if(Input.GetKeyDown(KeyCode.R)){
-			EventHandler.SendEvent(EventHandler.Events.ACTIVATE_TRINKET_PERK);
+			PerkManager.PerformPerkEffects (Perk.PerkCategory.TRINKET);
 		}
     }
 
