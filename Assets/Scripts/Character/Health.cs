@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
 			// Execution Check
             if (gameObject.tag == "Enemy")
 			{
-				if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
+				if (gameObject.tag != "Player" && GameObject.Find("Player").GetComponent<Attack>().attackState == Attack.State.Heavy)
 				{
 					ShowExecution();
 					EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);

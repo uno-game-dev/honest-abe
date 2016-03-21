@@ -5,21 +5,20 @@ public class PlayerHealth : Health
 {
     public int damageThreshold = 100;
     public float decreaseSecondsPerHealthPoint = 1;
+	public int executionsPerformed = 0;
 
-    [HideInInspector]
-    private int _tempHealth;
+	[HideInInspector]
+	private HealthSlider _slider;
+	private GameManager _gameManager;
+	private int _tempHealth;
     private int _tempDamageThreshold;
     private float _updateSliderTime = 1;
-    private HealthSlider _slider;
-	private GameManager _gameManager;
-	public int executionsPerformed;
 
 	void Start()
 	{
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
         alive = false;
-		GlobalSettings.executionsPerformed = 0;
     }
 
     void Update()
@@ -154,12 +153,7 @@ public class PlayerHealth : Health
             }
         }
     }
-
-	public void AddExecution()
-	{
-		executionsPerformed++;
-	}
-
+	
     private void Execution()
     {
         // Make sure damageThreshold does not go above 120

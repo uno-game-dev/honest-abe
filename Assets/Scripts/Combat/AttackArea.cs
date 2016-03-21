@@ -20,21 +20,24 @@ public class AttackArea : MonoBehaviour
     }
 
     private void OnEnable()
-    {
-        _collision.OnCollisionEnter += OnCollision;
+	{
+		_collision.OnCollisionEnter += OnCollision;
+		if (_attack.attackState == Attack.State.Heavy)
+			EventHandler.SendEvent(EventHandler.Events.HEAVY_SWING);
 
-        if (_chainAttack && _chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
+		if (_chainAttack && _chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
             _updateChainAttack = false;
         else
             _updateChainAttack = true;
-    }
+	}
 
     private void OnDisable()
     {
-		EventHandler.SendEvent(EventHandler.Events.HEAVY_SWING_END);
 		_collision.OnCollisionEnter -= OnCollision;
+
         if (!hit && _chainAttack)
             _chainAttack.Miss();
+
         hit = null;
         _colliders.Clear();
     }
@@ -48,8 +51,10 @@ public class AttackArea : MonoBehaviour
 
         if (transform.parent.gameObject.tag == "Player")
         {
-            if (_attack.attackState == Attack.State.Heavy) EventHandler.SendEvent(EventHandler.Events.HEAVY_HIT);
-            else if ( _attack.attackState == Attack.State.Light) EventHandler.SendEvent(EventHandler.Events.LIGHT_HIT);
+            if (_attack.attackState == Attack.State.Heavy)
+				EventHandler.SendEvent(EventHandler.Events.HEAVY_HIT);
+            else if ( _attack.attackState == Attack.State.Light)
+				EventHandler.SendEvent(EventHandler.Events.LIGHT_HIT);
         }
 
         if (_updateChainAttack && _chainAttack)
