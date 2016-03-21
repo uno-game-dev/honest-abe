@@ -62,6 +62,8 @@ public class MobileInput : MonoBehaviour
                 _lastAction = Action.Jump;
             else if (Input.GetMouseButtonDown(2))
                 _lastAction = Action.Grab;
+            else if (Input.GetKeyDown(KeyCode.E))
+                _lastAction = Action.Throw;
             else if (Input.GetKeyDown(KeyCode.F))
                 _lastAction = Action.Grab;
             else
@@ -91,7 +93,7 @@ public class MobileInput : MonoBehaviour
         if (deltaPosition.magnitude < 10)
             _lastAction = Action.LightAttack;
         else if (SwipeLeft(deltaPosition))
-            _lastAction = Action.HeavyAttack;
+            _lastAction = Action.Throw;
         else if (SwipeRight(deltaPosition))
             _lastAction = Action.HeavyAttack;
         else if (SwipeUp(deltaPosition))

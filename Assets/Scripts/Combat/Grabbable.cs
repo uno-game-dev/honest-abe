@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using BehaviourMachine;
 
 [RequireComponent(typeof(BaseCollision))]
 [RequireComponent(typeof(Movement))]
@@ -11,7 +12,7 @@ public class Grabbable : MonoBehaviour
     private Animator _animator;
     private Movement _movement;
     private EnemyFollow _movementAI;
-    private InfantryAI _attackAI;
+    private StateMachine _attackAI;
     private BaseCollision _collision;
     private GameObject _grabbedBy;
     private Transform _previousParent;
@@ -24,7 +25,8 @@ public class Grabbable : MonoBehaviour
         _animator = GetComponent<Animator>();
         _movement = GetComponent<Movement>();
         _movementAI = GetComponent<EnemyFollow>();
-        _attackAI = GetComponent<InfantryAI>();
+        _attackAI = GetComponent<StateMachine>();
+
         _collision = GetComponent<BaseCollision>();
         _characterState = GetComponent<CharacterState>();
         _knockDown = GetComponent<KnockDown>();

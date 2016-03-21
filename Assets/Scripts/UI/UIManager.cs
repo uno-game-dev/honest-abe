@@ -89,6 +89,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OnPressEnterAtBeginning()
+    {
+        updateActive = true;
+        _startGameText.SetActive(false);
+    }
+
 	private void SetListenersForPauseUI()
 	{
 		_pauseUI = GameObject.Find("PauseUI");

@@ -23,6 +23,7 @@ public abstract class BaseAttack : MonoBehaviour
 
     private void Awake()
     {
+		animator = GetComponent<Animator> ();
         _characterState = GetComponent<CharacterState>();
         _collision = GetComponent<BaseCollision>();
     }
@@ -33,10 +34,7 @@ public abstract class BaseAttack : MonoBehaviour
         PrepareToLightAttack();
 
         if (tag == "Boss")
-            if (Random.value > 0.5)
-                AudioManager.instance.PlayBossSound(0);
-            else
-                AudioManager.instance.PlayBossSound(1);
+			;
     }
 
     public void StartHeavyAttack()
@@ -45,10 +43,7 @@ public abstract class BaseAttack : MonoBehaviour
         PrepareToHeavyAttack();
 
         if (tag == "Boss")
-            if (Random.value > 0.5)
-                AudioManager.instance.PlayBossSound(0);
-            else
-                AudioManager.instance.PlayBossSound(1);
+           	;
     }
 
     protected virtual void PrepareToLightAttack()
