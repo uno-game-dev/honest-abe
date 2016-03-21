@@ -3,13 +3,19 @@
 public class PreferenceManager : MonoBehaviour
 {
 
-    void Awake()
-    {
-        // Axe DT Vampirism
-        if (!PlayerPrefs.HasKey(GlobalSettings.axe_dtVampirism_name))
-            PlayerPrefs.SetInt(GlobalSettings.axe_dtVampirism_name, 0);
+	void Awake()
+	{
+		// Axe DT Vampirism
+		if (!PlayerPrefs.HasKey(PerkManager.axe_dtVampirism_name))
+			PlayerPrefs.SetInt(PerkManager.axe_dtVampirism_name, 0);
 
-        GlobalSettings.axe_dtVampirism_unlocked = PlayerPrefs.GetInt(GlobalSettings.axe_dtVampirism_name) == 1;
-    }
+		PerkManager.axe_dtVampirism_unlocked = PlayerPrefs.GetInt(PerkManager.axe_dtVampirism_name) == 1;
+
+		// Trinket Aggression Buddy 
+		if (!PlayerPrefs.HasKey(PerkManager.trinket_agressionBuddy_name))
+			PlayerPrefs.SetInt(PerkManager.trinket_agressionBuddy_name, 0);
+
+		PerkManager.trinket_agressionBuddy_unlocked = PlayerPrefs.GetInt(PerkManager.trinket_agressionBuddy_name) == 1;
+	}
 
 }

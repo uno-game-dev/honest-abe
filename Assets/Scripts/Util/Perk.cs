@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿	using UnityEngine;
 
 public class Perk : MonoBehaviour
 {
@@ -23,7 +23,8 @@ public class Perk : MonoBehaviour
         NONE_AXE,
         NONE_HAT,
         NONE_TRINKET,
-        AXE_DTVAMPIRISM
+        AXE_DTVAMPIRISM,
+		TRINKET_AGGRESSIONBUDDY	
     }
     public PerkType type;
 
@@ -51,6 +52,9 @@ public class Perk : MonoBehaviour
     private PlayerHealth playerHealth;
     private Weapon weapon;
     private Attack playerAttack;
+	[HideInInspector]
+	public static float trinketTimeStamp = 0f;
+	private static float trinketCoolDown;
 
     void Start()
     {
@@ -67,8 +71,8 @@ public class Perk : MonoBehaviour
         {
             case PerkType.NONE_AXE:
                 _category = PerkCategory.NONE_AXE;
-                _perkName = GlobalSettings.axe_none_name;
-                _perkDesc = GlobalSettings.axe_none_desc;
+				_perkName = PerkManager.axe_none_name;
+				_perkDesc = PerkManager.axe_none_desc;
                 unlocked = true;
                 break;
             case PerkType.NONE_HAT:
@@ -83,12 +87,18 @@ public class Perk : MonoBehaviour
                 break;
             case PerkType.AXE_DTVAMPIRISM:
                 _category = PerkCategory.AXE;
-                _perkDesc = GlobalSettings.axe_dtVampirism_desc;
-                _perkName = GlobalSettings.axe_dtVampirism_name;
-                unlocked = GlobalSettings.axe_dtVampirism_unlocked;
+				_perkDesc = PerkManager.axe_dtVampirism_desc;
+				_perkName = PerkManager.axe_dtVampirism_name;
+				unlocked = PerkManager.axe_dtVampirism_unlocked;
                 break;
             default:
                 break;
+			case PerkType.TRINKET_AGGRESSIONBUDDY:
+				_category = PerkCategory.TRINKET;
+				_perkDesc = PerkManager.trinket_agressionBuddy_desc;
+				_perkName = PerkManager.trinket_agressionBuddy_name;
+				unlocked = PerkManager.trinket_agressionBuddy_unlocked;
+				break;
         }
 
         if (!unlocked)
@@ -118,10 +128,14 @@ public class Perk : MonoBehaviour
                 PerkManager.activeHatPerk = this;
                 PerkManager.HatPerkEffect += HatEffect;
                 break;
-            case PerkCategory.TRINKET:
-                PerkManager.activeTrinketPerk = this;
-                PerkManager.TrinketPerkEffect += TrinketEffect;
-                break;
+			case PerkCategory.TRINKET:
+				PerkManager.activeTrinketPerk = this;
+				PerkManager.TrinketPerkEffect += TrinketEffect;
+				trinketCoolDown = 30f;
+				if (GameObject.Find ("Trinket_Sprite_Placeholder") != null) {
+					GameObject.Find ("Trinket_Sprite_Placeholder").SetActive (false);
+				}
+				break;
             default:
                 break;
         }

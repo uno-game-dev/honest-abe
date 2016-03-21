@@ -40,6 +40,10 @@ public class UIManager : MonoBehaviour
 	private Button _loseUIYesButton;
 	private Button _loseUINoButton;
 
+	//Trinket UI
+	[HideInInspector]
+	public static Text _trinketUI;
+
 	void Awake()
 	{
 		updateActive = false;
@@ -55,6 +59,8 @@ public class UIManager : MonoBehaviour
         perkText.enabled = false;
 		bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
 		bossHealthUI.enabled = false;
+		_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
+		_trinketUI.enabled = false;
     }
 
     void Update()
@@ -87,6 +93,12 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(false);
             Time.timeScale = 1;
         }
+
+		if ((PerkManager.activeTrinketPerk != null) && (Perk.trinketTimeStamp <= Time.time)) {
+			_trinketUI.enabled = true;
+		} else {
+			_trinketUI.enabled = false;
+		}
     }
 
     public void OnPressEnterAtBeginning()
