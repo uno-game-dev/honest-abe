@@ -95,54 +95,39 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 9486
+  m_CachedInstanceID: 23264
   m_Description: 526f746174657320746865206f626a656374206f7665722074696d652e
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
   m_EnabledStates: []
   m_NodeSerialization:
     m_NodeTypes:
-    - 4265686176696f75724d616368696e652e557064617465
-    - 4265686176696f75724d616368696e652e526f74617465
-    m_NodeTypeHash: 89ef82103a2a045b
-    m_NodeFieldStartIndex: 00000000030000000f000000
+    - BehaviourMachine.MissingNode
+    - BehaviourMachine.MissingNode
+    m_NodeTypeHash: 38ebee3938ebee39
+    m_NodeFieldStartIndex: 000000000300000006000000
     m_BranchIndex: ffffffff00000000
     m_UnityObjectValue: []
-    m_IntValue: 0200000001000000010000000100000001000000
-    m_FloatValue:
-    - 15
-    - 30
-    - 45
+    m_IntValue: 0000000000000000
+    m_FloatValue: []
     m_StringValue:
-    - 557064617465
-    - 526f74617465
-    - 4265686176696f75724d616368696e652e436f6e637265746547616d654f626a656374566172
-    - 4265686176696f75724d616368696e652e436f6e6372657465566563746f7233566172
+    - MissingNode
+    - 4265686176696f75724d616368696e652e557064617465
+    - MissingNode
+    - 4265686176696f75724d616368696e652e526f74617465
     m_CurveValue: []
-    m_GenericFieldType:
-    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
-    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
-    - 4265686176696f75724d616368696e652e436f6e6372657465466c6f6174566172
-    m_GenericFieldHash: 264ce8ef264ce8ef264ce8ef
-    m_GenericFieldSize: 010000000100000001000000
-    m_FieldIndex: 000000000000000001000000020000000100000002000000030000000000000000000000010000000100000002000000020000000300000004000000
-    m_FieldType: 010000000200000005000000010000000200000011000000110000001000000003000000100000000300000010000000030000000400000005000000
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 000000000000000001000000010000000200000003000000
+    m_FieldType: 010000000200000002000000010000000200000002000000
     m_FieldPath:
-    - 696e7374616e63654944
-    - 6e616d65
-    - 656e61626c6564
-    - 696e7374616e63654944
-    - 6e616d65
-    - 67616d654f626a656374
-    - 65756c6572416e676c6573
-    - 78
-    - 782e76616c7565
-    - 79
-    - 792e76616c7565
-    - 7a
-    - 7a2e76616c7565
-    - 72656c61747665546f
-    - 7065725365636f6e64
+    - instanceID
+    - name
+    - missingNodeType
+    - instanceID
+    - name
+    - missingNodeType
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,8 +151,10 @@ MonoBehaviour:
   m_TextureVars: []
   m_MaterialVars: []
   m_ObjectVars: []
+  m_DynamicLists: []
   m_FsmEvents: []
   m_ConcreteFsmEvents: []
+  m_Namespace: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
