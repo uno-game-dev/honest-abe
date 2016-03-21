@@ -133,6 +133,7 @@ public class Perk : MonoBehaviour
 				PerkManager.TrinketPerkEffect += TrinketEffect;
 				trinketCoolDown = 30f;
 				if (GameObject.Find ("Trinket_Sprite_Placeholder") != null) {
+					GameObject.Find ("Trinket_Sprite_Placeholder").transform.SetParent(GameObject.Find("Player").transform, true);
 					GameObject.Find ("Trinket_Sprite_Placeholder").SetActive (false);
 				}
 				break;
@@ -158,10 +159,9 @@ public class Perk : MonoBehaviour
     private void TrinketEffect()
     {
 		if(type == PerkType.TRINKET_AGGRESSIONBUDDY){
-			//Need to ask design team how much to increase DT
 			//Acitvate Effect after 30second cooldown
 			if (trinketTimeStamp <= Time.time) {
-				playerHealth.IncreaseDT(10);
+				playerHealth.IncreaseDT(20);
 				trinketTimeStamp = Time.time + trinketCoolDown;
 			}
 		}
