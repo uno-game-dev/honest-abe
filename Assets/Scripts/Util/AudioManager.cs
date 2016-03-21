@@ -83,7 +83,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Sounds.ContainsKey(name))
             if (delay <= 0)
-                AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 0.7f);
+                AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 1f);
             else
                 StartCoroutine(DelayedPlay(name, delay));
     }
@@ -91,7 +91,13 @@ public class AudioManager : MonoBehaviour
     public IEnumerator DelayedPlay(string name, float delay)
     {
             yield return new WaitForSeconds(delay);
-            AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 0.7f);
+            AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 1f);
+    }
+
+    public void PlayFootstep()
+    {
+        string StepKey = string.Concat( "Step_" , Random.Range(0, 6) );
+        PlaySound(StepKey);
     }
 
     /*

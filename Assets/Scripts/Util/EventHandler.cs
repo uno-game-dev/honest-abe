@@ -23,7 +23,8 @@ public class EventHandler : MonoBehaviour {
         GAME_LOSE,
         GAME_WIN,
         JUMP,
-        LAND
+        LAND,
+        STEP
     }
 
     public static void SendEvent(Events e)
@@ -99,6 +100,10 @@ public class EventHandler : MonoBehaviour {
             case Events.LAND:
 				AudioManager.instance.PlaySound("Land");
                 Debug.Log("Land");
+                break;
+            case Events.STEP:
+                AudioManager.instance.PlayFootstep();
+                Debug.Log("Step");
                 break;
         }
     }
