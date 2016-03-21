@@ -24,8 +24,11 @@ public class Perk : MonoBehaviour
         NONE_HAT,
         NONE_TRINKET,
         AXE_DTVAMPIRISM,
-        HAT_BEARHANDS,
+<<<<<<< be387fa62fcda785b129cdf86f2e724d6597124a
 		TRINKET_AGGRESSIONBUDDY	
+=======
+        HAT_BEARHANDS
+>>>>>>> Purged old BearAbe branch since it had lots of issues; Bear Abe perk is fully functioning
     }
     public PerkType type;
 
@@ -71,8 +74,13 @@ public class Perk : MonoBehaviour
         {
             case PerkType.NONE_AXE:
                 _category = PerkCategory.NONE_AXE;
+<<<<<<< be387fa62fcda785b129cdf86f2e724d6597124a
 				_perkName = PerkManager.axe_none_name;
 				_perkDesc = PerkManager.axe_none_desc;
+=======
+                _perkName = PerkManager.axe_none_name;
+                _perkDesc = PerkManager.axe_none_desc;
+>>>>>>> Purged old BearAbe branch since it had lots of issues; Bear Abe perk is fully functioning
                 unlocked = true;
                 break;
             case PerkType.NONE_HAT:
@@ -87,6 +95,11 @@ public class Perk : MonoBehaviour
                 break;
             case PerkType.AXE_DTVAMPIRISM:
                 _category = PerkCategory.AXE;
+<<<<<<< be387fa62fcda785b129cdf86f2e724d6597124a
+				_perkDesc = PerkManager.axe_dtVampirism_desc;
+				_perkName = PerkManager.axe_dtVampirism_name;
+				unlocked = PerkManager.axe_dtVampirism_unlocked;
+=======
                 _perkDesc = PerkManager.axe_dtVampirism_desc;
                 _perkName = PerkManager.axe_dtVampirism_name;
                 unlocked = PerkManager.axe_dtVampirism_unlocked;
@@ -97,6 +110,9 @@ public class Perk : MonoBehaviour
                 _perkName = PerkManager.hat_bearHands_name;
                 unlocked = PerkManager.hat_bearHands_unlocked;
                 if (!unlocked) setToBeUnlocked = true;
+>>>>>>> Purged old BearAbe branch since it had lots of issues; Bear Abe perk is fully functioning
+                break;
+            default:
                 break;
 			case PerkType.TRINKET_AGGRESSIONBUDDY:
 				_category = PerkCategory.TRINKET;
@@ -104,8 +120,6 @@ public class Perk : MonoBehaviour
 				_perkName = PerkManager.trinket_agressionBuddy_name;
 				unlocked = PerkManager.trinket_agressionBuddy_unlocked;
 				break;
-			default:
-                break;
         }
 
         if (!unlocked)
@@ -136,6 +150,7 @@ public class Perk : MonoBehaviour
                 PerkManager.HatPerkEffect += HatEffect;
                 Destroy(gameObject);
                 break;
+<<<<<<< be387fa62fcda785b129cdf86f2e724d6597124a
 			case PerkCategory.TRINKET:
 				PerkManager.activeTrinketPerk = this;
 				PerkManager.TrinketPerkEffect += TrinketEffect;
@@ -145,6 +160,13 @@ public class Perk : MonoBehaviour
 					GameObject.Find ("Trinket_Sprite_Placeholder").SetActive (false);
 				}
 				break;
+=======
+            case PerkCategory.TRINKET:
+                PerkManager.activeTrinketPerk = this;
+                PerkManager.TrinketPerkEffect += TrinketEffect;
+                Destroy(gameObject);
+                break;
+>>>>>>> Purged old BearAbe branch since it had lots of issues; Bear Abe perk is fully functioning
             default:
                 break;
         }

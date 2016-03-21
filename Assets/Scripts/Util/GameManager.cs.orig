@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour
         GlobalSettings.currentSceneIsNew = false;
     }
 
+<<<<<<< be387fa62fcda785b129cdf86f2e724d6597124a
+	public void Win()
+	{
+		GlobalSettings.winCondition = false;
+		PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
+=======
     public void Win()
     {
         GlobalSettings.winCondition = false;
@@ -56,5 +62,8 @@ public class GameManager : MonoBehaviour
             if (p.setToBeUnlocked)
                 PerkManager.UpdatePerkStatus(p.perkName, 1);
         }
-		_levelManager.loadNextLevel();
+
+>>>>>>> Purged old BearAbe branch since it had lots of issues; Bear Abe perk is fully functioning
+        _levelManager.loadNextLevel();
+    }
 }
