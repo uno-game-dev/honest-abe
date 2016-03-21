@@ -157,6 +157,13 @@ public class Perk : MonoBehaviour
 
     private void TrinketEffect()
     {
-
+		if(type == PerkType.TRINKET_AGGRESSIONBUDDY){
+			//Need to ask design team how much to increase DT
+			//Acitvate Effect after 30second cooldown
+			if (trinketTimeStamp <= Time.time) {
+				playerHealth.IncreaseDT(10);
+				trinketTimeStamp = Time.time + trinketCoolDown;
+			}
+		}
     }
 }
