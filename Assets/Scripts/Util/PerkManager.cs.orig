@@ -3,6 +3,33 @@ using System.Collections.Generic;
 
 public class PerkManager : MonoBehaviour
 {
+<<<<<<< be387fa62fcda785b129cdf86f2e724d6597124a
+	// Perk unlocked states
+	public static bool axe_dtVampirism_unlocked = false;
+	public static bool trinket_agressionBuddy_unlocked = false;
+
+	// Section for variables that will determine unlocking perks
+	public static int enemiesKilled = 0;
+
+	// Perk names
+	public static string axe_none_name = "Axe_None";
+	public static string axe_none_desc = "Abe's Regular Axe";
+
+	public static string axe_dtVampirism_name = "Axe_DTVampirism";
+	public static string axe_dtVampirism_desc = "Perk: Vampirism\nRestores damage threshold on all heavy attacks";
+
+	public static string trinket_agressionBuddy_name = "Trinket_AggressionBuddy";
+	public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold with a cooldown of 30sec.";
+
+	public static Perk activeAxePerk = null;
+	public static Perk activeHatPerk = null;
+	public static Perk activeTrinketPerk = null;
+
+	public delegate void PerkEffectHandler();
+	public static event PerkEffectHandler AxePerkEffect = delegate { };
+	public static event PerkEffectHandler HatPerkEffect = delegate { };
+	public static event PerkEffectHandler TrinketPerkEffect = delegate { };
+=======
 
     /*
      * Individual Perk Information
@@ -10,7 +37,6 @@ public class PerkManager : MonoBehaviour
     // Perk unlocked states
     public static bool axe_dtVampirism_unlocked = false;
     public static bool hat_bearHands_unlocked = false;
-	public static bool trinket_agressionBuddy_unlocked = false;
 
     // Perk names
     public static string axe_none_name = "Axe_None";
@@ -22,9 +48,6 @@ public class PerkManager : MonoBehaviour
     public static string hat_bearHands_name = "Hat_bearHands";
     public static string hat_bearHands_desc = "Perk: Bear Hands\nIncreased damage on all empty-handed attacks";
 
-	public static string trinket_agressionBuddy_name = "Trinket_AggressionBuddy";
-	public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold with a cooldown of 30sec.";
-
 
     /*
      * Individual Perk Unlock Requirements
@@ -35,15 +58,15 @@ public class PerkManager : MonoBehaviour
     /*
      * Core PerkManager Componenets
      */
+    public static Perk activeAxePerk = null;
+    public static Perk activeHatPerk = null;
+    public static Perk activeTrinketPerk = null;
 
-	public static Perk activeAxePerk = null;
-	public static Perk activeHatPerk = null;
-	public static Perk activeTrinketPerk = null;
-
-	public delegate void PerkEffectHandler();
-	public static event PerkEffectHandler AxePerkEffect = delegate { };
-	public static event PerkEffectHandler HatPerkEffect = delegate { };
-	public static event PerkEffectHandler TrinketPerkEffect = delegate { };
+    public delegate void PerkEffectHandler();
+    public static event PerkEffectHandler AxePerkEffect = delegate { };
+    public static event PerkEffectHandler HatPerkEffect = delegate { };
+    public static event PerkEffectHandler TrinketPerkEffect = delegate { };
+>>>>>>> Purged old BearAbe branch since it had lots of issues; Bear Abe perk is fully functioning
 
     /*
      * List of all perks in the game

@@ -1009,6 +1009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e58727fd2b4849e985ac211f70b8d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossName: Bear
 --- !u!114 &11420944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1027,7 +1028,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11186
+  m_CachedInstanceID: 11276
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1054,7 +1055,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11463318}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11194
+  m_CachedInstanceID: 11278
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1118,7 +1119,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11463318}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11188
+  m_CachedInstanceID: 11280
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1218,7 +1219,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11463318}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11192
+  m_CachedInstanceID: 11288
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1339,7 +1340,7 @@ MonoBehaviour:
     m_EventID: 158782084
   - m_Destination: {fileID: 11459682}
     m_EventID: 56118298
-  m_CachedInstanceID: 11190
+  m_CachedInstanceID: 11292
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1835,6 +1836,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[10]
       value: onSuccess
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bossName
+      value: Bear
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

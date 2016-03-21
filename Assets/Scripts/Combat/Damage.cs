@@ -30,9 +30,10 @@ public class Damage : MonoBehaviour
     public void ExecuteDamage(float damageAmount, Collider2D collider)
     {
         if (tag == "Enemy")
-			;
+            ;
         if (tag == "Boss")
-			;
+            if (GetComponent<Boss>() != null && GetComponent<Boss>().bossName == "Bear" && collider.transform.parent.gameObject != null)
+                EventHandler.SendEvent(EventHandler.Events.BEAR_HIT, collider.transform.parent.gameObject);
         if (collider)
             AddBlood(collider);
         if (health = GetComponent<Health>())
@@ -68,7 +69,7 @@ public class Damage : MonoBehaviour
 
                     return;
                 }
-			
+
         if (bloodSplatter)
         {
             GameObject blood = Instantiate(bloodSplatter);

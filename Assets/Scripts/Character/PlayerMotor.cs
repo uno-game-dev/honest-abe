@@ -96,7 +96,7 @@ public class PlayerMotor : MonoBehaviour
         if (collider.tag == "Perk")
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
             {
-                EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP);
+                EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
 
                 if (!_gameManager.perkChosen)
