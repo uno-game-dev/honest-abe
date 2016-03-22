@@ -40,6 +40,10 @@ ModelImporter:
     100064: OfficerHat
     100066: RightArm
     100068: RightLeg
+    100070: Blade
+    100072: Handle
+    100074: HandProtector
+    100076: SwordGroup
     400000: Body
     400002: Head
     400004: HumanRigChest
@@ -75,8 +79,30 @@ ModelImporter:
     400064: OfficerHat
     400066: RightArm
     400068: RightLeg
+    400070: Blade
+    400072: Handle
+    400074: HandProtector
+    400076: SwordGroup
     2300000: OfficerHat
+    2300002: Body
+    2300004: Head
+    2300006: LeftArm
+    2300008: LeftLeg
+    2300010: RightArm
+    2300012: RightLeg
+    2300014: Blade
+    2300016: Handle
+    2300018: HandProtector
     3300000: OfficerHat
+    3300002: Body
+    3300004: Head
+    3300006: LeftArm
+    3300008: LeftLeg
+    3300010: RightArm
+    3300012: RightLeg
+    3300014: Blade
+    3300016: Handle
+    3300018: HandProtector
     4300000: Body
     4300002: Head
     4300004: RightArm
@@ -84,6 +110,9 @@ ModelImporter:
     4300008: LeftArm
     4300010: LeftLeg
     4300012: OfficerHat
+    4300014: Blade
+    4300016: Handle
+    4300018: HandProtector
     9500000: //RootNode
     13700000: Body
     13700002: Head
@@ -101,7 +130,13 @@ ModelImporter:
     resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
+    animationImportErrors: '
+
+      Imported file ''Officer'' conversion failed: Transform ''HumanRigPelvis'' for
+      human bone ''Hips'' not found
+
+
+'
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
