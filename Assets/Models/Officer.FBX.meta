@@ -120,6 +120,10 @@ ModelImporter:
     13700006: LeftLeg
     13700008: RightArm
     13700010: RightLeg
+    13700012: Blade
+    13700014: Handle
+    13700016: HandProtector
+    13700018: OfficerHat
   materials:
     importMaterials: 1
     materialName: 0
@@ -130,14 +134,17 @@ ModelImporter:
     resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: '
-
-      Imported file ''Officer'' conversion failed: Transform ''HumanRigPelvis'' for
-      human bone ''Hips'' not found
-
-
-'
-    animationImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nDefault bone length found in this file is different
+      form the one found in the source avatar:\n\t'HumanRigLLeg1' : position error
+      = 23.710922 mm\n\t'HumanRigLLeg2' : position error = 59.762432 mm\n\t'HumanRigLLegAnkle'
+      : position error = 1.105698 mm\n\t'HumanRigRLeg1' : position error = 23.710922
+      mm\n\t'HumanRigRLeg2' : position error = 59.762474 mm\n\t'HumanRigRLegAnkle'
+      : position error = 1.105841 mm\n\t'HumanRigSpine2' : position error = 84.972313
+      mm\n\t'HumanRigChest' : position error = 84.972313 mm\n\t'HumanRigHead' : position
+      error = 4.331369 mm\n\t'HumanRigLArm2' : position error = 101.757004 mm\n\t'HumanRigLArmHand'
+      : position error = 65.328308 mm\n\t'HumanRigRArm2' : position error = 101.756920
+      mm\n\t'HumanRigRArmHand' : position error = 65.328819 mm\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
