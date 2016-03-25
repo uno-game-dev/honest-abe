@@ -10,8 +10,9 @@ public class EventHandler : MonoBehaviour {
         LIGHT_HIT,
         LIGHT_KILL,
         HEAVY_SWING,
-        HEAVY_HIT,
-        HEAVY_KILL,
+		HEAVY_SWING_END,
+		HEAVY_HIT,
+		HEAVY_KILL,
         WEAPON_THROW,
         ENEMY_THROW,
         ENEMY_GRAB,
@@ -44,14 +45,12 @@ public class EventHandler : MonoBehaviour {
                 break;
             case Events.LIGHT_KILL:
                 Debug.Log("Light Kill");
-                GlobalSettings.enemiesKilled++;
                 break;
             case Events.HEAVY_SWING:
 				AudioManager.instance.PlaySound("Heavy_Slash");
                 Debug.Log("Heavy Swing");
-                GlobalSettings.performingHeavyAttack = true;
                 break;
-            case Events.HEAVY_HIT:
+			case Events.HEAVY_HIT:
                 Debug.Log("Heavy Hit");
 				AudioManager.instance.PlaySound("Stab_2");
 				AudioManager.instance.PlaySound("Hit_Crack");
@@ -61,9 +60,8 @@ public class EventHandler : MonoBehaviour {
                 Debug.Log("Heavy Kill");
 				AudioManager.instance.PlaySound("Hit_Crack");
 				AudioManager.instance.PlaySound("Gore_1");
-                GlobalSettings.enemiesKilled++;
-                GlobalSettings.executionsPerformed++;
-                break;
+				GameObject.Find("Player").GetComponent<PlayerHealth>().executionsPerformed++;
+				break;
             case Events.WEAPON_THROW:
                 Debug.Log("Weapon Throw");
                 break;
@@ -86,11 +84,11 @@ public class EventHandler : MonoBehaviour {
                 break;
             case Events.GAME_LOSE:
                 Debug.Log("Game Lose");
-				GlobalSettings.loseCondition = true;
+				GameObject.Find("UI").GetComponent<UIManager>().ActivateLoseUI();
                 break;
             case Events.GAME_WIN:
                 Debug.Log("Game Win");
-				GlobalSettings.winCondition = true;
+				GameObject.Find("GameManager").GetComponent<GameManager>().Win();
                 PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
                 break;
             case Events.JUMP:
