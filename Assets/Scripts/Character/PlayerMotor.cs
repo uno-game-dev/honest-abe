@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
+    public float stepInterval = 0.6f;
+
+    private float stepElapsed = 0.0f;
     private Vector3 velocity;
+    private Jump jump;
     private Movement movement;
     private BaseCollision collision;
     private PlayerControls controls;
@@ -15,6 +19,7 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         movement = GetComponent<Movement>();
+        jump = GetComponent<Jump>();
         collision = GetComponent<BaseCollision>();
         collision.OnCollisionEnter += OnCollisionStart;
         collision.OnCollisionStay += OnCollisionUpdate;
@@ -36,6 +41,8 @@ public class PlayerMotor : MonoBehaviour
             velocity = new Vector2(MobileInput.GetAxis("Horizontal") * movement.horizontalMovementSpeed,
                 MobileInput.GetAxis("Vertical") * movement.vericalMovementSpeed);
             movement.Move(velocity);
+
+            UpdateStep();
         }
         else
         {
@@ -135,5 +142,23 @@ public class PlayerMotor : MonoBehaviour
 
         controls.ResetHold();
         controls.justClicked = false;
+    }
+
+    private void UpdateStep()
+    {
+        if (movement.state == Movement.State.Walk &&
+                (jump.state == Jump.State.Null) &&
+                (stepElapsed < stepInterval)
+            )
+        {
+            stepElapsed += Time.deltaTime;
+        }
+
+        if(stepInterval < stepElapsed)
+        {
+            EventHandler.SendEvent(EventHandler.Events.STEP);
+            stepElapsed = 0.0f;
+        }
+            
     }
 }

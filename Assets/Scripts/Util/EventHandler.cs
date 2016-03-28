@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class EventHandler : MonoBehaviour {
 
@@ -22,7 +23,8 @@ public class EventHandler : MonoBehaviour {
         GAME_LOSE,
         GAME_WIN,
         JUMP,
-        LAND
+        LAND,
+        STEP
     }
 
     public static void SendEvent(Events e)
@@ -47,7 +49,7 @@ public class EventHandler : MonoBehaviour {
                 Debug.Log("Light Kill");
                 break;
             case Events.HEAVY_SWING:
-				AudioManager.instance.PlaySound("Heavy_Slash");
+                AudioManager.instance.PlaySound("Heavy_Slash", .25f); 
                 Debug.Log("Heavy Swing");
                 break;
 			case Events.HEAVY_HIT:
@@ -98,6 +100,10 @@ public class EventHandler : MonoBehaviour {
             case Events.LAND:
 				AudioManager.instance.PlaySound("Land");
                 Debug.Log("Land");
+                break;
+            case Events.STEP:
+                AudioManager.instance.PlayFootstep();
+                Debug.Log("Step");
                 break;
         }
     }
