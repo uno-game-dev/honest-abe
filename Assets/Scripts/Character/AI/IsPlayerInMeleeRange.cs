@@ -17,7 +17,7 @@ public class IsPlayerInMeleeRange : ConditionNode {
 		distanceToPlayer = Mathf.Abs(player.transform.position.x - self.transform.position.x);
 		if (distanceToPlayer <= blackboard.GetFloatVar("meleeRange")) {
 			if (onSuccess.id != 0)
-				owner.root.SendEvent (onSuccess.id);			
+				owner.root.SendEvent (onSuccess.id);
 			return Status.Success;
 		}
 		return Status.Failure;
