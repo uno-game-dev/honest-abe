@@ -15,18 +15,18 @@ namespace BehaviourMachine {
         public static new GlobalBlackboard Instance {get {return InternalGlobalBlackboard.Instance as GlobalBlackboard;}}
 
         // BoolVars
-        public static readonly int pos1 = -1971413159;
-        public static readonly int pos2 = -711410029;
-        public static readonly int pos3 = -1919820276;
-        public static readonly int pos4 = -2113246250;
-        public static readonly int pos5 = -1959775906;
-        public static readonly int pos6 = -560891254;
-        public static readonly int pos7 = -771454815;
-        public static readonly int pos8 = -1413489053;
-        public static readonly int pos9 = -1305786331;
-        public static readonly int pos10 = -1263452720;
-        public static readonly int pos11 = -925501756;
-        public static readonly int pos12 = -562609553;
+        public static readonly int pos0 = -1590970472;
+        public static readonly int pos1 = -65171751;
+        public static readonly int pos2 = -1942185871;
+        public static readonly int pos3 = -1355125514;
+        public static readonly int pos4 = -499282970;
+        public static readonly int pos5 = -1703974517;
+        public static readonly int pos6 = -1580336978;
+        public static readonly int pos7 = -1900010396;
+        public static readonly int pos8 = -511172087;
+        public static readonly int pos9 = -565244373;
+        public static readonly int pos10 = -1348191675;
+        public static readonly int pos11 = -141174654;
         // FsmEvents
         public static readonly int APPLICATION_FOCUS = -1;
         public static readonly int APPLICATION_PAUSE = -2;
