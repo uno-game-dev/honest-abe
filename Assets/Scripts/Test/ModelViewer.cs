@@ -80,12 +80,12 @@ public class ModelViewer : MonoBehaviour
         frontModel.transform.SetParent(transform, false);
         backModel.transform.SetParent(transform, false);
 
-        topModel.transform.Translate(0, 0.5f, 0);
-        bottomModel.transform.Translate(1.2f, 0.5f, 0);
-        leftModel.transform.Translate(2.4f, 0, 0);
-        rightModel.transform.Translate(3.6f, 0, 0);
-        frontModel.transform.Translate(4.8f, 0, 0);
-        backModel.transform.Translate(6.0f, 0, 0);
+        topModel.transform.Translate(0, 0.5f*3, 0);
+        bottomModel.transform.Translate(1.2f*3, 0.5f*3, 0);
+        leftModel.transform.Translate(2.4f*3, 0, 0);
+        rightModel.transform.Translate(3.6f*3, 0, 0);
+        frontModel.transform.Translate(4.8f*3, 0, 0);
+        backModel.transform.Translate(6.0f*3, 0, 0);
 
         topModel.transform.Rotate(-90, 0, 0);
         bottomModel.transform.Rotate(90, 0, 0);
@@ -134,7 +134,7 @@ public class ModelViewer : MonoBehaviour
     {
         Vector3 position = Camera.main.transform.position;
         position.x = _startCameraPosition.x + (_startPosition.x - mousePosition.x) * CameraDragMultiplier;
-        position.x = Mathf.Clamp(position.x, 0, 6);
+        position.x = Mathf.Clamp(position.x, 0, 6*3);
         Camera.main.transform.position = position;
     }
 }
