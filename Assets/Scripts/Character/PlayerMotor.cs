@@ -112,17 +112,11 @@ public class PlayerMotor : MonoBehaviour
         {
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
-                //Debug.Log("1");
                 EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
-                //Debug.Log("2");
                 playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
-                //Debug.Log("3");
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
-                //Debug.Log("4");
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-                //Debug.Log("5");
                 playerAttack.emptyHanded = false;
-                //Debug.Log("6");
 
                 if (!_gameManager.perkChosen)
                 {
