@@ -7,7 +7,10 @@ public class Damage : MonoBehaviour
     public float damageAmount;
     public float damageRate = 0.2f;
     public GameObject bloodSplatter;
-    public GameObject bloodFountain;
+    public GameObject bloodSwing;
+    public GameObject bloodShoot;
+    public GameObject bloodMelee;
+    public GameObject bloodJab;
 
     private Health health;
     private BaseCollision collision;
@@ -56,24 +59,30 @@ public class Damage : MonoBehaviour
     {
         if (collider.GetComponentInParent<Attack>())
             if (collider.GetComponentInParent<Attack>().weapon)
-                if (collider.GetComponentInParent<Attack>().weapon.attackType == Weapon.AttackType.Swing)
-                {
-
-                    if (bloodFountain)
-                    {
-                        GameObject blood = Instantiate(bloodFountain);
-                        blood.transform.position = transform.position;
-                        Destroy(blood, 10);
-                    }
-
+            {
+                Weapon.AttackType attackType = collider.GetComponentInParent<Attack>().weapon.attackType;
+                if (attackType == Weapon.AttackType.Swing)
+                    InstantiateBlood(bloodSwing);
+                else if (attackType == Weapon.AttackType.Shoot)
+                    InstantiateBlood(bloodShoot);
+                else if (attackType == Weapon.AttackType.Melee)
+                    InstantiateBlood(bloodMelee);
+                else if (attackType == Weapon.AttackType.Jab)
+                    InstantiateBlood(bloodJab);
                     return;
-                }
+            }
+
+        InstantiateBlood(bloodSplatter);
 			
-        if (bloodSplatter)
-        {
-            GameObject blood = Instantiate(bloodSplatter);
-            blood.transform.localPosition = transform.position;
-            Destroy(blood, 10);
-        }
+    }
+
+    private void InstantiateBlood(GameObject bloodPrefab)
+    {
+        if (!bloodPrefab)
+            return;
+
+        GameObject blood = Instantiate(bloodPrefab);
+        blood.transform.position = transform.position;
+        Destroy(blood, 10);
     }
 }
