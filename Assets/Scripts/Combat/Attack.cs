@@ -20,7 +20,7 @@ public class Attack : MonoBehaviour
     private CharacterState _characterState;
     private ChainAttack _chainAttack;
 
-    private void Awake()
+    private void Start()
     {
         _animator = GetComponent<Animator>();
         _characterState = GetComponent<CharacterState>();
@@ -86,6 +86,7 @@ public class Attack : MonoBehaviour
             weapon.transform.GetChild(0).localPosition = Vector3.zero;
             weapon.gameObject.layer = gameObject.layer;
         }
+
     }
 
     public float GetDamageAmount()
