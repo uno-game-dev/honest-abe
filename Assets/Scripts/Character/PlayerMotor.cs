@@ -69,51 +69,47 @@ public class PlayerMotor : MonoBehaviour
         {
             collidersImOn.Add(collider);
             controls.ResetHold();
-
-            if (!_gameManager.perkChosen)
-            {
-                uiManager.perkText.enabled = true;
-                uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
-            }
+            uiManager.perkText.enabled = true;
+            uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
         }
 
         else if (collider.tag == "AbeAxe")
         {
             controls.ResetHold();
             collidersImOn.Add(collider);
-
-            if (!_gameManager.perkChosen)
-            {
-                uiManager.perkText.enabled = true;
-                uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
-            }
+            uiManager.perkText.enabled = true;
+            uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
         }
     }
 
     private void OnCollisionUpdate(Collider2D collider)
     {
         if (collider.tag == "Weapon")
+        {
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
                 EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
-                GetComponent<Attack>().SetWeapon(collider.gameObject.GetComponent<Weapon>());
+                playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
             }
+        }
 
         if (collider.tag == "Perk")
+        {
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
             {
                 EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP);
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-
                 if (!_gameManager.perkChosen)
                 {
                     _gameManager.perkChosen = true;
                     uiManager.perkText.enabled = false;
                 }
             }
+        }
 
         if (collider.tag == "AbeAxe")
+        {
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
                 EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
@@ -128,6 +124,7 @@ public class PlayerMotor : MonoBehaviour
                     uiManager.perkText.enabled = false;
                 }
             }
+        }
     }
 
     private void OnCollisionEnd(Collider2D collider)
