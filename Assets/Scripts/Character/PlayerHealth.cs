@@ -18,14 +18,14 @@ public class PlayerHealth : Health
 	{
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
-        alive = false;
+        alive = true;
     }
 
     void Update()
     {
         if (health <= 0)
             Death();
-		if (!alive)
+		if (alive)
 			// Decreases the timer to know when to update the damageSlider
 			_updateSliderTime -= Time.deltaTime;
 		UpdateHUD();
@@ -169,7 +169,7 @@ public class PlayerHealth : Health
 
     private void Death()
 	{
-		alive = true;
+		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
 		// Disable PlayerMotor script 
 		gameObject.GetComponent<PlayerMotor>().enabled = false;
