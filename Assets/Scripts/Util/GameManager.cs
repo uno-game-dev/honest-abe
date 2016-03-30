@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     public void Initialize()
     {
         _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
-        perkChosen = false;
         GlobalSettings.currentSceneIsNew = false;
     }
 

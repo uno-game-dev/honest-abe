@@ -306,25 +306,25 @@ GameObject:
   - 4: {fileID: 481366}
   - 61: {fileID: 6189650}
   - 95: {fileID: 9580994}
-  - 114: {fileID: 11401316}
-  - 114: {fileID: 11422054}
-  - 114: {fileID: 11418610}
-  - 114: {fileID: 11458750}
-  - 114: {fileID: 11402006}
+  - 114: {fileID: 11469148}
+  - 114: {fileID: 11440234}
   - 114: {fileID: 11407208}
   - 114: {fileID: 11413764}
-  - 114: {fileID: 11420284}
-  - 114: {fileID: 11440234}
-  - 114: {fileID: 11463734}
-  - 114: {fileID: 11492994}
-  - 114: {fileID: 11497008}
+  - 114: {fileID: 11458750}
+  - 114: {fileID: 11422054}
   - 114: {fileID: 11469688}
+  - 114: {fileID: 11420284}
+  - 114: {fileID: 11497008}
+  - 114: {fileID: 11463734}
   - 114: {fileID: 11451924}
-  - 114: {fileID: 11417068}
+  - 114: {fileID: 11492994}
+  - 114: {fileID: 11418610}
   - 114: {fileID: 11495206}
   - 114: {fileID: 11497030}
-  - 114: {fileID: 11453790}
+  - 114: {fileID: 11417068}
   - 114: {fileID: 11418594}
+  - 114: {fileID: 11401316}
+  - 114: {fileID: 11402006}
   - 114: {fileID: 11413124}
   m_Layer: 10
   m_Name: Player
@@ -1653,30 +1653,6 @@ MonoBehaviour:
   finishLightAttackTime: 0.05
   finishHeavyAttackTime: 0.1
   _hand: 0
---- !u!114 &11453790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4898cbcf71ead9b479ea5d7b22b74e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  animator: {fileID: 0}
-  attack: {fileID: 0}
-  attackArea: {fileID: 0}
-  strength: 0
-  state: 0
-  prepLightAttackTime: 0.3
-  prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.2
-  heavyAttackTime: 0.2
-  finishLightAttackTime: 0.1
-  finishHeavyAttackTime: 0.1
-  bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
 --- !u!114 &11458750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1713,6 +1689,17 @@ MonoBehaviour:
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 2
   heavyDamage: 3
+--- !u!114 &11469148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f204f6e76accd14799b04ae6a36384c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11469688
 MonoBehaviour:
   m_ObjectHideFlags: 1
