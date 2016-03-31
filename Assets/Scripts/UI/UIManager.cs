@@ -59,16 +59,14 @@ public class UIManager : MonoBehaviour
         perkText.enabled = false;
 		bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
 		bossHealthUI.enabled = false;
-		//_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
-		//_trinketUI.enabled = false;
-		//_maryToddsLocketteUI = GameObject.Find ("MaryToddsLocketteText").GetComponent<Text> ();
-		//_maryToddsLocketteUI.enabled = false;
+		_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
+		_trinketUI.enabled = false;
+		_maryToddsLocketteUI = GameObject.Find ("MaryToddsLocketteText").GetComponent<Text> ();
+		_maryToddsLocketteUI.enabled = false;
     }
 
     void Update()
     {
-		if (GlobalSettings.loseCondition)
-			_loseUI.SetActive(true);
 		if (!updateActive && Input.GetKeyDown(KeyCode.Return))
         {
             updateActive = true;
@@ -96,7 +94,7 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        /*
+        
 		if ((PerkManager.activeTrinketPerk != null) && (Perk.trinketTimeStamp <= Time.time)) {
 			_trinketUI.enabled = true;
 		} else {
@@ -108,7 +106,12 @@ public class UIManager : MonoBehaviour
 		} else {
 			_maryToddsLocketteUI.enabled = false;
 		}
-        */
+        
+    }
+
+    public void ActivateLoseUI()
+    {
+        _loseUI.SetActive(true);
     }
 
     public void OnPressEnterAtBeginning()

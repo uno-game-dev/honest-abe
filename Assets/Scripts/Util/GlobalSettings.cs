@@ -3,9 +3,6 @@
 public class GlobalSettings : MonoBehaviour
 {
     // Levels
-
-    public static bool winCondition = false;
-    public static bool loseCondition = false;
     public static bool currentSceneIsNew = true;
 
     // Player
@@ -20,8 +17,5 @@ public class GlobalSettings : MonoBehaviour
     public static float playerMovementSmoothing = .115f;
     public static float playerDefaultUnarmedLightDamage = 2;
     public static float playerDefaultUnarmedHeavyDamage = 3;
-
-    public static int executionsPerformed = 0;
-    public static bool performingHeavyAttack = false;
 
 }

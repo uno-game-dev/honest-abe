@@ -63,7 +63,6 @@ public class EventHandler : MonoBehaviour
             case Events.HEAVY_SWING:
                 AudioManager.instance.PlaySound("Heavy_Slash");
                 Debug.Log("Heavy Swing");
-                GlobalSettings.performingHeavyAttack = true;
                 break;
             case Events.HEAVY_HIT:
                 Debug.Log("Heavy Hit");
@@ -84,8 +83,7 @@ public class EventHandler : MonoBehaviour
                 AudioManager.instance.PlaySound("Hit_Crack");
                 AudioManager.instance.PlaySound("Gore_1");
 				PerkManager.enemiesKilled++;
-				PerkManager.enemiesKilled++;
-                GlobalSettings.executionsPerformed++;
+                GameObject.Find("Player").GetComponent<PlayerHealth>().executionsPerformed++;
                 break;
             case Events.WEAPON_THROW:
                 Debug.Log("Weapon Throw");
@@ -125,12 +123,12 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.GAME_LOSE:
                 Debug.Log("Game Lose");
-                GlobalSettings.loseCondition = true;
+                GameObject.Find("UI").GetComponent<UIManager>().ActivateLoseUI();
                 break;
             case Events.GAME_WIN:
                 Debug.Log("Game Win");
                 PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
-                GlobalSettings.winCondition = true;
+                GameObject.Find("GameManager").GetComponent<GameManager>().Win();
                 break;
             case Events.JUMP:
                 Debug.Log("Jump");
