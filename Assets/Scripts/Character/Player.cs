@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 	private static GameObject _instance;
 
 	private PlayerHealth _playerHealth;
+	private PlayerMotor _playerMotor;
 
 	void Awake ()
 	{
@@ -18,8 +19,9 @@ public class Player : MonoBehaviour
 
 	// Use this for initialization
 	void Start ()
-	{
+	{ 
 		_playerHealth = GetComponent<PlayerHealth>();
+		_playerMotor = GetComponent<PlayerMotor>();
     }
 	
 	// Update is called once per frame
@@ -39,5 +41,6 @@ public class Player : MonoBehaviour
 	{
 		Debug.Log("Initialize Player");
 		_playerHealth.Initialize();
+		_playerMotor.Initialize();
     }
 }
