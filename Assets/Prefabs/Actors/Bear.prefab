@@ -1011,6 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e58727fd2b4849e985ac211f70b8d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossName: Bear
 --- !u!114 &11420944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1029,7 +1030,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11400
+  m_CachedInstanceID: 9744
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1075,7 +1076,7 @@ MonoBehaviour:
     m_EventID: 1249890864
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 11412
+  m_CachedInstanceID: 18054
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1165,7 +1166,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 11410
+  m_CachedInstanceID: 18056
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1324,7 +1325,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11406
+  m_CachedInstanceID: 18058
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1384,6 +1385,7 @@ MonoBehaviour:
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 20
   heavyDamage: 50
+  throwDamage: 10
 --- !u!114 &11469500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1419,7 +1421,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11402
+  m_CachedInstanceID: 18060
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1508,7 +1510,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11408
+  m_CachedInstanceID: 18062
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1592,7 +1594,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11435718}
     m_EventID: 111391994
-  m_CachedInstanceID: 11404
+  m_CachedInstanceID: 18064
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2125,6 +2127,10 @@ Prefab:
       propertyPath: bloodMelee
       value: 
       objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bossName
+      value: Bear
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112324}
