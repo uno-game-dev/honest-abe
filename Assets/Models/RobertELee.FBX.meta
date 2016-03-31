@@ -105,6 +105,7 @@ ModelImporter:
     2300022: RightLeg
     2300024: Object001
     2300026: LeftGlove001
+    2300028: //RootNode
     3300000: RightGlove
     3300002: Blade
     3300004: Body
@@ -119,6 +120,7 @@ ModelImporter:
     3300022: RightLeg
     3300024: Object001
     3300026: LeftGlove001
+    3300028: //RootNode
     4300000: Body
     4300002: Head
     4300004: LeftArm
@@ -157,7 +159,13 @@ ModelImporter:
     resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
+    animationImportErrors: '
+
+      Imported file ''RobertELee'' conversion failed: Transform ''HumanRigPelvis''
+      for human bone ''Hips'' not found
+
+
+'
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
