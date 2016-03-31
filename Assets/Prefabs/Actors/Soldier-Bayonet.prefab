@@ -1562,7 +1562,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 11342
+  m_CachedInstanceID: 11202
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1678,7 +1678,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 11340
+  m_CachedInstanceID: 11200
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1780,12 +1780,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 2
-  attackSize: {x: 2, y: 1}
-  attackOffset: {x: 1.5, y: 0}
+  attackSize: {x: 4, y: 0.6}
+  attackOffset: {x: 1.5, y: 0.7}
   heldOffset: {x: -0.5, y: -0.013, z: -0.113}
   heldOrientation: {x: 35, y: 350, z: 198}
-  lightDamage: 20
-  heavyDamage: 40
+  lightDamage: 10
+  heavyDamage: 15
 --- !u!114 &11462540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1840,7 +1840,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11330
+  m_CachedInstanceID: 11190
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1867,7 +1867,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 11338
+  m_CachedInstanceID: 11198
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2033,7 +2033,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11492368}
     m_EventID: 1901486430
-  m_CachedInstanceID: 11336
+  m_CachedInstanceID: 11196
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2102,7 +2102,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 11334
+  m_CachedInstanceID: 11194
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2195,7 +2195,7 @@ MonoBehaviour:
     m_EventID: 734815261
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 11344
+  m_CachedInstanceID: 11204
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3158,6 +3158,26 @@ Prefab:
       propertyPath: bloodMelee
       value: 
       objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+    - target: {fileID: 0}
+      propertyPath: attackSize.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackOffset.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heavyDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.y
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}
