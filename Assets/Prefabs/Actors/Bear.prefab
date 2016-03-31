@@ -56,10 +56,12 @@ GameObject:
   - 114: {fileID: 11478744}
   - 114: {fileID: 11460448}
   - 114: {fileID: 11420944}
-  - 114: {fileID: 11430490}
-  - 114: {fileID: 11463318}
-  - 114: {fileID: 11459682}
-  - 114: {fileID: 11427506}
+  - 114: {fileID: 11473946}
+  - 114: {fileID: 11496958}
+  - 114: {fileID: 11466074}
+  - 114: {fileID: 11485854}
+  - 114: {fileID: 11450568}
+  - 114: {fileID: 11435718}
   m_Layer: 11
   m_Name: Bear
   m_TagString: Boss
@@ -1027,133 +1029,13 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11186
+  m_CachedInstanceID: 11400
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
-  m_StartState: {fileID: 11430490}
+  m_StartState: {fileID: 11473946}
   m_AnyState: {fileID: 0}
   m_ConcurrentState: {fileID: 0}
---- !u!114 &11427506
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Blackboard: {fileID: 11460448}
-  m_Parent: {fileID: 11420944}
-  m_StateName: Attack
-  m_Color: 0
-  m_HideScript: 1
-  m_Position: {x: 530, y: 70}
-  m_Transitions:
-  - m_Destination: {fileID: 11463318}
-    m_EventID: 1209066823
-  m_CachedInstanceID: 11194
-  m_Description: 
-  m_IgnoreTimeScale: 0
-  m_ResetStatusOnDisable: 1
-  m_EnabledStates: []
-  m_NodeSerialization:
-    m_NodeTypes:
-    - BehaviourMachine.OnEnable
-    - BehaviourMachine.Update
-    - BehaviourMachine.PrioritySelector
-    - IsPlayerOutOfRange
-    - AttackPlayer
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb23fbd4a944
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000d000000
-    m_BranchIndex: ffffffffffffffff010000000200000002000000
-    m_UnityObjectValue: []
-    m_IntValue: 01000000010000000200000001000000040000000300000047e5104805000000
-    m_FloatValue: []
-    m_StringValue:
-    - OnEnable
-    - Update
-    - PrioritySelector
-    - IsPlayerOutOfRange
-    - AttackPlayer
-    m_CurveValue: []
-    m_GenericFieldType: []
-    m_GenericFieldHash: 
-    m_GenericFieldSize: 
-    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e0000000100000002000000
-    m_FieldPath:
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - instanceID
-    - name
-    - onSuccess
-    - instanceID
-    - name
---- !u!114 &11430490
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Blackboard: {fileID: 11460448}
-  m_Parent: {fileID: 11420944}
-  m_StateName: Idle
-  m_Color: 0
-  m_HideScript: 1
-  m_Position: {x: 90, y: 70}
-  m_Transitions:
-  - m_Destination: {fileID: 11463318}
-    m_EventID: 1209066823
-  m_CachedInstanceID: 11188
-  m_Description: 
-  m_IgnoreTimeScale: 0
-  m_ResetStatusOnDisable: 1
-  m_EnabledStates: []
-  m_NodeSerialization:
-    m_NodeTypes:
-    - BehaviourMachine.OnEnable
-    - BehaviourMachine.Update
-    - IsPlayerInSight
-    m_NodeTypeHash: 89ef821089ef82104a2bcb23
-    m_NodeFieldStartIndex: 00000000030000000600000009000000
-    m_BranchIndex: ffffffffffffffff01000000
-    m_UnityObjectValue: []
-    m_IntValue: 010000000100000002000000010000000300000047e51048
-    m_FloatValue: []
-    m_StringValue:
-    - OnEnable
-    - Update
-    - IsPlayerInSight
-    m_CurveValue: []
-    m_GenericFieldType: []
-    m_GenericFieldHash: 
-    m_GenericFieldSize: 
-    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000
-    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000
-    m_FieldPath:
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - onSuccess
 --- !u!114 &11431614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1169,6 +1051,80 @@ MonoBehaviour:
   target: {fileID: 0}
   stopDistanceX: 2
   stopDistanceY: 0.1
+--- !u!114 &11435718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11460448}
+  m_Parent: {fileID: 11420944}
+  m_StateName: Surround
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 580, y: 110}
+  m_Transitions:
+  - m_Destination: {fileID: 11466074}
+    m_EventID: 56118298
+  - m_Destination: {fileID: 11450568}
+    m_EventID: 1249890864
+  - m_Destination: {fileID: 11485854}
+    m_EventID: 158782084
+  m_CachedInstanceID: 11412
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - FindAttackPosition
+    - IsPathObstructed
+    - IsPlayerInTheWay
+    - IsPositionReached
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e00000011000000
+    m_BranchIndex: ffffffffffffffff01000000010000000100000001000000
+    m_UnityObjectValue: []
+    m_IntValue: 0100000001000000020000000100000003000000040000001a4c58030500000030d27f4a0600000084d27609
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - FindAttackPosition
+    - IsPathObstructed
+    - IsPlayerInTheWay
+    - IsPositionReached
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000030000000600000007000000040000000800000009000000050000000a000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e00000001000000020000001e000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
 --- !u!114 &11448898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1187,6 +1143,79 @@ MonoBehaviour:
   landDuration: 0.5
   onGroundDuration: 1
   getUpDuration: 1
+--- !u!114 &11450568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11460448}
+  m_Parent: {fileID: 11420944}
+  m_StateName: GoAroundPlayer
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 580, y: 230}
+  m_Transitions:
+  - m_Destination: {fileID: 11466074}
+    m_EventID: 56118298
+  - m_Destination: {fileID: 11485854}
+    m_EventID: 158782084
+  m_CachedInstanceID: 11410
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - IsPathObstructed
+    - NavigateToPosition
+    - IsPositionReached
+    - FindAttackPosition
+    m_NodeTypeHash: 89ef821089ef82104a2bcb234a2bcb234a2bcb23fbd4a944
+    m_NodeFieldStartIndex: 000000000300000006000000090000000c0000000f00000011000000
+    m_BranchIndex: ffffffffffffffff01000000010000000100000001000000
+    m_UnityObjectValue: []
+    m_IntValue: 01000000010000000200000001000000030000001a4c5803040000000500000084d2760906000000
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - IsPathObstructed
+    - NavigateToPosition
+    - BehaviourMachine.FsmEvent
+    - IsPositionReached
+    - FindAttackPosition
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000600000003000000040000000700000005000000080000000900000006000000
+    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e00000001000000020000001100000001000000020000001e0000000100000002000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
 --- !u!114 &11450836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1198,7 +1227,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7dfacf1bbf624a8380211d7dfc6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11459682
+--- !u!114 &11460448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634db10235c0241d6ad43433a106016d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FloatVars:
+  - m_ID: 825920049
+    m_Name: movementProximityDistance
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    value: 30
+  - m_ID: 2110544603
+    m_Name: attackProximityDistanceX
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    value: 5
+  - m_ID: 814746358
+    m_Name: attackProximityDistanceY
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    value: 5
+  - m_ID: 942417077
+    m_Name: attackPosition
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    value: -1
+  - m_ID: 1470805303
+    m_Name: meleeRange
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    value: 5
+  m_IntVars: []
+  m_BoolVars: []
+  m_StringVars: []
+  m_Vector3Vars: []
+  m_RectVars: []
+  m_ColorVars: []
+  m_QuaternionVars: []
+  m_GameObjectVars: []
+  m_TextureVars: []
+  m_MaterialVars: []
+  m_ObjectVars: []
+  m_DynamicLists: []
+  m_FsmEvents: []
+  m_ConcreteFsmEvents:
+  - m_ID: 1209066823
+    m_Name: toApproach
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 158782084
+    m_Name: toAttack
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 56118298
+    m_Name: toNavigate
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 111391994
+    m_Name: toSurround
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 1249890864
+    m_Name: toGoAroundPlayer
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  m_Namespace: 
+--- !u!114 &11466074
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1214,11 +1320,11 @@ MonoBehaviour:
   m_StateName: Navigate
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 330, y: 170}
+  m_Position: {x: 320, y: 170}
   m_Transitions:
-  - m_Destination: {fileID: 11463318}
+  - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11192
+  m_CachedInstanceID: 11406
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1260,134 +1366,6 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
---- !u!114 &11460448
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 634db10235c0241d6ad43433a106016d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FloatVars:
-  - m_ID: 825920049
-    m_Name: movementProximityDistance
-    m_Blackboard: {fileID: 11460448}
-    m_IsConstant: 0
-    value: 30
-  - m_ID: 2110544603
-    m_Name: attackProximityDistanceX
-    m_Blackboard: {fileID: 11460448}
-    m_IsConstant: 0
-    value: 5
-  - m_ID: 814746358
-    m_Name: attackProximityDistanceY
-    m_Blackboard: {fileID: 11460448}
-    m_IsConstant: 0
-    value: 5
-  m_IntVars: []
-  m_BoolVars: []
-  m_StringVars: []
-  m_Vector3Vars: []
-  m_RectVars: []
-  m_ColorVars: []
-  m_QuaternionVars: []
-  m_GameObjectVars: []
-  m_TextureVars: []
-  m_MaterialVars: []
-  m_ObjectVars: []
-  m_DynamicLists: []
-  m_FsmEvents: []
-  m_ConcreteFsmEvents:
-  - m_ID: 1209066823
-    m_Name: toApproach
-    m_Blackboard: {fileID: 11460448}
-    m_IsConstant: 0
-    m_IsSystem: 0
-  - m_ID: 158782084
-    m_Name: toAttack
-    m_Blackboard: {fileID: 11460448}
-    m_IsConstant: 0
-    m_IsSystem: 0
-  - m_ID: 56118298
-    m_Name: toNavigate
-    m_Blackboard: {fileID: 11460448}
-    m_IsConstant: 0
-    m_IsSystem: 0
-  m_Namespace: 
---- !u!114 &11463318
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Blackboard: {fileID: 11460448}
-  m_Parent: {fileID: 11420944}
-  m_StateName: Approach
-  m_Color: 0
-  m_HideScript: 1
-  m_Position: {x: 310, y: 70}
-  m_Transitions:
-  - m_Destination: {fileID: 11427506}
-    m_EventID: 158782084
-  - m_Destination: {fileID: 11459682}
-    m_EventID: 56118298
-  m_CachedInstanceID: 11190
-  m_Description: 
-  m_IgnoreTimeScale: 0
-  m_ResetStatusOnDisable: 1
-  m_EnabledStates: []
-  m_NodeSerialization:
-    m_NodeTypes:
-    - BehaviourMachine.OnEnable
-    - BehaviourMachine.Update
-    - BehaviourMachine.PrioritySelector
-    - IsPlayerInAttackRange
-    - IsPathObstructed
-    - ChasePlayer
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23fbd4a944
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e00000010000000
-    m_BranchIndex: ffffffffffffffff01000000020000000200000002000000
-    m_UnityObjectValue: []
-    m_IntValue: 01000000010000000200000001000000030000000400000084d27609050000001a4c580306000000
-    m_FloatValue: []
-    m_StringValue:
-    - OnEnable
-    - Update
-    - PrioritySelector
-    - IsPlayerInAttackRange
-    - IsPathObstructed
-    - ChasePlayer
-    m_CurveValue: []
-    m_GenericFieldType: []
-    m_GenericFieldHash: 
-    m_GenericFieldSize: 
-    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000080000000900000005000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e0000000100000002000000
-    m_FieldPath:
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - instanceID
-    - name
-    - onSuccess
-    - instanceID
-    - name
-    - onSuccess
-    - instanceID
-    - name
 --- !u!114 &11466536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1421,6 +1399,62 @@ MonoBehaviour:
   hand: 1
   weapon: {fileID: 0}
   emptyHanded: 1
+--- !u!114 &11473946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11460448}
+  m_Parent: {fileID: 11420944}
+  m_StateName: Idle
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 100, y: 70}
+  m_Transitions:
+  - m_Destination: {fileID: 11496958}
+    m_EventID: 1209066823
+  m_CachedInstanceID: 11402
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - IsPlayerInSight
+    m_NodeTypeHash: 89ef821089ef82104a2bcb23
+    m_NodeFieldStartIndex: 00000000030000000600000009000000
+    m_BranchIndex: ffffffffffffffff01000000
+    m_UnityObjectValue: []
+    m_IntValue: 010000000100000002000000010000000300000047e51048
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - IsPlayerInSight
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000
+    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - onSuccess
 --- !u!114 &11478744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1453,6 +1487,71 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   movementSmoothing: 0.115
   state: 0
+  steptimer: 0.5
+--- !u!114 &11485854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11460448}
+  m_Parent: {fileID: 11420944}
+  m_StateName: Attack
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 810, y: 40}
+  m_Transitions:
+  - m_Destination: {fileID: 11496958}
+    m_EventID: 1209066823
+  m_CachedInstanceID: 11408
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - BehaviourMachine.PrioritySelector
+    - IsPlayerOutOfRange
+    - AttackPlayer
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb23fbd4a944
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000d000000
+    m_BranchIndex: ffffffffffffffff010000000200000002000000
+    m_UnityObjectValue: []
+    m_IntValue: 01000000010000000200000001000000030000000400000047e5104805000000
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - PrioritySelector
+    - IsPlayerOutOfRange
+    - AttackPlayer
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e0000000100000002000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
 --- !u!114 &11494644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1466,8 +1565,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   damageRate: 1
-  bloodSplatter: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
-  bloodFountain: {fileID: 145470, guid: 11c81ab450429534eb1860039571c2ed, type: 2}
+  bloodSplatter: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodSwing: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodShoot: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+  bloodJab: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+--- !u!114 &11496958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112324}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11460448}
+  m_Parent: {fileID: 11420944}
+  m_StateName: Approach
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 310, y: 70}
+  m_Transitions:
+  - m_Destination: {fileID: 11466074}
+    m_EventID: 56118298
+  - m_Destination: {fileID: 11435718}
+    m_EventID: 111391994
+  m_CachedInstanceID: 11404
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - BehaviourMachine.PrioritySelector
+    - IsPlayerInMeleeRange
+    - IsPathObstructed
+    - ChasePlayer
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23fbd4a944
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e00000010000000
+    m_BranchIndex: ffffffffffffffff01000000020000000200000002000000
+    m_UnityObjectValue: []
+    m_IntValue: 010000000100000002000000010000000300000007000000fab4a306050000001a4c580306000000
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - PrioritySelector
+    - IsPlayerInMeleeRange
+    - IsPathObstructed
+    - ChasePlayer
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000080000000900000005000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e0000000100000002000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
 --- !u!114 &11499116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1586,7 +1759,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.size
@@ -1594,7 +1767,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ConcreteFsmEvents.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.size
@@ -1639,7 +1812,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bloodSplatter
       value: 
-      objectReference: {fileID: 166700, guid: fbcf4b611096083479f3c132165f005d, type: 2}
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Boss
@@ -1678,7 +1851,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CachedInstanceID
-      value: -47072
+      value: -69320
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Position.x
@@ -1727,14 +1900,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[0].m_Destination
       value: 
-      objectReference: {fileID: 11463318}
+      objectReference: {fileID: 11466074}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[1].m_Destination
       value: 
-      objectReference: {fileID: 11459682}
+      objectReference: {fileID: 11450568}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[3]
-      value: IsPlayerOutOfRange
+      value: NavigateToPosition
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[8]
@@ -1742,11 +1915,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[8]
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[4]
-      value: BehaviourMachine.FsmEvent
+      value: AttackPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[10]
@@ -1758,11 +1931,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[5]
-      value: BehaviourMachine.FsmEvent
+      value: AttackPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[13]
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[13]
@@ -1770,7 +1943,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[11]
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[11]
@@ -1806,7 +1979,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[5]
-      value: 3
+      value: 56118298
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[6]
@@ -1818,7 +1991,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[9]
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[9]
@@ -1836,6 +2009,122 @@ Prefab:
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[10]
       value: onSuccess
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[3].m_Name
+      value: attackPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[3].value
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Blackboard
+      value: 
+      objectReference: {fileID: 11460448}
+    - target: {fileID: 0}
+      propertyPath: m_Parent
+      value: 
+      objectReference: {fileID: 11420944}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_IntValue.Array.data[7]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_IntValue.Array.data[8]
+      value: 158782084
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_IntValue.Array.data[9]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[12]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[14]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[15]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_StringValue.Array.data[6]
+      value: FindAttackPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[16]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[14]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Transitions.Array.data[2].m_Destination
+      value: 
+      objectReference: {fileID: 11485854}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_IntValue.Array.data[10]
+      value: 334526696
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[16]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Transitions.Array.data[0].m_EventID
+      value: 1209066823
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ConcreteFsmEvents.Array.data[3].m_Name
+      value: toSurround
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ConcreteFsmEvents.Array.data[4].m_Name
+      value: toGoAroundPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Transitions.Array.data[1].m_EventID
+      value: 158782084
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Transitions.Array.data[2].m_EventID
+      value: 158782084
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_StringValue.Array.data[7]
+      value: FindAttackPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_StringValue.Array.data[8]
+      value: FindAttackPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[4].m_Name
+      value: meleeRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[4].value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bloodSwing
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodShoot
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodJab
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodMelee
+      value: 
+      objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112324}

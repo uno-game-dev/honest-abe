@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
+    public float stepInterval = 0.6f;
+
+    private float stepElapsed = 0.0f;
     private Vector3 velocity;
+    private Jump jump;
     private Movement movement;
     private BaseCollision collision;
     private PlayerControls controls;
@@ -15,6 +19,7 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         movement = GetComponent<Movement>();
+        jump = GetComponent<Jump>();
         collision = GetComponent<BaseCollision>();
         collision.OnCollisionEnter += OnCollisionStart;
         collision.OnCollisionStay += OnCollisionUpdate;
@@ -36,6 +41,8 @@ public class PlayerMotor : MonoBehaviour
             velocity = new Vector2(MobileInput.GetAxis("Horizontal") * movement.horizontalMovementSpeed,
                 MobileInput.GetAxis("Vertical") * movement.vericalMovementSpeed);
             movement.Move(velocity);
+
+            UpdateStep();
         }
         else
         {
@@ -62,51 +69,47 @@ public class PlayerMotor : MonoBehaviour
         {
             collidersImOn.Add(collider);
             controls.ResetHold();
-
-            if (!_gameManager.perkChosen)
-            {
-                uiManager.perkText.enabled = true;
-                uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
-            }
+            uiManager.perkText.enabled = true;
+            uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
         }
 
         else if (collider.tag == "AbeAxe")
         {
             controls.ResetHold();
             collidersImOn.Add(collider);
-
-            if (!_gameManager.perkChosen)
-            {
-                uiManager.perkText.enabled = true;
-                uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
-            }
+            uiManager.perkText.enabled = true;
+            uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
         }
     }
 
     private void OnCollisionUpdate(Collider2D collider)
     {
         if (collider.tag == "Weapon")
+        {
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
                 EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
-                GetComponent<Attack>().SetWeapon(collider.gameObject.GetComponent<Weapon>());
+                playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
             }
+        }
 
         if (collider.tag == "Perk")
+        {
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
             {
                 EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP);
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-
                 if (!_gameManager.perkChosen)
                 {
                     _gameManager.perkChosen = true;
                     uiManager.perkText.enabled = false;
                 }
             }
+        }
 
         if (collider.tag == "AbeAxe")
+        {
             if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
             {
                 EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
@@ -121,6 +124,7 @@ public class PlayerMotor : MonoBehaviour
                     uiManager.perkText.enabled = false;
                 }
             }
+        }
     }
 
     private void OnCollisionEnd(Collider2D collider)
@@ -135,5 +139,23 @@ public class PlayerMotor : MonoBehaviour
 
         controls.ResetHold();
         controls.justClicked = false;
+    }
+
+    private void UpdateStep()
+    {
+        if (movement.state == Movement.State.Walk &&
+                (jump.state == Jump.State.Null) &&
+                (stepElapsed < stepInterval)
+            )
+        {
+            stepElapsed += Time.deltaTime;
+        }
+
+        if(stepInterval < stepElapsed)
+        {
+            EventHandler.SendEvent(EventHandler.Events.STEP);
+            stepElapsed = 0.0f;
+        }
+            
     }
 }

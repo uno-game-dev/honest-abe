@@ -59,8 +59,6 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-		if (GlobalSettings.loseCondition)
-			_loseUI.SetActive(true);
 		if (!updateActive && Input.GetKeyDown(KeyCode.Return))
         {
             updateActive = true;
@@ -88,6 +86,11 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
+	public void ActivateLoseUI()
+	{
+		_loseUI.SetActive(true);
+	}
 
     public void OnPressEnterAtBeginning()
     {
