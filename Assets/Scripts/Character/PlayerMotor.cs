@@ -98,21 +98,32 @@ public class PlayerMotor : MonoBehaviour
 				collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
 			}
 		}
-
-		if (collider.tag == "Perk")
-		{
-			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
-			{
-				EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP);
-				collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-				if (!_gameManager.perkChosen)
-				{
-					_gameManager.perkChosen = true;
-					_uiManager.perkText.enabled = false;
-				}
-			}
-		}
-
+        if (collider.tag == "Perk")
+        {
+            if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
+            {
+                if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT && PerkManager.activeHatPerk == null)
+                {
+                    EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
+                    collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+                    if (!_gameManager.perkChosen)
+                    {
+                        _gameManager.perkChosen = true;
+                        uiManager.perkText.enabled = false;
+                    }
+                }
+                else if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET && PerkManager.activeTrinketPerk == null)
+                {
+                    EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
+                    collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+                    if (!_gameManager.perkChosen)
+                    {
+                        _gameManager.perkChosen = true;
+                        uiManager.perkText.enabled = false;
+                    }
+                }
+            }
+        }
 		if (collider.tag == "AbeAxe")
 		{
 			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded)

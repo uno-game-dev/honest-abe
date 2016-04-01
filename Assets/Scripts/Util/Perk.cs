@@ -157,7 +157,14 @@ public class Perk : MonoBehaviour
             case PerkCategory.HAT:
                 PerkManager.activeHatPerk = this;
                 PerkManager.HatPerkEffect += HatEffect;
-                Destroy(gameObject);
+                if (this.type == PerkType.HAT_BEARHANDS)
+                {
+                    if (GameObject.Find("Hat_BA") != null)
+                    {
+                        GameObject.Find("Hat_BA").transform.SetParent(GameObject.Find("Player").transform, true);
+                        GameObject.Find("Hat_BA").SetActive(false);
+                    }
+                }
                 break;
 			case PerkCategory.TRINKET:
 				PerkManager.activeTrinketPerk = this;

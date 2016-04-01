@@ -96,12 +96,11 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.ITEM_PICKUP:
                 Debug.Log("Item Pickup");
-				if((other != null) && (other.name == "HealthKit") ){
+				if(other != null && other.name == "HealthKit") {
 					// If we pickup a health pickup then it cancels out the ability to get the mary todd's lockette perk
 					PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.trinket_maryToddsLockette_name)).setToBeUnlocked = false;
-				}
-                if (other != null)
-                    Debug.Log(other.name);
+                    Debug.Log(PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.trinket_maryToddsLockette_name)).setToBeUnlocked);
+                }
                 break;
             case Events.WEAPON_PICKUP:
                 Debug.Log("Weapon Pickup");
@@ -158,7 +157,8 @@ public class EventHandler : MonoBehaviour
                 break;
 			case Events.ROBERT_E_LEE_KILL:
 				Debug.Log ("Killed Robert E. Lee");
-				PerkManager.UpdatePerkStatus (PerkManager.trinket_agressionBuddy_name, 1);
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().health >= 80)
+                    PerkManager.UpdatePerkStatus (PerkManager.trinket_agressionBuddy_name, 1);
 				break;
 			case Events.STEP:
                 AudioManager.instance.PlayFootstep();
