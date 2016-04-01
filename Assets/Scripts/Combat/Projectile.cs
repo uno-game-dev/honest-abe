@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
         if (collider.GetComponent<Damage>())
         {
             _distance = Math.Abs((int)(_startXPos - _endXPos));
-            _damage = 10 - (_distance / 2);
+            _damage = _damage - (_distance / 2);
             if (_damage < 0)
                 _damage = 0;
             Debug.Log("Projectile Damge: " + _damage);
@@ -65,8 +65,9 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void StartProjectile(float velocity = 25)
+    public void StartProjectile(float damage, float velocity = 25)
     {
+        _damage = (int)damage;
         if (state == State.InAir)
             return;
 

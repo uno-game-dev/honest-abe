@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using BehaviourMachine;
 
 public class Health : MonoBehaviour
 {
@@ -10,14 +11,19 @@ public class Health : MonoBehaviour
 	private Boss _boss;
     private System.Random _rnd;
     private Attack playerAttack;
+	private GameObject player;
+	private Blackboard blackboard;
+	private EnemyFollow enemyFollow;
 
     void Awake()
     {
         _rnd = new System.Random();
         health += _rnd.Next(additionalHealthFloor, additionalHealthCeiling + 1);
 		alive = true;
-
-        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
+		player = GameObject.Find ("Player");
+        playerAttack = player.GetComponent<Attack>();
+		blackboard = GetComponent<Blackboard> ();
+		enemyFollow = GetComponent<EnemyFollow> ();
     }
 
     public void RandomizeHealth()
@@ -40,7 +46,7 @@ public class Health : MonoBehaviour
 			// Execution Check
             if (gameObject.tag == "Enemy")
 			{
-				if (gameObject.tag != "Player" && GlobalSettings.performingHeavyAttack)
+				if (gameObject.tag != "Player" && playerAttack.attackState == Attack.State.Heavy)
 				{
 					ShowExecution();
 					EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
@@ -48,6 +54,17 @@ public class Health : MonoBehaviour
 				else if (playerAttack.attackState == Attack.State.Light)
                     EventHandler.SendEvent(EventHandler.Events.LIGHT_KILL);
             }
+
+			// AI stuff: Mark this enemy's position around the player as available
+			float attackPosition = blackboard.GetFloatVar("attackPosition");
+			if (attackPosition != -1) {
+				string positionVar = "pos" + attackPosition;
+				GlobalBlackboard.Instance.GetBoolVar (positionVar).Value = false;
+			}
+			// Destroy the target gameobject this enemy was following
+			if (enemyFollow.target != null)
+				Destroy (enemyFollow.target);
+
             Destroy(gameObject);
         }
     }

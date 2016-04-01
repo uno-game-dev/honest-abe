@@ -10,6 +10,7 @@ public class AttackArea : MonoBehaviour
     private bool _updateChainAttack;
     private List<Collider2D> _colliders = new List<Collider2D>();
     private BoxCollider2D _collider;
+	private GameObject _player;
 
     private void Awake()
     {
@@ -17,28 +18,28 @@ public class AttackArea : MonoBehaviour
         _collider = GetComponent<BoxCollider2D>();
         _chainAttack = GetComponentInParent<ChainAttack>();
         _attack = GetComponentInParent<Attack>();
+		_player = GameObject.Find ("Player");
     }
 
     private void OnEnable()
-    {
-        _collision.OnCollisionEnter += OnCollision;
+	{
+		_collision.OnCollisionEnter += OnCollision;
+		if (_attack.attackState == Attack.State.Heavy)
+			EventHandler.SendEvent(EventHandler.Events.HEAVY_SWING);
 
-        if (_chainAttack && _chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
+		if (_chainAttack && _chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
             _updateChainAttack = false;
         else
             _updateChainAttack = true;
-    }
+	}
 
     private void OnDisable()
     {
-        if (transform.parent.gameObject.tag == "Player" && GlobalSettings.performingHeavyAttack)
-        {
-            GlobalSettings.performingHeavyAttack = false;
-        }
-        GlobalSettings.performingHeavyAttack = false;
-        _collision.OnCollisionEnter -= OnCollision;
+		_collision.OnCollisionEnter -= OnCollision;
+
         if (!hit && _chainAttack)
             _chainAttack.Miss();
+
         hit = null;
         _colliders.Clear();
     }
@@ -50,11 +51,17 @@ public class AttackArea : MonoBehaviour
 
         _colliders.Add(collider);
 
-        if (transform.parent.gameObject.tag == "Player")
-        {
-            if (_attack.attackState == Attack.State.Heavy) EventHandler.SendEvent(EventHandler.Events.HEAVY_HIT);
-            else if ( _attack.attackState == Attack.State.Light) EventHandler.SendEvent(EventHandler.Events.LIGHT_HIT);
-        }
+		if (transform.parent.gameObject.tag == "Player") {
+			if (_attack.attackState == Attack.State.Heavy)
+				EventHandler.SendEvent (EventHandler.Events.HEAVY_HIT);
+			else if (_attack.attackState == Attack.State.Light)
+				EventHandler.SendEvent (EventHandler.Events.LIGHT_HIT);
+		} else {
+			// Knock the player down if this was a trip attack (i.e. if I'm a bushwhacker and this was a Heavy attack)
+			if (collider.name.Contains("Bushwhacker") && _attack.attackState == Attack.State.Heavy) {
+				_player.GetComponent<KnockDown> ().StartKnockDown (0);
+			}
+		}
 
         if (_updateChainAttack && _chainAttack)
         {

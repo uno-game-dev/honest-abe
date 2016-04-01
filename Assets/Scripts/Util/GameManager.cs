@@ -31,9 +31,6 @@ public class GameManager : MonoBehaviour
             _cameraFollow.lockRightEdge = true;
         else
             _cameraFollow.lockRightEdge = false;
-		if (GlobalSettings.winCondition)
-			Win();
-
 	}
 
 
@@ -42,14 +39,11 @@ public class GameManager : MonoBehaviour
     {
         _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
         perkChosen = false;
-        GlobalSettings.loseCondition = false;
-        GlobalSettings.winCondition = false;
         GlobalSettings.currentSceneIsNew = false;
     }
 
 	public void Win()
 	{
-		GlobalSettings.winCondition = false;
 		PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
         _levelManager.loadNextLevel();
 	}

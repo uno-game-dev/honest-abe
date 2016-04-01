@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433338}
-  - 114: {fileID: 11427082}
+  - 114: {fileID: 11400738}
   m_Layer: 0
   m_Name: PerkContainer
   m_TagString: Untagged
@@ -630,6 +630,17 @@ BoxCollider2D:
   m_Offset: {x: 0.03, y: 0.5}
   serializedVersion: 2
   m_Size: {x: 5, y: 1}
+--- !u!114 &11400738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e95f1c93198a4c4fbeac826e3da27c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11403018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -714,6 +725,7 @@ MonoBehaviour:
   heldOrientation: {x: 36, y: 340, z: 146}
   lightDamage: 4
   heavyDamage: 7
+  throwDamage: 10
 --- !u!114 &11425814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -728,17 +740,6 @@ MonoBehaviour:
   offsetFromOrigin: 2
   maxZ: 45
   yToZFactor: 2
---- !u!114 &11427082
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e95f1c93198a4c4fbeac826e3da27c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11433472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -757,6 +758,7 @@ MonoBehaviour:
   heldOrientation: {x: 36, y: 340, z: 146}
   lightDamage: 4
   heavyDamage: 7
+  throwDamage: 10
 --- !u!114 &11445532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -785,10 +787,11 @@ MonoBehaviour:
   attackType: 3
   attackSize: {x: 60, y: 0.1}
   attackOffset: {x: 30, y: 0}
-  heldOffset: {x: -0.21, y: 0.31, z: -0.065}
-  heldOrientation: {x: 17.2, y: 323.5, z: 144}
+  heldOffset: {x: -0.33, y: 0.042, z: 0.122}
+  heldOrientation: {x: 33.7, y: 202, z: 23}
   lightDamage: 20
   heavyDamage: 20
+  throwDamage: 5
 --- !u!114 &11476048
 MonoBehaviour:
   m_ObjectHideFlags: 1

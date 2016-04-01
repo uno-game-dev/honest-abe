@@ -5,53 +5,52 @@ using BehaviourMachine;
 public class IsPathObstructed : ConditionNode {
 
 	GameObject player;
+	Vector2 playerPosition;
+	Vector2 selfPosition;
+	Vector2 direction;
+	float xDiff;
+	float yDiff;
+	float distanceToPlayer;
+	LayerMask layerMask;
+	RaycastHit2D hit;
+	bool obstructed;
 
-	// Use this for initialization
 	override public void Start () {
 		player = GameObject.Find ("Player");
+		layerMask = LayerMask.GetMask ("Environment");
 	}
 	
-	// Update is called once per frame
 	override public Status Update () {
 
-		// Fire three raycasts at the player
-		Vector2 selfPosition = self.transform.position;
-		Vector2 playerPosition = player.transform.position;
-		Vector2 direction = playerPosition - selfPosition;
-		float xDiff = Mathf.Abs (playerPosition.x - selfPosition.x);
-		float yDiff = Mathf.Abs (playerPosition.y - selfPosition.y);
-		float distanceToPlayer = Mathf.Sqrt (Mathf.Pow(xDiff,2) + Mathf.Pow(yDiff,2));
-		LayerMask layerMask = LayerMask.GetMask("Environment");
+		// Get new positions of self and player, plus direction and distance to player
+		selfPosition = self.transform.position;
+		playerPosition = player.transform.position;
+		direction = playerPosition - selfPosition;
+		xDiff = Mathf.Abs (playerPosition.x - selfPosition.x);
+		yDiff = Mathf.Abs (playerPosition.y - selfPosition.y);
+		distanceToPlayer = Mathf.Sqrt (Mathf.Pow(xDiff,2) + Mathf.Pow(yDiff,2));
 
-		// Fire the middle ray first
-		RaycastHit2D hit = Physics2D.Raycast (selfPosition, direction, distanceToPlayer, layerMask);
-		bool obstructed = false;
-		if (hit && hit.collider.tag == "Obstacle")
-			obstructed = true;
-		Debug.DrawRay (selfPosition, direction);
+		// Fire 2 raycasts at the player, offset from the center enough to represent a passable space
+		obstructed = false;
 
 		if (xDiff > yDiff) {
-			// Fire a ray above
-			hit = Physics2D.Raycast (selfPosition + new Vector2 (0, 1), direction, distanceToPlayer, layerMask);
+			hit = Physics2D.Raycast (selfPosition + new Vector2 (0, 0.5f), direction, distanceToPlayer, layerMask);
+				Debug.DrawRay (selfPosition + new Vector2 (0, 0.5f), direction);
 			if (hit && hit.collider.tag == "Obstacle")
 				obstructed = true;
-			Debug.DrawRay (selfPosition + new Vector2 (0, 1), direction);
-			// Fire a ray below
-			hit = Physics2D.Raycast (selfPosition + new Vector2 (0, -1), direction, distanceToPlayer, layerMask);
+			hit = Physics2D.Raycast (selfPosition + new Vector2 (0, -0.5f), direction, distanceToPlayer, layerMask);
+				Debug.DrawRay (selfPosition + new Vector2 (0, -0.5f), direction);
 			if (hit && hit.collider.tag == "Obstacle")
 				obstructed = true;
-			Debug.DrawRay (selfPosition + new Vector2 (0, -1), direction);
 		} else if (yDiff > xDiff) {
-			// Fire a ray to the right
-			hit = Physics2D.Raycast (selfPosition + new Vector2 (1, 0), direction, distanceToPlayer, layerMask);
+			hit = Physics2D.Raycast (selfPosition + new Vector2 (0.5f, 0), direction, distanceToPlayer, layerMask);
+				Debug.DrawRay (selfPosition + new Vector2 (0.5f, 0), direction);
 			if (hit && hit.collider.tag == "Obstacle")
 				obstructed = true;
-			Debug.DrawRay (selfPosition + new Vector2 (1, 0), direction);
-			// Fire a ray to the left
-			hit = Physics2D.Raycast (selfPosition + new Vector2 (-1, 0), direction, distanceToPlayer, layerMask);
+			hit = Physics2D.Raycast (selfPosition + new Vector2 (-0.5f, 0), direction, distanceToPlayer, layerMask);
+				Debug.DrawRay (selfPosition + new Vector2 (-0.5f, 0), direction);
 			if (hit && hit.collider.tag == "Obstacle")
 				obstructed = true;
-			Debug.DrawRay (selfPosition + new Vector2 (-1, 0), direction);
 		} else {
 			Debug.Log ("Diagonal");
 		}

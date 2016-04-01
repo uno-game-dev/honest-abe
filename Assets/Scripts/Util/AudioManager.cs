@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
@@ -78,13 +79,28 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void PlaySound(string name)
+    public void PlaySound(string name, float delay = 0)
     {
         if (Sounds.ContainsKey(name))
-            AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 0.7f);
+            if (delay <= 0)
+                AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 1f);
+            else
+                StartCoroutine(DelayedPlay(name, delay));
     }
 
-	/*
+    public IEnumerator DelayedPlay(string name, float delay)
+    {
+            yield return new WaitForSeconds(delay);
+            AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 1f);
+    }
+
+    public void PlayFootstep()
+    {
+        string StepKey = string.Concat( "Step_" , Random.Range(0, 6) );
+        PlaySound(StepKey);
+    }
+
+    /*
     public void PlayDamageSound(int index = 0)
     {
         if (index == 0)
