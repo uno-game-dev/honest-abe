@@ -130,18 +130,22 @@ public class PlayerHealth : Health
 
     public override void Decrease(int damage)
     {
-        // Temp variable for damageThreshold
-        _tempDamageThreshold = damageThreshold - damage;
-        if (_tempDamageThreshold <= 0)
-        {
-            health -= Math.Abs(_tempDamageThreshold);
-            _slider.UpdateCurrentHealth(health);
-            damageThreshold = 0;
-        }
-        else {
-            damageThreshold -= damage;
-        }
-        _slider.UpdateDamageThreshold(damageThreshold);
+        if ((PerkManager.activeTrinketPerk != null) && (Perk.performMaryToddsTimeStamp >= Time.time)) {
+			Debug.Log ("Mary Todd's Lockette is Actived");
+			return;
+		} else {
+			Debug.Log (Perk.maryToddsLocketteIsActive);
+			// Temp variable for damageThreshold
+			_tempDamageThreshold = damageThreshold - damage;
+			if (_tempDamageThreshold <= 0) {
+				health -= Math.Abs (_tempDamageThreshold);
+				_slider.UpdateCurrentHealth (health);
+				damageThreshold = 0;
+			} else {
+				damageThreshold -= damage;
+			}
+			_slider.UpdateDamageThreshold (damageThreshold);
+		}
     }
 
     // Updates the health and damageThreshold 

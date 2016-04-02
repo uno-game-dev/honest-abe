@@ -44,7 +44,12 @@ public class GameManager : MonoBehaviour
 
 	public void Win()
 	{
-		PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+		PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
+		foreach (Perk p in PerkManager.perkList)
+        {
+            if (p.setToBeUnlocked)
+                PerkManager.UpdatePerkStatus(p.perkName, 1);
+        }
         _levelManager.loadNextLevel();
 	}
 }
