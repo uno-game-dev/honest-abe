@@ -39,7 +39,11 @@ public class MobileInput : MonoBehaviour
                     else if (touch.phase == TouchPhase.Moved)
                         SetMoveAxis(touch);
                     else if (touch.phase == TouchPhase.Canceled || touch.phase == TouchPhase.Ended)
+                    {
                         startMoveTouch = nullTouch;
+                        _horizontalAxisValue = 0;
+                        _verticalAxisValue = 0;
+                    }
                 }
                 else if (isActionTouch(touch))
                 {
@@ -97,6 +101,14 @@ public class MobileInput : MonoBehaviour
         Vector2 deltaPosition = actionTouch.position - startActionTouch.position;
         if (deltaPosition.magnitude > 10)
             touchHold = false;
+
+        if (touchHold && touchHoldTimer >= touchHoldTime)
+        {
+            touchHold = false;
+            touchHoldTimer = 0;
+            startActionTouch = nullTouch;
+            _lastAction = Action.Pickup;
+        }
     }
 
     private bool isActionTouch(Touch touch)
