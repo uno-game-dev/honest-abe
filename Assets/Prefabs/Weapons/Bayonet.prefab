@@ -310,12 +310,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 2
-  attackSize: {x: 2, y: 1}
-  attackOffset: {x: 1.5, y: 0}
+  attackSize: {x: 4.5, y: 1.5}
+  attackOffset: {x: 1.5, y: 1.5}
   heldOffset: {x: -0.5, y: -0.013, z: -0.113}
   heldOrientation: {x: 35, y: 350, z: 198}
-  lightDamage: 4
-  heavyDamage: 7
+  lightDamage: 2
+  heavyDamage: 4
 --- !u!114 &11497070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,11 +339,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: lightDamage
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: heavyDamage
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
@@ -356,6 +356,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackOffset.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSize.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackOffset.y
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
