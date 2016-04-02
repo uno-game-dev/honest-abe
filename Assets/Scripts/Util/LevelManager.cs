@@ -27,13 +27,15 @@ public class LevelManager : MonoBehaviour
     }
 
     public void loadCurrentLevel()
-    {
-        SceneManager.LoadScene(currentScene);
+	{
+		GameObject.Find("Player").GetComponent<Player>().ResetPosition();
+		SceneManager.LoadScene(currentScene);
     }
 
     public void loadNextLevel()
     {
         currentScene++;
-        SceneManager.LoadScene(currentScene);
+		GameObject.Find("Player").GetComponent<Player>().ResetPosition();
+		SceneManager.LoadScene(currentScene);
     }
 }
