@@ -125,6 +125,8 @@ public class PlayerMotor : MonoBehaviour
                 }
             }
         }
+
+        controls.heldComplete = false;
     }
 
     private void OnCollisionEnd(Collider2D collider)

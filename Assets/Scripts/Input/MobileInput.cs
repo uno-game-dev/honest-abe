@@ -15,6 +15,9 @@ public class MobileInput : MonoBehaviour
     public Touch nullTouch;
     public Touch startMoveTouch;
     public Touch startActionTouch;
+    public bool touchHold;
+    public float touchHoldTimer;
+    public float touchHoldTime = 0.7f;
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class MobileInput : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            foreach(Touch touch in Input.touches)
+            foreach (Touch touch in Input.touches)
             {
                 if (isMoveTouch(touch))
                 {
@@ -42,6 +45,8 @@ public class MobileInput : MonoBehaviour
                 {
                     if (touch.phase == TouchPhase.Began)
                         SetActionTouch(touch);
+                    else if (touch.phase == TouchPhase.Stationary)
+                        CheckHold(touch);
                     else if (touch.phase == TouchPhase.Canceled || touch.phase == TouchPhase.Ended)
                         SetAction(touch);
                 }
@@ -52,21 +57,45 @@ public class MobileInput : MonoBehaviour
             _horizontalAxisValue = Input.GetAxisRaw("Horizontal");
             _verticalAxisValue = Input.GetAxisRaw("Vertical");
 
-            if (Input.GetMouseButtonDown(0))
-                _lastAction = Action.LightAttack;
-            else if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftControl))
+            {
+                touchHoldTimer += Time.deltaTime;
+                if (touchHoldTimer >= touchHoldTime && touchHold == false)
+                {
+                    touchHold = true;
+                    _lastAction = Action.Pickup;
+                }
+            }
+            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                if (!touchHold)
+                    _lastAction = Action.LightAttack;
+
+                touchHold = false;
+                touchHoldTimer = 0;
+            }
+            else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftAlt))
                 _lastAction = Action.HeavyAttack;
             else if (Input.GetKeyDown(KeyCode.Space))
                 _lastAction = Action.Jump;
-            else if (Input.GetMouseButtonDown(2))
+            else if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.F))
                 _lastAction = Action.Grab;
             else if (Input.GetKeyDown(KeyCode.E))
                 _lastAction = Action.Throw;
-            else if (Input.GetKeyDown(KeyCode.F))
-                _lastAction = Action.Grab;
             else
                 _lastAction = Action.Null;
         }
+    }
+
+    private void CheckHold(Touch actionTouch)
+    {
+        if (!touchHold) return;
+
+        touchHoldTimer += Time.deltaTime;
+
+        Vector2 deltaPosition = actionTouch.position - startActionTouch.position;
+        if (deltaPosition.magnitude > 10)
+            touchHold = false;
     }
 
     private bool isActionTouch(Touch touch)
@@ -75,7 +104,11 @@ public class MobileInput : MonoBehaviour
             if (startActionTouch.fingerId == touch.fingerId)
                 return true;
 
-        return touch.position.x > Screen.width / 2;
+        if (touch.phase == TouchPhase.Began)
+            if (touch.position.x > Screen.width / 2)
+                return true;
+
+        return false;
     }
 
     public static Action GetAction()
@@ -88,7 +121,9 @@ public class MobileInput : MonoBehaviour
     private void SetAction(Touch actionTouch)
     {
         Vector2 deltaPosition = actionTouch.position - startActionTouch.position;
-        if (deltaPosition.magnitude < 10)
+        if (touchHold && touchHoldTimer >= touchHoldTime)
+            _lastAction = Action.Pickup;
+        else if (deltaPosition.magnitude < 10)
             _lastAction = Action.LightAttack;
         else if (SwipeLeft(deltaPosition))
             _lastAction = Action.Throw;
@@ -100,7 +135,8 @@ public class MobileInput : MonoBehaviour
             _lastAction = Action.Grab;
 
         startActionTouch = nullTouch;
-        Debug.LogErrorFormat("{0} {1}", _lastAction, deltaPosition);
+        touchHold = false;
+        touchHoldTimer = 0;
     }
 
     private bool SwipeLeft(Vector2 deltaPosition)
@@ -149,6 +185,7 @@ public class MobileInput : MonoBehaviour
             return;
 
         startActionTouch = touch;
+        touchHold = true;
     }
 
     private void SetMoveTouch(Touch touch)
@@ -165,7 +202,11 @@ public class MobileInput : MonoBehaviour
             if (startMoveTouch.fingerId == touch.fingerId)
                 return true;
 
-        return touch.position.x <= Screen.width / 2;
+        if (touch.phase == TouchPhase.Began)
+            if (touch.position.x <= Screen.width / 2)
+                return true;
+
+        return false;
     }
 
     public static float GetAxis(string axisName)
