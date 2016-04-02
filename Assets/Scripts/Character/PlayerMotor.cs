@@ -100,7 +100,7 @@ public class PlayerMotor : MonoBehaviour
 		}
         if (collider.tag == "Perk")
         {
-            if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
+            if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
             {
                 if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT && PerkManager.activeHatPerk == null)
                 {
@@ -109,7 +109,7 @@ public class PlayerMotor : MonoBehaviour
                     if (!_gameManager.perkChosen)
                     {
                         _gameManager.perkChosen = true;
-                        uiManager.perkText.enabled = false;
+                        _uiManager.perkText.enabled = false;
                     }
                 }
                 else if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET && PerkManager.activeTrinketPerk == null)
@@ -119,7 +119,7 @@ public class PlayerMotor : MonoBehaviour
                     if (!_gameManager.perkChosen)
                     {
                         _gameManager.perkChosen = true;
-                        uiManager.perkText.enabled = false;
+                        _uiManager.perkText.enabled = false;
                     }
                 }
             }
