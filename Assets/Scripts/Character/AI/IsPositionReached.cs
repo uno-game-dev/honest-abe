@@ -10,12 +10,18 @@ public class IsPositionReached : ConditionNode {
 	private Vector2 targetPosition;
 	private Vector2 selfPosition;
 	private Vector2 playerPosition;
+	private float xDistance;
+	private float yDistance;
+	private Grabber grabber;
 
 	public override void Start () {
 		enemyFollow = self.GetComponent<EnemyFollow> ();
 		player = GameObject.Find ("Player");
+		xDistance = 1f;
+		yDistance = 1f;
+		grabber = player.GetComponent<Grabber> ();
 	}
-	
+
 	public override Status Update () {
 
 		// Get my new target object
@@ -28,7 +34,11 @@ public class IsPositionReached : ConditionNode {
 		targetPosition = target.transform.position;
 		playerPosition = player.transform.position;
 
-		if (Mathf.Abs(targetPosition.x - selfPosition.x) < 1f && Mathf.Abs(targetPosition.y - selfPosition.y) < 1f) {
+		// If the player is grabbing somebody, increase the distance threshold
+		if (grabber.state == Grabber.State.Hold)
+			xDistance = 1.8f;
+
+		if (Mathf.Abs(targetPosition.x - selfPosition.x) < xDistance && Mathf.Abs(targetPosition.y - selfPosition.y) < yDistance) {
 			// If target is to the right of the player, I need to be on the right side of the target
 			if (targetPosition.x > playerPosition.x) {
 				if (selfPosition.x >= targetPosition.x) {
@@ -37,7 +47,7 @@ public class IsPositionReached : ConditionNode {
 					return Status.Success;
 				}
 			} else {
-			// Otherwise I need to be on the left side of the target
+				// Otherwise I need to be on the left side of the target
 				if (selfPosition.x <= targetPosition.x) {
 					if (onSuccess.id != 0)
 						owner.root.SendEvent (onSuccess.id);
