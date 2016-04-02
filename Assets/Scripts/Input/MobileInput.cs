@@ -29,8 +29,6 @@ public class MobileInput : MonoBehaviour
         {
             foreach(Touch touch in Input.touches)
             {
-                Debug.LogErrorFormat("Touch #{0}: {1} {2}", touch.fingerId, touch.phase, touch.position);
-
                 if (isMoveTouch(touch))
                 {
                     if (touch.phase == TouchPhase.Began)
