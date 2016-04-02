@@ -64,6 +64,7 @@ public class MobileInput : MonoBehaviour
                 {
                     touchHold = true;
                     _lastAction = Action.Pickup;
+                    return;
                 }
             }
             if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl))

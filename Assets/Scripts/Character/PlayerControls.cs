@@ -36,6 +36,8 @@ public class PlayerControls : MonoBehaviour
                 _grab.Punch();
             else if (mobileAction == MobileInput.Action.HeavyAttack)
                 _grab.Throw();
+            else if (mobileAction == MobileInput.Action.Throw)
+                _grab.Throw();
             return;
         }
 
@@ -53,22 +55,6 @@ public class PlayerControls : MonoBehaviour
             justClicked = true;
             heldComplete = true;
         }
-
-        //if (Input.GetButton("Fire1") && !heldComplete && justClicked)
-        //{
-        //    mouseHeldTime += Time.deltaTime;
-
-        //    if (mouseHeldTime >= timeToConsiderHeld)
-        //    {
-        //        mouseHeldTime = 0;
-        //        heldComplete = true;
-        //    }
-        //}
-
-        //if (Input.GetButtonUp("Fire1"))
-        //{
-        //    ResetHold();
-        //}
 
         if (mobileAction == MobileInput.Action.Grab)
             _grab.StartGrab();
