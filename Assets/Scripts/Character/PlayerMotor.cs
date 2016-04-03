@@ -5,29 +5,29 @@ public class PlayerMotor : MonoBehaviour
 {
     public float stepInterval = 0.6f;
 
-    private float stepElapsed = 0.0f;
-    private Vector3 velocity;
-    private Jump jump;
-    private Movement movement;
-    private BaseCollision collision;
-    private PlayerControls controls;
-    private Attack playerAttack;
-    private List<Collider2D> collidersImOn = new List<Collider2D>();
-    private UIManager uiManager;
     private GameManager _gameManager;
+	private UIManager _uiManager;
+	private Attack _playerAttack;
+	private BaseCollision _collision;
+	private Jump _jump;
+	private Movement _movement;
+	private PlayerControls _controls;
+	private Vector3 _velocity;
+	private List<Collider2D> _collidersImOn = new List<Collider2D>();
+	private float _stepElapsed = 0.0f;
 
     void Start()
     {
-        movement = GetComponent<Movement>();
-        jump = GetComponent<Jump>();
-        collision = GetComponent<BaseCollision>();
-        collision.OnCollisionEnter += OnCollisionStart;
-        collision.OnCollisionStay += OnCollisionUpdate;
-        collision.OnCollisionExit += OnCollisionEnd;
-        controls = GetComponent<PlayerControls>();
-        playerAttack = GetComponent<Attack>();
+		_movement = GetComponent<Movement>();
+		_jump = GetComponent<Jump>();
+		_collision = GetComponent<BaseCollision>();
+		_collision.OnCollisionEnter += OnCollisionStart;
+		_collision.OnCollisionStay += OnCollisionUpdate;
+		_collision.OnCollisionExit += OnCollisionEnd;
+		_controls = GetComponent<PlayerControls>();
+		_playerAttack = GetComponent<Attack>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        uiManager = GameObject.Find("UI").GetComponent<UIManager>();
+		Initialize();
     }
 
     void Update()
@@ -36,20 +36,25 @@ public class PlayerMotor : MonoBehaviour
         if (!UIManager.updateActive) return;
 
         // Else run the update code
-        if (movement.enabled)
+		if (_movement.enabled)
         {
-            velocity = new Vector2(MobileInput.GetAxis("Horizontal") * movement.horizontalMovementSpeed,
-                MobileInput.GetAxis("Vertical") * movement.vericalMovementSpeed);
-            movement.Move(velocity);
+			_velocity = new Vector2(MobileInput.GetAxis("Horizontal") * _movement.horizontalMovementSpeed,
+				MobileInput.GetAxis("Vertical") * _movement.vericalMovementSpeed);
+			_movement.Move(_velocity);
 
             UpdateStep();
         }
         else
         {
-            velocity.x = 0;
-            velocity.y = 0;
+			_velocity.x = 0;
+			_velocity.y = 0;
         }
     }
+
+	public void Initialize()
+	{
+		_uiManager = GameObject.Find("UI").GetComponent<UIManager>();
+	}
 
     private void OnCollisionStart(Collider2D collider)
     {
@@ -61,24 +66,24 @@ public class PlayerMotor : MonoBehaviour
 
         else if (collider.tag == "Weapon")
         {
-            controls.ResetHold();
-            collidersImOn.Add(collider);
+			_controls.ResetHold();
+			_collidersImOn.Add(collider);
         }
 
         else if (collider.tag == "Perk")
         {
-            collidersImOn.Add(collider);
-            controls.ResetHold();
-            uiManager.perkText.enabled = true;
-            uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
+			_collidersImOn.Add(collider);
+			_controls.ResetHold();
+			_uiManager.perkText.enabled = true;
+			_uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
         }
 
         else if (collider.tag == "AbeAxe")
         {
-            controls.ResetHold();
-            collidersImOn.Add(collider);
-            uiManager.perkText.enabled = true;
-            uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
+			_controls.ResetHold();
+			_collidersImOn.Add(collider);
+			_uiManager.perkText.enabled = true;
+			_uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
         }
     }
 
@@ -86,77 +91,88 @@ public class PlayerMotor : MonoBehaviour
     {
         if (collider.tag == "Weapon")
         {
-            if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
+			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded)
             {
                 EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
-                playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
+				_playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
             }
         }
-
         if (collider.tag == "Perk")
         {
-            if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked)
+            if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
             {
-                EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP);
+                if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT && PerkManager.activeHatPerk == null)
+                {
+                    EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
+                    collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+                    if (!_gameManager.perkChosen)
+                    {
+                        _gameManager.perkChosen = true;
+                        _uiManager.perkText.enabled = false;
+                    }
+                }
+                else if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET && PerkManager.activeTrinketPerk == null)
+            {
+                    EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 if (!_gameManager.perkChosen)
                 {
                     _gameManager.perkChosen = true;
-                    uiManager.perkText.enabled = false;
+                        _uiManager.perkText.enabled = false;
+                    }
                 }
             }
         }
-
         if (collider.tag == "AbeAxe")
         {
-            if (controls.heldComplete && collidersImOn.Contains(collider) && controls.justClicked && playerAttack.emptyHanded)
+			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded)
             {
                 EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
-                playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
+				_playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-                playerAttack.emptyHanded = false;
+				_playerAttack.emptyHanded = false;
 
                 if (!_gameManager.perkChosen)
                 {
                     _gameManager.perkChosen = true;
-                    uiManager.perkText.enabled = false;
+					_uiManager.perkText.enabled = false;
                 }
             }
         }
 
-        controls.heldComplete = false;
+        _controls.heldComplete = false;
     }
 
     private void OnCollisionEnd(Collider2D collider)
     {
-        if (collidersImOn.Contains(collider))
-            collidersImOn.Remove(collider);
+		if (_collidersImOn.Contains(collider))
+			_collidersImOn.Remove(collider);
 
         if (collider)
             if (collider.GetComponent<Perk>())
-                if (uiManager.perkText)
-                    uiManager.perkText.enabled = false;
+				if (_uiManager.perkText)
+					_uiManager.perkText.enabled = false;
 
-        controls.ResetHold();
-        controls.justClicked = false;
+		_controls.ResetHold();
+		_controls.justClicked = false;
     }
 
     private void UpdateStep()
     {
-        if (movement.state == Movement.State.Walk &&
-                (jump.state == Jump.State.Null) &&
-                (stepElapsed < stepInterval)
+		if (_movement.state == Movement.State.Walk &&
+				(_jump.state == Jump.State.Null) &&
+				(_stepElapsed < stepInterval)
             )
         {
-            stepElapsed += Time.deltaTime;
+			_stepElapsed += Time.deltaTime;
         }
 
-        if(stepInterval < stepElapsed)
+		if (stepInterval < _stepElapsed)
         {
             EventHandler.SendEvent(EventHandler.Events.STEP);
-            stepElapsed = 0.0f;
+			_stepElapsed = 0.0f;
         }
             
     }

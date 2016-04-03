@@ -3,9 +3,9 @@ using System;
 
 public class PlayerHealth : Health
 {
-    public int damageThreshold = 100;
+    public int damageThreshold;
     public float decreaseSecondsPerHealthPoint = 1;
-	public int executionsPerformed = 0;
+	public int executionsPerformed;
 
 	[HideInInspector]
 	private HealthSlider _slider;
@@ -16,16 +16,14 @@ public class PlayerHealth : Health
 
 	void Start()
 	{
-		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
-        alive = false;
+		Initialize();
     }
 
     void Update()
     {
         if (health <= 0)
             Death();
-		if (!alive)
+		if (alive)
 			// Decreases the timer to know when to update the damageSlider
 			_updateSliderTime -= Time.deltaTime;
 		UpdateHUD();
@@ -35,6 +33,18 @@ public class PlayerHealth : Health
 			Execution();
 		}
     }
+
+	public void Initialize()
+	{
+		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
+		health = 100;
+		damageThreshold = 100;
+		executionsPerformed = 0;
+        alive = true;
+		GetComponent<PlayerMotor>().enabled = true;
+		GetComponent<PlayerControls>().enabled = true;
+	}
 
     public override void Increase(int amount)
     {
@@ -120,18 +130,22 @@ public class PlayerHealth : Health
 
     public override void Decrease(int damage)
     {
-        // Temp variable for damageThreshold
-        _tempDamageThreshold = damageThreshold - damage;
-        if (_tempDamageThreshold <= 0)
-        {
-            health -= Math.Abs(_tempDamageThreshold);
-            _slider.UpdateCurrentHealth(health);
-            damageThreshold = 0;
-        }
-        else {
-            damageThreshold -= damage;
-        }
-        _slider.UpdateDamageThreshold(damageThreshold);
+        if ((PerkManager.activeTrinketPerk != null) && (Perk.performMaryToddsTimeStamp >= Time.time)) {
+			Debug.Log ("Mary Todd's Lockette is Actived");
+			return;
+		} else {
+			Debug.Log (Perk.maryToddsLocketteIsActive);
+			// Temp variable for damageThreshold
+			_tempDamageThreshold = damageThreshold - damage;
+			if (_tempDamageThreshold <= 0) {
+				health -= Math.Abs (_tempDamageThreshold);
+				_slider.UpdateCurrentHealth (health);
+				damageThreshold = 0;
+			} else {
+				damageThreshold -= damage;
+			}
+			_slider.UpdateDamageThreshold (damageThreshold);
+		}
     }
 
     // Updates the health and damageThreshold 
@@ -169,12 +183,12 @@ public class PlayerHealth : Health
 
     private void Death()
 	{
-		alive = true;
+		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
 		// Disable PlayerMotor script 
-		gameObject.GetComponent<PlayerMotor>().enabled = false;
+		GetComponent<PlayerMotor>().enabled = false;
         // Turn off any attack effects
-        gameObject.GetComponent<PlayerControls>().enabled = false;
+        GetComponent<PlayerControls>().enabled = false;
         // Set animation for dead player
     }
 }

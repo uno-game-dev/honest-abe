@@ -35,7 +35,8 @@ public class Damage : MonoBehaviour
         if (tag == "Enemy")
 			;
         if (tag == "Boss")
-			;
+			if (GetComponent<Boss>() != null && GetComponent<Boss>().bossName == "Bear")
+              EventHandler.SendEvent(EventHandler.Events.BEAR_HIT, GameObject.Find("Player"));
         if (collider)
             AddBlood(collider);
         if (health = GetComponent<Health>())

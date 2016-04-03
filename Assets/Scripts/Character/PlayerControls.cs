@@ -64,6 +64,10 @@ public class PlayerControls : MonoBehaviour
 
         if (mobileAction == MobileInput.Action.Throw)
             _throw.StartThrow();
+            
+        if(Input.GetKeyDown(KeyCode.R)){
+			PerkManager.PerformPerkEffects (Perk.PerkCategory.TRINKET);
+		}
     }
 
     public void ResetHold()

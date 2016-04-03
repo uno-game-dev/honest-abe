@@ -19,6 +19,7 @@ public class Grabbable : MonoBehaviour
     private int _myLayer;
     private CharacterState _characterState;
     private KnockDown _knockDown;
+	private Blackboard _blackboard;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class Grabbable : MonoBehaviour
         _characterState = GetComponent<CharacterState>();
         _knockDown = GetComponent<KnockDown>();
         _myLayer = gameObject.layer;
+		_blackboard = GetComponent<Blackboard> ();
     }
 
     private void Update()
@@ -74,6 +76,14 @@ public class Grabbable : MonoBehaviour
         _movement.SetDirection(grabbedBy.GetComponent<Movement>().direction, true);
         if (_movementAI) _movementAI.enabled = false;
         if (_attackAI) _attackAI.enabled = false;
+
+		// AI stuff: Mark this enemy's position around the player as available
+		float attackPosition = _blackboard.GetFloatVar("attackPosition");
+		if (attackPosition != -1) {
+			string positionVar = "pos" + attackPosition;
+			GlobalBlackboard.Instance.GetBoolVar (positionVar).Value = false;
+			_blackboard.GetFloatVar ("attackPosition").Value = -1;
+		}
 
         grabbedBy.GetComponent<Grabber>().Hold(gameObject);
 

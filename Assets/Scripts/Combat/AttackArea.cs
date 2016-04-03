@@ -22,8 +22,6 @@ public class AttackArea : MonoBehaviour
     private void OnEnable()
 	{
 		_collision.OnCollisionEnter += OnCollision;
-		if (_attack.attackState == Attack.State.Heavy)
-			EventHandler.SendEvent(EventHandler.Events.HEAVY_SWING);
 
 		if (_chainAttack && _chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
             _updateChainAttack = false;
