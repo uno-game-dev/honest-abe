@@ -55,17 +55,16 @@ public class WorldGenerator : MonoBehaviour
             SpawnProps();
             // SpawnDecals(); - Disabled until art assets are ready
             SpawnItems();
-            //Only counting down the boss for alpha
-            SpawnBoss();
-			else
-			{
-				SpawnItems();
+            if (!SpawnBoss())
+            {
+                SpawnItems();
                 SpawnEnemies();
                 _canSpawn = true;
-			}
-			_screenCount++;
-			_lastXPos += startSpawnPosition;
-		}
+            }
+            Debug.Log("Completed generation of screen " + _screenCount);
+            _screenCount++;
+            _lastXPos += startSpawnPosition;
+        }
     }
 
     private void SpawnTerrain()
@@ -126,9 +125,9 @@ public class WorldGenerator : MonoBehaviour
             Instantiate(enemies[r], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
             Debug.Log("Enemy type " + r + " spawned, remaining density: " + _remainingEnemyDensity);
         }
-	}
+    }
 
-	private void SpawnBoss()
+    private bool SpawnBoss()
     {
         bool spawn = false;
         switch (_levelIndex)
@@ -148,7 +147,8 @@ public class WorldGenerator : MonoBehaviour
         }
         if (spawn)
             Instantiate(bosses[_levelIndex], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
-	}
+        return spawn;
+    }
 
     private int GetWaveDifficulty()
     {
@@ -205,7 +205,7 @@ public class WorldGenerator : MonoBehaviour
             case 1:
                 if (_remainingEnemyDensity <= 2)
                     r = _rnd.Next(2);
-                else if(_remainingEnemyDensity <= 1)
+                else if (_remainingEnemyDensity <= 1)
                     r = 0;
                 else
                     r = _rnd.Next(3);
@@ -215,7 +215,7 @@ public class WorldGenerator : MonoBehaviour
                     r = _rnd.Next(3);
                 else if (_remainingEnemyDensity <= 2)
                     r = _rnd.Next(2);
-                else if(_remainingEnemyDensity <= 1)
+                else if (_remainingEnemyDensity <= 1)
                     r = 0;
                 else
                     r = _rnd.Next(4);
@@ -225,7 +225,7 @@ public class WorldGenerator : MonoBehaviour
         return r;
     }
 
-	private Vector3 GetRandomEmptyPos(float z)
+    private Vector3 GetRandomEmptyPos(float z)
     {
         RectTransform area = (RectTransform)terrain.transform;
         double width = area.rect.width;
