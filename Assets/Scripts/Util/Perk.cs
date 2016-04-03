@@ -25,6 +25,7 @@ public class Perk : MonoBehaviour
         NONE_TRINKET,
         AXE_DTVAMPIRISM,
         AXE_BFA,
+        AXE_SLUGGER,
         HAT_BEARHANDS,
 		TRINKET_AGGRESSIONBUDDY, 
 		TRINKET_MARY_TODDS_LOCKETTE,
@@ -106,6 +107,13 @@ public class Perk : MonoBehaviour
                 _perkDesc = PerkManager.axe_bfa_desc;
                 _perkName = PerkManager.axe_bfa_name;
                 unlocked = PerkManager.axe_bfa_unlocked;
+                if (!unlocked) setToBeUnlocked = true;
+                break;
+            case PerkType.AXE_SLUGGER:
+                _category = PerkCategory.AXE;
+                _perkDesc = PerkManager.axe_slugger_desc;
+                _perkName = PerkManager.axe_slugger_name;
+                unlocked = PerkManager.axe_slugger_unlocked;
                 if (!unlocked) setToBeUnlocked = true;
                 break;
             case PerkType.HAT_BEARHANDS:

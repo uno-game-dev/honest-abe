@@ -6,9 +6,13 @@ public class EventHandler : MonoBehaviour
     public string eventToExecute;
 
     private static GameObject player;
-    private static Perk bfaPerk, bearAbePerk, sluggerPerk;
+<<<<<<< 0198616968c5f7aa3832ae059d452c44f00ce07d
+    private static Perk bfaPerk, bearAbePerk;
 	private static int amountOfWeaponPickUp = 0;
 	private static int goalToUnlockSFPerk = 20; 
+=======
+    private static Perk bfaPerk, bearAbePerk, sluggerPerk;
+>>>>>>> First pass for Slugger perk. Unlock checks are all implemented and functional. Need feedback before being able to implement effect.
 
     private string _eventString;
 

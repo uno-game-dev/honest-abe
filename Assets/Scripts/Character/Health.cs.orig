@@ -53,16 +53,21 @@ public class Health : MonoBehaviour
 					EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
 				}
 				else if (playerAttack.attackState == Attack.State.Light)
+<<<<<<< 0198616968c5f7aa3832ae059d452c44f00ce07d
 					EventHandler.SendEvent(EventHandler.Events.LIGHT_KILL);
 			}
 
 			DeathSequence();
+=======
+                    EventHandler.SendEvent(EventHandler.Events.LIGHT_KILL);
 
                 if (GameObject.Find("Player").GetComponent<Throw>().state != Throw.State.Null)
                     EventHandler.SendEvent(EventHandler.Events.WEAPON_THROW_KILL);
 
                 else if (GameObject.Find("Player").GetComponent<ShootAttack>().state != BaseAttack.State.Null)
                     EventHandler.SendEvent(EventHandler.Events.GUN_FIRE_KILL);
+            }
+>>>>>>> First pass for Slugger perk. Unlock checks are all implemented and functional. Need feedback before being able to implement effect.
 
 			// AI stuff: Mark this enemy's position around the player as available
 			float attackPosition = _blackboard.GetFloatVar("attackPosition");
