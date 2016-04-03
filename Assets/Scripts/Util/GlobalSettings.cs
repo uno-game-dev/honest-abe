@@ -18,4 +18,12 @@ public class GlobalSettings : MonoBehaviour
     public static float playerDefaultUnarmedLightDamage = 2;
     public static float playerDefaultUnarmedHeavyDamage = 3;
 
+    // Enemy Waves
+
+    public static int minRndForEasyWaveInLevel1 = 45;
+    public static int minRndForMediumWaveInLevel1 = 15;
+    public static int minRndForEasyWaveInLevel2 = 65;
+    public static int minRndForMediumWaveInLevel2 = 15;
+    public static int minRndForEasyWaveInLevel3 = 101;
+    public static int minRndForMediumWaveInLevel3 = 101;
 }
