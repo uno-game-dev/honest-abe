@@ -49,7 +49,7 @@ public class MobileInput : MonoBehaviour
                 {
                     if (touch.phase == TouchPhase.Began)
                         SetActionTouch(touch);
-                    else if (touch.phase == TouchPhase.Stationary)
+                    else if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                         CheckHold(touch);
                     else if (touch.phase == TouchPhase.Canceled || touch.phase == TouchPhase.Ended)
                         SetAction(touch);
