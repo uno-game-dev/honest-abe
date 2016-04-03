@@ -25,12 +25,15 @@ public class WorldGenerator : MonoBehaviour
     private List<Vector3> _occupiedPos;
     private System.Random _rnd;
     private bool _canSpawn = true;
+    private bool _spawningWaveOnClear;
     private float _lastXPos;
+    private float _spawnOnClearLocation;
     private int _screenCount;
     private int _levelIndex;
     private int _easyWaveChance;
     private int _mediumWaveChance;
     private int _remainingEnemyDensity;
+    private int _enemiesInScreen;
 
     // Use this for initialization
     void Start()
@@ -39,6 +42,7 @@ public class WorldGenerator : MonoBehaviour
         _camera = GameObject.Find("Main Camera");
         _rnd = new System.Random();
         _screenCount = 0;
+        _spawningWaveOnClear = false;
         _levelIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -64,6 +68,14 @@ public class WorldGenerator : MonoBehaviour
             Debug.Log("Completed generation of screen " + _screenCount);
             _screenCount++;
             _lastXPos += startSpawnPosition;
+        }
+
+        _enemiesInScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if (_enemiesInScreen <= 0 && _screenCount > 0 && !_spawningWaveOnClear)
+        {
+            _spawningWaveOnClear = true;
+            SpawnEnemies();
+            _spawningWaveOnClear = false;
         }
     }
 
@@ -234,12 +246,16 @@ public class WorldGenerator : MonoBehaviour
         float x = 0;
         float y = 0;
         bool occupied = true;
-
-        while (occupied)
+        int attempts = 0;
+        while (occupied && attempts < 3)
         {
             occupied = false;
 
-            x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
+            // Spawn wave along right edge of camera on clear
+            if (_spawningWaveOnClear)
+                x = GameObject.Find("RightEdge").transform.position.x;
+            else
+                x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
             y = (float)(height * _rnd.NextDouble() - height);
 
             foreach (Vector3 pos in _occupiedPos)
@@ -250,6 +266,7 @@ public class WorldGenerator : MonoBehaviour
                     break;
                 }
             }
+            attempts++;
         }
 
         Vector3 vector = new Vector3(x, y, z);
