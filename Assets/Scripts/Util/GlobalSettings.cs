@@ -5,6 +5,10 @@ public class GlobalSettings : MonoBehaviour
     // Levels
     public static bool currentSceneIsNew = true;
 
+    public static int screensInLevel1 = 10;
+    public static int screensInLevel2 = 10;
+    public static int screensInLevel3 = 10;
+
     // Player
 
     public static int healthIncreaseAmount = 20;
