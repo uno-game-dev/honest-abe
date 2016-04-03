@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using System;
 
 public class EventHandler : MonoBehaviour
 {
+    public string eventToExecute;
 
     private static GameObject player;
     private static Perk bfaPerk, bearAbePerk;
+
+    private string _eventString;
 
     public enum Events
     {
@@ -28,6 +32,30 @@ public class EventHandler : MonoBehaviour
         BEAR_HIT,
         BEAR_HIT_THROWN,
 		ROBERT_E_LEE_KILL
+    }
+
+    void Update()
+    {
+        if (!string.IsNullOrEmpty(eventToExecute))
+        {
+            _eventString = eventToExecute;
+            eventToExecute = null;
+            try
+            {
+                Events eventValue = (Events)Enum.Parse(typeof(Events), _eventString);
+                if (Enum.IsDefined(typeof(Events), eventValue) | eventValue.ToString().Contains(","))
+                {
+                    Debug.Log("Converted '" + _eventString + "' to " + eventValue.ToString() + ".");
+                    SendEvent(eventValue, null);
+                }
+                else
+                    Debug.Log("'" + _eventString + "' is not an underlying value of the Events enumeration.");
+            }
+            catch (ArgumentException)
+            {
+                Debug.Log("'" + _eventString + "' is not a member of the Events enumeration.");
+            }
+        }
     }
 
     public static void SendEvent(Events e)
