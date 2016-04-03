@@ -29,17 +29,12 @@ public class Player : MonoBehaviour
 	{
 
 	}
-
-	// Called before level transition to prevent camera bugs
-	public void ResetPosition()
-	{
-		transform.position = new Vector3(-15, -2, 0);
-	}
 	
 	// Runs when a scene is loaded
 	public void Initialize()
 	{
 		Debug.Log("Initialize Player");
+		transform.position = new Vector3(-15, -2, 0);
 		_playerHealth.Initialize();
 		_playerMotor.Initialize();
     }
