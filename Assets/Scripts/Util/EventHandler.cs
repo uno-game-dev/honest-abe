@@ -99,7 +99,8 @@ public class EventHandler : MonoBehaviour
                 PerkManager.PerformPerkEffects(Perk.PerkCategory.AXE);
 
                 // If our player hits an enemy with no weapon, he loses the BFA perk unlock
-                if (player == null) player = GameObject.Find("Player");
+                if (player == null)
+					player = GameObject.Find("Player");
                 if (player.GetComponent<Attack>().emptyHanded)
                 {
                     if (bfaPerk == null) bfaPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_bfa_name));
@@ -150,6 +151,10 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.GAME_LOSE:
                 Debug.Log("Game Lose");
+				if (player == null)
+					player = GameObject.Find("Player");
+				player.GetComponent<PlayerMotor>().enabled = false;
+				player.GetComponent<PlayerControls>().enabled = false;
                 GameObject.Find("UI").GetComponent<UIManager>().ActivateLoseUI();
                 break;
             case Events.GAME_WIN:

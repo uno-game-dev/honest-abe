@@ -185,10 +185,5 @@ public class PlayerHealth : Health
 	{
 		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
-		// Disable PlayerMotor script 
-		GetComponent<PlayerMotor>().enabled = false;
-        // Turn off any attack effects
-        GetComponent<PlayerControls>().enabled = false;
-        // Set animation for dead player
     }
 }
