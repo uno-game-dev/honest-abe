@@ -157,7 +157,7 @@ public class WorldGenerator : MonoBehaviour
                     spawn = true;
                 break;
         }
-        if (spawn && bosses[_bossIndex] != null))
+        if (spawn && bosses[_levelIndex] != null)
             Instantiate(bosses[_levelIndex], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         return spawn;
     }
