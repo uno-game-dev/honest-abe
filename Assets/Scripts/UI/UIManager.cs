@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 	// Boss UI
 	[HideInInspector]
 	public Canvas bossHealthUI;
+    public Canvas optionButtonUI;
 
 	private GameManager _gameManager;
 	private LevelManager _levelManager;
@@ -68,13 +69,10 @@ public class UIManager : MonoBehaviour
     void Update()
     {
 		if (!updateActive && Input.GetKeyDown(KeyCode.Return))
-        {
-            updateActive = true;
-            _startGameText.SetActive(false);
-        }
+            OnPressEnterAtBeginning();
 
         if (Input.GetButtonDown("Pause"))
-            _paused = !_paused;
+            TogglePause();
 
         if (_paused)
         {
@@ -109,15 +107,21 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void ActivateLoseUI()
+    public void TogglePause()
     {
-        _loseUI.SetActive(true);
+        _paused = !_paused;
     }
+
+	public void ActivateLoseUI()
+	{
+		_loseUI.SetActive(true);
+	}
 
     public void OnPressEnterAtBeginning()
     {
         updateActive = true;
         _startGameText.SetActive(false);
+        optionButtonUI.gameObject.SetActive(true);
     }
 
 	private void SetListenersForPauseUI()
