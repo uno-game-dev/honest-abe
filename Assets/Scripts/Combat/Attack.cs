@@ -106,14 +106,14 @@ public class Attack : MonoBehaviour
                 component.enabled = false;
 
         BaseAttack attack;
-        if (attackType == Weapon.AttackType.Melee)
-            attack = this.GetOrAddComponent<MeleeAttack>();
-        else if (attackType == Weapon.AttackType.Swing)
-            attack = this.GetOrAddComponent<SwingAttack>();
-        else if (attackType == Weapon.AttackType.Jab)
-            attack = this.GetOrAddComponent<JabAttack>();
-        else if (attackType == Weapon.AttackType.Shoot)
-            attack = this.GetOrAddComponent<ShootAttack>();
+		if (attackType == Weapon.AttackType.Melee)
+			attack = this.GetOrAddComponent<MeleeAttack> ();
+		else if (attackType == Weapon.AttackType.Swing)
+			attack = this.GetOrAddComponent<SwingAttack> ();
+		else if (attackType == Weapon.AttackType.Jab)
+			attack = this.GetOrAddComponent<JabAttack> ();
+		else if (attackType == Weapon.AttackType.Shoot)
+			attack = this.GetOrAddComponent<ShootAttack> ();
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 
