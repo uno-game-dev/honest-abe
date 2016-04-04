@@ -17,6 +17,18 @@
 
     }
 
+    protected override void PerformLightAttack()
+    {
+        if (swipe) swipe.Activate();
+        base.PerformLightAttack();
+    }
+
+    protected override void PerformHeavyAttack()
+    {
+        if (swipe) swipe.Activate();
+        base.PerformHeavyAttack();
+    }
+
     protected override void BackToIdle()
     {
         base.BackToIdle();

@@ -52,7 +52,7 @@ public class Throw : MonoBehaviour
         _attack.weapon.transform.position = transform.position;
         _attack.weapon.GetComponent<BoxCollider2D>().enabled = true;
         _attack.weapon.GetOrAddComponent<Projectile>().StartProjectile(
-            _movement.direction == Movement.Direction.Left ? -velocity : velocity);
+			_movement.direction == Movement.Direction.Left ? -velocity : velocity, (int)(_attack.weapon.throwDamage) );
         SetState(State.Perform);
         _attack.weapon.transform.rotation = Quaternion.identity;
         _attack.weapon.gameObject.layer = LayerMask.NameToLayer("Items");

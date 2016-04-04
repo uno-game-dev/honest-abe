@@ -3,33 +3,48 @@ using System;
 
 public class PlayerHealth : Health
 {
-    public int damageThreshold = 100;
+    public int damageThreshold;
     public float decreaseSecondsPerHealthPoint = 1;
+	public int executionsPerformed;
 
-    [HideInInspector]
-    private int _tempHealth;
+	[HideInInspector]
+	private HealthSlider _slider;
+	private GameManager _gameManager;
+	private int _tempHealth;
     private int _tempDamageThreshold;
     private float _updateSliderTime = 1;
-    private HealthSlider _slider;
-	private GameManager _gameManager;
 
 	void Start()
 	{
-		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
-        alive = false;
-		GlobalSettings.executionsPerformed = 0;
+		Initialize();
     }
 
     void Update()
     {
         if (health <= 0)
             Death();
-        if (!alive)
-            // Decreases the timer to know when to update the damageSlider
-            _updateSliderTime -= Time.deltaTime;
-        UpdateHUD();
+		if (alive)
+			// Decreases the timer to know when to update the damageSlider
+			_updateSliderTime -= Time.deltaTime;
+		UpdateHUD();
+		if (executionsPerformed > 0)
+		{
+			executionsPerformed--;
+			Execution();
+		}
     }
+
+	public void Initialize()
+	{
+		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
+		health = 100;
+		damageThreshold = 100;
+		executionsPerformed = 0;
+        alive = true;
+		GetComponent<PlayerMotor>().enabled = true;
+		GetComponent<PlayerControls>().enabled = true;
+	}
 
     public override void Increase(int amount)
     {
@@ -56,6 +71,7 @@ public class PlayerHealth : Health
                     _slider.UpdateDamageThreshold(damageThreshold);
                 }
             }
+
         }
         // ELSE-IF--The health starts off less than damageThreshold(2 cases)
         // The health AFTER the health increase is less than the damageThreshold 
@@ -114,22 +130,26 @@ public class PlayerHealth : Health
 
     public override void Decrease(int damage)
     {
-        // Temp variable for damageThreshold
-        _tempDamageThreshold = damageThreshold - damage;
-        if (_tempDamageThreshold <= 0)
-        {
-            health -= Math.Abs(_tempDamageThreshold);
-            _slider.UpdateCurrentHealth(health);
-            damageThreshold = 0;
-        }
-        else {
-            damageThreshold -= damage;
-        }
-        _slider.UpdateDamageThreshold(damageThreshold);
+        if ((PerkManager.activeTrinketPerk != null) && (Perk.performMaryToddsTimeStamp >= Time.time)) {
+			Debug.Log ("Mary Todd's Lockette is Actived");
+			return;
+		} else {
+			Debug.Log (Perk.maryToddsLocketteIsActive);
+			// Temp variable for damageThreshold
+			_tempDamageThreshold = damageThreshold - damage;
+			if (_tempDamageThreshold <= 0) {
+				health -= Math.Abs (_tempDamageThreshold);
+				_slider.UpdateCurrentHealth (health);
+				damageThreshold = 0;
+			} else {
+				damageThreshold -= damage;
+			}
+			_slider.UpdateDamageThreshold (damageThreshold);
+		}
     }
 
     // Updates the health and damageThreshold 
-    void UpdateHUD()
+    private void UpdateHUD()
     {
         // CurrentHealth is slowly decreasing to eventually equal damageThreshold 
         if (health > damageThreshold)
@@ -146,15 +166,9 @@ public class PlayerHealth : Health
                 _updateSliderTime = decreaseSecondsPerHealthPoint;
             }
         }
-		// Allows Execution function to run multiple times when more than one enemy is executed
-        if (GlobalSettings.executionsPerformed > 0)
-        {
-            GlobalSettings.executionsPerformed--;
-            Execution();
-        }
     }
-
-    void Execution()
+	
+    private void Execution()
     {
         // Make sure damageThreshold does not go above 120
         if (damageThreshold <= 110)
@@ -167,14 +181,9 @@ public class PlayerHealth : Health
         _slider.UpdateDamageThreshold(damageThreshold);
     }
 
-    void Death()
+    private void Death()
 	{
-		alive = true;
+		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
-		// Disable PlayerMotor script 
-		gameObject.GetComponent<PlayerMotor>().enabled = false;
-        // Turn off any attack effects
-        gameObject.GetComponent<PlayerControls>().enabled = false;
-        // Set animation for dead player
     }
 }

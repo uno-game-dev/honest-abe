@@ -2,6 +2,8 @@
 
 public class Boss : MonoBehaviour
 {
+    public string bossName;
+
 	private CameraFollow _cameraFollow;
 	private Vector3 _playerPosition;
 

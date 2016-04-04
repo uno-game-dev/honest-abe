@@ -14,6 +14,19 @@ namespace BehaviourMachine {
         /// </summary>
         public static new GlobalBlackboard Instance {get {return InternalGlobalBlackboard.Instance as GlobalBlackboard;}}
 
+        // BoolVars
+        public static readonly int pos1 = -1971413159;
+        public static readonly int pos2 = -711410029;
+        public static readonly int pos3 = -1919820276;
+        public static readonly int pos4 = -2113246250;
+        public static readonly int pos5 = -1959775906;
+        public static readonly int pos6 = -560891254;
+        public static readonly int pos7 = -771454815;
+        public static readonly int pos8 = -1413489053;
+        public static readonly int pos9 = -1305786331;
+        public static readonly int pos10 = -1263452720;
+        public static readonly int pos11 = -925501756;
+        public static readonly int pos12 = -562609553;
         // FsmEvents
         public static readonly int APPLICATION_FOCUS = -1;
         public static readonly int APPLICATION_PAUSE = -2;
@@ -35,5 +48,6 @@ namespace BehaviourMachine {
         public static readonly int TRIGGER_ENTER_2D = -18;
         public static readonly int TRIGGER_EXIT = -19;
         public static readonly int TRIGGER_EXIT_2D = -20;
+        public static readonly int LEVEL_LOADED = -21;
     }
 }

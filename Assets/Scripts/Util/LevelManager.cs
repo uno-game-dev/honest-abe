@@ -28,12 +28,18 @@ public class LevelManager : MonoBehaviour
 
     public void loadCurrentLevel()
     {
-        SceneManager.LoadScene(currentScene);
+        if (currentScene == 0)
+            Destroy(GameObject.Find("Player"));
+        else
+            GameObject.Find("Player").GetComponent<Player>().Initialize();
+        GameObject.Find("Player").GetComponent<Player>().Initialize();
+		SceneManager.LoadScene(currentScene);
     }
 
     public void loadNextLevel()
     {
         currentScene++;
-        SceneManager.LoadScene(currentScene);
+        // Initialize player before level load to fix camera issues
+		SceneManager.LoadScene(currentScene);
     }
 }

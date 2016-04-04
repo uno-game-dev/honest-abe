@@ -43,9 +43,12 @@ public class BossHealth : Health
 		{
 			health = 0;
 			alive = false;
+			if ((gameObject.GetComponent<Boss>().bossName == "Robert E. Lee")) {
+				EventHandler.SendEvent (EventHandler.Events.ROBERT_E_LEE_KILL);
+			}
 			EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
-			Destroy(gameObject);
-		}
+            DeathSequence();
+        }
 		else
 			health -= amount;
 

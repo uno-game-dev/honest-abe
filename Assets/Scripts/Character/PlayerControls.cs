@@ -30,37 +30,30 @@ public class PlayerControls : MonoBehaviour
 
         MobileInput.Action mobileAction = MobileInput.GetAction();
 
+        if (_grab.state == Grabber.State.Hold)
+        {
+            if (mobileAction == MobileInput.Action.LightAttack || mobileAction == MobileInput.Action.Pickup)
+                _grab.Punch();
+            else if (mobileAction == MobileInput.Action.HeavyAttack)
+                _grab.Throw();
+            else if (mobileAction == MobileInput.Action.Throw)
+                _grab.Throw();
+            return;
+        }
+
         if (mobileAction == MobileInput.Action.LightAttack)
         {
-            if (_grab.state == Grabber.State.Hold)
-                _grab.Punch();
-            else
-            {
-                justClicked = true;
-                _attack.LightAttack();
-            }
+            _attack.LightAttack();
+            justClicked = true;
         }
 
         if (mobileAction == MobileInput.Action.HeavyAttack)
-            if (_grab.state == Grabber.State.Hold)
-                _grab.Throw();
-            else
-                _attack.HeavyAttack();
+            _attack.HeavyAttack();
 
-        if (Input.GetButton("Fire1") && !heldComplete && justClicked)
+        if (mobileAction == MobileInput.Action.Pickup)
         {
-            mouseHeldTime += Time.deltaTime;
-
-            if (mouseHeldTime >= timeToConsiderHeld)
-            {
-                mouseHeldTime = 0;
-                heldComplete = true;
-            }
-        }
-
-        if (Input.GetButtonUp("Fire1"))
-        {
-            ResetHold();
+            justClicked = true;
+            heldComplete = true;
         }
 
         if (mobileAction == MobileInput.Action.Grab)
@@ -71,6 +64,10 @@ public class PlayerControls : MonoBehaviour
 
         if (mobileAction == MobileInput.Action.Throw)
             _throw.StartThrow();
+            
+        if(Input.GetKeyDown(KeyCode.R)){
+			PerkManager.PerformPerkEffects (Perk.PerkCategory.TRINKET);
+		}
     }
 
     public void ResetHold()

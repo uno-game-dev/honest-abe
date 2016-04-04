@@ -20,7 +20,7 @@ public class Attack : MonoBehaviour
     private CharacterState _characterState;
     private ChainAttack _chainAttack;
 
-    private void Awake()
+    private void Start()
     {
         _animator = GetComponent<Animator>();
         _characterState = GetComponent<CharacterState>();
@@ -86,6 +86,7 @@ public class Attack : MonoBehaviour
             weapon.transform.GetChild(0).localPosition = Vector3.zero;
             weapon.gameObject.layer = gameObject.layer;
         }
+
     }
 
     public float GetDamageAmount()
@@ -105,14 +106,14 @@ public class Attack : MonoBehaviour
                 component.enabled = false;
 
         BaseAttack attack;
-        if (attackType == Weapon.AttackType.Melee)
-            attack = this.GetOrAddComponent<MeleeAttack>();
-        else if (attackType == Weapon.AttackType.Swing)
-            attack = this.GetOrAddComponent<SwingAttack>();
-        else if (attackType == Weapon.AttackType.Jab)
-            attack = this.GetOrAddComponent<JabAttack>();
-        else if (attackType == Weapon.AttackType.Shoot)
-            attack = this.GetOrAddComponent<ShootAttack>();
+		if (attackType == Weapon.AttackType.Melee)
+			attack = this.GetOrAddComponent<MeleeAttack> ();
+		else if (attackType == Weapon.AttackType.Swing)
+			attack = this.GetOrAddComponent<SwingAttack> ();
+		else if (attackType == Weapon.AttackType.Jab)
+			attack = this.GetOrAddComponent<JabAttack> ();
+		else if (attackType == Weapon.AttackType.Shoot)
+			attack = this.GetOrAddComponent<ShootAttack> ();
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 

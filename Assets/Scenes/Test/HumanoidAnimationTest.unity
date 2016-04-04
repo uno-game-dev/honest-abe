@@ -1183,6 +1183,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 99dd0d7fea1805b46bc1b922248ab358, type: 3}
   - {fileID: 100002, guid: 529ea5cf4288ec840b986e88adcb0e60, type: 3}
   - {fileID: 100078, guid: 1c017aab1043f9c47bae0ced35ffc90c, type: 3}
+  - {fileID: 100062, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
   numberOfAnimations: 11
   rotationMultiplier: 4
   scaleMultiplier: 0.5
@@ -1318,6 +1319,7 @@ GameObject:
   - 223: {fileID: 1716150242}
   - 114: {fileID: 1716150241}
   - 114: {fileID: 1716150240}
+  - 114: {fileID: 1716150244}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1406,6 +1408,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1716150244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1716150239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6f4dc98cb123244b8f80d94576a5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TouchIDPrefab: {fileID: 158808, guid: 229405af1a31e90478666cca11f7916e, type: 2}
 --- !u!1 &1742111625
 GameObject:
   m_ObjectHideFlags: 0

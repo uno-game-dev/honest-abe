@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     public Vector2 velocity;
     public float movementSmoothing = .115f;
     public State state;
+    public float steptimer = .5f;
 
     private BaseCollision _collision;
     private float velocityXSmoothing, velocityYSmoothing;

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c9d3ebb002f764948a20e09aa8f4026f
-timeCreated: 1453095906
+timeCreated: 1459205309
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -69,6 +69,36 @@ ModelImporter:
     100122: RightArm
     100124: RightLeg
     100126: Overcoat
+    100128: GenericHumanRigLArmCollarbone
+    100130: GenericHumanRigLArmPalm
+    100132: GenericHumanRigRArmCollarbone
+    100134: GenericHumanRigRArmPalm
+    100136: HumanRigChest
+    100138: HumanRigHead
+    100140: HumanRigLArm1
+    100142: HumanRigLArm2
+    100144: HumanRigLArmCollarbone
+    100146: HumanRigLArmDigit11
+    100148: HumanRigLArmDigit21
+    100150: HumanRigLArmPalm
+    100152: HumanRigLLeg1
+    100154: HumanRigLLeg2
+    100156: HumanRigLLegAnkle
+    100158: HumanRigLLegDigit11
+    100160: HumanRigNeck
+    100162: HumanRigPelvis
+    100164: HumanRigRArm1
+    100166: HumanRigRArm2
+    100168: HumanRigRArmCollarbone
+    100170: HumanRigRArmDigit11
+    100172: HumanRigRArmDigit21
+    100174: HumanRigRArmPalm
+    100176: HumanRigRLeg1
+    100178: HumanRigRLeg2
+    100180: HumanRigRLegAnkle
+    100182: HumanRigRLegDigit11
+    100184: HumanRigSpine1
+    100186: HumanRigSpine2
     400000: //RootNode
     400002: Abe
     400004: Abe 1
@@ -133,8 +163,52 @@ ModelImporter:
     400122: RightArm
     400124: RightLeg
     400126: Overcoat
+    400128: GenericHumanRigLArmCollarbone
+    400130: GenericHumanRigLArmPalm
+    400132: GenericHumanRigRArmCollarbone
+    400134: GenericHumanRigRArmPalm
+    400136: HumanRigChest
+    400138: HumanRigHead
+    400140: HumanRigLArm1
+    400142: HumanRigLArm2
+    400144: HumanRigLArmCollarbone
+    400146: HumanRigLArmDigit11
+    400148: HumanRigLArmDigit21
+    400150: HumanRigLArmPalm
+    400152: HumanRigLLeg1
+    400154: HumanRigLLeg2
+    400156: HumanRigLLegAnkle
+    400158: HumanRigLLegDigit11
+    400160: HumanRigNeck
+    400162: HumanRigPelvis
+    400164: HumanRigRArm1
+    400166: HumanRigRArm2
+    400168: HumanRigRArmCollarbone
+    400170: HumanRigRArmDigit11
+    400172: HumanRigRArmDigit21
+    400174: HumanRigRArmPalm
+    400176: HumanRigRLeg1
+    400178: HumanRigRLeg2
+    400180: HumanRigRLegAnkle
+    400182: HumanRigRLegDigit11
+    400184: HumanRigSpine1
+    400186: HumanRigSpine2
     2300000: Hat
+    2300002: Body
+    2300004: Head
+    2300006: LeftArm
+    2300008: LeftLeg
+    2300010: Overcoat
+    2300012: RightArm
+    2300014: RightLeg
     3300000: Hat
+    3300002: Body
+    3300004: Head
+    3300006: LeftArm
+    3300008: LeftLeg
+    3300010: Overcoat
+    3300012: RightArm
+    3300014: RightLeg
     4300000: Abe
     4300002: Hat
     4300004: Body
@@ -164,13 +238,7 @@ ModelImporter:
     resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: '
-
-      Imported file ''Abe'' conversion failed: Transform ''Base HumanHub001'' for
-      human bone ''Hips'' not found
-
-
-'
+    animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -202,12 +270,12 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 90
     normalImportMode: 1
-    tangentImportMode: 4
+    tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human:
-    - boneName: GenericHumanRigPelvis
+    - boneName: HumanRigPelvis
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -215,7 +283,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLLeg1
+    - boneName: HumanRigLLeg1
       humanName: LeftUpperLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -223,7 +291,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRLeg1
+    - boneName: HumanRigRLeg1
       humanName: RightUpperLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -231,7 +299,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLLeg2
+    - boneName: HumanRigLLeg2
       humanName: LeftLowerLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -239,7 +307,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRLeg2
+    - boneName: HumanRigRLeg2
       humanName: RightLowerLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -247,7 +315,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLLegAnkle
+    - boneName: HumanRigLLegAnkle
       humanName: LeftFoot
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -255,7 +323,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRLegAnkle
+    - boneName: HumanRigRLegAnkle
       humanName: RightFoot
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -263,7 +331,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigSpine2
+    - boneName: HumanRigSpine2
       humanName: Spine
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -271,7 +339,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigNeck
+    - boneName: HumanRigNeck
       humanName: Neck
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -279,7 +347,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigHead
+    - boneName: HumanRigHead
       humanName: Head
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -287,15 +355,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLArm1
-      humanName: LeftUpperArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: GenericHumanRigRArm1
+    - boneName: HumanRigRArm1
       humanName: RightUpperArm
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -303,15 +363,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLArm2
-      humanName: LeftLowerArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: GenericHumanRigRArm2
+    - boneName: HumanRigRArm2
       humanName: RightLowerArm
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -319,15 +371,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLArmHand
-      humanName: LeftHand
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: GenericHumanRigRArmHand
+    - boneName: HumanRigRArmPalm
       humanName: RightHand
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -335,7 +379,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigLLegDigit11
+    - boneName: HumanRigLLegDigit11
       humanName: LeftToes
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -343,8 +387,32 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: GenericHumanRigRLegDigit11
+    - boneName: HumanRigRLegDigit11
       humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: HumanRigLArm1
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: HumanRigLArm2
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: HumanRigLArmPalm
+      humanName: LeftHand
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -357,180 +425,177 @@ ModelImporter:
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: AbeGroup
-      position: {x: 0.00000009689331, y: 0, z: 0}
-      rotation: {x: 0.000000021855694, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Body
-      position: {x: -0.055675954, y: 0.007740564, z: -0.034800734}
-      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      position: {x: -0.055675857, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
     - name: Hat
-      position: {x: -0.00000008478165, y: 1.0534497, z: -0.039435554}
-      rotation: {x: -0.7944387, y: 0, z: 0, w: 0.60734427}
-      scale: {x: 0.54439837, y: 0.39246815, z: 0.57391435}
+      position: {x: 0.000000012111664, y: 1.0534497, z: -0.03943548}
+      rotation: {x: -0.7944387, y: 0, z: 0, w: 0.6073443}
+      scale: {x: 0.54439837, y: 0.39246818, z: 0.57391435}
       transformModified: 1
     - name: Head
-      position: {x: -0.00000009689331, y: 0.5565095, z: 0.000000048446655}
-      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      position: {x: 0, y: 0.55650944, z: 0.00000014533997}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1.17756, y: 1, z: 1}
       transformModified: 1
     - name: LeftArm
-      position: {x: -0.055675954, y: 0.007740564, z: -0.034800734}
-      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      position: {x: -0.055999998, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
     - name: LeftLeg
-      position: {x: -0.055675954, y: 0.007740564, z: -0.034800734}
-      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      position: {x: -0.055675857, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
     - name: Overcoat
-      position: {x: -0.00000009689331, y: 0.19202513, z: 0}
-      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+      position: {x: 0, y: 0.1920251, z: 0.000000024223327}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: RightArm
-      position: {x: -0.055675954, y: 0.007740564, z: -0.034800734}
-      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-      scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
+      position: {x: 0.055999998, y: 0.007740564, z: -0.034800734}
+      rotation: {x: 0.70710677, y: 0, z: 0, w: 0.7071068}
+      scale: {x: -0.5179348, y: -0.37338984, z: -0.5179348}
       transformModified: 1
     - name: RightLeg
-      position: {x: -0.055675954, y: 0.007740564, z: -0.034800734}
-      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+      position: {x: -0.055675857, y: 0.007740564, z: -0.034800734}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 0.5179348, y: 0.37338984, z: 0.5179348}
       transformModified: 1
-    - name: GenericHumanRigPelvis
+    - name: HumanRigPelvis
       position: {x: 2.5627854e-14, y: 0.30577156, z: -0.012792866}
       rotation: {x: 0.50000006, y: -0.5, z: -0.4999999, w: 0.5}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigRLeg1
+    - name: HumanRigRLeg1
       position: {x: 0.0003496395, y: -0.0072426675, z: -0.03398059}
-      rotation: {x: 0.029693432, y: 0.99867284, z: -0.0031669175, w: -0.041962784}
-      scale: {x: 1.096006, y: 1.0000001, z: 1}
+      rotation: {x: 0.029693386, y: 0.9986728, z: -0.0031668611, w: -0.04196393}
+      scale: {x: 1.0960062, y: 1, z: 0.9999999}
       transformModified: 1
-    - name: GenericHumanRigRLeg2
-      position: {x: -0.12288604, y: 0.00000031490325, z: 0.0000004965782}
-      rotation: {x: 0.026363371, y: -0.00013073055, z: 0.00013967672, w: 0.99965245}
-      scale: {x: 1.0000005, y: 1, z: 1.0000001}
+    - name: HumanRigRLeg2
+      position: {x: -0.122886, y: 0.00000030884743, z: 0.0000004965782}
+      rotation: {x: 0.026358746, y: -0.00005752657, z: 0.00018304998, w: 0.99965256}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
       transformModified: 1
-    - name: GenericHumanRigRLegAnkle
-      position: {x: -0.099368446, y: 0, z: 0}
-      rotation: {x: -0.019930441, y: -0.05106428, z: -0.29703373, w: 0.9532923}
-      scale: {x: 0.93874776, y: 0.9758994, z: 0.9994262}
+    - name: HumanRigRLegAnkle
+      position: {x: -0.099368446, y: -0.000000003027916, z: 0}
+      rotation: {x: -0.01994498, y: -0.051252298, z: -0.29711872, w: 0.9532554}
+      scale: {x: 0.9387668, y: 0.9758858, z: 0.9994214}
       transformModified: 1
-    - name: GenericHumanRigRLegDigit11
-      position: {x: -0.06262601, y: 0.000000002270937, z: 0}
-      rotation: {x: 0.00018971424, y: -0.00031799544, z: -0.50825846, w: 0.8612045}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: HumanRigRLegDigit11
+      position: {x: -0.06262601, y: -3.784895e-10, z: 0}
+      rotation: {x: 0.00012962129, y: -0.00021665276, z: -0.5082158, w: 0.8612297}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
       transformModified: 1
-    - name: GenericHumanRigLLeg1
+    - name: HumanRigLLeg1
       position: {x: 0.0003496395, y: -0.0072426703, z: 0.03398059}
-      rotation: {x: 0.029693423, y: 0.99867284, z: 0.0031669724, w: 0.04196286}
+      rotation: {x: 0.02969343, y: 0.99867284, z: 0.0031670022, w: 0.041962557}
       scale: {x: 1.0960062, y: 1.0000001, z: 1}
       transformModified: 1
-    - name: GenericHumanRigLLeg2
-      position: {x: -0.12288602, y: 0.00000031187534, z: -0.0000004905224}
-      rotation: {x: -0.02635841, y: 0.0000026316197, z: 0.0000013885999, w: 0.99965256}
-      scale: {x: 1.0000005, y: 1.0000001, z: 0.9999998}
+    - name: HumanRigLLeg2
+      position: {x: -0.122885995, y: 0.00000031490325, z: -0.00000050263407}
+      rotation: {x: -0.026358403, y: 0.0000015337291, z: 0.0000013335654, w: 0.99965256}
+      scale: {x: 1.0000002, y: 1.0000001, z: 0.99999976}
       transformModified: 1
-    - name: GenericHumanRigLLegAnkle
-      position: {x: -0.099368446, y: 0, z: 0}
-      rotation: {x: 0.019965783, y: 0.05139575, z: -0.2967137, w: 0.95337343}
-      scale: {x: 0.9387043, y: 0.9759494, z: 0.9994181}
+    - name: HumanRigLLegAnkle
+      position: {x: -0.099368446, y: 0, z: 0.000000006055832}
+      rotation: {x: 0.01996579, y: 0.051397044, z: -0.29671353, w: 0.9533734}
+      scale: {x: 0.9387044, y: 0.9759494, z: 0.9994181}
       transformModified: 1
-    - name: GenericHumanRigLLegDigit11
-      position: {x: -0.062626, y: 3.784895e-10, z: 0}
-      rotation: {x: -0.00008168176, y: 0.00013607214, z: -0.50842404, w: 0.8611068}
-      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: HumanRigLLegDigit11
+      position: {x: -0.06262599, y: -0.000000002270937, z: 0.000000006055832}
+      rotation: {x: -0.000081391016, y: 0.0001355821, z: -0.5084241, w: 0.8611068}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
       transformModified: 1
-    - name: GenericHumanRigSpine1
+    - name: HumanRigSpine1
       position: {x: 0, y: 0, z: -0}
       rotation: {x: 7.10543e-15, y: 2.5571745e-14, z: 7.1054274e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigSpine2
+    - name: HumanRigSpine2
       position: {x: -0.13334997, y: 0, z: 3.2486013e-15}
       rotation: {x: 0, y: 1.2300171e-14, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigChest
+    - name: HumanRigChest
       position: {x: -0.13334996, y: 0.000000001513958, z: 3.0681236e-15}
       rotation: {x: -7.1054274e-15, y: -1.3271574e-14, z: -7.1054274e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigNeck
+    - name: HumanRigLArmCollarbone
+      position: {x: -0, y: 0, z: 0.03748635}
+      rotation: {x: 8.910828e-12, y: 0.6658017, z: -5.8277283e-10, w: 0.74612874}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: HumanRigLArm1
+      position: {x: -0.043253936, y: 0, z: 0}
+      rotation: {x: 0.00086346874, y: 0.07823823, z: 0.018481191, w: 0.996763}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: HumanRigLArm2
+      position: {x: -0.17999926, y: 0.000000003027916, z: 0}
+      rotation: {x: 0.0003242158, y: -0.010861664, z: -0.041697316, w: 0.99907124}
+      scale: {x: 1, y: 1, z: 1.0000001}
+      transformModified: 1
+    - name: HumanRigLArmPalm
+      position: {x: -0.18751116, y: -0.000000012111664, z: -0.000000048446655}
+      rotation: {x: -0.6950671, y: -0.04832788, z: 0.046900727, w: 0.71578395}
+      scale: {x: 1, y: 1.0000001, z: 1}
+      transformModified: 1
+    - name: HumanRigLArmDigit21
+      position: {x: -0.040640008, y: 0, z: 0}
+      rotation: {x: -0.00000000372529, y: 0.00000006341725, z: -0.0000000046566124,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: HumanRigLArmDigit11
+      position: {x: -0.021991827, y: 0.003200289, z: 0.02573295}
+      rotation: {x: 0.0011645027, y: 0.6672246, z: -0.008156997, w: 0.744811}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+      transformModified: 1
+    - name: HumanRigRArmCollarbone
+      position: {x: -0, y: 0, z: -0.03748635}
+      rotation: {x: -8.9575725e-12, y: -0.6658017, z: -5.828145e-10, w: 0.74612874}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: HumanRigRArm1
+      position: {x: -0.043253936, y: 0.000000001513958, z: 0}
+      rotation: {x: -0.0008634688, y: -0.0782383, z: 0.018481199, w: 0.996763}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: HumanRigRArm2
+      position: {x: -0.17999926, y: -0.000000003027916, z: 0}
+      rotation: {x: -0.00032421987, y: 0.01086166, z: -0.041697334, w: 0.99907124}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+      transformModified: 1
+    - name: HumanRigRArmPalm
+      position: {x: -0.18751116, y: 0.000000012111664, z: 0.000000048446655}
+      rotation: {x: 0.6938386, y: 0.063124985, z: 0.070825025, w: 0.7138538}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1.0000001}
+      transformModified: 1
+    - name: HumanRigRArmDigit21
+      position: {x: -0.04063996, y: 0, z: 0.000000006055832}
+      rotation: {x: -0.000000003725291, y: 0.00000008259669, z: 0.000000012107197,
+        w: 1}
+      scale: {x: 0.99999976, y: 1, z: 1.0000001}
+      transformModified: 1
+    - name: HumanRigRArmDigit11
+      position: {x: -0.021991778, y: 0.0032003375, z: -0.02573295}
+      rotation: {x: -0.0011647657, y: -0.6672247, z: -0.008157238, w: 0.7448109}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999964}
+      transformModified: 1
+    - name: HumanRigNeck
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 4.6958202e-15, y: -0.000000002449018, z: -0.016219283, w: 0.99986845}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
-    - name: GenericHumanRigHead
+    - name: HumanRigHead
       position: {x: -0.25373262, y: 0, z: 3.609557e-16}
       rotation: {x: -8.687678e-15, y: 0.000000002449018, z: 0.016219283, w: 0.99986845}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigRArmShoulder
-      position: {x: -0, y: 0, z: -0.037486333}
-      rotation: {x: -0.000000045149566, y: -0.7038513, z: 0.00000004516488, w: 0.7103474}
-      scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigRArm1
-      position: {x: -0.0544178, y: 0.000000001513958, z: 0}
-      rotation: {x: 0.0015267235, y: -0.024252512, z: 0.035575096, w: 0.99907154}
-      scale: {x: 0.99999994, y: 1, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigRArm2
-      position: {x: -0.16630876, y: -0.00000007834733, z: 0}
-      rotation: {x: 0.0016073582, y: 0.02274432, z: -0.076454714, w: 0.99681234}
-      scale: {x: 0.99999976, y: 1.0000001, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigRArmHand
-      position: {x: -0.19280235, y: -0.000000072669984, z: 0}
-      rotation: {x: 0.9948693, y: 0.04045128, z: 0.082380176, w: 0.04257141}
-      scale: {x: 0.9999997, y: 1.0000001, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigRArmDigit21
-      position: {x: -0.03511341, y: -0.000000090837474, z: 0}
-      rotation: {x: 0.00000020489084, y: 0.00000006705551, z: 0.0000012847598, w: 1}
-      scale: {x: 0.9999997, y: 1.0000002, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigRArmDigit11
-      position: {x: -0.010418647, y: 0.0067852447, z: -0.030744683}
-      rotation: {x: 0.040559277, y: -0.56426096, z: -0.044135455, w: 0.8234176}
-      scale: {x: 0.9999996, y: 1.0000006, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigLArmShoulder
-      position: {x: -0, y: 0, z: 0.037486333}
-      rotation: {x: 0.00000004515284, y: 0.7038513, z: 0.000000045161595, w: 0.7103474}
-      scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigLArm1
-      position: {x: -0.0544178, y: 0, z: 0}
-      rotation: {x: -0.0015267148, y: 0.024252428, z: 0.035574865, w: 0.99907154}
-      scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigLArm2
-      position: {x: -0.16630879, y: 0.00000007759034, z: 0}
-      rotation: {x: -0.0016074469, y: -0.02274425, z: -0.07645419, w: 0.9968124}
-      scale: {x: 1.0000002, y: 0.99999994, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigLArmHand
-      position: {x: -0.19280252, y: 0.0000000756979, z: 0.000000048446655}
-      rotation: {x: 0.99486923, y: 0.040452354, z: -0.08238004, w: -0.042571336}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1}
-      transformModified: 1
-    - name: GenericHumanRigLArmDigit21
-      position: {x: -0.03511343, y: 0.000000090837474, z: 0.000000048446655}
-      rotation: {x: 0.0000002011657, y: 0.00000005960437, z: -0.0000012856905, w: 1}
-      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
-      transformModified: 1
-    - name: GenericHumanRigLArmDigit11
-      position: {x: -0.010418744, y: 0.0067853234, z: 0.030744683}
-      rotation: {x: -0.04055745, y: 0.56426036, z: -0.044138167, w: 0.82341796}
-      scale: {x: 1.0000006, y: 1, z: 1}
       transformModified: 1
     armTwist: 0.5
     foreArmTwist: 0.5
@@ -541,8 +606,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 20dbc8c2e7b845648ae09b4e2a18f6ea,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0

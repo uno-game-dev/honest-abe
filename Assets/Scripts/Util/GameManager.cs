@@ -31,26 +31,25 @@ public class GameManager : MonoBehaviour
             _cameraFollow.lockRightEdge = true;
         else
             _cameraFollow.lockRightEdge = false;
-		if (GlobalSettings.winCondition)
-			Win();
-
 	}
 
 
-    // Runs when a scene is loaded
-    public void Initialize()
-    {
-        _cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
-        perkChosen = false;
-        GlobalSettings.loseCondition = false;
-        GlobalSettings.winCondition = false;
-        GlobalSettings.currentSceneIsNew = false;
+	// Runs when a scene is loaded
+	private void Initialize()
+	{
+		GameObject.Find("Player").GetComponent<Player>().Initialize();
+		_cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+		GlobalSettings.currentSceneIsNew = false;
     }
 
 	public void Win()
 	{
-		GlobalSettings.winCondition = false;
-		PerkManager.UpdatePerkStatus(GlobalSettings.axe_dtVampirism_name, 1);
+		PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
+		foreach (Perk p in PerkManager.perkList)
+        {
+            if (p.setToBeUnlocked)
+                PerkManager.UpdatePerkStatus(p.perkName, 1);
+        }
         _levelManager.loadNextLevel();
 	}
 }

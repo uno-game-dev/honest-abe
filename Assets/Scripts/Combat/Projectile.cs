@@ -17,7 +17,8 @@ public class Projectile : MonoBehaviour
     private BaseCollision _collision;
     private float _startXPos;
     private float _endXPos;
-    private int _damage;
+	private int _damage;
+    private int _throwDamage;
     private int _distance;
     private Transform _child;
 
@@ -57,21 +58,22 @@ public class Projectile : MonoBehaviour
         if (collider.GetComponent<Damage>())
         {
             _distance = Math.Abs((int)(_startXPos - _endXPos));
-            _damage = 10 - (_distance / 2);
-            if (_damage < 0)
-                _damage = 0;
-            Debug.Log("Projectile Damge: " + _damage);
-            collider.GetComponent<Damage>().ExecuteDamage(_damage, collider);
+            _throwDamage = 10 - (_distance / 2);
+            if (_throwDamage < 0)
+                _throwDamage = 0;
+			Debug.Log("Projectile Damge: " + (_damage + _throwDamage));
+			collider.GetComponent<Damage>().ExecuteDamage( (_throwDamage + _damage), collider);
         }
     }
 
-    public void StartProjectile(float velocity = 25)
+	public void StartProjectile(float velocity = 25, int baseDamage = 0)
     {
         if (state == State.InAir)
             return;
-
+		
         _startXPos = transform.position.x;
-        state = State.InAir;
+		_damage = baseDamage;
+		state = State.InAir;
         sign = Mathf.Sign(velocity);
         this.velocity = Mathf.Abs(velocity);
         enabled = true;

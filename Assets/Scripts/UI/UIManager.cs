@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 	// Boss UI
 	[HideInInspector]
 	public Canvas bossHealthUI;
+    public Canvas optionButtonUI;
 
 	private GameManager _gameManager;
 	private LevelManager _levelManager;
@@ -40,6 +41,10 @@ public class UIManager : MonoBehaviour
 	private Button _loseUIYesButton;
 	private Button _loseUINoButton;
 
+	//Trinket UI
+	private static Text _trinketUI;
+	private static Text _maryToddsLocketteUI;
+
 	void Awake()
 	{
 		updateActive = false;
@@ -55,20 +60,19 @@ public class UIManager : MonoBehaviour
         perkText.enabled = false;
 		bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
 		bossHealthUI.enabled = false;
+		_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
+		_trinketUI.enabled = false;
+		_maryToddsLocketteUI = GameObject.Find ("MaryToddsLocketteText").GetComponent<Text> ();
+		_maryToddsLocketteUI.enabled = false;
     }
 
     void Update()
     {
-		if (GlobalSettings.loseCondition)
-			_loseUI.SetActive(true);
 		if (!updateActive && Input.GetKeyDown(KeyCode.Return))
-        {
-            updateActive = true;
-            _startGameText.SetActive(false);
-        }
+            OnPressEnterAtBeginning();
 
         if (Input.GetButtonDown("Pause"))
-            _paused = !_paused;
+            TogglePause();
 
         if (_paused)
         {
@@ -87,12 +91,37 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(false);
             Time.timeScale = 1;
         }
+
+        
+		if ((PerkManager.activeTrinketPerk != null) && (Perk.trinketTimeStamp <= Time.time)) {
+			_trinketUI.enabled = true;
+		} else {
+			_trinketUI.enabled = false;
+		}
+
+		if ((PerkManager.activeTrinketPerk != null) && (Perk.performMaryToddsTimeStamp >= Time.time)) {
+			_maryToddsLocketteUI.enabled = true;
+		} else {
+			_maryToddsLocketteUI.enabled = false;
+		}
+        
     }
+
+    public void TogglePause()
+    {
+        _paused = !_paused;
+    }
+
+	public void ActivateLoseUI()
+	{
+		_loseUI.SetActive(true);
+	}
 
     public void OnPressEnterAtBeginning()
     {
         updateActive = true;
         _startGameText.SetActive(false);
+        optionButtonUI.gameObject.SetActive(true);
     }
 
 	private void SetListenersForPauseUI()

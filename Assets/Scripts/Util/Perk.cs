@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿	using UnityEngine;
 
 public class Perk : MonoBehaviour
 {
@@ -23,7 +23,11 @@ public class Perk : MonoBehaviour
         NONE_AXE,
         NONE_HAT,
         NONE_TRINKET,
-        AXE_DTVAMPIRISM
+        AXE_DTVAMPIRISM,
+        AXE_BFA,
+        HAT_BEARHANDS,
+		TRINKET_AGGRESSIONBUDDY, 
+		TRINKET_MARY_TODDS_LOCKETTE
     }
     public PerkType type;
 
@@ -39,11 +43,10 @@ public class Perk : MonoBehaviour
         get { return _perkDesc; }
     }
 
-    // Unlocked is whether the perk is available for the player to pick up when the game starts
+    // unlocked is whether the perk is available for the player to pick up when the game starts
     // setToBeUnlocked is whether the perk was earned during the game but the player has not finished the game yet
     [HideInInspector]
-    public bool unlocked, setToBeUnlocked;
-
+    public bool unlocked, setToBeUnlocked, alreadyActive;
 
     /*
      * References to scripts affected by the perks
@@ -51,6 +54,14 @@ public class Perk : MonoBehaviour
     private PlayerHealth playerHealth;
     private Weapon weapon;
     private Attack playerAttack;
+	[HideInInspector]
+	public static float trinketTimeStamp = 0f;
+	private static float trinketCoolDown;
+	[HideInInspector]
+	public static float performMaryToddsTimeStamp = 0f;
+	[HideInInspector]
+	public static bool maryToddsLocketteIsActive = false;
+	private static float performMaryToddsCoolDown;
 
     void Start()
     {
@@ -67,8 +78,8 @@ public class Perk : MonoBehaviour
         {
             case PerkType.NONE_AXE:
                 _category = PerkCategory.NONE_AXE;
-                _perkName = GlobalSettings.axe_none_name;
-                _perkDesc = GlobalSettings.axe_none_desc;
+				_perkName = PerkManager.axe_none_name;
+				_perkDesc = PerkManager.axe_none_desc;
                 unlocked = true;
                 break;
             case PerkType.NONE_HAT:
@@ -83,16 +94,45 @@ public class Perk : MonoBehaviour
                 break;
             case PerkType.AXE_DTVAMPIRISM:
                 _category = PerkCategory.AXE;
-                _perkDesc = GlobalSettings.axe_dtVampirism_desc;
-                _perkName = GlobalSettings.axe_dtVampirism_name;
-                unlocked = GlobalSettings.axe_dtVampirism_unlocked;
+                _perkDesc = PerkManager.axe_dtVampirism_desc;
+                _perkName = PerkManager.axe_dtVampirism_name;
+                unlocked = PerkManager.axe_dtVampirism_unlocked;
                 break;
-            default:
+            case PerkType.AXE_BFA:
+                _category = PerkCategory.AXE;
+                _perkDesc = PerkManager.axe_bfa_desc;
+                _perkName = PerkManager.axe_bfa_name;
+                unlocked = PerkManager.axe_bfa_unlocked;
+                if (!unlocked) setToBeUnlocked = true;
+                break;
+            case PerkType.HAT_BEARHANDS:
+                _category = PerkCategory.HAT;
+                _perkDesc = PerkManager.hat_bearHands_desc;
+                _perkName = PerkManager.hat_bearHands_name;
+                unlocked = PerkManager.hat_bearHands_unlocked;
+                if (!unlocked) setToBeUnlocked = true;
+                break;
+			case PerkType.TRINKET_AGGRESSIONBUDDY:
+				_category = PerkCategory.TRINKET;
+				_perkDesc = PerkManager.trinket_agressionBuddy_desc;
+				_perkName = PerkManager.trinket_agressionBuddy_name;
+				unlocked = PerkManager.trinket_agressionBuddy_unlocked;
+                break;
+			case PerkType.TRINKET_MARY_TODDS_LOCKETTE:
+				_category = PerkCategory.TRINKET;
+				_perkDesc = PerkManager.trinket_maryToddsLockette_desc;
+				_perkName = PerkManager.trinket_maryToddsLockette_name;
+				unlocked = PerkManager.trinket_maryToddsLockette_unlocked;
+				if (!unlocked) setToBeUnlocked = true;
+                break;
+			default:
                 break;
         }
 
         if (!unlocked)
             gameObject.SetActive(false);
+
+        alreadyActive = false;
     }
 
     public void OnCollision(GameObject other)
@@ -110,22 +150,75 @@ public class Perk : MonoBehaviour
                 break;
             case PerkCategory.AXE:
                 playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
-                weapon = GetComponent<Weapon>();
+                weapon = playerAttack.weapon;
                 PerkManager.activeAxePerk = this;
                 PerkManager.AxePerkEffect += AxeEffect;
                 break;
             case PerkCategory.HAT:
                 PerkManager.activeHatPerk = this;
                 PerkManager.HatPerkEffect += HatEffect;
+                if (this.type == PerkType.HAT_BEARHANDS)
+                {
+                    if (GameObject.Find("Hat_BA") != null)
+                    {
+                        GameObject.Find("Hat_BA").transform.SetParent(GameObject.Find("Player").transform, true);
+                        GameObject.Find("Hat_BA").SetActive(false);
+                    }
+                }
                 break;
-            case PerkCategory.TRINKET:
-                PerkManager.activeTrinketPerk = this;
-                PerkManager.TrinketPerkEffect += TrinketEffect;
+			case PerkCategory.TRINKET:
+				PerkManager.activeTrinketPerk = this;
+				PerkManager.TrinketPerkEffect += TrinketEffect;
+
+                if (this.type == PerkType.TRINKET_AGGRESSIONBUDDY)
+                {
+                    if (GameObject.Find("AB_Sprite_Placeholder") != null)
+                    {
+                        GameObject.Find("AB_Sprite_Placeholder").transform.SetParent(GameObject.Find("Player").transform, true);
+                        GameObject.Find("AB_Sprite_Placeholder").SetActive(false);
+                    }
+                }
+
+                if (this.type == PerkType.TRINKET_MARY_TODDS_LOCKETTE)
+                {
+                    if (GameObject.Find("MT_Sprite_Placeholder") != null)
+                    {
+                        GameObject.Find("MT_Sprite_Placeholder").transform.SetParent(GameObject.Find("Player").transform, true);
+                        GameObject.Find("MT_Sprite_Placeholder").SetActive(false);
+                    }
+                }
+
                 break;
             default:
                 break;
         }
         GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    /*
+     * Active() is used for perks that add something to to player once picked up
+     *     and do not have to be constantly triggered
+     *     e.g. the Bear Abe perk, where his unarmed damage is increased once picked up
+     */
+    public void Activate()
+    {
+        if (!alreadyActive)
+        {
+            if (type == PerkType.HAT_BEARHANDS)
+            {
+                GameObject.Find("Player").GetComponent<Weapon>().lightDamage *= 3;
+                GameObject.Find("Player").GetComponent<Weapon>().heavyDamage *= 3;
+            }
+
+            if (type == PerkType.AXE_BFA)
+            {
+                GameObject.Find("Axe_BFA").GetComponent<Weapon>().lightDamage *= 2;
+                GameObject.Find("Axe_BFA").GetComponent<Weapon>().heavyDamage *= 2;
+                GameObject.Find("Axe_BFA").GetComponent<Weapon>().attackSize *= 2;
+            }
+
+            alreadyActive = true;
+        }
     }
 
     private void AxeEffect()
@@ -143,6 +236,23 @@ public class Perk : MonoBehaviour
 
     private void TrinketEffect()
     {
-
+		if(type == PerkType.TRINKET_AGGRESSIONBUDDY){
+			trinketCoolDown = 30f;
+			//Acitvate Effect after 30second cooldown
+			if (trinketTimeStamp <= Time.time) {
+				playerHealth.IncreaseDT(20);
+				trinketTimeStamp = Time.time + trinketCoolDown;
+			}
+		}
+		if(type == PerkType.TRINKET_MARY_TODDS_LOCKETTE){
+			trinketCoolDown = 120f;
+			performMaryToddsCoolDown = 10f;
+			if (trinketTimeStamp <= Time.time) {
+				//Provide invincibility 
+				//In Player Health it is checked if performMaryToddsTimeStamp >= Time.time because the invincibility only last for a certain amount of time
+				performMaryToddsTimeStamp = Time.time + performMaryToddsCoolDown;
+				trinketTimeStamp = Time.time + trinketCoolDown;
+			}
+		}
     }
 }
