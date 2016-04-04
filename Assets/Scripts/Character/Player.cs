@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
 	{
 		Debug.Log("Initialize Player");
 		transform.position = new Vector3(-15, -2, 0);
+		if (transform.localScale.x < 0)
+			transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 		_playerHealth.Initialize();
 		_playerMotor.Initialize();
     }

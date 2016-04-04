@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 	// Runs when a scene is loaded
 	private void Initialize()
 	{
+		GameObject.Find("Player").GetComponent<Player>().Initialize();
 		_cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
 		GlobalSettings.currentSceneIsNew = false;
     }
