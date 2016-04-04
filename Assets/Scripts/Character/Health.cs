@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using BehaviourMachine;
+using System;
 
 public class Health : MonoBehaviour
 {
@@ -65,7 +66,7 @@ public class Health : MonoBehaviour
 			if (enemyFollow.target != null)
 				Destroy (enemyFollow.target);
 
-            Destroy(gameObject);
+            DeathSequence();
         }
     }
 
@@ -82,5 +83,14 @@ public class Health : MonoBehaviour
         FloatUpAndDestroy f = number.AddComponent<FloatUpAndDestroy>();
         f.floatGravityMultiplier = 0.5f;
         f.floatVelocity = 2;
+    }
+
+    protected void DeathSequence()
+    {
+        Death death = GetComponent<Death>();
+        if (death)
+            death.enabled = true;
+        else
+            Destroy(gameObject);
     }
 }

@@ -47,8 +47,8 @@ public class BossHealth : Health
 				EventHandler.SendEvent (EventHandler.Events.ROBERT_E_LEE_KILL);
 			}
 			EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
-			Destroy(gameObject);
-		}
+            DeathSequence();
+        }
 		else
 			health -= amount;
 
