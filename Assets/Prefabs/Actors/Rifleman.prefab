@@ -518,7 +518,7 @@ GameObject:
   - 114: {fileID: 11499232}
   - 114: {fileID: 11407704}
   - 114: {fileID: 11424772}
-  - 114: {fileID: 11472150}
+  - 114: {fileID: 11468590}
   m_Layer: 11
   m_Name: Rifleman
   m_TagString: Enemy
@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11448032}
     m_EventID: 770579688
-  m_CachedInstanceID: 54302
+  m_CachedInstanceID: 8850
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1594,7 +1594,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 54318
+  m_CachedInstanceID: 8854
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1705,7 +1705,7 @@ MonoBehaviour:
     m_EventID: 1997708586
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 54306
+  m_CachedInstanceID: 8862
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 54310
+  m_CachedInstanceID: 8864
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1834,7 +1834,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 54320
+  m_CachedInstanceID: 8866
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1906,7 +1906,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 54312
+  m_CachedInstanceID: 8868
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1986,12 +1986,12 @@ MonoBehaviour:
     m_Name: meleeRange
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
-    value: 5
+    value: 3
   - m_ID: 1237027253
     m_Name: preferredRangeMin
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
-    value: 10
+    value: 15
   - m_ID: 1509243041
     m_Name: attackPosition
     m_Blackboard: {fileID: 11426784}
@@ -2154,7 +2154,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422952}
     m_EventID: 1003642416
-  m_CachedInstanceID: 54308
+  m_CachedInstanceID: 8882
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2225,7 +2225,7 @@ MonoBehaviour:
   heldOrientation: {x: 35, y: 350, z: 198}
   lightDamage: 20
   heavyDamage: 40
-  throwDamage: 0
+  throwDamage: 10
 --- !u!114 &11453322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2276,7 +2276,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 54314
+  m_CachedInstanceID: 8892
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2318,6 +2318,20 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
+--- !u!114 &11468590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177166}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDropPrefabs:
+  - {fileID: 187658, guid: 31259d1ed7b911040b861df32c8ff0e0, type: 2}
+  chanceToDrop: 1
 --- !u!114 &11469354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2336,7 +2350,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 54300
+  m_CachedInstanceID: 8894
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2386,20 +2400,6 @@ MonoBehaviour:
   movementSmoothing: 0.115
   state: 0
   steptimer: 0.5
---- !u!114 &11472150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177166}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponDropPrefabs:
-  - {fileID: 187658, guid: 31259d1ed7b911040b861df32c8ff0e0, type: 2}
-  chanceToDrop: 1
 --- !u!114 &11483412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2420,7 +2420,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 54304
+  m_CachedInstanceID: 8900
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2517,7 +2517,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 54316
+  m_CachedInstanceID: 8908
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3051,7 +3051,7 @@ Prefab:
       objectReference: {fileID: 11426784}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[4].value
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[4]
@@ -3301,6 +3301,10 @@ Prefab:
       propertyPath: bloodMelee
       value: 
       objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[3].value
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177166}
