@@ -20,18 +20,20 @@ public class WorldGenerator : MonoBehaviour
     public int propDensity = 3;
     public int decalDensity = 10;
     public int itemDensity = 1;
-    public int difficulty = 1;
-
-    public int screensBeforeSecondEnemy = 2;
-    public int screensBeforeBoss = 4;
 
     private GameObject _camera;
+    private List<Vector3> _occupiedPos;
     private System.Random _rnd;
     private bool _canSpawn = true;
+    private bool _spawningWaveOnClear;
     private float _lastXPos;
-    private List<Vector3> _occupiedPos;
-    public int _screenCount;
-    public int _bossIndex;
+    private float _spawnOnClearLocation;
+    private int _screenCount;
+    private int _levelIndex;
+    private int _easyWaveChance;
+    private int _mediumWaveChance;
+    private int _remainingEnemyDensity;
+    private int _enemiesInScreen;
 
     // Use this for initialization
     void Start()
@@ -40,12 +42,15 @@ public class WorldGenerator : MonoBehaviour
         _camera = GameObject.Find("Main Camera");
         _rnd = new System.Random();
         _screenCount = 0;
-        _bossIndex = SceneManager.GetActiveScene().buildIndex;
+        _spawningWaveOnClear = false;
+        _levelIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GlobalSettings.currentSceneIsNew)
+            _screenCount = 0;
 
         if (_camera.transform.position.x >= _lastXPos - startSpawnPosition && _canSpawn)
         {
@@ -54,23 +59,24 @@ public class WorldGenerator : MonoBehaviour
             SpawnProps();
             // SpawnDecals(); - Disabled until art assets are ready
             SpawnItems();
-            //Only counting down the boss for alpha
-			if (_screenCount == screensBeforeBoss)
-				SpawnBoss();
-			else
-			{
-				SpawnItems();
-				if (_screenCount < screensBeforeSecondEnemy)
-					// Only spawn first enemy
-					SpawnEnemies(new List<GameObject>() { enemies[0] });
-				else
-					// Spawn all enemies
-					SpawnEnemies();
-				_canSpawn = true;
-			}
-			_screenCount++;
-			_lastXPos += startSpawnPosition;
-		}
+            if (!SpawnBoss())
+            {
+                SpawnItems();
+                SpawnEnemies();
+                _canSpawn = true;
+            }
+            Debug.Log("Completed generation of screen " + _screenCount);
+            _screenCount++;
+            _lastXPos += startSpawnPosition;
+        }
+
+        _enemiesInScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if (_enemiesInScreen <= 0 && _screenCount > 0 && !_spawningWaveOnClear)
+        {
+            _spawningWaveOnClear = true;
+            SpawnEnemies();
+            _spawningWaveOnClear = false;
+        }
     }
 
     private void SpawnTerrain()
@@ -83,7 +89,7 @@ public class WorldGenerator : MonoBehaviour
         for (int i = 0; i < propDensity; i++)
         {
             int r = _rnd.Next(props.Count);
-            Instantiate(props[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+            Instantiate(props[r], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         }
     }
 
@@ -92,7 +98,7 @@ public class WorldGenerator : MonoBehaviour
         for (int i = 0; i < decalDensity; i++)
         {
             int r = _rnd.Next(decals.Count);
-            Instantiate(decals[r], getRandomEmptyPos(0.5f), Quaternion.Euler(0, 0, 0));
+            Instantiate(decals[r], GetRandomEmptyPos(0.5f), Quaternion.Euler(0, 0, 0));
         }
     }
 
@@ -101,43 +107,138 @@ public class WorldGenerator : MonoBehaviour
         for (int i = 0; i < itemDensity; i++)
         {
             int r = _rnd.Next(items.Count);
-            Instantiate(items[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+            Instantiate(items[r], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         }
     }
 
-    private void SpawnEnemies(List<GameObject> enemies = null)
+    private void SpawnEnemies()
     {
-        int enemyDensity = 0;
-        enemies = enemies == null ? this.enemies : enemies;
+        _remainingEnemyDensity = 0;
 
-        switch (difficulty)
+        switch (GetWaveDifficulty())
         {
+            case 0:
+                _remainingEnemyDensity = _rnd.Next(5, 8);
+                break;
             case 1:
-                enemyDensity = _rnd.Next(5, 8);
+                _remainingEnemyDensity = _rnd.Next(8, 12);
                 break;
             case 2:
-                enemyDensity = _rnd.Next(8, 12);
-                break;
-            case 3:
-                enemyDensity = _rnd.Next(12, 16);
+                _remainingEnemyDensity = _rnd.Next(12, 16);
                 break;
         }
-
-        for (int i = 0; i < enemyDensity; i++)
+        Debug.Log("Spawning wave of density " + _remainingEnemyDensity);
+        while (_remainingEnemyDensity > 0)
         {
-            int r = _rnd.Next(enemies.Count);
-            Instantiate(enemies[r], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+            int r = GetRandomEnemyBasedOnCurrentLevelAndDensity();
+            Debug.Log("r = " + r);
+            if (r == -1)
+                break;
+            Instantiate(enemies[r], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+            Debug.Log("Enemy type " + r + " spawned, remaining density: " + _remainingEnemyDensity);
         }
-	}
+    }
 
-	private void SpawnBoss()
-	{
-		Instantiate(bosses[_bossIndex], getRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
-	}
-
-	private Vector3 getRandomEmptyPos(float z)
+    private bool SpawnBoss()
     {
+        bool spawn = false;
+        switch (_levelIndex)
+        {
+            case 0:
+                if (_screenCount == GlobalSettings.screensInLevel1)
+                    spawn = true;
+                break;
+            case 1:
+                if (_screenCount == GlobalSettings.screensInLevel2)
+                    spawn = true;
+                break;
+            case 2:
+                if (_screenCount == GlobalSettings.screensInLevel3)
+                    spawn = true;
+                break;
+        }
+        if (spawn)
+            Instantiate(bosses[_levelIndex], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+        return spawn;
+    }
 
+    private int GetWaveDifficulty()
+    {
+        int r = _rnd.Next(101);
+        switch (_levelIndex)
+        {
+            // Forest wave breakdown: 55-30-15
+            case 0:
+                _easyWaveChance = GlobalSettings.minRndForEasyWaveInLevel1;
+                _mediumWaveChance = GlobalSettings.minRndForMediumWaveInLevel1;
+                break;
+            // Battlefield wave breakdown: 33-50-15
+            case 1:
+                _easyWaveChance = GlobalSettings.minRndForEasyWaveInLevel2;
+                _mediumWaveChance = GlobalSettings.minRndForMediumWaveInLevel2;
+                break;
+            // Ballroom wave breakdown: 0-0-100
+            case 2:
+                _easyWaveChance = GlobalSettings.minRndForEasyWaveInLevel3;
+                _mediumWaveChance = GlobalSettings.minRndForMediumWaveInLevel3;
+                break;
+        }
+        if (r >= _easyWaveChance)
+        {
+            Debug.Log("Easy Wave Spawned");
+            return 0;
+        }
+        else if (r >= _mediumWaveChance)
+        {
+            Debug.Log("Medium Wave Spawned");
+            return 1;
+        }
+        else
+        {
+            Debug.Log("Hard Wave Spawned");
+            return 2;
+        }
+    }
+
+    private int GetRandomEnemyBasedOnCurrentLevelAndDensity()
+    {
+        int r = -1;
+        if (_remainingEnemyDensity <= 0)
+            return r;
+        switch (_levelIndex)
+        {
+            // Ensure that spawned enemies do not reduce _remainingEnemyDensity below 0
+            case 0:
+                if (_remainingEnemyDensity == 1 || _screenCount <= 5)
+                    r = 0;
+                else
+                    r = _rnd.Next(2);
+                break;
+            case 1:
+                if (_remainingEnemyDensity <= 2)
+                    r = _rnd.Next(2);
+                else if (_remainingEnemyDensity <= 1)
+                    r = 0;
+                else
+                    r = _rnd.Next(3);
+                break;
+            case 2:
+                if (_remainingEnemyDensity <= 3)
+                    r = _rnd.Next(3);
+                else if (_remainingEnemyDensity <= 2)
+                    r = _rnd.Next(2);
+                else if (_remainingEnemyDensity <= 1)
+                    r = 0;
+                else
+                    r = _rnd.Next(4);
+                break;
+        }
+        _remainingEnemyDensity -= r + 1;
+        return r;
+    }
+
+    private Vector3 GetRandomEmptyPos(float z)
+    {
         RectTransform area = (RectTransform)terrain.transform;
         double width = area.rect.width;
         double height = area.rect.height;
@@ -145,12 +246,16 @@ public class WorldGenerator : MonoBehaviour
         float x = 0;
         float y = 0;
         bool occupied = true;
-
-        while (occupied)
+        int attempts = 0;
+        while (occupied && attempts < 3)
         {
             occupied = false;
 
-            x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
+            // Spawn wave along right edge of camera on clear
+            if (_spawningWaveOnClear)
+                x = GameObject.Find("RightEdge").transform.position.x;
+            else
+                x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
             y = (float)(height * _rnd.NextDouble() - height);
 
             foreach (Vector3 pos in _occupiedPos)
@@ -161,6 +266,7 @@ public class WorldGenerator : MonoBehaviour
                     break;
                 }
             }
+            attempts++;
         }
 
         Vector3 vector = new Vector3(x, y, z);
