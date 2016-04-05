@@ -27,7 +27,8 @@ public class Perk : MonoBehaviour
         AXE_BFA,
         HAT_BEARHANDS,
 		TRINKET_AGGRESSIONBUDDY, 
-		TRINKET_MARY_TODDS_LOCKETTE
+		TRINKET_MARY_TODDS_LOCKETTE,
+		HAT_STICKYFINGERS
     }
     public PerkType type;
 
@@ -125,6 +126,12 @@ public class Perk : MonoBehaviour
 				unlocked = PerkManager.trinket_maryToddsLockette_unlocked;
 				if (!unlocked) setToBeUnlocked = true;
                 break;
+			case PerkType.HAT_STICKYFINGERS:
+				_category = PerkCategory.HAT;
+				_perkDesc = PerkManager.hat_stickyFingers_desc;
+				_perkName = PerkManager.hat_stickyFingers_name;
+				unlocked = PerkManager.hat_stickyFingers_unlocked;
+				break;
 			default:
                 break;
         }
@@ -165,6 +172,10 @@ public class Perk : MonoBehaviour
                         GameObject.Find("Hat_BA").SetActive(false);
                     }
                 }
+				if(GameObject.Find("Hat_SF") != null){
+					GameObject.Find ("Hat_SF").transform.SetParent (GameObject.Find ("Player").transform, true);
+					GameObject.Find ("Hat_SF").SetActive (false);
+				}
                 break;
 			case PerkCategory.TRINKET:
 				PerkManager.activeTrinketPerk = this;
