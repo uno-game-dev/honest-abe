@@ -93,7 +93,12 @@ public class PlayerMotor : MonoBehaviour
         {
 			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded)
             {
-                EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
+				//Changing the Enemy Attack to Melee because if Player steals the enemy weapon
+				if(collider.gameObject.layer == LayerMask.NameToLayer("Enemy")){
+					Weapon eWeapon = collider.transform.root.gameObject.AddComponent<Weapon> ();
+					collider.transform.root.gameObject.GetComponent<Attack> ().SetWeapon (eWeapon);
+				}
+				EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
 				_playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
             }
@@ -141,6 +146,12 @@ public class PlayerMotor : MonoBehaviour
                 }
             }
         }
+		if (collider.tag == "Enemy") {
+			//If enemy has a weapon to steal
+			if((collider.GetComponent<ShootAttack>() != null) && (_playerAttack.emptyHanded) ){
+				EventHandler.SendEvent (EventHandler.Events.ENEMY_CLOSE_TO_STEAL_WEAPON, collider.gameObject);
+			}
+		}
 
         _controls.heldComplete = false;
     }
