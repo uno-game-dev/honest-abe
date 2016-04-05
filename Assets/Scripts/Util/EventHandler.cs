@@ -7,6 +7,8 @@ public class EventHandler : MonoBehaviour
 
     private static GameObject player;
     private static Perk bfaPerk, bearAbePerk;
+	private static int amountOfWeaponPickUp = 0;
+	private static int goalToUnlockSFPerk = 2; //Need to ask designers what amount will unlock Sticky Fingers perk
 
     private string _eventString;
 
@@ -31,7 +33,9 @@ public class EventHandler : MonoBehaviour
         STEP,
         BEAR_HIT,
         BEAR_HIT_THROWN,
-		ROBERT_E_LEE_KILL
+		ROBERT_E_LEE_KILL,
+		STEAL_ENEMY_WEAPON, 
+		ENEMY_CLOSE_TO_STEAL_WEAPON
     }
 
     void Update()
@@ -116,6 +120,10 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.WEAPON_THROW:
                 Debug.Log("Weapon Throw");
+				if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers")) {
+					other.GetComponent<BoxCollider2D> ().size = new Vector2 (6.0f, 1.0f);
+					other.GetComponent<BoxCollider2D> ().offset = new Vector2 (0.75f, 0.5f);
+				}
                 break;
             case Events.ENEMY_GRAB:
                 Debug.Log("Enemy Grab");
@@ -133,6 +141,12 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.WEAPON_PICKUP:
                 Debug.Log("Weapon Pickup");
+				//If the player picks up a certain amount of weapons then the Sticky Fingers perk will be unlocked
+				amountOfWeaponPickUp++;
+				if (amountOfWeaponPickUp == goalToUnlockSFPerk) {
+					PerkManager.UpdatePerkStatus (PerkManager.hat_stickyFingers_name, 1);
+					Debug.Log("Sticky Fingers perk is unlocked");
+				}	
 
                 // If the player picks up any weapons other than the axe, cancel out the BFA perk unlock
                 // The axe is considered a perk, so will not trigger a WEAPON_PICKUP event
@@ -197,6 +211,23 @@ public class EventHandler : MonoBehaviour
                 AudioManager.instance.PlayFootstep();
                 Debug.Log("Step");
                 break;
+			case Events.ENEMY_CLOSE_TO_STEAL_WEAPON:
+				if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers")) {
+					Debug.Log ("Enemy is enough to steal weapon");
+
+					BoxCollider2D gunBoxCollider = other.transform.FindChild ("ConfederateSoldier").gameObject.transform
+						.FindChild ("SoldierRigPelvis").gameObject.transform.FindChild ("SoldierRigSpine1").gameObject
+						.transform.FindChild ("SoldierRigSpine2").gameObject.transform.FindChild ("SoldierRigChest").gameObject
+						.transform.FindChild ("SoldierRigRArmShoulder").gameObject.transform.FindChild ("SoldierRigRArm1")
+						.gameObject.transform.FindChild ("SoldierRigRArm2").gameObject.transform.FindChild ("SoldierRigRArmHand")
+						.gameObject.transform.FindChild ("Bayonet").GetComponent<BoxCollider2D> ();
+
+					if (gunBoxCollider != null) {
+						gunBoxCollider.size = new Vector2 (25.0f, 20.0f);
+						gunBoxCollider.offset = new Vector2 (3.5f, 2.0f);
+					}
+				}
+			break;
         }
     }
 
