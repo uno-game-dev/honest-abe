@@ -1536,6 +1536,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRadius: 50
+  touchHold: 0
+  touchHoldTimer: 0
+  touchHoldTime: 0.7
 --- !u!114 &11413764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1687,7 +1690,7 @@ MonoBehaviour:
   _hand: 0
 --- !u!114 &11453790
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136070}
@@ -1756,8 +1759,8 @@ MonoBehaviour:
   attackOffset: {x: 1, y: 0}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
-  lightDamage: 2
-  heavyDamage: 3
+  lightDamage: 1
+  heavyDamage: 2
   throwDamage: 10
 --- !u!114 &11469148
 MonoBehaviour:
