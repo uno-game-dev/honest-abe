@@ -135,11 +135,17 @@ public class NavigateToPosition : ConditionNode {
 	}
 
 	public void veerDown(){
-		if (targetPosition.x > selfPosition.x)
-			deltaPosition = new Vector3 (.07f, -.07f, 0);
-		else
-			deltaPosition = new Vector3 (-.07f, -.07f, 0);
-		baseCollision.Move (deltaPosition);
+		// I can't veer down if I'm right above the bottom
+		if (selfPosition.y - 0.07f > -11.2f) {
+			if (targetPosition.x > selfPosition.x)
+				deltaPosition = new Vector3 (.07f, -.07f, 0);
+			else
+				deltaPosition = new Vector3 (-.07f, -.07f, 0);
+			baseCollision.Move (deltaPosition);
+		} else {
+			// If I can't veer down, navigate using the y axis
+			navigate ('y');
+		}
 	}
 
 	public void veerRight(){
@@ -178,6 +184,8 @@ public class NavigateToPosition : ConditionNode {
 
 	// Checks if the next downward angle is clear
 	public bool checkDown(int i){
+		if (selfPosition.y - i - 1 <= -11.2f) // can't go below the bottom
+			return false;
 		hit = Physics2D.Raycast (selfPosition + new Vector2 (0, -1), direction + new Vector2 (0, -i), 2, layerMask);
 		Debug.DrawRay (selfPosition + new Vector2 (0, -1), direction + new Vector2 (0, -i));
 		if (hit && hit.collider.tag=="Player") {
