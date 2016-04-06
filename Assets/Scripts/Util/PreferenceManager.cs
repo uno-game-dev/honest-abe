@@ -29,6 +29,11 @@ public class PreferenceManager : MonoBehaviour
 		if (!PlayerPrefs.HasKey(PerkManager.trinket_maryToddsLockette_name))
 			PlayerPrefs.SetInt(PerkManager.trinket_maryToddsLockette_name, 0);
 		PerkManager.trinket_maryToddsLockette_unlocked = PlayerPrefs.GetInt(PerkManager.trinket_maryToddsLockette_name) == 1;
+
+		// Sticky Fingers
+		if (!PlayerPrefs.HasKey(PerkManager.hat_stickyFingers_name))
+			PlayerPrefs.SetInt(PerkManager.hat_stickyFingers_name, 0);
+		PerkManager.hat_stickyFingers_unlocked = PlayerPrefs.GetInt(PerkManager.hat_stickyFingers_name) == 1;
     }
 
 }

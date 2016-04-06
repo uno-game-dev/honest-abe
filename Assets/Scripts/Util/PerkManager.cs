@@ -11,6 +11,7 @@ public class PerkManager : MonoBehaviour
     public static bool axe_dtVampirism_unlocked = false;
     public static bool axe_bfa_unlocked = false;
     public static bool hat_bearHands_unlocked = false;
+	public static bool hat_stickyFingers_unlocked = false;
 	public static bool trinket_agressionBuddy_unlocked = false;
 	public static bool trinket_maryToddsLockette_unlocked = false;
 
@@ -39,6 +40,8 @@ public class PerkManager : MonoBehaviour
 	public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLockette";
 	public static string trinket_maryToddsLockette_desc = "Perk: Marry Todd's Lockette\nProvides invincibility with a cooldown of 120sec.";
 
+	public static string hat_stickyFingers_name = "Hat_StickyFingers";
+	public static string hat_stickyFingers_desc = "Perk: Sticky Fingers\nEnables the ablity to steal weapons";
 
     /*
      * Individual Perk Unlock Requirements

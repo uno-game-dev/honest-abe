@@ -33,7 +33,7 @@ public class Throw : MonoBehaviour
         if (!_characterState.CanThrow())
             return;
 
-        EventHandler.SendEvent(EventHandler.Events.WEAPON_THROW);
+		EventHandler.SendEvent(EventHandler.Events.WEAPON_THROW, _attack.weapon.gameObject);
         PrepareThrow();
     }
 
