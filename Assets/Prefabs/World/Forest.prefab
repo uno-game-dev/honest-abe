@@ -312,7 +312,7 @@ MonoBehaviour:
   terrain: {fileID: 127990, guid: adf920ea3adcf61499ef430d5f5cbab4, type: 2}
   enemies:
   - {fileID: 188124, guid: f7cc6c9782046944c9737c3bc517099c, type: 2}
-  - {fileID: 177166, guid: e0eb5448c85624fbea3f7cfd45773ca0, type: 2}
+  - {fileID: 180872, guid: 649c1ce1c5214ba4db47ea48e81742ae, type: 2}
   props:
   - {fileID: 100536, guid: df2b39905eb70d445920196edb0e2c19, type: 2}
   - {fileID: 146584, guid: 7ad80743fb4dcd94a99f622f637bd042, type: 2}
@@ -388,7 +388,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 180872, guid: 649c1ce1c5214ba4db47ea48e81742ae, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154838}
