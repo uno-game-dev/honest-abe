@@ -24,7 +24,6 @@ public class UIManager : MonoBehaviour
 	private GameObject _pauseUI;
 	private Button _pauseUIResumeButton;
 	private Button _pauseUIOptionsButton;
-	private Button _pauseUIRestartButton;
 	private Button _pauseUIQuitButton;
 
 	// Options UI
@@ -130,12 +129,10 @@ public class UIManager : MonoBehaviour
 
 		_pauseUIResumeButton = _pauseUI.transform.Find("Resume").GetComponent<Button>();
 		_pauseUIOptionsButton = _pauseUI.transform.Find("Options").GetComponent<Button>();
-		_pauseUIRestartButton = _pauseUI.transform.Find("Restart").GetComponent<Button>();
 		_pauseUIQuitButton = _pauseUI.transform.Find("Quit").GetComponent<Button>();
 
 		_pauseUIResumeButton.onClick.AddListener(OnResume);
 		_pauseUIOptionsButton.onClick.AddListener(OnOptions);
-		_pauseUIRestartButton.onClick.AddListener(OnRestart);
 		_pauseUIQuitButton.onClick.AddListener(OnQuit);
 	}
 
@@ -185,12 +182,6 @@ public class UIManager : MonoBehaviour
     {
         //Fill in functionality of the _options button in Pause menu
         _options = true;
-    }
-
-    public void OnRestart()
-    {
-		_levelManager.loadCurrentLevel();
-        updateActive = false;
     }
 
     public void OnQuit()
