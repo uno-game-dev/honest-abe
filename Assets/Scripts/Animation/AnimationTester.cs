@@ -1,29 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class AnimationTester : MonoBehaviour
 {
     public RuntimeAnimatorController runtimeAnimatorController;
     public GameObject[] models;
-    public int numberOfAnimations = 2;
     public float rotationMultiplier = 2;
     public float scaleMultiplier = 0.5f;
-    private Animator _animator;
-    private int _currentAnimationId;
-    private int _currentModelId = -1;
-    private Quaternion _localRotationOnStart;
-    private Vector3 _localScaleOnStart;
-    private Text _modelText;
-    private Text _animationText;
+    private Animator animator;
+    private int currentAnimationId;
+    private int currentModelId = -1;
+    private Quaternion localRotationOnStart;
+    private Vector3 localScaleOnStart;
+    private Text modelText;
+    private Text animationText;
+    public List<AnimationGroup> animationClips;
+    private int baseLayer = 0;
 
     // Use this for initialization
     void Start()
     {
-        _localRotationOnStart = transform.localRotation;
-        _localScaleOnStart = transform.localScale;
-        _modelText = GameObject.Find("ModelName").GetComponent<Text>();
-        _animationText = GameObject.Find("AnimationName").GetComponent<Text>();
+        localRotationOnStart = transform.localRotation;
+        localScaleOnStart = transform.localScale;
+        modelText = GameObject.Find("ModelName").GetComponent<Text>();
+        animationText = GameObject.Find("AnimationName").GetComponent<Text>();
         NextModel();
     }
 
@@ -32,7 +34,7 @@ public class AnimationTester : MonoBehaviour
         if (models.Length <= 0)
             return;
 
-        _currentModelId = (_currentModelId + 1) % models.Length;
+        currentModelId = (currentModelId + 1) % models.Length;
 
         DestroyPreviousModel();
         LoadCurrentModel();
@@ -43,8 +45,8 @@ public class AnimationTester : MonoBehaviour
         if (models.Length <= 0)
             return;
 
-        _currentModelId = (_currentModelId - 1) % models.Length;
-        _currentModelId = _currentModelId < 0 ? models.Length - 1 : _currentModelId;
+        currentModelId = (currentModelId - 1) % models.Length;
+        currentModelId = currentModelId < 0 ? models.Length - 1 : currentModelId;
 
         DestroyPreviousModel();
         LoadCurrentModel();
@@ -52,12 +54,12 @@ public class AnimationTester : MonoBehaviour
 
     private void LoadCurrentModel()
     {
-        _modelText.text = models[_currentModelId].name;
-        GameObject model = Instantiate(models[_currentModelId]);
+        modelText.text = models[currentModelId].name;
+        GameObject model = Instantiate(models[currentModelId]);
         model.transform.SetParent(transform, false);
-        _animator = model.GetComponent<Animator>();
-        _animator.runtimeAnimatorController = runtimeAnimatorController;
-        _animator.applyRootMotion = false;
+        animator = model.GetComponent<Animator>();
+        animator.runtimeAnimatorController = runtimeAnimatorController;
+        animator.applyRootMotion = false;
         StartAnimation();
     }
 
@@ -73,37 +75,37 @@ public class AnimationTester : MonoBehaviour
 
     public void StartAnimation()
     {
-        if (!_animator)
+        if (!animator)
             return;
 
-        _animator.SetInteger("Animation", _currentAnimationId);
-        _animator.SetTrigger("ChangeAnimation");
-        _animationText.text = _animator.runtimeAnimatorController.animationClips[_currentAnimationId].name;
+        var animationClip = animationClips[currentAnimationId];
+        animator.CrossFade(animationClip.name, 0.1f, baseLayer, 0);
+        animationText.text = string.Format("{0}: {1}", animationClip.name, animationClip.animationClip.name);
     }
 
     public void NextAnimation()
     {
-        if (numberOfAnimations <= 0)
+        if (animationClips.Count <= 0)
             return;
 
-        _currentAnimationId = (_currentAnimationId + 1) % numberOfAnimations;
+        currentAnimationId = (currentAnimationId + 1) % animationClips.Count;
         StartAnimation();
     }
 
     public void PreviousAnimation()
     {
-        if (numberOfAnimations <= 0)
+        if (animationClips.Count <= 0)
             return;
 
-        _currentAnimationId = (_currentAnimationId - 1) % numberOfAnimations;
-        _currentAnimationId = _currentAnimationId < 0 ? numberOfAnimations - 1 : _currentAnimationId;
+        currentAnimationId = (currentAnimationId - 1) % animationClips.Count;
+        currentAnimationId = currentAnimationId < 0 ? animationClips.Count - 1 : currentAnimationId;
         StartAnimation();
     }
 
     public void ResetTransform()
     {
-        transform.localRotation = _localRotationOnStart;
-        transform.localScale = _localScaleOnStart;
+        transform.localRotation = localRotationOnStart;
+        transform.localScale = localScaleOnStart;
     }
 
     private void Update()
