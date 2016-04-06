@@ -215,22 +215,16 @@ public class WorldGenerator : MonoBehaviour
                     r = _rnd.Next(2);
                 break;
             case 1:
-                if (_remainingEnemyDensity <= 2)
-                    r = _rnd.Next(2);
-                else if (_remainingEnemyDensity <= 1)
+                if (_remainingEnemyDensity == 1)
                     r = 0;
                 else
-                    r = _rnd.Next(3);
+                    r = _rnd.Next(2);
                 break;
             case 2:
-                if (_remainingEnemyDensity <= 3)
-                    r = _rnd.Next(3);
-                else if (_remainingEnemyDensity <= 2)
-                    r = _rnd.Next(2);
-                else if (_remainingEnemyDensity <= 1)
+                if (_remainingEnemyDensity == 1)
                     r = 0;
                 else
-                    r = _rnd.Next(4);
+                    r = _rnd.Next(2);
                 break;
         }
         _remainingEnemyDensity -= r + 1;
