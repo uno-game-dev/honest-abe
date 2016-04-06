@@ -29,9 +29,24 @@ public class UIManager : MonoBehaviour
 	// Options UI
 	private GameObject _optionsUI;
 	private Button _optionsUIBackButton;
+    private Button _optionsUIGraphicsButton;
+    private Button _optionsUIAudioButton;
+    private Button _optionsUIControlsButton;
 
-	// Win UI
-	private GameObject _winUI;
+    // Graphics Menu
+    private GameObject _graphicsUI;
+    private Button _graphicsUIBackButton;
+
+    // Audio Menu
+    private GameObject _audioUI;
+    private Button _audioUIBackButton;
+
+    // Controls Menu
+    private GameObject _controlsUI;
+    private Button _controlsUIBackButton;
+
+    // Win UI
+    private GameObject _winUI;
 	private Button _winUIYesButton;
 	private Button _winUINoButton;
 	
@@ -73,6 +88,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetButtonDown("Pause"))
             TogglePause();
 
+        /*
         if (_paused)
         {
             if (_options)
@@ -90,6 +106,7 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(false);
             Time.timeScale = 1;
         }
+        */
 
         
 		if ((PerkManager.activeTrinketPerk != null) && (Perk.trinketTimeStamp <= Time.time)) {
@@ -109,6 +126,18 @@ public class UIManager : MonoBehaviour
     public void TogglePause()
     {
         _paused = !_paused;
+
+        if (_paused)
+        {
+            _pauseUI.SetActive(true);
+            _optionsUI.SetActive(false);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            _pauseUI.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 
 	public void ActivateLoseUI()
@@ -134,18 +163,38 @@ public class UIManager : MonoBehaviour
 		_pauseUIResumeButton.onClick.AddListener(OnResume);
 		_pauseUIOptionsButton.onClick.AddListener(OnOptions);
 		_pauseUIQuitButton.onClick.AddListener(OnQuit);
+
+        _pauseUI.SetActive(false);
 	}
 
 	private void SetListenersForOptionsUI()
 	{
 		_optionsUI = GameObject.Find("OptionsUI");
-
 		_optionsUIBackButton = _optionsUI.transform.Find("Back").GetComponent<Button>();
-
+        _optionsUIAudioButton = _optionsUI.transform.Find("AudioBtn").GetComponent<Button>();
+        _optionsUIControlsButton = _optionsUI.transform.Find("ControlsBtn").GetComponent<Button>();
+        _optionsUIGraphicsButton = _optionsUI.transform.Find("GraphicsBtn").GetComponent<Button>();
 		_optionsUIBackButton.onClick.AddListener(OnOptionsBack);
+        _optionsUIGraphicsButton.onClick.AddListener(OnGraphics);
+        _optionsUIAudioButton.onClick.AddListener(OnAudio);
+        _optionsUIControlsButton.onClick.AddListener(OnControls);
+        _optionsUI.SetActive(false);
 
-		_optionsUI.SetActive(false);
-	}
+        _graphicsUI = GameObject.Find("GraphicsUI");
+        _graphicsUIBackButton = _graphicsUI.transform.Find("Back").GetComponent<Button>();
+        _graphicsUIBackButton.onClick.AddListener(OnGraphicsBack);
+        _graphicsUI.SetActive(false);
+
+        _audioUI = GameObject.Find("AudioUI");
+        _audioUIBackButton = _audioUI.transform.Find("Back").GetComponent<Button>();
+        _audioUIBackButton.onClick.AddListener(OnAudioBack);
+        _audioUI.SetActive(false);
+
+        _controlsUI = GameObject.Find("ControlsUI");
+        _controlsUIBackButton = _controlsUI.transform.Find("Back").GetComponent<Button>();
+        _controlsUIBackButton.onClick.AddListener(OnControlsBack);
+        _controlsUI.SetActive(false);
+    }
 
 	private void SetListenersForWinUI()
 	{
@@ -175,13 +224,18 @@ public class UIManager : MonoBehaviour
 
 	public void OnResume()
     {
+        //_paused = false;
+        _pauseUI.SetActive(false);
+        Time.timeScale = 1;
         _paused = false;
     }
 
     public void OnOptions()
     {
         //Fill in functionality of the _options button in Pause menu
-        _options = true;
+        //_options = true;
+        _pauseUI.SetActive(false);
+        _optionsUI.SetActive(true);
     }
 
     public void OnQuit()
@@ -191,8 +245,53 @@ public class UIManager : MonoBehaviour
 
     public void OnOptionsBack()
     {
-        _options = false;
-        _paused = true;
+        //_options = false;
+        //_paused = true;
+        _pauseUI.SetActive(true);
+        _optionsUI.SetActive(false);
+        Time.timeScale = 0;
+    }
+
+    // When clicking the graphics button on the options menu
+    public void OnGraphics()
+    {
+        _optionsUI.SetActive(false);
+        _graphicsUI.SetActive(true);
+    }
+
+    // When clicking the audio button on the options menu
+    public void OnAudio()
+    {
+        _optionsUI.SetActive(false);
+        _audioUI.SetActive(true);
+    }
+
+    // When clicking the controls button on the options menu
+    public void OnControls()
+    {
+        _optionsUI.SetActive(false);
+        _controlsUI.SetActive(true);
+    }
+
+    // When clicking the back button on the graphics menu
+    public void OnGraphicsBack()
+    {
+        _optionsUI.SetActive(true);
+        _graphicsUI.SetActive(false);
+    }
+
+    // When clicking the back button on the audio menu
+    public void OnAudioBack()
+    {
+        _optionsUI.SetActive(true);
+        _audioUI.SetActive(false);
+    }
+
+    // When clicking the back button on the controls menu
+    public void OnControlsBack()
+    {
+        _optionsUI.SetActive(true);
+        _controlsUI.SetActive(false);
     }
 
     //After Losing
