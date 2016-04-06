@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 9744
+  m_CachedInstanceID: 10968
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1076,7 +1076,7 @@ MonoBehaviour:
     m_EventID: 1249890864
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 18054
+  m_CachedInstanceID: 10980
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1166,7 +1166,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 18056
+  m_CachedInstanceID: 10978
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1267,7 +1267,12 @@ MonoBehaviour:
     value: 5
   m_IntVars: []
   m_BoolVars: []
-  m_StringVars: []
+  m_StringVars:
+  - m_ID: 347872433
+    m_Name: attackSide
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    value: 
   m_Vector3Vars: []
   m_RectVars: []
   m_ColorVars: []
@@ -1325,7 +1330,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 18058
+  m_CachedInstanceID: 10974
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1421,7 +1426,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 18060
+  m_CachedInstanceID: 10970
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1510,7 +1515,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 18062
+  m_CachedInstanceID: 10976
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1594,7 +1599,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11435718}
     m_EventID: 111391994
-  m_CachedInstanceID: 18064
+  m_CachedInstanceID: 10972
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1762,6 +1767,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_StringVars.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.size
@@ -2130,6 +2139,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bossName
       value: Bear
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_StringVars.Array.data[0].m_Name
+      value: attackSide
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

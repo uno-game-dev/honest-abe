@@ -121,7 +121,7 @@ public class NavigateToPosition : ConditionNode {
 
 	public void veerUp(){
 		// I can't veer up if I'm right below the skyline
-		if (selfPosition.y + 0.07f < 0) { 
+		if (selfPosition.y + 0.07f < -0.1f) { 
 			if (targetPosition.x > selfPosition.x) {
 				deltaPosition = new Vector3 (.07f, .07f, 0);
 			} else {
@@ -168,7 +168,7 @@ public class NavigateToPosition : ConditionNode {
 
 	// Checks if the next upward angle is clear
 	public bool checkUp(int i){
-		if (selfPosition.y + i + 1 >= 0) // can't go above the ground
+		if (selfPosition.y + i + 1 >= -0.1f) // can't go above the ground
 			return false;
 		hit = Physics2D.Raycast (selfPosition + new Vector2 (0, 1), direction + new Vector2 (0, i), 2, layerMask); //length 2
 		Debug.DrawRay (selfPosition + new Vector2 (0, 1), direction + new Vector2 (0, i)); //length of direction
