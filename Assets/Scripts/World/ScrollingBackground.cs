@@ -47,8 +47,8 @@ public class ScrollingBackground : MonoBehaviour
         {
             //Calculate how far backward or forward along the x-axis the texture should move
             // Basically new-x = old-x + (scrollSpeed * (cameraspeed scaled with deltatime))
-            float step = (scrollSpeed * (cameraFollow.velocity.x * Time.deltaTime)) * directionScalar;
-            float x = Mathf.Repeat(renderer.material.mainTextureOffset.x + step, 1);
+            float step = (scrollSpeed * (cameraFollow.velocity.x * Time.deltaTime)) * directionScalar * renderer.material.mainTextureScale.x;
+            float x = Mathf.Repeat(renderer.material.mainTextureOffset.x  + step, 1) ;
 
             Vector2 offset = new Vector2(x, savedOffset.y);
             renderer.material.mainTextureOffset = offset;
