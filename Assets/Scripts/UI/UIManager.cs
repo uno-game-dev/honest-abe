@@ -38,15 +38,11 @@ public class UIManager : MonoBehaviour
 
     // Graphics Menu
     private GameObject _graphicsUI;
-    private Button _graphicsUIBackButton, _graphicsUIApplyButton;
-    private Toggle _graphicsUIFullscreenToggle;
-    private Dropdown _graphicsUIResList;
+    private Button _graphicsUIBackButton;
 
     // Audio Menu
     private GameObject _audioUI;
-    private Button _audioUIBackButton, _audioUIApplyButton;
-    private Slider _audioUIMusicSlider, _audioUIEffectsSlider;
-    private Text _audioUIMusicValue, _audioUIEffectValue;
+    private Button _audioUIBackButton;
 
     // Controls Menu
     private GameObject _controlsUI;
@@ -95,8 +91,25 @@ public class UIManager : MonoBehaviour
         if (Input.GetButtonDown("Pause"))
             TogglePause();
 
-        _audioUIMusicValue.text = "" + (System.Math.Round(_audioUIMusicSlider.value * 100));
-        _audioUIEffectValue.text = "" + (System.Math.Round(_audioUIEffectsSlider.value * 100));
+        /*
+        if (_paused)
+        {
+            if (_options)
+            {
+                _pauseUI.SetActive(false);
+                _optionsUI.SetActive(true);
+            }
+            else {
+                _pauseUI.SetActive(true);
+                _optionsUI.SetActive(false);
+                Time.timeScale = 0;
+            }
+        }
+        else {
+            _pauseUI.SetActive(false);
+            Time.timeScale = 1;
+        }
+        */
 
         if ((PerkManager.activeTrinketPerk != null) && (Perk.trinketTimeStamp <= Time.time)) {
 			_trinketUI.enabled = true;
@@ -120,14 +133,11 @@ public class UIManager : MonoBehaviour
         {
             _pauseUI.SetActive(true);
             _optionsUI.SetActive(false);
-            _optionsUIBackground.SetActive(false);
             Time.timeScale = 0;
         }
         else
         {
             _pauseUI.SetActive(false);
-            _optionsUI.SetActive(false);
-            _optionsUIBackground.SetActive(false);
             Time.timeScale = 1;
         }
     }
@@ -161,9 +171,6 @@ public class UIManager : MonoBehaviour
 
 	private void SetListenersForOptionsUI()
 	{
-        _optionsUIBackground = GameObject.Find("OptionsBackground");
-        _optionsUIBackground.SetActive(false);
-
 		_optionsUI = GameObject.Find("OptionsUI");
 		_optionsUIBackButton = _optionsUI.transform.Find("Back").GetComponent<Button>();
         _optionsUIAudioButton = _optionsUI.transform.Find("AudioBtn").GetComponent<Button>();
@@ -174,56 +181,16 @@ public class UIManager : MonoBehaviour
         _optionsUIAudioButton.onClick.AddListener(OnAudio);
         _optionsUIControlsButton.onClick.AddListener(OnControls);
         _optionsUI.SetActive(false);
-
-
-        /*
-         * Graphics
-         */
         _graphicsUI = GameObject.Find("GraphicsUI");
         _graphicsUIBackButton = _graphicsUI.transform.Find("Back").GetComponent<Button>();
-        _graphicsUIApplyButton = _graphicsUI.transform.Find("ApplyBtn").GetComponent<Button>();
-        _graphicsUIFullscreenToggle = _graphicsUI.transform.Find("FullscreenToggle").GetComponent<Toggle>();
-        _graphicsUIFullscreenToggle.isOn = Screen.fullScreen;
-        _graphicsUIResList = _graphicsUI.transform.Find("ResList").GetComponent<Dropdown>();
-
-        // Resolution List
-        _graphicsUIResList.options.Clear();
-        foreach (Resolution r in Screen.resolutions)
-            _graphicsUIResList.options.Add(new Dropdown.OptionData(r.width + " x " + r.height));
-        _graphicsUIResList.value = _graphicsUIResList.options.Count;
-        _graphicsUIResList.value = 0;
-        foreach (Resolution r in Screen.resolutions)
-            if (Screen.width == r.width && Screen.height == r.height)
-                _graphicsUIResList.value = System.Array.IndexOf(Screen.resolutions, r);
-        // End Resolution List
-
         _graphicsUIBackButton.onClick.AddListener(OnGraphicsBack);
-        _graphicsUIApplyButton.onClick.AddListener(OnGraphicsApply);
         _graphicsUI.SetActive(false);
 
-
-        /*
-         * Audio
-         */
         _audioUI = GameObject.Find("AudioUI");
         _audioUIBackButton = _audioUI.transform.Find("Back").GetComponent<Button>();
-        _audioUIApplyButton = _audioUI.transform.Find("ApplyBtn").GetComponent<Button>();
         _audioUIBackButton.onClick.AddListener(OnAudioBack);
-        _audioUIApplyButton.onClick.AddListener(OnAudioApply);
-        _audioUIMusicSlider = _audioUI.transform.Find("MusicSlider").GetComponent<Slider>();
-        _audioUIEffectsSlider = _audioUI.transform.Find("FXSlider").GetComponent<Slider>();
-        _audioUIMusicSlider.value = musicVolume;
-        _audioUIEffectsSlider.value = effectsVolume;
-        _audioUIMusicValue = _audioUI.transform.Find("MusicVolumeValue").GetComponent<Text>();
-        _audioUIEffectValue = _audioUI.transform.Find("EffectVolumeValue").GetComponent<Text>();
-        _audioUIMusicValue.text = "" + System.Math.Round(musicVolume, 1);
-        _audioUIEffectValue.text = "" + System.Math.Round(effectsVolume, 1);
         _audioUI.SetActive(false);
 
-
-        /*
-         * Controls
-         */
         _controlsUI = GameObject.Find("ControlsUI");
         _controlsUIBackButton = _controlsUI.transform.Find("Back").GetComponent<Button>();
         _controlsUIBackButton.onClick.AddListener(OnControlsBack);
@@ -271,7 +238,6 @@ public class UIManager : MonoBehaviour
         //_options = true;
         _pauseUI.SetActive(false);
         _optionsUI.SetActive(true);
-        _optionsUIBackground.SetActive(true);
     }
 
     public void OnQuit()
@@ -285,7 +251,6 @@ public class UIManager : MonoBehaviour
         //_paused = true;
         _pauseUI.SetActive(true);
         _optionsUI.SetActive(false);
-        _optionsUIBackground.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -320,8 +285,6 @@ public class UIManager : MonoBehaviour
     // When clicking the back button on the audio menu
     public void OnAudioBack()
     {
-        _audioUIMusicSlider.value = musicVolume;
-        _audioUIEffectsSlider.value = effectsVolume;
         _optionsUI.SetActive(true);
         _audioUI.SetActive(false);
     }
@@ -331,29 +294,6 @@ public class UIManager : MonoBehaviour
     {
         _optionsUI.SetActive(true);
         _controlsUI.SetActive(false);
-    }
-
-    // When clicking the apply button on the graphics menu
-    public void OnGraphicsApply()
-    {
-        // Apply the new resolution
-        Screen.SetResolution(Screen.resolutions[_graphicsUIResList.value].width, Screen.resolutions[_graphicsUIResList.value].height, _graphicsUIFullscreenToggle.isOn);
-
-        // Make sure the camera is positioned over the player appropriately
-        GameObject.Find("Main Camera").GetComponent<CameraFollow>().FixAspectRatio();
-    }
-
-    // When clicking the apply button on the audio menu
-    public void OnAudioApply()
-    {
-        Debug.Log(_audioUIMusicSlider.value);
-        Debug.Log(_audioUIEffectsSlider.value);
-
-        musicVolume = _audioUIMusicSlider.value;
-        effectsVolume = _audioUIEffectsSlider.value;
-
-        PlayerPrefs.SetFloat(MusicVolume, musicVolume);
-        PlayerPrefs.SetFloat(EffectsVolume, effectsVolume);
     }
 
     //After Losing
