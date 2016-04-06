@@ -25,7 +25,8 @@ public class ChasePlayer : ActionNode {
 		// Unclaim my attack position
 		float attackPosition = blackboard.GetFloatVar ("attackPosition");
 		if (attackPosition != -1) {
-			GlobalBlackboard.Instance.GetBoolVar ("pos" + attackPosition).Value = false;
+			string side = blackboard.GetStringVar ("attackSide");
+			GlobalBlackboard.Instance.GetBoolVar (side + "pos" + attackPosition).Value = false;
 			blackboard.GetFloatVar ("attackPosition").Value = -1;
 		}
 

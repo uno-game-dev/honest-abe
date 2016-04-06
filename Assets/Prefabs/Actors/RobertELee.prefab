@@ -1480,7 +1480,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 13358
+  m_CachedInstanceID: 15388
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1507,7 +1507,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 13360
+  m_CachedInstanceID: 15396
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1580,7 +1580,12 @@ MonoBehaviour:
     value: 1
   m_IntVars: []
   m_BoolVars: []
-  m_StringVars: []
+  m_StringVars:
+  - m_ID: 2103916756
+    m_Name: attackSide
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    value: 
   m_Vector3Vars: []
   m_RectVars: []
   m_ColorVars: []
@@ -1661,6 +1666,7 @@ MonoBehaviour:
   heavyAttackTime: 1
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
+  swipe: {fileID: 0}
 --- !u!114 &11451986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1728,7 +1734,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 13376
+  m_CachedInstanceID: 15390
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1784,7 +1790,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 13378
+  m_CachedInstanceID: 15394
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1878,7 +1884,7 @@ MonoBehaviour:
     m_EventID: 334526696
   - m_Destination: {fileID: 11476676}
     m_EventID: 1763704235
-  m_CachedInstanceID: 13384
+  m_CachedInstanceID: 15392
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2489,6 +2495,10 @@ Prefab:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: m_StringVars.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Transitions.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2744,6 +2754,10 @@ Prefab:
       propertyPath: bloodMelee
       value: 
       objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_StringVars.Array.data[0].m_Name
+      value: attackSide
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}
