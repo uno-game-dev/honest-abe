@@ -38,20 +38,20 @@ public class IsPlayerInTheWay : ConditionNode {
 		bool obstructed = false;
 
 		if (xDiff > yDiff) {
-			hit = Physics2D.Raycast (selfPosition + new Vector2 (0, .5f), direction, distanceToTarget+2, layerMask);
+			hit = Physics2D.Raycast (selfPosition + new Vector2 (0, .5f), direction, distanceToTarget, layerMask);
 				Debug.DrawRay (selfPosition + new Vector2 (0, .5f), direction);
 			if (hit && hit.collider.tag == "Player")
 				obstructed = true;
-			hit = Physics2D.Raycast (selfPosition + new Vector2 (0, -.5f), direction, distanceToTarget+2, layerMask);
+			hit = Physics2D.Raycast (selfPosition + new Vector2 (0, -.5f), direction, distanceToTarget, layerMask);
 				Debug.DrawRay (selfPosition + new Vector2 (0, -.5f), direction);
 			if (hit && hit.collider.tag == "Player")
 				obstructed = true;
 		} else if (yDiff > xDiff) {
-			hit = Physics2D.Raycast (selfPosition + new Vector2 (.5f, 0), direction, distanceToTarget+2, layerMask);
+			hit = Physics2D.Raycast (selfPosition + new Vector2 (.5f, 0), direction, distanceToTarget, layerMask);
 				Debug.DrawRay (selfPosition + new Vector2 (.5f, 0), direction);
 			if (hit && hit.collider.tag == "Player")
 				obstructed = true;
-			hit = Physics2D.Raycast (selfPosition + new Vector2 (-.5f, 0), direction, distanceToTarget+2, layerMask);
+			hit = Physics2D.Raycast (selfPosition + new Vector2 (-.5f, 0), direction, distanceToTarget, layerMask);
 				Debug.DrawRay (selfPosition + new Vector2 (-.5f, 0), direction);
 			if (hit && hit.collider.tag == "Player")
 				obstructed = true;
