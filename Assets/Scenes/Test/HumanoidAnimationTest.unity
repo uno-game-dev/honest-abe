@@ -1187,8 +1187,6 @@ MonoBehaviour:
   rotationMultiplier: 4
   scaleMultiplier: 0.5
   animationClips:
-  - name: TPose
-    animationClip: {fileID: 7400000, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
   - name: Movement
     animationClip: {fileID: 7400000, guid: 6d53885e67da1d244b6798f584f00ca4, type: 2}
   - name: Movement
@@ -1199,6 +1197,8 @@ MonoBehaviour:
     animationClip: {fileID: 7400000, guid: c0b424ec91b66424bbc3941c49f3e3d8, type: 2}
   - name: Idle
     animationClip: {fileID: 7400000, guid: 116a4cfd0314df542aff327fe1ac1937, type: 2}
+  - name: TPose
+    animationClip: {fileID: 7400000, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
   - name: Grabbed
     animationClip: {fileID: 7400010, guid: 362f472e30678d14f83801f2706fa260, type: 3}
   - name: Knock Down In Air
@@ -1223,24 +1223,46 @@ MonoBehaviour:
     animationClip: {fileID: 7400000, guid: 368cef0ed849fd946a690447dcac3693, type: 2}
   - name: Jump Land
     animationClip: {fileID: 7400000, guid: b4cc4befe8951d448a6e38cdfc0e4041, type: 2}
-  - name: Light Punch
+  - name: Light Attack Punch
     animationClip: {fileID: 7400000, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
-  - name: Heavy Punch
+  - name: Heavy Attack Punch
     animationClip: {fileID: 7400004, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
-  - name: Light Swing
-    animationClip: {fileID: 7400000, guid: d16d70a0121649343bbc1e3a2eca1652, type: 2}
-  - name: Heavy Swing
-    animationClip: {fileID: 7400000, guid: 5889b5d105eb0734d8d7dd680d01bcd7, type: 2}
-  - name: Heavy Stab
-    animationClip: {fileID: 7400000, guid: 7b00d7cd1d897424b8535c277971d618, type: 3}
-  - name: Light Stab
-    animationClip: {fileID: 7400002, guid: 7b00d7cd1d897424b8535c277971d618, type: 3}
+  - name: Light Attack Axe
+    animationClip: {fileID: 7400000, guid: 0e4101373e09efe41ab638b558cbc697, type: 2}
+  - name: Heavy Attack Axe
+    animationClip: {fileID: 7400004, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
   - name: Musket Reload
     animationClip: {fileID: 7400012, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
-  - name: Musket Aim
+  - name: Aim
     animationClip: {fileID: 7400004, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
-  - name: Musket Fire
-    animationClip: {fileID: 7400006, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - name: Aim 0
+    animationClip: {fileID: 7400004, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - name: Light Attack Axe 0
+    animationClip: {fileID: 7400000, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - name: Light Attack Axe 1
+    animationClip: {fileID: 7400000, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - name: Light Attack Axe 2
+    animationClip: {fileID: 7400000, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - name: Light Attack Axe 3
+    animationClip: {fileID: 7400000, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - name: Heavy Attack Axe 0
+    animationClip: {fileID: 7400004, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - name: Heavy Attack Axe 1
+    animationClip: {fileID: 7400004, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - name: Heavy Attack Axe 2
+    animationClip: {fileID: 7400004, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - name: Heavy Attack Axe 3
+    animationClip: {fileID: 7400004, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - name: Musket Reload 0
+    animationClip: {fileID: 7400012, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - name: Musket Reload 1
+    animationClip: {fileID: 7400012, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - name: Musket Reload 2
+    animationClip: {fileID: 7400012, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - name: Musket Reload 3
+    animationClip: {fileID: 7400012, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - name: Musket Reload 4
+    animationClip: {fileID: 7400012, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
   - name: Dying
     animationClip: {fileID: 7400002, guid: 4615657aa5511234d838f87f20a267a5, type: 3}
   - name: Dead
