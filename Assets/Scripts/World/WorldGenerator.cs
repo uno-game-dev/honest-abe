@@ -14,9 +14,10 @@ public class WorldGenerator : MonoBehaviour
 
     public float startSpawnPosition;
 
+	public int screensInLevel = 8;
+	public int currentScreen;
     public int spawnYPos = 0;
     public int spawnZPos = 10;
-
     public int propDensity = 3;
     public int decalDensity = 10;
     public int itemDensity = 1;
@@ -28,7 +29,6 @@ public class WorldGenerator : MonoBehaviour
     private bool _spawningWaveOnClear;
     private float _lastXPos;
     private float _spawnOnClearLocation;
-    private int _screenCount;
     private int _levelIndex;
     private int _easyWaveChance;
     private int _mediumWaveChance;
@@ -41,7 +41,7 @@ public class WorldGenerator : MonoBehaviour
         _lastXPos = startSpawnPosition;
         _camera = GameObject.Find("Main Camera");
         _rnd = new System.Random();
-        _screenCount = 0;
+        currentScreen = 0;
         _spawningWaveOnClear = false;
         _levelIndex = SceneManager.GetActiveScene().buildIndex;
     }
@@ -50,7 +50,7 @@ public class WorldGenerator : MonoBehaviour
     void Update()
     {
         if (GlobalSettings.currentSceneIsNew)
-            _screenCount = 0;
+            currentScreen = 0;
 
         if (_camera.transform.position.x >= _lastXPos - startSpawnPosition && _canSpawn)
         {
@@ -65,13 +65,13 @@ public class WorldGenerator : MonoBehaviour
                 SpawnEnemies();
                 _canSpawn = true;
             }
-            Debug.Log("Completed generation of screen " + _screenCount);
-            _screenCount++;
+            Debug.Log("Completed generation of screen " + currentScreen);
+            currentScreen++;
             _lastXPos += startSpawnPosition;
         }
 
         _enemiesInScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        if (_enemiesInScreen <= 0 && _screenCount > 0 && !_spawningWaveOnClear)
+        if (_enemiesInScreen <= 0 && currentScreen > 0 && !_spawningWaveOnClear)
         {
             _spawningWaveOnClear = true;
             SpawnEnemies();
@@ -142,21 +142,23 @@ public class WorldGenerator : MonoBehaviour
     private bool SpawnBoss()
     {
         bool spawn = false;
-        switch (_levelIndex)
-        {
-            case 0:
-                if (_screenCount == GlobalSettings.screensInLevel1)
-                    spawn = true;
-                break;
-            case 1:
-                if (_screenCount == GlobalSettings.screensInLevel2)
-                    spawn = true;
-                break;
-            case 2:
-                if (_screenCount == GlobalSettings.screensInLevel3)
-                    spawn = true;
-                break;
-        }
+		if (currentScreen == screensInLevel)
+			spawn = true;
+		//switch (_levelIndex)
+		//{
+		//	case 0:
+		//		if (currentScreen == GlobalSettings.screensInLevel1)
+		//			spawn = true;
+		//		break;
+		//	case 1:
+		//		if (currentScreen == GlobalSettings.screensInLevel2)
+		//			spawn = true;
+		//		break;
+		//	case 2:
+		//		if (currentScreen == GlobalSettings.screensInLevel3)
+		//			spawn = true;
+		//		break;
+		//}
         if (spawn && bosses[_levelIndex] != null)
             Instantiate(bosses[_levelIndex], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         return spawn;
@@ -209,7 +211,7 @@ public class WorldGenerator : MonoBehaviour
         {
             // Ensure that spawned enemies do not reduce _remainingEnemyDensity below 0
             case 0:
-                if (_remainingEnemyDensity == 1 || _screenCount <= 5)
+                if (_remainingEnemyDensity == 1 || currentScreen <= 5)
                     r = 0;
                 else
                     r = _rnd.Next(2);
