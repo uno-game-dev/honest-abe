@@ -114,6 +114,8 @@ public class Attack : MonoBehaviour
 			attack = this.GetOrAddComponent<JabAttack> ();
 		else if (attackType == Weapon.AttackType.Shoot)
 			attack = this.GetOrAddComponent<ShootAttack> ();
+        else if (attackType == Weapon.AttackType.Knife)
+            attack = this.GetOrAddComponent<KnifeAttack>();
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 
