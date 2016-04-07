@@ -320,7 +320,11 @@ public class UIManager : MonoBehaviour
     // When clicking the apply button on the graphics menu
     public void OnGraphicsApply()
     {
+        // Apply the new resolution
         Screen.SetResolution(Screen.resolutions[_graphicsUIResList.value].width, Screen.resolutions[_graphicsUIResList.value].height, _graphicsUIFullscreenToggle.isOn);
+
+        // Make sure the camera is positioned over the player appropriately
+        GameObject.Find("Main Camera").GetComponent<CameraFollow>().FixAspectRatio();
     }
 
     //After Losing
