@@ -59,7 +59,8 @@ ModelImporter:
     400048: GenericHumanRigRLegDigit11
     400050: GenericHumanRigSpine1
     400052: GenericHumanRigSpine2
-    7400000: Take 001
+    7400000: TPose
+    7400002: Null
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -81,7 +82,171 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: TPose
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: GenericHumanRigPelvis
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigLLeg1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigLLeg1/GenericHumanRigLLeg2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigLLeg1/GenericHumanRigLLeg2/GenericHumanRigLLegAnkle
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigLLeg1/GenericHumanRigLLeg2/GenericHumanRigLLegAnkle/GenericHumanRigLLegDigit11
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigRLeg1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigRLeg1/GenericHumanRigRLeg2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigRLeg1/GenericHumanRigRLeg2/GenericHumanRigRLegAnkle
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigRLeg1/GenericHumanRigRLeg2/GenericHumanRigRLegAnkle/GenericHumanRigRLegDigit11
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1/GenericHumanRigLArm2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1/GenericHumanRigLArm2/GenericHumanRigLArmHand
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1/GenericHumanRigLArm2/GenericHumanRigLArmHand/GenericHumanRigLArmDigit11
+        weight: 0
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1/GenericHumanRigLArm2/GenericHumanRigLArmHand/GenericHumanRigLArmDigit21
+        weight: 0
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigNeck
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigNeck/GenericHumanRigHead
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1/GenericHumanRigRArm2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1/GenericHumanRigRArm2/GenericHumanRigRArmHand
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1/GenericHumanRigRArm2/GenericHumanRigRArmHand/GenericHumanRigRArmDigit11
+        weight: 0
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1/GenericHumanRigRArm2/GenericHumanRigRArmHand/GenericHumanRigRArmDigit21
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Null
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: GenericHumanRigPelvis
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigLLeg1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigLLeg1/GenericHumanRigLLeg2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigLLeg1/GenericHumanRigLLeg2/GenericHumanRigLLegAnkle
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigLLeg1/GenericHumanRigLLeg2/GenericHumanRigLLegAnkle/GenericHumanRigLLegDigit11
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigRLeg1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigRLeg1/GenericHumanRigRLeg2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigRLeg1/GenericHumanRigRLeg2/GenericHumanRigRLegAnkle
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigRLeg1/GenericHumanRigRLeg2/GenericHumanRigRLegAnkle/GenericHumanRigRLegDigit11
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1/GenericHumanRigLArm2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1/GenericHumanRigLArm2/GenericHumanRigLArmHand
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1/GenericHumanRigLArm2/GenericHumanRigLArmHand/GenericHumanRigLArmDigit11
+        weight: 0
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigLArmShoulder/GenericHumanRigLArm1/GenericHumanRigLArm2/GenericHumanRigLArmHand/GenericHumanRigLArmDigit21
+        weight: 0
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigNeck
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigNeck/GenericHumanRigHead
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1/GenericHumanRigRArm2
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1/GenericHumanRigRArm2/GenericHumanRigRArmHand
+        weight: 1
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1/GenericHumanRigRArm2/GenericHumanRigRArmHand/GenericHumanRigRArmDigit11
+        weight: 0
+      - path: GenericHumanRigPelvis/GenericHumanRigSpine1/GenericHumanRigSpine2/GenericHumanRigChest/GenericHumanRigRArmShoulder/GenericHumanRigRArm1/GenericHumanRigRArm2/GenericHumanRigRArmHand/GenericHumanRigRArmDigit21
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

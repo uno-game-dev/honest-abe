@@ -80,7 +80,7 @@ public class AnimationTester : MonoBehaviour
 
         var animationClip = animationClips[currentAnimationId];
         animator.CrossFade(animationClip.name, 0.1f, baseLayer, 0);
-        animationText.text = string.Format("{0}: {1}", animationClip.name, animationClip.animationClip.name);
+        animationText.text = string.Format("<{0}> {1}: {2}", animationClip.substate, animationClip.name, animationClip.animationClip.name);
     }
 
     public void NextAnimation()
