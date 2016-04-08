@@ -88,10 +88,8 @@ public class Health : MonoBehaviour
 	protected void DeathSequence()
 	{
 		Death death = GetComponent<Death>();
-		if (death) {
+		if (death)
 			death.enabled = true;
-			gameObject.AddComponent<ObjectDestroyer>();
-		}
 		else
 			Destroy(gameObject);
 	}

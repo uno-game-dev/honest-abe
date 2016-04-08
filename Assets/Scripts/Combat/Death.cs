@@ -7,7 +7,9 @@ public class Death : MonoBehaviour
     public GameObject[] itemDropPrefabs;
     public float chanceToDrop = 1;
 
+    private Renderer _renderer;
     private System.Random _rnd;
+    private bool _seen = false;
 
     void OnEnable()
     {
@@ -29,6 +31,21 @@ public class Death : MonoBehaviour
 
         WeaponDrop();
         ItemDrop();
+        
+        gameObject.AddComponent<ObjectDestroyer>();
+
+        _renderer = GetComponent<Renderer>();
+    }
+
+    void Update()
+    {
+        if (_renderer)
+        {
+            if (_renderer.isVisible)
+                _seen = true;
+            if (_seen && !_renderer.isVisible)
+                Destroy(gameObject);
+        }
     }
 
     private void WeaponDrop()
