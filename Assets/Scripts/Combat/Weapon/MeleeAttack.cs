@@ -7,7 +7,7 @@ public class MeleeAttack : BaseAttack
 
     protected override void PrepareToLightAttack()
     {
-        if (name == "Bear")
+        if (animator.runtimeAnimatorController.name == "Bear")
         {
             animator.Play("Light Swipe");
         }
@@ -31,7 +31,7 @@ public class MeleeAttack : BaseAttack
 
     protected override void PrepareToHeavyAttack()
     {
-        if (name == "Bear")
+        if (animator.runtimeAnimatorController.name == "Bear")
         {
             animator.Play("Heavy Swipe");
         }
