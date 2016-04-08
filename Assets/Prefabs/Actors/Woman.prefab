@@ -1411,7 +1411,7 @@ Animator:
   m_GameObject: {fileID: 177166}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 99dd0d7fea1805b46bc1b922248ab358, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
+  m_Controller: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11448032}
     m_EventID: 770579688
-  m_CachedInstanceID: 41134
+  m_CachedInstanceID: 11656
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1497,7 +1497,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 41136
+  m_CachedInstanceID: 11658
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1594,7 +1594,7 @@ MonoBehaviour:
     m_EventID: 1997708586
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 41142
+  m_CachedInstanceID: 11664
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1663,7 +1663,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 41144
+  m_CachedInstanceID: 11666
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1723,7 +1723,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 41146
+  m_CachedInstanceID: 11668
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1795,7 +1795,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 41148
+  m_CachedInstanceID: 11670
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2048,7 +2048,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422952}
     m_EventID: 1003642416
-  m_CachedInstanceID: 41162
+  m_CachedInstanceID: 11684
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 41170
+  m_CachedInstanceID: 11692
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2225,7 +2225,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 41174
+  m_CachedInstanceID: 11696
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2274,6 +2274,8 @@ MonoBehaviour:
   heavyAttackTime: 1
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
+  lightDuration: 0
+  heavyDuration: 0
   swipe: {fileID: 0}
   bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
 --- !u!114 &11471440
@@ -2314,7 +2316,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 41182
+  m_CachedInstanceID: 11704
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2411,7 +2413,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 41190
+  m_CachedInstanceID: 11712
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3258,6 +3260,10 @@ Prefab:
       propertyPath: m_StringVars.Array.data[0].m_Name
       value: attackSide
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177166}

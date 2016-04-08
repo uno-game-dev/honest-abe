@@ -23,7 +23,7 @@ public class GenericAnimation : MonoBehaviour
         if (previousState != state)
         {
             previousState = characterState.state;
-            if (name == "Bear")
+            if (animator.runtimeAnimatorController.name == "Bear")
             {
                 if (state == CharacterState.State.Idle) animator.Play("Idle Bear");
                 if (state == CharacterState.State.Movement) animator.Play("Walk Bear");
