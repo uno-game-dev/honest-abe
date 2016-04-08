@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_StateName: Attack
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 810, y: 0}
+  m_Position: {x: 800, y: 10}
   m_Transitions:
   - m_Destination: {fileID: 11496152}
     m_EventID: 277351336
@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_StateName: GoAroundPlayer
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 570, y: 190}
+  m_Position: {x: 510, y: 190}
   m_Transitions:
   - m_Destination: {fileID: 11455402}
     m_EventID: 1763704235
@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_StateName: Approach
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 310, y: 70}
+  m_Position: {x: 230, y: 70}
   m_Transitions:
   - m_Destination: {fileID: 11455402}
     m_EventID: 1763704235
@@ -1758,10 +1758,12 @@ MonoBehaviour:
   m_StateName: Trip
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 820, y: 170}
+  m_Position: {x: 780, y: 170}
   m_Transitions:
   - m_Destination: {fileID: 11421222}
     m_EventID: 334526696
+  - m_Destination: {fileID: 11454856}
+    m_EventID: 713601555
   m_CachedInstanceID: 11540
   m_Description: 
   m_IgnoreTimeScale: 0
@@ -1773,25 +1775,27 @@ MonoBehaviour:
     - BehaviourMachine.Update
     - BehaviourMachine.PrioritySelector
     - IsPlayerKnockedDown
+    - IsPlayerOutOfRange
     - TripPlayer
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb23fbd4a944
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000d000000
-    m_BranchIndex: ffffffffffffffff010000000200000002000000
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23fbd4a944
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e00000010000000
+    m_BranchIndex: ffffffffffffffff01000000020000000200000002000000
     m_UnityObjectValue: []
-    m_IntValue: 010000000100000002000000010000000300000004000000e878f01305000000
+    m_IntValue: 010000000100000002000000010000000300000004000000e878f0130600000013b2882a05000000
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
     - PrioritySelector
     - IsPlayerKnockedDown
+    - IsPlayerOutOfRange
     - TripPlayer
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e0000000100000002000000
+    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000080000000900000005000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e0000000100000002000000
     m_FieldPath:
     - instanceID
     - name
@@ -1801,6 +1805,9 @@ MonoBehaviour:
     - enabled
     - instanceID
     - name
+    - instanceID
+    - name
+    - onSuccess
     - instanceID
     - name
     - onSuccess
@@ -1839,7 +1846,7 @@ MonoBehaviour:
   m_StateName: Idle
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 100, y: 70}
+  m_Position: {x: 30, y: 70}
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
@@ -1895,7 +1902,7 @@ MonoBehaviour:
   m_StateName: Surround
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 570, y: 60}
+  m_Position: {x: 510, y: 60}
   m_Transitions:
   - m_Destination: {fileID: 11455402}
     m_EventID: 1763704235
@@ -1969,7 +1976,7 @@ MonoBehaviour:
   m_StateName: Navigate
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 320, y: 170}
+  m_Position: {x: 240, y: 170}
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
@@ -2087,7 +2094,7 @@ MonoBehaviour:
   m_StateName: RunToDistance
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 570, y: -30}
+  m_Position: {x: 510, y: -30}
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
@@ -2477,7 +2484,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ConcreteFsmEvents.Array.size
@@ -2485,39 +2492,39 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.size
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.size
-      value: 11
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.size
-      value: 11
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.size
-      value: 11
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_BranchIndex.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bloodSwing
@@ -2541,11 +2548,11 @@ Prefab:
       objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Position.x
-      value: 570
+      value: 780
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Position.y
-      value: -30
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_StateName
@@ -2566,7 +2573,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[1].m_Destination
       value: 
-      objectReference: {fileID: 11445508}
+      objectReference: {fileID: 11454856}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[1].m_EventID
       value: 1763704235
@@ -2597,15 +2604,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[4]
-      value: AttackPlayer
+      value: IsPlayerOutOfRange
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[5]
-      value: ChasePlayer
+      value: TripPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[4]
-      value: 1151980795
+      value: 600517450
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[5]
@@ -2613,7 +2620,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[5]
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[6]
@@ -2633,11 +2640,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[7]
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[8]
-      value: 1934339850
+      value: 713601555
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[9]
@@ -2649,11 +2656,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[4]
-      value: BehaviourMachine.FsmEvent
+      value: IsPlayerOutOfRange
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[5]
-      value: AttackPlayer
+      value: TripPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[13]
@@ -2661,11 +2668,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[14]
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[15]
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[13]
@@ -2673,7 +2680,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[14]
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[15]
@@ -2693,7 +2700,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[6]
-      value: FindAttackPosition
+      value: TripPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[10]
