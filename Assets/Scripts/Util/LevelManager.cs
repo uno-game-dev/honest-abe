@@ -39,7 +39,8 @@ public class LevelManager : MonoBehaviour
     public void loadNextLevel()
     {
         currentScene++;
-        // Initialize player before level load to fix camera issues
+		// Initialize player before level load to fix camera issues
+		GameObject.Find("Player").GetComponent<Player>().Initialize();
 		SceneManager.LoadScene(currentScene);
     }
 }
