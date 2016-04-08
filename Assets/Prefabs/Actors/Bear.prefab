@@ -38,8 +38,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411406}
-  - 33: {fileID: 3301354}
-  - 23: {fileID: 2343884}
   - 61: {fileID: 6169350}
   - 114: {fileID: 11413938}
   - 95: {fileID: 9544236}
@@ -62,6 +60,7 @@ GameObject:
   - 114: {fileID: 11485854}
   - 114: {fileID: 11450568}
   - 114: {fileID: 11435718}
+  - 23: {fileID: 2330866}
   m_Layer: 11
   m_Name: Bear
   m_TagString: Boss
@@ -867,7 +866,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!23 &2343884
+--- !u!23 &2330866
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -877,14 +876,14 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4fdccad85bce3d34a9d6f17ce232284a, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
@@ -919,13 +918,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3301354
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112324}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3322176
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1030,7 +1022,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 7662
+  m_CachedInstanceID: 11080
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1076,7 +1068,7 @@ MonoBehaviour:
     m_EventID: 1249890864
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 7666
+  m_CachedInstanceID: 11092
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1166,7 +1158,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 7670
+  m_CachedInstanceID: 11090
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1330,7 +1322,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 7676
+  m_CachedInstanceID: 11086
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1426,7 +1418,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 7682
+  m_CachedInstanceID: 11082
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1515,7 +1507,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 7688
+  m_CachedInstanceID: 11088
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1599,7 +1591,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11435718}
     m_EventID: 111391994
-  m_CachedInstanceID: 7692
+  m_CachedInstanceID: 11084
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
