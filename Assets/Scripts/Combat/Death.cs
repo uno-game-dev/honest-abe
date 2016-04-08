@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using BehaviourMachine;
-using System;
 
 public class Death : MonoBehaviour
 {
     public GameObject[] weaponDropPrefabs;
+    public GameObject[] itemDropPrefabs;
     public float chanceToDrop = 1;
+
+    private System.Random _rnd;
 
     void OnEnable()
     {
@@ -27,6 +28,7 @@ public class Death : MonoBehaviour
         if (enemyFollow) enemyFollow.enabled = false;
 
         WeaponDrop();
+        ItemDrop();
     }
 
     private void WeaponDrop()
@@ -44,5 +46,17 @@ public class Death : MonoBehaviour
         dismemberWeapon.transform.Translate(0, -1, 0);
         dismemberWeapon.transform.localScale = Vector3.one;
 
+    }
+
+    private void ItemDrop()
+    {
+        _rnd = new System.Random();
+        int r = _rnd.Next(101);
+        if (r >= 75)
+        {
+            r = _rnd.Next(itemDropPrefabs.Length);
+            Instantiate(itemDropPrefabs[r], gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            Debug.Log("Item " + r + " dropped");
+        }
     }
 }

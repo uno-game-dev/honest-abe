@@ -528,6 +528,7 @@ GameObject:
   - 114: {fileID: 11434696}
   - 114: {fileID: 11434104}
   - 114: {fileID: 11444686}
+  - 114: {fileID: 11436126}
   m_Layer: 11
   m_Name: Dummy
   m_TagString: Enemy
@@ -1328,6 +1329,21 @@ MonoBehaviour:
   hand: 1
   weapon: {fileID: 0}
   emptyHanded: 1
+--- !u!114 &11436126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDropPrefabs: []
+  itemDropPrefabs:
+  - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
+  chanceToDrop: 1
 --- !u!114 &11439970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1407,6 +1423,7 @@ MonoBehaviour:
   heavyAttackTime: 1
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
+  swipe: {fileID: 0}
 --- !u!114 &11475306
 MonoBehaviour:
   m_ObjectHideFlags: 1

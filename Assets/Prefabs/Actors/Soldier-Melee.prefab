@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 12854
+  m_CachedInstanceID: 8250
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 12862
+  m_CachedInstanceID: 8258
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1523,12 +1523,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188124}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDropPrefabs: []
+  weaponDropPrefabs:
+  - {fileID: 0}
+  itemDropPrefabs:
+  - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
   chanceToDrop: 1
 --- !u!114 &11451986
 MonoBehaviour:
@@ -1563,7 +1566,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 12868
+  m_CachedInstanceID: 8264
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1670,7 +1673,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 12856
+  m_CachedInstanceID: 8252
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1730,7 +1733,7 @@ MonoBehaviour:
     m_EventID: 93402385
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 12866
+  m_CachedInstanceID: 8262
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1800,7 +1803,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 12860
+  m_CachedInstanceID: 8256
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1894,7 +1897,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11465972}
     m_EventID: 1639135052
-  m_CachedInstanceID: 12858
+  m_CachedInstanceID: 8254
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2263,10 +2266,6 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.size
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponDropPrefabs.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ConcreteFsmEvents.Array.size
@@ -2687,10 +2686,6 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_StringVars.Array.data[0].m_Name
       value: attackSide
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponDropPrefabs.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

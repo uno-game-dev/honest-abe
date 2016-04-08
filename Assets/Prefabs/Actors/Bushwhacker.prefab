@@ -572,6 +572,7 @@ GameObject:
   - 114: {fileID: 11445508}
   - 114: {fileID: 11431742}
   - 114: {fileID: 11421224}
+  - 114: {fileID: 11441428}
   m_Layer: 11
   m_Name: Bushwhacker
   m_TagString: Enemy
@@ -1409,7 +1410,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496152}
     m_EventID: 277351336
-  m_CachedInstanceID: 11036
+  m_CachedInstanceID: 8332
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1494,7 +1495,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11445508}
     m_EventID: 1934339850
-  m_CachedInstanceID: 11042
+  m_CachedInstanceID: 8338
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1567,7 +1568,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11454856}
     m_EventID: 713601555
-  m_CachedInstanceID: 11032
+  m_CachedInstanceID: 8328
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1676,6 +1677,21 @@ MonoBehaviour:
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
   swipe: {fileID: 0}
+--- !u!114 &11441428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDropPrefabs: []
+  itemDropPrefabs:
+  - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
+  chanceToDrop: 1
 --- !u!114 &11443872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1714,7 +1730,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11421222}
     m_EventID: 334526696
-  m_CachedInstanceID: 11046
+  m_CachedInstanceID: 8342
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1795,7 +1811,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
-  m_CachedInstanceID: 11030
+  m_CachedInstanceID: 8326
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1855,7 +1871,7 @@ MonoBehaviour:
     m_EventID: 225201245
   - m_Destination: {fileID: 11445508}
     m_EventID: 1934339850
-  m_CachedInstanceID: 11040
+  m_CachedInstanceID: 8336
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1925,7 +1941,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
-  m_CachedInstanceID: 11034
+  m_CachedInstanceID: 8330
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2041,7 +2057,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 320, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11044
+  m_CachedInstanceID: 8340
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2094,7 +2110,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11028
+  m_CachedInstanceID: 8324
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
