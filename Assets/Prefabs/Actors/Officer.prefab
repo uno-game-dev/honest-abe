@@ -1562,6 +1562,11 @@ MonoBehaviour:
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
     value: 1
+  - m_ID: 1212073644
+    m_Name: attackPosition
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    value: -1
   m_IntVars: []
   m_BoolVars: []
   m_StringVars:
@@ -2326,7 +2331,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_StringVars.Array.size
@@ -2596,6 +2601,14 @@ Prefab:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[3].m_Name
+      value: attackPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[3].value
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}
