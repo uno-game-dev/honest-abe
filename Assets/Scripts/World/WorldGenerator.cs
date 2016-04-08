@@ -9,7 +9,6 @@ public class WorldGenerator : MonoBehaviour
     public List<GameObject> enemies;
     public List<GameObject> props;
     public List<GameObject> decals;
-    public List<GameObject> items;
     public List<GameObject> bosses;
 
     public float startSpawnPosition;
@@ -58,10 +57,8 @@ public class WorldGenerator : MonoBehaviour
             _occupiedPos = new List<Vector3>();
             SpawnProps();
             // SpawnDecals(); - Disabled until art assets are ready
-            SpawnItems();
             if (!SpawnBoss())
             {
-                SpawnItems();
                 SpawnEnemies();
                 _canSpawn = true;
             }
@@ -99,15 +96,6 @@ public class WorldGenerator : MonoBehaviour
         {
             int r = _rnd.Next(decals.Count);
             Instantiate(decals[r], GetRandomEmptyPos(0.5f), Quaternion.Euler(0, 0, 0));
-        }
-    }
-
-    private void SpawnItems()
-    {
-        for (int i = 0; i < itemDensity; i++)
-        {
-            int r = _rnd.Next(items.Count);
-            Instantiate(items[r], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
         }
     }
 
