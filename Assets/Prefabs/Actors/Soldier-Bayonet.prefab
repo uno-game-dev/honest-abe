@@ -1563,7 +1563,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 32852
+  m_CachedInstanceID: 16442
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 32850
+  m_CachedInstanceID: 16440
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 32840
+  m_CachedInstanceID: 16430
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1870,7 +1870,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 32848
+  m_CachedInstanceID: 16438
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2041,7 +2041,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11492368}
     m_EventID: 1901486430
-  m_CachedInstanceID: 32846
+  m_CachedInstanceID: 16436
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2110,7 +2110,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 32844
+  m_CachedInstanceID: 16434
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2203,7 +2203,7 @@ MonoBehaviour:
     m_EventID: 734815261
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 32854
+  m_CachedInstanceID: 16444
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2279,8 +2279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDropPrefabs:
-  - {fileID: 187658, guid: 31259d1ed7b911040b861df32c8ff0e0, type: 2}
+  weaponDropPrefabs: []
   chanceToDrop: 1
 --- !u!114 &11497228
 MonoBehaviour:
@@ -2602,6 +2601,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: weaponDropPrefabs.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ConcreteFsmEvents.Array.size
@@ -3207,6 +3210,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_StringVars.Array.data[0].m_Name
       value: attackSide
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: weaponDropPrefabs.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
