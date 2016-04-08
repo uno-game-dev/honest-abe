@@ -18,6 +18,7 @@ public class MobileInput : MonoBehaviour
     public bool touchHold;
     public float touchHoldTimer;
     public float touchHoldTime = 0.7f;
+    private float rightClickTimer;
 
     private void Start()
     {
@@ -71,6 +72,20 @@ public class MobileInput : MonoBehaviour
                 if (touchHoldTimer >= touchHoldTime)
                 {
                     _lastAction = Action.Pickup;
+                    touchHoldTimer = 0;
+                    return;
+                }
+            }
+            if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.LeftAlt))
+            {
+                rightClickTimer = 0;
+            }
+            else if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.LeftAlt))
+            {
+                rightClickTimer += Time.deltaTime;
+                if (rightClickTimer >= touchHoldTime)
+                {
+                    _lastAction = Action.Throw;
                     touchHoldTimer = 0;
                     return;
                 }
