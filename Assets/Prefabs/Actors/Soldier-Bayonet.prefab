@@ -610,6 +610,7 @@ GameObject:
   - 114: {fileID: 11417338}
   - 114: {fileID: 11492368}
   - 114: {fileID: 11494188}
+  - 23: {fileID: 2318058}
   m_Layer: 11
   m_Name: Soldier-Bayonet
   m_TagString: Enemy
@@ -1252,6 +1253,32 @@ Transform:
   - {fileID: 458472}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!23 &2318058
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2320690
 MeshRenderer:
   m_ObjectHideFlags: 1
