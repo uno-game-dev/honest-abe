@@ -50,11 +50,13 @@ public class Death : MonoBehaviour
 
     private void ItemDrop()
     {
+        _rnd = new System.Random();
         int r = _rnd.Next(101);
         if (r >= 75)
         {
             r = _rnd.Next(itemDropPrefabs.Length);
             Instantiate(itemDropPrefabs[r], gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            Debug.Log("Item " + r + " dropped");
         }
     }
 }
