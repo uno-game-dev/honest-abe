@@ -56,6 +56,8 @@ public class Health : MonoBehaviour
 					EventHandler.SendEvent(EventHandler.Events.LIGHT_KILL);
 			}
 
+			DeathSequence();
+
 			// AI stuff: Mark this enemy's position around the player as available
 			float attackPosition = blackboard.GetFloatVar("attackPosition");
 			if (attackPosition != -1) {
@@ -66,7 +68,6 @@ public class Health : MonoBehaviour
 			if (enemyFollow.target != null)
 				Destroy (enemyFollow.target);
 
-			DeathSequence();
 		}
 	}
 
