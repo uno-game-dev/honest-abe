@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488984}
-  - 95: {fileID: 9585160}
   m_Layer: 0
   m_Name: Officer
   m_TagString: Untagged
@@ -567,6 +566,7 @@ GameObject:
   - 114: {fileID: 11493890}
   - 114: {fileID: 11476676}
   - 114: {fileID: 11426946}
+  - 114: {fileID: 11466624}
   m_Layer: 11
   m_Name: Officer-Boss
   m_TagString: Enemy
@@ -1310,23 +1310,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9585160
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104056}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11401122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1421,7 +1404,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 13374
+  m_CachedInstanceID: 12260
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1448,7 +1431,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 13376
+  m_CachedInstanceID: 12262
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1662,7 +1645,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 13390
+  m_CachedInstanceID: 12276
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1698,6 +1681,20 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
+--- !u!114 &11466624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDropPrefabs: []
+  itemDropPrefabs: []
+  chanceToDrop: 1
 --- !u!114 &11476676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1718,7 +1715,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 13392
+  m_CachedInstanceID: 12278
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1812,7 +1809,7 @@ MonoBehaviour:
     m_EventID: 334526696
   - m_Destination: {fileID: 11476676}
     m_EventID: 1763704235
-  m_CachedInstanceID: 13398
+  m_CachedInstanceID: 12284
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
