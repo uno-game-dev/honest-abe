@@ -8,13 +8,13 @@ class ShootAttack : BaseAttack
     protected override void PrepareToLightAttack()
     {
         base.PrepareToLightAttack();
-        animator.PlayAtSpeed("Shoot Musket");
+        animator.Play("Shoot Musket");
     }
 
     protected override void PrepareToHeavyAttack()
     {
         base.PrepareToHeavyAttack();
-        animator.PlayAtSpeed("Reload Musket");
+        animator.Play("Reload Musket");
     }
 
     protected override void PerformLightAttack()

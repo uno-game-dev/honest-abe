@@ -9,16 +9,16 @@ public class MeleeAttack : BaseAttack
     {
         if (name == "Bear")
         {
-            animator.PlayAtSpeed("Light Swipe");
+            animator.Play("Light Swipe");
         }
         if (_hand == Hand.Left)
         {
-            animator.PlayAtSpeed("Light Attack Melee Left");
+            animator.Play("Light Attack Melee Left");
             _hand = Hand.Right;
         }
         else
         {
-            animator.PlayAtSpeed("Light Attack Melee Right");
+            animator.Play("Light Attack Melee Right");
             _hand = Hand.Left;
         }
         base.PrepareToLightAttack();
@@ -33,16 +33,16 @@ public class MeleeAttack : BaseAttack
     {
         if (name == "Bear")
         {
-            animator.PlayAtSpeed("Heavy Swipe");
+            animator.Play("Heavy Swipe");
         }
         if (_hand == Hand.Left)
         {
-            animator.PlayAtSpeed("Heavy Attack Melee Left");
+            animator.Play("Heavy Attack Melee Left");
             _hand = Hand.Right;
         }
         else
         {
-            animator.PlayAtSpeed("Heavy Attack Melee Right");
+            animator.Play("Heavy Attack Melee Right");
             _hand = Hand.Left;
         }
         base.PrepareToHeavyAttack();

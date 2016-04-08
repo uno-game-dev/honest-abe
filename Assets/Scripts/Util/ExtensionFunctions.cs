@@ -67,15 +67,4 @@ public static class ExtensionFunctions
     {
         return random.Next(min, max + 1);
     }
-
-    public static void PlayAtSpeed(this Animator animator, string stateName, float speed = 1, float normalizedTime = float.NegativeInfinity)
-    {
-        animator.speed = speed;
-        animator.Play(stateName, 0, normalizedTime);
-    }
-
-    //public static void PlayInDuration(this Animator animator, string stateName, float duration = 1)
-    //{
-    //    // TODO: Would be a great helper function
-    //}
 }

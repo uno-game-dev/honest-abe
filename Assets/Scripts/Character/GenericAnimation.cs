@@ -25,25 +25,25 @@ public class GenericAnimation : MonoBehaviour
             previousState = characterState.state;
             if (state == CharacterState.State.Grab)
             {
-                if (state == CharacterState.State.Idle) animator.PlayAtSpeed("Grab Idle");
-                if (state == CharacterState.State.Movement) animator.PlayAtSpeed("Grab Walk");
+                if (state == CharacterState.State.Idle) animator.Play("Grab Idle");
+                if (state == CharacterState.State.Movement) animator.Play("Grab Walk");
             }
             if (attack.weapon.attackType == Weapon.AttackType.Swing)
             {
-                if (state == CharacterState.State.Idle) animator.PlayAtSpeed("Idle Axe");
-                if (state == CharacterState.State.Movement) animator.PlayAtSpeed("Walk Axe", 4);
+                if (state == CharacterState.State.Idle) animator.Play("Idle Axe");
+                if (state == CharacterState.State.Movement) animator.Play("Walk Axe");
             }
             else if (attack.weapon.attackType == Weapon.AttackType.Shoot)
             {
-                if (state == CharacterState.State.Idle) animator.PlayAtSpeed("Idle Musket");
-                if (state == CharacterState.State.Movement) animator.PlayAtSpeed("Walk Musket", 4);
+                if (state == CharacterState.State.Idle) animator.Play("Idle Musket");
+                if (state == CharacterState.State.Movement) animator.Play("Walk Musket");
             }
             else
             {
-                if (state == CharacterState.State.Idle) animator.PlayAtSpeed("Idle");
-                if (state == CharacterState.State.Movement) animator.PlayAtSpeed("Walk", 4);
+                if (state == CharacterState.State.Idle) animator.Play("Idle");
+                if (state == CharacterState.State.Movement) animator.Play("Walk");
             }
-            if (state == CharacterState.State.Dead) animator.PlayAtSpeed("Dead", 0.1f);
+            if (state == CharacterState.State.Dead) animator.Play("Dead");
         }
     }
 }

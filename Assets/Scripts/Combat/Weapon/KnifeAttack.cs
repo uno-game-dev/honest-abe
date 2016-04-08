@@ -10,13 +10,13 @@ class KnifeAttack : BaseAttack
 	protected override void PrepareToLightAttack()
 	{
 		base.PrepareToLightAttack();
-        animator.PlayAtSpeed("Light Attack Knife");
+        animator.Play("Light Attack Knife");
 	}
 
 	protected override void PrepareToHeavyAttack()
 	{
 		base.PrepareToHeavyAttack();
-        animator.PlayAtSpeed("Trip Attack 0");
+        animator.Play("Trip Attack 0");
 	}
 
 	protected override void BackToIdle()

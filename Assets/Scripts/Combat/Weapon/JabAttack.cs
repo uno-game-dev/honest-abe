@@ -9,13 +9,13 @@ class JabAttack : BaseAttack
     protected override void PrepareToLightAttack()
     {
         base.PrepareToLightAttack();
-        animator.PlayAtSpeed("Light Attack Stab", 1.25f);
+        animator.Play("Light Attack Stab");
     }
 
     protected override void PrepareToHeavyAttack()
     {
         base.PrepareToHeavyAttack();
-        animator.PlayAtSpeed("Heavy Attack Stab", 3);
+        animator.Play("Heavy Attack Stab");
     }
 
     protected override void BackToIdle()

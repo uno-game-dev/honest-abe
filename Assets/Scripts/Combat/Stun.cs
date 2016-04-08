@@ -54,7 +54,7 @@ public class Stun : MonoBehaviour
 
     public void GetStunned()
     {
-        _animator.PlayAtSpeed("Light Damage Reaction", 1, 0.25f);
+        _animator.Play("Light Damage Reaction", 0, 0.25f);
         state = State.Stunned;
         _characterState.SetState(CharacterState.State.Stun);
         stunTimer = 0;

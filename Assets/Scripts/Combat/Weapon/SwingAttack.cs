@@ -2,13 +2,13 @@
 {
     protected override void PrepareToLightAttack()
     {
-        animator.PlayAtSpeed("Light Attack Axe Right", 3);
+        animator.Play("Light Attack Axe Right");
         base.PrepareToLightAttack();
     }
 
     protected override void PrepareToHeavyAttack()
     {
-        animator.PlayAtSpeed("Heavy Attack Axe Right", 2.5f);
+        animator.Play("Heavy Attack Axe Right");
         base.PrepareToHeavyAttack();
 
     }

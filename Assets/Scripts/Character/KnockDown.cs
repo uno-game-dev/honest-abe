@@ -53,7 +53,7 @@ public class KnockDown : MonoBehaviour
         this.horizontalVelocity = Mathf.Abs(horizontalVelocity);
         height = 5;
         SetState(State.InAir);
-        _animator.PlayAtSpeed("Knock Down In Air", 4);
+        _animator.Play("Knock Down In Air");
         _characterState.SetState(CharacterState.State.KnockDown);
     }
 
@@ -61,21 +61,21 @@ public class KnockDown : MonoBehaviour
     {
         height = 0;
         SetState(State.Land);
-        _animator.PlayAtSpeed("Knock Down Land");
+        _animator.Play("Knock Down Land");
         Invoke("Land", landDuration);
     }
 
     private void Land()
     {
         SetState(State.OnGround);
-        _animator.PlayAtSpeed("Knock Down On Ground");
+        _animator.Play("Knock Down On Ground");
         Invoke("GetUp", onGroundDuration);
     }
 
     private void GetUp()
     {
         SetState(State.GettingUp);
-        _animator.PlayAtSpeed("Knock Down Get Up",4);
+        _animator.Play("Knock Down Get Up");
         Invoke("BackToIdle", getUpDuration);
     }
 
