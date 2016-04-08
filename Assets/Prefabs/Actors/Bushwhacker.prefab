@@ -1735,7 +1735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMovementSpeed: 6
+  horizontalMovementSpeed: 7
   vericalMovementSpeed: 4
   direction: 1
   velocity: {x: 0, y: 0}
@@ -2854,6 +2854,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: health
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: horizontalMovementSpeed
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
