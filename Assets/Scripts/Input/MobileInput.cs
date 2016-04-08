@@ -61,24 +61,22 @@ public class MobileInput : MonoBehaviour
             _horizontalAxisValue = Input.GetAxisRaw("Horizontal");
             _verticalAxisValue = Input.GetAxisRaw("Vertical");
 
-            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftControl))
+            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                touchHoldTimer = 0;
+            }
+            else if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftControl))
             {
                 touchHoldTimer += Time.deltaTime;
-                if (touchHoldTimer >= touchHoldTime && touchHold == false)
+                if (touchHoldTimer >= touchHoldTime)
                 {
-                    touchHold = true;
                     _lastAction = Action.Pickup;
+                    touchHoldTimer = 0;
                     return;
                 }
             }
-            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl))
-            {
-                if (!touchHold)
-                    _lastAction = Action.LightAttack;
-
-                touchHold = false;
-                touchHoldTimer = 0;
-            }
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl))
+                _lastAction = Action.LightAttack;
             else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftAlt))
                 _lastAction = Action.HeavyAttack;
             else if (Input.GetKeyDown(KeyCode.Space))
