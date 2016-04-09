@@ -99,6 +99,39 @@ public class Attack : MonoBehaviour
             return weapon.lightDamage + chainAttackDamage;
     }
 
+	public float GetStunAmount()
+	{
+		switch (attackState) {
+		case State.Light:
+			return weapon.lightStun;
+			break;
+		case State.Heavy:
+			return weapon.heavyStun;
+			break;
+		case State.Throw :
+			return 4f;
+			break;
+		default:
+			return 1f;
+			break;
+		}
+	}
+
+	public float GetKnockbackAmount()
+	{
+		switch (attackState) {
+		case State.Light:
+			return weapon.lightKnockback;
+			break;
+		case State.Heavy:
+			return weapon.heavyKnockback;
+			break;
+		default:
+			return 0f;
+			break;
+		}
+	}
+
     private BaseAttack CreateAttackType(Weapon.AttackType attackType)
     {
         foreach (MonoBehaviour component in GetComponents<MonoBehaviour>())
