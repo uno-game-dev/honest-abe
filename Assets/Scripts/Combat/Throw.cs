@@ -48,7 +48,10 @@ public class Throw : MonoBehaviour
     private void PerformThrow()
     {
         _attack.weapon.transform.SetParent(null, true);
-        _attack.weapon.transform.localScale = Vector3.one;
+        if (PerkManager.activeAxePerk != null && PerkManager.activeAxePerk.type == Perk.PerkType.AXE_BFA)
+            _attack.weapon.transform.localScale = new Vector3(2, 2, 1);
+        else
+            _attack.weapon.transform.localScale = Vector3.one;
         _attack.weapon.transform.position = transform.position;
         _attack.weapon.GetComponent<BoxCollider2D>().enabled = true;
         _attack.weapon.GetOrAddComponent<Projectile>().StartProjectile(
