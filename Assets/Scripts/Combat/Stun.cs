@@ -7,8 +7,7 @@ public class Stun : MonoBehaviour
     public enum State { Null, Stunned }
 
     public State state;
-    public float stunDuration = 0.92f;
-    public float knockbackSpeed = 10f;
+    public float stunDuration = 0.0f;
 
     private Vector2 velocity = Vector2.zero;
     private float stunTimer = 0;
@@ -40,8 +39,10 @@ public class Stun : MonoBehaviour
         if (attackArea && attackArea.IsShootType())
             return;
 
-        if (collider.tag == "Damage")
-            GetStunned(collider);
+		if (collider.tag == "Damage"){
+			Attack attack = collider.GetComponentInParent<Attack>();
+			GetStunned(collider, attack.GetStunAmount(), attack.GetKnockbackAmount() );
+		}
     }
 
     private void Update()
@@ -49,19 +50,19 @@ public class Stun : MonoBehaviour
         if (state != State.Stunned)
             return;
 
-        stunTimer += Time.deltaTime;
+        stunDuration -= Time.deltaTime;
         _collision.Move(velocity * Time.deltaTime);
-        if (stunTimer >= stunDuration)
+        if (stunDuration <= 0f)
             FinishStun();
     }
 
-    public void GetStunned( Collider2D collider = null)
+	public void GetStunned( Collider2D collider = null, float stunAmount = 1f, float knockbackAmount = 0.1f )
     {
         _animator.Play("Light Damage Reaction", 0, 0.25f);
         state = State.Stunned;
-        velocity = new Vector2((_collision.transform.position.x - collider.transform.position.x ), 0).normalized * knockbackSpeed;
+        velocity = new Vector2((_collision.transform.position.x - collider.transform.position.x ), 0).normalized * knockbackAmount;
         _characterState.SetState(CharacterState.State.Stun);
-        stunTimer = 0;
+        stunDuration = stunAmount;
     }
 
     private void FinishStun()
