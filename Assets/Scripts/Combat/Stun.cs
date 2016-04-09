@@ -41,7 +41,8 @@ public class Stun : MonoBehaviour
 
 		if (collider.tag == "Damage"){
 			Attack attack = collider.GetComponentInParent<Attack>();
-			GetStunned(collider, attack.GetStunAmount(), attack.GetKnockbackAmount() );
+			float directionMod = (collider.GetComponentInParent<Movement>().direction == Movement.Direction.Right ? 1f : -1f);
+			GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod);
 		}
     }
 
@@ -56,11 +57,11 @@ public class Stun : MonoBehaviour
             FinishStun();
     }
 
-	public void GetStunned( Collider2D collider = null, float stunAmount = 1f, float knockbackAmount = 0.1f )
+	public void GetStunned( float stunAmount = 1f, float knockbackAmount = 0.1f, float directionModifier = 1f )
     {
         _animator.Play("Light Damage Reaction", 0, 0.25f);
         state = State.Stunned;
-        velocity = new Vector2((_collision.transform.position.x - collider.transform.position.x ), 0).normalized * knockbackAmount;
+        velocity = new Vector2((directionModifier), 0).normalized * knockbackAmount;
         _characterState.SetState(CharacterState.State.Stun);
         stunDuration = stunAmount;
     }
