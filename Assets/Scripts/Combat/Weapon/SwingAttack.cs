@@ -1,16 +1,32 @@
 ﻿class SwingAttack : BaseAttack
 {
+    public enum SwingChain { First, Second, Third }
+    public SwingChain chain;
+
     protected override void PrepareToLightAttack()
     {
-        animator.Play("Light Attack Axe Right");
         base.PrepareToLightAttack();
+        if (chain == SwingChain.First)
+        {
+            animator.Play("Light Attack Axe Right");
+            chain = SwingChain.Second;
+        }
+        else
+        {
+            animator.Play("Light Attack Axe Left");
+            chain = SwingChain.First;
+        }
     }
 
     protected override void PrepareToHeavyAttack()
     {
-        animator.Play("Heavy Attack Axe Right");
         base.PrepareToHeavyAttack();
+        if (chain == SwingChain.First)
+            animator.Play("Heavy Attack Axe Right");
+        else
+            animator.Play("Heavy Attack Axe Left");
 
+        chain = SwingChain.First;
     }
 
     protected override void PerformLightAttack()
