@@ -566,10 +566,9 @@ GameObject:
   - 114: {fileID: 11493890}
   - 114: {fileID: 11476676}
   - 114: {fileID: 11426946}
-  - 114: {fileID: 11423392}
-  - 23: {fileID: 2322094}
+  - 114: {fileID: 11466624}
   m_Layer: 11
-  m_Name: Officer
+  m_Name: Officer-Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,7 +1117,7 @@ Transform:
   m_GameObject: {fileID: 104056}
   m_LocalRotation: {x: 0, y: 0.953717, z: 0, w: 0.3007057}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 455226}
   - {fileID: 426806}
@@ -1193,7 +1192,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.022434, y: -0.82356787, z: -10.773163}
+  m_LocalPosition: {x: 14.666629, y: -2.9930332, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 457714}
@@ -1214,32 +1213,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 469818}
   m_RootOrder: 1
---- !u!23 &2322094
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188124}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!23 &2363928
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1329,7 +1302,7 @@ Animator:
   m_GameObject: {fileID: 188124}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
-  m_Controller: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1365,7 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
+  health: 150
   additionalHealthFloor: 1
   additionalHealthCeiling: 4
   alive: 0
@@ -1431,28 +1404,13 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 9628
+  m_CachedInstanceID: 12260
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
   m_StartState: {fileID: 11464280}
   m_AnyState: {fileID: 0}
   m_ConcurrentState: {fileID: 0}
---- !u!114 &11423392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponDropPrefabs: []
-  itemDropPrefabs:
-  - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
-  chanceToDrop: 1
 --- !u!114 &11426946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1473,7 +1431,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 9632
+  m_CachedInstanceID: 12262
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1544,7 +1502,7 @@ MonoBehaviour:
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
     value: 1
-  - m_ID: 1212073644
+  - m_ID: 1703854815
     m_Name: attackPosition
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
@@ -1619,8 +1577,6 @@ MonoBehaviour:
   heavyAttackTime: 1
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
-  lightDuration: 0
-  heavyDuration: 0
   swipe: {fileID: 0}
 --- !u!114 &11451986
 MonoBehaviour:
@@ -1689,7 +1645,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 9648
+  m_CachedInstanceID: 12276
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1725,6 +1681,20 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
+--- !u!114 &11466624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDropPrefabs: []
+  itemDropPrefabs: []
+  chanceToDrop: 1
 --- !u!114 &11476676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1745,7 +1715,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 9650
+  m_CachedInstanceID: 12278
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1839,7 +1809,7 @@ MonoBehaviour:
     m_EventID: 334526696
   - m_Destination: {fileID: 11476676}
     m_EventID: 1763704235
-  m_CachedInstanceID: 9656
+  m_CachedInstanceID: 12284
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2374,7 +2344,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
+      objectReference: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
@@ -2409,7 +2379,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: health
-      value: 15
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damageRate
@@ -2583,6 +2553,18 @@ Prefab:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[3].m_Name
       value: attackPosition
