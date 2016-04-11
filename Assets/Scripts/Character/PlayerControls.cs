@@ -56,13 +56,15 @@ public class PlayerControls : MonoBehaviour
 
         if (mobileAction == InputManager.Action.PickupOrGrab)
         {
-            if (IsItemCloseBy())
-            {
-                justClicked = true;
-                heldComplete = true;
-            }
-            else
-                _grab.StartGrab();
+            foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+                if (Vector2.Distance(transform.position, enemy.transform.position) < grabDistance)
+                {
+                    _grab.StartGrab();
+                    return;
+                }
+
+            justClicked = true;
+            heldComplete = true;
         }
 
         if (mobileAction == InputManager.Action.Grab)
