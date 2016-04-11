@@ -8,7 +8,7 @@ public class EventHandler : MonoBehaviour
     private static GameObject player;
     private static Perk bfaPerk, bearAbePerk;
 	private static int amountOfWeaponPickUp = 0;
-	private static int goalToUnlockSFPerk = 2; //Need to ask designers what amount will unlock Sticky Fingers perk
+	private static int goalToUnlockSFPerk = 20; 
 
     private string _eventString;
 
@@ -214,13 +214,14 @@ public class EventHandler : MonoBehaviour
 			case Events.ENEMY_CLOSE_TO_STEAL_WEAPON:
 				if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers")) {
 					Debug.Log ("Enemy is enough to steal weapon");
-
+				/**
 					BoxCollider2D gunBoxCollider = other.transform.FindChild ("ConfederateSoldier").gameObject.transform
 						.FindChild ("SoldierRigPelvis").gameObject.transform.FindChild ("SoldierRigSpine1").gameObject
 						.transform.FindChild ("SoldierRigSpine2").gameObject.transform.FindChild ("SoldierRigChest").gameObject
 						.transform.FindChild ("SoldierRigRArmShoulder").gameObject.transform.FindChild ("SoldierRigRArm1")
 						.gameObject.transform.FindChild ("SoldierRigRArm2").gameObject.transform.FindChild ("SoldierRigRArmHand")
-						.gameObject.transform.FindChild ("Bayonet").GetComponent<BoxCollider2D> ();
+						.gameObject.transform.FindChild ("Bayonet").GetComponent<BoxCollider2D> ();**/
+				BoxCollider2D gunBoxCollider = other.transform.FindContainsInChildren ("Bayonet").GetComponent<BoxCollider2D> ();
 
 					if (gunBoxCollider != null) {
 						gunBoxCollider.size = new Vector2 (25.0f, 20.0f);
