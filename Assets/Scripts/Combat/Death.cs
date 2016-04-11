@@ -58,8 +58,6 @@ public class Death : MonoBehaviour
     private void WeaponDrop()
     {
 		randomNum = UnityEngine.Random.value;
-		Debug.Log (randomNum);
-
 		if (weaponDropPrefabs.Length <= 0)
             return;
 		if(randomNum > chanceToDrop)
