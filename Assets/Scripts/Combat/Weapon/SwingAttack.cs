@@ -2,17 +2,13 @@
 {
     protected override void PrepareToLightAttack()
     {
-        float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
-        animator.SetFloat("PlaySpeed", animator.GetAnimationClip("standing_melee_attack_horizontal").length / duration);
-        animator.SetTrigger("Light Swing");
+        animator.Play("Light Attack Axe Right");
         base.PrepareToLightAttack();
     }
 
     protected override void PrepareToHeavyAttack()
     {
-        float duration = prepHeavyAttackTime + heavyAttackTime + finishHeavyAttackTime;
-        animator.SetFloat("PlaySpeed", animator.GetAnimationClip("standing_melee_attack_360_high").length / duration);
-        animator.SetTrigger("Heavy Swing");
+        animator.Play("Heavy Attack Axe Right");
         base.PrepareToHeavyAttack();
 
     }

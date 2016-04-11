@@ -7,19 +7,14 @@ class ShootAttack : BaseAttack
 
     protected override void PrepareToLightAttack()
     {
-        float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
-        animator.SetFloat("PlaySpeed", duration);
-        animator.SetTrigger("Light Shoot");
         base.PrepareToLightAttack();
+        animator.Play("Shoot Musket");
     }
 
     protected override void PrepareToHeavyAttack()
     {
-        float duration = prepHeavyAttackTime + heavyAttackTime + finishHeavyAttackTime;
-        animator.SetFloat("PlaySpeed", duration);
-        animator.SetTrigger("Heavy Shoot");
         base.PrepareToHeavyAttack();
-
+        animator.Play("Reload Musket");
     }
 
     protected override void PerformLightAttack()
@@ -44,9 +39,6 @@ class ShootAttack : BaseAttack
 
     protected override void BackToIdle()
     {
-        //characterState = GetComponent<CharacterState>();
-		//characterState.SetState(CharacterState.State.Idle);
 		base.BackToIdle();
-
 	}
 }

@@ -41,7 +41,7 @@ public class Throw : MonoBehaviour
     {
         SetState(State.Prepare);
         _characterState.SetState(CharacterState.State.Throw);
-        _animator.SetTrigger("Throw");
+        _animator.Play("Throw");
         Invoke("PerformThrow", prepareThrowTime);
     }
 

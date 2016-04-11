@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789fee9d425216c428830e5d158e652c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runtimeAnimatorController: {fileID: 9100000, guid: e3cb20cc65887aa4792662e4c0a1ee83,
+  runtimeAnimatorController: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4,
     type: 2}
   models:
   - {fileID: 100002, guid: c9d3ebb002f764948a20e09aa8f4026f, type: 3}
@@ -1184,9 +1184,300 @@ MonoBehaviour:
   - {fileID: 100002, guid: 529ea5cf4288ec840b986e88adcb0e60, type: 3}
   - {fileID: 100078, guid: 1c017aab1043f9c47bae0ced35ffc90c, type: 3}
   - {fileID: 100062, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
-  numberOfAnimations: 11
   rotationMultiplier: 4
   scaleMultiplier: 0.5
+  animationClips:
+  - substate: 
+    name: TPose
+    animationClip: {fileID: 7400000, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
+  - substate: Damage Reaction
+    name: Heavy Damage Reaction
+    animationClip: {fileID: 7400000, guid: 8647f562f9d4aa54d97600b928bfd6e7, type: 2}
+  - substate: Damage Reaction
+    name: Light Damage Reaction
+    animationClip: {fileID: 7400000, guid: 8647f562f9d4aa54d97600b928bfd6e7, type: 2}
+  - substate: Death
+    name: Dead
+    animationClip: {fileID: 7400004, guid: 4615657aa5511234d838f87f20a267a5, type: 3}
+  - substate: Death
+    name: Dead 1
+    animationClip: {fileID: 7400004, guid: 4615657aa5511234d838f87f20a267a5, type: 3}
+  - substate: Death
+    name: Dying
+    animationClip: {fileID: 7400002, guid: 4615657aa5511234d838f87f20a267a5, type: 3}
+  - substate: Empty Handed
+    name: Heavy Attack Melee
+    animationClip: {fileID: 7400004, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - substate: Empty Handed
+    name: Idle
+    animationClip: {fileID: 7400000, guid: 116a4cfd0314df542aff327fe1ac1937, type: 2}
+  - substate: Empty Handed
+    name: Light Attack Melee
+    animationClip: {fileID: 7400000, guid: 32c188adf73f86148880cd1517bb3cb9, type: 3}
+  - substate: Empty Handed
+    name: Walk
+    animationClip: {fileID: 7400000, guid: 128bc44b5a66c3f499782bf75fc7f102, type: 2}
+  - substate: Empty Handed
+    name: Walk Backward
+    animationClip: {fileID: 7400000, guid: 6d53885e67da1d244b6798f584f00ca4, type: 2}
+  - substate: Empty Handed
+    name: Walk Forward
+    animationClip: {fileID: 7400000, guid: d8f1c28588f17284b889aba472d48111, type: 2}
+  - substate: Empty Handed
+    name: Walk Left
+    animationClip: {fileID: 7400000, guid: c229d4cc51df8a34b986ba91bdc13060, type: 2}
+  - substate: Empty Handed
+    name: Walk Right
+    animationClip: {fileID: 7400000, guid: c0b424ec91b66424bbc3941c49f3e3d8, type: 2}
+  - substate: Grabbed
+    name: Grabbed
+    animationClip: {fileID: 7400010, guid: 362f472e30678d14f83801f2706fa260, type: 3}
+  - substate: Grab
+    name: Grab Idle
+    animationClip: {fileID: 7400002, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
+  - substate: Grab
+    name: Grab Punch
+    animationClip: {fileID: 7400002, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
+  - substate: Grab
+    name: Grab Release
+    animationClip: {fileID: 7400002, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
+  - substate: Grab
+    name: Grab Throw
+    animationClip: {fileID: 7400002, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
+  - substate: Grab
+    name: Grab Walk
+    animationClip: {fileID: 7400002, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
+  - substate: Jump
+    name: Jump Fall
+    animationClip: {fileID: 7400000, guid: 368cef0ed849fd946a690447dcac3693, type: 2}
+  - substate: Jump
+    name: Jump Land
+    animationClip: {fileID: 7400000, guid: b4cc4befe8951d448a6e38cdfc0e4041, type: 2}
+  - substate: Jump
+    name: Jump Start
+    animationClip: {fileID: 7400000, guid: ea5ac39eb97df0043b83bbb0d65ac66f, type: 2}
+  - substate: Jump
+    name: Jump Up
+    animationClip: {fileID: 7400000, guid: 9b06d75e297d71e4f9ce71c172982bef, type: 2}
+  - substate: Knock Down
+    name: Knock Down Get Up
+    animationClip: {fileID: 7400006, guid: 06c79b09d38d8674a9fde7c15ba36581, type: 3}
+  - substate: Knock Down
+    name: Knock Down In Air
+    animationClip: {fileID: 7400000, guid: 06c79b09d38d8674a9fde7c15ba36581, type: 3}
+  - substate: Knock Down
+    name: Knock Down Land
+    animationClip: {fileID: 7400002, guid: 06c79b09d38d8674a9fde7c15ba36581, type: 3}
+  - substate: Knock Down
+    name: Knock Down On Ground
+    animationClip: {fileID: 7400004, guid: 06c79b09d38d8674a9fde7c15ba36581, type: 3}
+  - substate: Pickup
+    name: Pickup
+    animationClip: {fileID: 7400002, guid: 4c6165e16ce1f03448466dfe32a23617, type: 3}
+  - substate: Throw
+    name: Throw
+    animationClip: {fileID: 7400006, guid: 362f472e30678d14f83801f2706fa260, type: 3}
+  - substate: With Axe
+    name: Heavy Attack Axe Left
+    animationClip: {fileID: 7400000, guid: 5889b5d105eb0734d8d7dd680d01bcd7, type: 2}
+  - substate: With Axe
+    name: Heavy Attack Axe Right
+    animationClip: {fileID: 7400000, guid: 5889b5d105eb0734d8d7dd680d01bcd7, type: 2}
+  - substate: With Axe
+    name: Idle Axe
+    animationClip: {fileID: 7400000, guid: fde11d335af76ba458631b22ed8ffe40, type: 2}
+  - substate: With Axe
+    name: Light Attack Axe Left
+    animationClip: {fileID: 7400000, guid: d16d70a0121649343bbc1e3a2eca1652, type: 2}
+  - substate: With Axe
+    name: Light Attack Axe Right
+    animationClip: {fileID: 7400000, guid: d16d70a0121649343bbc1e3a2eca1652, type: 2}
+  - substate: With Axe
+    name: Walk Axe
+    animationClip: {fileID: 7400000, guid: d8f1c28588f17284b889aba472d48111, type: 2}
+  - substate: With Knife
+    name: Dive Attack Knife Down
+    animationClip: {fileID: 7400010, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Dive Attack Knife Down 0
+    animationClip: {fileID: 7400024, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Dive Attack Knife Down 1
+    animationClip: {fileID: 7400026, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Dive Attack Knife Hit Left
+    animationClip: {fileID: 7400014, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Dive Attack Knife Hit Right
+    animationClip: {fileID: 7400012, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Dive Attack Knife Up
+    animationClip: {fileID: 7400016, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Dive Attack Knife Up 0
+    animationClip: {fileID: 7400022, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Dive Attack Knife Up 1
+    animationClip: {fileID: 7400020, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Heavy Attack Knife
+    animationClip: {fileID: 7400012, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Heavy Attack Knife 0
+    animationClip: {fileID: 7400014, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Idle Knife
+    animationClip: {fileID: 7400000, guid: 116a4cfd0314df542aff327fe1ac1937, type: 2}
+  - substate: With Knife
+    name: Light Attack Knife
+    animationClip: {fileID: 7400006, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Light Attack Knife 0
+    animationClip: {fileID: 7400008, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Light Attack Knife 1
+    animationClip: {fileID: 7400002, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Light Attack Knife 2
+    animationClip: {fileID: 7400010, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Light Attack Knife 3
+    animationClip: {fileID: 7400006, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Light Attack Knife 4
+    animationClip: {fileID: 7400008, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Light Attack Knife 5
+    animationClip: {fileID: 7400004, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Light Attack Knife 6 Left
+    animationClip: {fileID: 7400018, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Light Attack Knife 6 Right
+    animationClip: {fileID: 7400016, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Trip Attack
+    animationClip: {fileID: 7400000, guid: ce4f3653bae635d47a10a190ae5584d9, type: 3}
+  - substate: With Knife
+    name: Trip Attack 0
+    animationClip: {fileID: 7400002, guid: ce4f3653bae635d47a10a190ae5584d9, type: 3}
+  - substate: With Knife
+    name: Trip Attack 1
+    animationClip: {fileID: 7400004, guid: ce4f3653bae635d47a10a190ae5584d9, type: 3}
+  - substate: With Knife
+    name: Walk Knife
+    animationClip: {fileID: 7400000, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Walk Knife 0
+    animationClip: {fileID: 7400004, guid: 0746cb65a7cc9c948a0d5e8048344776, type: 3}
+  - substate: With Knife
+    name: Walk Knife 1
+    animationClip: {fileID: 7400000, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Knife
+    name: Walk Knife 2
+    animationClip: {fileID: 7400002, guid: 90f641e151fe9e14291d23c1533e9247, type: 3}
+  - substate: With Musket
+    name: Aim Musket
+    animationClip: {fileID: 7400004, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - substate: With Musket
+    name: Heavy Attack Stab
+    animationClip: {fileID: 7400000, guid: 7b00d7cd1d897424b8535c277971d618, type: 3}
+  - substate: With Musket
+    name: Idle Musket
+    animationClip: {fileID: 7400000, guid: 116a4cfd0314df542aff327fe1ac1937, type: 2}
+  - substate: With Musket
+    name: Light Attack Stab
+    animationClip: {fileID: 7400002, guid: 7b00d7cd1d897424b8535c277971d618, type: 3}
+  - substate: With Musket
+    name: Reload Musket
+    animationClip: {fileID: 7400012, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - substate: With Musket
+    name: Reload Musket 0
+    animationClip: {fileID: 7400014, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - substate: With Musket
+    name: Shoot Musket
+    animationClip: {fileID: 7400006, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - substate: With Musket
+    name: Shoot Musket 0
+    animationClip: {fileID: 7400008, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - substate: With Musket
+    name: Shoot Musket 1
+    animationClip: {fileID: 7400010, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - substate: With Musket
+    name: Walk Musket
+    animationClip: {fileID: 7400002, guid: f5cf2c7574d083340ad4eeeca8533178, type: 3}
+  - substate: With Pistol
+    name: Draw Pistol
+    animationClip: {fileID: 7400004, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Draw Pistol 0
+    animationClip: {fileID: 7400000, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Draw Pistol 1
+    animationClip: {fileID: 7400002, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Draw Pistol 2
+    animationClip: {fileID: 7400006, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Idle Pistol
+    animationClip: {fileID: 7400000, guid: 116a4cfd0314df542aff327fe1ac1937, type: 2}
+  - substate: With Pistol
+    name: Melee Attack Pistol
+    animationClip: {fileID: 7400014, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Reload Pistol
+    animationClip: {fileID: 7400018, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Reload Pistol 0
+    animationClip: {fileID: 7400024, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Shoot Pistol
+    animationClip: {fileID: 7400010, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Shoot Pistol 0
+    animationClip: {fileID: 7400012, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Walk Pistol
+    animationClip: {fileID: 7400008, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Walk Pistol 0
+    animationClip: {fileID: 7400022, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Pistol
+    name: Walk Pistol 1
+    animationClip: {fileID: 7400026, guid: cbd26b3eb25d441468c24b06ea6d9848, type: 3}
+  - substate: With Saber
+    name: Heavy Attack Saber
+    animationClip: {fileID: 7400016, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Heavy Attack Saber 0
+    animationClip: {fileID: 7400018, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Heavy Attack Saber 1
+    animationClip: {fileID: 7400020, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Light Attack Saber
+    animationClip: {fileID: 7400008, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Light Attack Saber 0
+    animationClip: {fileID: 7400010, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Light Attack Saber 1 left
+    animationClip: {fileID: 7400012, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Light Attack Saber 1 right
+    animationClip: {fileID: 7400012, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Ohley Saber
+    animationClip: {fileID: 7400002, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Walk Saber
+    animationClip: {fileID: 7400004, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Walk Saber 0
+    animationClip: {fileID: 7400006, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
+  - substate: With Saber
+    name: Walk Saber 1
+    animationClip: {fileID: 7400000, guid: 1b5314b81b6e2974382689fcac05681e, type: 3}
 --- !u!1 &1708387685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,6 +1711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TouchIDPrefab: {fileID: 158808, guid: 229405af1a31e90478666cca11f7916e, type: 2}
+  fadeTime: 1
 --- !u!1 &1742111625
 GameObject:
   m_ObjectHideFlags: 0

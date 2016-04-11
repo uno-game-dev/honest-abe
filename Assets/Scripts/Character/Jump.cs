@@ -51,7 +51,7 @@ public class Jump : MonoBehaviour
         {
             isGrounded = false;
             if (jumpVelocity < 0)
-                SetState(State.Fall);
+                _animator.Play("Jump Fall");
         }
     }
 
@@ -65,7 +65,7 @@ public class Jump : MonoBehaviour
 
         EventHandler.SendEvent(EventHandler.Events.JUMP);
         SetState(State.StartJump);
-        _animator.SetFloat("PlaySpeed", _animator.GetAnimationClip("standing_jump-start").length / startJumpDuration);
+        _animator.Play("Jump Start");
         _characterState.SetState(CharacterState.State.Null);
         Invoke("PerformJump", startJumpDuration);
     }
@@ -76,6 +76,7 @@ public class Jump : MonoBehaviour
         _characterState.SetState(CharacterState.State.Jump);
         jumpVelocity = jumpStrength;
         isGrounded = false;
+        _animator.Play("Jump Up");
         _collision.RemoveCollisionLayer("Environment");
         _collision.RemoveCollisionLayer("Enemy");
     }
@@ -84,7 +85,7 @@ public class Jump : MonoBehaviour
     {
         EventHandler.SendEvent(EventHandler.Events.LAND);
         SetState(State.Land);
-        _animator.SetFloat("PlaySpeed", _animator.GetAnimationClip("standing_jump-land").length / landDuration);
+        _animator.Play("Jump Land");
         _characterState.SetState(CharacterState.State.Null);
         isGrounded = true;
         _collision.AddCollisionLayer("Environment");
@@ -100,7 +101,6 @@ public class Jump : MonoBehaviour
 
     private void SetState(State newState)
     {
-        _animator.SetInteger("Jump", (int)newState);
         state = newState;
     }
 }

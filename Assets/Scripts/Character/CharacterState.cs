@@ -30,13 +30,6 @@ public class CharacterState : MonoBehaviour
             return;
 
         state = newState;
-        if (_animator && _animator.isInitialized)
-            _animator.SetInteger("Character State", (int)newState);
-
-        if (state == State.Idle)
-            if (GetComponent<Animator>())
-                GetComponent<Animator>().SetFloat("PlaySpeed", 1);
-
         if (state == State.Movement)
         {
             if (GetComponentInChildren<AudioSource>())

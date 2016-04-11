@@ -70,7 +70,7 @@ public class Grabbable : MonoBehaviour
 
         if (gameObject.tag == "Enemy") EventHandler.SendEvent(EventHandler.Events.ENEMY_GRAB);
         state = State.Grabbed;
-        _animator.SetBool("Grabbed", true);
+        _animator.Play("Grabbed");
         _characterState.SetState(CharacterState.State.Grabbed);
         _movement.Move(Vector2.zero);
         _movement.SetDirection(grabbedBy.GetComponent<Movement>().direction, true);
@@ -104,7 +104,6 @@ public class Grabbable : MonoBehaviour
             return;
 
         state = State.Null;
-        _animator.SetBool("Grabbed", false);
         _characterState.SetState(CharacterState.State.Idle);
         if (_movementAI) _movementAI.enabled = true;
         if (_attackAI) _attackAI.enabled = true;
@@ -131,7 +130,6 @@ public class Grabbable : MonoBehaviour
         }
 
         state = State.Null;
-        _animator.SetBool("Grabbed", false);
         if (_movementAI) _movementAI.enabled = true;
         if (_attackAI) _attackAI.enabled = true;
         transform.SetParent(_previousParent);
