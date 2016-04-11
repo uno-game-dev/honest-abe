@@ -8,9 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 408268}
-  - 82: {fileID: 8201942}
-  - 114: {fileID: 11412160}
-  - 114: {fileID: 11447296}
+  - 114: {fileID: 11410610}
+  - 114: {fileID: 11471358}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -30,138 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!82 &8201942
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122804}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24381836, guid: eb36c985789cd9e4cafd2efa58ee7a83,
-    type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &11412160
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423a750816f599a4e8b4951ce8a31fb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  introMusic: {fileID: 8300000, guid: 5cd3f63a692502545b3921bad1b2f8b1, type: 3}
-  playMusic: {fileID: 8300000, guid: 26af0ebc85e25744c984250cd179478e, type: 3}
-  SoundArray:
-  - name: Light_Slash
-    sound: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
-  - name: Heavy_Slash
-    sound: {fileID: 8300000, guid: f390e9ddbf09a324db7200d054f90e60, type: 3}
-  - name: Stab_1
-    sound: {fileID: 8300000, guid: 7016724e414a3124fabf245522e3de2f, type: 3}
-  - name: Stab_2
-    sound: {fileID: 8300000, guid: 88d6f6363f2670749bbf36b21a4c47d6, type: 3}
-  - name: Stab_6
-    sound: {fileID: 8300000, guid: 737a15aa3b6e76642afbf61dd5b89a7b, type: 3}
-  - name: Stab_5
-    sound: {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
-  - name: Rifle_1
-    sound: {fileID: 8300000, guid: 1f2d5c4edb045c44c8e00d466570d6b7, type: 3}
-  - name: Rifle_2
-    sound: {fileID: 8300000, guid: d81b998f0426f7d4991845f050bc8291, type: 3}
-  - name: Hit_Crack
-    sound: {fileID: 8300000, guid: 7b9e7030b5f4fac4f9582997a68df0a4, type: 3}
-  - name: Punch_1
-    sound: {fileID: 8300000, guid: b8b8af91eccf4234aa8d626d92f5678e, type: 3}
-  - name: Punch_2
-    sound: {fileID: 8300000, guid: 5a0cc153fdcb8a146994043478613f62, type: 3}
-  - name: Gore_1
-    sound: {fileID: 8300000, guid: d3c9e3df60f992648ba40fbef9d3b279, type: 3}
-  - name: Jump
-    sound: {fileID: 8300000, guid: 6c96384674ba9ba47a7e7dda37d3438d, type: 3}
-  - name: Landing
-    sound: {fileID: 8300000, guid: 801fcd64fb9b4c64184a470059896e4b, type: 3}
-  - name: Step_1
-    sound: {fileID: 8300000, guid: 5e6af9b05c1df400fa0e30d2d256b6bf, type: 3}
-  - name: Step_2
-    sound: {fileID: 8300000, guid: 4dadff0e5b75142bbb21cfb3e59c3479, type: 3}
-  - name: Step_3
-    sound: {fileID: 8300000, guid: ecb458c30095f47fb86aa0a6e39464c9, type: 3}
-  - name: Step_4
-    sound: {fileID: 8300000, guid: 9a106adead1cc4258aebe21eb6c4b49b, type: 3}
-  - name: Step_5
-    sound: {fileID: 8300000, guid: da75dea2867364ea280d45347d1f91fa, type: 3}
-  - name: Step_6
-    sound: {fileID: 8300000, guid: 7428b40beb36149dbb6f814f63a1651a, type: 3}
-  - name: Step_7
-    sound: {fileID: 8300000, guid: 014e8c636f8d44912bed022fd6a8d5df, type: 3}
---- !u!114 &11447296
+--- !u!114 &11410610
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -172,14 +40,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4194bf049213f8468fba1e141d14e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: eb36c985789cd9e4cafd2efa58ee7a83, type: 2}
+  namedAudioList:
+  - name: Footsteps
+    clip: {fileID: 8300000, guid: 5e6af9b05c1df400fa0e30d2d256b6bf, type: 3}
+    volume: 1
+  - name: Light Footsteps
+    clip: {fileID: 8300000, guid: 5e6af9b05c1df400fa0e30d2d256b6bf, type: 3}
+    volume: 0.1
+  - name: Light Axe Swing
+    clip: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+    volume: 1
+  - name: Heavy Axe Swing
+    clip: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+    volume: 1
+  - name: Damage React Light
+    clip: {fileID: 8300000, guid: 74fcba1ced7a094419196c126082b1f4, type: 3}
+    volume: 1
+  - name: Damage React Light
+    clip: {fileID: 8300000, guid: b2b82e3a69187f440949cc82b1c90458, type: 3}
+    volume: 1
+  - name: Damage React Light
+    clip: {fileID: 8300000, guid: 91a0064c12e040a4da0b67534a3646cd, type: 3}
+    volume: 1
+  - name: Damage React Heavy
+    clip: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+    volume: 1
+  - name: Jump Start
+    clip: {fileID: 8300000, guid: 6c96384674ba9ba47a7e7dda37d3438d, type: 3}
+    volume: 1
+  - name: Jump Land
+    clip: {fileID: 8300000, guid: a0e9f9a5754c8214685760f074e089e3, type: 3}
+    volume: 1
+  - name: Light Punch
+    clip: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+    volume: 0.1
+  - name: Heavy Punch
+    clip: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+    volume: 0.5
+  - name: Introduction Music
+    clip: {fileID: 8300000, guid: 5cd3f63a692502545b3921bad1b2f8b1, type: 3}
+    volume: 0.5
+  - name: Forest Level Music
+    clip: {fileID: 8300000, guid: bc5503719d4e6734d80540fd9d3c8039, type: 3}
+    volume: 0.5
+  - name: Death
+    clip: {fileID: 8300000, guid: 9b3444635a78a8848b1b7b0b485d3252, type: 3}
+    volume: 0.5
+--- !u!114 &11471358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac1cc1153013bf4e919fdad2e21ad45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122804}

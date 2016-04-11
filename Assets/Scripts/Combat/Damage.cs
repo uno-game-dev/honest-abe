@@ -14,10 +14,12 @@ public class Damage : MonoBehaviour
 
     private Health health;
     private BaseCollision collision;
+    private SoundPlayer sound;
 
     void Awake()
     {
         collision = GetComponent<BaseCollision>();
+        sound = GetComponent<SoundPlayer>();
     }
 
     void OnEnable()
@@ -52,6 +54,7 @@ public class Damage : MonoBehaviour
         if (collider.tag == "Damage")
         {
             damageAmount = collider.transform.GetComponentInParent<Attack>().GetDamageAmount();
+            SoundPlayer.Play("Damage React Light");
             ExecuteDamage(damageAmount, collider);
         }
     }

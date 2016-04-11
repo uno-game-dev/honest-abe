@@ -12,6 +12,8 @@ class ShootAttack : BaseAttack
     {   
         base.PrepareToLightAttack();
         Aim();
+        animator.Play("Shoot Musket");
+        SoundPlayer.Play("Shoot Musket");
     }
 
     protected override void PrepareToHeavyAttack()
