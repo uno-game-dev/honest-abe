@@ -2,6 +2,7 @@
 
 public class PlayerControls : MonoBehaviour
 {
+    public float grabDistance = 3;
     private Attack _attack;
     private Movement _movement;
     private Jump _jump;
@@ -32,7 +33,7 @@ public class PlayerControls : MonoBehaviour
 
         if (_grab.state == Grabber.State.Hold)
         {
-            if (mobileAction == MobileInput.Action.LightAttack || mobileAction == MobileInput.Action.Pickup)
+            if (mobileAction == MobileInput.Action.LightAttack || mobileAction == MobileInput.Action.PickupOrGrab)
                 _grab.Punch();
             else if (mobileAction == MobileInput.Action.HeavyAttack)
                 _grab.Throw();
@@ -52,8 +53,15 @@ public class PlayerControls : MonoBehaviour
         if (mobileAction == MobileInput.Action.HeavyAttack)
             _attack.HeavyAttack();
 
-        if (mobileAction == MobileInput.Action.Pickup)
+        if (mobileAction == MobileInput.Action.PickupOrGrab)
         {
+            foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+                if (Vector2.Distance(transform.position, enemy.transform.position) < grabDistance)
+                {
+                    _grab.StartGrab();
+                    return;
+                }
+
             justClicked = true;
             heldComplete = true;
         }
