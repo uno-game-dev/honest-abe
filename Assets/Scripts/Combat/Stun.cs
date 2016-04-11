@@ -14,6 +14,8 @@ public class Stun : MonoBehaviour
     private CharacterState _characterState;
     private BaseCollision _collision;
     private Animator _animator;
+    private float knockbackAmount;
+    private Vector2 previousPos, currentPos;
 
     private void Awake()
     {
@@ -49,7 +51,16 @@ public class Stun : MonoBehaviour
     private void Update()
     {
         if (state != State.Stunned)
+        {
+            previousPos = transform.position;
             return;
+        }
+
+        currentPos = transform.position;
+        if (Math.Abs(previousPos.x - currentPos.x) >= knockbackAmount / 4)
+        {
+            velocity = Vector2.zero;
+        }
 
         stunDuration -= Time.deltaTime;
         _collision.Move(velocity * Time.deltaTime);
@@ -59,11 +70,12 @@ public class Stun : MonoBehaviour
 
 	public void GetStunned( float stunAmount = 1f, float knockbackAmount = 0.1f, float directionModifier = 1f )
     {
+        this.knockbackAmount = knockbackAmount;
         _animator.Play("Light Damage Reaction", 0, 0.25f);
         state = State.Stunned;
-        velocity = new Vector2((directionModifier), 0).normalized * knockbackAmount;
+        velocity = new Vector2((directionModifier), 0).normalized * knockbackAmount * 2;
         _characterState.SetState(CharacterState.State.Stun);
-        stunDuration = stunAmount;
+        stunDuration = stunAmount * 2;
     }
 
     private void FinishStun()
