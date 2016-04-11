@@ -30,16 +30,6 @@ public class CharacterState : MonoBehaviour
             return;
 
         state = newState;
-        if (state == State.Movement)
-        {
-            if (GetComponentInChildren<AudioSource>())
-                GetComponentInChildren<AudioSource>().Play();
-        }
-        else
-        {
-            if (GetComponentInChildren<AudioSource>())
-                GetComponentInChildren<AudioSource>().Stop();
-        }
     }
 
     public bool CanMove()

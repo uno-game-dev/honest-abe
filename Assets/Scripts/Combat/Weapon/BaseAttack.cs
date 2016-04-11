@@ -22,11 +22,13 @@ public abstract class BaseAttack : MonoBehaviour
 
     private CharacterState _characterState;
     protected BaseCollision _collision;
+    protected SoundPlayer sound;
     public Swipe swipe;
 
     private void Awake()
     {
 		animator = GetComponent<Animator> ();
+        sound = GetComponent<SoundPlayer>();
         _characterState = GetComponent<CharacterState>();
         _collision = GetComponent<BaseCollision>();
         swipe = GetComponentInChildren<Swipe>(true);

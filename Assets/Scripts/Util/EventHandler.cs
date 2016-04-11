@@ -72,12 +72,12 @@ public class EventHandler : MonoBehaviour
         switch (e)
         {
             case Events.LIGHT_SWING:
-                AudioManager.instance.PlaySound("Light_Slash");
+                //AudioManager.instance.PlaySound("Light_Slash");
                 Debug.Log("Light Swing");
                 break;
             case Events.LIGHT_HIT:
-                AudioManager.instance.PlaySound("Stab_2");
-                AudioManager.instance.PlaySound("Impact");
+                //AudioManager.instance.PlaySound("Stab_2");
+                //AudioManager.instance.PlaySound("Impact");
                 Debug.Log("Light Hit");
 
                 // If our player hits an enemy with no weapon, he loses the BFA perk unlock
@@ -93,13 +93,13 @@ public class EventHandler : MonoBehaviour
                 PerkManager.enemiesKilled++;
                 break;
             case Events.HEAVY_SWING:
-                AudioManager.instance.PlaySound("Heavy_Slash");
+                //AudioManager.instance.PlaySound("Heavy_Slash");
                 Debug.Log("Heavy Swing");
                 break;
             case Events.HEAVY_HIT:
                 Debug.Log("Heavy Hit");
-                AudioManager.instance.PlaySound("Stab_2");
-                AudioManager.instance.PlaySound("Hit_Crack");
+                //AudioManager.instance.PlaySound("Stab_2");
+                //AudioManager.instance.PlaySound("Hit_Crack");
                 PerkManager.PerformPerkEffects(Perk.PerkCategory.AXE);
 
                 // If our player hits an enemy with no weapon, he loses the BFA perk unlock
@@ -113,8 +113,8 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.HEAVY_KILL:
                 Debug.Log("Heavy Kill");
-                AudioManager.instance.PlaySound("Hit_Crack");
-                AudioManager.instance.PlaySound("Gore_1");
+                //AudioManager.instance.PlaySound("Hit_Crack");
+                //AudioManager.instance.PlaySound("Gore_1");
 				PerkManager.enemiesKilled++;
                 GameObject.Find("Player").GetComponent<PlayerHealth>().executionsPerformed++;
                 break;
@@ -155,6 +155,7 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.PERK_PICKUP:
                 Debug.Log("Perk Pickup");
+                MusicPlayer.Play("Forest Level Music");
                 if (other != null && other.GetComponent<Perk>() != null)
                 {
                     // Activate the perk
@@ -178,10 +179,10 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.JUMP:
                 Debug.Log("Jump");
-                AudioManager.instance.PlaySound("Jump");
+                //AudioManager.instance.PlaySound("Jump");
                 break;
             case Events.LAND:
-                AudioManager.instance.PlaySound("Land");
+                //AudioManager.instance.PlaySound("Land");
                 Debug.Log("Land");
                 break;
             case Events.BEAR_HIT:
@@ -208,7 +209,7 @@ public class EventHandler : MonoBehaviour
                     PerkManager.UpdatePerkStatus (PerkManager.trinket_agressionBuddy_name, 1);
 				break;
 			case Events.STEP:
-                AudioManager.instance.PlayFootstep();
+                //AudioManager.instance.PlayFootstep();
                 Debug.Log("Step");
                 break;
 			case Events.ENEMY_CLOSE_TO_STEAL_WEAPON:

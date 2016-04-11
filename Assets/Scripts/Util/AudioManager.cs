@@ -9,13 +9,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip introMusic;
     public AudioClip playMusic;
 
-    //public AudioClip[] AttackSounds = new AudioClip[2];
-    //public AudioClip[] DamageSounds = new AudioClip[2];
-    //public AudioClip[] GenericSounds = new AudioClip[4];
-    //public List<AudioClip> BossSounds = new List<AudioClip>();
-    //public List<AudioClip> ItemSounds = new List<AudioClip>();
-    //public List<AudioClip> WeaponSounds = new List<AudioClip>();
-
 	[System.Serializable]
 	public struct SoundEntry {
 		public string name;

@@ -13,6 +13,9 @@ public class Death : MonoBehaviour
 
     void OnEnable()
     {
+        SoundPlayer sound = GetComponent<SoundPlayer>();
+        SoundPlayer.Play("Death");
+
         CharacterState characterState = GetComponent<CharacterState>();
         if (characterState) characterState.SetState(CharacterState.State.Dead);
 
@@ -21,6 +24,9 @@ public class Death : MonoBehaviour
 
         Collider2D collider = GetComponent<Collider2D>();
         if (collider) collider.enabled = false;
+
+        Movement movement = GetComponent<Movement>();
+        movement.enabled = false;
 
         BehaviourTree[] behaviorTrees = GetComponents<BehaviourTree>();
         foreach (BehaviourTree behaviorTree in behaviorTrees)
