@@ -18,4 +18,6 @@ public class Weapon : MonoBehaviour
 	public float heavyStun = 0.5f;
 	public float heavyKnockback = 7f;
 	public float throwDamage = 0;
+
+    public bool isEnemyWeapon = false;
 }
