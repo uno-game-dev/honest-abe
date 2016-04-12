@@ -9,23 +9,21 @@ public class Health : MonoBehaviour
 	public int additionalHealthCeiling;
 	public bool alive;
 
-	private Boss _boss;
-	private System.Random _rnd;
-	private Attack playerAttack;
-	private GameObject player;
-	private Blackboard blackboard;
-	private EnemyFollow enemyFollow;
+    protected Attack playerAttack;
+    
+	private Blackboard _blackboard;
+	private EnemyFollow _enemyFollow;
+    private System.Random _rnd;
 
-	void Awake()
+    void Awake()
 	{
 		_rnd = new System.Random();
 		health += _rnd.Next(additionalHealthFloor, additionalHealthCeiling + 1);
-		alive = true;
-		player = GameObject.Find ("Player");
-		playerAttack = player.GetComponent<Attack>();
-		blackboard = GetComponent<Blackboard> ();
-		enemyFollow = GetComponent<EnemyFollow> ();
-	}
+		playerAttack = GameObject.Find("Player").GetComponent<Attack>();
+		_blackboard = GetComponent<Blackboard>();
+		_enemyFollow = GetComponent<EnemyFollow>();
+        alive = true;
+    }
 
 	public void RandomizeHealth()
 	{
@@ -59,14 +57,14 @@ public class Health : MonoBehaviour
 			DeathSequence();
 
 			// AI stuff: Mark this enemy's position around the player as available
-			float attackPosition = blackboard.GetFloatVar("attackPosition");
+			float attackPosition = _blackboard.GetFloatVar("attackPosition");
 			if (attackPosition != -1) {
-				string side = blackboard.GetStringVar ("attackSide");
+				string side = _blackboard.GetStringVar ("attackSide");
 				GlobalBlackboard.Instance.GetBoolVar (side + "pos" + attackPosition).Value = false;
 			}
 			// Destroy the target gameobject this enemy was following
-			if (enemyFollow.target != null)
-				Destroy (enemyFollow.target);
+			if (_enemyFollow.target != null)
+				Destroy (_enemyFollow.target);
 
 		}
 	}
