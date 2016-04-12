@@ -610,6 +610,7 @@ GameObject:
   - 114: {fileID: 11417338}
   - 114: {fileID: 11492368}
   - 114: {fileID: 11494188}
+  - 23: {fileID: 2318058}
   m_Layer: 11
   m_Name: Soldier-Bayonet
   m_TagString: Enemy
@@ -1252,6 +1253,32 @@ Transform:
   - {fileID: 458472}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!23 &2318058
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2320690
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1563,7 +1590,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 32852
+  m_CachedInstanceID: 9406
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1679,7 +1706,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 32850
+  m_CachedInstanceID: 9414
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1843,7 +1870,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 32840
+  m_CachedInstanceID: 9428
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1870,7 +1897,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 32848
+  m_CachedInstanceID: 9430
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2041,7 +2068,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11492368}
     m_EventID: 1901486430
-  m_CachedInstanceID: 32846
+  m_CachedInstanceID: 9434
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2110,7 +2137,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 32844
+  m_CachedInstanceID: 9436
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2203,7 +2230,7 @@ MonoBehaviour:
     m_EventID: 734815261
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 32854
+  m_CachedInstanceID: 9442
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2280,7 +2307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDropPrefabs:
-  - {fileID: 187658, guid: 31259d1ed7b911040b861df32c8ff0e0, type: 2}
+  - {fileID: 155526, guid: 481f15881862ba2409da4c965f72ea6a, type: 2}
+  itemDropPrefabs:
+  - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
   chanceToDrop: 1
 --- !u!114 &11497228
 MonoBehaviour:
