@@ -32,7 +32,7 @@ public class Death : MonoBehaviour
         if (enemyFollow) enemyFollow.enabled = false;
 
 		//Disable the original gun that the rifleman carries 
-		if (gameObject.name == "Rifleman" && (gameObject.transform.FindContainsInChildren("Bayonet") != null)) {
+		if (gameObject.name.Contains("Rifleman") && (gameObject.transform.FindContainsInChildren("Bayonet") != null)) {
 			gameObject.transform.FindContainsInChildren("Bayonet").gameObject.SetActive(false);
 		}
 
