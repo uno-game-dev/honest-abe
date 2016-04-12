@@ -7,12 +7,15 @@ public class Stun : MonoBehaviour
     public enum State { Null, Stunned }
 
     public State state;
-    public float stunDuration = 0.92f;
+    public float stunDuration = 0.0f;
 
+    private Vector2 velocity = Vector2.zero;
     private float stunTimer = 0;
     private CharacterState _characterState;
     private BaseCollision _collision;
     private Animator _animator;
+    private float knockbackAmount;
+    private Vector2 previousPos, currentPos;
 
     private void Awake()
     {
@@ -38,31 +41,47 @@ public class Stun : MonoBehaviour
         if (attackArea && attackArea.IsShootType())
             return;
 
-        if (collider.tag == "Damage")
-            GetStunned();
+		if (collider.tag == "Damage"){
+			Attack attack = collider.GetComponentInParent<Attack>();
+			float directionMod = (collider.GetComponentInParent<Movement>().direction == Movement.Direction.Right ? 1f : -1f);
+			GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod);
+		}
     }
 
     private void Update()
     {
         if (state != State.Stunned)
+        {
+            previousPos = transform.position;
             return;
+        }
 
-        stunTimer += Time.deltaTime;
-        if (stunTimer >= stunDuration)
+        currentPos = transform.position;
+        if (Math.Abs(previousPos.x - currentPos.x) >= knockbackAmount / 4)
+        {
+            velocity = Vector2.zero;
+        }
+
+        stunDuration -= Time.deltaTime;
+        _collision.Move(velocity * Time.deltaTime);
+        if (stunDuration <= 0f)
             FinishStun();
     }
 
-    public void GetStunned()
+	public void GetStunned( float stunAmount = 1f, float knockbackAmount = 0.1f, float directionModifier = 1f )
     {
+        this.knockbackAmount = knockbackAmount;
         _animator.Play("Light Damage Reaction", 0, 0.25f);
         state = State.Stunned;
+        velocity = new Vector2((directionModifier), 0).normalized * knockbackAmount * 2;
         _characterState.SetState(CharacterState.State.Stun);
-        stunTimer = 0;
+        stunDuration = stunAmount * 2;
     }
 
     private void FinishStun()
     {
         state = State.Null;
+        velocity = Vector2.zero;
         _characterState.SetState(CharacterState.State.Idle);
     }
 }
