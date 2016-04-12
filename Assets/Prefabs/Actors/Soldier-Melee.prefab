@@ -1986,7 +1986,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  stunDuration: 0.92
+  stunDuration: 0.15
+  knockbackSpeed: 20
 --- !u!137 &13737570
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2393,7 +2394,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: prepLightAttackTime
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightAttackTime
@@ -2712,6 +2713,12 @@ Prefab:
       value: 
       objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
     - target: {fileID: 0}
+      propertyPath: stunDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: knockbackSpeed
+      value: 20
       propertyPath: m_StringVars.Array.data[0].m_Name
       value: attackSide
       objectReference: {fileID: 0}
