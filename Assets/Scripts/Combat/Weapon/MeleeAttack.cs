@@ -7,22 +7,20 @@ public class MeleeAttack : BaseAttack
 
     protected override void PrepareToLightAttack()
     {
-        float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
-        AnimationClip clip = animator.GetAnimationClip("Punch");
-        if (!clip) clip = animator.GetAnimationClip("LightSwipe");
-        //animator.SetFloat("PlaySpeed", clip.length / duration);
-
+        if (animator.runtimeAnimatorController.name == "Bear")
+        {
+            animator.Play("Light Swipe");
+        }
         if (_hand == Hand.Left)
         {
-            animator.SetBool("LeftHand", true);
+            animator.Play("Light Attack Melee Left");
             _hand = Hand.Right;
         }
         else
         {
-            animator.SetBool("LeftHand", false);
+            animator.Play("Light Attack Melee Right");
             _hand = Hand.Left;
         }
-        animator.SetTrigger("Light Punch");
         base.PrepareToLightAttack();
     }
 
@@ -33,22 +31,20 @@ public class MeleeAttack : BaseAttack
 
     protected override void PrepareToHeavyAttack()
     {
-        float duration = prepHeavyAttackTime + heavyAttackTime + finishHeavyAttackTime;
-        AnimationClip clip = animator.GetAnimationClip("Punch");
-        if (!clip) clip = animator.GetAnimationClip("HeavySwipe");
-        //animator.SetFloat("PlaySpeed", clip.length / duration);
-
+        if (animator.runtimeAnimatorController.name == "Bear")
+        {
+            animator.Play("Heavy Swipe");
+        }
         if (_hand == Hand.Left)
         {
-            animator.SetBool("LeftHand", true);
+            animator.Play("Heavy Attack Melee Left");
             _hand = Hand.Right;
         }
         else
         {
-            animator.SetBool("LeftHand", false);
+            animator.Play("Heavy Attack Melee Right");
             _hand = Hand.Left;
         }
-        animator.SetTrigger("Heavy Punch");
         base.PrepareToHeavyAttack();
     }
 

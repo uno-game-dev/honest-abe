@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488984}
-  - 95: {fileID: 9585160}
   m_Layer: 0
   m_Name: Officer
   m_TagString: Untagged
@@ -567,7 +566,6 @@ GameObject:
   - 114: {fileID: 11493890}
   - 114: {fileID: 11476676}
   - 114: {fileID: 11426946}
-  - 114: {fileID: 11434848}
   - 114: {fileID: 11423392}
   - 23: {fileID: 2322094}
   m_Layer: 11
@@ -1120,7 +1118,7 @@ Transform:
   m_GameObject: {fileID: 104056}
   m_LocalRotation: {x: 0, y: 0.953717, z: 0, w: 0.3007057}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 455226}
   - {fileID: 426806}
@@ -1195,7 +1193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.666629, y: -2.9930332, z: 0}
+  m_LocalPosition: {x: 4.022434, y: -0.82356787, z: -10.773163}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 457714}
@@ -1330,28 +1328,11 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188124}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e90fd4c5978122f43aac6279640c2fe3, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
+  m_Controller: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9585160
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104056}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1384,7 +1365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 80
   additionalHealthFloor: 1
   additionalHealthCeiling: 4
   alive: 0
@@ -1450,7 +1431,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 10516
+  m_CachedInstanceID: 9628
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1492,7 +1473,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 10524
+  m_CachedInstanceID: 9632
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1563,6 +1544,11 @@ MonoBehaviour:
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
     value: 1
+  - m_ID: 1212073644
+    m_Name: attackPosition
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    value: -1
   m_IntVars: []
   m_BoolVars: []
   m_StringVars:
@@ -1598,24 +1584,6 @@ MonoBehaviour:
     m_IsConstant: 0
     m_IsSystem: 0
   m_Namespace: 
---- !u!114 &11434848
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c84663da7daa15a46b84c5ee300646a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 100062, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
-  localPosition: {x: 0, y: -0.5, z: 0}
-  localRotation: {x: 0, y: 145, z: 0}
-  localScale: {x: 4, y: 4, z: 4}
-  loadedModel: {fileID: 104056}
-  runtimeAnimationController: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385,
-    type: 2}
 --- !u!114 &11447112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1651,6 +1619,8 @@ MonoBehaviour:
   heavyAttackTime: 1
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
+  lightDuration: 0
+  heavyDuration: 0
   swipe: {fileID: 0}
 --- !u!114 &11451986
 MonoBehaviour:
@@ -1719,7 +1689,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 10518
+  m_CachedInstanceID: 9648
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1775,7 +1745,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 10522
+  m_CachedInstanceID: 9650
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1869,7 +1839,7 @@ MonoBehaviour:
     m_EventID: 334526696
   - m_Destination: {fileID: 11476676}
     m_EventID: 1763704235
-  m_CachedInstanceID: 10520
+  m_CachedInstanceID: 9656
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2343,7 +2313,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_StringVars.Array.size
@@ -2404,7 +2374,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
+      objectReference: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
@@ -2608,6 +2578,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_StringVars.Array.data[0].m_Name
       value: attackSide
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[3].m_Name
+      value: attackPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[3].value
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

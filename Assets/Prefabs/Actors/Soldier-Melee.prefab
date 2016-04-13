@@ -1218,7 +1218,7 @@ Animator:
   m_GameObject: {fileID: 188124}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e90fd4c5978122f43aac6279640c2fe3, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
+  m_Controller: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 8250
+  m_CachedInstanceID: 12908
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 8258
+  m_CachedInstanceID: 12910
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1543,6 +1543,8 @@ MonoBehaviour:
   heavyAttackTime: 1
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
+  lightDuration: 0
+  heavyDuration: 0
   swipe: {fileID: 0}
 --- !u!114 &11451974
 MonoBehaviour:
@@ -1592,7 +1594,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 8264
+  m_CachedInstanceID: 12924
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1699,7 +1701,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 8252
+  m_CachedInstanceID: 12930
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1759,7 +1761,7 @@ MonoBehaviour:
     m_EventID: 93402385
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 8262
+  m_CachedInstanceID: 12932
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1829,7 +1831,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 8256
+  m_CachedInstanceID: 12934
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1923,7 +1925,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11465972}
     m_EventID: 1639135052
-  m_CachedInstanceID: 8254
+  m_CachedInstanceID: 12940
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1984,7 +1986,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  stunDuration: 0.92
+  stunDuration: 0.15
+  knockbackSpeed: 20
 --- !u!137 &13737570
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2344,7 +2347,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
+      objectReference: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
@@ -2391,7 +2394,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: prepLightAttackTime
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightAttackTime
@@ -2710,6 +2713,12 @@ Prefab:
       value: 
       objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
     - target: {fileID: 0}
+      propertyPath: stunDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: knockbackSpeed
+      value: 20
       propertyPath: m_StringVars.Array.data[0].m_Name
       value: attackSide
       objectReference: {fileID: 0}

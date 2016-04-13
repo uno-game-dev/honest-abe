@@ -1,20 +1,32 @@
 ﻿class SwingAttack : BaseAttack
 {
+    public enum SwingChain { First, Second, Third }
+    public SwingChain chain;
+
     protected override void PrepareToLightAttack()
     {
-        float duration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
-        animator.SetFloat("PlaySpeed", animator.GetAnimationClip("standing_melee_attack_horizontal").length / duration);
-        animator.SetTrigger("Light Swing");
         base.PrepareToLightAttack();
+        if (chain == SwingChain.First)
+        {
+            animator.Play("Light Attack Axe Right");
+            chain = SwingChain.Second;
+        }
+        else
+        {
+            animator.Play("Light Attack Axe Left");
+            chain = SwingChain.First;
+        }
     }
 
     protected override void PrepareToHeavyAttack()
     {
-        float duration = prepHeavyAttackTime + heavyAttackTime + finishHeavyAttackTime;
-        animator.SetFloat("PlaySpeed", animator.GetAnimationClip("standing_melee_attack_360_high").length / duration);
-        animator.SetTrigger("Heavy Swing");
         base.PrepareToHeavyAttack();
+        if (chain == SwingChain.First)
+            animator.Play("Heavy Attack Axe Right");
+        else
+            animator.Play("Heavy Attack Axe Left");
 
+        chain = SwingChain.First;
     }
 
     protected override void PerformLightAttack()

@@ -17,6 +17,8 @@ public abstract class BaseAttack : MonoBehaviour
     public float heavyAttackTime = 0.2f;
     public float finishLightAttackTime = 0.1f;
     public float finishHeavyAttackTime = 0.1f;
+    public float lightDuration;
+    public float heavyDuration;
 
     private CharacterState _characterState;
     protected BaseCollision _collision;
@@ -28,6 +30,14 @@ public abstract class BaseAttack : MonoBehaviour
         _characterState = GetComponent<CharacterState>();
         _collision = GetComponent<BaseCollision>();
         swipe = GetComponentInChildren<Swipe>(true);
+        lightDuration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
+        heavyDuration = prepHeavyAttackTime + heavyAttackTime + finishHeavyAttackTime;
+    }
+
+    private void Update()
+    {
+        lightDuration = prepLightAttackTime + lightAttackTime + finishLightAttackTime;
+        heavyDuration = prepHeavyAttackTime + heavyAttackTime + finishHeavyAttackTime;
     }
 
     public void StartLightAttack()

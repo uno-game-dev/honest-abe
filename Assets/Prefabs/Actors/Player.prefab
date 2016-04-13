@@ -328,6 +328,7 @@ GameObject:
   - 114: {fileID: 11413124}
   - 114: {fileID: 11453790}
   - 23: {fileID: 2357608}
+  - 114: {fileID: 11455392}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1502,7 +1503,7 @@ Animator:
   m_GameObject: {fileID: 136070}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c9d3ebb002f764948a20e09aa8f4026f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
+  m_Controller: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1713,6 +1714,8 @@ MonoBehaviour:
   heavyAttackTime: 0.2
   finishLightAttackTime: 0.05
   finishHeavyAttackTime: 0.1
+  lightDuration: 0
+  heavyDuration: 0
   swipe: {fileID: 0}
   _hand: 0
 --- !u!114 &11453790
@@ -1738,8 +1741,37 @@ MonoBehaviour:
   heavyAttackTime: 0.2
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
+  lightDuration: 0
+  heavyDuration: 0
   swipe: {fileID: 0}
   bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
+--- !u!114 &11455392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3438e95f75187464493c2091961263a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  animator: {fileID: 0}
+  attack: {fileID: 0}
+  attackArea: {fileID: 0}
+  strength: 0
+  state: 0
+  prepLightAttackTime: 0.1
+  prepHeavyAttackTime: 0.4
+  lightAttackTime: 0.1
+  heavyAttackTime: 0.1
+  finishLightAttackTime: 0.1
+  finishHeavyAttackTime: 0.1
+  lightDuration: 0.3
+  heavyDuration: 0.90000004
+  swipe: {fileID: 11455720}
+  chain: 0
 --- !u!114 &11455720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1782,8 +1814,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
-  attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1, y: 0}
+  attackSize: {x: 1.5, y: 1.5}
+  attackOffset: {x: 1.5, y: 0.25}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 1
@@ -2371,6 +2403,10 @@ Prefab:
       propertyPath: bloodMelee
       value: 
       objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 136070}
