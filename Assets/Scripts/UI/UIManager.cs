@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 	private Button _pauseUIQuitButton;
 
 	// Options UI
-	private GameObject _optionsUI;
+	private GameObject _optionsUI, _optionsUIBackground;
 	private Button _optionsUIBackButton;
     private Button _optionsUIGraphicsButton;
     private Button _optionsUIAudioButton;
@@ -120,11 +120,14 @@ public class UIManager : MonoBehaviour
         {
             _pauseUI.SetActive(true);
             _optionsUI.SetActive(false);
+            _optionsUIBackground.SetActive(false);
             Time.timeScale = 0;
         }
         else
         {
             _pauseUI.SetActive(false);
+            _optionsUI.SetActive(false);
+            _optionsUIBackground.SetActive(false);
             Time.timeScale = 1;
         }
     }
@@ -158,6 +161,9 @@ public class UIManager : MonoBehaviour
 
 	private void SetListenersForOptionsUI()
 	{
+        _optionsUIBackground = GameObject.Find("OptionsBackground");
+        _optionsUIBackground.SetActive(false);
+
 		_optionsUI = GameObject.Find("OptionsUI");
 		_optionsUIBackButton = _optionsUI.transform.Find("Back").GetComponent<Button>();
         _optionsUIAudioButton = _optionsUI.transform.Find("AudioBtn").GetComponent<Button>();
@@ -256,6 +262,7 @@ public class UIManager : MonoBehaviour
         _pauseUI.SetActive(false);
         Time.timeScale = 1;
         _paused = false;
+        _optionsUIBackground.SetActive(false);
     }
 
     public void OnOptions()
@@ -264,6 +271,7 @@ public class UIManager : MonoBehaviour
         //_options = true;
         _pauseUI.SetActive(false);
         _optionsUI.SetActive(true);
+        _optionsUIBackground.SetActive(true);
     }
 
     public void OnQuit()
@@ -277,6 +285,7 @@ public class UIManager : MonoBehaviour
         //_paused = true;
         _pauseUI.SetActive(true);
         _optionsUI.SetActive(false);
+        _optionsUIBackground.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -311,6 +320,8 @@ public class UIManager : MonoBehaviour
     // When clicking the back button on the audio menu
     public void OnAudioBack()
     {
+        _audioUIMusicSlider.value = musicVolume;
+        _audioUIEffectsSlider.value = effectsVolume;
         _optionsUI.SetActive(true);
         _audioUI.SetActive(false);
     }
