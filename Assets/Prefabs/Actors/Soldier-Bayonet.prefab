@@ -1590,7 +1590,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 8168
+  m_CachedInstanceID: 43004
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 8176
+  m_CachedInstanceID: 43012
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1816,8 +1816,13 @@ MonoBehaviour:
   heldOffset: {x: -0.5, y: -0.013, z: -0.113}
   heldOrientation: {x: 35, y: 350, z: 198}
   lightDamage: 10
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 15
+  heavyStun: 0.5
+  heavyKnockback: 7
   throwDamage: 0
+  isEnemyWeapon: 1
 --- !u!114 &11462540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1872,7 +1877,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 8190
+  m_CachedInstanceID: 43026
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1899,7 +1904,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 8192
+  m_CachedInstanceID: 43028
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2070,7 +2075,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11492368}
     m_EventID: 1901486430
-  m_CachedInstanceID: 8196
+  m_CachedInstanceID: 43032
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2139,7 +2144,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 8198
+  m_CachedInstanceID: 43034
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2232,7 +2237,7 @@ MonoBehaviour:
     m_EventID: 734815261
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 8204
+  m_CachedInstanceID: 43040
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1

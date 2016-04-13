@@ -215,6 +215,7 @@ MonoBehaviour:
   type: 0
   unlocked: 0
   setToBeUnlocked: 0
+  alreadyActive: 0
 --- !u!114 &11432906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,7 +250,13 @@ MonoBehaviour:
   heldOffset: {x: -0.5, y: -0.013, z: -0.113}
   heldOrientation: {x: 35, y: 350, z: 198}
   lightDamage: 20
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 20
+  heavyStun: 0.5
+  heavyKnockback: 7
+  throwDamage: 0
+  isEnemyWeapon: 1
 --- !u!114 &11497070
 MonoBehaviour:
   m_ObjectHideFlags: 1
