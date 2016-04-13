@@ -3,55 +3,68 @@ using System;
 
 public class BossHealth : Health
 {
-	private int tempHealth;
-	private BossHealthSlider bossHealthSlider;
-	[HideInInspector]
-	private GameManager _gameManager;
+    [HideInInspector]
+    private GameManager _gameManager;
+    [HideInInspector]
+    private BossHealthSlider bossHealthSlider;
+    private int _totalHealth;
+    private int _tempHealth;
+    private int _currentTargetHealthForExecution;
 
 	// Use this for initialization
 	void Start()
 	{
-		alive = true;
 		bossHealthSlider = GameObject.Find("BossHealthUI").GetComponent<BossHealthSlider>();
 		bossHealthSlider.Reset(health);
-	}
+        _totalHealth = health;
+        _currentTargetHealthForExecution = _totalHealth - (_totalHealth / 4);
+    }
 
 	// Update is called once per frame
 	void Update()
 	{
 	}
 
-	public override void Increase(int amount)
+	public override void Increase(int damage)
 	{
-		tempHealth = health;
-		tempHealth += amount;
+		_tempHealth = health;
+		_tempHealth += damage;
 
-		if (tempHealth >= 100)
+		if (_tempHealth >= 100)
 			health = 100;
 		else
-			health += amount;
+			health += damage;
 
 		bossHealthSlider.UpdateBossHealth(health);
 	}
 
-	public override void Decrease(int amount)
+	public override void Decrease(int damage)
 	{
-		tempHealth = health;
-		tempHealth -= amount;
+		_tempHealth = health;
+		_tempHealth -= damage;
 
-		if (tempHealth <= 0)
-		{
-			health = 0;
-			alive = false;
-			if ((gameObject.GetComponent<Boss>().bossName == "Robert E. Lee")) {
-				EventHandler.SendEvent (EventHandler.Events.ROBERT_E_LEE_KILL);
-			}
-			EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
+        if (_tempHealth <= 0)
+        {
+            health = 0;
+            alive = false;
+            if ((gameObject.GetComponent<Boss>().bossName == "Robert E. Lee"))
+            {
+                EventHandler.SendEvent(EventHandler.Events.ROBERT_E_LEE_KILL);
+            }
+            EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
             DeathSequence();
         }
-		else
-			health -= amount;
-
+        else
+        {
+            health -= damage;
+            if (gameObject.tag != "Player" && playerAttack.attackState == Attack.State.Heavy && (health < _currentTargetHealthForExecution))
+            {
+                ShowExecution();
+                EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
+            }
+            if (health < _currentTargetHealthForExecution)
+                _currentTargetHealthForExecution -= _totalHealth / 4;
+        }
 		bossHealthSlider.UpdateBossHealth(health);
 	}
 }
