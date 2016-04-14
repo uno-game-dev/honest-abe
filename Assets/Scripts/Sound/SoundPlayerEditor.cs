@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System.Collections;
 using UnityEditor;
 using UnityEditorInternal;
@@ -43,3 +44,4 @@ public class SoundPlayerEditor : Editor
         EditorGUI.PropertyField(animRectangle, element.FindPropertyRelative("volume"), GUIContent.none);
     }
 }
+#endif
