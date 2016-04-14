@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour
 {
     public float stepInterval = 0.6f;
+	public Weapon savedWeapon;
 
     private GameManager _gameManager;
 	private UIManager _uiManager;
@@ -85,6 +86,11 @@ public class PlayerMotor : MonoBehaviour
 			_uiManager.perkText.enabled = true;
 			_uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
         }
+		else if (collider.tag == "OneUseWeapon")
+		{
+			_controls.ResetHold();
+			_collidersImOn.Add(collider);
+		}
     }
 
     private void OnCollisionUpdate(Collider2D collider)
@@ -144,7 +150,20 @@ public class PlayerMotor : MonoBehaviour
 					_uiManager.perkText.enabled = false;
                 }
             }
-        }
+		}
+		if (collider.tag == "OneUseWeapon")
+		{
+			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
+			{
+				EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
+				savedWeapon = gameObject.GetComponent<Attack>().weapon;
+				savedWeapon.transform.gameObject.SetActive (false);
+				_playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
+				collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
+				collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+				_playerAttack.emptyHanded = false;
+			}
+		}
 		if (collider.tag == "Enemy") {
 			//If enemy has a weapon to steal
 			if((collider.GetComponent<ShootAttack>() != null) && (_playerAttack.emptyHanded) ){
