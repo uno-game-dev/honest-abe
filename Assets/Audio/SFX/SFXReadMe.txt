@@ -78,3 +78,6 @@ Self explanatory
 
 -Death
 Sound to be played when Abe dies
+
+-Menu Click 1 - 4
+Sounds to be played ALWAYS IN THE SAME ORDER, 1 through 4, upon keying around or clicking on any menu item. They need to be in the same order because they follow the ‘Abe Rising’ motif
