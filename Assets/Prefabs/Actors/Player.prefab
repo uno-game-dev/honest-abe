@@ -1707,12 +1707,12 @@ MonoBehaviour:
   attackArea: {fileID: 0}
   strength: 0
   state: 0
-  prepLightAttackTime: 1
-  prepHeavyAttackTime: 1
-  lightAttackTime: 0.3
+  prepLightAttackTime: 0.05
+  prepHeavyAttackTime: 0.1
+  lightAttackTime: 0.1
   heavyAttackTime: 0.3
-  finishLightAttackTime: 2
-  finishHeavyAttackTime: 2
+  finishLightAttackTime: 0.01
+  finishHeavyAttackTime: 0.01
   lightDuration: 0
   heavyDuration: 0
   swipe: {fileID: 0}
@@ -1821,8 +1821,13 @@ MonoBehaviour:
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 1
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 2
+  heavyStun: 0.5
+  heavyKnockback: 7
   throwDamage: 10
+  isEnemyWeapon: 0
 --- !u!114 &11469148
 MonoBehaviour:
   m_ObjectHideFlags: 1
