@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11448032}
     m_EventID: 770579688
-  m_CachedInstanceID: 12146
+  m_CachedInstanceID: 20644
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1621,7 +1621,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 12150
+  m_CachedInstanceID: 20660
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1732,7 +1732,7 @@ MonoBehaviour:
     m_EventID: 1997708586
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 12158
+  m_CachedInstanceID: 20648
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 12160
+  m_CachedInstanceID: 20652
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1861,7 +1861,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 12162
+  m_CachedInstanceID: 20662
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1933,7 +1933,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 12164
+  m_CachedInstanceID: 20654
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2186,7 +2186,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422952}
     m_EventID: 1003642416
-  m_CachedInstanceID: 12178
+  m_CachedInstanceID: 20650
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2256,8 +2256,13 @@ MonoBehaviour:
   heldOffset: {x: -0.5, y: -0.013, z: -0.113}
   heldOrientation: {x: 35, y: 350, z: 198}
   lightDamage: 20
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 40
+  heavyStun: 0.5
+  heavyKnockback: 7
   throwDamage: 10
+  isEnemyWeapon: 1
 --- !u!114 &11453322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2308,7 +2313,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12188
+  m_CachedInstanceID: 20656
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2384,7 +2389,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 12192
+  m_CachedInstanceID: 20642
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2456,7 +2461,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 12198
+  m_CachedInstanceID: 20646
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2553,7 +2558,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12206
+  m_CachedInstanceID: 20658
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1

@@ -5,11 +5,13 @@ public class Death : MonoBehaviour
 {
     public GameObject[] weaponDropPrefabs;
     public GameObject[] itemDropPrefabs;
-    public float chanceToDrop = 1;
+    private float chanceToDrop = .20f;
+	private float randomNum = 0;
 
     private Renderer _renderer;
     private System.Random _rnd;
     private bool _seen = false;
+	private int weaponOfRileman;
 
     void OnEnable()
     {
@@ -28,6 +30,11 @@ public class Death : MonoBehaviour
 
         EnemyFollow enemyFollow = GetComponent<EnemyFollow>();
         if (enemyFollow) enemyFollow.enabled = false;
+
+		//Disable the original gun that the rifleman carries 
+		if (gameObject.name.Contains("Rifleman") && (gameObject.transform.FindContainsInChildren("Bayonet") != null)) {
+			gameObject.transform.FindContainsInChildren("Bayonet").gameObject.SetActive(false);
+		}
 
         WeaponDrop();
         ItemDrop();
@@ -50,26 +57,25 @@ public class Death : MonoBehaviour
 
     private void WeaponDrop()
     {
-        if (weaponDropPrefabs.Length <= 0)
+		randomNum = UnityEngine.Random.value;
+		if (weaponDropPrefabs.Length <= 0)
             return;
-
-        if (UnityEngine.Random.value > chanceToDrop)
+		if(randomNum > chanceToDrop)
             return;
-
+		
         int i = UnityEngine.Random.Range(0, weaponDropPrefabs.Length - 1);
         GameObject dismemberWeapon = Instantiate(weaponDropPrefabs[i]);
         dismemberWeapon.transform.SetParent(transform.parent);
         dismemberWeapon.transform.position = transform.position;
         dismemberWeapon.transform.Translate(0, -1, 0);
         dismemberWeapon.transform.localScale = Vector3.one;
-
     }
 
     private void ItemDrop()
     {
         _rnd = new System.Random();
         int r = _rnd.Next(101);
-        if (r >= 75)
+		if (r >= 75)
         {
             r = _rnd.Next(itemDropPrefabs.Length);
             Instantiate(itemDropPrefabs[r], gameObject.transform.position, Quaternion.Euler(0, 0, 0));
