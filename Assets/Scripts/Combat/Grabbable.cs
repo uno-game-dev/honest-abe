@@ -81,7 +81,8 @@ public class Grabbable : MonoBehaviour
 		float attackPosition = _blackboard.GetFloatVar("attackPosition");
 		if (attackPosition != -1) {
 			string positionVar = "pos" + attackPosition;
-			GlobalBlackboard.Instance.GetBoolVar (positionVar).Value = false;
+            if (GlobalBlackboard.Instance.GetBoolVar(positionVar) != null)
+			    GlobalBlackboard.Instance.GetBoolVar (positionVar).Value = false;
 			_blackboard.GetFloatVar ("attackPosition").Value = -1;
 		}
 

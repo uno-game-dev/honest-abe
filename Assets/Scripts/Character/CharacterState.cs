@@ -69,6 +69,6 @@ public class CharacterState : MonoBehaviour
 
     public bool CanBeGrabbed()
     {
-        return state == State.Idle || state == State.Movement || state == State.Grab;
+        return state == State.Idle || state == State.Movement || state == State.Grab || state == State.Attack || state == State.Stun;
     }
 }
