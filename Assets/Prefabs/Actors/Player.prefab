@@ -1610,8 +1610,7 @@ MonoBehaviour:
   localRotation: {x: 0, y: 145, z: 0}
   localScale: {x: 3, y: 3, z: 3}
   loadedModel: {fileID: 172174}
-  runtimeAnimationController: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385,
-    type: 2}
+  runtimeAnimationController: {fileID: 0}
 --- !u!114 &11418610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1708,12 +1707,12 @@ MonoBehaviour:
   attackArea: {fileID: 0}
   strength: 0
   state: 0
-  prepLightAttackTime: 0.05
-  prepHeavyAttackTime: 0.2
-  lightAttackTime: 0.1
-  heavyAttackTime: 0.2
-  finishLightAttackTime: 0.05
-  finishHeavyAttackTime: 0.1
+  prepLightAttackTime: 1
+  prepHeavyAttackTime: 1
+  lightAttackTime: 0.3
+  heavyAttackTime: 0.3
+  finishLightAttackTime: 2
+  finishHeavyAttackTime: 2
   lightDuration: 0
   heavyDuration: 0
   swipe: {fileID: 0}
@@ -1735,16 +1734,19 @@ MonoBehaviour:
   attackArea: {fileID: 0}
   strength: 0
   state: 0
-  prepLightAttackTime: 0.3
-  prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.2
-  heavyAttackTime: 0.2
-  finishLightAttackTime: 0.1
-  finishHeavyAttackTime: 0.1
+  prepLightAttackTime: 1
+  prepHeavyAttackTime: 1
+  lightAttackTime: 0.5
+  heavyAttackTime: 0.5
+  finishLightAttackTime: 1
+  finishHeavyAttackTime: 1
   lightDuration: 0
   heavyDuration: 0
   swipe: {fileID: 0}
   bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
+  aimDuration: 1
+  shootDuration: 1
+  reloadDuration: 1
 --- !u!114 &11455392
 MonoBehaviour:
   m_ObjectHideFlags: 1

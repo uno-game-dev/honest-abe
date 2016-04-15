@@ -79,7 +79,10 @@ public class Attack : MonoBehaviour
 
         if (weapon.attackType != Weapon.AttackType.Melee)
         {
-            weapon.transform.SetParent(_rightHand.transform, true);
+            if (weapon.attackType == Weapon.AttackType.Shoot)
+                weapon.transform.SetParent(_leftHand.transform, true);
+            else
+                weapon.transform.SetParent(_rightHand.transform, true);
             weapon.transform.localPosition = weapon.heldOffset;
             weapon.transform.localEulerAngles = weapon.heldOrientation;
             weapon.transform.GetChild(0).localRotation = Quaternion.identity;

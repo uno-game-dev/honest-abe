@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11448032}
     m_EventID: 770579688
-  m_CachedInstanceID: 20644
+  m_CachedInstanceID: 40336
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1621,7 +1621,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 20660
+  m_CachedInstanceID: 40352
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1732,7 +1732,7 @@ MonoBehaviour:
     m_EventID: 1997708586
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 20648
+  m_CachedInstanceID: 40340
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 20652
+  m_CachedInstanceID: 40344
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1861,7 +1861,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 20662
+  m_CachedInstanceID: 40354
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1933,7 +1933,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 20654
+  m_CachedInstanceID: 40346
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2186,7 +2186,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422952}
     m_EventID: 1003642416
-  m_CachedInstanceID: 20650
+  m_CachedInstanceID: 40342
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2256,13 +2256,8 @@ MonoBehaviour:
   heldOffset: {x: -0.5, y: -0.013, z: -0.113}
   heldOrientation: {x: 35, y: 350, z: 198}
   lightDamage: 20
-  lightStun: 0.2
-  lightKnockback: 4
   heavyDamage: 40
-  heavyStun: 0.5
-  heavyKnockback: 7
   throwDamage: 10
-  isEnemyWeapon: 1
 --- !u!114 &11453322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2313,7 +2308,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 20656
+  m_CachedInstanceID: 40348
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2389,7 +2384,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 20642
+  m_CachedInstanceID: 40334
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2413,16 +2408,19 @@ MonoBehaviour:
   attackArea: {fileID: 138752}
   strength: 0
   state: 0
-  prepLightAttackTime: 0.5
-  prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.8
-  heavyAttackTime: 1
-  finishLightAttackTime: 0.1
-  finishHeavyAttackTime: 0.1
+  prepLightAttackTime: 1
+  prepHeavyAttackTime: 1
+  lightAttackTime: 0.5
+  heavyAttackTime: 0.5
+  finishLightAttackTime: 2
+  finishHeavyAttackTime: 2
   lightDuration: 0
   heavyDuration: 0
   swipe: {fileID: 0}
   bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
+  aimDuration: 1
+  shootDuration: 1
+  reloadDuration: 1
 --- !u!114 &11471440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2461,7 +2459,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 20646
+  m_CachedInstanceID: 40338
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2558,7 +2556,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 20658
+  m_CachedInstanceID: 40350
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3272,15 +3270,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightAttackTime
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: heavyAttackTime
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: prepLightAttackTime
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[5].m_Name
@@ -3358,6 +3356,18 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: prepHeavyAttackTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: finishLightAttackTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: finishHeavyAttackTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177166}
