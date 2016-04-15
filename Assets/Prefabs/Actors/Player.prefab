@@ -1708,11 +1708,11 @@ MonoBehaviour:
   strength: 0
   state: 0
   prepLightAttackTime: 0.05
-  prepHeavyAttackTime: 0.1
+  prepHeavyAttackTime: 0.3
   lightAttackTime: 0.1
-  heavyAttackTime: 0.3
-  finishLightAttackTime: 0.01
-  finishHeavyAttackTime: 0.01
+  heavyAttackTime: 0.1
+  finishLightAttackTime: 0
+  finishHeavyAttackTime: 0
   lightDuration: 0
   heavyDuration: 0
   swipe: {fileID: 0}
@@ -1738,8 +1738,8 @@ MonoBehaviour:
   prepHeavyAttackTime: 1
   lightAttackTime: 0.5
   heavyAttackTime: 0.5
-  finishLightAttackTime: 1
-  finishHeavyAttackTime: 1
+  finishLightAttackTime: 2
+  finishHeavyAttackTime: 2
   lightDuration: 0
   heavyDuration: 0
   swipe: {fileID: 0}
@@ -1822,7 +1822,7 @@ MonoBehaviour:
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 1
   lightStun: 0.2
-  lightKnockback: 4
+  lightKnockback: 1
   heavyDamage: 2
   heavyStun: 0.5
   heavyKnockback: 7
