@@ -17,12 +17,14 @@ public class NavigateObstacle : ConditionNode {
 	private RaycastHit2D hit;
 	private Vector2 deltaPosition;
 	private BaseCollision baseCollision;
+	private Movement movement;
 
 	override public void Start(){
 		player = GameObject.Find ("Player");
 		enemyFollow = self.GetComponent<EnemyFollow> ();
 		layerMask = LayerMask.GetMask("Environment");
 		baseCollision = self.GetComponent<BaseCollision> ();
+		movement = self.GetComponent<Movement> ();
 
 		// Stop following
 		enemyFollow.targetType = EnemyFollow.TargetType.Null;
@@ -33,7 +35,7 @@ public class NavigateObstacle : ConditionNode {
 		// Calculate direction and distance to player
 		selfPosition = self.transform.position;
 		playerPosition = player.transform.position;
-		direction = playerPosition - selfPosition;
+		direction = (playerPosition - selfPosition).normalized;
 		xDiff = Mathf.Abs (playerPosition.x - selfPosition.x);
 		yDiff = Mathf.Abs (playerPosition.y - selfPosition.y);
 		distanceToPlayer = Mathf.Sqrt (Mathf.Pow(xDiff,2) + Mathf.Pow(yDiff,2));
@@ -41,9 +43,9 @@ public class NavigateObstacle : ConditionNode {
 		// Fire 2 raycasts at the player and see which ones hit the obstacle
 		if (xDiff > yDiff) {
 			RaycastHit2D topHit = Physics2D.Raycast (selfPosition + new Vector2 (0, 0.5f), direction, distanceToPlayer, layerMask);
-				Debug.DrawRay (selfPosition + new Vector2 (0, 0.5f), direction);
+			Debug.DrawRay (selfPosition + new Vector2 (0, 0.5f), direction);
 			RaycastHit2D bottomHit = Physics2D.Raycast (selfPosition + new Vector2 (0, -0.5f), direction, distanceToPlayer, layerMask);
-				Debug.DrawRay (selfPosition + new Vector2 (0, -0.5f), direction);
+			Debug.DrawRay (selfPosition + new Vector2 (0, -0.5f), direction);
 
 			// If only the bottom one hits, veer up
 			if (bottomHit && bottomHit.collider.tag == "Obstacle") {
@@ -60,9 +62,9 @@ public class NavigateObstacle : ConditionNode {
 			}
 		} else {
 			RaycastHit2D rightHit = Physics2D.Raycast (selfPosition + new Vector2 (0.5f, 0), direction, distanceToPlayer, layerMask);
-				Debug.DrawRay (selfPosition + new Vector2 (0.5f, 0), direction);
+			Debug.DrawRay (selfPosition + new Vector2 (0.5f, 0), direction);
 			RaycastHit2D leftHit = Physics2D.Raycast (selfPosition + new Vector2 (-0.5f, 0), direction, distanceToPlayer, layerMask);
-				Debug.DrawRay (selfPosition + new Vector2 (-0.5f, 0), direction);
+			Debug.DrawRay (selfPosition + new Vector2 (-0.5f, 0), direction);
 
 			// If only the left one hits, veer right
 			if (leftHit && leftHit.collider.tag == "Obstacle") {
@@ -86,16 +88,21 @@ public class NavigateObstacle : ConditionNode {
 	// Finds a way around the obstacle using the specified axis
 	public void navigate(char axis){
 		int i = 1;
+		Vector2 newDirection;
 		if (axis == 'y') {
 			while (i < 20) {
 				if (checkUp (i)) { 
-					deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (0, i + 1, 0), 0.07f);
-					baseCollision.Move (deltaPosition);
+					newDirection = direction + new Vector2 (0, i+1);
+					//deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (0, i + 1, 0), 0.07f);
+					//baseCollision.Move (deltaPosition);
+					baseCollision.Move (Time.deltaTime * newDirection.normalized * movement.horizontalMovementSpeed);
 					return;
 				}
 				if (checkDown (i)) {
-					deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (0, -i - 1, 0), 0.07f);
-					baseCollision.Move(deltaPosition);
+					newDirection = direction + new Vector2 (0, -i-1);
+					//deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (0, -i - 1, 0), 0.07f);
+					//baseCollision.Move(deltaPosition);
+					baseCollision.Move(Time.deltaTime * newDirection.normalized * movement.horizontalMovementSpeed);
 					return;
 				}
 				i++;
@@ -104,13 +111,17 @@ public class NavigateObstacle : ConditionNode {
 		} else {
 			while (i < 20) {
 				if (checkRight (i)) {
-					deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (i + 1, 0, 0), 0.07f);
-					baseCollision.Move(deltaPosition);
+					newDirection = direction + new Vector2 (i+1, 0);
+					//deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (i + 1, 0, 0), 0.07f);
+					//baseCollision.Move(deltaPosition);
+					baseCollision.Move(Time.deltaTime * newDirection.normalized * movement.horizontalMovementSpeed);
 					return;
 				}
 				if (checkLeft (i)) {
-					deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (-i - 1, 0, 0), 0.07f);
-					baseCollision.Move(deltaPosition);
+					newDirection = direction + new Vector2 (-i-1, 0);
+					//deltaPosition = Vector3.ClampMagnitude((Vector3) direction + new Vector3 (-i - 1, 0, 0), 0.07f);
+					//baseCollision.Move(deltaPosition);
+					baseCollision.Move (Time.deltaTime * newDirection.normalized * movement.horizontalMovementSpeed);
 					return;
 				}
 				i++;
@@ -121,13 +132,14 @@ public class NavigateObstacle : ConditionNode {
 
 	public void veerUp(){
 		// I can't veer up if I'm right below the skyline
-		if (selfPosition.y + 0.07f < -0.1f) {
+		if (selfPosition.y + deltaPosition.normalized.y * movement.horizontalMovementSpeed < -0.1f) {
 			if (playerPosition.x > selfPosition.x) {
-				deltaPosition = new Vector3 (0.07f, 0.07f, 0);
+				deltaPosition = new Vector3 (1, 1, 0);
 			} else {
-				deltaPosition = new Vector3 (-0.07f, 0.07f, 0);
+				deltaPosition = new Vector3 (-1, 1, 0);
 			}
-			baseCollision.Move (deltaPosition);
+			//baseCollision.Move (deltaPosition);
+			baseCollision.Move (Time.deltaTime * deltaPosition.normalized * movement.horizontalMovementSpeed);
 		} else { 
 			// If I can't veer up, navigate using the y axis
 			navigate('y');
@@ -136,12 +148,13 @@ public class NavigateObstacle : ConditionNode {
 
 	public void veerDown(){
 		// I can't veer down if I'm right above the bottom
-		if (selfPosition.y - 0.07f > -11.2f) {
+		if (selfPosition.y - deltaPosition.normalized.y * movement.horizontalMovementSpeed > -11.2f) {
 			if (playerPosition.x > selfPosition.x)
-				deltaPosition = new Vector3 (0.07f, -0.07f, 0);
+				deltaPosition = new Vector3 (1, -1, 0);
 			else
-				deltaPosition = new Vector3 (-0.07f, -0.07f, 0);
-			baseCollision.Move (deltaPosition);
+				deltaPosition = new Vector3 (-1, -1, 0);
+			//baseCollision.Move (deltaPosition);
+			baseCollision.Move (Time.deltaTime * deltaPosition.normalized * movement.horizontalMovementSpeed);
 		} else {
 			// If I can't veer down, navigate using the y axis
 			navigate ('y');
@@ -150,20 +163,21 @@ public class NavigateObstacle : ConditionNode {
 
 	public void veerRight(){
 		if (playerPosition.y > selfPosition.y) {
-			deltaPosition = new Vector3 (0.07f, 0.07f, 0);
+			deltaPosition = new Vector3 (1, 1, 0);
 		} else {
-			deltaPosition = new Vector3 (0.07f, -0.07f, 0);
+			deltaPosition = new Vector3 (1, -1, 0);
 		}
-		baseCollision.Move (deltaPosition);
+		//baseCollision.Move (deltaPosition);
+		baseCollision.Move (Time.deltaTime * deltaPosition.normalized * movement.horizontalMovementSpeed);
 	}
 
 	public void veerLeft(){
 		if (playerPosition.y > selfPosition.y)
-			deltaPosition = new Vector3 (-0.07f, 0.07f, 0);
+			deltaPosition = new Vector3 (-1, 1, 0);
 		else
-			deltaPosition = new Vector3 (-0.07f, -0.07f, 0);
-		baseCollision.Move (deltaPosition);
-
+			deltaPosition = new Vector3 (-1, -1, 0);
+		//baseCollision.Move (deltaPosition);
+		baseCollision.Move (Time.deltaTime * deltaPosition.normalized * movement.horizontalMovementSpeed);
 	}
 
 	// Checks if the next upward angle is clear
