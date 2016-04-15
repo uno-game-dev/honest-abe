@@ -10,6 +10,7 @@ public class RunAwayFromPlayer : ActionNode {
 	private Vector3 selfPosition;
 	private Movement movement;
 	private EnemyFollow enemyFollow;
+	private Vector3 deltaPosition;
 
 	public override void Start () {
 		player = GameObject.Find ("Player");
@@ -24,7 +25,8 @@ public class RunAwayFromPlayer : ActionNode {
 		playerPosition = player.transform.position;
 		selfPosition = self.transform.position;
 		Vector3 vectorToPlayer = playerPosition - selfPosition;
-		baseCollision.Move(Time.deltaTime * -vectorToPlayer.normalized * movement.horizontalMovementSpeed);
+		deltaPosition = -vectorToPlayer.normalized * movement.horizontalMovementSpeed;
+		movement.Move(deltaPosition);
 		return Status.Success;
 	}
 }
