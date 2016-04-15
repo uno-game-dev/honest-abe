@@ -26,6 +26,9 @@ public class CharacterState : MonoBehaviour
 
     public void SetState(State newState)
     {
+        if (newState == State.Idle && state == State.Grabbed)
+            return;
+
         if (state == State.Dead)
             return;
 

@@ -21,12 +21,14 @@ public class Grabber : MonoBehaviour
     private CharacterState _characterState;
     private Weapon _weapon;
     private int _weaponDamage;
+    private GenericAnimation genericAnimation;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _attack = GetComponent<Attack>();
         _characterState = GetComponent<CharacterState>();
+        genericAnimation = GetComponent<GenericAnimation>();
         CreateOrGetGrabBox();
     }
 
@@ -63,7 +65,7 @@ public class Grabber : MonoBehaviour
 
     private void PrepareToGrab()
     {
-        _animator.Play("Grab Idle");
+        _animator.Play("Grab");
         SetState(State.Prepare);
         Invoke("PerformGrab", prepareGrabTime);
     }
@@ -89,6 +91,7 @@ public class Grabber : MonoBehaviour
     {
         SetState(State.Null);
         _characterState.SetState(CharacterState.State.Idle);
+        if (GetComponent<GenericAnimation>()) GetComponent<GenericAnimation>().UpdateState();
     }
 
     public void Hold(GameObject grabbed)
@@ -99,6 +102,7 @@ public class Grabber : MonoBehaviour
         SetState(State.Hold);
         grabArea.SetActive(false);
         _grabbed = grabbed;
+        if (genericAnimation) genericAnimation.UpdateState();
     }
 
     public void Punch()
@@ -107,7 +111,7 @@ public class Grabber : MonoBehaviour
             return;
 
         state = State.Punch;
-        _animator.Play("Grab Punch");
+        _animator.Play("Grab Punch", 0, 0);
         Damage();
         Invoke("FinishPunch", grabPunchTime);
     }
@@ -118,6 +122,7 @@ public class Grabber : MonoBehaviour
             return;
 
         state = State.Hold;
+        if (genericAnimation) genericAnimation.UpdateState();
     }
 
     private void Damage()
@@ -142,10 +147,11 @@ public class Grabber : MonoBehaviour
 
         _animator.Play("Grab Throw");
 
-        _grabbed.GetComponent<Grabbable>().Throw();
-
-        if (_grabbed.GetComponent<Damage>())
+        if (_grabbed && _grabbed.GetComponent<Damage>())
             _grabbed.GetComponent<Damage>().ExecuteDamage(grabThrowDamage, GetComponent<Collider2D>());
+
+        if (_grabbed && _grabbed.GetComponent<Grabbable>())
+            _grabbed.GetComponent<Grabbable>().Throw();
         _grabbed = null;
         Invoke("BackToIdle", grabThrowTime);
     }

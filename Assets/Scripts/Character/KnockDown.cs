@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using BehaviourMachine;
 
 public class KnockDown : MonoBehaviour
 {
@@ -16,11 +17,13 @@ public class KnockDown : MonoBehaviour
     private CharacterState _characterState;
     private Animator _animator;
     private float sign = 1;
+    private StateMachine stateMachine;
 
     private void Awake()
     {
         _characterState = GetComponent<CharacterState>();
         _animator = GetComponent<Animator>();
+        stateMachine = GetComponent<StateMachine>();
     }
 
     private void Update()
@@ -49,11 +52,15 @@ public class KnockDown : MonoBehaviour
         if (state != State.Null)
             return;
 
+        if (_characterState.state == CharacterState.State.Dead)
+            return;
+
         sign = Mathf.Sign(horizontalVelocity);
         this.horizontalVelocity = Mathf.Abs(horizontalVelocity);
         height = 5;
         SetState(State.InAir);
         _animator.Play("Knock Down In Air");
+        if (stateMachine) stateMachine.enabled = false;
         _characterState.SetState(CharacterState.State.KnockDown);
     }
 
@@ -82,6 +89,7 @@ public class KnockDown : MonoBehaviour
     private void BackToIdle()
     {
         SetState(State.Null);
+        if (stateMachine) stateMachine.enabled = true;
         _characterState.SetState(CharacterState.State.Idle);
     }
 

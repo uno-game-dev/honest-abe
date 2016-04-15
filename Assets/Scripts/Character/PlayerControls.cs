@@ -40,6 +40,8 @@ public class PlayerControls : MonoBehaviour
                 _grab.Throw();
             return;
         }
+        if (_grab.state != Grabber.State.Null)
+            return;
 
         if (mobileAction == MobileInput.Action.LightAttack)
         {

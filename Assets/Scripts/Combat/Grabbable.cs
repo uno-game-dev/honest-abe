@@ -20,6 +20,7 @@ public class Grabbable : MonoBehaviour
     private CharacterState _characterState;
     private KnockDown _knockDown;
 	private Blackboard _blackboard;
+    private StateMachine stateMachine;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class Grabbable : MonoBehaviour
         _knockDown = GetComponent<KnockDown>();
         _myLayer = gameObject.layer;
 		_blackboard = GetComponent<Blackboard> ();
+        stateMachine = GetComponent<StateMachine>();
     }
 
     private void Update()
@@ -76,15 +78,20 @@ public class Grabbable : MonoBehaviour
         _movement.SetDirection(grabbedBy.GetComponent<Movement>().direction, true);
         if (_movementAI) _movementAI.enabled = false;
         if (_attackAI) _attackAI.enabled = false;
+        if (stateMachine) stateMachine.enabled = false;
 
-		// AI stuff: Mark this enemy's position around the player as available
-		float attackPosition = _blackboard.GetFloatVar("attackPosition");
-		if (attackPosition != -1) {
-			string positionVar = "pos" + attackPosition;
-            if (GlobalBlackboard.Instance.GetBoolVar(positionVar) != null)
-			    GlobalBlackboard.Instance.GetBoolVar (positionVar).Value = false;
-			_blackboard.GetFloatVar ("attackPosition").Value = -1;
-		}
+        // AI stuff: Mark this enemy's position around the player as available
+        if (_blackboard)
+        {
+            float attackPosition = _blackboard.GetFloatVar("attackPosition");
+            if (attackPosition != -1)
+            {
+                string positionVar = "pos" + attackPosition;
+                if (GlobalBlackboard.Instance.GetBoolVar(positionVar) != null)
+                    GlobalBlackboard.Instance.GetBoolVar(positionVar).Value = false;
+                _blackboard.GetFloatVar("attackPosition").Value = -1;
+            }
+        }
 
         grabbedBy.GetComponent<Grabber>().Hold(gameObject);
 
@@ -113,7 +120,11 @@ public class Grabbable : MonoBehaviour
         _collision.RemoveCollisionLayer("Enemy");
 
         if (_grabbedBy)
+        {
+            if (_grabbedBy.GetComponent<Grabber>()) _grabbedBy.GetComponent<Grabber>().Release();
             _movement.SetDirection(_grabbedBy.GetComponent<Movement>().direction);
+        }
+
         _movement.FlipDirection();
 
         _grabbedBy = null;

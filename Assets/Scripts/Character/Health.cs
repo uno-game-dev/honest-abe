@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
 	private Blackboard _blackboard;
 	private EnemyFollow _enemyFollow;
     private System.Random _rnd;
+    private Grabbable grabbed;
 
     void Awake()
 	{
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
 		_blackboard = GetComponent<Blackboard>();
 		_enemyFollow = GetComponent<EnemyFollow>();
         alive = true;
+        grabbed = GetComponent<Grabbable>();
     }
 
 	public void RandomizeHealth()
@@ -86,6 +88,9 @@ public class Health : MonoBehaviour
 
 	protected void DeathSequence()
 	{
+        if (grabbed)
+            grabbed.Release();
+
 		Death death = GetComponent<Death>();
 		if (death)
 			death.enabled = true;
