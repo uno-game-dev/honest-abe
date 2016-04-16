@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterState : MonoBehaviour
 {
-    public enum State { Null, Idle, Movement, Attack, Jump, Grab, Throw, Stun, KnockDown, Grabbed, Dead }
+    public enum State { Null, Idle, Movement, Attack, Jump, Grab, Throw, Stun, KnockDown, Grabbed, Dead, Cinematic }
 
     public State state;
 
@@ -16,7 +16,7 @@ public class CharacterState : MonoBehaviour
 
     private void OnEnable()
     {
-        SetState(State.Idle);
+        //SetState(State.Idle);
     }
 
     private void OnDisable()
@@ -30,16 +30,6 @@ public class CharacterState : MonoBehaviour
             return;
 
         state = newState;
-        if (state == State.Movement)
-        {
-            if (GetComponentInChildren<AudioSource>())
-                GetComponentInChildren<AudioSource>().Play();
-        }
-        else
-        {
-            if (GetComponentInChildren<AudioSource>())
-                GetComponentInChildren<AudioSource>().Stop();
-        }
     }
 
     public bool CanMove()
