@@ -329,6 +329,7 @@ GameObject:
   - 114: {fileID: 11453790}
   - 23: {fileID: 2357608}
   - 114: {fileID: 11455392}
+  - 114: {fileID: 11480316}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1610,8 +1611,7 @@ MonoBehaviour:
   localRotation: {x: 0, y: 145, z: 0}
   localScale: {x: 3, y: 3, z: 3}
   loadedModel: {fileID: 172174}
-  runtimeAnimationController: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385,
-    type: 2}
+  runtimeAnimationController: {fileID: 0}
 --- !u!114 &11418610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1819,8 +1819,13 @@ MonoBehaviour:
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 1
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 2
+  heavyStun: 0.5
+  heavyKnockback: 7
   throwDamage: 10
+  isEnemyWeapon: 0
 --- !u!114 &11469148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1868,6 +1873,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   numberOfCollisions: 0
+--- !u!114 &11480316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a8c74001302654582e2b2d078495b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinematic: Abe Rises
 --- !u!114 &11492994
 MonoBehaviour:
   m_ObjectHideFlags: 1
