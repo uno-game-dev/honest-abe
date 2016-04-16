@@ -1257,7 +1257,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11448032}
     m_EventID: 770579688
-  m_CachedInstanceID: 11656
+  m_CachedInstanceID: 38902
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1497,7 +1497,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 11658
+  m_CachedInstanceID: 38918
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1594,7 +1594,7 @@ MonoBehaviour:
     m_EventID: 1997708586
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 11664
+  m_CachedInstanceID: 38906
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1663,7 +1663,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 11666
+  m_CachedInstanceID: 38910
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1723,7 +1723,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 11668
+  m_CachedInstanceID: 38920
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1795,7 +1795,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 11670
+  m_CachedInstanceID: 38912
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2048,7 +2048,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422952}
     m_EventID: 1003642416
-  m_CachedInstanceID: 11684
+  m_CachedInstanceID: 38908
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 11692
+  m_CachedInstanceID: 38914
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2206,7 +2206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDropPrefabs: []
   itemDropPrefabs: []
-  chanceToDrop: 1
 --- !u!114 &11469354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2225,7 +2224,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11696
+  m_CachedInstanceID: 38900
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2249,8 +2248,13 @@ MonoBehaviour:
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 10
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 15
+  heavyStun: 0.5
+  heavyKnockback: 7
   throwDamage: 0
+  isEnemyWeapon: 0
 --- !u!114 &11471420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2316,7 +2320,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 11704
+  m_CachedInstanceID: 38904
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2413,7 +2417,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 11712
+  m_CachedInstanceID: 38916
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
