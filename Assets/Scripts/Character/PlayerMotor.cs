@@ -38,8 +38,8 @@ public class PlayerMotor : MonoBehaviour
         // Else run the update code
 		if (_movement.enabled)
         {
-			_velocity = new Vector2(MobileInput.GetAxis("Horizontal") * _movement.horizontalMovementSpeed,
-				MobileInput.GetAxis("Vertical") * _movement.vericalMovementSpeed);
+			_velocity = new Vector2(InputManager.GetAxis("Horizontal") * _movement.horizontalMovementSpeed,
+				InputManager.GetAxis("Vertical") * _movement.vericalMovementSpeed);
 			_movement.Move(_velocity);
 
             UpdateStep();

@@ -29,31 +29,31 @@ public class PlayerControls : MonoBehaviour
     {
         if (!UIManager.updateActive) return;
 
-        MobileInput.Action mobileAction = MobileInput.GetAction();
+        InputManager.Action mobileAction = InputManager.GetAction();
 
         if (_grab.state == Grabber.State.Hold)
         {
-            if (mobileAction == MobileInput.Action.LightAttack || mobileAction == MobileInput.Action.PickupOrGrab)
+            if (mobileAction == InputManager.Action.LightAttack || mobileAction == InputManager.Action.PickupOrGrab)
                 _grab.Punch();
-            else if (mobileAction == MobileInput.Action.HeavyAttack)
+            else if (mobileAction == InputManager.Action.HeavyAttack)
                 _grab.Throw();
-            else if (mobileAction == MobileInput.Action.Throw)
+            else if (mobileAction == InputManager.Action.Throw)
                 _grab.Throw();
             return;
         }
         if (_grab.state != Grabber.State.Null)
             return;
 
-        if (mobileAction == MobileInput.Action.LightAttack)
+        if (mobileAction == InputManager.Action.LightAttack)
         {
             _attack.LightAttack();
             justClicked = true;
         }
 
-        if (mobileAction == MobileInput.Action.HeavyAttack)
+        if (mobileAction == InputManager.Action.HeavyAttack)
             _attack.HeavyAttack();
 
-        if (mobileAction == MobileInput.Action.PickupOrGrab)
+        if (mobileAction == InputManager.Action.PickupOrGrab)
         {
             foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
                 if (Vector2.Distance(transform.position, enemy.transform.position) < grabDistance)
@@ -66,13 +66,13 @@ public class PlayerControls : MonoBehaviour
             heldComplete = true;
         }
 
-        if (mobileAction == MobileInput.Action.Grab)
+        if (mobileAction == InputManager.Action.Grab)
             _grab.StartGrab();
 
-        if (mobileAction == MobileInput.Action.Jump)
+        if (mobileAction == InputManager.Action.Jump)
             _jump.StartJump();
 
-        if (mobileAction == MobileInput.Action.Throw)
+        if (mobileAction == InputManager.Action.Throw)
             _throw.StartThrow();
             
         if(Input.GetKeyDown(KeyCode.R)){

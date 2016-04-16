@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class MobileInput : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
     public enum Action { Null, LightAttack, HeavyAttack, Jump, Grab, Throw, PickupOrGrab }
 
