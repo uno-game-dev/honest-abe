@@ -16,7 +16,8 @@ public class CharacterState : MonoBehaviour
 
     private void OnEnable()
     {
-        //SetState(State.Idle);
+        if (tag != "Player")
+            SetState(State.Idle);
     }
 
     private void OnDisable()
