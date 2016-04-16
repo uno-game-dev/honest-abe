@@ -97,7 +97,7 @@ public class InputManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space))
                 _lastAction = Action.Jump;
             else if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.F))
-                _lastAction = Action.Grab;
+                _lastAction = Action.PickupOrGrab;
             else if (Input.GetKeyDown(KeyCode.E))
                 _lastAction = Action.Throw;
             else

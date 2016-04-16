@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -55,15 +56,13 @@ public class PlayerControls : MonoBehaviour
 
         if (mobileAction == InputManager.Action.PickupOrGrab)
         {
-            foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-                if (Vector2.Distance(transform.position, enemy.transform.position) < grabDistance)
-                {
-                    _grab.StartGrab();
-                    return;
-                }
-
-            justClicked = true;
-            heldComplete = true;
+            if (IsItemCloseBy())
+            {
+                justClicked = true;
+                heldComplete = true;
+            }
+            else
+                _grab.StartGrab();
         }
 
         if (mobileAction == InputManager.Action.Grab)
@@ -78,6 +77,15 @@ public class PlayerControls : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
 			PerkManager.PerformPerkEffects (Perk.PerkCategory.TRINKET);
 		}
+    }
+
+    private bool IsItemCloseBy()
+    {
+        foreach (var item in ExtensionFunctions.FindGameObjectsWithLayer(LayerMask.NameToLayer("Items")))
+            if (Vector2.Distance(transform.position, item.transform.position) < grabDistance)
+                return true;
+
+        return false;
     }
 
     public void ResetHold()
