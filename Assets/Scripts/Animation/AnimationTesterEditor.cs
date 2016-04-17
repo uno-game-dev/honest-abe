@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System.Collections;
 using UnityEditor;
 using UnityEditorInternal;
@@ -90,3 +91,4 @@ public class AnimationTesterEditor : Editor
         EditorGUI.PropertyField(animRectangle, element.FindPropertyRelative("animationClip"), GUIContent.none);
     }
 }
+#endif
