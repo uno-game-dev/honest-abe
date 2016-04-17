@@ -329,6 +329,7 @@ GameObject:
   - 114: {fileID: 11453790}
   - 23: {fileID: 2357608}
   - 114: {fileID: 11455392}
+  - 114: {fileID: 11480316}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1900,6 +1901,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   numberOfCollisions: 0
+--- !u!114 &11480316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a8c74001302654582e2b2d078495b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinematic: Abe Rises
 --- !u!114 &11492994
 MonoBehaviour:
   m_ObjectHideFlags: 1
