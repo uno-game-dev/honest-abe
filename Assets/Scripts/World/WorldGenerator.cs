@@ -33,6 +33,7 @@ public class WorldGenerator : MonoBehaviour
     private int _mediumWaveChance;
     private int _remainingEnemyDensity;
     private int _enemiesInScreen;
+	private String _levelName;
 
     // Use this for initialization
     void Start()
@@ -43,6 +44,7 @@ public class WorldGenerator : MonoBehaviour
         currentScreen = 0;
         _spawningWaveOnClear = false;
         _levelIndex = SceneManager.GetActiveScene().buildIndex;
+		_levelName = SceneManager.GetActiveScene ().name;
     }
 
     // Update is called once per frame
@@ -53,15 +55,16 @@ public class WorldGenerator : MonoBehaviour
 
         if (_camera.transform.position.x >= _lastXPos - startSpawnPosition && _canSpawn)
         {
-            _canSpawn = false;
-            _occupiedPos = new List<Vector3>();
-            SpawnProps();
-            // SpawnDecals(); - Disabled until art assets are ready
-            if (!SpawnBoss())
-            {
-                SpawnEnemies();
-                _canSpawn = true;
-            }
+			if (!_levelName.Equals ("PerkPickUp")) {
+				_canSpawn = false;
+				_occupiedPos = new List<Vector3> ();
+				SpawnProps ();
+				// SpawnDecals(); - Disabled until art assets are ready
+				if (!SpawnBoss ()) {
+					SpawnEnemies ();
+					_canSpawn = true;
+				}
+			}
             Debug.Log("Completed generation of screen " + currentScreen);
             currentScreen++;
             _lastXPos += startSpawnPosition;
@@ -70,9 +73,11 @@ public class WorldGenerator : MonoBehaviour
         _enemiesInScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
         if (_enemiesInScreen <= 0 && currentScreen > 0 && !_spawningWaveOnClear)
         {
-            _spawningWaveOnClear = true;
-            SpawnEnemies();
-            _spawningWaveOnClear = false;
+			if (!_levelName.Equals ("PerkPickUp")) {
+				_spawningWaveOnClear = true;
+				SpawnEnemies ();
+				_spawningWaveOnClear = false;
+			}
         }
     }
 
