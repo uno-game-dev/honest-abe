@@ -23,7 +23,7 @@ public class PerkManager : MonoBehaviour
     public static string hat_none_desc = "Abe's Regular Hat";
 
     public static string trinket_none_name = "Trinket_None";
-    public static string trinket_none_desc = "Nothing special about this trinket";
+    public static string trinket_none_desc = "Abe's Regular Trinket";
 
     public static string axe_dtVampirism_name = "Axe_DTVampirism";
     public static string axe_dtVampirism_desc = "Perk: Vampirism\nRestores damage threshold on all heavy attacks";
@@ -67,6 +67,17 @@ public class PerkManager : MonoBehaviour
      */
     public static List<Perk> perkList;
 
+	/*
+	 * Perk Pick Up Scene
+	 */
+	private static CameraFollow cameraFollow;
+	private WorldGenerator worldGen;
+	private int tempCurrentScene = 0;
+	public static bool hatPerkChosen = false;
+	public static bool trinketPerkChosen = false;
+	public static bool axePerkChosen = false;
+	private LevelManager levelManager;
+
     void Start()
     {
         perkList = new List<Perk>();
@@ -86,7 +97,28 @@ public class PerkManager : MonoBehaviour
             p.CheckStatus();
             perkList.Add(p);
         }
+		cameraFollow = GameObject.Find ("Main Camera").GetComponent<CameraFollow> ();
+		worldGen = GameObject.Find ("Forest").GetComponent<WorldGenerator> ();
+		levelManager = GameObject.Find ("GameManager").GetComponent<LevelManager> ();
     }
+
+	void Update(){
+		if ( (worldGen.currentScreen - tempCurrentScene == 1)) {
+			if((worldGen.currentScreen == 1) && (!hatPerkChosen)){
+				cameraFollow.lockRightEdge = true;
+			}
+			if((worldGen.currentScreen == 2) && (!trinketPerkChosen)){
+				cameraFollow.lockRightEdge = true;
+			}
+			if((worldGen.currentScreen == 3) && (!axePerkChosen)){
+				cameraFollow.lockRightEdge = true;
+			}
+			if (worldGen.currentScreen == 4) {
+				levelManager.loadNextLevel ();
+			}
+			tempCurrentScene ++;
+		}
+	}
 
     public static void PerformPerkEffects(Perk.PerkCategory type)
     {
@@ -108,4 +140,8 @@ public class PerkManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(perk, status);
     }
+
+	public static void UnlockCameraAfterPerkPickUp(){
+		cameraFollow.lockRightEdge = false;
+	}
 }

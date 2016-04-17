@@ -85,12 +85,14 @@ public class Perk : MonoBehaviour
                 break;
             case PerkType.NONE_HAT:
                 _category = PerkCategory.NONE_HAT;
-                _perkName = null;
+				_perkName = PerkManager.hat_none_name;
+				_perkDesc = PerkManager.hat_none_desc;
                 unlocked = true;
                 break;
             case PerkType.NONE_TRINKET:
                 _category = PerkCategory.NONE_TRINKET;
-                _perkName = null;
+				_perkName = PerkManager.trinket_none_name;
+				_perkDesc = PerkManager.trinket_none_desc;
                 unlocked = true;
                 break;
             case PerkType.AXE_DTVAMPIRISM:
@@ -148,34 +150,52 @@ public class Perk : MonoBehaviour
         {
             case PerkCategory.NONE_AXE:
                 PerkManager.activeAxePerk = null;
+				PerkManager.UnlockCameraAfterPerkPickUp ();
+				PerkManager.axePerkChosen = true;
                 break;
             case PerkCategory.NONE_HAT:
                 PerkManager.activeHatPerk = null;
+				if (GameObject.Find ("Hat_Default") != null) {
+					GameObject.Find ("Hat_Default").transform.SetParent (GameObject.Find ("Player").transform, true);
+					GameObject.Find ("Hat_Default").SetActive (false);
+				}
+				PerkManager.UnlockCameraAfterPerkPickUp ();
+				PerkManager.hatPerkChosen = true;
                 break;
             case PerkCategory.NONE_TRINKET:
                 PerkManager.activeTrinketPerk = null;
+				if (GameObject.Find ("Trinket_Default") != null) {	
+					GameObject.Find ("Trinket_Default").transform.SetParent (GameObject.Find ("Player").transform, true);
+					GameObject.Find ("Trinket_Default").SetActive (false);
+				}
+				PerkManager.UnlockCameraAfterPerkPickUp ();
+				PerkManager.trinketPerkChosen = true;
                 break;
             case PerkCategory.AXE:
                 playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
                 weapon = playerAttack.weapon;
                 PerkManager.activeAxePerk = this;
                 PerkManager.AxePerkEffect += AxeEffect;
+				PerkManager.UnlockCameraAfterPerkPickUp();
+				PerkManager.axePerkChosen = true;
                 break;
-            case PerkCategory.HAT:
-                PerkManager.activeHatPerk = this;
-                PerkManager.HatPerkEffect += HatEffect;
-                if (this.type == PerkType.HAT_BEARHANDS)
-                {
-                    if (GameObject.Find("Hat_BA") != null)
-                    {
-                        GameObject.Find("Hat_BA").transform.SetParent(GameObject.Find("Player").transform, true);
-                        GameObject.Find("Hat_BA").SetActive(false);
-                    }
-                }
-				if(GameObject.Find("Hat_SF") != null){
-					GameObject.Find ("Hat_SF").transform.SetParent (GameObject.Find ("Player").transform, true);
-					GameObject.Find ("Hat_SF").SetActive (false);
+			case PerkCategory.HAT:
+				PerkManager.activeHatPerk = this;
+				PerkManager.HatPerkEffect += HatEffect;
+				if (this.type == PerkType.HAT_BEARHANDS) {
+					if (GameObject.Find ("Hat_BA") != null) {
+						GameObject.Find ("Hat_BA").transform.SetParent (GameObject.Find ("Player").transform, true);
+						GameObject.Find ("Hat_BA").SetActive (false);
+					}
 				}
+				if (this.type == PerkType.HAT_STICKYFINGERS) {
+					if (GameObject.Find ("Hat_SF") != null) {
+						GameObject.Find ("Hat_SF").transform.SetParent (GameObject.Find ("Player").transform, true);
+						GameObject.Find ("Hat_SF").SetActive (false);
+					}
+				}
+				PerkManager.UnlockCameraAfterPerkPickUp();
+				PerkManager.hatPerkChosen = true;
                 break;
 			case PerkCategory.TRINKET:
 				PerkManager.activeTrinketPerk = this;
@@ -198,7 +218,8 @@ public class Perk : MonoBehaviour
                         GameObject.Find("MT_Sprite_Placeholder").SetActive(false);
                     }
                 }
-
+				PerkManager.UnlockCameraAfterPerkPickUp();
+				PerkManager.trinketPerkChosen = true;
                 break;
             default:
                 break;
