@@ -46,17 +46,23 @@ class ShootAttack : BaseAttack
 
     private void Aim()
     {
+        if (!IsAttacking()) return;
+
         animator.Play("Aim Musket");
     }
 
     private void Shoot()
     {
+        if (!IsAttacking()) return;
+
         animator.Play("Shoot Musket");
         ShootCollisionCheck();
     }
 
     private void Reload()
     {
+        if (!IsAttacking()) return;
+
         animator.Play("Reload Musket");
     }
 

@@ -511,8 +511,6 @@ GameObject:
   - 114: {fileID: 11403564}
   - 114: {fileID: 11483412}
   - 114: {fileID: 11413808}
-  - 114: {fileID: 11448032}
-  - 114: {fileID: 11422952}
   - 114: {fileID: 11426596}
   - 114: {fileID: 11462508}
   - 114: {fileID: 11499232}
@@ -1539,14 +1537,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Blackboard: {fileID: 11426784}
   m_Parent: {fileID: 11469354}
-  m_StateName: Aim
+  m_StateName: Shoot Musket
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 150, y: -90}
+  m_Position: {x: 210, y: -90}
   m_Transitions:
-  - m_Destination: {fileID: 11448032}
-    m_EventID: 770579688
-  m_CachedInstanceID: 40336
+  - m_Destination: {fileID: 11413808}
+    m_EventID: 800830063
+  m_CachedInstanceID: 11124
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1555,17 +1553,17 @@ MonoBehaviour:
     m_NodeTypes:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
-    - Aim
+    - ShootMusket
     m_NodeTypeHash: 89ef821089ef82104a2bcb23
     m_NodeFieldStartIndex: 00000000030000000600000009000000
     m_BranchIndex: ffffffffffffffff01000000
     m_UnityObjectValue: []
-    m_IntValue: 0100000001000000020000000100000004000000e81cee2d
+    m_IntValue: 01000000010000000200000001000000030000006fb2bb2f
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
-    - Aim
+    - ShootMusket
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
@@ -1621,7 +1619,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 40352
+  m_CachedInstanceID: 11140
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1726,13 +1724,13 @@ MonoBehaviour:
   m_StateName: Keep Range
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 220, y: 10}
+  m_Position: {x: 220, y: 0}
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 40340
+  m_CachedInstanceID: 11122
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1781,62 +1779,6 @@ MonoBehaviour:
     - onSuccess
     - instanceID
     - name
---- !u!114 &11422952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177166}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Blackboard: {fileID: 11426784}
-  m_Parent: {fileID: 11469354}
-  m_StateName: Reload
-  m_Color: 0
-  m_HideScript: 1
-  m_Position: {x: 520, y: -90}
-  m_Transitions:
-  - m_Destination: {fileID: 11413808}
-    m_EventID: 800830063
-  m_CachedInstanceID: 40344
-  m_Description: 
-  m_IgnoreTimeScale: 0
-  m_ResetStatusOnDisable: 1
-  m_EnabledStates: []
-  m_NodeSerialization:
-    m_NodeTypes:
-    - BehaviourMachine.OnEnable
-    - BehaviourMachine.Update
-    - Reload
-    m_NodeTypeHash: 89ef821089ef82104a2bcb23
-    m_NodeFieldStartIndex: 00000000030000000600000009000000
-    m_BranchIndex: ffffffffffffffff01000000
-    m_UnityObjectValue: []
-    m_IntValue: 01000000010000000200000001000000050000006fb2bb2f
-    m_FloatValue: []
-    m_StringValue:
-    - OnEnable
-    - Update
-    - Reload
-    m_CurveValue: []
-    m_GenericFieldType: []
-    m_GenericFieldHash: 
-    m_GenericFieldSize: 
-    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000
-    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000
-    m_FieldPath:
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - onSuccess
 --- !u!114 &11424772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1861,7 +1803,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 40354
+  m_CachedInstanceID: 11138
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1933,7 +1875,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 40346
+  m_CachedInstanceID: 11136
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2064,7 +2006,7 @@ MonoBehaviour:
     m_IsConstant: 0
     m_IsSystem: 0
   - m_ID: 361888865
-    m_Name: toAim
+    m_Name: toShootMusket
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
     m_IsSystem: 0
@@ -2166,62 +2108,6 @@ MonoBehaviour:
   landDuration: 0.5
   onGroundDuration: 1
   getUpDuration: 1
---- !u!114 &11448032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177166}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Blackboard: {fileID: 11426784}
-  m_Parent: {fileID: 11469354}
-  m_StateName: Fire
-  m_Color: 0
-  m_HideScript: 1
-  m_Position: {x: 330, y: -90}
-  m_Transitions:
-  - m_Destination: {fileID: 11422952}
-    m_EventID: 1003642416
-  m_CachedInstanceID: 40342
-  m_Description: 
-  m_IgnoreTimeScale: 0
-  m_ResetStatusOnDisable: 1
-  m_EnabledStates: []
-  m_NodeSerialization:
-    m_NodeTypes:
-    - BehaviourMachine.OnEnable
-    - ShootRifle
-    - BehaviourMachine.Update
-    m_NodeTypeHash: 89ef82104a2bcb2389ef8210
-    m_NodeFieldStartIndex: 00000000030000000600000009000000
-    m_BranchIndex: ffffffff00000000ffffffff
-    m_UnityObjectValue: []
-    m_IntValue: 010000000100000003000000305ed23b0200000001000000
-    m_FloatValue: []
-    m_StringValue:
-    - OnEnable
-    - ShootRifle
-    - Update
-    m_CurveValue: []
-    m_GenericFieldType: []
-    m_GenericFieldHash: 
-    m_GenericFieldSize: 
-    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000
-    m_FieldType: 01000000020000000500000001000000020000001e000000010000000200000005000000
-    m_FieldPath:
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - onSuccess
-    - instanceID
-    - name
-    - enabled
 --- !u!114 &11448850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2256,8 +2142,13 @@ MonoBehaviour:
   heldOffset: {x: -0.5, y: -0.013, z: -0.113}
   heldOrientation: {x: 35, y: 350, z: 198}
   lightDamage: 20
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 40
+  heavyStun: 0.5
+  heavyKnockback: 7
   throwDamage: 10
+  isEnemyWeapon: 0
 --- !u!114 &11453322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2308,7 +2199,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 40348
+  m_CachedInstanceID: 11134
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2365,7 +2256,6 @@ MonoBehaviour:
   - {fileID: 155526, guid: 1380cbbd028d0f1499b6f2c09928b74a, type: 2}
   itemDropPrefabs:
   - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
-  chanceToDrop: 1
 --- !u!114 &11469354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2384,7 +2274,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 40334
+  m_CachedInstanceID: 11132
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2459,7 +2349,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 40338
+  m_CachedInstanceID: 11130
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2556,7 +2446,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 40350
+  m_CachedInstanceID: 11128
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2905,40 +2795,44 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: m_Transitions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_ConcreteFsmEvents.Array.size
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.size
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.size
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.size
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_BranchIndex.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_GenericFieldType.Array.size
@@ -2954,7 +2848,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Blackboard
@@ -2967,22 +2861,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[0].m_Destination
       value: 
-      objectReference: {fileID: 11426596}
+      objectReference: {fileID: 11413808}
     - target: {fileID: 0}
       propertyPath: m_CachedInstanceID
       value: -58382
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[6]
-      value: 1997708586
+      value: 361888865
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[7]
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[4]
-      value: AttackPlayer
+      value: IsPlayerInMeleeRange
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[10]
@@ -3002,23 +2896,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[5]
-      value: 977896394
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[8]
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[8]
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[1].m_Destination
       value: 
-      objectReference: {fileID: 11407704}
+      objectReference: {fileID: 11413808}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[8]
-      value: 362682009
+      value: 1997708586
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[9]
@@ -3026,19 +2920,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[5]
-      value: AttackPlayer
+      value: KeepRange
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[13]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[14]
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[15]
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[14]
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[15]
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[13]
@@ -3058,7 +2952,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[6]
-      value: FindAttackPosition
+      value: KeepRange
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[7]
@@ -3078,7 +2972,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[0].m_EventID
-      value: 1997708586
+      value: 800830063
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[4].m_Name
@@ -3166,11 +3060,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[1]
-      value: ShootRifle
+      value: Aim
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[2]
-      value: Reload
+      value: BehaviourMachine.Update
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[1]
@@ -3194,23 +3088,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[3]
-      value: 1003642416
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[4]
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[1]
-      value: ShootRifle
+      value: Aim
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[2]
-      value: Reload
+      value: BehaviourMachine.FsmEvent
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[5]
-      value: 30
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[5]
@@ -3298,11 +3192,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Position.y
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Position.x
-      value: 860
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ConcreteFsmEvents.Array.data[7].m_Name
@@ -3314,7 +3208,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[1].m_EventID
-      value: 362682009
+      value: 361888865
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[2].m_EventID
@@ -3367,6 +3261,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: finishHeavyAttackTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[6]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[7]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_StateName
+      value: Shoot Musket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

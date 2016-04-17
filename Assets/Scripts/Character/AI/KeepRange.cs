@@ -8,12 +8,12 @@ public class KeepRange : ActionNode {
 	private float distanceToPlayer;
 	private Vector2 playerPosition;
 	private Vector2 selfPosition;
-	private BaseCollision baseCollision;
+    private Movement movement;
 
-	// Use this for initialization
-	override public void Start () {
+    // Use this for initialization
+    override public void Start () {
 		player = GameObject.Find ("Player");
-		baseCollision = self.GetComponent<BaseCollision> ();
+        movement = self.GetComponent<Movement>();
 	}
 	
 	// Update is called once per frame
@@ -23,19 +23,15 @@ public class KeepRange : ActionNode {
 		distanceToPlayer = Mathf.Abs (playerPosition.x - selfPosition.x);
 		if (distanceToPlayer <= blackboard.GetFloatVar ("preferredRangeMin")) {
 			if (playerPosition.x > selfPosition.x) {
-				//self.transform.position = (Vector2)self.transform.position + new Vector2 (-0.07f, 0);
-				baseCollision.Move (new Vector3 (-0.07f, 0, 0));
+                movement.Move (new Vector3 (-100f, 0, 0));
 			} else {
-				//self.transform.position = (Vector2)self.transform.position + new Vector2 (0.07f, 0);
-				baseCollision.Move (new Vector3 (0.07f, 0, 0));
+                movement.Move (new Vector3 (100f, 0, 0));
 			}
 		}
 		if (playerPosition.y > selfPosition.y) {
-			//self.transform.position = (Vector2)self.transform.position + new Vector2 (0, 0.07f);
-			baseCollision.Move (new Vector3 (0, 0.07f, 0));
+            movement.Move (new Vector3 (0, 100f, 0));
 		} else if (playerPosition.y < selfPosition.y) {
-			//self.transform.position = (Vector2)self.transform.position + new Vector2 (0, -0.07f);
-			baseCollision.Move(new Vector3(0, -0.07f, 0));
+            movement.Move(new Vector3(0, -100f, 0));
 		}
 
 		return Status.Success;
