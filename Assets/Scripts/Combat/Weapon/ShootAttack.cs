@@ -25,7 +25,8 @@ class ShootAttack : BaseAttack
         if (GetComponent<Movement>())
             if (GetComponent<Movement>().direction == Movement.Direction.Left)
                 direction = Vector2.left;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 200, _collision.collisionLayer);
+		Vector2 size = new Vector2(1, 1);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, size, 0, direction, 200, _collision.collisionLayer);
 		if (hit) {
 			Damage damage = hit.collider.GetComponent<Damage> ();
 			Stun stun = hit.collider.GetComponent<Stun> ();
