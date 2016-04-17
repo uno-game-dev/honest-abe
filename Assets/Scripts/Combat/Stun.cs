@@ -16,12 +16,14 @@ public class Stun : MonoBehaviour
     private Animator _animator;
     private float knockbackAmount;
     private Vector2 previousPos, currentPos;
+    private GenericAnimation genericAnimation;
 
     private void Awake()
     {
         _collision = GetComponent<BaseCollision>();
         _characterState = GetComponent<CharacterState>();
         _animator = GetComponent<Animator>();
+        genericAnimation = GetComponent<GenericAnimation>();
     }
 
     private void OnEnable()
@@ -70,6 +72,12 @@ public class Stun : MonoBehaviour
 
 	public void GetStunned( float stunAmount = 1f, float knockbackAmount = 0.1f, float directionModifier = 1f )
     {
+        if (_characterState.state == CharacterState.State.Grabbed)
+        {
+            _animator.Play("Grabbed Damage",0,0.15f);
+            Invoke("FinishGrabbedStun", 0.5f);
+            return;
+        }
         this.knockbackAmount = knockbackAmount;
         _animator.Play("Light Damage Reaction", 0, 0.25f);
         state = State.Stunned;
@@ -83,5 +91,11 @@ public class Stun : MonoBehaviour
         state = State.Null;
         velocity = Vector2.zero;
         _characterState.SetState(CharacterState.State.Idle);
+    }
+
+    private void FinishGrabbedStun()
+    {
+        if (genericAnimation) genericAnimation.UpdateState();
+        _animator.Play("Grabbed");
     }
 }
