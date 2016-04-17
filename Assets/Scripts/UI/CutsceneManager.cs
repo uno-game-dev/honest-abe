@@ -27,13 +27,16 @@ public class CutsceneManager : MonoBehaviour {
         "With a sliver of hope that Mary Todd may yet be alive, Abe wanders off in search of his beloved, his bloody axe hungering for the next battle. "
     };
 
+    public Sprite[] _midSprites;
+
     private bool _cutsceneOver;
 
     private GameObject _cutsceneCanvas; // The canvas object that is used for all the cutscenes
-    private GameObject _introStoryPanel, _endStoryPanel;
+    private GameObject _introStoryPanel, _midStoryPanel, _endStoryPanel;
     private Text _introStoryText, _endStoryText;
+    private Image _midStoryImage;
 
-	void Awake()
+	void Start()
     {
         _cutsceneCanvas = GameObject.Find("CutsceneCanvas");
 
@@ -41,6 +44,10 @@ public class CutsceneManager : MonoBehaviour {
         _introStoryText = _introStoryPanel.transform.Find("Text").GetComponent<Text>();
         _introStoryText.text = _introText[0];
         _introStoryPanel.SetActive(false);
+
+        _midStoryPanel = GameObject.Find("MidCutscenePanel");
+        _midStoryImage = _midStoryPanel.transform.Find("Image").GetComponent<Image>();
+        _midStoryPanel.SetActive(false);
 
         _endStoryPanel = GameObject.Find("EndCutscenePanel");
         _endStoryText = _endStoryPanel.transform.Find("Text").GetComponent<Text>();
@@ -50,6 +57,7 @@ public class CutsceneManager : MonoBehaviour {
         _cutsceneCanvas.SetActive(false);
 
         currentCutscene = Cutscenes.NULL;
+        ChangeCutscene(Cutscenes.INTRO);
         _cutsceneOver = false;
         index = 0;
     }
@@ -76,17 +84,77 @@ public class CutsceneManager : MonoBehaviour {
             }
             else if (currentCutscene == Cutscenes.MID)
             {
-
+                if (index >= _midSprites.Length)
+                {
+                    _cutsceneOver = true;
+                }
+                else if (index < _midSprites.Length)
+                {
+                    _midStoryImage.sprite = _midSprites[index];
+                }
             }
             else if (currentCutscene == Cutscenes.END)
             {
-
+                if (index >= _endText.Length)
+                {
+                    _cutsceneOver = true;
+                }
+                else if (index < _endText.Length)
+                {
+                    _endStoryText.text = _endText[index];
+                }
             }
         }
+
+        if (_cutsceneOver)
+            EndCutscene();
     }
 
     public void ChangeCutscene(Cutscenes cutscene)
     {
+        ResetCutscenes();
         currentCutscene = cutscene;
+        _cutsceneCanvas.SetActive(true);
+
+        switch (currentCutscene)
+        {
+            case Cutscenes.INTRO:
+                _introStoryPanel.SetActive(true);
+                break;
+            case Cutscenes.MID:
+                _midStoryPanel.SetActive(true);
+                break;
+            case Cutscenes.END:
+                _endStoryPanel.SetActive(true);
+                break;
+            case Cutscenes.NULL:
+                _cutsceneCanvas.SetActive(false);
+                break;
+        }
+    }
+
+    private void EndCutscene()
+    {
+        ResetCutscenes();
+
+        _cutsceneCanvas.SetActive(false);
+
+        currentCutscene = Cutscenes.NULL;
+
+        _cutsceneOver = false;
+    }
+
+    private void ResetCutscenes()
+    {
+        index = 0;
+
+        _introStoryPanel.SetActive(false);
+        _introStoryText.text = _introText[index];
+
+        _midStoryPanel.SetActive(false);
+        _midStoryImage.sprite = _midSprites[index];
+
+        _endStoryPanel.SetActive(false);
+        _endStoryText.text = _endText[index];
     }
 }
