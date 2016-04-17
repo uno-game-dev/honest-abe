@@ -7,12 +7,14 @@ class ShootAttack : BaseAttack
 
     protected override void PrepareToLightAttack()
     {
+        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         base.PrepareToLightAttack();
         animator.Play("Shoot Musket");
     }
 
     protected override void PrepareToHeavyAttack()
     {
+        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         base.PrepareToHeavyAttack();
         animator.Play("Reload Musket");
     }
