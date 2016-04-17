@@ -57,7 +57,7 @@ public class CutsceneManager : MonoBehaviour {
         _cutsceneCanvas.SetActive(false);
 
         currentCutscene = Cutscenes.NULL;
-        ChangeCutscene(Cutscenes.INTRO);
+        //ChangeCutscene(Cutscenes.INTRO);
         _cutsceneOver = false;
         index = 0;
     }
