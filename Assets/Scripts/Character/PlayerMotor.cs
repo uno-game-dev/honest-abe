@@ -102,8 +102,10 @@ public class PlayerMotor : MonoBehaviour
         {
             if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
             {
-                if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT && PerkManager.activeHatPerk == null)
-                {
+				if ( ( (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT) || 
+					(collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_HAT) )
+					&& (PerkManager.activeHatPerk == null) )
+				{
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                     collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                     if (!_gameManager.perkChosen)
@@ -112,8 +114,10 @@ public class PlayerMotor : MonoBehaviour
                         _uiManager.perkText.enabled = false;
                     }
                 }
-                else if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET && PerkManager.activeTrinketPerk == null)
-            {
+				else if ( ( (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET) ||
+					(collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_TRINKET) )
+					&& (PerkManager.activeTrinketPerk == null) )
+				{
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 if (!_gameManager.perkChosen)
