@@ -179,20 +179,20 @@ public class Perk : MonoBehaviour
 				PerkManager.UnlockCameraAfterPerkPickUp();
 				PerkManager.axePerkChosen = true;
                 break;
-            case PerkCategory.HAT:
-                PerkManager.activeHatPerk = this;
-                PerkManager.HatPerkEffect += HatEffect;
-                if (this.type == PerkType.HAT_BEARHANDS)
-                {
-                    if (GameObject.Find("Hat_BA") != null)
-                    {
-                        GameObject.Find("Hat_BA").transform.SetParent(GameObject.Find("Player").transform, true);
-                        GameObject.Find("Hat_BA").SetActive(false);
-                    }
-                }
-				if(GameObject.Find("Hat_SF") != null){
-					GameObject.Find ("Hat_SF").transform.SetParent (GameObject.Find ("Player").transform, true);
-					GameObject.Find ("Hat_SF").SetActive (false);
+			case PerkCategory.HAT:
+				PerkManager.activeHatPerk = this;
+				PerkManager.HatPerkEffect += HatEffect;
+				if (this.type == PerkType.HAT_BEARHANDS) {
+					if (GameObject.Find ("Hat_BA") != null) {
+						GameObject.Find ("Hat_BA").transform.SetParent (GameObject.Find ("Player").transform, true);
+						GameObject.Find ("Hat_BA").SetActive (false);
+					}
+				}
+				if (this.type == PerkType.HAT_STICKYFINGERS) {
+					if (GameObject.Find ("Hat_SF") != null) {
+						GameObject.Find ("Hat_SF").transform.SetParent (GameObject.Find ("Player").transform, true);
+						GameObject.Find ("Hat_SF").SetActive (false);
+					}
 				}
 				PerkManager.UnlockCameraAfterPerkPickUp();
 				PerkManager.hatPerkChosen = true;
