@@ -157,7 +157,9 @@ public class PlayerMotor : MonoBehaviour
 			{
 				EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
 				savedWeapon = gameObject.GetComponent<Attack>().weapon;
-				savedWeapon.transform.gameObject.SetActive (false);
+				if (savedWeapon.name != "Player") {
+					savedWeapon.transform.gameObject.SetActive (false);
+				}
 				_playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
 				collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
 				collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
