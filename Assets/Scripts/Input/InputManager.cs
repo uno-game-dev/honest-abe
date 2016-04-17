@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class MobileInput : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
-    public enum Action { Null, LightAttack, HeavyAttack, Jump, Grab, Throw, Pickup }
+    public enum Action { Null, LightAttack, HeavyAttack, Jump, Grab, Throw, PickupOrGrab }
 
     public float moveRadius = 50;
     public static float _horizontalAxisValue = 0;
@@ -18,6 +18,7 @@ public class MobileInput : MonoBehaviour
     public bool touchHold;
     public float touchHoldTimer;
     public float touchHoldTime = 0.7f;
+    private float rightClickTimer;
 
     private void Start()
     {
@@ -70,7 +71,21 @@ public class MobileInput : MonoBehaviour
                 touchHoldTimer += Time.deltaTime;
                 if (touchHoldTimer >= touchHoldTime)
                 {
-                    _lastAction = Action.Pickup;
+                    _lastAction = Action.PickupOrGrab;
+                    touchHoldTimer = 0;
+                    return;
+                }
+            }
+            if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.LeftAlt))
+            {
+                rightClickTimer = 0;
+            }
+            else if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.LeftAlt))
+            {
+                rightClickTimer += Time.deltaTime;
+                if (rightClickTimer >= touchHoldTime)
+                {
+                    _lastAction = Action.Throw;
                     touchHoldTimer = 0;
                     return;
                 }
@@ -82,7 +97,7 @@ public class MobileInput : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space))
                 _lastAction = Action.Jump;
             else if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.F))
-                _lastAction = Action.Grab;
+                _lastAction = Action.PickupOrGrab;
             else if (Input.GetKeyDown(KeyCode.E))
                 _lastAction = Action.Throw;
             else
@@ -105,7 +120,7 @@ public class MobileInput : MonoBehaviour
             touchHold = false;
             touchHoldTimer = 0;
             startActionTouch = nullTouch;
-            _lastAction = Action.Pickup;
+            _lastAction = Action.PickupOrGrab;
         }
     }
 
@@ -133,7 +148,7 @@ public class MobileInput : MonoBehaviour
     {
         Vector2 deltaPosition = actionTouch.position - startActionTouch.position;
         if (touchHold && touchHoldTimer >= touchHoldTime)
-            _lastAction = Action.Pickup;
+            _lastAction = Action.PickupOrGrab;
         else if (deltaPosition.magnitude < 10)
             _lastAction = Action.LightAttack;
         else if (SwipeLeft(deltaPosition))
@@ -143,7 +158,7 @@ public class MobileInput : MonoBehaviour
         else if (SwipeUp(deltaPosition))
             _lastAction = Action.Jump;
         else // if (SwipeDown(deltaPosition))
-            _lastAction = Action.Grab;
+            _lastAction = Action.PickupOrGrab;
 
         startActionTouch = nullTouch;
         touchHold = false;
