@@ -36,7 +36,6 @@ public class CutsceneManager : MonoBehaviour {
 	void Awake()
     {
         _cutsceneCanvas = GameObject.Find("CutsceneCanvas");
-        _cutsceneCanvas.SetActive(false);
 
         _introStoryPanel = GameObject.Find("IntroCutscenePanel");
         _introStoryText = _introStoryPanel.transform.Find("Text").GetComponent<Text>();
@@ -47,6 +46,8 @@ public class CutsceneManager : MonoBehaviour {
         _endStoryText = _endStoryPanel.transform.Find("Text").GetComponent<Text>();
         _endStoryText.text = _endText[0];
         _endStoryPanel.SetActive(false);
+
+        _cutsceneCanvas.SetActive(false);
 
         currentCutscene = Cutscenes.NULL;
         _cutsceneOver = false;
@@ -68,6 +69,18 @@ public class CutsceneManager : MonoBehaviour {
                 {
                     _cutsceneOver = true;
                 }
+                else if (index < _introText.Length)
+                {
+                    _introStoryText.text = _introText[index];
+                }
+            }
+            else if (currentCutscene == Cutscenes.MID)
+            {
+
+            }
+            else if (currentCutscene == Cutscenes.END)
+            {
+
             }
         }
     }
