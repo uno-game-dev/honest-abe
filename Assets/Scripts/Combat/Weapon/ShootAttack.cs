@@ -37,6 +37,17 @@ class ShootAttack : BaseAttack
 				Instantiate (bulletSpark, hit.point, Quaternion.identity);
 		}
 		base.PerformLightAttack ();
+
+		//Enable one use weapons for the Player
+		if(gameObject.transform.name == "Player"){
+			Destroy (gameObject.transform.FindContainsInChildren ("Musket"));
+			if (GetComponent<PlayerMotor> ().savedWeapon) {
+				gameObject.GetComponent<Attack> ().SetWeapon (GetComponent<PlayerMotor> ().savedWeapon);
+				GetComponent<PlayerMotor> ().savedWeapon.transform.gameObject.SetActive (true);
+			} else {
+				gameObject.GetComponent<Attack> ().SetWeapon (new Weapon());
+			}
+		}
     }
 
     protected override void BackToIdle()

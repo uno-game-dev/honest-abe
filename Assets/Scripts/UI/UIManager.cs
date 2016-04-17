@@ -175,7 +175,6 @@ public class UIManager : MonoBehaviour
         _optionsUIControlsButton.onClick.AddListener(OnControls);
         _optionsUI.SetActive(false);
 
-
         /*
          * Graphics
          */
