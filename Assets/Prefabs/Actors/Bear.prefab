@@ -846,7 +846,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118718}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11080
+  m_CachedInstanceID: 17422
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1068,7 +1068,7 @@ MonoBehaviour:
     m_EventID: 1249890864
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 11092
+  m_CachedInstanceID: 17434
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1158,7 +1158,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 11090
+  m_CachedInstanceID: 17432
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11086
+  m_CachedInstanceID: 17428
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1381,8 +1381,13 @@ MonoBehaviour:
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 20
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 50
+  heavyStun: 0.5
+  heavyKnockback: 7
   throwDamage: 10
+  isEnemyWeapon: 0
 --- !u!114 &11469500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1418,7 +1423,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11082
+  m_CachedInstanceID: 17424
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1507,7 +1512,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11088
+  m_CachedInstanceID: 17430
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1591,7 +1596,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11435718}
     m_EventID: 111391994
-  m_CachedInstanceID: 11084
+  m_CachedInstanceID: 17426
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1

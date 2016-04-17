@@ -13,6 +13,7 @@ public class Throw : MonoBehaviour
     private float finishThrowTime = 0.3f;
     private CharacterState _characterState;
     private Movement _movement;
+	private bool throwOneUseWeapon = false;
 
     private void Awake()
     {
@@ -59,14 +60,23 @@ public class Throw : MonoBehaviour
         SetState(State.Perform);
         _attack.weapon.transform.rotation = Quaternion.identity;
         _attack.weapon.gameObject.layer = LayerMask.NameToLayer("Items");
-        _attack.SetWeapon(GetComponent<Weapon>());
-        _attack.emptyHanded = true;
+		if (_attack.weapon.tag == "OneUseWeapon") {
+			_attack.SetWeapon (GameObject.Find ("Player").GetComponent<PlayerMotor> ().savedWeapon);
+			GetComponent<PlayerMotor> ().savedWeapon.transform.gameObject.SetActive (true);
+			throwOneUseWeapon = true;
+		} else {
+			_attack.SetWeapon (GetComponent<Weapon> ());
+			_attack.emptyHanded = true;
+			throwOneUseWeapon = false;
+		}
         Invoke("FinishThrow", performThrowTime);
     }
 
     private void FinishThrow()
     {
-        _attack.emptyHanded = true;
+		if (!throwOneUseWeapon) {
+			_attack.emptyHanded = true;
+		}
         SetState(State.Finish);
         Invoke("BackToIdle", finishThrowTime);
     }

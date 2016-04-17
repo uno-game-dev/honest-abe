@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 408268}
   - 82: {fileID: 8201942}
   - 114: {fileID: 11412160}
+  - 114: {fileID: 11447296}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -37,7 +38,8 @@ AudioSource:
   m_GameObject: {fileID: 122804}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24381836, guid: eb36c985789cd9e4cafd2efa58ee7a83,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -91,7 +93,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -159,6 +161,18 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 7428b40beb36149dbb6f814f63a1651a, type: 3}
   - name: Step_7
     sound: {fileID: 8300000, guid: 014e8c636f8d44912bed022fd6a8d5df, type: 3}
+--- !u!114 &11447296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4194bf049213f8468fba1e141d14e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterMixer: {fileID: 24100000, guid: eb36c985789cd9e4cafd2efa58ee7a83, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

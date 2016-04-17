@@ -67,4 +67,16 @@ public static class ExtensionFunctions
     {
         return random.Next(min, max + 1);
     }
+
+    public static GameObject[] FindGameObjectsWithLayer(int layer)
+    {
+        var goArray = GameObject.FindObjectsOfType<GameObject>();
+
+        var goList = new System.Collections.Generic.List<GameObject>();
+        for (var i = 0; i < goArray.Length; i++)
+            if (goArray[i].layer == layer)
+                goList.Add(goArray[i]);
+
+        return goList.ToArray();
+    }
 }
