@@ -4,7 +4,7 @@ using System.Collections;
 
 public class CutsceneManager : MonoBehaviour {
 
-    public bool cutsceneActive; // Whether or not we're currently playing a cutscene
+    public static bool cutsceneActive; // Whether or not we're currently playing a cutscene
     public int index; // The "index" of the cutscene, i.e. which part of the cutscene we are currently in if it's multi-part
 
     // The list of our cutscenes in the game (there's three)
@@ -59,6 +59,7 @@ public class CutsceneManager : MonoBehaviour {
         currentCutscene = Cutscenes.NULL;
         //ChangeCutscene(Cutscenes.INTRO);
         _cutsceneOver = false;
+        cutsceneActive = false;
         index = 0;
     }
 
@@ -119,15 +120,19 @@ public class CutsceneManager : MonoBehaviour {
         switch (currentCutscene)
         {
             case Cutscenes.INTRO:
+                cutsceneActive = true;
                 _introStoryPanel.SetActive(true);
                 break;
             case Cutscenes.MID:
+                cutsceneActive = true;
                 _midStoryPanel.SetActive(true);
                 break;
             case Cutscenes.END:
+                cutsceneActive = true;
                 _endStoryPanel.SetActive(true);
                 break;
             case Cutscenes.NULL:
+                cutsceneActive = false;
                 _cutsceneCanvas.SetActive(false);
                 break;
         }
@@ -135,12 +140,7 @@ public class CutsceneManager : MonoBehaviour {
 
     private void EndCutscene()
     {
-        ResetCutscenes();
-
-        _cutsceneCanvas.SetActive(false);
-
-        currentCutscene = Cutscenes.NULL;
-
+        ChangeCutscene(Cutscenes.NULL);
         _cutsceneOver = false;
     }
 
