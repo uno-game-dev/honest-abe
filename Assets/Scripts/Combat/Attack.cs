@@ -85,6 +85,10 @@ public class Attack : MonoBehaviour
             weapon.transform.GetChild(0).localRotation = Quaternion.identity;
             weapon.transform.GetChild(0).localPosition = Vector3.zero;
             weapon.gameObject.layer = gameObject.layer;
+
+            Vector3 fixBackwardsWeapon = weapon.transform.localScale;
+            fixBackwardsWeapon.x = Mathf.Abs(fixBackwardsWeapon.x);
+            weapon.transform.localScale = fixBackwardsWeapon;
         }
 
     }
