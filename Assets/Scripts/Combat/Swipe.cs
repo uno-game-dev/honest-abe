@@ -15,9 +15,14 @@ public class Swipe : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-    public void Activate()
+    public void Activate(bool flipped = false)
     {
         swipeTimer = 0;
         gameObject.SetActive(true);
+
+        Vector3 scale = transform.localScale;
+        if (flipped) scale.z = -1;
+        else scale.z = 1;
+        transform.localScale = scale;
     }
 }
