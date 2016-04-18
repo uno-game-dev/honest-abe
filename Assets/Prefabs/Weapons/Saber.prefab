@@ -282,7 +282,7 @@ MonoBehaviour:
   lightStun: 0.2
   lightKnockback: 2
   heavyDamage: 6
-  heavyStun: 0.5
+  heavyStun: 3
   heavyKnockback: 5
   throwDamage: 4
   isEnemyWeapon: 1
@@ -360,6 +360,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heavyStun
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
