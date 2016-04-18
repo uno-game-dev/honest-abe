@@ -30,6 +30,7 @@ public class CutsceneManager : MonoBehaviour {
     public Sprite[] _midSprites;
 
     private bool _cutsceneOver;
+    private float timeToNextSlide = 10f, timer = 0f;
 
     private GameObject _cutsceneCanvas; // The canvas object that is used for all the cutscenes
     private GameObject _introStoryPanel, _midStoryPanel, _endStoryPanel;
@@ -56,11 +57,11 @@ public class CutsceneManager : MonoBehaviour {
 
         _cutsceneCanvas.SetActive(false);
 
-        currentCutscene = Cutscenes.NULL;
-        //ChangeCutscene(Cutscenes.INTRO);
         _cutsceneOver = false;
         cutsceneActive = false;
         index = 0;
+        currentCutscene = Cutscenes.NULL;
+        ChangeCutscene(Cutscenes.INTRO);
     }
 
     void Update()
@@ -68,9 +69,12 @@ public class CutsceneManager : MonoBehaviour {
         if (currentCutscene == Cutscenes.NULL)
             return;
 
-        if (Input.anyKeyDown)
+        timer += Time.deltaTime;
+
+        if (Input.anyKeyDown || timer >= timeToNextSlide)
         {
             index++;
+            timer = 0;
 
             if (currentCutscene == Cutscenes.INTRO)
             {
