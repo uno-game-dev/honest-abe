@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
     private Button _audioUIBackButton, _audioUIApplyButton;
     private Slider _audioUIMusicSlider, _audioUIEffectsSlider;
     private Text _audioUIMusicValue, _audioUIEffectValue;
+    private SoundPlayer _soundPlayer;
 
     // Controls Menu
     private GameObject _controlsUI;
@@ -217,6 +218,7 @@ public class UIManager : MonoBehaviour
         _audioUIEffectValue.text = "" + System.Math.Round(effectsVolume, 1);
         _audioUI.SetActive(false);
 
+        _soundPlayer = GameObject.Find("Audio").GetComponent<SoundPlayer>();
 
         /*
          * Controls
@@ -348,6 +350,9 @@ public class UIManager : MonoBehaviour
 
         musicVolume = _audioUIMusicSlider.value;
         effectsVolume = _audioUIEffectsSlider.value;
+
+        //_soundPlayer.SetMusicVolume();
+        //_soundPlayer.SetSoundVolume();
 
         PlayerPrefs.SetFloat(MusicVolume, musicVolume);
         PlayerPrefs.SetFloat(EffectsVolume, effectsVolume);
