@@ -25,6 +25,7 @@ class SlashAttack : BaseAttack
 	{
 		base.PrepareToHeavyAttack();
 		animator.Play("Heavy Attack Saber Stab");
+
 		chain = SwingChain.First;
 	}
 
