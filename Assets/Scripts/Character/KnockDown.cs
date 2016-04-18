@@ -90,6 +90,10 @@ public class KnockDown : MonoBehaviour
 
     private void GetUp()
     {
+        if (gameObject.tag == "Enemy")
+        {
+            GetComponent<BaseCollision>().RemoveCollisionLayer("Enemy");
+        }
         SetState(State.GettingUp);
         _animator.Play("Knock Down Get Up");
         Invoke("BackToIdle", getUpDuration);

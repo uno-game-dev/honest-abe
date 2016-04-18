@@ -60,6 +60,17 @@ public class Grabbable : MonoBehaviour
     {
         if (collider.tag == "Grab")
             GetGrabbed(collider.transform.parent.gameObject);
+        else if (collider.tag == "Enemy")
+        {
+            Debug.Log("Hit Enemy with throw");
+            _collision.RemoveCollisionLayer("Enemy");
+
+            GetComponent<Damage>().ExecuteDamage(5, collider);
+            collider.gameObject.GetComponent<Damage>().ExecuteDamage(5, GetComponent<Collider2D>());
+            collider.gameObject.GetComponent<KnockDown>().StartKnockDown(_grabbedBy.GetComponent<Movement>().direction == Movement.Direction.Left ? -10 : 10);
+
+            Debug.Log(GetComponent<Health>().health + " : " + collider.gameObject.GetComponent<Health>().health);
+        }
     }
 
     private void GetGrabbed(GameObject grabbedBy)
@@ -146,7 +157,7 @@ public class Grabbable : MonoBehaviour
         if (_attackAI) _attackAI.enabled = true;
         transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;
-        _collision.RemoveCollisionLayer("Enemy");
+        _collision.AddCollisionLayer("Enemy");
         _knockDown.StartKnockDown(_grabbedBy.GetComponent<Movement>().direction == Movement.Direction.Left ? -10 : 10);
     }
 }
