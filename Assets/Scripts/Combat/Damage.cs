@@ -70,7 +70,8 @@ public class Damage : MonoBehaviour
                     InstantiateBlood(bloodMelee);
                 else if (attackType == Weapon.AttackType.Jab)
                     InstantiateBlood(bloodJab);
-                    return;
+
+                return;
             }
 
         InstantiateBlood(bloodSplatter);

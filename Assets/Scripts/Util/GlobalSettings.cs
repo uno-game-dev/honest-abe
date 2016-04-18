@@ -4,10 +4,13 @@ public class GlobalSettings : MonoBehaviour
 {
     // Levels
     public static bool currentSceneIsNew = true;
+	public static string levelOneSceneName = "ForestLevel";
+	public static string levelTwoSceneName = "BattlefieldLevel";
+	public static string levelThreeSceneName = "BallroomLevel";
 
-    // Player
+	// Player
 
-    public static int healthIncreaseAmount = 20;
+	public static int healthIncreaseAmount = 20;
 
     public static float gravityMultiplier = 1f;
     public static float gravity = -9.81f;

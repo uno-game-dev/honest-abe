@@ -214,7 +214,7 @@ public class EventHandler : MonoBehaviour
 			case Events.ENEMY_CLOSE_TO_STEAL_WEAPON:
 				if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers")) {
 					Debug.Log ("Enemy is enough to steal weapon");
-				BoxCollider2D gunBoxCollider = other.transform.FindContainsInChildren ("Bayonet").GetComponent<BoxCollider2D> ();
+				BoxCollider2D gunBoxCollider = other.transform.FindContainsInChildren ("Musket").GetComponent<BoxCollider2D> ();
 
 					if (gunBoxCollider != null) {
 						gunBoxCollider.size = new Vector2 (25.0f, 20.0f);
