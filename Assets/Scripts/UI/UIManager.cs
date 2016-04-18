@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
 	// Boss UI
 	[HideInInspector]
 	public Canvas bossHealthUI;
-    public Canvas optionButtonUI;
 
 	private GameManager _gameManager;
 	private LevelManager _levelManager;
@@ -141,7 +140,6 @@ public class UIManager : MonoBehaviour
     {
         updateActive = true;
         _startGameText.SetActive(false);
-        optionButtonUI.gameObject.SetActive(true);
     }
 
 	private void SetListenersForPauseUI()
