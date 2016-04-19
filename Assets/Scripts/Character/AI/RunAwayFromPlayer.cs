@@ -26,7 +26,9 @@ public class RunAwayFromPlayer : ActionNode {
 		selfPosition = self.transform.position;
 		Vector3 vectorToPlayer = playerPosition - selfPosition;
 		deltaPosition = -vectorToPlayer.normalized * movement.horizontalMovementSpeed;
-		movement.Move(deltaPosition);
+		float newY = selfPosition.y + deltaPosition.y;
+		if(newY < -0.1f && newY > -11.2f)
+			movement.Move(deltaPosition);
 		return Status.Success;
 	}
 }
