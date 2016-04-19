@@ -9,15 +9,13 @@ class ShootAttack : BaseAttack
     public float reloadDuration = 1f;
 
     protected override void PrepareToLightAttack()
-    {
-        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
+    {   
         base.PrepareToLightAttack();
         Aim();
     }
 
     protected override void PrepareToHeavyAttack()
     {
-        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         base.PrepareToHeavyAttack();
         Aim();
     }
@@ -57,6 +55,7 @@ class ShootAttack : BaseAttack
     {
         if (!IsAttacking()) return;
 
+        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         animator.Play("Shoot Musket");
         ShootCollisionCheck();
     }
