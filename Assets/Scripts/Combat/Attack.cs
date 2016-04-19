@@ -218,4 +218,13 @@ public class Attack : MonoBehaviour
         attackState = State.Null;
         _characterState.SetState(CharacterState.State.Idle);
     }
+
+    public Hand getAttackHand()
+    {
+        if (_attackType is MeleeAttack)
+            return ((MeleeAttack)_attackType)._hand == MeleeAttack.Hand.Right ? Hand.Right : Hand.Left;
+        if (_attackType is SwingAttack)
+            return ((SwingAttack)_attackType).chain == SwingAttack.SwingChain.Second ? Hand.Left: Hand.Right;
+        return Hand.Left;
+    }
 }
