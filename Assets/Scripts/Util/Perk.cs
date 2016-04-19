@@ -257,6 +257,12 @@ public class Perk : MonoBehaviour
                 GameObject.Find("Axe_BFA").GetComponent<Weapon>().attackSize *= 2;
             }
 
+            if (type == PerkType.AXE_SLUGGER)
+            {
+                GameObject.Find("Axe_Slugger").GetComponent<Weapon>().lightKnockback *= 1.5f;
+                GameObject.Find("Axe_Slugger").GetComponent<Weapon>().heavyKnockback *= 1.5f;
+            }
+
             alreadyActive = true;
         }
     }
