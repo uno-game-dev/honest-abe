@@ -250,6 +250,7 @@ GameObject:
   - 23: {fileID: 2357608}
   - 114: {fileID: 11455392}
   - 114: {fileID: 11480316}
+  - 114: {fileID: 11477894}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -663,7 +664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &194158
 GameObject:
   m_ObjectHideFlags: 1
@@ -1671,6 +1672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepInterval: 0.6
+  savedWeapon: {fileID: 0}
 --- !u!114 &11420284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1933,6 +1935,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   numberOfCollisions: 0
+--- !u!114 &11477894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd4781e64889a343bb45bff5d1ccf37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abesHat: {fileID: 0}
+  abesRegularHat: {fileID: 2100000, guid: 8b93e2d114d312c488365b66a108faea, type: 2}
+  abesBearHat: {fileID: 2100000, guid: bd320e93572a1cb4bb981e24ff1775ad, type: 2}
+  abesStickFingersHat: {fileID: 2100000, guid: ed92f64a8dc27514d86dd11d4a60e613, type: 2}
 --- !u!114 &11480316
 MonoBehaviour:
   m_ObjectHideFlags: 1
