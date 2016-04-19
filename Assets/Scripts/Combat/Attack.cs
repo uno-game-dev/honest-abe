@@ -87,7 +87,7 @@ public class Attack : MonoBehaviour
             else if (weapon.attackType == Weapon.AttackType.Shoot)
 				weapon.transform.SetParent(_leftHand.transform, true);
 			else if (weapon.attackType == Weapon.AttackType.Slash)
-				weapon.transform.SetParent(_leftHand.transform, true);
+				weapon.transform.SetParent(_leftHand.transform, false);
             else
                 weapon.transform.SetParent(_rightHand.transform, true);
 
