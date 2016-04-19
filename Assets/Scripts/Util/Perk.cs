@@ -64,6 +64,7 @@ public class Perk : MonoBehaviour
 	[HideInInspector]
 	public static bool maryToddsLocketteIsActive = false;
 	private static float performMaryToddsCoolDown;
+    private float pickupHatDuration = 1;
 
     void Start()
     {
@@ -164,9 +165,7 @@ public class Perk : MonoBehaviour
             case PerkCategory.NONE_HAT:
                 PerkManager.activeHatPerk = null;
 				if (GameObject.Find ("Hat_Default") != null) {
-                    GameObject.Find ("Hat_Default").transform.SetParent (GameObject.Find ("Player").transform, true);
-					GameObject.Find ("Hat_Default").SetActive (false);
-                    GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.Regular);
+                    GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.Regular, GameObject.Find("Hat_Default"), pickupHatDuration);
                 }
 				PerkManager.UnlockCameraAfterPerkPickUp ();
 				PerkManager.hatPerkChosen = true;
@@ -193,16 +192,12 @@ public class Perk : MonoBehaviour
 				PerkManager.HatPerkEffect += HatEffect;
 				if (this.type == PerkType.HAT_BEARHANDS) {
 					if (GameObject.Find ("Hat_BA") != null) {
-						GameObject.Find ("Hat_BA").transform.SetParent (GameObject.Find ("Player").transform, true);
-						GameObject.Find ("Hat_BA").SetActive (false);
-                        GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.Bear);
+                        GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.Bear, GameObject.Find("Hat_BA"), pickupHatDuration);
                     }
 				}
 				if (this.type == PerkType.HAT_STICKYFINGERS) {
 					if (GameObject.Find ("Hat_SF") != null) {
-						GameObject.Find ("Hat_SF").transform.SetParent (GameObject.Find ("Player").transform, true);
-						GameObject.Find ("Hat_SF").SetActive (false);
-                        GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.StickyFingers);
+                        GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.StickyFingers, GameObject.Find("Hat_SF"), pickupHatDuration);
                     }
 				}
 				PerkManager.UnlockCameraAfterPerkPickUp();
