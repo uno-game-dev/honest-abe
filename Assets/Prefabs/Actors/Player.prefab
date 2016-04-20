@@ -250,6 +250,7 @@ GameObject:
   - 23: {fileID: 2357608}
   - 114: {fileID: 11455392}
   - 114: {fileID: 11480316}
+  - 114: {fileID: 11408302}
   - 114: {fileID: 11477894}
   m_Layer: 10
   m_Name: Player
@@ -1617,6 +1618,19 @@ MonoBehaviour:
   bloodShoot: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
   bloodMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
   bloodJab: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
+--- !u!114 &11408302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5c4da3254bb26429192148a7aa55a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  stunDuration: 0
 --- !u!114 &11413124
 MonoBehaviour:
   m_ObjectHideFlags: 1
