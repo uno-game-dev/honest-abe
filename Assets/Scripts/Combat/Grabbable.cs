@@ -69,7 +69,7 @@ public class Grabbable : MonoBehaviour
             _collision.RemoveCollisionLayer("Enemy");
 
             GetComponent<Damage>().ExecuteDamage(5, collider);
-            GetComponent<KnockDown>().HitGround();
+            GetComponent<KnockDown>().horizontalVelocity = 0;
             collider.gameObject.GetComponent<KnockDown>().StartKnockDown(0);
             collider.gameObject.GetComponent<Damage>().ExecuteDamage(5, GetComponent<Collider2D>());
 
