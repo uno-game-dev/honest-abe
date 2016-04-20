@@ -118,6 +118,7 @@ public class PlayerMotor : MonoBehaviour
                     (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_HAT))
                     && (PerkManager.activeHatPerk == null))
                 {
+                    MusicPlayer.Play("Forest Level Music");
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                     collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                     if (!_gameManager.perkChosen)
@@ -133,6 +134,7 @@ public class PlayerMotor : MonoBehaviour
                 {
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                     collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+                    SoundPlayer.Play("Trinket Pickup");
                     if (!_gameManager.perkChosen)
                     {
                         _gameManager.perkChosen = true;
@@ -151,6 +153,7 @@ public class PlayerMotor : MonoBehaviour
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 _playerAttack.emptyHanded = false;
+                SoundPlayer.Play("Axe Pickup");
 
                 if (!_gameManager.perkChosen)
                 {

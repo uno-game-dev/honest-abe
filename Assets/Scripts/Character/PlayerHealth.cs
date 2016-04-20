@@ -188,9 +188,13 @@ public class PlayerHealth : Health
 
     private void Death()
 	{
-        _animator.Play("Abe Death");
-        _characterState.SetState(CharacterState.State.Dead);
+        if (!alive)
+            return;
+
 		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
+        SoundPlayer.Play("Abe Death");
+        _animator.Play("Abe Death");
+        _characterState.SetState(CharacterState.State.Dead);
     }
 }

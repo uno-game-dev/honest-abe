@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     private BaseCollision _collision;
     private float velocityXSmoothing, velocityYSmoothing;
     private CharacterState _characterState;
+    private GameObject footsteps;
 
     private void Awake()
     {
@@ -26,12 +27,18 @@ public class Movement : MonoBehaviour
         SetDirection(direction, true);
     }
 
+    private void OnDisable()
+    {
+        if (footsteps) Destroy(footsteps);
+        footsteps = null;
+    }
+
     public void Move(Vector2 deltaPosition)
     {
         if (!_characterState.CanMove())
             return;
 
-        if (deltaPosition != Vector2.zero)
+        if (deltaPosition != Vector2.zero && _characterState.state != CharacterState.State.Jump)
             SetState(State.Walk);
         else
             SetState(State.Null);
@@ -84,7 +91,7 @@ public class Movement : MonoBehaviour
             SetDirection(Direction.Left, true);
     }
 
-    private void SetState(State newState)
+    public void SetState(State newState)
     {
         state = newState;
 
@@ -92,8 +99,20 @@ public class Movement : MonoBehaviour
             return;
 
         if (newState == State.Walk && _characterState.state == CharacterState.State.Idle)
+        {
+            string clipName = tag == "Player" ? "Footsteps" : "Light Footsteps";
+            if (footsteps) Destroy(footsteps);
+            footsteps = SoundPlayer.Play(clipName, true);
             _characterState.SetState(CharacterState.State.Movement);
+        }
         else if (newState == State.Null && _characterState.state == CharacterState.State.Movement)
+        {
             _characterState.SetState(CharacterState.State.Idle);
+        }
+        if (newState == State.Null)
+        {
+            if (footsteps) Destroy(footsteps);
+            footsteps = null;
+        }
     }
 }

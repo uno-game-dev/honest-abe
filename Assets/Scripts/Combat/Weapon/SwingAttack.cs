@@ -16,6 +16,7 @@
             animator.Play("Light Attack Axe Left");
             chain = SwingChain.First;
         }
+        SoundPlayer.Play("Light Axe Swing");
     }
 
     protected override void PrepareToHeavyAttack()
@@ -24,6 +25,7 @@
         animator.Play("Heavy Attack Axe Prep");
 
         chain = SwingChain.First;
+        SoundPlayer.Play("Heavy Axe Swing");
     }
 
     protected override void PerformLightAttack()

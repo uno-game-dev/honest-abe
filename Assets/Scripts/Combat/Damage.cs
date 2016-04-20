@@ -14,10 +14,12 @@ public class Damage : MonoBehaviour
 
     private Health health;
     private BaseCollision collision;
+    private SoundPlayer sound;
 
     void Awake()
     {
         collision = GetComponent<BaseCollision>();
+        sound = GetComponent<SoundPlayer>();
     }
 
     void OnEnable()
@@ -33,10 +35,10 @@ public class Damage : MonoBehaviour
     public void ExecuteDamage(float damageAmount, Collider2D collider)
     {
         if (tag == "Enemy")
-			;
+            ;
         if (tag == "Boss")
-			if (GetComponent<Boss>() != null && GetComponent<Boss>().bossName == "Bear")
-              EventHandler.SendEvent(EventHandler.Events.BEAR_HIT, GameObject.Find("Player"));
+            if (GetComponent<Boss>() != null && GetComponent<Boss>().bossName == "Bear")
+                EventHandler.SendEvent(EventHandler.Events.BEAR_HIT, GameObject.Find("Player"));
         if (collider)
             AddBlood(collider);
         if (health = GetComponent<Health>())
@@ -53,6 +55,44 @@ public class Damage : MonoBehaviour
         {
             damageAmount = collider.transform.GetComponentInParent<Attack>().GetDamageAmount();
             ExecuteDamage(damageAmount, collider);
+
+            if (attackArea)
+            {
+                if (attackArea.GetAttackState() == Attack.State.Heavy)
+                {
+                    SoundPlayer.Play("Damage React Heavy");
+                    if (attackArea.GetAttackType() == Weapon.AttackType.Swing)
+                    {
+                        SoundPlayer.Play("Heavy Axe Impact 1");
+                        SoundPlayer.Play("Heavy Axe Impact 1.1");
+                    }
+                    else  if (attackArea.GetAttackType() == Weapon.AttackType.Melee)
+                    {
+                        SoundPlayer.Play("Heavy Punch Impact 1");
+                        SoundPlayer.Play("Heavy Punch Impact 1.2");
+                        SoundPlayer.Play("Heavy Punch Impact 1.3");
+                    }
+                }
+                else
+                {
+                    SoundPlayer.Play("Damage React Light");
+                    if (attackArea.GetAttackType() == Weapon.AttackType.Swing)
+                    {
+                        if (attackArea.GetAttackChainNumber() >= 2)
+                            SoundPlayer.Play("Light Axe Impact 3");
+                        else if (attackArea.GetAttackChainNumber() >= 1)
+                            SoundPlayer.Play("Light Axe Impact 2");
+                        else
+                            SoundPlayer.Play("Light Axe Impact 1");
+                    }
+                    else if (attackArea.GetAttackType() == Weapon.AttackType.Melee)
+                    {
+                        SoundPlayer.Play("Light Punch Impact");
+                    }
+                }
+            }
+            else
+                SoundPlayer.Play("Damage React Light");
         }
     }
 
@@ -75,7 +115,7 @@ public class Damage : MonoBehaviour
             }
 
         InstantiateBlood(bloodSplatter);
-			
+
     }
 
     private void InstantiateBlood(GameObject bloodPrefab)

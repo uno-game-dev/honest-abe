@@ -77,6 +77,7 @@ public class Jump : MonoBehaviour
         jumpVelocity = jumpStrength;
         isGrounded = false;
         _animator.Play("Jump Up");
+        SoundPlayer.Play("Jump Up");
         _collision.RemoveCollisionLayer("Environment");
         _collision.RemoveCollisionLayer("Enemy");
     }
@@ -86,6 +87,7 @@ public class Jump : MonoBehaviour
         EventHandler.SendEvent(EventHandler.Events.LAND);
         SetState(State.Land);
         _animator.Play("Jump Land");
+        SoundPlayer.Play("Jump Land");
         _characterState.SetState(CharacterState.State.Null);
         isGrounded = true;
         _collision.AddCollisionLayer("Environment");

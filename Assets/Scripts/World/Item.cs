@@ -13,6 +13,7 @@ public class Item : MonoBehaviour
             {
                 case Type.HEALTH:
                     other.GetComponent<PlayerHealth>().Increase(GlobalSettings.healthIncreaseAmount);
+                    SoundPlayer.Play("HealthPack Pickup");
                     Destroy(gameObject);
                     break;
                 default:
