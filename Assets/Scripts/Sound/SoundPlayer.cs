@@ -13,6 +13,8 @@ public class SoundPlayer : MonoBehaviour
     public static float musicDB;
     public static float soundDB;
     public AudioMixer masterMixer;
+    public AudioMixerGroup soundMixerGroup;
+    public AudioMixerGroup musicMixerGroup;
 
     private void Awake()
     {
@@ -41,6 +43,12 @@ public class SoundPlayer : MonoBehaviour
         var source = sound.AddComponent<AudioSource>();
         source.clip = namedAudio.clip;
         source.volume = namedAudio.volume;
+
+        if (namedAudio.name.Contains("Music"))
+            source.outputAudioMixerGroup = instance.musicMixerGroup;
+        else
+            source.outputAudioMixerGroup = instance.soundMixerGroup;
+
         source.Play();
         source.loop = loop;
         if (!loop) Destroy(sound, namedAudio.clip.length + 1);

@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
         if (!_characterState.CanMove())
             return;
 
-        if (deltaPosition != Vector2.zero)
+        if (deltaPosition != Vector2.zero && _characterState.state != CharacterState.State.Jump)
             SetState(State.Walk);
         else
             SetState(State.Null);
@@ -91,7 +91,7 @@ public class Movement : MonoBehaviour
             SetDirection(Direction.Left, true);
     }
 
-    private void SetState(State newState)
+    public void SetState(State newState)
     {
         state = newState;
 

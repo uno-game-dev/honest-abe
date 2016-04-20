@@ -113,8 +113,6 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.HEAVY_KILL:
                 Debug.Log("Heavy Kill");
-                //AudioManager.instance.PlaySound("Hit_Crack");
-                //AudioManager.instance.PlaySound("Gore_1");
 				PerkManager.enemiesKilled++;
                 GameObject.Find("Player").GetComponent<PlayerHealth>().executionsPerformed++;
                 break;
@@ -155,7 +153,7 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.PERK_PICKUP:
                 Debug.Log("Perk Pickup");
-                MusicPlayer.Play("Forest Level Music");
+                
                 if (other != null && other.GetComponent<Perk>() != null)
                 {
                     // Activate the perk

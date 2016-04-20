@@ -183,7 +183,11 @@ public class PlayerHealth : Health
 
     private void Death()
 	{
+        if (!alive)
+            return;
+
 		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
+        SoundPlayer.Play("Abe Death");
     }
 }
