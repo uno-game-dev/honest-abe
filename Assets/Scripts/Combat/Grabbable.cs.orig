@@ -63,24 +63,19 @@ public class Grabbable : MonoBehaviour
     {
         if (collider.tag == "Grab")
             GetGrabbed(collider.transform.parent.gameObject);
-<<<<<<< d8fd2945b55442045d42c1c601aebb7a5af9fc21
         else if (collider.tag == "Enemy" && wasThrown)
-=======
-        else if (collider.tag == "Enemy")
->>>>>>> When an enemy is thrown, it will collide with other enemies and both will be damaged and knocked down. There are a few bugs that need to be worked out, though
         {
             Debug.Log("Hit Enemy with throw");
             _collision.RemoveCollisionLayer("Enemy");
 
             GetComponent<Damage>().ExecuteDamage(5, collider);
-<<<<<<< d8fd2945b55442045d42c1c601aebb7a5af9fc21
+<<<<<<< 9f8e7d6bbcd70b72fc043d84106aab72d526d4fb
             GetComponent<KnockDown>().horizontalVelocity = 0;
+=======
+            GetComponent<KnockDown>().HitGround();
+>>>>>>> An enemy will now take damage upon landing when thrown; an enemy will not continue flying through the air when colliding with another enemy; the thrown collision logic will now only be called if an enemy was actually thrown
             collider.gameObject.GetComponent<KnockDown>().StartKnockDown(0);
             collider.gameObject.GetComponent<Damage>().ExecuteDamage(5, GetComponent<Collider2D>());
-=======
-            collider.gameObject.GetComponent<Damage>().ExecuteDamage(5, GetComponent<Collider2D>());
-            collider.gameObject.GetComponent<KnockDown>().StartKnockDown(_grabbedBy.GetComponent<Movement>().direction == Movement.Direction.Left ? -10 : 10);
->>>>>>> When an enemy is thrown, it will collide with other enemies and both will be damaged and knocked down. There are a few bugs that need to be worked out, though
 
             Debug.Log(GetComponent<Health>().health + " : " + collider.gameObject.GetComponent<Health>().health);
         }
