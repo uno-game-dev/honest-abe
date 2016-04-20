@@ -197,7 +197,7 @@ public class Attack : MonoBehaviour
 
         _characterState.SetState(CharacterState.State.Attack);
 
-        attackState = State.Light;
+        SetState(State.Light);
         _attackType.StartLightAttack();
     }
 
@@ -213,13 +213,13 @@ public class Attack : MonoBehaviour
 
         _characterState.SetState(CharacterState.State.Attack);
 
-        attackState = State.Heavy;
+        SetState(State.Heavy);
         _attackType.StartHeavyAttack();
     }
 
     public void FinishAttack()
     {
-        attackState = State.Null;
+        SetState(State.Null);
         _characterState.SetState(CharacterState.State.Idle);
     }
 
@@ -230,5 +230,27 @@ public class Attack : MonoBehaviour
         if (_attackType is SwingAttack)
             return ((SwingAttack)_attackType).chain == SwingAttack.SwingChain.Second ? Hand.Left: Hand.Right;
         return Hand.Left;
+    }
+
+    public void SetState(State state)
+    {
+        if (state == State.Null)
+            if (_attackBox)
+                _attackBox.SetActive(false);
+
+        attackState = state;
+    }
+
+    private void OnDisable()
+    {
+        if (_attackBox)
+            _attackBox.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (attackState != State.Null)
+            if (_characterState.state != CharacterState.State.Attack)
+                SetState(State.Null);
     }
 }

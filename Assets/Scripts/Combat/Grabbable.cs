@@ -13,7 +13,6 @@ public class Grabbable : MonoBehaviour
     private Animator _animator;
     private Movement _movement;
     private EnemyFollow _movementAI;
-    private StateMachine _attackAI;
     private BaseCollision _collision;
     private GameObject _grabbedBy;
     private Transform _previousParent;
@@ -21,21 +20,18 @@ public class Grabbable : MonoBehaviour
     private CharacterState _characterState;
     private KnockDown _knockDown;
 	private Blackboard _blackboard;
-    private StateMachine stateMachine;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _movement = GetComponent<Movement>();
         _movementAI = GetComponent<EnemyFollow>();
-        _attackAI = GetComponent<StateMachine>();
 
         _collision = GetComponent<BaseCollision>();
         _characterState = GetComponent<CharacterState>();
         _knockDown = GetComponent<KnockDown>();
         _myLayer = gameObject.layer;
 		_blackboard = GetComponent<Blackboard> ();
-        stateMachine = GetComponent<StateMachine>();
 
         wasThrown = false;
     }
@@ -92,8 +88,6 @@ public class Grabbable : MonoBehaviour
         _movement.Move(Vector2.zero);
         _movement.SetDirection(grabbedBy.GetComponent<Movement>().direction, true);
         if (_movementAI) _movementAI.enabled = false;
-        if (_attackAI) _attackAI.enabled = false;
-        if (stateMachine) stateMachine.enabled = false;
 
         // AI stuff: Mark this enemy's position around the player as available
         if (_blackboard)
@@ -129,7 +123,6 @@ public class Grabbable : MonoBehaviour
         state = State.Null;
         _characterState.SetState(CharacterState.State.Idle);
         if (_movementAI) _movementAI.enabled = true;
-        if (_attackAI) _attackAI.enabled = true;
         transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;
         _collision.RemoveCollisionLayer("Enemy");
@@ -158,7 +151,6 @@ public class Grabbable : MonoBehaviour
 
         wasThrown = true;
         if (_movementAI) _movementAI.enabled = true;
-        if (_attackAI) _attackAI.enabled = true;
         transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;
         _collision.AddCollisionLayer("Enemy");

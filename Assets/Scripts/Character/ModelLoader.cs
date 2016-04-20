@@ -18,31 +18,31 @@ public class ModelLoader : MonoBehaviour
 
     void OnEnable()
     {
-        DestroyLoadedModel(true);
+        //DestroyLoadedModel(true);
 
-        if (!model)
-            return;
+        //if (!model)
+        //    return;
 
-        loadedModel = Instantiate(model);
-        loadedModel.transform.SetParent(transform);
-        loadedModel.name = model.name;
-        loadedModel.transform.localPosition = localPosition;
-        loadedModel.transform.localEulerAngles = localRotation;
-        loadedModel.transform.localScale = localScale;
-        loadedModel.AddComponent<JumpPositionOffset>();
+        //loadedModel = Instantiate(model);
+        //loadedModel.transform.SetParent(transform);
+        //loadedModel.name = model.name;
+        //loadedModel.transform.localPosition = localPosition;
+        //loadedModel.transform.localEulerAngles = localRotation;
+        //loadedModel.transform.localScale = localScale;
+        //loadedModel.AddComponent<JumpPositionOffset>();
 
-        Animator modelAnimator = loadedModel.GetComponent<Animator>();
-        Avatar avatar = null;
-        if (_animator && modelAnimator)
-            avatar = modelAnimator.avatar;
+        //Animator modelAnimator = loadedModel.GetComponent<Animator>();
+        //Avatar avatar = null;
+        //if (_animator && modelAnimator)
+        //    avatar = modelAnimator.avatar;
 
-        DestroyImmediate(modelAnimator);
-        _animator.avatar = avatar;
+        //DestroyImmediate(modelAnimator);
+        //_animator.avatar = avatar;
     }
 
     void OnDisable()
     {
-        DestroyLoadedModel();
+        //DestroyLoadedModel();
     }
 
     void DestroyLoadedModel(bool destroyImmediately = false)
