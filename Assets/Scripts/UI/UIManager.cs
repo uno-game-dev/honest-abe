@@ -69,6 +69,9 @@ public class UIManager : MonoBehaviour
 	//Trinket UI
 	private static Text _trinketUI;
 
+    // Cutscene Canvas
+    private CutsceneManager _cutsceneManager;
+
 	void Awake()
 	{
 		updateActive = false;
@@ -87,6 +90,8 @@ public class UIManager : MonoBehaviour
 		SetListenersForOptionsUI();
 		SetListenersForWinUI();
 		SetListenersForLoseUI();
+        _cutsceneManager = GameObject.Find("CutsceneCanvas").GetComponent<CutsceneManager>();
+        //_cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.NULL);
 		perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
 		bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
@@ -144,6 +149,7 @@ public class UIManager : MonoBehaviour
     {
         updateActive = true;
         _startGameText.SetActive(false);
+        _cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
     }
 
 	private void SetListenersForPauseUI()

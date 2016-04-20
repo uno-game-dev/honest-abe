@@ -55,13 +55,12 @@ public class CutsceneManager : MonoBehaviour {
         _endStoryText.text = _endText[0];
         _endStoryPanel.SetActive(false);
 
-        _cutsceneCanvas.SetActive(false);
+        //_cutsceneCanvas.SetActive(false);
 
         _cutsceneOver = false;
         cutsceneActive = false;
         index = 0;
         currentCutscene = Cutscenes.NULL;
-        ChangeCutscene(Cutscenes.INTRO);
     }
 
     void Update()
