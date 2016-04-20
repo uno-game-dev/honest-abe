@@ -82,10 +82,12 @@ public class Attack : MonoBehaviour
 
         if (weapon.attackType != Weapon.AttackType.Melee)
         {
-            if (weapon.attackType == Weapon.AttackType.Pistol)
+			if (weapon.attackType == Weapon.AttackType.Pistol )
                 weapon.transform.SetParent(_leftHand.transform, true);
             else if (weapon.attackType == Weapon.AttackType.Shoot)
-                weapon.transform.SetParent(_leftHand.transform, true);
+				weapon.transform.SetParent(_leftHand.transform, true);
+			else if (weapon.attackType == Weapon.AttackType.Slash)
+				weapon.transform.SetParent(_leftHand.transform, false);
             else
                 weapon.transform.SetParent(_rightHand.transform, true);
 
@@ -172,6 +174,8 @@ public class Attack : MonoBehaviour
             attack = this.GetOrAddComponent<KnifeAttack>();
         else if (attackType == Weapon.AttackType.Pistol)
             attack = this.GetOrAddComponent<PistolAttack>();
+		else if (attackType == Weapon.AttackType.Slash )
+			attack = this.GetOrAddComponent<SlashAttack>();
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 
