@@ -125,7 +125,7 @@ public class PlayerMotor : MonoBehaviour
                         _gameManager.perkChosen = true;
                         _uiManager.perkText.enabled = false;
                     }
-                    StartPickup();
+                    StartHatPickup();
                 }
                 else if (((collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET) ||
                     (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_TRINKET))
@@ -192,6 +192,13 @@ public class PlayerMotor : MonoBehaviour
     private void StartPickup()
     {
         _animator.Play("Pickup");
+        _characterState.SetState(CharacterState.State.Pickup);
+        Invoke("FinishPickup", pickupDuration);
+    }
+
+    private void StartHatPickup()
+    {
+        _animator.Play("Pickup Hat");
         _characterState.SetState(CharacterState.State.Pickup);
         Invoke("FinishPickup", pickupDuration);
     }
