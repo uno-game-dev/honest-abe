@@ -20,10 +20,13 @@ public class Attack : MonoBehaviour
     private CharacterState _characterState;
     private ChainAttack _chainAttack;
 
+    private Perk axePerk;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _characterState = GetComponent<CharacterState>();
+        axePerk = GameObject.Find("Player").GetComponent<Perk>();
 
         CreateOrGetAttackBox();
 
@@ -102,7 +105,13 @@ public class Attack : MonoBehaviour
     public float GetDamageAmount()
     {
         _chainAttack = GetComponent<ChainAttack>();
-        float chainAttackDamage = _chainAttack ? _chainAttack.numberOfChainAttacks : 0;
+        float chainAttackDamage = 0;
+        if (PerkManager.activeAxePerk != null && PerkManager.activeAxePerk.type == Perk.PerkType.AXE_SLUGGER)
+            chainAttackDamage = _chainAttack ? _chainAttack.numberOfChainAttacks * 2 : 0;
+        else
+            chainAttackDamage = _chainAttack ? _chainAttack.numberOfChainAttacks : 0;
+
+        Debug.Log(chainAttackDamage);
         if (attackState == State.Heavy)
             return weapon.heavyDamage + chainAttackDamage;
         else

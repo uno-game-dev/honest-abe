@@ -15,6 +15,11 @@ public class PreferenceManager : MonoBehaviour
             PlayerPrefs.SetInt(PerkManager.axe_bfa_name, 0);
         PerkManager.axe_bfa_unlocked = PlayerPrefs.GetInt(PerkManager.axe_bfa_name) == 1;
 
+        // Axe Slugger
+        if (!PlayerPrefs.HasKey(PerkManager.axe_slugger_name))
+            PlayerPrefs.SetInt(PerkManager.axe_slugger_name, 0);
+        PerkManager.axe_slugger_unlocked = PlayerPrefs.GetInt(PerkManager.axe_slugger_name) == 1;
+
         // Trinket Aggression Buddy 
         if (!PlayerPrefs.HasKey(PerkManager.trinket_agressionBuddy_name))
 			PlayerPrefs.SetInt(PerkManager.trinket_agressionBuddy_name, 0);

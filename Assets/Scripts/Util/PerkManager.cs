@@ -10,6 +10,7 @@ public class PerkManager : MonoBehaviour
     // Perk unlocked states
     public static bool axe_dtVampirism_unlocked = false;
     public static bool axe_bfa_unlocked = false;
+    public static bool axe_slugger_unlocked = false;
     public static bool hat_bearHands_unlocked = false;
 	public static bool hat_stickyFingers_unlocked = false;
 	public static bool trinket_agressionBuddy_unlocked = false;
@@ -30,6 +31,9 @@ public class PerkManager : MonoBehaviour
 
     public static string axe_bfa_name = "Axe_BFA";
     public static string axe_bfa_desc = "Perk: B.F.A.\nA bigger, stronger axe for your pleasure.";
+
+    public static string axe_slugger_name = "Axe_Slugger";
+    public static string axe_slugger_desc = "Perk: Slugger\nStronger combos and harder knockbacks";
 
     public static string hat_bearHands_name = "Hat_bearHands";
     public static string hat_bearHands_desc = "Perk: Bear Hands\nIncreased damage on all empty-handed attacks";
