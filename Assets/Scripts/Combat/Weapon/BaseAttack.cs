@@ -26,7 +26,7 @@ public abstract class BaseAttack : MonoBehaviour
 
     private void Awake()
     {
-		animator = GetComponent<Animator> ();
+        animator = GetComponent<Animator>();
         _characterState = GetComponent<CharacterState>();
         _collision = GetComponent<BaseCollision>();
         swipe = GetComponentInChildren<Swipe>(true);
@@ -42,24 +42,30 @@ public abstract class BaseAttack : MonoBehaviour
 
     public void StartLightAttack()
     {
+        if (!IsAttacking()) return;
+
         strength = Strength.Light;
         PrepareToLightAttack();
 
         if (tag == "Boss")
-			;
+            ;
     }
 
     public void StartHeavyAttack()
     {
+        if (!IsAttacking()) return;
+
         strength = Strength.Heavy;
         PrepareToHeavyAttack();
 
         if (tag == "Boss")
-           	;
+            ;
     }
 
     protected virtual void PrepareToLightAttack()
     {
+        if (!IsAttacking()) return;
+
         SetWeaponLocalTransform();
         strength = Strength.Light;
         state = State.Prepare;
@@ -68,6 +74,8 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected virtual void PrepareToHeavyAttack()
     {
+        if (!IsAttacking()) return;
+
         SetWeaponLocalTransform();
         strength = Strength.Heavy;
         state = State.Prepare;
@@ -82,22 +90,26 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected virtual void PerformLightAttack()
     {
+        if (!IsAttacking()) return;
+
         state = State.Perform;
-        if (_characterState.state == CharacterState.State.Attack)
-            attackArea.SetActive(true);
+        attackArea.SetActive(true);
         Invoke("FinishLightAttack", lightAttackTime);
     }
 
     protected virtual void PerformHeavyAttack()
     {
+        if (!IsAttacking()) return;
+
         state = State.Perform;
-        if (_characterState.state == CharacterState.State.Attack)
-            attackArea.SetActive(true);
+        attackArea.SetActive(true);
         Invoke("FinishHeavyAttack", heavyAttackTime);
     }
 
     protected virtual void FinishLightAttack()
     {
+        if (!IsAttacking()) return;
+
         state = State.Finish;
         attackArea.SetActive(false);
         Invoke("BackToIdle", finishLightAttackTime);
@@ -105,6 +117,8 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected virtual void FinishHeavyAttack()
     {
+        if (!IsAttacking()) return;
+
         state = State.Finish;
         attackArea.SetActive(false);
         Invoke("BackToIdle", finishHeavyAttackTime);
@@ -112,8 +126,18 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected virtual void BackToIdle()
     {
+        if (!IsAttacking()) return;
+
         attack.FinishAttack();
         state = State.Null;
         strength = Strength.Null;
+    }
+
+    protected bool IsAttacking()
+    {
+        if (_characterState.state != CharacterState.State.Attack)
+            state = State.Null;
+
+        return _characterState.state == CharacterState.State.Attack;
     }
 }

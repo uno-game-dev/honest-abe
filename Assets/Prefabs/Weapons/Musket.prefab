@@ -320,10 +320,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 3
-  attackSize: {x: 60, y: 0.1}
-  attackOffset: {x: 30, y: 0}
-  heldOffset: {x: -0.5, y: -0.013, z: -0.113}
-  heldOrientation: {x: 35, y: 350, z: 198}
+  attackSize: {x: 2, y: 1}
+  attackOffset: {x: 1.5, y: 0}
+  heldOffset: {x: 0.012, y: -0.1, z: -0.1}
+  heldOrientation: {x: 270, y: 20, z: 134}
   lightDamage: 20
   lightStun: 0.2
   lightKnockback: 4
@@ -331,7 +331,7 @@ MonoBehaviour:
   heavyStun: 0.5
   heavyKnockback: 7
   throwDamage: 0
-  isEnemyWeapon: 1
+  isEnemyWeapon: 0
 --- !u!114 &11497070
 MonoBehaviour:
   m_ObjectHideFlags: 1

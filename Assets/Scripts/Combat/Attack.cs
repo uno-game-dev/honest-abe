@@ -109,40 +109,40 @@ public class Attack : MonoBehaviour
             return weapon.lightDamage + chainAttackDamage;
     }
 
-    public float GetStunAmount()
-    {
+	public float GetStunAmount()
+	{
         switch (attackState)
         {
-            case State.Light:
-                return weapon.lightStun;
-                break;
-            case State.Heavy:
-                return weapon.heavyStun;
-                break;
+		case State.Light:
+			return weapon.lightStun;
+			break;
+		case State.Heavy:
+			return weapon.heavyStun;
+			break;
             case State.Throw:
-                return 4f;
-                break;
-            default:
-                return 1f;
-                break;
-        }
-    }
+			return 4f;
+			break;
+		default:
+			return 1f;
+			break;
+		}
+	}
 
-    public float GetKnockbackAmount()
-    {
+	public float GetKnockbackAmount()
+	{
         switch (attackState)
         {
-            case State.Light:
-                return weapon.lightKnockback;
-                break;
-            case State.Heavy:
-                return weapon.heavyKnockback;
-                break;
-            default:
-                return 0f;
-                break;
-        }
-    }
+		case State.Light:
+			return weapon.lightKnockback;
+			break;
+		case State.Heavy:
+			return weapon.heavyKnockback;
+			break;
+		default:
+			return 0f;
+			break;
+		}
+	}
 
     private BaseAttack CreateAttackType(Weapon.AttackType attackType)
     {
@@ -151,13 +151,13 @@ public class Attack : MonoBehaviour
                 component.enabled = false;
 
         BaseAttack attack;
-        if (attackType == Weapon.AttackType.Melee)
+		if (attackType == Weapon.AttackType.Melee)
             attack = this.GetOrAddComponent<MeleeAttack>();
-        else if (attackType == Weapon.AttackType.Swing)
+		else if (attackType == Weapon.AttackType.Swing)
             attack = this.GetOrAddComponent<SwingAttack>();
-        else if (attackType == Weapon.AttackType.Jab)
+		else if (attackType == Weapon.AttackType.Jab)
             attack = this.GetOrAddComponent<JabAttack>();
-        else if (attackType == Weapon.AttackType.Shoot)
+		else if (attackType == Weapon.AttackType.Shoot)
             attack = this.GetOrAddComponent<ShootAttack>();
         else if (attackType == Weapon.AttackType.Knife)
             attack = this.GetOrAddComponent<KnifeAttack>();

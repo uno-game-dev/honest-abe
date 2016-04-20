@@ -4,22 +4,70 @@ class ShootAttack : BaseAttack
 {
     public GameObject bulletSpark = null;
 	private CharacterState characterState;
+    public float aimDuration = 1f;
+    public float shootDuration = 1f;
+    public float reloadDuration = 1f;
 
     protected override void PrepareToLightAttack()
-    {
-        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
+    {   
         base.PrepareToLightAttack();
-        animator.Play("Shoot Musket");
+        Aim();
     }
 
     protected override void PrepareToHeavyAttack()
     {
-        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         base.PrepareToHeavyAttack();
-        animator.Play("Reload Musket");
+        Aim();
     }
 
     protected override void PerformLightAttack()
+    {
+        base.PerformLightAttack();
+        Shoot();
+    }
+
+    protected override void PerformHeavyAttack()
+    {
+        base.PerformHeavyAttack();
+        Shoot();
+    }
+
+    protected override void FinishLightAttack()
+    {
+        base.FinishLightAttack();
+        Reload();
+    }
+
+    protected override void FinishHeavyAttack()
+    {
+        base.FinishHeavyAttack();
+        Reload();
+    }
+
+    private void Aim()
+    {
+        if (!IsAttacking()) return;
+
+        animator.Play("Aim Musket");
+    }
+
+    private void Shoot()
+    {
+        if (!IsAttacking()) return;
+
+        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
+        animator.Play("Shoot Musket");
+        ShootCollisionCheck();
+    }
+
+    private void Reload()
+    {
+        if (!IsAttacking()) return;
+
+        animator.Play("Reload Musket");
+    }
+
+    private void ShootCollisionCheck()
     {
         Vector2 direction = Vector2.right;
         if (GetComponent<Movement>())
@@ -50,9 +98,4 @@ class ShootAttack : BaseAttack
 			}
 		}
     }
-
-    protected override void BackToIdle()
-    {
-		base.BackToIdle();
-	}
 }
