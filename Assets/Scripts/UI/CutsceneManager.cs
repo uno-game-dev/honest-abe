@@ -60,7 +60,8 @@ public class CutsceneManager : MonoBehaviour {
         _cutsceneOver = false;
         cutsceneActive = false;
         index = 0;
-        currentCutscene = Cutscenes.NULL;
+        //currentCutscene = Cutscenes.NULL;
+        ChangeCutscene(Cutscenes.NULL);
     }
 
     void Update()
@@ -70,7 +71,7 @@ public class CutsceneManager : MonoBehaviour {
 
         timer += Time.deltaTime;
 
-        if (Input.anyKeyDown || timer >= timeToNextSlide)
+        if ((Input.anyKeyDown || timer >= timeToNextSlide))
         {
             index++;
             timer = 0;
