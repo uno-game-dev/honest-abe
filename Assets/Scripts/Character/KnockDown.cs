@@ -19,6 +19,7 @@ public class KnockDown : MonoBehaviour
 	private Movement _movement;
     private float sign = 1;
     private StateMachine stateMachine;
+    private float landingDamage = 5f;
 
     private void Awake()
     {
@@ -73,11 +74,16 @@ public class KnockDown : MonoBehaviour
         _characterState.SetState(CharacterState.State.KnockDown);
     }
 
-    private void HitGround()
+    public void HitGround()
     {
         height = 0;
         SetState(State.Land);
         _animator.Play("Knock Down Land");
+        if (gameObject.tag == "Enemy" && GetComponent<Grabbable>() != null && GetComponent<Grabbable>().wasThrown)
+        {
+            GetComponent<Damage>().ExecuteDamage(landingDamage, GetComponent<Collider2D>());
+            GetComponent<Grabbable>().wasThrown = false;
+        }
         Invoke("Land", landDuration);
     }
 

@@ -9,6 +9,7 @@ public class Grabbable : MonoBehaviour
     public enum State { Null, Grabbed, Hit, Thrown, Escape }
 
     public State state;
+    public bool wasThrown;
     private Animator _animator;
     private Movement _movement;
     private EnemyFollow _movementAI;
@@ -35,6 +36,8 @@ public class Grabbable : MonoBehaviour
         _myLayer = gameObject.layer;
 		_blackboard = GetComponent<Blackboard> ();
         stateMachine = GetComponent<StateMachine>();
+
+        wasThrown = false;
     }
 
     private void Update()
@@ -60,14 +63,15 @@ public class Grabbable : MonoBehaviour
     {
         if (collider.tag == "Grab")
             GetGrabbed(collider.transform.parent.gameObject);
-        else if (collider.tag == "Enemy")
+        else if (collider.tag == "Enemy" && wasThrown)
         {
             Debug.Log("Hit Enemy with throw");
             _collision.RemoveCollisionLayer("Enemy");
 
             GetComponent<Damage>().ExecuteDamage(5, collider);
+            GetComponent<KnockDown>().HitGround();
+            collider.gameObject.GetComponent<KnockDown>().StartKnockDown(0);
             collider.gameObject.GetComponent<Damage>().ExecuteDamage(5, GetComponent<Collider2D>());
-            collider.gameObject.GetComponent<KnockDown>().StartKnockDown(_grabbedBy.GetComponent<Movement>().direction == Movement.Direction.Left ? -10 : 10);
 
             Debug.Log(GetComponent<Health>().health + " : " + collider.gameObject.GetComponent<Health>().health);
         }
@@ -152,12 +156,13 @@ public class Grabbable : MonoBehaviour
             return;
         }
 
-        state = State.Null;
+        wasThrown = true;
         if (_movementAI) _movementAI.enabled = true;
         if (_attackAI) _attackAI.enabled = true;
         transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;
         _collision.AddCollisionLayer("Enemy");
         _knockDown.StartKnockDown(_grabbedBy.GetComponent<Movement>().direction == Movement.Direction.Left ? -10 : 10);
+        state = State.Null;
     }
 }
