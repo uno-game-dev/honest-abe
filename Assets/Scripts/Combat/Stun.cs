@@ -66,6 +66,8 @@ public class Stun : MonoBehaviour
                     else
                         GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Left, Power.Light);
                 }
+				if (tag == "Player")
+					GetComponent<Attack> ().attackState = Attack.State.Null;
 			}
 		}
 	}
