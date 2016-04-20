@@ -14,13 +14,13 @@ public class MeleeAttack : BaseAttack
         if (_hand == Hand.Left)
         {
             animator.Play("Light Attack Melee Left");
-            SoundPlayer.Play("Light Punch");
+            SoundPlayer.Play("Light Punch Swing");
             _hand = Hand.Right;
         }
         else
         {
             animator.Play("Light Attack Melee Right");
-            SoundPlayer.Play("Light Punch");
+            SoundPlayer.Play("Light Punch Swing");
             _hand = Hand.Left;
         }
         base.PrepareToLightAttack();
@@ -40,13 +40,13 @@ public class MeleeAttack : BaseAttack
         if (_hand == Hand.Left)
         {
             animator.Play("Heavy Attack Melee Left");
-            SoundPlayer.Play("Heavy Punch");
+            SoundPlayer.Play("Heavy Punch Swing");
             _hand = Hand.Right;
         }
         else
         {
             animator.Play("Heavy Attack Melee Right");
-            SoundPlayer.Play("Heavy Punch");
+            SoundPlayer.Play("Heavy Punch Swing");
             _hand = Hand.Left;
         }
         base.PrepareToHeavyAttack();

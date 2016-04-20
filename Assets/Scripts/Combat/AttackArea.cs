@@ -76,4 +76,25 @@ public class AttackArea : MonoBehaviour
     {
         return _attack.weapon.attackType == Weapon.AttackType.Shoot;
     }
+
+    public int GetAttackChainNumber()
+    {
+        return _chainAttack.numberOfChainAttacks;
+    }
+
+    public Weapon.AttackType GetAttackType()
+    {
+        if (_attack && _attack.weapon)
+            return _attack.weapon.attackType;
+
+        return Weapon.AttackType.Melee;
+    }
+
+    public Attack.State GetAttackState()
+    {
+        if (_attack)
+            return _attack.attackState;
+
+        return Attack.State.Null;
+    }
 }

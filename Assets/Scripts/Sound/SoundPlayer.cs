@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class SoundPlayer : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class SoundPlayer : MonoBehaviour
     public List<NamedAudioClip> namedAudioList = new List<NamedAudioClip>();
     private static SoundPlayer instance;
     private static List<NamedAudioClip> list;
+
+    public static float musicDB;
+    public static float soundDB;
+    public AudioMixer masterMixer;
+    public AudioMixerGroup soundMixerGroup;
+    public AudioMixerGroup musicMixerGroup;
 
     private void Awake()
     {
@@ -36,10 +43,48 @@ public class SoundPlayer : MonoBehaviour
         var source = sound.AddComponent<AudioSource>();
         source.clip = namedAudio.clip;
         source.volume = namedAudio.volume;
+
+        if (namedAudio.name.Contains("Music"))
+            source.outputAudioMixerGroup = instance.musicMixerGroup;
+        else
+            source.outputAudioMixerGroup = instance.soundMixerGroup;
+
         source.Play();
         source.loop = loop;
         if (!loop) Destroy(sound, namedAudio.clip.length + 1);
         return sound;
+    }
+
+    public void SetMusicVolume01(float percent)
+    {
+        SetMusicVolume((Mathf.Clamp01(percent) * 80) + (-80));
+    }
+
+    public void SetSoundVolume01(float percent)
+    {
+        SetSoundVolume((Mathf.Clamp01(percent) * 80) + (-80));
+    }
+
+    public void SetMusicVolume(float musicDB)
+    {
+        SoundPlayer.musicDB = musicDB;
+        masterMixer.SetFloat("musicVolume", musicDB);
+    }
+
+    public void SetSoundVolume(float soundDB)
+    {
+        SoundPlayer.soundDB = soundDB;
+        masterMixer.SetFloat("soundVolume", soundDB);
+    }
+
+    public static float GetMusicPercent()
+    {
+        return Mathf.Clamp01(80 + musicDB / 80);
+    }
+
+    public static float GetSoundPercent()
+    {
+        return Mathf.Clamp01(80 + soundDB / 80);
     }
 
     [System.Serializable]
