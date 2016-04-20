@@ -46,6 +46,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &109648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 414840}
+  - 61: {fileID: 6139962}
+  - 114: {fileID: 11448708}
+  - 114: {fileID: 11445806}
+  - 33: {fileID: 3361178}
+  - 23: {fileID: 2340584}
+  m_Layer: 11
+  m_Name: Attack Box
+  m_TagString: Damage
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &109946
 GameObject:
   m_ObjectHideFlags: 1
@@ -541,6 +561,7 @@ GameObject:
   - 114: {fileID: 11458112}
   - 114: {fileID: 11451974}
   - 23: {fileID: 2341212}
+  - 114: {fileID: 11462888}
   m_Layer: 11
   m_Name: Soldier-Melee
   m_TagString: Enemy
@@ -658,6 +679,18 @@ Transform:
   - {fileID: 494360}
   m_Father: {fileID: 482302}
   m_RootOrder: 0
+--- !u!4 &414840
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.5, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 493242}
+  m_RootOrder: 3
 --- !u!4 &416590
 Transform:
   m_ObjectHideFlags: 1
@@ -1086,6 +1119,7 @@ Transform:
   - {fileID: 457714}
   - {fileID: 474950}
   - {fileID: 484076}
+  - {fileID: 414840}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &494360
@@ -1103,6 +1137,32 @@ Transform:
   - {fileID: 433204}
   m_Father: {fileID: 408152}
   m_RootOrder: 0
+--- !u!23 &2340584
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109648}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2341212
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1188,6 +1248,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142480}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &3361178
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109648}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3399372
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1195,6 +1262,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154982}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!61 &6139962
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109648}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!61 &6178680
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1337,7 +1418,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 12908
+  m_CachedInstanceID: 17486
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1364,7 +1445,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 12910
+  m_CachedInstanceID: 17494
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1506,8 +1587,19 @@ MonoBehaviour:
   localRotation: {x: 0, y: 145, z: 0}
   localScale: {x: 3, y: 3, z: 3}
   loadedModel: {fileID: 113476}
-  runtimeAnimationController: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385,
-    type: 2}
+  runtimeAnimationController: {fileID: 0}
+--- !u!114 &11445806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14121aae4670403419b1abd795a8eea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: {fileID: 0}
 --- !u!114 &11447112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1520,6 +1612,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+--- !u!114 &11448708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e82b4b0da06a14ebae9e830f632cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  numberOfCollisions: 0
 --- !u!114 &11448730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1560,7 +1669,6 @@ MonoBehaviour:
   weaponDropPrefabs: []
   itemDropPrefabs:
   - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
-  chanceToDrop: 1
 --- !u!114 &11451986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1594,7 +1702,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 12924
+  m_CachedInstanceID: 17500
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1677,10 +1785,37 @@ MonoBehaviour:
   damageAmount: 10
   damageRate: 0.2
   bloodSplatter: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodSwing: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodShoot: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodSwing: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
+  bloodShoot: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
   bloodMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
   bloodJab: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+--- !u!114 &11462888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af893658bebf327478b83394f7c996e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  animator: {fileID: 0}
+  attack: {fileID: 0}
+  attackArea: {fileID: 0}
+  strength: 0
+  state: 0
+  prepLightAttackTime: 0.1
+  prepHeavyAttackTime: 0.3
+  lightAttackTime: 0.2
+  heavyAttackTime: 0.2
+  finishLightAttackTime: 0.3
+  finishHeavyAttackTime: 0.4
+  lightDuration: 0.6
+  heavyDuration: 0.90000004
+  swipe: {fileID: 0}
+  _hand: 0
 --- !u!114 &11464280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1701,7 +1836,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 12930
+  m_CachedInstanceID: 17488
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1761,7 +1896,7 @@ MonoBehaviour:
     m_EventID: 93402385
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 12932
+  m_CachedInstanceID: 17498
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1831,7 +1966,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 12934
+  m_CachedInstanceID: 17492
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1925,7 +2060,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11465972}
     m_EventID: 1639135052
-  m_CachedInstanceID: 12940
+  m_CachedInstanceID: 17490
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1934,29 +2069,27 @@ MonoBehaviour:
     m_NodeTypes:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
-    - BehaviourMachine.PrioritySelector
+    - ChasePlayer
     - IsPlayerInMeleeRange
     - IsPathObstructed
-    - ChasePlayer
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23fbd4a944
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e00000010000000
-    m_BranchIndex: ffffffffffffffff01000000020000000200000002000000
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
+    m_BranchIndex: ffffffffffffffff010000000100000001000000
     m_UnityObjectValue: []
-    m_IntValue: 0100000001000000020000000100000003000000070000004c37b36105000000abfd1f6906000000
+    m_IntValue: 0100000001000000020000000100000006000000070000004c37b36105000000abfd1f69
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
-    - PrioritySelector
+    - ChasePlayer
     - IsPlayerInMeleeRange
     - IsPathObstructed
-    - ChasePlayer
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000080000000900000005000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e0000000100000002000000
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name
@@ -1972,8 +2105,6 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
-    - instanceID
-    - name
 --- !u!114 &11497228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1986,7 +2117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  stunDuration: 0.92
+  stunDuration: 0.15
 --- !u!137 &13737570
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2301,39 +2432,39 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.size
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.size
-      value: 17
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.size
-      value: 17
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.size
-      value: 17
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_BranchIndex.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.size
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
@@ -2393,7 +2524,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: prepLightAttackTime
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightAttackTime
@@ -2489,7 +2620,7 @@ Prefab:
       objectReference: {fileID: 11426946}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[3]
-      value: BehaviourMachine.FsmEvent
+      value: IsPlayerInMeleeRange
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[8]
@@ -2501,7 +2632,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[4]
-      value: BehaviourMachine.FsmEvent
+      value: IsPathObstructed
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[10]
@@ -2513,7 +2644,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[5]
-      value: BehaviourMachine.FsmEvent
+      value: PrioritySelector
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[13]
@@ -2529,7 +2660,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[11]
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[3].m_Name
@@ -2557,7 +2688,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[5]
-      value: ChasePlayer
+      value: BehaviourMachine.PrioritySelector
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[6]
@@ -2593,7 +2724,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[9]
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[10]
@@ -2613,7 +2744,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[14]
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[15]
@@ -2685,7 +2816,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[14]
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[4].m_Name
@@ -2698,22 +2829,106 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bloodSwing
       value: 
-      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+      objectReference: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodShoot
       value: 
-      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+      objectReference: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodJab
       value: 
-      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+      objectReference: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodMelee
       value: 
       objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
     - target: {fileID: 0}
-      propertyPath: m_StringVars.Array.data[0].m_Name
-      value: attackSide
+      propertyPath: stunDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: knockbackSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[3]
+      value: 600517450
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[4]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[5]
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[12]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldType.Array.data[15]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[10]
+      value: onSuccess
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[11]
+      value: instanceID
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[12]
+      value: name
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[13]
+      value: onSuccess
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[14]
+      value: instanceID
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_FieldPath.Array.data[15]
+      value: name
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[2]
+      value: ChasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_IntValue.Array.data[4]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_StringValue.Array.data[2]
+      value: ChasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[4]
+      value: 600517450
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: strength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: state
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

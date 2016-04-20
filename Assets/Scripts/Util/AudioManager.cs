@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
-
     public static AudioManager instance = null;
     public AudioClip introMusic;
     public AudioClip playMusic;
@@ -76,7 +75,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Sounds.ContainsKey(name))
             if (delay <= 0)
-                AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 1f);
+                AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, SoundPlayer.GetSoundPercent());
             else
                 StartCoroutine(DelayedPlay(name, delay));
     }
@@ -84,7 +83,7 @@ public class AudioManager : MonoBehaviour
     public IEnumerator DelayedPlay(string name, float delay)
     {
             yield return new WaitForSeconds(delay);
-            AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, 1f);
+            AudioSource.PlayClipAtPoint(Sounds[name], CameraSource.transform.position, SoundPlayer.GetSoundPercent());
     }
 
     public void PlayFootstep()

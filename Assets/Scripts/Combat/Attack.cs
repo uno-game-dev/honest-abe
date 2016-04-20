@@ -79,12 +79,22 @@ public class Attack : MonoBehaviour
 
         if (weapon.attackType != Weapon.AttackType.Melee)
         {
-            weapon.transform.SetParent(_rightHand.transform, true);
+            if (weapon.attackType == Weapon.AttackType.Pistol)
+                weapon.transform.SetParent(_leftHand.transform, true);
+            else if (weapon.attackType == Weapon.AttackType.Shoot)
+                weapon.transform.SetParent(_leftHand.transform, true);
+            else
+                weapon.transform.SetParent(_rightHand.transform, true);
+
             weapon.transform.localPosition = weapon.heldOffset;
             weapon.transform.localEulerAngles = weapon.heldOrientation;
             weapon.transform.GetChild(0).localRotation = Quaternion.identity;
             weapon.transform.GetChild(0).localPosition = Vector3.zero;
             weapon.gameObject.layer = gameObject.layer;
+
+            Vector3 fixBackwardsWeapon = weapon.transform.localScale;
+            fixBackwardsWeapon.x = Mathf.Abs(fixBackwardsWeapon.x);
+            weapon.transform.localScale = fixBackwardsWeapon;
         }
 
     }
@@ -99,6 +109,41 @@ public class Attack : MonoBehaviour
             return weapon.lightDamage + chainAttackDamage;
     }
 
+    public float GetStunAmount()
+    {
+        switch (attackState)
+        {
+            case State.Light:
+                return weapon.lightStun;
+                break;
+            case State.Heavy:
+                return weapon.heavyStun;
+                break;
+            case State.Throw:
+                return 4f;
+                break;
+            default:
+                return 1f;
+                break;
+        }
+    }
+
+    public float GetKnockbackAmount()
+    {
+        switch (attackState)
+        {
+            case State.Light:
+                return weapon.lightKnockback;
+                break;
+            case State.Heavy:
+                return weapon.heavyKnockback;
+                break;
+            default:
+                return 0f;
+                break;
+        }
+    }
+
     private BaseAttack CreateAttackType(Weapon.AttackType attackType)
     {
         foreach (MonoBehaviour component in GetComponents<MonoBehaviour>())
@@ -106,16 +151,18 @@ public class Attack : MonoBehaviour
                 component.enabled = false;
 
         BaseAttack attack;
-		if (attackType == Weapon.AttackType.Melee)
-			attack = this.GetOrAddComponent<MeleeAttack> ();
-		else if (attackType == Weapon.AttackType.Swing)
-			attack = this.GetOrAddComponent<SwingAttack> ();
-		else if (attackType == Weapon.AttackType.Jab)
-			attack = this.GetOrAddComponent<JabAttack> ();
-		else if (attackType == Weapon.AttackType.Shoot)
-			attack = this.GetOrAddComponent<ShootAttack> ();
+        if (attackType == Weapon.AttackType.Melee)
+            attack = this.GetOrAddComponent<MeleeAttack>();
+        else if (attackType == Weapon.AttackType.Swing)
+            attack = this.GetOrAddComponent<SwingAttack>();
+        else if (attackType == Weapon.AttackType.Jab)
+            attack = this.GetOrAddComponent<JabAttack>();
+        else if (attackType == Weapon.AttackType.Shoot)
+            attack = this.GetOrAddComponent<ShootAttack>();
         else if (attackType == Weapon.AttackType.Knife)
             attack = this.GetOrAddComponent<KnifeAttack>();
+        else if (attackType == Weapon.AttackType.Pistol)
+            attack = this.GetOrAddComponent<PistolAttack>();
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 

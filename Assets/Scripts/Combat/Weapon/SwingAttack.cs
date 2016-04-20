@@ -22,10 +22,7 @@
     protected override void PrepareToHeavyAttack()
     {
         base.PrepareToHeavyAttack();
-        if (chain == SwingChain.First)
-            animator.Play("Heavy Attack Axe Right");
-        else
-            animator.Play("Heavy Attack Axe Left");
+        animator.Play("Heavy Attack Axe Prep");
 
         chain = SwingChain.First;
         SoundPlayer.Play("Heavy Axe Swing");
@@ -33,13 +30,16 @@
 
     protected override void PerformLightAttack()
     {
-        if (swipe) swipe.Activate();
+        bool hand = chain == SwingChain.Second;
+        if (swipe) swipe.Activate(hand);
         base.PerformLightAttack();
     }
 
     protected override void PerformHeavyAttack()
     {
-        if (swipe) swipe.Activate();
+        animator.Play("Heavy Attack Axe Swing");
+        bool hand = chain == SwingChain.Second;
+        if (swipe) swipe.Activate(hand);
         base.PerformHeavyAttack();
     }
 

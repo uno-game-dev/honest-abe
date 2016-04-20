@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using BehaviourMachine;
 
 public class KnockDown : MonoBehaviour
 {
@@ -15,13 +16,17 @@ public class KnockDown : MonoBehaviour
     public float getUpDuration = 1;
     private CharacterState _characterState;
     private Animator _animator;
+	private Movement _movement;
     private float sign = 1;
+    private StateMachine stateMachine;
 
     private void Awake()
     {
         _characterState = GetComponent<CharacterState>();
         _animator = GetComponent<Animator>();
-    }
+        stateMachine = GetComponent<StateMachine>();
+		_movement = GetComponent<Movement>();
+	}
 
     private void Update()
     {
@@ -38,10 +43,17 @@ public class KnockDown : MonoBehaviour
         }
         if (state == State.OnGround || state == State.Land)
         {
+			if (_movement)
+				_movement.enabled = false;
             horizontalVelocity += GRAVITY * Time.deltaTime * gravityMultiplier;
             horizontalVelocity = Mathf.Clamp(horizontalVelocity, 0, horizontalVelocity);
             transform.Translate(sign * horizontalVelocity * Time.deltaTime, 0, 0);
         }
+		else
+		{
+			if (_movement)
+				_movement.enabled = true;
+		}
     }
 
     public void StartKnockDown(float horizontalVelocity)
@@ -49,11 +61,15 @@ public class KnockDown : MonoBehaviour
         if (state != State.Null)
             return;
 
+        if (_characterState.state == CharacterState.State.Dead)
+            return;
+
         sign = Mathf.Sign(horizontalVelocity);
         this.horizontalVelocity = Mathf.Abs(horizontalVelocity);
         height = 5;
         SetState(State.InAir);
         _animator.Play("Knock Down In Air");
+        if (stateMachine) stateMachine.enabled = false;
         _characterState.SetState(CharacterState.State.KnockDown);
     }
 
@@ -82,6 +98,7 @@ public class KnockDown : MonoBehaviour
     private void BackToIdle()
     {
         SetState(State.Null);
+        if (stateMachine) stateMachine.enabled = true;
         _characterState.SetState(CharacterState.State.Idle);
     }
 

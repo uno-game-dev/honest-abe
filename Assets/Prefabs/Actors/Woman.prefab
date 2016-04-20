@@ -1257,7 +1257,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11448032}
     m_EventID: 770579688
-  m_CachedInstanceID: 11656
+  m_CachedInstanceID: 38902
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1497,7 +1497,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 11658
+  m_CachedInstanceID: 38918
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1594,7 +1594,7 @@ MonoBehaviour:
     m_EventID: 1997708586
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 11664
+  m_CachedInstanceID: 38906
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1663,7 +1663,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 11666
+  m_CachedInstanceID: 38910
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1723,7 +1723,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 11668
+  m_CachedInstanceID: 38920
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1795,7 +1795,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 11670
+  m_CachedInstanceID: 38912
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1804,29 +1804,27 @@ MonoBehaviour:
     m_NodeTypes:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
-    - BehaviourMachine.PrioritySelector
+    - ChasePlayer
     - IsPlayerInMeleeRange
     - IsPathObstructed
-    - ChasePlayer
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23fbd4a944
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e00000010000000
-    m_BranchIndex: ffffffffffffffff01000000020000000200000002000000
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
+    m_BranchIndex: ffffffffffffffff010000000100000001000000
     m_UnityObjectValue: []
-    m_IntValue: 0100000001000000020000000100000003000000070000007b404c2305000000ca83493a06000000
+    m_IntValue: 0100000001000000020000000100000006000000070000007b404c2305000000ca83493a
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
-    - PrioritySelector
+    - ChasePlayer
     - IsPlayerInMeleeRange
     - IsPathObstructed
-    - ChasePlayer
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000080000000900000005000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e0000000100000002000000
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name
@@ -1842,8 +1840,6 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
-    - instanceID
-    - name
 --- !u!114 &11426784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2048,7 +2044,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422952}
     m_EventID: 1003642416
-  m_CachedInstanceID: 11684
+  m_CachedInstanceID: 38908
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2127,10 +2123,10 @@ MonoBehaviour:
   damageAmount: 10
   damageRate: 0.2
   bloodSplatter: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodSwing: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodShoot: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodSwing: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
+  bloodShoot: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
   bloodMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
-  bloodJab: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodJab: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
 --- !u!114 &11462508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2151,7 +2147,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 11692
+  m_CachedInstanceID: 38914
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2206,7 +2202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDropPrefabs: []
   itemDropPrefabs: []
-  chanceToDrop: 1
 --- !u!114 &11469354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2225,7 +2220,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11696
+  m_CachedInstanceID: 38900
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2249,8 +2244,13 @@ MonoBehaviour:
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 10
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 15
+  heavyStun: 0.5
+  heavyKnockback: 7
   throwDamage: 0
+  isEnemyWeapon: 0
 --- !u!114 &11471420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2316,7 +2316,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 11704
+  m_CachedInstanceID: 38904
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2413,7 +2413,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 11712
+  m_CachedInstanceID: 38916
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2818,23 +2818,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.size
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.size
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.size
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.size
@@ -2842,11 +2842,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_BranchIndex.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_GenericFieldType.Array.size
@@ -2862,7 +2862,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Blackboard
@@ -2882,7 +2882,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[6]
-      value: 1997708586
+      value: 592199803
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[7]
@@ -2890,7 +2890,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[4]
-      value: AttackPlayer
+      value: IsPathObstructed
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[10]
@@ -2910,7 +2910,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[5]
-      value: 977896394
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[8]
@@ -2926,15 +2926,15 @@ Prefab:
       objectReference: {fileID: 11407704}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[8]
-      value: 362682009
+      value: 977896394
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[9]
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[5]
-      value: AttackPlayer
+      value: PrioritySelector
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[13]
@@ -2942,11 +2942,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[14]
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[15]
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[13]
@@ -2954,7 +2954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[11]
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Name
@@ -2962,7 +2962,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[3]
-      value: NavigateToPosition
+      value: IsPlayerInMeleeRange
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[6]
@@ -3006,23 +3006,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[4]
-      value: 15
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[12]
-      value: 16
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[13]
-      value: animationName.value
+      value: onSuccess
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[3]
-      value: BehaviourMachine.PlayAnimation
+      value: IsPlayerInMeleeRange
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[3]
-      value: 684285700
+      value: 600517450
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[3]
@@ -3050,7 +3050,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[14]
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[9]
@@ -3058,19 +3058,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[10]
-      value: name
+      value: onSuccess
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[11]
-      value: gameObject
+      value: instanceID
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[12]
-      value: animationName
+      value: name
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[14]
-      value: playMode
+      value: instanceID
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[1]
@@ -3078,7 +3078,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[2]
-      value: Reload
+      value: ChasePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[1]
@@ -3106,7 +3106,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_IntValue.Array.data[4]
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[1]
@@ -3114,7 +3114,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_StringValue.Array.data[2]
-      value: Reload
+      value: ChasePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[5]
@@ -3130,11 +3130,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[4]
-      value: BehaviourMachine.PlayAnimation
+      value: IsPathObstructed
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[4]
-      value: 684285700
+      value: 600517450
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldIndex.Array.data[16]
@@ -3146,7 +3146,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[15]
-      value: 16
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldType.Array.data[17]
@@ -3154,7 +3154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[15]
-      value: animationName
+      value: name
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_FieldPath.Array.data[16]
@@ -3166,7 +3166,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[5]
-      value: 18
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[4]
@@ -3239,15 +3239,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bloodSwing
       value: 
-      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+      objectReference: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodShoot
       value: 
-      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+      objectReference: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodJab
       value: 
-      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+      objectReference: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodMelee
       value: 
@@ -3264,6 +3264,22 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypes.Array.data[5]
+      value: BehaviourMachine.PrioritySelector
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeTypeHash.Array.data[5]
+      value: 1151980795
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[6]
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177166}

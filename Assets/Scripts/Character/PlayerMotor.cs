@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour
 {
     public float stepInterval = 0.6f;
+	public Weapon savedWeapon;
 
     private GameManager _gameManager;
 	private UIManager _uiManager;
@@ -38,8 +39,8 @@ public class PlayerMotor : MonoBehaviour
         // Else run the update code
 		if (_movement.enabled)
         {
-			_velocity = new Vector2(MobileInput.GetAxis("Horizontal") * _movement.horizontalMovementSpeed,
-				MobileInput.GetAxis("Vertical") * _movement.vericalMovementSpeed);
+			_velocity = new Vector2(InputManager.GetAxis("Horizontal") * _movement.horizontalMovementSpeed,
+				InputManager.GetAxis("Vertical") * _movement.vericalMovementSpeed);
 			_movement.Move(_velocity);
 
             UpdateStep();
@@ -85,19 +86,19 @@ public class PlayerMotor : MonoBehaviour
 			_uiManager.perkText.enabled = true;
 			_uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
         }
+		else if (collider.tag == "OneUseWeapon")
+		{
+			_controls.ResetHold();
+			_collidersImOn.Add(collider);
+		}
     }
 
     private void OnCollisionUpdate(Collider2D collider)
     {
         if (collider.tag == "Weapon")
         {
-			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded)
+			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded && !collider.gameObject.GetComponent<Weapon>().isEnemyWeapon)
             {
-				//Changing the Enemy Attack to Melee because if Player steals the enemy weapon
-				if(collider.gameObject.layer == LayerMask.NameToLayer("Enemy")){
-					Weapon eWeapon = collider.transform.root.gameObject.AddComponent<Weapon> ();
-					collider.transform.root.gameObject.GetComponent<Attack> ().SetWeapon (eWeapon);
-				}
 				EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
 				_playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
@@ -107,8 +108,10 @@ public class PlayerMotor : MonoBehaviour
         {
             if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
             {
-                if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT && PerkManager.activeHatPerk == null)
-                {
+				if ( ( (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT) || 
+					(collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_HAT) )
+					&& (PerkManager.activeHatPerk == null) )
+				{
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                     collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                     if (!_gameManager.perkChosen)
@@ -117,8 +120,10 @@ public class PlayerMotor : MonoBehaviour
                         _uiManager.perkText.enabled = false;
                     }
                 }
-                else if (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET && PerkManager.activeTrinketPerk == null)
-            {
+				else if ( ( (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET) ||
+					(collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_TRINKET) )
+					&& (PerkManager.activeTrinketPerk == null) )
+				{
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 if (!_gameManager.perkChosen)
@@ -145,7 +150,22 @@ public class PlayerMotor : MonoBehaviour
 					_uiManager.perkText.enabled = false;
                 }
             }
-        }
+		}
+		if (collider.tag == "OneUseWeapon")
+		{
+			if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
+			{
+				EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
+				savedWeapon = gameObject.GetComponent<Attack>().weapon;
+				if (savedWeapon.name != "Player") {
+					savedWeapon.transform.gameObject.SetActive (false);
+				}
+				_playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
+				collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
+				collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
+				_playerAttack.emptyHanded = false;
+			}
+		}
 		if (collider.tag == "Enemy") {
 			//If enemy has a weapon to steal
 			if((collider.GetComponent<ShootAttack>() != null) && (_playerAttack.emptyHanded) ){

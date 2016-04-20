@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterState : MonoBehaviour
 {
-    public enum State { Null, Idle, Movement, Attack, Jump, Grab, Throw, Stun, KnockDown, Grabbed, Dead }
+    public enum State { Null, Idle, Movement, Attack, Jump, Grab, Throw, Stun, KnockDown, Grabbed, Dead, Cinematic }
 
     public State state;
 
@@ -16,7 +16,8 @@ public class CharacterState : MonoBehaviour
 
     private void OnEnable()
     {
-        SetState(State.Idle);
+        if (tag != "Player")
+            SetState(State.Idle);
     }
 
     private void OnDisable()
@@ -26,6 +27,9 @@ public class CharacterState : MonoBehaviour
 
     public void SetState(State newState)
     {
+        if (newState == State.Idle && state == State.Grabbed)
+            return;
+
         if (state == State.Dead)
             return;
 
@@ -59,6 +63,6 @@ public class CharacterState : MonoBehaviour
 
     public bool CanBeGrabbed()
     {
-        return state == State.Idle || state == State.Movement || state == State.Grab;
+        return state == State.Idle || state == State.Movement || state == State.Grab || state == State.Attack || state == State.Stun;
     }
 }

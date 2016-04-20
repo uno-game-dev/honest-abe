@@ -34,6 +34,16 @@ public class PreferenceManager : MonoBehaviour
 		if (!PlayerPrefs.HasKey(PerkManager.hat_stickyFingers_name))
 			PlayerPrefs.SetInt(PerkManager.hat_stickyFingers_name, 0);
 		PerkManager.hat_stickyFingers_unlocked = PlayerPrefs.GetInt(PerkManager.hat_stickyFingers_name) == 1;
+
+
+		// Options Menu Settings
+        if (!PlayerPrefs.HasKey(UIManager.MusicVolume))
+            PlayerPrefs.SetFloat(UIManager.MusicVolume, 1);
+        UIManager.musicVolume = PlayerPrefs.GetFloat(UIManager.MusicVolume);
+
+        if (!PlayerPrefs.HasKey(UIManager.EffectsVolume))
+            PlayerPrefs.SetFloat(UIManager.EffectsVolume, 1);
+        UIManager.effectsVolume = PlayerPrefs.GetFloat(UIManager.EffectsVolume);
     }
 
 }
