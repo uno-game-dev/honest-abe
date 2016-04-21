@@ -389,7 +389,7 @@ public class UIManager : MonoBehaviour
     public void OnLoseYes()
     {
 		//Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
-		_levelManager.loadCurrentLevel();
+		_levelManager.currentScene = 0;
 		_loseUI.SetActive(false);
         updateActive = false;
     }
@@ -405,7 +405,7 @@ public class UIManager : MonoBehaviour
     public void OnWinYes()
     {
 		//Need to restart the game, but for the alpha since it's only one scene it will restart the level
-		_levelManager.loadCurrentLevel();
+		_levelManager.currentScene++;
 		_winUI.SetActive(false);
         updateActive = false;
     }
