@@ -18,13 +18,12 @@ public class KnockDown : MonoBehaviour
     private Animator _animator;
 	private Movement _movement;
     private float sign = 1;
-    private StateMachine stateMachine;
+    private float landingDamage = 5f;
 
     private void Awake()
     {
         _characterState = GetComponent<CharacterState>();
         _animator = GetComponent<Animator>();
-        stateMachine = GetComponent<StateMachine>();
 		_movement = GetComponent<Movement>();
 	}
 
@@ -58,9 +57,6 @@ public class KnockDown : MonoBehaviour
 
     public void StartKnockDown(float horizontalVelocity)
     {
-        if (state != State.Null)
-            return;
-
         if (_characterState.state == CharacterState.State.Dead)
             return;
 
@@ -69,20 +65,30 @@ public class KnockDown : MonoBehaviour
         height = 5;
         SetState(State.InAir);
         _animator.Play("Knock Down In Air");
-        if (stateMachine) stateMachine.enabled = false;
         _characterState.SetState(CharacterState.State.KnockDown);
     }
 
-    private void HitGround()
+    public void HitGround()
     {
+        if (_characterState.state != CharacterState.State.KnockDown)
+            return;
+        
         height = 0;
         SetState(State.Land);
         _animator.Play("Knock Down Land");
+        if (gameObject.tag == "Enemy" && GetComponent<Grabbable>() != null && GetComponent<Grabbable>().wasThrown)
+        {
+            GetComponent<Damage>().ExecuteDamage(landingDamage, GetComponent<Collider2D>());
+            GetComponent<Grabbable>().wasThrown = false;
+        }
         Invoke("Land", landDuration);
     }
 
     private void Land()
     {
+        if (_characterState.state != CharacterState.State.KnockDown)
+            return;
+
         SetState(State.OnGround);
         _animator.Play("Knock Down On Ground");
         Invoke("GetUp", onGroundDuration);
@@ -90,6 +96,13 @@ public class KnockDown : MonoBehaviour
 
     private void GetUp()
     {
+        if (_characterState.state != CharacterState.State.KnockDown)
+            return;
+
+        if (gameObject.tag == "Enemy")
+        {
+            GetComponent<BaseCollision>().RemoveCollisionLayer("Enemy");
+        }
         SetState(State.GettingUp);
         _animator.Play("Knock Down Get Up");
         Invoke("BackToIdle", getUpDuration);
@@ -97,8 +110,10 @@ public class KnockDown : MonoBehaviour
 
     private void BackToIdle()
     {
+        if (_characterState.state != CharacterState.State.KnockDown)
+            return;
+
         SetState(State.Null);
-        if (stateMachine) stateMachine.enabled = true;
         _characterState.SetState(CharacterState.State.Idle);
     }
 
