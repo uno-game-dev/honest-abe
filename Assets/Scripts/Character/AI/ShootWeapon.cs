@@ -2,7 +2,7 @@
 using System.Collections;
 using BehaviourMachine;
 
-public class ShootMusket : ConditionNode
+public class ShootWeapon : ConditionNode
 {
     private Attack attack;
 
