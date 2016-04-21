@@ -107,21 +107,10 @@ public class PerkManager : MonoBehaviour
     }
 
 	void Update(){
-		if ( (worldGen.currentScreen - tempCurrentScene == 1)) {
-			if((worldGen.currentScreen == 1) && (!hatPerkChosen)){
-				cameraFollow.lockRightEdge = true;
-			}
-			if((worldGen.currentScreen == 2) && (!trinketPerkChosen)){
-				cameraFollow.lockRightEdge = true;
-			}
-			if((worldGen.currentScreen == 3) && (!axePerkChosen)){
-				cameraFollow.lockRightEdge = true;
-			}
-			if (worldGen.currentScreen == 4) {
-				levelManager.currentScene++;
-			}
-			tempCurrentScene ++;
-		}
+		if(worldGen.currentScreen == 1 && (!hatPerkChosen || !trinketPerkChosen || !axePerkChosen))
+			cameraFollow.lockRightEdge = true;
+		else
+			cameraFollow.lockRightEdge = false;
 	}
 
     public static void PerformPerkEffects(Perk.PerkCategory type)
@@ -144,8 +133,4 @@ public class PerkManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(perk, status);
     }
-
-	public static void UnlockCameraAfterPerkPickUp(){
-		cameraFollow.lockRightEdge = false;
-	}
 }
