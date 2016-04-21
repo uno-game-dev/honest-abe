@@ -118,7 +118,7 @@ public class PerkManager : MonoBehaviour
 				cameraFollow.lockRightEdge = true;
 			}
 			if (worldGen.currentScreen == 4) {
-				levelManager.loadNextLevel ();
+				levelManager.currentScene++;
 			}
 			tempCurrentScene ++;
 		}

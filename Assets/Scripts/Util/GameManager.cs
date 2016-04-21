@@ -50,6 +50,6 @@ public class GameManager : MonoBehaviour
             if (p.setToBeUnlocked)
                 PerkManager.UpdatePerkStatus(p.perkName, 1);
         }
-        _levelManager.loadNextLevel();
+        _levelManager.currentScene++;
 	}
 }
