@@ -518,7 +518,6 @@ GameObject:
   - 114: {fileID: 11493690}
   - 114: {fileID: 11412012}
   - 114: {fileID: 11447678}
-  - 114: {fileID: 11471420}
   - 114: {fileID: 11426784}
   - 114: {fileID: 11469354}
   - 114: {fileID: 11483412}
@@ -531,6 +530,7 @@ GameObject:
   - 114: {fileID: 11468590}
   - 23: {fileID: 2304162}
   - 114: {fileID: 11461846}
+  - 114: {fileID: 11426756}
   m_Layer: 11
   m_Name: Woman
   m_TagString: Enemy
@@ -1729,6 +1729,30 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
+--- !u!114 &11426756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 7
+  attackSize: {x: 1, y: 1}
+  attackOffset: {x: 1, y: 0}
+  heldOffset: {x: 0, y: 0, z: 0}
+  heldOrientation: {x: 0, y: 0, z: 0}
+  lightDamage: 10
+  lightStun: 0.2
+  lightKnockback: 4
+  heavyDamage: 15
+  heavyStun: 0.5
+  heavyKnockback: 7
+  throwDamage: 0
+  isEnemyWeapon: 0
 --- !u!114 &11426784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2145,36 +2169,6 @@ MonoBehaviour:
   heavyKnockback: 7
   throwDamage: 0
   isEnemyWeapon: 0
---- !u!114 &11471420
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4898cbcf71ead9b479ea5d7b22b74e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  animator: {fileID: 9586264}
-  attack: {fileID: 11492716}
-  attackArea: {fileID: 138752}
-  strength: 0
-  state: 0
-  prepLightAttackTime: 0.5
-  prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.8
-  heavyAttackTime: 1
-  finishLightAttackTime: 0.1
-  finishHeavyAttackTime: 0.1
-  lightDuration: 0
-  heavyDuration: 0
-  swipe: {fileID: 0}
-  bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
-  aimDuration: 1
-  shootDuration: 1
-  reloadDuration: 1
 --- !u!114 &11471440
 MonoBehaviour:
   m_ObjectHideFlags: 1
