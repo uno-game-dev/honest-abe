@@ -13,12 +13,10 @@ class LungeAttack : MonoBehaviour
 	private bool active = false;
 	private BaseCollision _collision;
 	private Vector3 prevPosition = Vector3.zero;
-	private BaseAttack attack;
 	private bool lightAttack = true;
 	private void Start()
 	{
 		_collision = this.GetComponentInParent<BaseCollision>();
-		attack = gameObject.GetComponent<BaseAttack>();
 	}
 	private void Update()
 	{
@@ -32,6 +30,10 @@ class LungeAttack : MonoBehaviour
 				_collision.Move(Vector3.zero);
 				traveled = 0f;
 			}
+			if(lightAttack)
+				gameObject.GetComponent<Attack>().LightAttack();
+			else
+				gameObject.GetComponent<Attack>().HeavyAttack();
 		}
 	}
 
