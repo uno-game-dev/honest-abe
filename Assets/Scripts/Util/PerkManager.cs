@@ -82,7 +82,7 @@ public class PerkManager : MonoBehaviour
 	public static bool axePerkChosen = false;
 	private LevelManager levelManager;
 
-    void Start()
+    void Awake()
     {
         perkList = new List<Perk>();
 
