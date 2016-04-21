@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 	private GameObject _pauseUI;
 	private Button _pauseUIResumeButton;
 	private Button _pauseUIOptionsButton;
+    private Button _pauseUICreditsButton;
 	private Button _pauseUIQuitButton;
 
 	// Options UI
@@ -34,6 +35,10 @@ public class UIManager : MonoBehaviour
     private Button _optionsUIGraphicsButton;
     private Button _optionsUIAudioButton;
     private Button _optionsUIControlsButton;
+
+    // Credits UI
+    private GameObject _creditsUI;
+    private Button _creditsUIBackButton;
 
     // Graphics Menu
     private GameObject _graphicsUI;
@@ -73,6 +78,7 @@ public class UIManager : MonoBehaviour
 		_startGameText = GameObject.Find("StartText");
 		_startGameText.SetActive(true);
 		SetListenersForPauseUI();
+        SetListenersForCreditsUI();
 		SetListenersForOptionsUI();
 		SetListenersForWinUI();
 		SetListenersForLoseUI();
@@ -120,6 +126,7 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(true);
             _optionsUI.SetActive(false);
             _optionsUIBackground.SetActive(false);
+            _creditsUI.SetActive(false);
             Time.timeScale = 0;
         }
         else
@@ -127,6 +134,7 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(false);
             _optionsUI.SetActive(false);
             _optionsUIBackground.SetActive(false);
+            _creditsUI.SetActive(false);
             Time.timeScale = 1;
         }
     }
@@ -148,14 +156,24 @@ public class UIManager : MonoBehaviour
 
 		_pauseUIResumeButton = _pauseUI.transform.Find("Resume").GetComponent<Button>();
 		_pauseUIOptionsButton = _pauseUI.transform.Find("Options").GetComponent<Button>();
+        _pauseUICreditsButton = _pauseUI.transform.Find("Credits").GetComponent<Button>();
 		_pauseUIQuitButton = _pauseUI.transform.Find("Quit").GetComponent<Button>();
 
 		_pauseUIResumeButton.onClick.AddListener(OnResume);
 		_pauseUIOptionsButton.onClick.AddListener(OnOptions);
+        _pauseUICreditsButton.onClick.AddListener(OnCredits);
 		_pauseUIQuitButton.onClick.AddListener(OnQuit);
 
         _pauseUI.SetActive(false);
 	}
+
+    private void SetListenersForCreditsUI()
+    {
+        _creditsUI = GameObject.Find("CreditsUI");
+        _creditsUIBackButton = _creditsUI.transform.Find("Panel").transform.Find("Back").GetComponent<Button>();
+        _creditsUIBackButton.onClick.AddListener(OnCreditsBack);
+        _creditsUI.SetActive(false);
+    }
 
 	private void SetListenersForOptionsUI()
 	{
@@ -270,6 +288,12 @@ public class UIManager : MonoBehaviour
         _optionsUIBackground.SetActive(true);
     }
 
+    public void OnCredits()
+    {
+        _pauseUI.SetActive(false);
+        _creditsUI.SetActive(true);
+    }
+
     public void OnQuit()
     {
         Application.Quit(); //Only works when the project is built
@@ -283,6 +307,12 @@ public class UIManager : MonoBehaviour
         _optionsUI.SetActive(false);
         _optionsUIBackground.SetActive(false);
         Time.timeScale = 0;
+    }
+
+    public void OnCreditsBack()
+    {
+        _pauseUI.SetActive(true);
+        _creditsUI.SetActive(false);
     }
 
     // When clicking the graphics button on the options menu
