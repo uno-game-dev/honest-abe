@@ -581,6 +581,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11421682, guid: 28e53de6e3a7ed145901aa798e6840c3, type: 2}
+      propertyPath: decals.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 498448, guid: 28e53de6e3a7ed145901aa798e6840c3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -625,6 +629,14 @@ Prefab:
       propertyPath: enemies.Array.data[0]
       value: 
       objectReference: {fileID: 188124, guid: f7cc6c9782046944c9737c3bc517099c, type: 2}
+    - target: {fileID: 11421682, guid: 28e53de6e3a7ed145901aa798e6840c3, type: 2}
+      propertyPath: decals.Array.data[0]
+      value: 
+      objectReference: {fileID: 126218, guid: 1bb39e4b7c7d6c142a7d9f82f77c67f3, type: 2}
+    - target: {fileID: 11421682, guid: 28e53de6e3a7ed145901aa798e6840c3, type: 2}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 112324, guid: 2344d1aded5b2a9438bf739fa32fb18b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28e53de6e3a7ed145901aa798e6840c3, type: 2}
   m_IsPrefabParent: 0
