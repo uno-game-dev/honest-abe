@@ -58,12 +58,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 402240}
   - 61: {fileID: 6172762}
-  - 114: {fileID: 11492770}
   - 114: {fileID: 11488988}
   - 114: {fileID: 11479016}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Saber
-  m_TagString: AbeAxe
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,21 +302,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   numberOfCollisions: 0
---- !u!114 &11492770
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd71f47f14968164ebc11b9250190101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  unlocked: 0
-  setToBeUnlocked: 0
-  alreadyActive: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -335,7 +319,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: AbeAxe
+      value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightDamage
