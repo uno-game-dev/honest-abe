@@ -573,12 +573,8 @@ GameObject:
   - 114: {fileID: 11493848}
   - 114: {fileID: 11462748}
   - 114: {fileID: 11487932}
-  - 114: {fileID: 11405632}
   - 114: {fileID: 11462540}
-  - 114: {fileID: 11417292}
   - 114: {fileID: 11417352}
-  - 114: {fileID: 11448730}
-  - 114: {fileID: 11497228}
   - 114: {fileID: 11407154}
   - 114: {fileID: 11427242}
   - 114: {fileID: 11421144}
@@ -587,9 +583,12 @@ GameObject:
   - 114: {fileID: 11476676}
   - 114: {fileID: 11426946}
   - 114: {fileID: 11466624}
+  - 114: {fileID: 11415636}
+  - 114: {fileID: 11438134}
+  - 114: {fileID: 11471266}
   m_Layer: 11
   m_Name: Officer-Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1382,7 +1381,7 @@ Animator:
   m_GameObject: {fileID: 188124}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 57fefb15c2348f74281d753f2f251ce2, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1407,21 +1406,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 26112
   numberOfCollisions: 0
---- !u!114 &11405632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 150
-  additionalHealthFloor: 1
-  additionalHealthCeiling: 4
-  alive: 0
 --- !u!114 &11407154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1440,7 +1424,7 @@ MonoBehaviour:
   landDuration: 0.5
   onGroundDuration: 1
   getUpDuration: 1
---- !u!114 &11417292
+--- !u!114 &11415636
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1448,10 +1432,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 188124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde8e46f6c00a384e906c69f08df90f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0230f66eb00a64fb8986d61f3c1b17fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  health: 0
+  additionalHealthFloor: 0
+  additionalHealthCeiling: 0
+  alive: 0
 --- !u!114 &11417352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1484,7 +1471,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 37828
+  m_CachedInstanceID: 12146
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1511,7 +1498,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 37836
+  m_CachedInstanceID: 15506
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1622,6 +1609,21 @@ MonoBehaviour:
     m_IsConstant: 0
     m_IsSystem: 0
   m_Namespace: 
+--- !u!114 &11438134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c4d07dd4bb44199a64243ccd9be58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossHealth: {fileID: 0}
+  _75PercentHealth: {fileID: 0}
+  _50PercentHealth: {fileID: 0}
+  _25PercentHealth: {fileID: 0}
 --- !u!114 &11443786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1646,32 +1648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
---- !u!114 &11448730
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58544273158a1fd4b9f12cad75855e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  animator: {fileID: 0}
-  attack: {fileID: 0}
-  attackArea: {fileID: 0}
-  strength: 0
-  state: 0
-  prepLightAttackTime: 0.1
-  prepHeavyAttackTime: 0.3
-  lightAttackTime: 0.8
-  heavyAttackTime: 1
-  finishLightAttackTime: 0.1
-  finishHeavyAttackTime: 0.1
-  lightDuration: 0
-  heavyDuration: 0
-  swipe: {fileID: 0}
 --- !u!114 &11451986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1683,6 +1659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7dfacf1bbf624a8380211d7dfc6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabber: {fileID: 0}
 --- !u!114 &11454244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1756,7 +1733,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 37830
+  m_CachedInstanceID: 15512
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1805,6 +1782,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDropPrefabs: []
   itemDropPrefabs: []
+--- !u!114 &11471266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 4
+  attackSize: {x: 1, y: 1}
+  attackOffset: {x: 1, y: 0}
+  heldOffset: {x: 0, y: 0, z: 0}
+  heldOrientation: {x: 0, y: 0, z: 0}
+  lightDamage: 10
+  lightStun: 0.2
+  lightKnockback: 4
+  heavyDamage: 15
+  heavyStun: 0.5
+  heavyKnockback: 7
+  throwDamage: 0
+  isEnemyWeapon: 0
 --- !u!114 &11476676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1825,7 +1826,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 37834
+  m_CachedInstanceID: 15514
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1919,7 +1920,7 @@ MonoBehaviour:
     m_EventID: 334526696
   - m_Destination: {fileID: 11476676}
     m_EventID: 1763704235
-  m_CachedInstanceID: 37832
+  m_CachedInstanceID: 15516
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1964,19 +1965,6 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
---- !u!114 &11497228
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e5c4da3254bb26429192148a7aa55a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  stunDuration: 0.92
 --- !u!137 &13712930
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2450,7 +2438,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 2c5fe1a8bdcc96a4fa3690af5ed90385, type: 2}
+      objectReference: {fileID: 9100000, guid: ae1cae974608043428b2ff5430d47ba4, type: 2}
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
@@ -2806,6 +2794,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_NodeFieldStartIndex.Array.data[6]
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
