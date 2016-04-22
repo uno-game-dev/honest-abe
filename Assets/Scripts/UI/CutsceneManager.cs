@@ -126,6 +126,8 @@ public class CutsceneManager : MonoBehaviour {
             case Cutscenes.INTRO:
                 cutsceneActive = true;
                 _introStoryPanel.SetActive(true);
+                GameObject.Find("Player").GetComponent<Cinematic>().cinematic = "Abe Rises";
+                GameObject.Find("Player").GetComponent<Cinematic>().enabled = true;
                 break;
             case Cutscenes.MID:
                 cutsceneActive = true;
