@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class PerkManager : MonoBehaviour
 {
-    private static GameObject _perkManagerInstance;
 
     /*
      * Individual Perk Information
@@ -77,12 +76,26 @@ public class PerkManager : MonoBehaviour
 	 */
 	private static CameraFollow cameraFollow;
 	private WorldGenerator worldGen;
+	private int tempCurrentScene = 0;
 	public static bool hatPerkChosen = false;
 	public static bool trinketPerkChosen = false;
 	public static bool axePerkChosen = false;
 	private LevelManager levelManager;
 
-    void Awake()
+	/*
+	 * Trinket UI
+	 */
+	public static int trinketTime = 100;
+	public static int maryToddsTrinketTime = 100;
+	private static TrinketSlider trinketSlider;
+	public static bool updateTrinketBar = false;
+	public static bool updateMaryToddsBar = false;
+	public static float decreaseTrinketBarRate = 0;
+	public static float decreaseMaryToddsBarRate = 0;
+	private float nextTrinketDecrease = 0f;
+	private float nextMaryToddsDecrease = 0f;
+
+    void Start()
     {
         perkList = new List<Perk>();
 
@@ -101,28 +114,37 @@ public class PerkManager : MonoBehaviour
             p.CheckStatus();
             perkList.Add(p);
         }
-
-        if (_perkManagerInstance == null)
-        {
-            _perkManagerInstance = gameObject;
-        }
-        else if (_perkManagerInstance != gameObject)
-            Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
-    }
-
-    void Start()
-    {
 		cameraFollow = GameObject.Find ("Main Camera").GetComponent<CameraFollow> ();
-		worldGen = GameObject.Find ("Level").GetComponent<WorldGenerator> ();
+		worldGen = GameObject.Find ("Forest").GetComponent<WorldGenerator> ();
 		levelManager = GameObject.Find ("GameManager").GetComponent<LevelManager> ();
     }
 
 	void Update(){
-		if(worldGen.currentScreen == 0 && (!hatPerkChosen || !trinketPerkChosen || !axePerkChosen))
-			cameraFollow.lockRightEdge = true;
-		else
-			cameraFollow.lockRightEdge = false;
+		if ( (worldGen.currentScreen - tempCurrentScene == 1)) {
+			if((worldGen.currentScreen == 1) && (!hatPerkChosen)){
+				cameraFollow.lockRightEdge = true;
+			}
+			if((worldGen.currentScreen == 2) && (!trinketPerkChosen)){
+				cameraFollow.lockRightEdge = true;
+			}
+			if((worldGen.currentScreen == 3) && (!axePerkChosen)){
+				cameraFollow.lockRightEdge = true;
+			}
+			if (worldGen.currentScreen == 4) {
+				levelManager.currentScene++;
+			}
+			tempCurrentScene ++;
+		}
+		if(updateTrinketBar && (Time.time > nextTrinketDecrease)){
+			nextTrinketDecrease = Time.time + decreaseTrinketBarRate;
+			trinketTime -= 1;
+			trinketSlider.UpdateTrinket (trinketTime);
+		}
+		if(updateMaryToddsBar && (Time.time > nextMaryToddsDecrease )){
+			nextMaryToddsDecrease = Time.time + decreaseMaryToddsBarRate;
+			maryToddsTrinketTime -= 1;
+			trinketSlider.UpdateMaryToddsTrinket(maryToddsTrinketTime);
+		}
 	}
 
     public static void PerformPerkEffects(Perk.PerkCategory type)
@@ -145,4 +167,8 @@ public class PerkManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(perk, status);
     }
+
+	public static void UnlockCameraAfterPerkPickUp(){
+		cameraFollow.lockRightEdge = false;
+	}
 }
