@@ -11,7 +11,7 @@ public class ShootWeapon : ConditionNode
         attack = self.GetComponent<Attack>();
 		attack.LightAttack();
 		blackboard.GetIntVar ("bulletsRemaining").Value--;
-    }
+	}
 
     public override Status Update()
     {
