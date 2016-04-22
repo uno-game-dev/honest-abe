@@ -929,7 +929,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5823293, y: 0.23847377, z: 0}
+  m_LocalPosition: {x: 13.34, y: -7.1, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 464774}
@@ -1439,7 +1439,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 16098
+  m_CachedInstanceID: 10704
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1539,7 +1539,7 @@ MonoBehaviour:
     m_EventID: 361888865
   - m_Destination: {fileID: 11461846}
     m_EventID: 570825600
-  m_CachedInstanceID: 16104
+  m_CachedInstanceID: 10710
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1612,7 +1612,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 16108
+  m_CachedInstanceID: 10712
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1684,7 +1684,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 16110
+  m_CachedInstanceID: 10714
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1795,6 +1795,11 @@ MonoBehaviour:
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
     value: -1
+  - m_ID: 1483813907
+    m_Name: preferredRangeMax
+    m_Blackboard: {fileID: 11426784}
+    m_IsConstant: 0
+    value: 25
   m_IntVars: []
   m_BoolVars: []
   m_StringVars:
@@ -1971,6 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  wasThrown: 0
 --- !u!114 &11456274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2009,7 +2015,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: -108008
+  m_CachedInstanceID: 10736
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2065,7 +2071,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 16132
+  m_CachedInstanceID: 10738
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2138,7 +2144,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 16136
+  m_CachedInstanceID: 10742
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2207,7 +2213,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 16144
+  m_CachedInstanceID: 10748
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2284,6 +2290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 1
+  stateMachine: {fileID: 0}
 --- !u!114 &11499232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2304,7 +2311,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 16152
+  m_CachedInstanceID: 10756
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
