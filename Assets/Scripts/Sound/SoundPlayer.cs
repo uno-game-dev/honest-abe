@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class SoundPlayer : MonoBehaviour
 {
+    private const float LN10 = 2.302f;
+
     [HideInInspector]
     public List<NamedAudioClip> namedAudioList = new List<NamedAudioClip>();
     private static SoundPlayer instance;
@@ -57,12 +59,16 @@ public class SoundPlayer : MonoBehaviour
 
     public static void SetMusicVolume01(float percent)
     {
-        instance.SetMusicVolume((Mathf.Clamp01(percent) * 80) + (-80));
+        percent = Mathf.Clamp(percent, 0.001f, 1);
+        float amplitude = 20 * Mathf.Log(percent) / LN10;
+        instance.SetMusicVolume(amplitude);
     }
 
     public static void SetSoundVolume01(float percent)
     {
-        instance.SetSoundVolume((Mathf.Clamp01(percent) * 80) + (-80));
+        percent = Mathf.Clamp(percent, 0.001f, 1);
+        float amplitude = 20 * Mathf.Log(percent) / LN10;
+        instance.SetSoundVolume(amplitude);
     }
 
     public void SetMusicVolume(float musicDB)
@@ -79,12 +85,12 @@ public class SoundPlayer : MonoBehaviour
 
     public static float GetMusicPercent()
     {
-        return Mathf.Clamp01(80 + musicDB / 80);
+        return Mathf.Pow(10, musicDB / 20);
     }
 
     public static float GetSoundPercent()
     {
-        return Mathf.Clamp01(80 + soundDB / 80);
+        return Mathf.Pow(10, soundDB / 20);
     }
 
     [System.Serializable]
