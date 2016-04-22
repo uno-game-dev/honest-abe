@@ -15,27 +15,21 @@ public class Death : MonoBehaviour
 
     void OnEnable()
     {
-        SoundPlayer sound = GetComponent<SoundPlayer>();
-        SoundPlayer.Play("Death");
-
         CharacterState characterState = GetComponent<CharacterState>();
         if (characterState) characterState.SetState(CharacterState.State.Dead);
 
-        BaseCollision baseCollision = GetComponent<BaseCollision>();
-        if (baseCollision) baseCollision.enabled = false;
+        SoundPlayer sound = GetComponent<SoundPlayer>();
+        SoundPlayer.Play("Death");
 
+        Animator animator = GetComponent<Animator>();
+        animator.Play("Dead");
+
+        foreach (MonoBehaviour monoBehaviour in GetComponents<MonoBehaviour>())
+            if (monoBehaviour != this)
+                monoBehaviour.enabled = false;
+        
         Collider2D collider = GetComponent<Collider2D>();
         if (collider) collider.enabled = false;
-
-        Movement movement = GetComponent<Movement>();
-        movement.enabled = false;
-
-        BehaviourTree[] behaviorTrees = GetComponents<BehaviourTree>();
-        foreach (BehaviourTree behaviorTree in behaviorTrees)
-            behaviorTree.enabled = false;
-
-        EnemyFollow enemyFollow = GetComponent<EnemyFollow>();
-        if (enemyFollow) enemyFollow.enabled = false;
 
 		//Disable the original gun that the rifleman carries 
 		if (gameObject.name.Contains("Rifleman") && (gameObject.transform.FindContainsInChildren("Musket") != null)) {

@@ -75,7 +75,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: -6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 485650}
@@ -213,6 +213,7 @@ MonoBehaviour:
   type: 0
   unlocked: 0
   setToBeUnlocked: 0
+  alreadyActive: 0
 --- !u!114 &11454434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,10 +228,16 @@ MonoBehaviour:
   attackType: 1
   attackSize: {x: 1, y: 1}
   attackOffset: {x: 1.5, y: 0}
-  heldOffset: {x: -0.005, y: 0.036, z: 0.055}
-  heldOrientation: {x: 36, y: 340, z: 146}
+  heldOffset: {x: 0, y: 0, z: 0}
+  heldOrientation: {x: 60, y: 180, z: 0}
   lightDamage: 4
+  lightStun: 0.2
+  lightKnockback: 4
   heavyDamage: 7
+  heavyStun: 0.5
+  heavyKnockback: 7
+  throwDamage: 0
+  isEnemyWeapon: 0
 --- !u!114 &11463664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,6 +289,38 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: attackType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heldOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heldOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heldOffset.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heldOrientation.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heldOrientation.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: heldOrientation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using BehaviourMachine;
 
 public class CharacterState : MonoBehaviour
 {
-    public enum State { Null, Idle, Movement, Attack, Jump, Grab, Throw, Stun, KnockDown, Grabbed, Dead, Cinematic }
+    public enum State { Null, Idle, Movement, Attack, Jump, Grab, Throw, Stun, KnockDown, Grabbed, Dead, Cinematic, Pickup }
 
     public State state;
 
-    private Animator _animator;
+    private Animator animator;
+    public StateMachine stateMachine;
+    private bool previouslyDisabledByThisScript;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        stateMachine = GetComponent<StateMachine>();
     }
 
     private void OnEnable()
@@ -32,6 +36,21 @@ public class CharacterState : MonoBehaviour
 
         if (state == State.Dead)
             return;
+
+        if (stateMachine)
+        {
+            if (newState == State.Grabbed || newState == State.KnockDown || newState == State.Stun || newState == State.Dead)
+            {
+                previouslyDisabledByThisScript = true;
+                stateMachine.enabled = false;
+            }
+            else if (previouslyDisabledByThisScript)
+            {
+                stateMachine.enabled = true;
+                previouslyDisabledByThisScript = false;
+            }
+        }
+
 
         state = newState;
     }

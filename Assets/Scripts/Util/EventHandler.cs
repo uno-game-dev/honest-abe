@@ -6,7 +6,7 @@ public class EventHandler : MonoBehaviour
     public string eventToExecute;
 
     private static GameObject player;
-    private static Perk bfaPerk, bearAbePerk;
+    private static Perk bfaPerk, bearAbePerk, sluggerPerk;
 	private static int amountOfWeaponPickUp = 0;
 	private static int goalToUnlockSFPerk = 20; 
 
@@ -21,6 +21,8 @@ public class EventHandler : MonoBehaviour
         HEAVY_HIT,
         HEAVY_KILL,
         WEAPON_THROW,
+        WEAPON_THROW_KILL,
+        GUN_FIRE_KILL,
         ENEMY_THROW,
         ENEMY_GRAB,
         ITEM_PICKUP,
@@ -90,6 +92,8 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.LIGHT_KILL:
                 Debug.Log("Light Kill");
+                if (sluggerPerk == null) sluggerPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_slugger_name));
+                sluggerPerk.setToBeUnlocked = false;
                 PerkManager.enemiesKilled++;
                 break;
             case Events.HEAVY_SWING:
@@ -122,6 +126,16 @@ public class EventHandler : MonoBehaviour
 					other.GetComponent<BoxCollider2D> ().size = new Vector2 (6.0f, 1.0f);
 					other.GetComponent<BoxCollider2D> ().offset = new Vector2 (0.75f, 0.5f);
 				}
+                break;
+            case Events.WEAPON_THROW_KILL:
+                Debug.Log("Weapon Throw Kill");
+                if (sluggerPerk == null) sluggerPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_slugger_name));
+                sluggerPerk.setToBeUnlocked = false;
+                break;
+            case Events.GUN_FIRE_KILL:
+                Debug.Log("Gun Fire Kill");
+                if (sluggerPerk == null) sluggerPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_slugger_name));
+                sluggerPerk.setToBeUnlocked = false;
                 break;
             case Events.ENEMY_GRAB:
                 Debug.Log("Enemy Grab");

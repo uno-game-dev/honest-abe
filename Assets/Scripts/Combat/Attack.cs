@@ -20,10 +20,13 @@ public class Attack : MonoBehaviour
     private CharacterState _characterState;
     private ChainAttack _chainAttack;
 
+    private Perk axePerk;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _characterState = GetComponent<CharacterState>();
+        axePerk = GameObject.Find("Player").GetComponent<Perk>();
 
         CreateOrGetAttackBox();
 
@@ -79,10 +82,12 @@ public class Attack : MonoBehaviour
 
         if (weapon.attackType != Weapon.AttackType.Melee)
         {
-            if (weapon.attackType == Weapon.AttackType.Pistol)
+			if (weapon.attackType == Weapon.AttackType.Pistol )
                 weapon.transform.SetParent(_leftHand.transform, true);
             else if (weapon.attackType == Weapon.AttackType.Shoot)
-                weapon.transform.SetParent(_leftHand.transform, true);
+				weapon.transform.SetParent(_leftHand.transform, true);
+			else if (weapon.attackType == Weapon.AttackType.Slash)
+				weapon.transform.SetParent(_leftHand.transform, false);
             else
                 weapon.transform.SetParent(_rightHand.transform, true);
 
@@ -102,47 +107,53 @@ public class Attack : MonoBehaviour
     public float GetDamageAmount()
     {
         _chainAttack = GetComponent<ChainAttack>();
-        float chainAttackDamage = _chainAttack ? _chainAttack.numberOfChainAttacks : 0;
+        float chainAttackDamage = 0;
+        if (PerkManager.activeAxePerk != null && PerkManager.activeAxePerk.type == Perk.PerkType.AXE_SLUGGER)
+            chainAttackDamage = _chainAttack ? _chainAttack.numberOfChainAttacks * 2 : 0;
+        else
+            chainAttackDamage = _chainAttack ? _chainAttack.numberOfChainAttacks : 0;
+
+        Debug.Log(chainAttackDamage);
         if (attackState == State.Heavy)
             return weapon.heavyDamage + chainAttackDamage;
         else
             return weapon.lightDamage + chainAttackDamage;
     }
 
-    public float GetStunAmount()
-    {
+	public float GetStunAmount()
+	{
         switch (attackState)
         {
-            case State.Light:
-                return weapon.lightStun;
-                break;
-            case State.Heavy:
-                return weapon.heavyStun;
-                break;
+		case State.Light:
+			return weapon.lightStun;
+			break;
+		case State.Heavy:
+			return weapon.heavyStun;
+			break;
             case State.Throw:
-                return 4f;
-                break;
-            default:
-                return 1f;
-                break;
-        }
-    }
+			return 4f;
+			break;
+		default:
+			return 1f;
+			break;
+		}
+	}
 
-    public float GetKnockbackAmount()
-    {
+	public float GetKnockbackAmount()
+	{
         switch (attackState)
         {
-            case State.Light:
-                return weapon.lightKnockback;
-                break;
-            case State.Heavy:
-                return weapon.heavyKnockback;
-                break;
-            default:
-                return 0f;
-                break;
-        }
-    }
+		case State.Light:
+			return weapon.lightKnockback;
+			break;
+		case State.Heavy:
+			return weapon.heavyKnockback;
+			break;
+		default:
+			return 0f;
+			break;
+		}
+	}
 
     private BaseAttack CreateAttackType(Weapon.AttackType attackType)
     {
@@ -151,18 +162,20 @@ public class Attack : MonoBehaviour
                 component.enabled = false;
 
         BaseAttack attack;
-        if (attackType == Weapon.AttackType.Melee)
+		if (attackType == Weapon.AttackType.Melee)
             attack = this.GetOrAddComponent<MeleeAttack>();
-        else if (attackType == Weapon.AttackType.Swing)
+		else if (attackType == Weapon.AttackType.Swing)
             attack = this.GetOrAddComponent<SwingAttack>();
-        else if (attackType == Weapon.AttackType.Jab)
+		else if (attackType == Weapon.AttackType.Jab)
             attack = this.GetOrAddComponent<JabAttack>();
-        else if (attackType == Weapon.AttackType.Shoot)
+		else if (attackType == Weapon.AttackType.Shoot)
             attack = this.GetOrAddComponent<ShootAttack>();
         else if (attackType == Weapon.AttackType.Knife)
             attack = this.GetOrAddComponent<KnifeAttack>();
         else if (attackType == Weapon.AttackType.Pistol)
             attack = this.GetOrAddComponent<PistolAttack>();
+		else if (attackType == Weapon.AttackType.Slash )
+			attack = this.GetOrAddComponent<SlashAttack>();
         else
             attack = this.GetOrAddComponent<MeleeAttack>();
 
@@ -184,7 +197,7 @@ public class Attack : MonoBehaviour
 
         _characterState.SetState(CharacterState.State.Attack);
 
-        attackState = State.Light;
+        SetState(State.Light);
         _attackType.StartLightAttack();
     }
 
@@ -200,13 +213,44 @@ public class Attack : MonoBehaviour
 
         _characterState.SetState(CharacterState.State.Attack);
 
-        attackState = State.Heavy;
+        SetState(State.Heavy);
         _attackType.StartHeavyAttack();
     }
 
     public void FinishAttack()
     {
-        attackState = State.Null;
+        SetState(State.Null);
         _characterState.SetState(CharacterState.State.Idle);
+    }
+
+    public Hand getAttackHand()
+    {
+        if (_attackType is MeleeAttack)
+            return ((MeleeAttack)_attackType)._hand == MeleeAttack.Hand.Right ? Hand.Right : Hand.Left;
+        if (_attackType is SwingAttack)
+            return ((SwingAttack)_attackType).chain == SwingAttack.SwingChain.Second ? Hand.Left: Hand.Right;
+        return Hand.Left;
+    }
+
+    public void SetState(State state)
+    {
+        if (state == State.Null)
+            if (_attackBox)
+                _attackBox.SetActive(false);
+
+        attackState = state;
+    }
+
+    private void OnDisable()
+    {
+        if (_attackBox)
+            _attackBox.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (attackState != State.Null)
+            if (_characterState.state != CharacterState.State.Attack)
+                SetState(State.Null);
     }
 }

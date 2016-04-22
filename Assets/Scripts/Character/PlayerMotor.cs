@@ -5,6 +5,7 @@ public class PlayerMotor : MonoBehaviour
 {
     public float stepInterval = 0.6f;
     public Weapon savedWeapon;
+    public float pickupDuration = 2f;
 
     private GameManager _gameManager;
     private UIManager _uiManager;
@@ -16,6 +17,8 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 _velocity;
     private List<Collider2D> _collidersImOn = new List<Collider2D>();
     private float _stepElapsed = 0.0f;
+    private CharacterState _characterState;
+    private Animator _animator;
 
     void Start()
     {
@@ -28,6 +31,8 @@ public class PlayerMotor : MonoBehaviour
         _controls = GetComponent<PlayerControls>();
         _playerAttack = GetComponent<Attack>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _characterState = GetComponent<CharacterState>();
+        _animator = GetComponent<Animator>();
         Initialize();
     }
 
@@ -102,6 +107,7 @@ public class PlayerMotor : MonoBehaviour
                 EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
                 _playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
+                StartPickup();
             }
         }
         if (collider.tag == "Perk")
@@ -120,6 +126,7 @@ public class PlayerMotor : MonoBehaviour
                         _gameManager.perkChosen = true;
                         _uiManager.perkText.enabled = false;
                     }
+                    StartHatPickup();
                 }
                 else if (((collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET) ||
                     (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_TRINKET))
@@ -133,6 +140,7 @@ public class PlayerMotor : MonoBehaviour
                         _gameManager.perkChosen = true;
                         _uiManager.perkText.enabled = false;
                     }
+                    StartPickup();
                 }
             }
         }
@@ -152,6 +160,7 @@ public class PlayerMotor : MonoBehaviour
                     _gameManager.perkChosen = true;
                     _uiManager.perkText.enabled = false;
                 }
+                StartPickup();
             }
         }
         if (collider.tag == "OneUseWeapon")
@@ -168,6 +177,7 @@ public class PlayerMotor : MonoBehaviour
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 _playerAttack.emptyHanded = false;
+                StartPickup();
             }
         }
         if (collider.tag == "Enemy")
@@ -180,6 +190,20 @@ public class PlayerMotor : MonoBehaviour
         }
 
         _controls.heldComplete = false;
+    }
+
+    private void StartPickup()
+    {
+        _animator.Play("Pickup");
+        _characterState.SetState(CharacterState.State.Pickup);
+        Invoke("FinishPickup", pickupDuration);
+    }
+
+    private void StartHatPickup()
+    {
+        _animator.Play("Pickup Hat");
+        _characterState.SetState(CharacterState.State.Pickup);
+        Invoke("FinishPickup", pickupDuration);
     }
 
     private void OnCollisionEnd(Collider2D collider)
@@ -211,6 +235,11 @@ public class PlayerMotor : MonoBehaviour
             EventHandler.SendEvent(EventHandler.Events.STEP);
             _stepElapsed = 0.0f;
         }
+    }
 
+    private void FinishPickup()
+    {
+        if (_characterState.state == CharacterState.State.Pickup)
+            _characterState.SetState(CharacterState.State.Idle);
     }
 }

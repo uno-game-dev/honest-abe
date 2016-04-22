@@ -13,8 +13,10 @@ public class PlayerHealth : Health
 	private int _tempHealth;
     private int _tempDamageThreshold;
     private float _updateSliderTime = 1;
+    private Animator _animator;
+    private CharacterState _characterState;
 
-	void Start()
+    void Start()
 	{
 		Initialize();
     }
@@ -44,7 +46,10 @@ public class PlayerHealth : Health
         alive = true;
 		GetComponent<PlayerMotor>().enabled = true;
 		GetComponent<PlayerControls>().enabled = true;
-	}
+        _animator = GetComponent<Animator>();
+        _characterState = GetComponent<CharacterState>();
+
+    }
 
     public override void Increase(int amount)
     {
@@ -189,5 +194,14 @@ public class PlayerHealth : Health
 		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
         SoundPlayer.Play("Abe Death");
+        _animator.Play("Abe Death");
+        _characterState.SetState(CharacterState.State.Dead);
+
+        BaseCollision baseCollision = GetComponent<BaseCollision>();
+        baseCollision.enabled = false;
+
+        // Maybe too much
+        //foreach (MonoBehaviour monoBehaviour in GetComponents<MonoBehaviour>())
+        //    monoBehaviour.enabled = false;
     }
 }

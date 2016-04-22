@@ -9,10 +9,10 @@ public class Grabbable : MonoBehaviour
     public enum State { Null, Grabbed, Hit, Thrown, Escape }
 
     public State state;
+    public bool wasThrown;
     private Animator _animator;
     private Movement _movement;
     private EnemyFollow _movementAI;
-    private StateMachine _attackAI;
     private BaseCollision _collision;
     private GameObject _grabbedBy;
     private Transform _previousParent;
@@ -20,21 +20,20 @@ public class Grabbable : MonoBehaviour
     private CharacterState _characterState;
     private KnockDown _knockDown;
 	private Blackboard _blackboard;
-    private StateMachine stateMachine;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _movement = GetComponent<Movement>();
         _movementAI = GetComponent<EnemyFollow>();
-        _attackAI = GetComponent<StateMachine>();
 
         _collision = GetComponent<BaseCollision>();
         _characterState = GetComponent<CharacterState>();
         _knockDown = GetComponent<KnockDown>();
         _myLayer = gameObject.layer;
 		_blackboard = GetComponent<Blackboard> ();
-        stateMachine = GetComponent<StateMachine>();
+
+        wasThrown = false;
     }
 
     private void Update()
@@ -60,6 +59,18 @@ public class Grabbable : MonoBehaviour
     {
         if (collider.tag == "Grab")
             GetGrabbed(collider.transform.parent.gameObject);
+        else if (collider.tag == "Enemy" && wasThrown)
+        {
+            Debug.Log("Hit Enemy with throw");
+            _collision.RemoveCollisionLayer("Enemy");
+
+            GetComponent<Damage>().ExecuteDamage(5, collider);
+            GetComponent<KnockDown>().horizontalVelocity = 0;
+            collider.gameObject.GetComponent<KnockDown>().StartKnockDown(0);
+            collider.gameObject.GetComponent<Damage>().ExecuteDamage(5, GetComponent<Collider2D>());
+
+            Debug.Log(GetComponent<Health>().health + " : " + collider.gameObject.GetComponent<Health>().health);
+        }
     }
 
     private void GetGrabbed(GameObject grabbedBy)
@@ -77,8 +88,6 @@ public class Grabbable : MonoBehaviour
         _movement.Move(Vector2.zero);
         _movement.SetDirection(grabbedBy.GetComponent<Movement>().direction, true);
         if (_movementAI) _movementAI.enabled = false;
-        if (_attackAI) _attackAI.enabled = false;
-        if (stateMachine) stateMachine.enabled = false;
 
         // AI stuff: Mark this enemy's position around the player as available
         if (_blackboard)
@@ -114,7 +123,6 @@ public class Grabbable : MonoBehaviour
         state = State.Null;
         _characterState.SetState(CharacterState.State.Idle);
         if (_movementAI) _movementAI.enabled = true;
-        if (_attackAI) _attackAI.enabled = true;
         transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;
         _collision.RemoveCollisionLayer("Enemy");
@@ -141,12 +149,12 @@ public class Grabbable : MonoBehaviour
             return;
         }
 
-        state = State.Null;
+        wasThrown = true;
         if (_movementAI) _movementAI.enabled = true;
-        if (_attackAI) _attackAI.enabled = true;
         transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;
-        _collision.RemoveCollisionLayer("Enemy");
+        _collision.AddCollisionLayer("Enemy");
         _knockDown.StartKnockDown(_grabbedBy.GetComponent<Movement>().direction == Movement.Direction.Left ? -10 : 10);
+        state = State.Null;
     }
 }

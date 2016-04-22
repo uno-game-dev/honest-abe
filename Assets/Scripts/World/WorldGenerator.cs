@@ -9,7 +9,7 @@ public class WorldGenerator : MonoBehaviour
 	public List<GameObject> enemies;
 	public List<GameObject> props;
 	public List<GameObject> decals;
-	public List<GameObject> bosses;
+	public GameObject boss;
 
 	public float startSpawnPosition;
 
@@ -58,11 +58,14 @@ public class WorldGenerator : MonoBehaviour
 			{
 				_canSpawn = false;
 				_occupiedPos = new List<Vector3>();
-				SpawnProps();
-				// SpawnDecals(); - Disabled until art assets are ready
+				if (props.Count > 0)
+					SpawnProps();
+				if (decals.Count > 0)
+					SpawnDecals();
 				if (!SpawnBoss())
 				{
-					SpawnEnemies();
+					if (enemies.Count > 0)
+						SpawnEnemies();
 					_canSpawn = true;
 				}
 			}
@@ -137,24 +140,10 @@ public class WorldGenerator : MonoBehaviour
 	private bool SpawnBoss()
 	{
 		bool spawn = false;
-		int bossIndex = 0;
-		if (currentScreen == screensInLevel)
+		if (boss && currentScreen == screensInLevel)
 		{
 			spawn = true;
-			if (_levelName == GlobalSettings.levelOneSceneName)
-			{
-				bossIndex = 0;
-			}
-			else if (_levelName == GlobalSettings.levelTwoSceneName)
-			{
-				bossIndex = 1;
-			}
-			else if (_levelName == GlobalSettings.levelThreeSceneName)
-			{
-				bossIndex = 3;
-			}
-			if (bosses[bossIndex] != null)
-				Instantiate(bosses[bossIndex], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+			Instantiate(boss, GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
 		}
 		return spawn;
 	}

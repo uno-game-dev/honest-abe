@@ -5,6 +5,8 @@ using System;
 public class Stun : MonoBehaviour
 {
     public enum State { Null, Stunned }
+    public enum Direction { Left, Right }
+    public enum Power { Light, Heavy }
 
     public State state;
     public float stunDuration = 0.0f;
@@ -17,6 +19,7 @@ public class Stun : MonoBehaviour
     private float knockbackAmount;
     private Vector2 previousPos, currentPos;
     private GenericAnimation genericAnimation;
+    private System.Random random;
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class Stun : MonoBehaviour
         _characterState = GetComponent<CharacterState>();
         _animator = GetComponent<Animator>();
         genericAnimation = GetComponent<GenericAnimation>();
+        random = new System.Random();
     }
 
     private void OnEnable()
@@ -43,11 +47,34 @@ public class Stun : MonoBehaviour
         if (attackArea && attackArea.IsShootType())
             return;
 
-		if (collider.tag == "Damage"){
-			Attack attack = collider.GetComponentInParent<Attack>();
-			float directionMod = (collider.GetComponentInParent<Movement>().direction == Movement.Direction.Right ? 1f : -1f);
-			GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod);
-		}
+        if (collider.tag == "Damage")
+        {
+            if (_characterState.state == CharacterState.State.Dead)
+                return;
+
+            if (tag != "Player" || random.Next() > 0.5)
+            { // only 50% chance to stun if it's Abe				
+                Attack attack = collider.GetComponentInParent<Attack>();
+                float directionMod = (collider.GetComponentInParent<Movement>().direction == Movement.Direction.Right ? 1f : -1f);
+
+                if (attack.attackState == Attack.State.Heavy)
+                {
+                    if (attack.getAttackHand() == Attack.Hand.Right)
+                        GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Right, Power.Heavy);
+                    else
+                        GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Left, Power.Heavy);
+                }
+                else // if (attack.attackState == Attack.State.Light)
+                {
+                    if (attack.getAttackHand() == Attack.Hand.Right)
+                        GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Right, Power.Light);
+                    else
+                        GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Left, Power.Light);
+                }
+                if (tag == "Player")
+                    GetComponent<Attack>().SetState(Attack.State.Null);
+            }
+        }
     }
 
     private void Update()
@@ -70,20 +97,37 @@ public class Stun : MonoBehaviour
             FinishStun();
     }
 
-	public void GetStunned( float stunAmount = 1f, float knockbackAmount = 0.1f, float directionModifier = 1f )
+    public void GetStunned(float stunAmount = 1f, float knockbackAmount = 0.1f, float directionModifier = 1f,
+        Direction direction = Direction.Left, Power power = Power.Light)
     {
         if (_characterState.state == CharacterState.State.Grabbed)
         {
-            _animator.Play("Grabbed Damage",0,0.15f);
+            _animator.Play("Grabbed Damage", 0, 0.15f);
             Invoke("FinishGrabbedStun", 0.5f);
             return;
         }
         this.knockbackAmount = knockbackAmount;
-        _animator.Play("Light Damage Reaction", 0, 0.25f);
+        if (power == Power.Heavy)
+        {
+            if (direction == Direction.Right)
+                _animator.Play("Heavy Damage Reaction Right", 0, 0.25f);
+            else // if (direction == Direction Left)
+                _animator.Play("Heavy Damage Reaction Left", 0, 0.25f);
+        }
+        else // if (power == Power.Light)
+        {
+            if (direction == Direction.Right)
+                _animator.Play("Light Damage Reaction Right", 0, 0.25f);
+            else // if (direction == Direction Left)
+                _animator.Play("Light Damage Reaction Left", 0, 0.25f);
+        }
         state = State.Stunned;
         velocity = new Vector2((directionModifier), 0).normalized * knockbackAmount * 2;
         _characterState.SetState(CharacterState.State.Stun);
-        stunDuration = stunAmount * 2;
+        if (tag == "Player")
+            stunDuration = stunAmount;
+        else
+            stunDuration = stunAmount * 2;
     }
 
     private void FinishStun()
@@ -96,6 +140,7 @@ public class Stun : MonoBehaviour
     private void FinishGrabbedStun()
     {
         if (genericAnimation) genericAnimation.UpdateState();
-        _animator.Play("Grabbed");
+        if (_characterState.state == CharacterState.State.Grabbed)
+            _animator.Play("Grabbed");
     }
 }

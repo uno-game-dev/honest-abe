@@ -25,6 +25,7 @@ public class Perk : MonoBehaviour
         NONE_TRINKET,
         AXE_DTVAMPIRISM,
         AXE_BFA,
+        AXE_SLUGGER,
         HAT_BEARHANDS,
 		TRINKET_AGGRESSIONBUDDY, 
 		TRINKET_MARY_TODDS_LOCKETTE,
@@ -63,6 +64,7 @@ public class Perk : MonoBehaviour
 	[HideInInspector]
 	public static bool maryToddsLocketteIsActive = false;
 	private static float performMaryToddsCoolDown;
+    private float pickupHatDuration = 1;
 
     void Start()
     {
@@ -106,6 +108,13 @@ public class Perk : MonoBehaviour
                 _perkDesc = PerkManager.axe_bfa_desc;
                 _perkName = PerkManager.axe_bfa_name;
                 unlocked = PerkManager.axe_bfa_unlocked;
+                if (!unlocked) setToBeUnlocked = true;
+                break;
+            case PerkType.AXE_SLUGGER:
+                _category = PerkCategory.AXE;
+                _perkDesc = PerkManager.axe_slugger_desc;
+                _perkName = PerkManager.axe_slugger_name;
+                unlocked = PerkManager.axe_slugger_unlocked;
                 if (!unlocked) setToBeUnlocked = true;
                 break;
             case PerkType.HAT_BEARHANDS:
@@ -156,9 +165,8 @@ public class Perk : MonoBehaviour
             case PerkCategory.NONE_HAT:
                 PerkManager.activeHatPerk = null;
 				if (GameObject.Find ("Hat_Default") != null) {
-					GameObject.Find ("Hat_Default").transform.SetParent (GameObject.Find ("Player").transform, true);
-					GameObject.Find ("Hat_Default").SetActive (false);
-				}
+                    GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.Regular, GameObject.Find("Hat_Default"), pickupHatDuration);
+                }
 				PerkManager.UnlockCameraAfterPerkPickUp ();
 				PerkManager.hatPerkChosen = true;
                 break;
@@ -184,15 +192,13 @@ public class Perk : MonoBehaviour
 				PerkManager.HatPerkEffect += HatEffect;
 				if (this.type == PerkType.HAT_BEARHANDS) {
 					if (GameObject.Find ("Hat_BA") != null) {
-						GameObject.Find ("Hat_BA").transform.SetParent (GameObject.Find ("Player").transform, true);
-						GameObject.Find ("Hat_BA").SetActive (false);
-					}
+                        GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.Bear, GameObject.Find("Hat_BA"), pickupHatDuration);
+                    }
 				}
 				if (this.type == PerkType.HAT_STICKYFINGERS) {
 					if (GameObject.Find ("Hat_SF") != null) {
-						GameObject.Find ("Hat_SF").transform.SetParent (GameObject.Find ("Player").transform, true);
-						GameObject.Find ("Hat_SF").SetActive (false);
-					}
+                        GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.StickyFingers, GameObject.Find("Hat_SF"), pickupHatDuration);
+                    }
 				}
 				PerkManager.UnlockCameraAfterPerkPickUp();
 				PerkManager.hatPerkChosen = true;
@@ -247,6 +253,12 @@ public class Perk : MonoBehaviour
                 GameObject.Find("Axe_BFA").GetComponent<Weapon>().lightDamage *= 2;
                 GameObject.Find("Axe_BFA").GetComponent<Weapon>().heavyDamage *= 2;
                 GameObject.Find("Axe_BFA").GetComponent<Weapon>().attackSize *= 2;
+            }
+
+            if (type == PerkType.AXE_SLUGGER)
+            {
+                GameObject.Find("Axe_Slugger").GetComponent<Weapon>().lightKnockback *= 1.5f;
+                GameObject.Find("Axe_Slugger").GetComponent<Weapon>().heavyKnockback *= 1.5f;
             }
 
             alreadyActive = true;

@@ -2,7 +2,7 @@
 using System.Collections;
 using BehaviourMachine;
 
-public class AttackPlayer : ActionNode {
+public class AttackPlayer : ConditionNode {
 
 	private Attack attack;
 
@@ -22,6 +22,8 @@ public class AttackPlayer : ActionNode {
 				attack.HeavyAttack ();
 			}
 		}
+		if (onSuccess.id != 0)
+			owner.root.SendEvent (onSuccess.id);
 		return Status.Success;
 	}
 }

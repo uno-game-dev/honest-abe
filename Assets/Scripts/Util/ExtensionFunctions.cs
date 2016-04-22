@@ -77,9 +77,6 @@ public static class ExtensionFunctions
             if (goArray[i].layer == layer)
                 goList.Add(goArray[i]);
 
-        if (goList.Count == 0)
-            return null;
-
         return goList.ToArray();
     }
 }

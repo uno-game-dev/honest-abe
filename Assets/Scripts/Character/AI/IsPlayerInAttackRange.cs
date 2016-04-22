@@ -19,18 +19,22 @@ public class IsPlayerInAttackRange : ConditionNode {
 		playerPosition = player.transform.position;
 		selfPosition = self.transform.position;
 		direction = self.GetComponent<Movement> ().direction;
+		float xDiff = Mathf.Abs (playerPosition.x - selfPosition.x);
+		float yDiff = Mathf.Abs (playerPosition.y - selfPosition.y);
 
-		if(Mathf.Abs(playerPosition.x - selfPosition.x) < blackboard.GetFloatVar("attackProximityDistanceX")){
-			if (Mathf.Abs (playerPosition.y - selfPosition.y) < blackboard.GetFloatVar("attackProximityDistanceY")) {
-				if (direction == Movement.Direction.Left && playerPosition.x < selfPosition.x) {
-					if (onSuccess.id != 0)
-						owner.root.SendEvent (onSuccess.id);				
-					return Status.Success;
-				}
-				if (direction == Movement.Direction.Right && playerPosition.x > selfPosition.x) {
-					if (onSuccess.id != 0)
-						owner.root.SendEvent (onSuccess.id);				
-					return Status.Success;
+		if(xDiff < blackboard.GetFloatVar("attackProximityDistanceX")){
+			if (yDiff < blackboard.GetFloatVar("attackProximityDistanceY")) {
+				if (self.tag != "Boss" || xDiff > blackboard.GetFloatVar ("attackProximityMinX")) { //! other Bosses need
+					if (direction == Movement.Direction.Left && playerPosition.x < selfPosition.x) {
+						if (onSuccess.id != 0)
+							owner.root.SendEvent (onSuccess.id);
+						return Status.Success;
+					}
+					if (direction == Movement.Direction.Right && playerPosition.x > selfPosition.x) {
+						if (onSuccess.id != 0)
+							owner.root.SendEvent (onSuccess.id);
+						return Status.Success;
+					}
 				}
 			}
 		}

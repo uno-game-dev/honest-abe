@@ -12,7 +12,6 @@ public class Grabber : MonoBehaviour
     public float grabPunchTime = 0.5f;
     public float grabThrowTime = 0.5f;
     public float grabLoseTime = 0.5f;
-    public float grabThrowDamage = 25f;
     public State state;
 
     private Animator _animator;
@@ -146,10 +145,6 @@ public class Grabber : MonoBehaviour
         EventHandler.SendEvent(EventHandler.Events.ENEMY_THROW);
 
         _animator.Play("Grab Throw");
-
-        if (_grabbed && _grabbed.GetComponent<Damage>())
-            _grabbed.GetComponent<Damage>().ExecuteDamage(grabThrowDamage, GetComponent<Collider2D>());
-
         if (_grabbed && _grabbed.GetComponent<Grabbable>())
             _grabbed.GetComponent<Grabbable>().Throw();
         _grabbed = null;

@@ -5,12 +5,12 @@ using BehaviourMachine;
 public class ChasePlayer : ActionNode {
 	private EnemyFollow enemyFollow;
 	private GameObject player;
-	private BaseCollision baseCollision;
+	private Movement movement;
 
 	public override void Start(){
 		enemyFollow = self.GetComponent<EnemyFollow> ();
 		player = GameObject.Find ("Player");
-		baseCollision = self.GetComponent<BaseCollision> ();
+		movement = self.GetComponent<Movement> ();
 	}
 
 	public override Status Update () {

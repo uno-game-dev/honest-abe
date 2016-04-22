@@ -55,14 +55,14 @@ public class SoundPlayer : MonoBehaviour
         return sound;
     }
 
-    public void SetMusicVolume01(float percent)
+    public static void SetMusicVolume01(float percent)
     {
-        SetMusicVolume((Mathf.Clamp01(percent) * 80) + (-80));
+        instance.SetMusicVolume((Mathf.Clamp01(percent) * 80) + (-80));
     }
 
-    public void SetSoundVolume01(float percent)
+    public static void SetSoundVolume01(float percent)
     {
-        SetSoundVolume((Mathf.Clamp01(percent) * 80) + (-80));
+        instance.SetSoundVolume((Mathf.Clamp01(percent) * 80) + (-80));
     }
 
     public void SetMusicVolume(float musicDB)
