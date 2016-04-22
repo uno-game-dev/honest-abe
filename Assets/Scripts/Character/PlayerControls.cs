@@ -58,7 +58,6 @@ public class PlayerControls : MonoBehaviour
 
         if (mobileAction == InputManager.Action.PickupOrGrab)
         {
-            //if (IsItemCloseBy())
             if (_motor.isOnItem)
             {
                 justClicked = true;
@@ -81,17 +80,6 @@ public class PlayerControls : MonoBehaviour
 			PerkManager.PerformPerkEffects (Perk.PerkCategory.TRINKET);
 		}
     }
-
-    /*
-    private bool IsItemCloseBy()
-    {
-        foreach (var item in ExtensionFunctions.FindGameObjectsWithLayer(LayerMask.NameToLayer("Items")))
-            if (Vector2.Distance(transform.position, item.transform.position) < grabDistance)
-                return true;
-
-        return false;
-    }
-    */
 
     public void ResetHold()
     {
