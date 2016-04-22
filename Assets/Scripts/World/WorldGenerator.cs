@@ -54,20 +54,17 @@ public class WorldGenerator : MonoBehaviour
 
 		if (_camera.transform.position.x >= _lastXPos - startSpawnPosition && _canSpawn)
 		{
-			if (!_levelName.Equals("PerkPickUp"))
+			_canSpawn = false;
+			_occupiedPos = new List<Vector3>();
+			if (props.Count > 0)
+				SpawnProps();
+			if (decals.Count > 0)
+				SpawnDecals();
+			if (!SpawnBoss())
 			{
-				_canSpawn = false;
-				_occupiedPos = new List<Vector3>();
-				if (props.Count > 0)
-					SpawnProps();
-				if (decals.Count > 0)
-					SpawnDecals();
-				if (!SpawnBoss())
-				{
-					if (enemies.Count > 0)
-						SpawnEnemies();
-					_canSpawn = true;
-				}
+				if (enemies.Count > 0)
+					SpawnEnemies();
+				_canSpawn = true;
 			}
 			Debug.Log("Completed generation of screen " + currentScreen);
 			currentScreen++;
@@ -75,14 +72,11 @@ public class WorldGenerator : MonoBehaviour
 		}
 
 		_enemiesInScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
-		if (_enemiesInScreen <= 0 && currentScreen > 0 && !_spawningWaveOnClear)
+		if (_enemiesInScreen <= 0 && currentScreen > 1 && !_spawningWaveOnClear)
 		{
-			if (!_levelName.Equals("PerkPickUp"))
-			{
-				_spawningWaveOnClear = true;
-				SpawnEnemies();
-				_spawningWaveOnClear = false;
-			}
+			_spawningWaveOnClear = true;
+			SpawnEnemies();
+			_spawningWaveOnClear = false;
 		}
 	}
 
@@ -111,6 +105,9 @@ public class WorldGenerator : MonoBehaviour
 
 	private void SpawnEnemies()
 	{
+		if (_levelName.Equals(GlobalSettings.levelOneSceneName) && currentScreen == 0)
+			return;
+
 		_remainingEnemyDensity = 0;
 
 		switch (GetWaveDifficulty())
