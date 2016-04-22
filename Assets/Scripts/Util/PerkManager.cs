@@ -117,6 +117,7 @@ public class PerkManager : MonoBehaviour
 		cameraFollow = GameObject.Find ("Main Camera").GetComponent<CameraFollow> ();
 		worldGen = GameObject.Find ("Forest").GetComponent<WorldGenerator> ();
 		levelManager = GameObject.Find ("GameManager").GetComponent<LevelManager> ();
+		trinketSlider = GameObject.Find ("TrinketUI").GetComponent<TrinketSlider> ();
     }
 
 	void Update(){
