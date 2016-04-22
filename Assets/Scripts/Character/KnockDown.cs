@@ -36,7 +36,6 @@ public class KnockDown : MonoBehaviour
         {
             transform.Translate(sign * horizontalVelocity * Time.deltaTime, 0, 0);
             height += GRAVITY * Time.deltaTime * gravityMultiplier;
-
             if (height <= 0)
                 HitGround();
         }
@@ -86,7 +85,7 @@ public class KnockDown : MonoBehaviour
 
     private void Land()
     {
-        if (_characterState.state != CharacterState.State.KnockDown)
+		if (_characterState.state != CharacterState.State.KnockDown)
             return;
 
         SetState(State.OnGround);
