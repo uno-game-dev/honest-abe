@@ -10,6 +10,9 @@ public class ShootWeapon : ConditionNode
     {
         attack = self.GetComponent<Attack>();
 		attack.LightAttack();
+		int bulletsRemaining = blackboard.GetIntVar ("bulletsRemaining");
+		if (bulletsRemaining != null)
+			blackboard.GetIntVar ("bulletsRemaining").Value = bulletsRemaining--;
     }
 
     public override Status Update()

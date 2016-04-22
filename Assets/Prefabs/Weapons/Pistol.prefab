@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a042ea906f9804fa5d80a8283fa52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackType: 6
+  attackType: 7
   attackSize: {x: 60, y: 0.1}
   attackOffset: {x: 30, y: 0}
   heldOffset: {x: -0.153, y: 0, z: 0}
@@ -3361,7 +3361,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: attackType
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159352}
