@@ -11,6 +11,7 @@ public class PlayerControls : MonoBehaviour
     private float mouseHeldTime;
     private float timeToConsiderHeld;
     private Throw _throw;
+    private PlayerMotor _motor;
 
     [HideInInspector]
     public bool heldComplete, justClicked;
@@ -24,6 +25,7 @@ public class PlayerControls : MonoBehaviour
         _jump = GetComponent<Jump>();
         _grab = GetComponent<Grabber>();
         _throw = GetComponent<Throw>();
+        _motor = GetComponent<PlayerMotor>();
     }
 
     void Update()
@@ -56,7 +58,8 @@ public class PlayerControls : MonoBehaviour
 
         if (mobileAction == InputManager.Action.PickupOrGrab)
         {
-            if (IsItemCloseBy())
+            //if (IsItemCloseBy())
+            if (_motor.isOnItem)
             {
                 justClicked = true;
                 heldComplete = true;
@@ -79,6 +82,7 @@ public class PlayerControls : MonoBehaviour
 		}
     }
 
+    /*
     private bool IsItemCloseBy()
     {
         foreach (var item in ExtensionFunctions.FindGameObjectsWithLayer(LayerMask.NameToLayer("Items")))
@@ -87,6 +91,7 @@ public class PlayerControls : MonoBehaviour
 
         return false;
     }
+    */
 
     public void ResetHold()
     {

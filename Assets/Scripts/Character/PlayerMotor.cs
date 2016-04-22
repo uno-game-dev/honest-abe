@@ -6,6 +6,8 @@ public class PlayerMotor : MonoBehaviour
     public float stepInterval = 0.6f;
     public Weapon savedWeapon;
     public float pickupDuration = 2f;
+    [HideInInspector]
+    public bool isOnItem;
 
     private GameManager _gameManager;
     private UIManager _uiManager;
@@ -33,6 +35,7 @@ public class PlayerMotor : MonoBehaviour
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _characterState = GetComponent<CharacterState>();
         _animator = GetComponent<Animator>();
+        isOnItem = false;
         Initialize();
     }
 
@@ -74,6 +77,7 @@ public class PlayerMotor : MonoBehaviour
         {
             _controls.ResetHold();
             _collidersImOn.Add(collider);
+            isOnItem = true;
         }
 
         else if (collider.tag == "Perk")
@@ -82,6 +86,7 @@ public class PlayerMotor : MonoBehaviour
             _controls.ResetHold();
             _uiManager.perkText.enabled = true;
             _uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
+            isOnItem = true;
         }
 
         else if (collider.tag == "AbeAxe")
@@ -90,11 +95,13 @@ public class PlayerMotor : MonoBehaviour
             _collidersImOn.Add(collider);
             _uiManager.perkText.enabled = true;
             _uiManager.perkText.text = collider.GetComponent<Perk>().perkDesc;
+            isOnItem = true;
         }
         else if (collider.tag == "OneUseWeapon")
         {
             _controls.ResetHold();
             _collidersImOn.Add(collider);
+            isOnItem = true;
         }
     }
 
@@ -218,6 +225,9 @@ public class PlayerMotor : MonoBehaviour
 
         _controls.ResetHold();
         _controls.justClicked = false;
+
+        if (collider.tag == "Perk" || collider.tag == "Weapon" || collider.tag == "AbeAxe" || collider.tag == "OneUseWeapon")
+            isOnItem = false;
     }
 
     private void UpdateStep()
