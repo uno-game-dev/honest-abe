@@ -56,16 +56,16 @@ public class WorldGenerator : MonoBehaviour
 		{
 			_canSpawn = false;
 			_occupiedPos = new List<Vector3>();
-			if (props.Count > 0)
-				SpawnProps();
-			if (decals.Count > 0)
-				SpawnDecals();
 			if (!SpawnBoss())
 			{
 				if (enemies.Count > 0)
 					SpawnEnemies();
 				_canSpawn = true;
 			}
+			if (props.Count > 0)
+				SpawnProps();
+			if (decals.Count > 0)
+				SpawnDecals();
 			Debug.Log("Completed generation of screen " + currentScreen);
 			currentScreen++;
 			_lastXPos += startSpawnPosition;
@@ -226,7 +226,7 @@ public class WorldGenerator : MonoBehaviour
 		float y = 0;
 		bool occupied = true;
 		int attempts = 0;
-		while (occupied && attempts < 3)
+		while (occupied && attempts < 2)
 		{
 			occupied = false;
 
@@ -235,7 +235,7 @@ public class WorldGenerator : MonoBehaviour
 				x = GameObject.Find("RightEdge").transform.position.x;
 			else
 				x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
-			y = (float)(height * _rnd.NextDouble() - height);
+			y = (float)((height * _rnd.NextDouble()) * 0.9 - height);
 
 			foreach (Vector3 pos in _occupiedPos)
 			{
