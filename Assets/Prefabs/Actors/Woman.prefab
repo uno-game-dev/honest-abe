@@ -531,6 +531,8 @@ GameObject:
   - 23: {fileID: 2304162}
   - 114: {fileID: 11461846}
   - 114: {fileID: 11426756}
+  - 114: {fileID: 11419786}
+  - 114: {fileID: 11491078}
   m_Layer: 11
   m_Name: Woman
   m_TagString: Enemy
@@ -1548,29 +1550,27 @@ MonoBehaviour:
     m_NodeTypes:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
-    - BehaviourMachine.PrioritySelector
-    - IsPlayerInLine
-    - IsPlayerInMeleeRange
     - KeepRange
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23fbd4a944
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e00000010000000
-    m_BranchIndex: ffffffffffffffff01000000020000000200000002000000
+    - IsPlayerInMeleeRange
+    - IsPlayerInLine
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
+    m_BranchIndex: ffffffffffffffff010000000100000001000000
     m_UnityObjectValue: []
-    m_IntValue: 010000000100000002000000010000000600000004000000801b0622030000002a9d127705000000
+    m_IntValue: 0100000001000000020000000100000005000000030000002a9d127704000000801b0622
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
-    - PrioritySelector
-    - IsPlayerInLine
-    - IsPlayerInMeleeRange
     - KeepRange
+    - IsPlayerInMeleeRange
+    - IsPlayerInLine
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000700000004000000080000000900000005000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e0000000100000002000000
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name
@@ -1586,8 +1586,33 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
-    - instanceID
-    - name
+--- !u!114 &11419786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c463c8ede1dd2c5419ad4aec78df84e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11469798}
+  animator: {fileID: 0}
+  attack: {fileID: 0}
+  attackArea: {fileID: 0}
+  strength: 0
+  state: 0
+  prepLightAttackTime: 0.3
+  prepHeavyAttackTime: 0.6
+  lightAttackTime: 0.2
+  heavyAttackTime: 0.2
+  finishLightAttackTime: 0.6
+  finishHeavyAttackTime: 0.6
+  lightDuration: 0
+  heavyDuration: 0
+  swipe: {fileID: 0}
+  bulletSpark: {fileID: 110848, guid: 162a05f73283c7f4a925ac1bf98bcf36, type: 2}
 --- !u!114 &11424772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1799,7 +1824,7 @@ MonoBehaviour:
     m_Name: preferredRangeMax
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
-    value: 25
+    value: 20
   m_IntVars: []
   m_BoolVars: []
   m_StringVars:
@@ -2013,8 +2038,8 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 200, y: -90}
   m_Transitions:
-  - m_Destination: {fileID: 11413808}
-    m_EventID: 800830063
+  - m_Destination: {fileID: 11491078}
+    m_EventID: 1003642416
   m_CachedInstanceID: 10736
   m_Description: 
   m_IgnoreTimeScale: 0
@@ -2029,7 +2054,7 @@ MonoBehaviour:
     m_NodeFieldStartIndex: 00000000030000000600000009000000
     m_BranchIndex: ffffffffffffffff01000000
     m_UnityObjectValue: []
-    m_IntValue: 01000000010000000200000001000000030000006fb2bb2f
+    m_IntValue: 0100000001000000020000000100000003000000305ed23b
     m_FloatValue: []
     m_StringValue:
     - OnEnable
@@ -2249,6 +2274,62 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
+--- !u!114 &11491078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177166}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11426784}
+  m_Parent: {fileID: 11469354}
+  m_StateName: Reload
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 390, y: -90}
+  m_Transitions:
+  - m_Destination: {fileID: 11413808}
+    m_EventID: 800830063
+  m_CachedInstanceID: -109204
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - Reload
+    m_NodeTypeHash: 89ef821089ef82104a2bcb23
+    m_NodeFieldStartIndex: 00000000030000000600000009000000
+    m_BranchIndex: ffffffffffffffff01000000
+    m_UnityObjectValue: []
+    m_IntValue: 01000000010000000200000001000000030000006fb2bb2f
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - Reload
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000
+    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - onSuccess
 --- !u!114 &11492716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2262,7 +2343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackState: 0
   hand: 1
-  weapon: {fileID: 0}
+  weapon: {fileID: 11469798}
   emptyHanded: 0
 --- !u!114 &11493690
 MonoBehaviour:
