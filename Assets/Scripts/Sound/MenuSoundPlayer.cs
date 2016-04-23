@@ -9,8 +9,9 @@ public class MenuSoundPlayer
     public static void PlayMenuSound()
     {
         SoundPlayer.Play("Menu Click " + currentMenuSound);
-        currentMenuSound = (currentMenuSound - 1) % numberOfMenuSounds;
+        //currentMenuSound = (currentMenuSound - 1) % numberOfMenuSounds;
         currentMenuSound++;
+        if (currentMenuSound > numberOfMenuSounds) ResetMenuSoundCount();
     }
 
     public static void ResetMenuSoundCount()
