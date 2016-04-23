@@ -68,7 +68,6 @@ public class UIManager : MonoBehaviour
 
 	//Trinket UI
 	private static Text _trinketUI;
-	private static Text _maryToddsLocketteUI;
 
 	void Awake()
 	{
@@ -88,8 +87,6 @@ public class UIManager : MonoBehaviour
 		bossHealthUI.enabled = false;
 		_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
 		_trinketUI.enabled = false;
-		_maryToddsLocketteUI = GameObject.Find ("MaryToddsLocketteText").GetComponent<Text>();
-		_maryToddsLocketteUI.enabled = false;
     }
 
     void Update()
@@ -108,13 +105,6 @@ public class UIManager : MonoBehaviour
 		} else {
 			_trinketUI.enabled = false;
 		}
-
-		if ((PerkManager.activeTrinketPerk != null) && (Perk.performMaryToddsTimeStamp >= Time.time)) {
-			_maryToddsLocketteUI.enabled = true;
-		} else {
-			_maryToddsLocketteUI.enabled = false;
-		}
-        
     }
 
     public void TogglePause()
