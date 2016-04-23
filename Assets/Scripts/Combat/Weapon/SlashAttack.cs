@@ -30,7 +30,7 @@ class SlashAttack : BaseAttack
 
 	protected override void PerformLightAttack()
 	{
-        SoundPlayer.Play("Light Axe Swing");
+        SoundPlayer.Play("Saber Swing");
         bool hand = chain == SwingChain.Second;
 		if (swipe) swipe.Activate(hand);
 		base.PerformLightAttack();
@@ -38,7 +38,7 @@ class SlashAttack : BaseAttack
 
 	protected override void PerformHeavyAttack()
 	{
-        SoundPlayer.Play("Heavy Axe Swing");
+        SoundPlayer.Play("Saber Swing");
         bool hand = chain == SwingChain.Second;
 		if (swipe) swipe.Activate(hand);
 		base.PerformHeavyAttack();

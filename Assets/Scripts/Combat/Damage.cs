@@ -56,26 +56,38 @@ public class Damage : MonoBehaviour
             damageAmount = collider.transform.GetComponentInParent<Attack>().GetDamageAmount();
             ExecuteDamage(damageAmount, collider);
 
-            if (attackArea)
+            if (name.Contains("Bear"))
+            {
+                if (UnityEngine.Random.value < 0.33f)
+                    SoundPlayer.Play("Damage React Bear");
+            }
+            else if (attackArea)
             {
                 if (attackArea.GetAttackState() == Attack.State.Heavy)
                 {
-                    SoundPlayer.Play("Damage React Heavy");
+                    if (tag != "Player")
+                        SoundPlayer.Play("Damage React Heavy");
                     if (attackArea.GetAttackType() == Weapon.AttackType.Swing)
                     {
                         SoundPlayer.Play("Heavy Axe Impact 1");
                         SoundPlayer.Play("Heavy Axe Impact 1.1");
                     }
-                    else  if (attackArea.GetAttackType() == Weapon.AttackType.Melee)
+                    else if (attackArea.GetAttackType() == Weapon.AttackType.Melee)
                     {
                         SoundPlayer.Play("Heavy Punch Impact 1");
                         SoundPlayer.Play("Heavy Punch Impact 1.2");
                         SoundPlayer.Play("Heavy Punch Impact 1.3");
                     }
+                    else if (attackArea.GetAttackType() == Weapon.AttackType.Slash)
+                        SoundPlayer.Play("Saber Impact");
+
+                    else if (attackArea.GetAttackType() == Weapon.AttackType.Knife)
+                        SoundPlayer.Play("Knife Impact");
                 }
                 else
                 {
-                    SoundPlayer.Play("Damage React Light");
+                    if (tag != "Player")
+                        SoundPlayer.Play("Damage React Light");
                     if (attackArea.GetAttackType() == Weapon.AttackType.Swing)
                     {
                         if (attackArea.GetAttackChainNumber() >= 2)
@@ -86,13 +98,20 @@ public class Damage : MonoBehaviour
                             SoundPlayer.Play("Light Axe Impact 1");
                     }
                     else if (attackArea.GetAttackType() == Weapon.AttackType.Melee)
-                    {
                         SoundPlayer.Play("Light Punch Impact");
-                    }
+
+                    else if (attackArea.GetAttackType() == Weapon.AttackType.Slash)
+                        SoundPlayer.Play("Saber Impact");
+
+                    else if (attackArea.GetAttackType() == Weapon.AttackType.Knife)
+                        SoundPlayer.Play("Knife Impact");
                 }
             }
             else
-                SoundPlayer.Play("Damage React Light");
+            {
+                if (tag != "Player")
+                    SoundPlayer.Play("Damage React Light");
+            }
         }
     }
 

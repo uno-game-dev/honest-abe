@@ -88,6 +88,16 @@ public class SoundPlayer : MonoBehaviour
         return Mathf.Clamp01(80 + soundDB / 80);
     }
 
+    public static AudioClip GetAudioClip(string clipName)
+    {
+        if (instance)
+            foreach (var namedAudio in list)
+                if (namedAudio.name == clipName)
+                    return namedAudio.clip;
+
+        return null;
+    }
+
     [System.Serializable]
     public class NamedAudioClip
     {

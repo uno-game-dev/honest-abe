@@ -98,6 +98,9 @@ public class Health : MonoBehaviour
         if (grabbed)
             grabbed.Release();
 
+        if (tag == "Player")
+            return;
+
         Death death = GetComponent<Death>();
         if (death)
             death.enabled = true;

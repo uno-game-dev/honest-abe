@@ -50,12 +50,14 @@ class PistolAttack : BaseAttack
     private void Shoot()
     {
         animator.Play("Shoot Pistol");
+        SoundPlayer.Play("Pistol Fire");
         if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         ShootCollisionCheck();
     }
 
     private void Reload()
     {
+        SoundPlayer.Play("Pistol Reload");
         animator.Play("Reload Pistol");
     }
 
