@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11443900}
   - 114: {fileID: 11406734}
   m_Layer: 0
-  m_Name: Battlefield
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,10 +344,7 @@ MonoBehaviour:
   - {fileID: 103122, guid: 80f4213dabdc0234783216ab769b7368, type: 2}
   decals:
   - {fileID: 126218, guid: 1bb39e4b7c7d6c142a7d9f82f77c67f3, type: 2}
-  bosses:
-  - {fileID: 112324, guid: 2344d1aded5b2a9438bf739fa32fb18b, type: 2}
-  - {fileID: 188124, guid: b68bd33be5773a34fb8a3090af9a6bf3, type: 2}
-  - {fileID: 188124, guid: 4afd838230ffac24080cde9f5a0d7aab, type: 2}
+  boss: {fileID: 0}
   startSpawnPosition: 38
   screensInLevel: 8
   currentScreen: 0
