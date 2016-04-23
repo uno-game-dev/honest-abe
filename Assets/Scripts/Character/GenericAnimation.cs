@@ -65,5 +65,6 @@ public class GenericAnimation : MonoBehaviour
                 if (state == CharacterState.State.Movement) animator.Play("Walk");
             }
         }
+        if (state == CharacterState.State.StartGame) animator.Play("Knock Down On Ground");
     }
 }
