@@ -144,6 +144,8 @@ public class Damage : MonoBehaviour
 
         GameObject blood = Instantiate(bloodPrefab);
         blood.transform.position = transform.position;
+        if (transform.localScale.x < 0)
+            blood.transform.Rotate(0, 180, 0);
         Destroy(blood, 10);
     }
 }
