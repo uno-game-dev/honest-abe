@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 
 	private GameManager _gameManager;
 	private LevelManager _levelManager;
-	private GameObject _startGameText;
+	private GameObject _startGameText, _logoImage;
 	private bool _paused = false;
 	private bool _options = false;
 
@@ -78,8 +78,11 @@ public class UIManager : MonoBehaviour
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
 		_startGameText = GameObject.Find("StartText");
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0) {
             _startGameText.SetActive(true);
+			_logoImage = GameObject.Find("LogoImage");
+        	_logoImage.SetActive(true);
+		}
         else
         {
             _startGameText.SetActive(false);
@@ -149,6 +152,7 @@ public class UIManager : MonoBehaviour
     {
         updateActive = true;
         _startGameText.SetActive(false);
+        _logoImage.SetActive(false);
         _cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
     }
 
