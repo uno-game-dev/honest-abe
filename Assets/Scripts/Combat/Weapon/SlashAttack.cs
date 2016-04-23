@@ -30,15 +30,16 @@ class SlashAttack : BaseAttack
 
 	protected override void PerformLightAttack()
 	{
-		bool hand = chain == SwingChain.Second;
+        SoundPlayer.Play("Light Axe Swing");
+        bool hand = chain == SwingChain.Second;
 		if (swipe) swipe.Activate(hand);
 		base.PerformLightAttack();
 	}
 
 	protected override void PerformHeavyAttack()
 	{
-		//animator.Play("Heavy Attack Saber Stab");
-		bool hand = chain == SwingChain.Second;
+        SoundPlayer.Play("Heavy Axe Swing");
+        bool hand = chain == SwingChain.Second;
 		if (swipe) swipe.Activate(hand);
 		base.PerformHeavyAttack();
 	}

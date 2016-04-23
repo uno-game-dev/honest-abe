@@ -32,6 +32,7 @@ public class SoundPlayer : MonoBehaviour
         if (randomList.Count > 0)
             return Play(randomList[Random.Range(0, randomList.Count)], loop);
 
+        Debug.Log("Sound not found: " + clipName);
         return null;
     }
 

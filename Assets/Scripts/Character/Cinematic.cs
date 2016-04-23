@@ -9,6 +9,7 @@ public class Cinematic : MonoBehaviour
     private CharacterState characterState;
     private Animator animator;
     private CharacterState.State previousState;
+    private bool hasPlayedAudio;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class Cinematic : MonoBehaviour
         previousState = characterState.state;
         characterState.SetState(CharacterState.State.Cinematic);
         animator.Play(cinematic);
+        hasPlayedAudio = false;
     }
 
     private void OnDisable()
@@ -43,5 +45,11 @@ public class Cinematic : MonoBehaviour
     {
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
             enabled = false;
+
+        if (!hasPlayedAudio && animator.GetCurrentAnimatorStateInfo(0).fullPathHash == Animator.StringToHash("Base Layer.Cinematics.Abe Rises 3"))
+        {
+            SoundPlayer.Play("Abe Roar");
+            hasPlayedAudio = true;
+        }
     }
 }
