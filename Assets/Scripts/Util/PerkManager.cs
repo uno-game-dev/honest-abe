@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class PerkManager : MonoBehaviour
 {
-    private static GameObject _instance;
+    private static GameObject _perkManagerInstance;
 
     /*
      * Individual Perk Information
@@ -102,11 +102,11 @@ public class PerkManager : MonoBehaviour
             perkList.Add(p);
         }
 
-        if (_instance == null)
+        if (_perkManagerInstance == null)
         {
-            _instance = gameObject;
+            _perkManagerInstance = gameObject;
         }
-        else if (_instance != gameObject)
+        else if (_perkManagerInstance != gameObject)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }

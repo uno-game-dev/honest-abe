@@ -654,6 +654,7 @@ GameObject:
   - 114: {fileID: 11428810}
   - 114: {fileID: 11474548}
   - 114: {fileID: 11407510}
+  - 114: {fileID: 11451896}
   m_Layer: 11
   m_Name: Officer-Boss
   m_TagString: Boss
@@ -1715,7 +1716,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11474548}
     m_EventID: 433083577
-  m_CachedInstanceID: -299992
+  m_CachedInstanceID: 414720
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1834,7 +1835,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 12146
+  m_CachedInstanceID: 414708
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1861,7 +1862,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: -299990
+  m_CachedInstanceID: 414722
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2006,7 +2007,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11452276}
     m_EventID: 334526696
-  m_CachedInstanceID: -299988
+  m_CachedInstanceID: 414724
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2109,7 +2110,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: -299994
+  m_CachedInstanceID: 414718
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2175,6 +2176,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stateMachine: {fileID: 0}
+--- !u!114 &11451896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e58727fd2b4849e985ac211f70b8d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossName: Officer-Boss
 --- !u!114 &11451986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2207,7 +2221,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: -299996
+  m_CachedInstanceID: 414716
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2354,7 +2368,7 @@ MonoBehaviour:
     m_EventID: 1948614651
   - m_Destination: {fileID: 11452276}
     m_EventID: 334526696
-  m_CachedInstanceID: -299986
+  m_CachedInstanceID: 414726
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3271,6 +3285,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: attackType
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bossName
+      value: Officer-Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
