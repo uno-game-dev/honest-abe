@@ -4,7 +4,7 @@ using BehaviourMachine;
 
 public class CharacterState : MonoBehaviour
 {
-    public enum State { Null, Idle, Movement, Attack, Jump, Grab, Throw, Stun, KnockDown, Grabbed, Dead, Cinematic, Pickup }
+    public enum State { Null, Idle, Movement, Attack, Jump, Grab, Throw, Stun, KnockDown, Grabbed, Dead, Cinematic, Pickup, StartGame }
 
     public State state;
 
