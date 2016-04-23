@@ -11,6 +11,7 @@ public class PlayerControls : MonoBehaviour
     private float mouseHeldTime;
     private float timeToConsiderHeld;
     private Throw _throw;
+    private PlayerMotor _motor;
 
     [HideInInspector]
     public bool heldComplete, justClicked;
@@ -24,6 +25,7 @@ public class PlayerControls : MonoBehaviour
         _jump = GetComponent<Jump>();
         _grab = GetComponent<Grabber>();
         _throw = GetComponent<Throw>();
+        _motor = GetComponent<PlayerMotor>();
     }
 
     void Update()
@@ -56,7 +58,7 @@ public class PlayerControls : MonoBehaviour
 
         if (mobileAction == InputManager.Action.PickupOrGrab)
         {
-            if (IsItemCloseBy())
+            if (_motor.isOnItem)
             {
                 justClicked = true;
                 heldComplete = true;
@@ -77,15 +79,6 @@ public class PlayerControls : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
 			PerkManager.PerformPerkEffects (Perk.PerkCategory.TRINKET);
 		}
-    }
-
-    private bool IsItemCloseBy()
-    {
-        foreach (var item in ExtensionFunctions.FindGameObjectsWithLayer(LayerMask.NameToLayer("Items")))
-            if (Vector2.Distance(transform.position, item.transform.position) < grabDistance)
-                return true;
-
-        return false;
     }
 
     public void ResetHold()
