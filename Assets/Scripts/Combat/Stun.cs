@@ -57,20 +57,25 @@ public class Stun : MonoBehaviour
                 Attack attack = collider.GetComponentInParent<Attack>();
                 float directionMod = (collider.GetComponentInParent<Movement>().direction == Movement.Direction.Right ? 1f : -1f);
 
-                if (attack.attackState == Attack.State.Heavy)
-                {
-                    if (attack.getAttackHand() == Attack.Hand.Right)
-                        GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Right, Power.Heavy);
-                    else
-                        GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Left, Power.Heavy);
-                }
-                else // if (attack.attackState == Attack.State.Light)
-                {
-                    if (attack.getAttackHand() == Attack.Hand.Right)
-                        GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Right, Power.Light);
-                    else
-                        GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Left, Power.Light);
-                }
+				// Don't stun if the hit was from a Bushwhacker
+				Debug.Log("Knife attack: "+collider.GetComponentInParent<KnifeAttack>());
+				if (collider.GetComponentInParent<KnifeAttack>().name == "Bushwhacker (KnifeAttack)"){
+					if (attack.attackState == Attack.State.Heavy)
+					{
+						if (attack.getAttackHand() == Attack.Hand.Right)
+							GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Right, Power.Heavy);
+						else
+							GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Left, Power.Heavy);
+					}
+					else // if (attack.attackState == Attack.State.Light)
+					{
+						if (attack.getAttackHand() == Attack.Hand.Right)
+							GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Right, Power.Light);
+						else
+							GetStunned(attack.GetStunAmount(), attack.GetKnockbackAmount(), directionMod, Direction.Left, Power.Light);
+					}
+				}
+
                 if (tag == "Player")
                     GetComponent<Attack>().SetState(Attack.State.Null);
             }

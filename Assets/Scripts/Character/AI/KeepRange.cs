@@ -47,8 +47,10 @@ public class KeepRange : ActionNode {
 			movement.FlipDirection ();
 		}
 		// If he's too far away, move toward him on x axis
-		else if (distanceToPlayer > blackboard.GetFloatVar ("preferredRangeMax"))
-			movement.Move (new Vector2(directionX, directionY) * movement.horizontalMovementSpeed);
+		else if (distanceToPlayer >= blackboard.GetFloatVar ("preferredRangeMax"))
+			movement.Move (new Vector2 (directionX, directionY) * movement.horizontalMovementSpeed);
+		else
+			movement.Move (new Vector2 (0, directionY) * movement.vericalMovementSpeed);
 
 		return Status.Success;
 	}

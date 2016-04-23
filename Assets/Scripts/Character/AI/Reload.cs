@@ -5,7 +5,7 @@ using BehaviourMachine;
 public class Reload : ConditionNode {
 
 	private int i;
-	private int numFrames = 50;
+	private int numFrames = 200;
 
 	// Use this for initialization
 	override public void Start () {

@@ -9,7 +9,8 @@ public class ShootWeapon : ConditionNode
     public override void OnEnable()
     {
         attack = self.GetComponent<Attack>();
-        attack.LightAttack();
+		attack.LightAttack();
+		blackboard.GetIntVar ("bulletsRemaining").Value--;
     }
 
     public override Status Update()
