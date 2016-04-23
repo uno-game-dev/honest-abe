@@ -34,6 +34,7 @@ public class SoundPlayer : MonoBehaviour
         if (randomList.Count > 0)
             return Play(randomList[Random.Range(0, randomList.Count)], loop);
 
+        Debug.Log("Sound not found: " + clipName);
         return null;
     }
 
@@ -91,6 +92,16 @@ public class SoundPlayer : MonoBehaviour
     public static float GetSoundPercent()
     {
         return Mathf.Pow(10, soundDB / 20);
+    }
+
+    public static AudioClip GetAudioClip(string clipName)
+    {
+        if (instance)
+            foreach (var namedAudio in list)
+                if (namedAudio.name == clipName)
+                    return namedAudio.clip;
+
+        return null;
     }
 
     [System.Serializable]

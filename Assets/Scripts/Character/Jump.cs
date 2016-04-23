@@ -66,6 +66,7 @@ public class Jump : MonoBehaviour
         EventHandler.SendEvent(EventHandler.Events.JUMP);
         SetState(State.StartJump);
         _animator.Play("Jump Start");
+        SoundPlayer.Play("Jump Start");
         _characterState.SetState(CharacterState.State.Null);
         Invoke("PerformJump", startJumpDuration);
     }

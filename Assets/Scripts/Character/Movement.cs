@@ -100,9 +100,8 @@ public class Movement : MonoBehaviour
 
         if (newState == State.Walk && _characterState.state == CharacterState.State.Idle)
         {
-            string clipName = tag == "Player" ? "Footsteps" : "Light Footsteps";
             if (footsteps) Destroy(footsteps);
-            footsteps = SoundPlayer.Play(clipName, true);
+            if (tag == "Player") footsteps = SoundPlayer.Play("Footsteps", true);
             _characterState.SetState(CharacterState.State.Movement);
         }
         else if (newState == State.Null && _characterState.state == CharacterState.State.Movement)

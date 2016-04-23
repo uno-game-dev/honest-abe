@@ -65,6 +65,5 @@ public class GenericAnimation : MonoBehaviour
                 if (state == CharacterState.State.Movement) animator.Play("Walk");
             }
         }
-        if (state == CharacterState.State.Dead) animator.Play("Dead");
     }
 }

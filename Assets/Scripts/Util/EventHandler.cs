@@ -7,8 +7,8 @@ public class EventHandler : MonoBehaviour
 
     private static GameObject player;
     private static Perk bfaPerk, bearAbePerk, sluggerPerk;
-	private static int amountOfWeaponPickUp = 0;
-	private static int goalToUnlockSFPerk = 20; 
+    private static int amountOfWeaponPickUp = 0;
+    private static int goalToUnlockSFPerk = 20;
 
     private string _eventString;
 
@@ -35,9 +35,10 @@ public class EventHandler : MonoBehaviour
         STEP,
         BEAR_HIT,
         BEAR_HIT_THROWN,
-		ROBERT_E_LEE_KILL,
-		STEAL_ENEMY_WEAPON, 
-		ENEMY_CLOSE_TO_STEAL_WEAPON
+        ROBERT_E_LEE_KILL,
+        STEAL_ENEMY_WEAPON,
+        ENEMY_CLOSE_TO_STEAL_WEAPON,
+        BUTTON_CLICK
     }
 
     void Update()
@@ -108,7 +109,7 @@ public class EventHandler : MonoBehaviour
 
                 // If our player hits an enemy with no weapon, he loses the BFA perk unlock
                 if (player == null)
-					player = GameObject.Find("Player");
+                    player = GameObject.Find("Player");
                 if (player.GetComponent<Attack>().emptyHanded)
                 {
                     if (bfaPerk == null) bfaPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_bfa_name));
@@ -117,15 +118,16 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.HEAVY_KILL:
                 Debug.Log("Heavy Kill");
-				PerkManager.enemiesKilled++;
+                PerkManager.enemiesKilled++;
                 GameObject.Find("Player").GetComponent<PlayerHealth>().executionsPerformed++;
                 break;
             case Events.WEAPON_THROW:
                 Debug.Log("Weapon Throw");
-				if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers")) {
-					other.GetComponent<BoxCollider2D> ().size = new Vector2 (6.0f, 1.0f);
-					other.GetComponent<BoxCollider2D> ().offset = new Vector2 (0.75f, 0.5f);
-				}
+                if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers"))
+                {
+                    other.GetComponent<BoxCollider2D>().size = new Vector2(6.0f, 1.0f);
+                    other.GetComponent<BoxCollider2D>().offset = new Vector2(0.75f, 0.5f);
+                }
                 break;
             case Events.WEAPON_THROW_KILL:
                 Debug.Log("Weapon Throw Kill");
@@ -145,20 +147,22 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.ITEM_PICKUP:
                 Debug.Log("Item Pickup");
-				if(other != null && other.name == "HealthKit") {
-					// If we pickup a health pickup then it cancels out the ability to get the mary todd's lockette perk
-					PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.trinket_maryToddsLockette_name)).setToBeUnlocked = false;
+                if (other != null && other.name == "HealthKit")
+                {
+                    // If we pickup a health pickup then it cancels out the ability to get the mary todd's lockette perk
+                    PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.trinket_maryToddsLockette_name)).setToBeUnlocked = false;
                     Debug.Log(PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.trinket_maryToddsLockette_name)).setToBeUnlocked);
                 }
                 break;
             case Events.WEAPON_PICKUP:
                 Debug.Log("Weapon Pickup");
-				//If the player picks up a certain amount of weapons then the Sticky Fingers perk will be unlocked
-				amountOfWeaponPickUp++;
-				if (amountOfWeaponPickUp == goalToUnlockSFPerk) {
-					PerkManager.UpdatePerkStatus (PerkManager.hat_stickyFingers_name, 1);
-					Debug.Log("Sticky Fingers perk is unlocked");
-				}	
+                //If the player picks up a certain amount of weapons then the Sticky Fingers perk will be unlocked
+                amountOfWeaponPickUp++;
+                if (amountOfWeaponPickUp == goalToUnlockSFPerk)
+                {
+                    PerkManager.UpdatePerkStatus(PerkManager.hat_stickyFingers_name, 1);
+                    Debug.Log("Sticky Fingers perk is unlocked");
+                }
 
                 // If the player picks up any weapons other than the axe, cancel out the BFA perk unlock
                 // The axe is considered a perk, so will not trigger a WEAPON_PICKUP event
@@ -167,7 +171,7 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.PERK_PICKUP:
                 Debug.Log("Perk Pickup");
-                
+
                 if (other != null && other.GetComponent<Perk>() != null)
                 {
                     // Activate the perk
@@ -178,10 +182,10 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.GAME_LOSE:
                 Debug.Log("Game Lose");
-				if (player == null)
-					player = GameObject.Find("Player");
-				player.GetComponent<PlayerMotor>().enabled = false;
-				player.GetComponent<PlayerControls>().enabled = false;
+                if (player == null)
+                    player = GameObject.Find("Player");
+                player.GetComponent<PlayerMotor>().enabled = false;
+                player.GetComponent<PlayerControls>().enabled = false;
                 GameObject.Find("UI").GetComponent<UIManager>().ActivateLoseUI();
                 break;
             case Events.GAME_WIN:
@@ -215,26 +219,32 @@ public class EventHandler : MonoBehaviour
                 if (bearAbePerk == null) bearAbePerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.hat_bearHands_name));
                 bearAbePerk.setToBeUnlocked = false;
                 break;
-			case Events.ROBERT_E_LEE_KILL:
-				Debug.Log ("Killed Robert E. Lee");
+            case Events.ROBERT_E_LEE_KILL:
+                Debug.Log("Killed Robert E. Lee");
                 if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().health >= 80)
-                    PerkManager.UpdatePerkStatus (PerkManager.trinket_agressionBuddy_name, 1);
-				break;
-			case Events.STEP:
+                    PerkManager.UpdatePerkStatus(PerkManager.trinket_agressionBuddy_name, 1);
+                break;
+            case Events.STEP:
                 //AudioManager.instance.PlayFootstep();
                 Debug.Log("Step");
                 break;
-			case Events.ENEMY_CLOSE_TO_STEAL_WEAPON:
-				if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers")) {
-					Debug.Log ("Enemy is enough to steal weapon");
-				BoxCollider2D gunBoxCollider = other.transform.FindContainsInChildren ("Musket").GetComponent<BoxCollider2D> ();
+            case Events.ENEMY_CLOSE_TO_STEAL_WEAPON:
+                if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers"))
+                {
+                    Debug.Log("Enemy is enough to steal weapon");
+                    BoxCollider2D gunBoxCollider = other.transform.FindContainsInChildren("Musket").GetComponent<BoxCollider2D>();
 
-					if (gunBoxCollider != null) {
-						gunBoxCollider.size = new Vector2 (25.0f, 20.0f);
-						gunBoxCollider.offset = new Vector2 (3.5f, 2.0f);
-					}
-				}
-			break;
+                    if (gunBoxCollider != null)
+                    {
+                        gunBoxCollider.size = new Vector2(25.0f, 20.0f);
+                        gunBoxCollider.offset = new Vector2(3.5f, 2.0f);
+                    }
+                }
+                break;
+            case Events.BUTTON_CLICK:
+                Debug.Log("clicked a menu button");
+                MenuSoundPlayer.PlayMenuSound();
+                break;
         }
     }
 

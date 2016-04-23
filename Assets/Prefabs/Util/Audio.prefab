@@ -41,18 +41,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   namedAudioList:
+  - name: Abe Roar
+    clip: {fileID: 8300000, guid: ef7dcbcaaf40d4f6c95d8203988ba724, type: 3}
+    volume: 0.5
   - name: Axe Pickup
     clip: {fileID: 8300000, guid: 3812097b9ad5c954ea17f221d21512bf, type: 3}
-    volume: 0.5
+    volume: 0.8
   - name: HealthPack Pickup
-    clip: {fileID: 8300000, guid: 6dfad771fe5724e41a61931918e458ea, type: 3}
+    clip: {fileID: 8300000, guid: fb28d2ad63f164d3ab2d6fbce15e7c85, type: 3}
     volume: 0.5
   - name: Trinket Pickup
     clip: {fileID: 8300000, guid: 7973f20d52bb2bb42b516a6f32d13180, type: 3}
     volume: 0.5
   - name: Footsteps
     clip: {fileID: 8300000, guid: f557eaae0bcad4717bf3077405041643, type: 3}
-    volume: 0.7
+    volume: 0.1
   - name: Light Footsteps
     clip: {fileID: 8300000, guid: f557eaae0bcad4717bf3077405041643, type: 3}
     volume: 0.1
@@ -79,37 +82,64 @@ MonoBehaviour:
     volume: 0.5
   - name: Light Axe Swing
     clip: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+    volume: 0.7
+  - name: Light Axe Swing
+    clip: {fileID: 8300000, guid: d27e9dd567136407ca76502c88d6d983, type: 3}
+    volume: 1
+  - name: Light Axe Swing
+    clip: {fileID: 8300000, guid: ef7c34109f1db470cb7d2368e4b1fe6e, type: 3}
     volume: 1
   - name: Light Axe Impact 1
     clip: {fileID: 8300000, guid: 88d6f6363f2670749bbf36b21a4c47d6, type: 3}
-    volume: 0.5
+    volume: 0.7
   - name: Light Axe Impact 2
     clip: {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
     volume: 0.5
   - name: Light Axe Impact 3
     clip: {fileID: 8300000, guid: 737a15aa3b6e76642afbf61dd5b89a7b, type: 3}
     volume: 0.5
+  - name: Heavy Axe Lift
+    clip: {fileID: 8300000, guid: 91a0064c12e040a4da0b67534a3646cd, type: 3}
+    volume: 0.5
   - name: Heavy Axe Swing
-    clip: {fileID: 8300000, guid: 7c263edeebdb6b6418c8408b853723cd, type: 3}
+    clip: {fileID: 8300000, guid: ef7c34109f1db470cb7d2368e4b1fe6e, type: 3}
     volume: 1
   - name: Heavy Axe Impact 1
     clip: {fileID: 8300000, guid: b092204f1acca4c3c9164faafaca7a1a, type: 3}
-    volume: 0.5
+    volume: 0.6
   - name: Heavy Axe Impact 1.1
     clip: {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
+    volume: 0
+  - name: Saber Swing
+    clip: {fileID: 8300000, guid: d27e9dd567136407ca76502c88d6d983, type: 3}
+    volume: 0.5
+  - name: Saber Impact
+    clip: {fileID: 8300000, guid: 07282bf155a82aa4ab123d2fe9d04790, type: 3}
+    volume: 0.7
+  - name: Saber Impact
+    clip: {fileID: 8300000, guid: 737a15aa3b6e76642afbf61dd5b89a7b, type: 3}
+    volume: 0.5
+  - name: Knife Impact
+    clip: {fileID: 8300000, guid: 88d6f6363f2670749bbf36b21a4c47d6, type: 3}
     volume: 0.5
   - name: Damage React Light
     clip: {fileID: 8300000, guid: 74fcba1ced7a094419196c126082b1f4, type: 3}
     volume: 1
   - name: Damage React Light
-    clip: {fileID: 8300000, guid: b2b82e3a69187f440949cc82b1c90458, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 25988cfd1d1423140992b4f5df838adb, type: 3}
+    volume: 0.5
   - name: Damage React Light
     clip: {fileID: 8300000, guid: 095284c91d7dfc445be13e73bd60cab8, type: 3}
-    volume: 1
+    volume: 0.5
   - name: Damage React Heavy
     clip: {fileID: 8300000, guid: 684363df1524ad145a11fe1757b88f57, type: 3}
-    volume: 1
+    volume: 0.5
+  - name: Damage React Heavy
+    clip: {fileID: 8300000, guid: b2b82e3a69187f440949cc82b1c90458, type: 3}
+    volume: 0.5
+  - name: Damage React Bear
+    clip: {fileID: 8300000, guid: 79cf25e04a7424998882722ab0b8303e, type: 3}
+    volume: 0.5
   - name: Jump Start
     clip: {fileID: 8300000, guid: 6c96384674ba9ba47a7e7dda37d3438d, type: 3}
     volume: 1
@@ -137,18 +167,54 @@ MonoBehaviour:
   - name: Heavy Punch Impact 1.3
     clip: {fileID: 8300000, guid: e89e6e7cd0d5448ce9350f0c111e2262, type: 3}
     volume: 0.5
+  - name: Pistol Fire
+    clip: {fileID: 8300000, guid: 6019f7a9dc4e847a3bd732f59097b616, type: 3}
+    volume: 0.3
+  - name: Rifle Fire
+    clip: {fileID: 8300000, guid: d81b998f0426f7d4991845f050bc8291, type: 3}
+    volume: 0.3
+  - name: Pistol Reload
+    clip: {fileID: 8300000, guid: f5e58ed06bac3ac4faad62862390bec3, type: 3}
+    volume: 0.5
+  - name: Rifle Reload
+    clip: {fileID: 8300000, guid: d67cccc9ae8ac44fca54f7df699c3123, type: 3}
+    volume: 0.7
   - name: Introduction Music
     clip: {fileID: 8300000, guid: 5cd3f63a692502545b3921bad1b2f8b1, type: 3}
-    volume: 0.5
+    volume: 0.2
   - name: Forest Level Music
     clip: {fileID: 8300000, guid: bc5503719d4e6734d80540fd9d3c8039, type: 3}
-    volume: 0.5
+    volume: 0.1
+  - name: Forest Boss
+    clip: {fileID: 8300000, guid: 63447777a1ea3c5419bd0de4d7e5476c, type: 3}
+    volume: 0.2
+  - name: BattleField Music
+    clip: {fileID: 8300000, guid: a886f20e913fa45f78945a2d9e619b9d, type: 3}
+    volume: 0.1
+  - name: BattleField Boss
+    clip: {fileID: 8300000, guid: 0e414ca875dc7704fa75486a67ca1fee, type: 3}
+    volume: 0.2
+  - name: Ballroom Music
+    clip: {fileID: 8300000, guid: 6db8745e59a6e8149bc0a8fb89add8f9, type: 3}
+    volume: 0.3
+  - name: Ballroom Boss Intro
+    clip: {fileID: 8300000, guid: d58d85a546453f24b81f69eb0a146ea9, type: 3}
+    volume: 0.2
+  - name: Ballroom Boss Loop
+    clip: {fileID: 8300000, guid: 030417a17187ff84d8fdd54b1009e1d2, type: 3}
+    volume: 0.2
   - name: Death
     clip: {fileID: 8300000, guid: 9b3444635a78a8848b1b7b0b485d3252, type: 3}
     volume: 0.5
-  - name: Abe Death
-    clip: {fileID: 8300000, guid: 9b3444635a78a8848b1b7b0b485d3252, type: 3}
+  - name: Death
+    clip: {fileID: 8300000, guid: 28e1da7dc62ad8c42b6ccb38777fced4, type: 3}
     volume: 0.5
+  - name: Death
+    clip: {fileID: 8300000, guid: ed5bc0c45eadbdf40a71e1e7d3bdf3bc, type: 3}
+    volume: 0.5
+  - name: Abe Death
+    clip: {fileID: 8300000, guid: 74eb3012f844746b8b732f4dbfb4a083, type: 3}
+    volume: 0.9
   - name: Menu Click 1
     clip: {fileID: 8300000, guid: f69b3da015dc54836811f36813f19196, type: 3}
     volume: 0.5
@@ -176,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 0}
+  levelManager: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

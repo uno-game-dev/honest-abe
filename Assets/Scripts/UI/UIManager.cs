@@ -267,6 +267,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         _paused = false;
         _optionsUIBackground.SetActive(false);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     public void OnOptions()
@@ -276,16 +278,21 @@ public class UIManager : MonoBehaviour
         _pauseUI.SetActive(false);
         _optionsUI.SetActive(true);
         _optionsUIBackground.SetActive(true);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     public void OnCredits()
     {
         _pauseUI.SetActive(false);
         _creditsUI.SetActive(true);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     public void OnQuit()
     {
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
         Application.Quit(); //Only works when the project is built
     }
 
@@ -297,12 +304,16 @@ public class UIManager : MonoBehaviour
         _optionsUI.SetActive(false);
         _optionsUIBackground.SetActive(false);
         Time.timeScale = 0;
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     public void OnCreditsBack()
     {
         _pauseUI.SetActive(true);
         _creditsUI.SetActive(false);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     // When clicking the graphics button on the options menu
@@ -310,6 +321,8 @@ public class UIManager : MonoBehaviour
     {
         _optionsUI.SetActive(false);
         _graphicsUI.SetActive(true);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     // When clicking the audio button on the options menu
@@ -317,6 +330,8 @@ public class UIManager : MonoBehaviour
     {
         _optionsUI.SetActive(false);
         _audioUI.SetActive(true);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     // When clicking the controls button on the options menu
@@ -324,6 +339,8 @@ public class UIManager : MonoBehaviour
     {
         _optionsUI.SetActive(false);
         _controlsUI.SetActive(true);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     // When clicking the back button on the graphics menu
@@ -331,6 +348,8 @@ public class UIManager : MonoBehaviour
     {
         _optionsUI.SetActive(true);
         _graphicsUI.SetActive(false);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     // When clicking the back button on the audio menu
@@ -340,6 +359,8 @@ public class UIManager : MonoBehaviour
         _audioUIEffectsSlider.value = effectsVolume;
         _optionsUI.SetActive(true);
         _audioUI.SetActive(false);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     // When clicking the back button on the controls menu
@@ -347,6 +368,8 @@ public class UIManager : MonoBehaviour
     {
         _optionsUI.SetActive(true);
         _controlsUI.SetActive(false);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     // When clicking the apply button on the graphics menu
@@ -357,6 +380,8 @@ public class UIManager : MonoBehaviour
 
         // Make sure the camera is positioned over the player appropriately
         GameObject.Find("Main Camera").GetComponent<CameraFollow>().FixAspectRatio();
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     // When clicking the apply button on the audio menu
@@ -373,6 +398,8 @@ public class UIManager : MonoBehaviour
 
         PlayerPrefs.SetFloat(MusicVolume, musicVolume);
         PlayerPrefs.SetFloat(EffectsVolume, effectsVolume);
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     //After Losing
@@ -382,11 +409,15 @@ public class UIManager : MonoBehaviour
 		_levelManager.LoadFirstLevel();
 		_loseUI.SetActive(false);
         updateActive = false;
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     //After Losing
     public void OnLoseNo()
     {
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
+
         //Need to go back to the main menu, but for the alpha just quit the game
         Application.Quit(); //Only works when the project is built
     }
@@ -398,11 +429,15 @@ public class UIManager : MonoBehaviour
 		_levelManager.currentScene++;
 		_winUI.SetActive(false);
         updateActive = false;
+
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
     //After Win
     public void OnWinNo()
     {
+        EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
+
         //Need to go back to the main menu, but for the alpha just quit the game
         Application.Quit(); //Only works when the project is built	
     }
