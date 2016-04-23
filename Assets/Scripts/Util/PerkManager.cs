@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class PerkManager : MonoBehaviour
 {
+    private static GameObject _instance;
 
     /*
      * Individual Perk Information
@@ -76,7 +77,6 @@ public class PerkManager : MonoBehaviour
 	 */
 	private static CameraFollow cameraFollow;
 	private WorldGenerator worldGen;
-	private int tempCurrentScene = 0;
 	public static bool hatPerkChosen = false;
 	public static bool trinketPerkChosen = false;
 	public static bool axePerkChosen = false;
@@ -101,8 +101,20 @@ public class PerkManager : MonoBehaviour
             p.CheckStatus();
             perkList.Add(p);
         }
+
+        if (_instance == null)
+        {
+            _instance = gameObject;
+        }
+        else if (_instance != gameObject)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {
 		cameraFollow = GameObject.Find ("Main Camera").GetComponent<CameraFollow> ();
-		worldGen = GameObject.Find ("Forest").GetComponent<WorldGenerator> ();
+		worldGen = GameObject.Find ("Level").GetComponent<WorldGenerator> ();
 		levelManager = GameObject.Find ("GameManager").GetComponent<LevelManager> ();
     }
 
