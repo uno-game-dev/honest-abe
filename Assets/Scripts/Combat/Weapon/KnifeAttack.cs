@@ -9,14 +9,14 @@ class KnifeAttack : BaseAttack
 	// For bushwhacker, Heavy attack = trip, Light attack = knives
 	protected override void PrepareToLightAttack()
 	{
+        animator.Play("Knife Stab Ground Left");
 		base.PrepareToLightAttack();
-        animator.Play("Light Attack Knife");
 	}
 
 	protected override void PrepareToHeavyAttack()
 	{
+        animator.Play("Trip Attack");
 		base.PrepareToHeavyAttack();
-        animator.Play("Trip Attack 0");
 	}
 
 	protected override void BackToIdle()
