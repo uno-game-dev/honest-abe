@@ -54,35 +54,29 @@ public class WorldGenerator : MonoBehaviour
 
 		if (_camera.transform.position.x >= _lastXPos - startSpawnPosition && _canSpawn)
 		{
-			if (!_levelName.Equals("PerkPickUp"))
+			_canSpawn = false;
+			_occupiedPos = new List<Vector3>();
+			if (!SpawnBoss())
 			{
-				_canSpawn = false;
-				_occupiedPos = new List<Vector3>();
-				if (props.Count > 0)
-					SpawnProps();
-				if (decals.Count > 0)
-					SpawnDecals();
-				if (!SpawnBoss())
-				{
-					if (enemies.Count > 0)
-						SpawnEnemies();
-					_canSpawn = true;
-				}
+				if (enemies.Count > 0)
+					SpawnEnemies();
+				_canSpawn = true;
 			}
+			if (props.Count > 0)
+				SpawnProps();
+			if (decals.Count > 0)
+				SpawnDecals();
 			Debug.Log("Completed generation of screen " + currentScreen);
 			currentScreen++;
 			_lastXPos += startSpawnPosition;
 		}
 
 		_enemiesInScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
-		if (_enemiesInScreen <= 0 && currentScreen > 0 && !_spawningWaveOnClear)
+		if (_enemiesInScreen <= 0 && currentScreen > 1 && !_spawningWaveOnClear)
 		{
-			if (!_levelName.Equals("PerkPickUp"))
-			{
-				_spawningWaveOnClear = true;
-				SpawnEnemies();
-				_spawningWaveOnClear = false;
-			}
+			_spawningWaveOnClear = true;
+			SpawnEnemies();
+			_spawningWaveOnClear = false;
 		}
 	}
 
@@ -111,6 +105,9 @@ public class WorldGenerator : MonoBehaviour
 
 	private void SpawnEnemies()
 	{
+		if (_levelName.Equals(GlobalSettings.levelOneSceneName) && currentScreen == 0)
+			return;
+
 		_remainingEnemyDensity = 0;
 
 		switch (GetWaveDifficulty())
@@ -229,7 +226,7 @@ public class WorldGenerator : MonoBehaviour
 		float y = 0;
 		bool occupied = true;
 		int attempts = 0;
-		while (occupied && attempts < 3)
+		while (occupied && attempts < 2)
 		{
 			occupied = false;
 
@@ -238,7 +235,7 @@ public class WorldGenerator : MonoBehaviour
 				x = GameObject.Find("RightEdge").transform.position.x;
 			else
 				x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
-			y = (float)(height * _rnd.NextDouble() - height);
+			y = (float)((height * _rnd.NextDouble()) * 0.9 - height);
 
 			foreach (Vector3 pos in _occupiedPos)
 			{

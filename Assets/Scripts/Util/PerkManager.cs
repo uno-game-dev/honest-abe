@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class PerkManager : MonoBehaviour
 {
+    private static GameObject _instance;
 
     /*
      * Individual Perk Information
@@ -76,13 +77,12 @@ public class PerkManager : MonoBehaviour
 	 */
 	private static CameraFollow cameraFollow;
 	private WorldGenerator worldGen;
-	private int tempCurrentScene = 0;
 	public static bool hatPerkChosen = false;
 	public static bool trinketPerkChosen = false;
 	public static bool axePerkChosen = false;
 	private LevelManager levelManager;
 
-    void Start()
+    void Awake()
     {
         perkList = new List<Perk>();
 
@@ -101,27 +101,28 @@ public class PerkManager : MonoBehaviour
             p.CheckStatus();
             perkList.Add(p);
         }
+
+        if (_instance == null)
+        {
+            _instance = gameObject;
+        }
+        else if (_instance != gameObject)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {
 		cameraFollow = GameObject.Find ("Main Camera").GetComponent<CameraFollow> ();
-		worldGen = GameObject.Find ("Forest").GetComponent<WorldGenerator> ();
+		worldGen = GameObject.Find ("Level").GetComponent<WorldGenerator> ();
 		levelManager = GameObject.Find ("GameManager").GetComponent<LevelManager> ();
     }
 
 	void Update(){
-		if ( (worldGen.currentScreen - tempCurrentScene == 1)) {
-			if((worldGen.currentScreen == 1) && (!hatPerkChosen)){
-				cameraFollow.lockRightEdge = true;
-			}
-			if((worldGen.currentScreen == 2) && (!trinketPerkChosen)){
-				cameraFollow.lockRightEdge = true;
-			}
-			if((worldGen.currentScreen == 3) && (!axePerkChosen)){
-				cameraFollow.lockRightEdge = true;
-			}
-			if (worldGen.currentScreen == 4) {
-				levelManager.currentScene++;
-			}
-			tempCurrentScene ++;
-		}
+		if(worldGen.currentScreen == 0 && (!hatPerkChosen || !trinketPerkChosen || !axePerkChosen))
+			cameraFollow.lockRightEdge = true;
+		else
+			cameraFollow.lockRightEdge = false;
 	}
 
     public static void PerformPerkEffects(Perk.PerkCategory type)
@@ -144,8 +145,4 @@ public class PerkManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(perk, status);
     }
-
-	public static void UnlockCameraAfterPerkPickUp(){
-		cameraFollow.lockRightEdge = false;
-	}
 }

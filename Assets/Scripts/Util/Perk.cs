@@ -159,7 +159,6 @@ public class Perk : MonoBehaviour
         {
             case PerkCategory.NONE_AXE:
                 PerkManager.activeAxePerk = null;
-				PerkManager.UnlockCameraAfterPerkPickUp ();
 				PerkManager.axePerkChosen = true;
                 break;
             case PerkCategory.NONE_HAT:
@@ -167,7 +166,6 @@ public class Perk : MonoBehaviour
 				if (GameObject.Find ("Hat_Default") != null) {
                     GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.Regular, GameObject.Find("Hat_Default"), pickupHatDuration);
                 }
-				PerkManager.UnlockCameraAfterPerkPickUp ();
 				PerkManager.hatPerkChosen = true;
                 break;
             case PerkCategory.NONE_TRINKET:
@@ -176,7 +174,6 @@ public class Perk : MonoBehaviour
 					GameObject.Find ("Trinket_Default").transform.SetParent (GameObject.Find ("Player").transform, true);
 					GameObject.Find ("Trinket_Default").SetActive (false);
 				}
-				PerkManager.UnlockCameraAfterPerkPickUp ();
 				PerkManager.trinketPerkChosen = true;
                 break;
             case PerkCategory.AXE:
@@ -184,7 +181,6 @@ public class Perk : MonoBehaviour
                 weapon = playerAttack.weapon;
                 PerkManager.activeAxePerk = this;
                 PerkManager.AxePerkEffect += AxeEffect;
-				PerkManager.UnlockCameraAfterPerkPickUp();
 				PerkManager.axePerkChosen = true;
                 break;
 			case PerkCategory.HAT:
@@ -200,7 +196,6 @@ public class Perk : MonoBehaviour
                         GameObject.Find("Player").GetComponent<PickupHat>().SetHat(PickupHat.HatType.StickyFingers, GameObject.Find("Hat_SF"), pickupHatDuration);
                     }
 				}
-				PerkManager.UnlockCameraAfterPerkPickUp();
 				PerkManager.hatPerkChosen = true;
                 break;
 			case PerkCategory.TRINKET:
@@ -224,7 +219,6 @@ public class Perk : MonoBehaviour
                         GameObject.Find("MT_Sprite_Placeholder").SetActive(false);
                     }
                 }
-				PerkManager.UnlockCameraAfterPerkPickUp();
 				PerkManager.trinketPerkChosen = true;
                 break;
             default:
