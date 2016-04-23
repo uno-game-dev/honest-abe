@@ -54,8 +54,16 @@ public class GenericAnimation : MonoBehaviour
         }
         else
         {
-            if (state == CharacterState.State.Idle) animator.Play("Idle");
-            if (state == CharacterState.State.Movement) animator.Play("Walk");
+            if (tag == "Player")
+            {
+                if (state == CharacterState.State.Idle) animator.Play("Abe Idle");
+                if (state == CharacterState.State.Movement) animator.Play("Abe Walk");
+            }
+            else
+            {
+                if (state == CharacterState.State.Idle) animator.Play("Idle");
+                if (state == CharacterState.State.Movement) animator.Play("Walk");
+            }
         }
         if (state == CharacterState.State.Dead) animator.Play("Dead");
     }
