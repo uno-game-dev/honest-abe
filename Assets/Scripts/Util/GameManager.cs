@@ -2,8 +2,6 @@
 
 public class GameManager : MonoBehaviour
 {
-	public bool perkChosen;
-
     private static GameObject _instance;
 
     private CameraFollow _cameraFollow;

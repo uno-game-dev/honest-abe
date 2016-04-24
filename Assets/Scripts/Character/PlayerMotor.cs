@@ -130,25 +130,14 @@ public class PlayerMotor : MonoBehaviour
                 {
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                     collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
-                    if (!_gameManager.perkChosen)
-                    {
-                        _gameManager.perkChosen = true;
-                        _uiManager.perkText.enabled = false;
-                    }
                     StartHatPickup();
                 }
-                else if (((collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET) ||
-                    (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_TRINKET))
+                else if ((collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.TRINKET)
                     && (PerkManager.activeTrinketPerk == null))
                 {
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                     collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                     SoundPlayer.Play("Trinket Pickup");
-                    if (!_gameManager.perkChosen)
-                    {
-                        _gameManager.perkChosen = true;
-                        _uiManager.perkText.enabled = false;
-                    }
                     StartPickup();
                 }
             }
@@ -166,12 +155,6 @@ public class PlayerMotor : MonoBehaviour
                 collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 _playerAttack.emptyHanded = false;
                 SoundPlayer.Play("Axe Pickup");
-
-                if (!_gameManager.perkChosen)
-                {
-                    _gameManager.perkChosen = true;
-                    _uiManager.perkText.enabled = false;
-                }
                 StartPickup();
             }
         }
