@@ -28,7 +28,7 @@ public class Boss : MonoBehaviour
             if (_levelManager.currentScene == 0)
                 MusicPlayer.Play("Forest Boss");
             else if (_levelManager.currentScene == 1)
-                MusicPlayer.Play("Battlefield Boss");
+                MusicPlayer.Play("BattleField Boss");
             else if (_levelManager.currentScene == 2)
                 MusicPlayer.Play("Ballroom Boss Intro", "Ballroom Boss Loop");
         }
