@@ -125,7 +125,7 @@ public class PerkManager : MonoBehaviour
 
 	void Update()
     {
-        if (worldGen.currentScreen == 0 && (!hatPerkChosen || !trinketPerkChosen || !axePerkChosen))
+        if (levelManager.currentScene == 0 && (!hatPerkChosen || !trinketPerkChosen || !axePerkChosen))
             cameraFollow.lockRightEdge = true;
         else
             cameraFollow.lockRightEdge = false;
@@ -169,8 +169,4 @@ public class PerkManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(perk, status);
     }
-
-	public static void UnlockCameraAfterPerkPickUp(){
-		cameraFollow.lockRightEdge = false;
-	}
 }

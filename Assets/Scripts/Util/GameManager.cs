@@ -27,10 +27,6 @@ public class GameManager : MonoBehaviour
     {
         if (GlobalSettings.currentSceneIsNew)
             Initialize();
-//        if (!perkChosen)
-//            _cameraFollow.lockRightEdge = true;
-//        else
-//            _cameraFollow.lockRightEdge = false;
 	}
 
 
