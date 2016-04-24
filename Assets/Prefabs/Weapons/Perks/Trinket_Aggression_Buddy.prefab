@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 419566}
   - 61: {fileID: 6174804}
   - 114: {fileID: 11455330}
+  - 114: {fileID: 11434544}
   m_Layer: 12
   m_Name: Trinket_Aggression_Buddy
   m_TagString: Perk
@@ -100,6 +101,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1.75}
+--- !u!114 &11434544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198717cee58962a4fa307cdd92a50178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 0
+  lockIcon: {fileID: 152076, guid: 10aa8f8e0af322b4b900b59e1c23b92f, type: 2}
 --- !u!114 &11455330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +165,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: lockIcon
+      value: 
+      objectReference: {fileID: 152076, guid: 10aa8f8e0af322b4b900b59e1c23b92f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152550}
