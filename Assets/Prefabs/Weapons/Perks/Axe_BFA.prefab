@@ -32,21 +32,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &172500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 414792}
-  m_Layer: 12
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &183176
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,18 +68,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &414792
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172500}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 463562}
-  m_RootOrder: 1
 --- !u!4 &423992
 Transform:
   m_ObjectHideFlags: 1
@@ -120,7 +93,6 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 423992}
-  - {fileID: 414792}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &489118
@@ -157,7 +129,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 31c1db57ae0c3e54288fad952092d8ec, type: 2}
+  - {fileID: 2100000, guid: 8647c8c9c15136141b32a34cc8c914ba, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -183,7 +155,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 31c1db57ae0c3e54288fad952092d8ec, type: 2}
+  - {fileID: 2100000, guid: 8647c8c9c15136141b32a34cc8c914ba, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -224,9 +196,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.21729803, y: 0.72700024}
+  m_Offset: {x: 0.24369287, y: 0.72700024}
   serializedVersion: 2
-  m_Size: {x: 0.9108467, y: 1.5117569}
+  m_Size: {x: 0.85174644, y: 1.5117569}
 --- !u!114 &11415904
 MonoBehaviour:
   m_ObjectHideFlags: 1
