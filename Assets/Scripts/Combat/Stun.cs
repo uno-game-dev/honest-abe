@@ -81,7 +81,7 @@ public class Stun : MonoBehaviour
 
     private bool ShouldStunPlayer(AttackArea attackArea)
     {
-        bool chanceToRandomlyHurtPlayer = random.Next() > 0.5;
+		bool chanceToRandomlyHurtPlayer = attackArea.GetComponentInParent<Transform>().tag == "Boss" || random.Next() > 0.5;
         bool isAttackKnife = attackArea && attackArea.GetAttackType() == Weapon.AttackType.Knife;
         return chanceToRandomlyHurtPlayer && !isAttackKnife;
     }
