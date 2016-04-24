@@ -47,7 +47,7 @@ public class SoundPlayer : MonoBehaviour
         source.clip = namedAudio.clip;
         source.volume = namedAudio.volume;
 
-        if (namedAudio.name.Contains("Music"))
+        if (namedAudio.name.Contains("Music") || namedAudio.name.Contains("Boss"))
             source.outputAudioMixerGroup = instance.musicMixerGroup;
         else
             source.outputAudioMixerGroup = instance.soundMixerGroup;
