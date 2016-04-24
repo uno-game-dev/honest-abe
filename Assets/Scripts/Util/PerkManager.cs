@@ -142,6 +142,13 @@ public class PerkManager : MonoBehaviour
 		}
 	}
 
+    public void Reset()
+    {
+        hatPerkChosen = false;
+        trinketPerkChosen = false;
+        axePerkChosen = false;
+    }
+
     public static void PerformPerkEffects(Perk.PerkCategory type)
     {
         if (type == Perk.PerkCategory.AXE)
