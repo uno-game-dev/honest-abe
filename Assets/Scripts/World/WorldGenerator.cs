@@ -32,16 +32,17 @@ public class WorldGenerator : MonoBehaviour
 	private float _lastXPos;
 	private float _spawnOnClearLocation;
 	private bool _canSpawn = true;
-	private bool _spawningWaveOnClear;
+	private bool _spawnWaveOnClear;
+    private bool _spawnWaveDuringBoss;
 
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
 	{
 		_lastXPos = startSpawnPosition;
 		_camera = GameObject.Find("Main Camera");
 		_rnd = new System.Random();
 		currentScreen = 0;
-		_spawningWaveOnClear = false;
+		_spawnWaveOnClear = false;
 		_levelName = SceneManager.GetActiveScene().name;
 	}
 
@@ -59,23 +60,23 @@ public class WorldGenerator : MonoBehaviour
 			{
 				if (enemies.Count > 0)
 					SpawnEnemies();
-				_canSpawn = true;
-			}
-			if (props.Count > 0)
-				SpawnProps();
+                if (props.Count > 0)
+                    SpawnProps();
+            }
 			if (decals.Count > 0)
 				SpawnDecals();
 			Debug.Log("Completed generation of screen " + currentScreen);
 			currentScreen++;
 			_lastXPos += startSpawnPosition;
-		}
+            _canSpawn = true;
+        }
 
 		_enemiesInScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
-		if (_enemiesInScreen <= 0 && currentScreen > 1 && !_spawningWaveOnClear)
+		if (_enemiesInScreen <= 0 && currentScreen > 1 && !_spawnWaveOnClear)
 		{
-			_spawningWaveOnClear = true;
+			_spawnWaveOnClear = true;
 			SpawnEnemies();
-			_spawningWaveOnClear = false;
+			_spawnWaveOnClear = false;
 		}
 	}
 
@@ -230,8 +231,15 @@ public class WorldGenerator : MonoBehaviour
 			occupied = false;
 
 			// Spawn wave along right edge of camera on clear
-			if (_spawningWaveOnClear)
+			if (_spawnWaveOnClear)
 				x = GameObject.Find("RightEdge").transform.position.x;
+            else if (_spawnWaveDuringBoss)
+            {
+                if (_rnd.Next(2) == 0)
+                    x = GameObject.Find("LeftEdge").transform.position.x + 2;
+                else
+                    x = GameObject.Find("RightEdge").transform.position.x - 2;
+            }
 			else
 				x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
 			y = (float)((height * _rnd.NextDouble()) * 0.9 - height);
@@ -251,4 +259,11 @@ public class WorldGenerator : MonoBehaviour
 		_occupiedPos.Add(vector);
 		return vector;
 	}
+
+    public void SpawnWaveDuringBoss()
+    {
+        _spawnWaveDuringBoss = true;
+        SpawnEnemies();
+        _spawnWaveDuringBoss = false;
+    }
 }
