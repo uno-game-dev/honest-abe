@@ -25,11 +25,11 @@ public class Boss : MonoBehaviour
 			_cameraFollow.lockRightEdge = true;
 			GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = true;
 
-            if (_levelManager.currentScene == 1)
+            if (_levelManager.currentScene == 0)
                 MusicPlayer.Play("Forest Boss");
-            else if (_levelManager.currentScene == 2)
+            else if (_levelManager.currentScene == 1)
                 MusicPlayer.Play("Battlefield Boss");
-            else if (_levelManager.currentScene == 3)
+            else if (_levelManager.currentScene == 2)
                 MusicPlayer.Play("Ballroom Boss Intro", "Ballroom Boss Loop");
         }
     }
