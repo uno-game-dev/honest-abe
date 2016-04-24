@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
 	private CameraFollow _cameraFollow;
 	private Vector3 _playerPosition;
     private LevelManager _levelManager;
+    private bool isMusicPlaying;
 
     // Use this for initialization
     void Start()
@@ -25,12 +26,16 @@ public class Boss : MonoBehaviour
 			_cameraFollow.lockRightEdge = true;
 			GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = true;
 
-            if (_levelManager.currentScene == 0)
-                MusicPlayer.Play("Forest Boss");
-            else if (_levelManager.currentScene == 1)
-                MusicPlayer.Play("Battlefield Boss");
-            else if (_levelManager.currentScene == 2)
-                MusicPlayer.Play("Ballroom Boss Intro", "Ballroom Boss Loop");
+            if (!isMusicPlaying)
+            {
+                isMusicPlaying = true;
+                if (_levelManager.currentScene == 0)
+                    MusicPlayer.Play("Forest Boss");
+                else if (_levelManager.currentScene == 1)
+                    MusicPlayer.Play("BattleField Boss");
+                else if (_levelManager.currentScene == 2)
+                    MusicPlayer.Play("Ballroom Boss Intro", "Ballroom Boss Loop");
+            }
         }
     }
 }
