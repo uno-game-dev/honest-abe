@@ -28,7 +28,8 @@ public class EventHandler : MonoBehaviour
         ITEM_PICKUP,
         WEAPON_PICKUP,
         PERK_PICKUP,
-        GAME_LOSE,
+		LEVEL_WIN,
+		GAME_LOSE,
         GAME_WIN,
         JUMP,
         LAND,
@@ -180,20 +181,24 @@ public class EventHandler : MonoBehaviour
                     other.GetComponent<Perk>().Activate();
                 }
                 break;
-            case Events.GAME_LOSE:
-                Debug.Log("Game Lose");
-                if (player == null)
-                    player = GameObject.Find("Player");
-                player.GetComponent<PlayerMotor>().enabled = false;
-                player.GetComponent<PlayerControls>().enabled = false;
-                GameObject.Find("UI").GetComponent<UIManager>().ActivateLoseUI();
-                break;
-            case Events.GAME_WIN:
+			case Events.LEVEL_WIN:
+				Debug.Log("Level Win");
+				GameObject.Find("GameManager").GetComponent<LevelManager>().currentScene++;
+				break;
+			case Events.GAME_WIN:
                 Debug.Log("Game Win");
                 PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
-                GameObject.Find("GameManager").GetComponent<GameManager>().Win();
+				GameObject.Find("Player").GetComponent<Player>().PlayEnding();
                 break;
-            case Events.JUMP:
+			case Events.GAME_LOSE:
+				Debug.Log("Game Lose");
+				if (player == null)
+					player = GameObject.Find("Player");
+				player.GetComponent<PlayerMotor>().enabled = false;
+				player.GetComponent<PlayerControls>().enabled = false;
+				GameObject.Find("UI").GetComponent<UIManager>().ActivateLoseUI();
+				break;
+			case Events.JUMP:
                 Debug.Log("Jump");
                 //AudioManager.instance.PlaySound("Jump");
                 break;

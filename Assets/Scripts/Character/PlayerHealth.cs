@@ -197,11 +197,7 @@ public class PlayerHealth : Health
         _animator.Play("Abe Death");
         _characterState.SetState(CharacterState.State.Dead);
 
-        BaseCollision baseCollision = GetComponent<BaseCollision>();
-        baseCollision.enabled = false;
-
-        // Maybe too much
-        //foreach (MonoBehaviour monoBehaviour in GetComponents<MonoBehaviour>())
-        //    monoBehaviour.enabled = false;
-    }
+		GameObject.Find("Main Camera").GetComponent<CameraFollow>().enabled = false;
+		GetComponent<BaseCollision>().enabled = false;
+	}
 }
