@@ -246,7 +246,7 @@ public class WorldGenerator : MonoBehaviour
 
 			foreach (Vector3 pos in _occupiedPos)
 			{
-				if ((Math.Abs((double)(x - pos.x)) < 1.0) && (Math.Abs((double)(y - pos.y)) < 1.0))
+				if ((Math.Abs((double)(x - pos.x)) < 1.5) && (Math.Abs((double)(y - pos.y)) < 1.5))
 				{
 					occupied = true;
 					break;
