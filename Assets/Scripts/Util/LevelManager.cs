@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
 	public void LoadFirstLevel()
     {
         Destroy(GameObject.Find("Player"));
-        GameObject.Find("PerkManager").GetComponent<PerkManager>().Reset();
+        GetComponent<PerkManager>().Reset();
         SceneManager.LoadScene(0);
 	}
 }

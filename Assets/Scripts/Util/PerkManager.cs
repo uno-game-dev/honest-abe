@@ -98,7 +98,7 @@ public class PerkManager : MonoBehaviour
 	private float nextTrinketDecrease = 0f;
 	private float nextMaryToddsDecrease = 0f;
 
-    void Start()
+    void Awake()
     {
         perkList = new List<Perk>();
 
