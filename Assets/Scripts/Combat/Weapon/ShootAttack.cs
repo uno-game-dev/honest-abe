@@ -60,7 +60,8 @@ class ShootAttack : BaseAttack
     {
         if (!IsAttacking()) return;
 
-        if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
+        if (weapon)
+            if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         animator.Play("Shoot Musket");
         SoundPlayer.Play("Rifle Fire");
         ShootCollisionCheck();
