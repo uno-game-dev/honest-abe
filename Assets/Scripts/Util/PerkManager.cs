@@ -135,7 +135,7 @@ public class PerkManager : MonoBehaviour
 
 	void Update()
     {
-        if (levelManager.currentScene == 0 && (!hatPerkChosen || !trinketPerkChosen || !axePerkChosen))
+        if (levelManager.currentScene == 0 && (!hatPerkChosen || !axePerkChosen))
             cameraFollow.lockRightEdge = true;
         else
             cameraFollow.lockRightEdge = false;

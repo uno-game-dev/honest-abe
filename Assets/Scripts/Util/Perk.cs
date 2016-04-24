@@ -91,12 +91,6 @@ public class Perk : MonoBehaviour
 				_perkDesc = PerkManager.hat_none_desc;
                 unlocked = true;
                 break;
-            case PerkType.NONE_TRINKET:
-                _category = PerkCategory.NONE_TRINKET;
-				_perkName = PerkManager.trinket_none_name;
-				_perkDesc = PerkManager.trinket_none_desc;
-                unlocked = true;
-                break;
             case PerkType.AXE_DTVAMPIRISM:
                 _category = PerkCategory.AXE;
                 _perkDesc = PerkManager.axe_dtVampirism_desc;
@@ -158,7 +152,6 @@ public class Perk : MonoBehaviour
                 else if (type == PerkType.HAT_STICKYFINGERS) _perkDesc = PerkManager.hat_stickyFingers_lock_desc;
                 else if (type == PerkType.NONE_AXE) _perkDesc = PerkManager.axe_none_lock_desc;
                 else if (type == PerkType.NONE_HAT) _perkDesc = PerkManager.hat_none_lock_desc;
-                else if (type == PerkType.NONE_TRINKET) _perkDesc = PerkManager.trinket_none_lock_desc;
                 else if (type == PerkType.TRINKET_AGGRESSIONBUDDY) _perkDesc = PerkManager.trinket_agressionBuddy_lock_desc;
                 else if (type == PerkType.TRINKET_MARY_TODDS_LOCKETTE) _perkDesc = PerkManager.trinket_maryToddsLockette_lock_desc;
             }
