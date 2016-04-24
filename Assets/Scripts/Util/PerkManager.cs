@@ -20,33 +20,39 @@ public class PerkManager : MonoBehaviour
     // Perk names
     public static string axe_none_name = "Axe_None";
     public static string axe_none_desc = "Abe's Regular Axe";
+    public static string axe_none_lock_desc = "How are you even seeing this?";
 
     public static string hat_none_name = "Hat_None";
     public static string hat_none_desc = "Abe's Regular Hat";
-
-    public static string trinket_none_name = "Trinket_None";
-    public static string trinket_none_desc = "Abe's Regular Trinket";
+    public static string hat_none_lock_desc = "How are you even seeing this?";
 
     public static string axe_dtVampirism_name = "Axe_DTVampirism";
     public static string axe_dtVampirism_desc = "Perk: Vampirism\nRestores damage threshold on all heavy attacks";
+    public static string axe_dtVampirism_lock_desc = "Perk: Vampirism\nThis Perk is Locked!";
 
     public static string axe_bfa_name = "Axe_BFA";
     public static string axe_bfa_desc = "Perk: B.F.A.\nA bigger, stronger axe for your pleasure.";
+    public static string axe_bfa_lock_desc = "Perk: B.F.A\nThis Perk is Locked!";
 
     public static string axe_slugger_name = "Axe_Slugger";
     public static string axe_slugger_desc = "Perk: Slugger\nStronger combos and harder knockbacks";
+    public static string axe_slugger_lock_desc = "Perk: Slugger\nThis Perk is Locked!";
 
     public static string hat_bearHands_name = "Hat_bearHands";
     public static string hat_bearHands_desc = "Perk: Bear Hands\nIncreased damage on all empty-handed attacks";
+    public static string hat_bearHands_lock_desc = "Perk: Bear Hands\nThis Perk is Locked!";
 
 	public static string trinket_agressionBuddy_name = "Trinket_AggressionBuddy";
 	public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold with a cooldown of 30sec.";
+    public static string trinket_agressionBuddy_lock_desc = "Perk: Aggression Buddy\nThis Perk is Locked!";
 
-	public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLocket";
-	public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides invincibility with a cooldown of 120sec.";
+	public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLockette";
+	public static string trinket_maryToddsLockette_desc = "Perk: Marry Todd's Lockette\nProvides invincibility with a cooldown of 120sec.";
+    public static string trinket_maryToddsLockette_lock_desc = "Perk: Marry Todd's Lockette\nThis Perk is Locked!";
 
 	public static string hat_stickyFingers_name = "Hat_StickyFingers";
 	public static string hat_stickyFingers_desc = "Perk: Sticky Fingers\nEnables the ablity to steal weapons";
+    public static string hat_stickyFingers_lock_desc = "Perk: Sticky Fingers\nThis Perk is Locked!";
 
     /*
      * Individual Perk Unlock Requirements
@@ -129,7 +135,7 @@ public class PerkManager : MonoBehaviour
 
 	void Update()
     {
-        if (levelManager.currentScene == 0 && (!hatPerkChosen || !trinketPerkChosen || !axePerkChosen))
+        if (levelManager.currentScene == 0 && (!hatPerkChosen || !axePerkChosen))
             cameraFollow.lockRightEdge = true;
         else
             cameraFollow.lockRightEdge = false;

@@ -119,6 +119,9 @@ public class PlayerMotor : MonoBehaviour
         }
         if (collider.tag == "Perk")
         {
+            if (collider.GetComponent<LockedPerk>() && collider.GetComponent<LockedPerk>().isLocked)
+                return;
+
             if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
             {
                 if (((collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT) ||
@@ -152,6 +155,9 @@ public class PlayerMotor : MonoBehaviour
         }
         if (collider.tag == "AbeAxe")
         {
+            if (collider.GetComponent<LockedPerk>() && collider.GetComponent<LockedPerk>().isLocked)
+                return;
+
             if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded)
             {
                 EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
