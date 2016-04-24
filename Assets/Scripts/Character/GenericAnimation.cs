@@ -58,6 +58,7 @@ public class GenericAnimation : MonoBehaviour
             {
                 if (state == CharacterState.State.Idle) animator.Play("Abe Idle");
                 if (state == CharacterState.State.Movement) animator.Play("Abe Walk");
+                if (state == CharacterState.State.Dead) animator.Play("Abe Death");
             }
             else
             {
