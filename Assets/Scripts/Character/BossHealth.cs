@@ -47,7 +47,7 @@ public class BossHealth : Health
         {
             health = 0;
             alive = false;
-            if ((SceneManager.GetActiveScene().buildIndex == 2))
+            if (gameObject.name == "RobertELee(Clone)")
             {
                 EventHandler.SendEvent(EventHandler.Events.ROBERT_E_LEE_KILL);
 				EventHandler.SendEvent(EventHandler.Events.GAME_WIN);

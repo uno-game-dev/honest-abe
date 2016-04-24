@@ -188,7 +188,7 @@ public class EventHandler : MonoBehaviour
 			case Events.GAME_WIN:
                 Debug.Log("Game Win");
                 PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
-				GameObject.Find("Player").GetComponent<Cinematic>().enabled = true;
+				GameObject.Find("Player").GetComponent<Player>().PlayEnding();
                 break;
 			case Events.GAME_LOSE:
 				Debug.Log("Game Lose");
