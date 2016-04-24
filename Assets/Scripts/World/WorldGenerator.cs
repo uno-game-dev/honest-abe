@@ -90,7 +90,7 @@ public class WorldGenerator : MonoBehaviour
 		for (int i = 0; i < propDensity; i++)
 		{
 			int r = _rnd.Next(props.Count);
-			Instantiate(props[r], GetRandomEmptyPos(-40f), Quaternion.Euler(0, 0, 0));
+			Instantiate(props[r], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
 		}
 	}
 
