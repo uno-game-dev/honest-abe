@@ -645,7 +645,6 @@ GameObject:
   - 114: {fileID: 11427242}
   - 114: {fileID: 11421144}
   - 114: {fileID: 11415636}
-  - 114: {fileID: 11438134}
   - 114: {fileID: 11471266}
   - 114: {fileID: 11452276}
   - 114: {fileID: 11438974}
@@ -1716,7 +1715,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11474548}
     m_EventID: 433083577
-  m_CachedInstanceID: 414720
+  m_CachedInstanceID: 156100
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1799,7 +1798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0230f66eb00a64fb8986d61f3c1b17fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 200
   additionalHealthFloor: 0
   additionalHealthCeiling: 0
   alive: 0
@@ -1835,7 +1834,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 414708
+  m_CachedInstanceID: 156088
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1862,7 +1861,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: 414722
+  m_CachedInstanceID: 156102
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2007,7 +2006,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11452276}
     m_EventID: 334526696
-  m_CachedInstanceID: 414724
+  m_CachedInstanceID: 156104
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2075,21 +2074,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   numberOfCollisions: 0
---- !u!114 &11438134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9c4d07dd4bb44199a64243ccd9be58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossHealth: {fileID: 0}
-  _75PercentHealth: {fileID: 0}
-  _50PercentHealth: {fileID: 0}
-  _25PercentHealth: {fileID: 0}
 --- !u!114 &11438974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2110,7 +2094,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: 414718
+  m_CachedInstanceID: 156098
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2221,7 +2205,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: 414716
+  m_CachedInstanceID: 156096
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2368,7 +2352,7 @@ MonoBehaviour:
     m_EventID: 1948614651
   - m_Destination: {fileID: 11452276}
     m_EventID: 334526696
-  m_CachedInstanceID: 414726
+  m_CachedInstanceID: 156106
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
