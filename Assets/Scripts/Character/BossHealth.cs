@@ -63,7 +63,12 @@ public class BossHealth : Health
                 EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
             }
             if (health < _currentTargetHealthForExecution)
+            {
                 _currentTargetHealthForExecution -= _totalHealth / 4;
+                // Officer-Boss additional spawns
+                if (gameObject.name == "Officer-Boss(Clone)")
+                    GameObject.Find("Level").GetComponent<WorldGenerator>().SpawnWaveDuringBoss();
+            }
         }
 		bossHealthSlider.UpdateBossHealth(health);
 	}
