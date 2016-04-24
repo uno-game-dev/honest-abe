@@ -1,42 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &165978
+--- !u!1 &112358
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 483560}
-  - 212: {fileID: 21270914}
-  - 61: {fileID: 6175742}
-  - 60: {fileID: 6084234}
-  - 114: {fileID: 11495944}
+  - 4: {fileID: 456040}
+  - 212: {fileID: 21291950}
+  - 61: {fileID: 6160678}
+  - 60: {fileID: 6001400}
+  - 114: {fileID: 11412024}
   m_Layer: 9
-  m_Name: ShortStool
+  m_Name: Grave
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &483560
+--- !u!4 &456040
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165978}
+  m_GameObject: {fileID: 112358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -15, y: -2, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &6084234
+--- !u!60 &6001400
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165978}
+  m_GameObject: {fileID: 112358}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -45,19 +45,22 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 0.730648, y: -0.6235057}
-      - {x: -0.7806459, y: -0.612237}
-      - {x: -0.6709116, y: 0.57055926}
-      - {x: -0.61912304, y: 0.7066177}
-      - {x: -0.52135843, y: 0.75644267}
-      - {x: 0.47260362, y: 0.759963}
-      - {x: 0.6668833, y: 0.70145446}
---- !u!61 &6175742
+    - - {x: -1.0032253, y: 0.45842338}
+      - {x: -1.0999432, y: 0.4595167}
+      - {x: -1.2086077, y: 0.31707788}
+      - {x: -1.2660475, y: -0.103030086}
+      - {x: -1.2646065, y: -0.3245523}
+      - {x: -1.2231569, y: -0.43421197}
+      - {x: -1.101346, y: -0.4516741}
+      - {x: -0.91688156, y: 0.007774174}
+      - {x: -0.84439754, y: 0.27384079}
+      - {x: -0.89225006, y: 0.3986714}
+--- !u!61 &6160678
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165978}
+  m_GameObject: {fileID: 112358}
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
@@ -66,23 +69,23 @@ BoxCollider2D:
   m_Offset: {x: -0.1, y: -0.53}
   serializedVersion: 2
   m_Size: {x: 2.09, y: 0.1}
---- !u!114 &11495944
+--- !u!114 &11412024
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165978}
+  m_GameObject: {fileID: 112358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5355fcbceaafd84dbcdd111b4feaf1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &21270914
+--- !u!212 &21291950
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165978}
+  m_GameObject: {fileID: 112358}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -103,7 +106,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 783655d941eaa824caeede8dadfb4537, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37365e9267d39524d9a8bd90cfaf799e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,5 +119,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 165978}
+  m_RootGameObject: {fileID: 112358}
   m_IsPrefabParent: 1
