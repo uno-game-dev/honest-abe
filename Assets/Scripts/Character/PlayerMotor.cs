@@ -225,7 +225,7 @@ public class PlayerMotor : MonoBehaviour
         _controls.ResetHold();
         _controls.justClicked = false;
 
-        if (collider.tag == "Perk" || collider.tag == "Weapon" || collider.tag == "AbeAxe" || collider.tag == "OneUseWeapon")
+        if (collider != null && (collider.tag == "Perk" || collider.tag == "Weapon" || collider.tag == "AbeAxe" || collider.tag == "OneUseWeapon"))
             isOnItem = false;
     }
 
