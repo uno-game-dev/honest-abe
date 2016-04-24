@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -75,7 +75,13 @@ public class UIManager : MonoBehaviour
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
 		_startGameText = GameObject.Find("StartText");
-		_startGameText.SetActive(true);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            _startGameText.SetActive(true);
+        else
+        {
+            _startGameText.SetActive(false);
+            updateActive = true;
+        }
 		SetListenersForPauseUI();
         SetListenersForCreditsUI();
 		SetListenersForOptionsUI();
