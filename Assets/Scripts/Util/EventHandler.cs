@@ -147,7 +147,7 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.ITEM_PICKUP:
                 Debug.Log("Item Pickup");
-                if (other != null && other.name == "HealthKit")
+                if (other != null && other.GetComponent<Item>() != null && other.GetComponent<Item>().type == Item.Type.HEALTH)
                 {
                     // If we pickup a health pickup then it cancels out the ability to get the mary todd's lockette perk
                     PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.trinket_maryToddsLockette_name)).setToBeUnlocked = false;
