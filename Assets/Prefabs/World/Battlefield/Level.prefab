@@ -350,7 +350,7 @@ MonoBehaviour:
   currentScreen: 0
   spawnYPos: 0
   spawnZPos: 10
-  propDensity: 3
+  propDensity: 5
   decalDensity: 10
   itemDensity: 1
 --- !u!114 &11475430
@@ -406,6 +406,10 @@ Prefab:
       propertyPath: props.Array.data[3]
       value: 
       objectReference: {fileID: 103122, guid: 80f4213dabdc0234783216ab769b7368, type: 2}
+    - target: {fileID: 0}
+      propertyPath: propDensity
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168268}

@@ -353,6 +353,8 @@ MonoBehaviour:
   props:
   - {fileID: 165978, guid: 13a36c1f5ce37d2488afc03128e585cf, type: 2}
   - {fileID: 145314, guid: eae0fe6a42b25204498f6e074254ca48, type: 2}
+  - {fileID: 159472, guid: a61392e3ac301534793021380adfcf42, type: 2}
+  - {fileID: 151590, guid: b7e58a206519a164992d7831af720129, type: 2}
   decals: []
   boss: {fileID: 188124, guid: 4afd838230ffac24080cde9f5a0d7aab, type: 2}
   startSpawnPosition: 38
@@ -384,6 +386,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: props.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: enemies.Array.data[0]
       value: 
       objectReference: {fileID: 188124, guid: 78346bbcfd956f34ba4d56aae30565e7, type: 2}
@@ -391,6 +397,14 @@ Prefab:
       propertyPath: enemies.Array.data[1]
       value: 
       objectReference: {fileID: 177166, guid: aee5c0d05eb8a4f4d82506d2ffcdee69, type: 2}
+    - target: {fileID: 0}
+      propertyPath: props.Array.data[2]
+      value: 
+      objectReference: {fileID: 159472, guid: a61392e3ac301534793021380adfcf42, type: 2}
+    - target: {fileID: 0}
+      propertyPath: props.Array.data[3]
+      value: 
+      objectReference: {fileID: 151590, guid: b7e58a206519a164992d7831af720129, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182616}
