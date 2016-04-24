@@ -52,4 +52,13 @@ public class Cinematic : MonoBehaviour
             hasPlayedAudio = true;
         }
     }
+
+	private void PlayEnding()
+	{
+		GetComponent<PlayerControls>().enabled = false;
+		GameObject.Find("Main Camera").GetComponent<CameraFollow>().enabled = false;
+		Movement movement = GetComponent<Movement>();
+		Vector2 velocity = new Vector2(movement.horizontalMovementSpeed, 0);
+		movement.Move(velocity);
+	}
 }

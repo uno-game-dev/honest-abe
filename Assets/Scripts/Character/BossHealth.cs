@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System;
+using UnityEngine.SceneManagement;
 
 public class BossHealth : Health
 {
@@ -47,7 +47,7 @@ public class BossHealth : Health
         {
             health = 0;
             alive = false;
-            if ((gameObject.GetComponent<Boss>().bossName == "Robert E. Lee"))
+            if ((SceneManager.GetActiveScene().buildIndex == 2))
             {
                 EventHandler.SendEvent(EventHandler.Events.ROBERT_E_LEE_KILL);
 				EventHandler.SendEvent(EventHandler.Events.GAME_WIN);

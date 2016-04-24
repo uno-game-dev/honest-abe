@@ -199,9 +199,5 @@ public class PlayerHealth : Health
 
         BaseCollision baseCollision = GetComponent<BaseCollision>();
         baseCollision.enabled = false;
-
-        // Maybe too much
-        //foreach (MonoBehaviour monoBehaviour in GetComponents<MonoBehaviour>())
-        //    monoBehaviour.enabled = false;
     }
 }
