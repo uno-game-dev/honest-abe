@@ -25,7 +25,6 @@ public class WorldGenerator : MonoBehaviour
 	private List<Vector3> _occupiedPos;
 	private System.Random _rnd;
 	private string _levelName;
-	private int _levelIndex;
 	private int _easyWaveChance;
 	private int _mediumWaveChance;
 	private int _remainingEnemyDensity;

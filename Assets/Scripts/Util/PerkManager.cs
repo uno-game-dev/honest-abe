@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PerkManager : MonoBehaviour
 {
@@ -100,6 +101,8 @@ public class PerkManager : MonoBehaviour
 
     void Awake()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
         perkList = new List<Perk>();
 
         GameObject[] perksInLevel = GameObject.FindGameObjectsWithTag("Perk");
@@ -116,6 +119,7 @@ public class PerkManager : MonoBehaviour
             Perk p = axePerksInLevel[i].GetComponent<Perk>();
             p.CheckStatus();
             perkList.Add(p);
+        }
         }
 		cameraFollow = GameObject.Find ("Main Camera").GetComponent<CameraFollow> ();
 		worldGen = GameObject.Find ("Level").GetComponent<WorldGenerator> ();
