@@ -13,6 +13,9 @@ public class Boss : MonoBehaviour
 	{
 		_cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
         _levelManager = FindObjectOfType<LevelManager>();
+
+        if (name.Contains("Bear"))
+            SoundPlayer.Play("Bear Appearance");
     }
 
     // Update is called once per frame
