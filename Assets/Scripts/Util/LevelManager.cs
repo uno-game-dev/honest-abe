@@ -33,7 +33,8 @@ public class LevelManager : MonoBehaviour
 	}
 
 	public void LoadFirstLevel()
-	{
-		SceneManager.LoadScene(0);
+    {
+        Destroy(GameObject.Find("Player"));
+        SceneManager.LoadScene(0);
 	}
 }
