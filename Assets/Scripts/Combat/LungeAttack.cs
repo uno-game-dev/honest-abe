@@ -13,6 +13,7 @@ class LungeAttack : MonoBehaviour
 	private bool active = false;
 	private BaseCollision _collision;
 	private Vector3 prevPosition = Vector3.zero;
+	public Movement.Direction _dir = Movement.Direction.Null;
 	private bool lightAttack = true;
 	private void Start()
 	{
@@ -22,8 +23,12 @@ class LungeAttack : MonoBehaviour
 	{
 		if(active)
 		{
-			_collision.Move(velocity * Time.deltaTime);
+			Vector3 lungeStep = velocity;
+			lungeStep.x *= _dir == Movement.Direction.Right ? 1 : -1;
+
+			_collision.Move(lungeStep * Time.deltaTime);
 			traveled += Vector3.Distance(_collision.transform.position, prevPosition);
+
 			if( distance < Math.Abs(traveled) )
 			{
 				active = false;
@@ -43,6 +48,7 @@ class LungeAttack : MonoBehaviour
 		if ( !active)
 		{
 			active = true;
+			_dir = gameObject.GetComponent<Movement>().direction;
 			lightAttack = (strength == BaseAttack.Strength.Light ? true : false);
 			prevPosition = _collision.transform.position;
 		}
