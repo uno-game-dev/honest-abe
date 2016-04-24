@@ -19,6 +19,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &136738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 477326}
+  m_Layer: 12
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &138778
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 452048}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &452048
 Transform:
   m_ObjectHideFlags: 1
@@ -106,6 +121,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 485650}
+  - {fileID: 477326}
   - {fileID: 424284}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -120,6 +136,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 485650}
+  m_RootOrder: 1
+--- !u!4 &477326
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 452048}
   m_RootOrder: 1
 --- !u!4 &485650
 Transform:
@@ -254,8 +282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 1
-  attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1.5, y: 0}
+  attackSize: {x: 2, y: 3}
+  attackOffset: {x: 1.5, y: 0.75}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 60, y: 180, z: 0}
   lightDamage: 4
