@@ -22,6 +22,9 @@ public class SoundPlayer : MonoBehaviour
     {
         instance = this;
         list = namedAudioList;
+
+        SetMusicVolume01(UIManager.musicVolume);
+        SetSoundVolume01(UIManager.effectsVolume);
     }
 
     public static GameObject Play(string clipName, bool loop = false)

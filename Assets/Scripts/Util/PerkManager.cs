@@ -42,8 +42,8 @@ public class PerkManager : MonoBehaviour
 	public static string trinket_agressionBuddy_name = "Trinket_AggressionBuddy";
 	public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold with a cooldown of 30sec.";
 
-	public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLockette";
-	public static string trinket_maryToddsLockette_desc = "Perk: Marry Todd's Lockette\nProvides invincibility with a cooldown of 120sec.";
+	public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLocket";
+	public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides invincibility with a cooldown of 120sec.";
 
 	public static string hat_stickyFingers_name = "Hat_StickyFingers";
 	public static string hat_stickyFingers_desc = "Perk: Sticky Fingers\nEnables the ablity to steal weapons";

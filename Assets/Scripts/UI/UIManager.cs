@@ -150,10 +150,10 @@ public class UIManager : MonoBehaviour
 	{
 		_pauseUI = GameObject.Find("PauseUI");
 
-		_pauseUIResumeButton = _pauseUI.transform.Find("Resume").GetComponent<Button>();
-		_pauseUIOptionsButton = _pauseUI.transform.Find("Options").GetComponent<Button>();
-        _pauseUICreditsButton = _pauseUI.transform.Find("Credits").GetComponent<Button>();
-		_pauseUIQuitButton = _pauseUI.transform.Find("Quit").GetComponent<Button>();
+		_pauseUIResumeButton = _pauseUI.transform.FindContainsInChildren("Resume").GetComponent<Button>();
+		_pauseUIOptionsButton = _pauseUI.transform.FindContainsInChildren("Options").GetComponent<Button>();
+        _pauseUICreditsButton = _pauseUI.transform.FindContainsInChildren("Credits").GetComponent<Button>();
+		_pauseUIQuitButton = _pauseUI.transform.FindContainsInChildren("Quit").GetComponent<Button>();
 
 		_pauseUIResumeButton.onClick.AddListener(OnResume);
 		_pauseUIOptionsButton.onClick.AddListener(OnOptions);
@@ -244,8 +244,8 @@ public class UIManager : MonoBehaviour
 	{
 		_winUI = GameObject.Find("WinUI");
 
-		_winUIYesButton = _winUI.transform.Find("Yes").GetComponent<Button>();
-		_winUINoButton = _winUI.transform.Find("No").GetComponent<Button>();
+		_winUIYesButton = _winUI.transform.FindContainsInChildren("Yes").GetComponent<Button>();
+		_winUINoButton = _winUI.transform.FindContainsInChildren("No").GetComponent<Button>();
 
 		_winUIYesButton.onClick.AddListener(OnWinYes);
 		_winUINoButton.onClick.AddListener(OnWinNo);
@@ -257,8 +257,8 @@ public class UIManager : MonoBehaviour
 	{
 		_loseUI = GameObject.Find("LoseUI");
 
-		_loseUIYesButton = _loseUI.transform.Find("Yes").GetComponent<Button>();
-		_loseUINoButton = _loseUI.transform.Find("No").GetComponent<Button>();
+		_loseUIYesButton = _loseUI.transform.FindContainsInChildren("Yes").GetComponent<Button>();
+		_loseUINoButton = _loseUI.transform.FindContainsInChildren("No").GetComponent<Button>();
 
 		_loseUIYesButton.onClick.AddListener(OnLoseYes);
 		_loseUINoButton.onClick.AddListener(OnLoseNo);
