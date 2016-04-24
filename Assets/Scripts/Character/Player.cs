@@ -40,4 +40,9 @@ public class Player : MonoBehaviour
 		_playerHealth.Initialize();
 		_playerMotor.Initialize();
     }
+
+	public void PlayVictory()
+	{
+
+	}
 }
