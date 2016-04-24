@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour
     public int startingScene;
     public int currentScene;
 
+    private bool pauseUpdate = false;
+
     void Awake()
     {
         GlobalSettings.currentSceneIsNew = true;
@@ -22,6 +24,9 @@ public class LevelManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        if (pauseUpdate)
+            return;
+
         if (currentScene != SceneManager.GetActiveScene().buildIndex)
 		{
 			if (currentScene == 0)
@@ -34,8 +39,11 @@ public class LevelManager : MonoBehaviour
 
 	public void LoadFirstLevel()
     {
+        pauseUpdate = true;
         Destroy(GameObject.Find("Player"));
         GetComponent<PerkManager>().Reset();
+        currentScene = 0;
         SceneManager.LoadScene(0);
-	}
+        pauseUpdate = false;
+    }
 }
