@@ -35,12 +35,16 @@ class ShootAttack : BaseAttack
 
     protected override void FinishLightAttack()
     {
+        if (tag == "Player") BackToIdle();
+
         base.FinishLightAttack();
         Reload();
     }
 
     protected override void FinishHeavyAttack()
     {
+        if (tag == "Player") BackToIdle();
+
         base.FinishHeavyAttack();
         Reload();
     }
