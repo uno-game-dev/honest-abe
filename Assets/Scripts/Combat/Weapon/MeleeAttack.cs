@@ -38,6 +38,7 @@ public class MeleeAttack : BaseAttack
         if (animator.runtimeAnimatorController.name == "Bear")
         {
             animator.Play("Heavy Swipe");
+            SoundPlayer.Play("Bear Heavy Attack");
         }
         if (_hand == Hand.Left)
         {

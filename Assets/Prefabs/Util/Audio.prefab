@@ -52,7 +52,7 @@ MonoBehaviour:
     volume: 0.5
   - name: Trinket Pickup
     clip: {fileID: 8300000, guid: 7973f20d52bb2bb42b516a6f32d13180, type: 3}
-    volume: 0.5
+    volume: 0.3
   - name: Footsteps
     clip: {fileID: 8300000, guid: f557eaae0bcad4717bf3077405041643, type: 3}
     volume: 0.1
@@ -179,24 +179,30 @@ MonoBehaviour:
   - name: Rifle Reload
     clip: {fileID: 8300000, guid: d67cccc9ae8ac44fca54f7df699c3123, type: 3}
     volume: 0.7
+  - name: Bear Appearance
+    clip: {fileID: 8300000, guid: bbdf9ae54fdc28542b8476998f1f5ab4, type: 3}
+    volume: 0.5
+  - name: Bear Heavy Attack
+    clip: {fileID: 8300000, guid: b8e44cbc2d9475d4fba832e445930b20, type: 3}
+    volume: 0.5
   - name: Introduction Music
     clip: {fileID: 8300000, guid: 5cd3f63a692502545b3921bad1b2f8b1, type: 3}
     volume: 0.2
   - name: Forest Level Music
     clip: {fileID: 8300000, guid: bc5503719d4e6734d80540fd9d3c8039, type: 3}
-    volume: 0.1
+    volume: 0.2
   - name: Forest Boss
     clip: {fileID: 8300000, guid: 63447777a1ea3c5419bd0de4d7e5476c, type: 3}
     volume: 0.2
   - name: BattleField Music
     clip: {fileID: 8300000, guid: a886f20e913fa45f78945a2d9e619b9d, type: 3}
-    volume: 0.1
+    volume: 0.3
   - name: BattleField Boss
     clip: {fileID: 8300000, guid: 0e414ca875dc7704fa75486a67ca1fee, type: 3}
     volume: 0.2
   - name: Ballroom Music
     clip: {fileID: 8300000, guid: 6db8745e59a6e8149bc0a8fb89add8f9, type: 3}
-    volume: 0.3
+    volume: 0.4
   - name: Ballroom Boss Intro
     clip: {fileID: 8300000, guid: d58d85a546453f24b81f69eb0a146ea9, type: 3}
     volume: 0.2
@@ -243,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: {fileID: 0}
   levelManager: {fileID: 0}
+  worldGenerator: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
