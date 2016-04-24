@@ -212,19 +212,19 @@ public class Perk : MonoBehaviour
 
                 if (this.type == PerkType.TRINKET_AGGRESSIONBUDDY)
                 {
-                    if (GameObject.Find("AB_Sprite_Placeholder") != null)
+                    if (GameObject.Find("Trinket_Aggression_Buddy") != null)
                     {
-                        GameObject.Find("AB_Sprite_Placeholder").transform.SetParent(GameObject.Find("Player").transform, true);
-                        GameObject.Find("AB_Sprite_Placeholder").SetActive(false);
+                        GameObject.Find("Trinket_Aggression_Buddy").transform.SetParent(GameObject.Find("Player").transform, true);
+                        GameObject.Find("Trinket_Aggression_Buddy").SetActive(false);
                     }
                 }
 
                 if (this.type == PerkType.TRINKET_MARY_TODDS_LOCKETTE)
                 {
-                    if (GameObject.Find("MT_Sprite_Placeholder") != null)
+                    if (GameObject.Find("Trinket_Mary_Todds_Lockette") != null)
                     {
-                        GameObject.Find("MT_Sprite_Placeholder").transform.SetParent(GameObject.Find("Player").transform, true);
-                        GameObject.Find("MT_Sprite_Placeholder").SetActive(false);
+                        GameObject.Find("Trinket_Mary_Todds_Lockette").transform.SetParent(GameObject.Find("Player").transform, true);
+                        GameObject.Find("Trinket_Mary_Todds_Lockette").SetActive(false);
                     }
                 }
 				PerkManager.trinketPerkChosen = true;
