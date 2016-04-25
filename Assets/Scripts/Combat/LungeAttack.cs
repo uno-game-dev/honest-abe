@@ -51,6 +51,7 @@ class LungeAttack : MonoBehaviour
 			_dir = gameObject.GetComponent<Movement>().direction;
 			lightAttack = (strength == BaseAttack.Strength.Light ? true : false);
 			prevPosition = _collision.transform.position;
+			Debug.Log ("Lunging");
 		}
 	}
 }
