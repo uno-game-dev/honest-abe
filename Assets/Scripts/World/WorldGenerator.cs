@@ -10,10 +10,9 @@ public class WorldGenerator : MonoBehaviour
 	public List<GameObject> props;
 	public List<GameObject> decals;
 	public GameObject boss;
-
-	public float startSpawnPosition;
-
-	public int screensInLevel = 8;
+    
+    public int maxAttemptsForSpawn = 2;
+    public int screensInLevel = 8;
 	public int currentScreen;
 	public int spawnYPos = 0;
 	public int spawnZPos = 10;
@@ -21,7 +20,9 @@ public class WorldGenerator : MonoBehaviour
 	public int decalDensity = 10;
 	public int itemDensity = 1;
 
-	private GameObject _camera;
+    public float startSpawnPosition;
+
+    private GameObject _camera;
 	private List<Vector3> _occupiedPos;
 	private System.Random _rnd;
 	private string _levelName;
@@ -35,6 +36,10 @@ public class WorldGenerator : MonoBehaviour
 	private bool _spawnWaveOnClear;
     private bool _spawnWaveDuringBoss;
 
+    private RectTransform _area;
+    private double _width;
+    private double _height;
+
     // Use this for initialization
     void Start()
 	{
@@ -44,7 +49,10 @@ public class WorldGenerator : MonoBehaviour
 		currentScreen = 0;
 		_spawnWaveOnClear = false;
 		_levelName = SceneManager.GetActiveScene().name;
-	}
+        _area = (RectTransform)terrain.transform;
+        _width = _area.rect.width;
+        _height = _area.rect.height;
+    }
 
 	// Update is called once per frame
 	void Update()
@@ -90,7 +98,9 @@ public class WorldGenerator : MonoBehaviour
 		for (int i = 0; i < propDensity; i++)
 		{
 			int r = _rnd.Next(props.Count);
-			Instantiate(props[r], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+            Vector3 vector = GetRandomEmptyPos(1f);
+            if (vector != Vector3.zero)
+                Instantiate(props[r], vector, Quaternion.Euler(0, 0, 0));
 		}
 	}
 
@@ -99,7 +109,9 @@ public class WorldGenerator : MonoBehaviour
 		for (int i = 0; i < decalDensity; i++)
 		{
 			int r = _rnd.Next(decals.Count);
-			Instantiate(decals[r], GetRandomEmptyPos(0.5f), Quaternion.Euler(0, 0, 0));
+            Vector3 vector = GetRandomEmptyPos(1f);
+            if (vector != Vector3.zero)
+                Instantiate(decals[r], vector, Quaternion.Euler(0, 0, 0));
 		}
 	}
 
@@ -129,8 +141,12 @@ public class WorldGenerator : MonoBehaviour
 			Debug.Log("r = " + r);
 			if (r == -1)
 				break;
-			Instantiate(enemies[r], GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
-			Debug.Log("Enemy type " + r + " spawned, remaining density: " + _remainingEnemyDensity);
+            Vector3 vector = GetRandomEmptyPos(1f);
+            if (vector != Vector3.zero)
+            {
+                Instantiate(enemies[r], vector, Quaternion.Euler(0, 0, 0));
+                Debug.Log("Enemy type " + r + " spawned, remaining density: " + _remainingEnemyDensity);
+            }
 		}
 	}
 
@@ -140,7 +156,10 @@ public class WorldGenerator : MonoBehaviour
 		if (boss && currentScreen == screensInLevel)
 		{
 			spawn = true;
-			Instantiate(boss, GetRandomEmptyPos(1f), Quaternion.Euler(0, 0, 0));
+            Vector3 vector = GetRandomEmptyPos(1f);
+            while (vector == Vector3.zero)
+                vector = GetRandomEmptyPos(1f);
+            Instantiate(boss, vector, Quaternion.Euler(0, 0, 0));
 		}
 		return spawn;
 	}
@@ -217,16 +236,14 @@ public class WorldGenerator : MonoBehaviour
 	}
 
 	private Vector3 GetRandomEmptyPos(float z)
-	{
-		RectTransform area = (RectTransform)terrain.transform;
-		double width = area.rect.width;
-		double height = area.rect.height;
+    {
 
-		float x = 0;
+        float x = 0;
 		float y = 0;
-		bool occupied = true;
 		int attempts = 0;
-		while (occupied && attempts < 2)
+        bool occupied = true;
+
+        while (occupied && attempts < maxAttemptsForSpawn)
 		{
 			occupied = false;
 
@@ -241,8 +258,8 @@ public class WorldGenerator : MonoBehaviour
                     x = GameObject.Find("RightEdge").transform.position.x - 2;
             }
 			else
-				x = (float)((width * _rnd.NextDouble() * 2) - width + _lastXPos);
-			y = (float)((height * _rnd.NextDouble()) * 0.9 - height);
+				x = (float)((_width * _rnd.NextDouble() * 2) - _width + _lastXPos);
+			y = (float)((_height * _rnd.NextDouble()) * 0.9 - _height);
 
 			foreach (Vector3 pos in _occupiedPos)
 			{
@@ -253,11 +270,14 @@ public class WorldGenerator : MonoBehaviour
 				}
 			}
 			attempts++;
-		}
+        }
 
-		Vector3 vector = new Vector3(x, y, z);
-		_occupiedPos.Add(vector);
-		return vector;
+        if (attempts == maxAttemptsForSpawn)
+            return new Vector3(0, 0, 0);
+
+        Vector3 vector = new Vector3(x, y, z);
+        _occupiedPos.Add(vector);
+        return vector;
 	}
 
     public void SpawnWaveDuringBoss()
