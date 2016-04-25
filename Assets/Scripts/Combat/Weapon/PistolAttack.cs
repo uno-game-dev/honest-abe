@@ -3,21 +3,26 @@
 class PistolAttack : BaseAttack
 {
     public GameObject bulletSpark = null;
+    private bool isWoman;
 
     protected override void PrepareToLightAttack()
     {
+        isWoman = name.Contains("Woman");
         base.PrepareToLightAttack();
         Aim();
     }
 
     protected override void PrepareToHeavyAttack()
     {
+        isWoman = name.Contains("Woman");
         base.PrepareToHeavyAttack();
         Aim();
     }
 
     protected override void PerformLightAttack()
     {
+        if (!IsAttacking()) return;
+
         Shoot();
         state = State.Perform;
         Invoke("FinishLightAttack", lightAttackTime);
@@ -25,6 +30,8 @@ class PistolAttack : BaseAttack
 
     protected override void PerformHeavyAttack()
     {
+        if (!IsAttacking()) return;
+
         Shoot();
         state = State.Perform;
         Invoke("FinishHeavyAttack", lightAttackTime);
@@ -32,24 +39,34 @@ class PistolAttack : BaseAttack
 
     protected override void FinishLightAttack()
     {
+        if (!IsAttacking()) return;
+
         base.FinishLightAttack();
         Reload();
     }
 
     protected override void FinishHeavyAttack()
     {
+        if (!IsAttacking()) return;
+
         base.FinishHeavyAttack();
         Reload();
     }
 
     private void Aim()
     {
-        animator.Play("Draw Pistol");
+        if (isWoman)
+            animator.Play("Woman Draw Pistol");
+        else
+            animator.Play("Draw Pistol");
     }
 
     private void Shoot()
     {
-        animator.Play("Shoot Pistol");
+        if (isWoman)
+            animator.Play("Woman Shoot Pistol");
+        else
+            animator.Play("Shoot Pistol");
         SoundPlayer.Play("Pistol Fire");
         if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         ShootCollisionCheck();
@@ -57,8 +74,11 @@ class PistolAttack : BaseAttack
 
     private void Reload()
     {
+        if (isWoman)
+            animator.Play("Woman Reload Pistol");
+        else
+            animator.Play("Reload Pistol");
         SoundPlayer.Play("Pistol Reload");
-        animator.Play("Reload Pistol");
     }
 
     private void ShootCollisionCheck()
