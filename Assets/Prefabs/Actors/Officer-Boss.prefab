@@ -1632,9 +1632,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.009135246, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5664519, y: 1}
 --- !u!95 &9508360
 Animator:
   serializedVersion: 3
@@ -1681,15 +1681,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 4
-  attackSize: {x: 1, y: 1}
-  attackOffset: {x: 1, y: 0}
+  attackSize: {x: 4, y: 2}
+  attackOffset: {x: 2, y: 0.5}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 76}
-  lightDamage: 3
+  lightDamage: 5
   lightStun: 0.2
   lightKnockback: 2
-  heavyDamage: 6
-  heavyStun: 3
+  heavyDamage: 8
+  heavyStun: 1
   heavyKnockback: 5
   throwDamage: 4
   isEnemyWeapon: 1
@@ -1715,7 +1715,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11474548}
     m_EventID: 433083577
-  m_CachedInstanceID: 156100
+  m_CachedInstanceID: 17702
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1834,7 +1834,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 156088
+  m_CachedInstanceID: 17692
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: 156102
+  m_CachedInstanceID: 17704
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1918,12 +1918,12 @@ MonoBehaviour:
     m_Name: attackProximityDistanceX
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
-    value: 3
+    value: 4
   - m_ID: 450703671
     m_Name: attackProximityDistanceY
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
-    value: 1
+    value: 2
   - m_ID: 1703854815
     m_Name: attackPosition
     m_Blackboard: {fileID: 11427242}
@@ -1938,7 +1938,7 @@ MonoBehaviour:
     m_Name: attackProximityMinX
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
-    value: 0
+    value: 1
   m_IntVars: []
   m_BoolVars: []
   m_StringVars:
@@ -2006,7 +2006,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11452276}
     m_EventID: 334526696
-  m_CachedInstanceID: 156104
+  m_CachedInstanceID: 17706
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: 156098
+  m_CachedInstanceID: 17700
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2205,7 +2205,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11404362}
     m_EventID: 805742543
-  m_CachedInstanceID: 156096
+  m_CachedInstanceID: 17698
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2352,7 +2352,7 @@ MonoBehaviour:
     m_EventID: 1948614651
   - m_Destination: {fileID: 11452276}
     m_EventID: 334526696
-  m_CachedInstanceID: 156106
+  m_CachedInstanceID: 17708
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3036,7 +3036,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[2].value
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[0].m_Destination
