@@ -1576,7 +1576,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 10704
+  m_CachedInstanceID: 15472
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1676,7 +1676,7 @@ MonoBehaviour:
     m_EventID: 361888865
   - m_Destination: {fileID: 11461846}
     m_EventID: 570825600
-  m_CachedInstanceID: 10710
+  m_CachedInstanceID: 15464
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1738,12 +1738,12 @@ MonoBehaviour:
   attackArea: {fileID: 0}
   strength: 0
   state: 0
-  prepLightAttackTime: 0.3
-  prepHeavyAttackTime: 0.6
+  prepLightAttackTime: 1.5
+  prepHeavyAttackTime: 1.5
   lightAttackTime: 0.2
   heavyAttackTime: 0.2
-  finishLightAttackTime: 0.6
-  finishHeavyAttackTime: 0.6
+  finishLightAttackTime: 3
+  finishHeavyAttackTime: 3
   lightDuration: 0
   heavyDuration: 0
   swipe: {fileID: 0}
@@ -1772,7 +1772,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 10712
+  m_CachedInstanceID: 15474
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1844,7 +1844,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 10714
+  m_CachedInstanceID: 15466
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11491078}
     m_EventID: 1003642416
-  m_CachedInstanceID: 10736
+  m_CachedInstanceID: 15480
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2309,7 +2309,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 10738
+  m_CachedInstanceID: 15468
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2377,7 +2377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDropPrefabs: []
-  itemDropPrefabs: []
+  itemDropPrefabs:
+  - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
 --- !u!114 &11469354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2396,7 +2397,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 10742
+  m_CachedInstanceID: 15460
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2441,7 +2442,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 10748
+  m_CachedInstanceID: 15462
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2497,7 +2498,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: -109204
+  m_CachedInstanceID: 15486
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2595,7 +2596,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 10756
+  m_CachedInstanceID: 15470
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1

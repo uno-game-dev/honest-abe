@@ -37,6 +37,11 @@ public class GenericAnimation : MonoBehaviour
             if (state == CharacterState.State.Idle) animator.Play("Idle Bear");
             if (state == CharacterState.State.Movement) animator.Play("Walk Bear");
         }
+        else if (name.Contains("Woman"))
+        {
+            if (state == CharacterState.State.Idle) animator.Play("Woman Idle Pistol");
+            if (state == CharacterState.State.Movement) animator.Play("Woman Walk Pistol");
+        }
         if (grabber && grabber.state == Grabber.State.Hold)
         {
             if (state == CharacterState.State.Idle) animator.Play("Grab Idle");
