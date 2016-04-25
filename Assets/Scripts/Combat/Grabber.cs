@@ -154,14 +154,22 @@ public class Grabber : MonoBehaviour
     public void Release()
     {
         if (_grabbed)
-            if (_grabbed.GetComponent<Grabbable>())
-                _grabbed.GetComponent<Grabbable>().Release();
-        _grabbed = null;
+        {
+            Grabbable grabbable = _grabbed.GetComponent<Grabbable>();
+            _grabbed = null;
+            if (grabbable)
+                grabbable.Release();
+        }
         BackToIdle();
     }
 
     private void SetState(State newState)
     {
         state = newState;
+    }
+
+    public bool IsGrabbingSomeone()
+    {
+        return _grabbed ? true : false;
     }
 }
