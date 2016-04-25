@@ -47,8 +47,8 @@ public class PerkManager : MonoBehaviour
     public static string trinket_agressionBuddy_lock_desc = "Perk: Aggression Buddy\nThis Perk is Locked!";
 
 	public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLockette";
-	public static string trinket_maryToddsLockette_desc = "Perk: Marry Todd's Lockette\nProvides invincibility with a cooldown of 120sec.";
-    public static string trinket_maryToddsLockette_lock_desc = "Perk: Marry Todd's Lockette\nThis Perk is Locked!";
+	public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides invincibility with a cooldown of 120sec.";
+    public static string trinket_maryToddsLockette_lock_desc = "Perk: Mary Todd's Locket\nThis Perk is Locked!";
 
 	public static string hat_stickyFingers_name = "Hat_StickyFingers";
 	public static string hat_stickyFingers_desc = "Perk: Sticky Fingers\nEnables the ablity to steal weapons";

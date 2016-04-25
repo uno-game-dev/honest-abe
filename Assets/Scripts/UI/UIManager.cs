@@ -70,7 +70,8 @@ public class UIManager : MonoBehaviour
 	private static Text _trinketUI;
 
     // Cutscene Canvas
-    private CutsceneManager _cutsceneManager;
+    public GameObject cutsceneUI;
+    public CutsceneManager cutsceneManager;
 
 	void Awake()
 	{
@@ -78,14 +79,15 @@ public class UIManager : MonoBehaviour
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
 		_startGameText = GameObject.Find("StartText");
+        _logoImage = GameObject.Find("Logo");
         if (SceneManager.GetActiveScene().buildIndex == 0) {
             _startGameText.SetActive(true);
-			_logoImage = GameObject.Find("LogoImage");
         	_logoImage.SetActive(true);
 		}
         else
         {
             _startGameText.SetActive(false);
+            _logoImage.SetActive(false);
             updateActive = true;
         }
 		SetListenersForPauseUI();
@@ -93,7 +95,8 @@ public class UIManager : MonoBehaviour
 		SetListenersForOptionsUI();
 		SetListenersForWinUI();
 		SetListenersForLoseUI();
-        _cutsceneManager = GameObject.Find("CutsceneCanvas").GetComponent<CutsceneManager>();
+        cutsceneUI = GameObject.Find("CutsceneCanvas");
+        cutsceneManager = cutsceneUI.GetComponent<CutsceneManager>();
         //_cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.NULL);
 		perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
@@ -105,7 +108,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-		if (!updateActive && Input.GetKeyDown(KeyCode.Return))
+		if (!updateActive && !_paused && (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape)))
             OnPressEnterAtBeginning();
 
         if (Input.GetButtonDown("Pause"))
@@ -130,7 +133,20 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(true);
             _optionsUI.SetActive(false);
             _optionsUIBackground.SetActive(false);
+            _graphicsUI.SetActive(false);
+            _audioUI.SetActive(false);
+            _controlsUI.SetActive(false);
             _creditsUI.SetActive(false);
+
+            if (CutsceneManager.cutsceneActive)
+                cutsceneUI.SetActive(false);
+
+            if (!updateActive)
+            {
+                _startGameText.SetActive(false);
+                _logoImage.SetActive(false);
+            }
+
             Time.timeScale = 0;
         }
         else
@@ -138,7 +154,20 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(false);
             _optionsUI.SetActive(false);
             _optionsUIBackground.SetActive(false);
+            _graphicsUI.SetActive(false);
+            _audioUI.SetActive(false);
+            _controlsUI.SetActive(false);
             _creditsUI.SetActive(false);
+
+            if (CutsceneManager.cutsceneActive)
+                cutsceneUI.SetActive(true);
+
+            if (!updateActive)
+            {
+                _startGameText.SetActive(true);
+                _logoImage.SetActive(true);
+            }
+
             Time.timeScale = 1;
         }
     }
@@ -153,7 +182,7 @@ public class UIManager : MonoBehaviour
         updateActive = true;
         _startGameText.SetActive(false);
         _logoImage.SetActive(false);
-        _cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
+        cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
     }
 
 	private void SetListenersForPauseUI()
@@ -279,10 +308,12 @@ public class UIManager : MonoBehaviour
 	public void OnResume()
     {
         //_paused = false;
-        _pauseUI.SetActive(false);
-        Time.timeScale = 1;
-        _paused = false;
-        _optionsUIBackground.SetActive(false);
+        //_pauseUI.SetActive(false);
+        //Time.timeScale = 1;
+        //_paused = false;
+        //_optionsUIBackground.SetActive(false);
+
+        TogglePause();
 
         EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }

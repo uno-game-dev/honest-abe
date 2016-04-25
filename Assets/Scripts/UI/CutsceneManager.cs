@@ -27,7 +27,7 @@ public class CutsceneManager : MonoBehaviour {
         "With a sliver of hope that Mary Todd may yet be alive, Abe wanders off in search of his beloved, his bloody axe hungering for the next battle. "
     };
 
-    public Sprite[] _midSprites;
+    public Sprite[] midSprites;
 
     private bool _cutsceneOver;
     private float timeToNextSlide = 10f, timer = 0f;
@@ -55,12 +55,10 @@ public class CutsceneManager : MonoBehaviour {
         _endStoryText.text = _endText[0];
         _endStoryPanel.SetActive(false);
 
-        //_cutsceneCanvas.SetActive(false);
-
         _cutsceneOver = false;
         cutsceneActive = false;
         index = 0;
-        //currentCutscene = Cutscenes.NULL;
+
         ChangeCutscene(Cutscenes.NULL);
     }
 
@@ -71,7 +69,7 @@ public class CutsceneManager : MonoBehaviour {
 
         timer += Time.deltaTime;
 
-        if ((Input.anyKeyDown || timer >= timeToNextSlide))
+        if (((Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape)) || timer >= timeToNextSlide) && Time.timeScale > 0)
         {
             index++;
             timer = 0;
@@ -89,19 +87,22 @@ public class CutsceneManager : MonoBehaviour {
             }
             else if (currentCutscene == Cutscenes.MID)
             {
-                if (index >= _midSprites.Length)
+                if (index >= midSprites.Length)
                 {
+                    EventHandler.SendEvent(EventHandler.Events.LEVEL_NEXT);
                     _cutsceneOver = true;
                 }
-                else if (index < _midSprites.Length)
+                else if (index < midSprites.Length)
                 {
-                    _midStoryImage.sprite = _midSprites[index];
+                    _midStoryImage.sprite = midSprites[index];
                 }
             }
             else if (currentCutscene == Cutscenes.END)
             {
                 if (index >= _endText.Length)
                 {
+                    GameObject.Find("GameManager").GetComponent<LevelManager>().LoadFirstLevel();
+                    UIManager.updateActive = false;
                     _cutsceneOver = true;
                 }
                 else if (index < _endText.Length)
@@ -136,6 +137,7 @@ public class CutsceneManager : MonoBehaviour {
             case Cutscenes.END:
                 cutsceneActive = true;
                 _endStoryPanel.SetActive(true);
+                GameObject.Find("Player").GetComponent<Player>().PlayEnding();
                 break;
             case Cutscenes.NULL:
                 cutsceneActive = false;
@@ -158,7 +160,7 @@ public class CutsceneManager : MonoBehaviour {
         _introStoryText.text = _introText[index];
 
         _midStoryPanel.SetActive(false);
-        _midStoryImage.sprite = _midSprites[index];
+        _midStoryImage.sprite = midSprites[index];
 
         _endStoryPanel.SetActive(false);
         _endStoryText.text = _endText[index];
