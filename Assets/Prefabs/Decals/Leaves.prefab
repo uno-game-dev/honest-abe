@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 440032}
   - 212: {fileID: 21295388}
   - 114: {fileID: 11481792}
+  - 114: {fileID: 11484316}
   m_Layer: 9
   m_Name: Leaves
   m_TagString: Obstacle
@@ -40,6 +41,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5355fcbceaafd84dbcdd111b4feaf1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11484316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e631eff86fb93c488df840a98a56a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetFromOrigin: 2
+  maxZ: 45
+  yToZFactor: 2
 --- !u!212 &21295388
 SpriteRenderer:
   m_ObjectHideFlags: 1
