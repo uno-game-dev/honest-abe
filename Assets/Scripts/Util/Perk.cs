@@ -80,7 +80,7 @@ public class Perk : MonoBehaviour
         switch (type)
         {
             case PerkType.NONE_AXE:
-                _category = PerkCategory.NONE_AXE;
+                _category = PerkCategory.AXE;
 				_perkName = PerkManager.axe_none_name;
 				_perkDesc = PerkManager.axe_none_desc;
                 unlocked = true;
