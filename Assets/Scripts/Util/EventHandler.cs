@@ -182,7 +182,9 @@ public class EventHandler : MonoBehaviour
                 }
                 break;
 			case Events.LEVEL_WIN:
-				Debug.Log("Level Win");
+				Debug.Log ("Level Win");
+				Perk.trinketTimeStamp = Time.time;
+				Perk.performMaryToddsTimeStamp = Time.time;
 				GameObject.Find("GameManager").GetComponent<LevelManager>().currentScene++;
 				break;
 			case Events.GAME_WIN:
