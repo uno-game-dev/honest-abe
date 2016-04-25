@@ -23,6 +23,11 @@ class LungeAttack : MonoBehaviour
 	{
 		if(active)
 		{
+			if(lightAttack)
+				gameObject.GetComponent<Attack>().LightAttack();
+			else
+				gameObject.GetComponent<Attack>().HeavyAttack();
+
 			Vector3 lungeStep = velocity;
 			lungeStep.x *= _dir == Movement.Direction.Right ? 1 : -1;
 
@@ -34,11 +39,9 @@ class LungeAttack : MonoBehaviour
 				active = false;
 				_collision.Move(Vector3.zero);
 				traveled = 0f;
+			
+
 			}
-			if(lightAttack)
-				gameObject.GetComponent<Attack>().LightAttack();
-			else
-				gameObject.GetComponent<Attack>().HeavyAttack();
 		}
 	}
 
