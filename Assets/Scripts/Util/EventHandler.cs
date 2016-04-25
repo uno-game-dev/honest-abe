@@ -189,11 +189,15 @@ public class EventHandler : MonoBehaviour
 				break;
 			case Events.GAME_WIN:
                 Debug.Log("Game Win");
+				Perk.trinketTimeStamp = Time.time;
+				Perk.performMaryToddsTimeStamp = Time.time;
                 PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
 				GameObject.Find("Player").GetComponent<Player>().PlayEnding();
                 break;
 			case Events.GAME_LOSE:
 				Debug.Log("Game Lose");
+				Perk.trinketTimeStamp = Time.time;
+				Perk.performMaryToddsTimeStamp = Time.time;
 				if (player == null)
 					player = GameObject.Find("Player");
 				player.GetComponent<PlayerMotor>().enabled = false;
