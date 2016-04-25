@@ -107,7 +107,8 @@ public class PerkManager : MonoBehaviour
 
     void Awake()
     {
-        perkList = new List<Perk>();
+        if (SceneManager.GetActiveScene().name == GlobalSettings.levelOneSceneName)
+            perkList = new List<Perk>();
 
         GameObject[] perksInLevel = GameObject.FindGameObjectsWithTag("Perk");
         for (int i = 0; i < perksInLevel.Length; i++)
