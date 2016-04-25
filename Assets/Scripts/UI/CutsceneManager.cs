@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class CutsceneManager : MonoBehaviour {
+public class CutsceneManager : MonoBehaviour
+{
 
     public static bool cutsceneActive; // Whether or not we're currently playing a cutscene
     public int index; // The "index" of the cutscene, i.e. which part of the cutscene we are currently in if it's multi-part
@@ -27,8 +28,6 @@ public class CutsceneManager : MonoBehaviour {
         "With a sliver of hope that Mary Todd may yet be alive, Abe wanders off in search of his beloved, his bloody axe hungering for the next battle. "
     };
 
-    public Sprite[] midSprites;
-
     private bool _cutsceneOver;
     private float timeToNextSlide = 10f, timer = 0f;
 
@@ -37,7 +36,7 @@ public class CutsceneManager : MonoBehaviour {
     private Text _introStoryText, _endStoryText;
     private Image _midStoryImage;
 
-	void Start()
+    void Start()
     {
         _cutsceneCanvas = GameObject.Find("CutsceneCanvas");
 
@@ -87,15 +86,8 @@ public class CutsceneManager : MonoBehaviour {
             }
             else if (currentCutscene == Cutscenes.MID)
             {
-                if (index >= midSprites.Length)
-                {
-                    EventHandler.SendEvent(EventHandler.Events.LEVEL_NEXT);
-                    _cutsceneOver = true;
-                }
-                else if (index < midSprites.Length)
-                {
-                    _midStoryImage.sprite = midSprites[index];
-                }
+                EventHandler.SendEvent(EventHandler.Events.LEVEL_NEXT);
+                _cutsceneOver = true;
             }
             else if (currentCutscene == Cutscenes.END)
             {
@@ -160,7 +152,6 @@ public class CutsceneManager : MonoBehaviour {
         _introStoryText.text = _introText[index];
 
         _midStoryPanel.SetActive(false);
-        _midStoryImage.sprite = midSprites[index];
 
         _endStoryPanel.SetActive(false);
         _endStoryText.text = _endText[index];

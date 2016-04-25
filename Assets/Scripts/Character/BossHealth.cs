@@ -49,13 +49,17 @@ public class BossHealth : Health
             alive = false;
             if (GetComponent<Boss>().bossName == "Robert-E-Lee")
             {
+                Death[] enemies = FindObjectsOfType<Death>();
+                for (int i = 0; i < enemies.Length; i++)
+                {
+                    if (enemies[i].gameObject.tag != "Player") enemies[i].enabled = true;
+                }
                 EventHandler.SendEvent(EventHandler.Events.ROBERT_E_LEE_KILL);
                 EventHandler.SendEvent(EventHandler.Events.GAME_WIN);
             }
             else if (GetComponent<Boss>().bossName == "Officer-Boss")
             {
                 Death[] enemies = FindObjectsOfType<Death>();
-
                 for (int i = 0; i < enemies.Length; i++)
                 {
                     if (enemies[i].gameObject.tag != "Player") enemies[i].enabled = true;
