@@ -29,8 +29,11 @@ public class KnockDown : MonoBehaviour
 
     private void Update()
     {
-        if (state == State.Null)
-            return;
+		if (state == State.Null) {
+			if (_movement)
+				_movement.enabled = true;
+			return;
+		}
 
         if (state == State.InAir)
         {
