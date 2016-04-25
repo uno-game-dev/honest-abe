@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 427616}
   - 212: {fileID: 21276504}
-  - 60: {fileID: 6044362}
+  - 61: {fileID: 6129678}
   - 114: {fileID: 11473622}
+  - 114: {fileID: 11499608}
   m_Layer: 9
   m_Name: SmallRock
   m_TagString: Obstacle
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 17.196548, y: -3.8936017, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &6044362
-PolygonCollider2D:
+--- !u!61 &6129678
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -41,25 +42,9 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 0.32674003, y: 0.20740347}
-      - {x: 0.18598434, y: 0.24813151}
-      - {x: 0.012994915, y: 0.3489202}
-      - {x: -0.116903275, y: 0.35643217}
-      - {x: -0.18753195, y: 0.4002455}
-      - {x: -0.27006617, y: 0.3999099}
-      - {x: -0.44442677, y: 0.27927127}
-      - {x: -0.56564426, y: 0.105692774}
-      - {x: -0.57305074, y: -0.13036391}
-      - {x: -0.48656464, y: -0.34964618}
-      - {x: -0.2473145, y: -0.53593755}
-      - {x: -0.1354033, y: -0.5663277}
-      - {x: 0.10090713, y: -0.5617706}
-      - {x: 0.37785193, y: -0.4238039}
-      - {x: 0.485568, y: -0.09167951}
-      - {x: 0.49056214, y: 0.011131863}
+  m_Offset: {x: -0.051008224, y: -0.33115852}
+  serializedVersion: 2
+  m_Size: {x: 1.0599431, y: 0.497684}
 --- !u!114 &11473622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,6 +54,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5355fcbceaafd84dbcdd111b4feaf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11499608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5c7f7258ee8404bb2778c5ad3642ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21276504
@@ -107,7 +103,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100536}

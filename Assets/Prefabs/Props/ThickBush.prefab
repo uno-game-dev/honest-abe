@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 444622}
   - 212: {fileID: 21240880}
-  - 60: {fileID: 6032572}
+  - 61: {fileID: 6123130}
   - 114: {fileID: 11408828}
+  - 114: {fileID: 11412228}
   m_Layer: 9
   m_Name: ThickBush
   m_TagString: Obstacle
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 17.264486, y: -4.631241, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &6032572
-PolygonCollider2D:
+--- !u!61 &6123130
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -41,23 +42,9 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 0.59133863, y: -0.5668442}
-      - {x: 0.8202858, y: -0.42207974}
-      - {x: 0.89908206, y: -0.15944928}
-      - {x: 0.9350349, y: 0.1402429}
-      - {x: 0.9429505, y: 0.2627411}
-      - {x: 0.8271582, y: 0.42601556}
-      - {x: 0.47120875, y: 0.71071076}
-      - {x: 0.12128234, y: 0.745512}
-      - {x: -0.33705235, y: 0.70448816}
-      - {x: -0.64961666, y: 0.56422997}
-      - {x: -0.87166566, y: 0.3308986}
-      - {x: -0.9412819, y: 0.21769333}
-      - {x: -0.8916638, y: -0.42363423}
-      - {x: -0.77825445, y: -0.5759402}
+  m_Offset: {x: 0.006644249, y: -0.27434397}
+  serializedVersion: 2
+  m_Size: {x: 1.8167822, y: 0.6192453}
 --- !u!114 &11408828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,6 +54,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5355fcbceaafd84dbcdd111b4feaf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11412228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5c7f7258ee8404bb2778c5ad3642ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21240880
@@ -105,7 +103,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155864}

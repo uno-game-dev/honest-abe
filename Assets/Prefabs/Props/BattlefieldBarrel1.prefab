@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 469054}
   - 212: {fileID: 21295384}
-  - 60: {fileID: 6032770}
+  - 61: {fileID: 6180328}
   - 114: {fileID: 11409050}
+  - 114: {fileID: 11414044}
   m_Layer: 9
   m_Name: BattlefieldBarrel1
   m_TagString: Obstacle
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.819839, y: -4.542983, z: 0}
+  m_LocalPosition: {x: 17.664967, y: -5.808067, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &6032770
-PolygonCollider2D:
+--- !u!61 &6180328
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -41,27 +42,9 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 1.0378542, y: 0.28047323}
-      - {x: 0.8009639, y: 0.5033803}
-      - {x: 0.6735773, y: 0.86777925}
-      - {x: -0.07355785, y: 1.0623825}
-      - {x: -0.3861251, y: 1.0884485}
-      - {x: -0.6233411, y: 1.1082678}
-      - {x: -0.7996745, y: 1.0231156}
-      - {x: -1.0722985, y: 0.82246685}
-      - {x: -1.1977425, y: 0.36846828}
-      - {x: -1.1664143, y: -0.17230129}
-      - {x: -1.0572371, y: -0.3008523}
-      - {x: -0.16645813, y: -0.70163536}
-      - {x: 0.20793295, y: -0.8154855}
-      - {x: 0.73385763, y: -0.8160033}
-      - {x: 0.92249775, y: -0.6399555}
-      - {x: 1.0376232, y: -0.31060266}
-      - {x: 1.0902491, y: 0.12685204}
-      - {x: 1.0610023, y: 0.28405523}
+  m_Offset: {x: -0.10000038, y: -0.3292327}
+  serializedVersion: 2
+  m_Size: {x: 2.09, y: 0.97445697}
 --- !u!114 &11409050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,6 +54,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5355fcbceaafd84dbcdd111b4feaf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11414044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5c7f7258ee8404bb2778c5ad3642ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21295384
@@ -109,7 +103,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159472}

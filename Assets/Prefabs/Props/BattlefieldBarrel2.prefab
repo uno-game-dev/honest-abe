@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 427798}
   - 212: {fileID: 21285608}
-  - 60: {fileID: 6042240}
+  - 61: {fileID: 6103610}
   - 114: {fileID: 11401850}
+  - 114: {fileID: 11416336}
   m_Layer: 9
   m_Name: BattlefieldBarrel2
   m_TagString: Obstacle
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.819839, y: -4.542983, z: 0}
+  m_LocalPosition: {x: 17.13499, y: -5.6650553, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &6042240
-PolygonCollider2D:
+--- !u!61 &6103610
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -41,24 +42,9 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 0.78735447, y: 0.1854558}
-      - {x: 0.6800332, y: 0.7538798}
-      - {x: 0.55264616, y: 0.89369273}
-      - {x: -0.039006233, y: 0.95872784}
-      - {x: -0.5675211, y: 0.820673}
-      - {x: -0.6751685, y: 0.6763716}
-      - {x: -0.73057127, y: 0.23706532}
-      - {x: -0.72678185, y: 0.0018639565}
-      - {x: -0.6794677, y: -0.46077204}
-      - {x: -0.54448366, y: -0.7769556}
-      - {x: -0.42666864, y: -0.8450413}
-      - {x: 0.39500666, y: -0.85711765}
-      - {x: 0.5361743, y: -0.78957176}
-      - {x: 0.67562866, y: -0.5296302}
-      - {x: 0.7413993, y: -0.31196117}
+  m_Offset: {x: 0.024539948, y: -0.26322746}
+  serializedVersion: 2
+  m_Size: {x: 1.4937006, y: 0.9383203}
 --- !u!114 &11401850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,6 +54,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5355fcbceaafd84dbcdd111b4feaf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11416336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5c7f7258ee8404bb2778c5ad3642ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21285608
@@ -112,6 +109,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 5949db9b88741214bac34e0bfc187c61,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151590}
