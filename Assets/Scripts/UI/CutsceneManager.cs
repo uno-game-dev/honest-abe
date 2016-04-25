@@ -29,7 +29,7 @@ public class CutsceneManager : MonoBehaviour
     };
 
     private bool _cutsceneOver, _allowSkip;
-    private float timeToAllowSkip = 3f, timer = 0f;
+    private float timeToAllowSkip = 2f, timer = 0f;
 
     private GameObject _cutsceneCanvas; // The canvas object that is used for all the cutscenes
     private GameObject _introStoryPanel, _midStoryPanel, _endStoryPanel, _skipText;
