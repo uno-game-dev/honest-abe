@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 483560}
   - 212: {fileID: 21270914}
-  - 60: {fileID: 6084234}
+  - 61: {fileID: 6175742}
   - 114: {fileID: 11495944}
+  - 114: {fileID: 11456110}
   m_Layer: 9
   m_Name: ShortStool
   m_TagString: Obstacle
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 17.171696, y: -3.7630055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &6084234
-PolygonCollider2D:
+--- !u!61 &6175742
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -41,16 +42,20 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 0.730648, y: -0.6235057}
-      - {x: -0.7806459, y: -0.612237}
-      - {x: -0.6709116, y: 0.57055926}
-      - {x: -0.61912304, y: 0.7066177}
-      - {x: -0.52135843, y: 0.75644267}
-      - {x: 0.47260362, y: 0.759963}
-      - {x: 0.6668833, y: 0.70145446}
+  m_Offset: {x: -0.013698578, y: -0.2864406}
+  serializedVersion: 2
+  m_Size: {x: 1.5031561, y: 0.671504}
+--- !u!114 &11456110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5c7f7258ee8404bb2778c5ad3642ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11495944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,7 +103,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 165978}

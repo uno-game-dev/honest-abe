@@ -29,6 +29,7 @@ public class EventHandler : MonoBehaviour
         WEAPON_PICKUP,
         PERK_PICKUP,
 		LEVEL_WIN,
+        LEVEL_NEXT,
 		GAME_LOSE,
         GAME_WIN,
         JUMP,
@@ -185,14 +186,18 @@ public class EventHandler : MonoBehaviour
 				Debug.Log ("Level Win");
 				Perk.trinketTimeStamp = Time.time;
 				Perk.performMaryToddsTimeStamp = Time.time;
-				GameObject.Find("GameManager").GetComponent<LevelManager>().currentScene++;
+				if (other != null && other.GetComponent<Boss>() != null && other.GetComponent<Boss>().bossName == "Officer-Boss")
+                    GameObject.Find("UI").GetComponent<UIManager>().cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.MID);
 				break;
+            case Events.LEVEL_NEXT:
+                GameObject.Find("GameManager").GetComponent<LevelManager>().currentScene++;
+                break;
 			case Events.GAME_WIN:
                 Debug.Log("Game Win");
 				Perk.trinketTimeStamp = Time.time;
 				Perk.performMaryToddsTimeStamp = Time.time;
                 PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
-				GameObject.Find("Player").GetComponent<Player>().PlayEnding();
+                GameObject.Find("UI").GetComponent<UIManager>().cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.END);
                 break;
 			case Events.GAME_LOSE:
 				Debug.Log("Game Lose");

@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 441386}
   - 212: {fileID: 21274444}
-  - 60: {fileID: 6066784}
+  - 61: {fileID: 6112230}
   - 114: {fileID: 11480286}
+  - 114: {fileID: 11476770}
   m_Layer: 9
   m_Name: TallStool
   m_TagString: Obstacle
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 16.40177, y: -4.296245, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!60 &6066784
-PolygonCollider2D:
+--- !u!61 &6112230
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -41,16 +42,20 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 0.853081, y: -1.1013656}
-      - {x: -0.9537172, y: -1.1023941}
-      - {x: -0.67392564, y: 0.9246599}
-      - {x: -0.6429336, y: 1.0956091}
-      - {x: -0.48531908, y: 1.1334027}
-      - {x: 0.45945078, y: 1.134432}
-      - {x: 0.63380045, y: 1.0784259}
+  m_Offset: {x: -0.04876709, y: -0.57677794}
+  serializedVersion: 2
+  m_Size: {x: 1.8182476, y: 1.0667459}
+--- !u!114 &11476770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5c7f7258ee8404bb2778c5ad3642ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11480286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,7 +103,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145314}

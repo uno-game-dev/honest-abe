@@ -42,7 +42,7 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         // If the game hasn't officially started yet, don't do any update calls
-        if (!UIManager.updateActive) return;
+        if (!UIManager.updateActive || CutsceneManager.cutsceneActive) return;
 
         // Else run the update code
         if (_movement.enabled)
