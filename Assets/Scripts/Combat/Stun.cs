@@ -109,6 +109,9 @@ public class Stun : MonoBehaviour
     public void GetStunned(float stunAmount = 1f, float knockbackAmount = 0.1f, float directionModifier = 1f,
         Direction direction = Direction.Left, Power power = Power.Light)
     {
+        if (!_characterState.CanBeStunned())
+            return;
+
         if (_characterState.state == CharacterState.State.Grabbed)
         {
             _animator.Play("Grabbed Damage", 0, 0.15f);
