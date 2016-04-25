@@ -1988,15 +1988,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 4
-  attackSize: {x: 1, y: 1}
+  attackSize: {x: 3, y: 3}
   attackOffset: {x: 1, y: 0}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 76}
-  lightDamage: 3
+  lightDamage: 5
   lightStun: 0.2
   lightKnockback: 2
-  heavyDamage: 6
-  heavyStun: 3
+  heavyDamage: 8
+  heavyStun: 1
   heavyKnockback: 5
   throwDamage: 4
   isEnemyWeapon: 1
@@ -2081,7 +2081,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 413804
+  m_CachedInstanceID: 27458
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: -755604
+  m_CachedInstanceID: 27478
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2313,7 +2313,7 @@ MonoBehaviour:
     m_EventID: 1655330493
   - m_Destination: {fileID: 11492458}
     m_EventID: 334526696
-  m_CachedInstanceID: -755598
+  m_CachedInstanceID: 27472
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2383,7 +2383,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11467984}
     m_EventID: 801792392
-  m_CachedInstanceID: -755610
+  m_CachedInstanceID: 27484
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2497,7 +2497,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11492458}
     m_EventID: 334526696
-  m_CachedInstanceID: -755600
+  m_CachedInstanceID: 27474
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2597,7 +2597,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11483636}
     m_EventID: 2052093111
-  m_CachedInstanceID: -755596
+  m_CachedInstanceID: 27470
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2653,7 +2653,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: -821316
+  m_CachedInstanceID: 27488
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2700,8 +2700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMovementSpeed: 6
-  vericalMovementSpeed: 4
+  horizontalMovementSpeed: 7
+  vericalMovementSpeed: 5
   direction: 1
   velocity: {x: 0, y: 0}
   movementSmoothing: 0.115
@@ -2762,7 +2762,7 @@ MonoBehaviour:
     m_EventID: 806683367
   - m_Destination: {fileID: 11460790}
     m_EventID: 940445361
-  m_CachedInstanceID: -755608
+  m_CachedInstanceID: 27482
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2865,7 +2865,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11428584}
     m_EventID: 115829197
-  m_CachedInstanceID: -755606
+  m_CachedInstanceID: 27480
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2942,7 +2942,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11467984}
     m_EventID: 801792392
-  m_CachedInstanceID: -755594
+  m_CachedInstanceID: 27486
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3027,7 +3027,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: -755602
+  m_CachedInstanceID: 27476
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3099,7 +3099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0230f66eb00a64fb8986d61f3c1b17fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   additionalHealthFloor: 0
   additionalHealthCeiling: 0
   alive: 0
