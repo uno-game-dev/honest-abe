@@ -30,7 +30,7 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
-        if (!UIManager.updateActive) return;
+        if (!UIManager.updateActive || CutsceneManager.cutsceneActive) return;
 
         InputManager.Action mobileAction = InputManager.GetAction();
 

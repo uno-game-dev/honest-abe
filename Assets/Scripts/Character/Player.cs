@@ -56,8 +56,8 @@ public class Player : MonoBehaviour
 		GetComponent<BaseCollision>().enabled = false;
 		_playerMotor.enabled = false;
 		_movement = GetComponent<Movement>();
-		_velocity = new Vector2(_movement.horizontalMovementSpeed, 0);
-		Invoke("SetPlayEndingToTrue", 3);
+		_velocity = new Vector2(_movement.horizontalMovementSpeed / 2, 0);
+		Invoke("SetPlayEndingToTrue", 1);
 	}
 
 	public void SetPlayEndingToTrue()

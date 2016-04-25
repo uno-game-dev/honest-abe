@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 
 	private GameManager _gameManager;
 	private LevelManager _levelManager;
-	private GameObject _startGameText;
+	private GameObject _startGameText, _logoImage;
 	private bool _paused = false;
 	private bool _options = false;
 
@@ -69,17 +69,25 @@ public class UIManager : MonoBehaviour
 	//Trinket UI
 	private static Text _trinketUI;
 
+    // Cutscene Canvas
+    public GameObject cutsceneUI;
+    public CutsceneManager cutsceneManager;
+
 	void Awake()
 	{
 		updateActive = false;
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
 		_startGameText = GameObject.Find("StartText");
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        _logoImage = GameObject.Find("Logo");
+        if (SceneManager.GetActiveScene().buildIndex == 0) {
             _startGameText.SetActive(true);
+        	_logoImage.SetActive(true);
+		}
         else
         {
             _startGameText.SetActive(false);
+            _logoImage.SetActive(false);
             updateActive = true;
         }
 		SetListenersForPauseUI();
@@ -87,6 +95,9 @@ public class UIManager : MonoBehaviour
 		SetListenersForOptionsUI();
 		SetListenersForWinUI();
 		SetListenersForLoseUI();
+        cutsceneUI = GameObject.Find("CutsceneCanvas");
+        cutsceneManager = cutsceneUI.GetComponent<CutsceneManager>();
+        //_cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.NULL);
 		perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
 		bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
@@ -97,7 +108,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-		if (!updateActive && Input.GetKeyDown(KeyCode.Return))
+		if (!updateActive && !_paused && (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape)))
             OnPressEnterAtBeginning();
 
         if (Input.GetButtonDown("Pause"))
@@ -122,7 +133,20 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(true);
             _optionsUI.SetActive(false);
             _optionsUIBackground.SetActive(false);
+            _graphicsUI.SetActive(false);
+            _audioUI.SetActive(false);
+            _controlsUI.SetActive(false);
             _creditsUI.SetActive(false);
+
+            if (CutsceneManager.cutsceneActive)
+                cutsceneUI.SetActive(false);
+
+            if (!updateActive)
+            {
+                _startGameText.SetActive(false);
+                _logoImage.SetActive(false);
+            }
+
             Time.timeScale = 0;
         }
         else
@@ -130,7 +154,20 @@ public class UIManager : MonoBehaviour
             _pauseUI.SetActive(false);
             _optionsUI.SetActive(false);
             _optionsUIBackground.SetActive(false);
+            _graphicsUI.SetActive(false);
+            _audioUI.SetActive(false);
+            _controlsUI.SetActive(false);
             _creditsUI.SetActive(false);
+
+            if (CutsceneManager.cutsceneActive)
+                cutsceneUI.SetActive(true);
+
+            if (!updateActive)
+            {
+                _startGameText.SetActive(true);
+                _logoImage.SetActive(true);
+            }
+
             Time.timeScale = 1;
         }
     }
@@ -144,6 +181,8 @@ public class UIManager : MonoBehaviour
     {
         updateActive = true;
         _startGameText.SetActive(false);
+        _logoImage.SetActive(false);
+        cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
     }
 
 	private void SetListenersForPauseUI()
@@ -269,10 +308,12 @@ public class UIManager : MonoBehaviour
 	public void OnResume()
     {
         //_paused = false;
-        _pauseUI.SetActive(false);
-        Time.timeScale = 1;
-        _paused = false;
-        _optionsUIBackground.SetActive(false);
+        //_pauseUI.SetActive(false);
+        //Time.timeScale = 1;
+        //_paused = false;
+        //_optionsUIBackground.SetActive(false);
+
+        TogglePause();
 
         EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
