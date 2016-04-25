@@ -28,11 +28,11 @@ public class CutsceneManager : MonoBehaviour
         "With a sliver of hope that Mary Todd may yet be alive, Abe wanders off in search of his beloved, his bloody axe hungering for the next battle. "
     };
 
-    private bool _cutsceneOver;
-    private float timeToNextSlide = 10f, timer = 0f;
+    private bool _cutsceneOver, _allowSkip;
+    private float timeToAllowSkip = 3f, timer = 0f;
 
     private GameObject _cutsceneCanvas; // The canvas object that is used for all the cutscenes
-    private GameObject _introStoryPanel, _midStoryPanel, _endStoryPanel;
+    private GameObject _introStoryPanel, _midStoryPanel, _endStoryPanel, _skipText;
     private Text _introStoryText, _endStoryText;
     private Image _midStoryImage;
 
@@ -54,6 +54,10 @@ public class CutsceneManager : MonoBehaviour
         _endStoryText.text = _endText[0];
         _endStoryPanel.SetActive(false);
 
+        _skipText = GameObject.Find("SkipText");
+        _skipText.SetActive(false);
+        _allowSkip = false;
+
         _cutsceneOver = false;
         cutsceneActive = false;
         index = 0;
@@ -68,10 +72,18 @@ public class CutsceneManager : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (((Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape)) || timer >= timeToNextSlide) && Time.timeScale > 0)
+        if (timer >= timeToAllowSkip)
+        {
+            _skipText.SetActive(true);
+            _allowSkip = true;
+        }
+
+        if ((Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape)) && Time.timeScale > 0 && _allowSkip)
         {
             index++;
             timer = 0;
+            _skipText.SetActive(false);
+            _allowSkip = false;
 
             if (currentCutscene == Cutscenes.INTRO)
             {
@@ -147,6 +159,8 @@ public class CutsceneManager : MonoBehaviour
     private void ResetCutscenes()
     {
         index = 0;
+        timer = 0;
+        _allowSkip = false;
 
         _introStoryPanel.SetActive(false);
         _introStoryText.text = _introText[index];
