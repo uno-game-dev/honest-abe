@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21215042}
   - 61: {fileID: 6155292}
   - 114: {fileID: 11498464}
-  - 114: {fileID: 11425884}
+  - 114: {fileID: 11474960}
   m_Layer: 9
   m_Name: PileOfBricks
   m_TagString: Obstacle
@@ -45,7 +45,7 @@ BoxCollider2D:
   m_Offset: {x: 0.1265742, y: -0.31707495}
   serializedVersion: 2
   m_Size: {x: 1.9693182, y: 0.39673233}
---- !u!114 &11425884
+--- !u!114 &11474960
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -53,9 +53,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 151390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a5c7f7258ee8404bb2778c5ad3642ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e631eff86fb93c488df840a98a56a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetFromOrigin: 2
+  maxZ: 45
+  yToZFactor: 2
 --- !u!114 &11498464
 MonoBehaviour:
   m_ObjectHideFlags: 1
