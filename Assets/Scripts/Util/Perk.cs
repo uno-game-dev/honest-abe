@@ -80,7 +80,7 @@ public class Perk : MonoBehaviour
         switch (type)
         {
             case PerkType.NONE_AXE:
-                _category = PerkCategory.NONE_AXE;
+                _category = PerkCategory.AXE;
 				_perkName = PerkManager.axe_none_name;
 				_perkDesc = PerkManager.axe_none_desc;
                 unlocked = true;
@@ -288,7 +288,7 @@ public class Perk : MonoBehaviour
 			if (trinketTimeStamp <= Time.time) {
 				playerHealth.IncreaseDT(20);
 				trinketTimeStamp = Time.time + trinketCoolDown;
-				PerkManager.decreaseTrinketBarRate = 0.9f;
+				PerkManager.decreaseTrinketBarRate = 0.3f;
 				PerkManager.updateTrinketBar = true;
 			}
 		}
@@ -300,10 +300,10 @@ public class Perk : MonoBehaviour
 				//In Player Health it is checked if performMaryToddsTimeStamp >= Time.time because the invincibility only last for a certain amount of time
 				performMaryToddsTimeStamp = Time.time + performMaryToddsCoolDown;
 				trinketTimeStamp = Time.time + trinketCoolDown;
-				PerkManager.decreaseTrinketBarRate = 3.7f;
+				PerkManager.decreaseTrinketBarRate = 1.2f;
 				PerkManager.updateTrinketBar = true;
 				PerkManager.updateMaryToddsBar = true;
-				PerkManager.decreaseMaryToddsBarRate = 0.3f;
+				PerkManager.decreaseMaryToddsBarRate = 0.095f;
 			}
 		}
     }
