@@ -117,11 +117,11 @@ public class Grabbable : MonoBehaviour
 
     public void Release()
     {
+        _characterState.SetState(CharacterState.State.Movement);
         if (state == State.Null)
             return;
 
         state = State.Null;
-        _characterState.SetState(CharacterState.State.Idle);
         if (_movementAI) _movementAI.enabled = true;
         transform.SetParent(_previousParent);
         gameObject.layer = _myLayer;

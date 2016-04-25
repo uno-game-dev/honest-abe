@@ -57,6 +57,8 @@ public class AttackArea : MonoBehaviour
 		} else {
 			// Knock the player down if this was a trip attack (i.e. if I'm a bushwhacker and this was a Heavy attack)
 			if (collider.name.Contains("Bushwhacker") && _attack.attackState == Attack.State.Heavy) {
+                if (_player.GetComponent<Grabber>() && _player.GetComponent<Grabber>().IsGrabbingSomeone())
+                    _player.GetComponent<Grabber>().Release();
 				_player.GetComponent<KnockDown> ().StartKnockDown (0);
 			}
 		}
