@@ -107,8 +107,6 @@ public class PerkManager : MonoBehaviour
 
     void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
         perkList = new List<Perk>();
 
         GameObject[] perksInLevel = GameObject.FindGameObjectsWithTag("Perk");
@@ -126,7 +124,7 @@ public class PerkManager : MonoBehaviour
             p.CheckStatus();
             perkList.Add(p);
         }
-        }
+
 		cameraFollow = GameObject.Find ("Main Camera").GetComponent<CameraFollow> ();
 		worldGen = GameObject.Find ("Level").GetComponent<WorldGenerator> ();
 		levelManager = GameObject.Find ("GameManager").GetComponent<LevelManager> ();
