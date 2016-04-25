@@ -1721,7 +1721,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11468350}
     m_EventID: 334526696
-  m_CachedInstanceID: 302774
+  m_CachedInstanceID: 18392
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1783,9 +1783,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
-  additionalHealthFloor: 1
-  additionalHealthCeiling: 4
+  health: 35
+  additionalHealthFloor: 2
+  additionalHealthCeiling: 8
   alive: 0
 --- !u!114 &11407154
 MonoBehaviour:
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 302764
+  m_CachedInstanceID: 18382
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1906,7 +1906,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 302758
+  m_CachedInstanceID: 18376
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2033,7 +2033,7 @@ MonoBehaviour:
     m_EventID: 1986386542
   - m_Destination: {fileID: 11468350}
     m_EventID: 334526696
-  m_CachedInstanceID: 302772
+  m_CachedInstanceID: 18390
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2122,7 +2122,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11428194}
     m_EventID: 1726082671
-  m_CachedInstanceID: 302766
+  m_CachedInstanceID: 18384
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2304,7 +2304,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 302770
+  m_CachedInstanceID: 18388
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2452,7 +2452,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 302768
+  m_CachedInstanceID: 18386
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3002,7 +3002,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: health
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damageRate
@@ -3030,11 +3030,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: additionalHealthFloor
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: additionalHealthCeiling
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
