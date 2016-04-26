@@ -1672,7 +1672,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 12748
+  m_CachedInstanceID: 12086
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1730,7 +1730,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 12750
+  m_CachedInstanceID: 12098
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1828,7 +1828,7 @@ MonoBehaviour:
     m_EventID: 1484665370
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 12756
+  m_CachedInstanceID: 12090
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1838,26 +1838,28 @@ MonoBehaviour:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
     - KeepRange
+    - BehaviourMachine.PrioritySelector
     - IsPlayerInMeleeRange
     - IsPlayerInLine
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
-    m_BranchIndex: ffffffffffffffff010000000100000001000000
+    m_NodeTypeHash: 89ef821089ef8210fbd4a944fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000a0000000d00000010000000
+    m_BranchIndex: ffffffffffffffff01000000010000000300000003000000
     m_UnityObjectValue: []
-    m_IntValue: 0100000001000000020000000100000005000000030000001a327e580400000061fc9115
+    m_IntValue: 010000000100000002000000010000000500000006000000030000001a327e580400000061fc9115
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
     - KeepRange
+    - PrioritySelector
     - IsPlayerInMeleeRange
     - IsPlayerInLine
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
+    m_FieldIndex: 00000000000000000100000002000000010000000300000004000000020000000500000003000000060000000400000007000000080000000500000009000000
+    m_FieldType: 0100000002000000050000000100000002000000050000000100000002000000010000000200000001000000020000001e00000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name
@@ -1865,6 +1867,8 @@ MonoBehaviour:
     - instanceID
     - name
     - enabled
+    - instanceID
+    - name
     - instanceID
     - name
     - instanceID
@@ -1914,7 +1918,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 12760
+  m_CachedInstanceID: 12100
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1986,7 +1990,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 12762
+  m_CachedInstanceID: 12092
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2235,7 +2239,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12774
+  m_CachedInstanceID: 12106
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2372,7 +2376,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12786
+  m_CachedInstanceID: 12094
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2465,7 +2469,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 12792
+  m_CachedInstanceID: 12084
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2540,7 +2544,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 12798
+  m_CachedInstanceID: 12088
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2717,7 +2721,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12814
+  m_CachedInstanceID: 12096
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
