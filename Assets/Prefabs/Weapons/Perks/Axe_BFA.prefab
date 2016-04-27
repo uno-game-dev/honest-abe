@@ -267,7 +267,7 @@ MonoBehaviour:
   heavyDamage: 7
   heavyStun: 0.5
   heavyKnockback: 7
-  throwDamage: 7
+  throwDamage: 20
   isEnemyWeapon: 0
 --- !u!1001 &100100000
 Prefab:
@@ -280,6 +280,10 @@ Prefab:
       propertyPath: lockIcon
       value: 
       objectReference: {fileID: 152076, guid: 10aa8f8e0af322b4b900b59e1c23b92f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: throwDamage
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 183176}
