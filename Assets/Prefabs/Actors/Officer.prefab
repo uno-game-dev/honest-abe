@@ -197,12 +197,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 481464}
   - 61: {fileID: 6181230}
-  - 114: {fileID: 11442758}
   - 114: {fileID: 11434308}
   - 114: {fileID: 11464192}
   m_Layer: 11
   m_Name: Saber
-  m_TagString: AbeAxe
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1721,7 +1720,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11468350}
     m_EventID: 334526696
-  m_CachedInstanceID: 18392
+  m_CachedInstanceID: 20572
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1852,7 +1851,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 18382
+  m_CachedInstanceID: 20562
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1906,7 +1905,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 18376
+  m_CachedInstanceID: 20556
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2033,7 +2032,7 @@ MonoBehaviour:
     m_EventID: 1986386542
   - m_Destination: {fileID: 11468350}
     m_EventID: 334526696
-  m_CachedInstanceID: 18390
+  m_CachedInstanceID: 20570
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2122,7 +2121,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11428194}
     m_EventID: 1726082671
-  m_CachedInstanceID: 18384
+  m_CachedInstanceID: 20564
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2167,21 +2166,6 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
---- !u!114 &11442758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 134326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd71f47f14968164ebc11b9250190101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  unlocked: 0
-  setToBeUnlocked: 0
-  alreadyActive: 0
 --- !u!114 &11445802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2304,7 +2288,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 18388
+  m_CachedInstanceID: 20568
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2452,7 +2436,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 18386
+  m_CachedInstanceID: 20566
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1

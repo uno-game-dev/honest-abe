@@ -61,7 +61,6 @@ GameObject:
   - 114: {fileID: 11434936}
   - 114: {fileID: 11497070}
   - 114: {fileID: 11432906}
-  - 114: {fileID: 11425684}
   - 114: {fileID: 11498788}
   - 114: {fileID: 11413604}
   m_Layer: 12
@@ -339,21 +338,6 @@ MonoBehaviour:
   particleSystems:
   - {fileID: 19881350}
   - {fileID: 19830440}
---- !u!114 &11425684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd71f47f14968164ebc11b9250190101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  unlocked: 0
-  setToBeUnlocked: 0
-  alreadyActive: 0
 --- !u!114 &11432906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,7 +378,7 @@ MonoBehaviour:
   heavyStun: 0.5
   heavyKnockback: 7
   throwDamage: 0
-  isEnemyWeapon: 0
+  isEnemyWeapon: 1
 --- !u!114 &11497070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3531,6 +3515,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: attackType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isEnemyWeapon
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
