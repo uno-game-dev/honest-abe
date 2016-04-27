@@ -326,13 +326,12 @@ GameObject:
   - 114: {fileID: 11490896}
   - 114: {fileID: 11495698}
   - 114: {fileID: 11416806}
-  - 114: {fileID: 11488024}
   - 114: {fileID: 11467310}
   - 114: {fileID: 11427296}
   - 114: {fileID: 11497964}
   m_Layer: 12
   m_Name: Musket
-  m_TagString: OneUseWeapon
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1045,7 +1044,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 12.63, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 464774}
@@ -1672,7 +1671,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 12748
+  m_CachedInstanceID: 18516
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1730,7 +1729,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 12750
+  m_CachedInstanceID: 18528
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1828,7 +1827,7 @@ MonoBehaviour:
     m_EventID: 1484665370
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 12756
+  m_CachedInstanceID: 18520
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1914,7 +1913,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 12760
+  m_CachedInstanceID: 18530
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1986,7 +1985,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 12762
+  m_CachedInstanceID: 18522
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2235,7 +2234,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12774
+  m_CachedInstanceID: 18536
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2372,7 +2371,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12786
+  m_CachedInstanceID: 18524
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2465,7 +2464,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 12792
+  m_CachedInstanceID: 18514
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2540,7 +2539,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 12798
+  m_CachedInstanceID: 18518
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2576,21 +2575,6 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
---- !u!114 &11488024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd71f47f14968164ebc11b9250190101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  unlocked: 0
-  setToBeUnlocked: 0
-  alreadyActive: 0
 --- !u!114 &11490896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2614,7 +2598,7 @@ MonoBehaviour:
   heavyStun: 0.5
   heavyKnockback: 7
   throwDamage: 0
-  isEnemyWeapon: 0
+  isEnemyWeapon: 1
 --- !u!114 &11492716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2717,7 +2701,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12814
+  m_CachedInstanceID: 18526
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1

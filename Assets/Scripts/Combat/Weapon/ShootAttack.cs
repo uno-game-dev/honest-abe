@@ -102,7 +102,7 @@ class ShootAttack : BaseAttack
 				gameObject.GetComponent<Attack> ().SetWeapon (GetComponent<PlayerMotor> ().savedWeapon);
 				GetComponent<PlayerMotor> ().savedWeapon.transform.gameObject.SetActive (true);
 			} else {
-				gameObject.GetComponent<Attack> ().SetWeapon (new Weapon());
+				gameObject.GetComponent<Attack> ().SetWeapon (gameObject.GetComponent<Weapon>());
 			}
 		}
     }

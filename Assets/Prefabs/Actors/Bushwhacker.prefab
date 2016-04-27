@@ -501,9 +501,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 471324}
   - 114: {fileID: 11492108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Knife
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496152}
     m_EventID: 277351336
-  m_CachedInstanceID: 14042
+  m_CachedInstanceID: 14888
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1768,7 +1768,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11445508}
     m_EventID: 1934339850
-  m_CachedInstanceID: 14048
+  m_CachedInstanceID: 14894
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1841,7 +1841,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11454856}
     m_EventID: 713601555
-  m_CachedInstanceID: 14038
+  m_CachedInstanceID: 14884
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2022,7 +2022,7 @@ MonoBehaviour:
     m_EventID: 334526696
   - m_Destination: {fileID: 11454856}
     m_EventID: 713601555
-  m_CachedInstanceID: 14052
+  m_CachedInstanceID: 14898
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2120,7 +2120,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
-  m_CachedInstanceID: 14036
+  m_CachedInstanceID: 14882
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2180,7 +2180,7 @@ MonoBehaviour:
     m_EventID: 225201245
   - m_Destination: {fileID: 11445508}
     m_EventID: 1934339850
-  m_CachedInstanceID: 14046
+  m_CachedInstanceID: 14892
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
-  m_CachedInstanceID: 14040
+  m_CachedInstanceID: 14886
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2358,7 +2358,7 @@ MonoBehaviour:
   heavyStun: 0.5
   heavyKnockback: 7
   throwDamage: 0
-  isEnemyWeapon: 0
+  isEnemyWeapon: 1
 --- !u!114 &11493248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
-  m_CachedInstanceID: 14050
+  m_CachedInstanceID: 14896
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2452,7 +2452,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 14034
+  m_CachedInstanceID: 14880
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
