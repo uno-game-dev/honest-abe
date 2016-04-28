@@ -64,7 +64,7 @@ public class Grabber : MonoBehaviour
 
     private void PrepareToGrab()
     {
-        _animator.Play("Grab");
+        _animator.TransitionPlay("Grab");
         SetState(State.Prepare);
         Invoke("PerformGrab", prepareGrabTime);
     }
@@ -110,7 +110,7 @@ public class Grabber : MonoBehaviour
             return;
 
         state = State.Punch;
-        _animator.Play("Grab Punch", 0, 0);
+        _animator.TransitionPlay("Grab Punch");
         Damage();
         Invoke("FinishPunch", grabPunchTime);
     }
@@ -144,7 +144,7 @@ public class Grabber : MonoBehaviour
 
         EventHandler.SendEvent(EventHandler.Events.ENEMY_THROW);
 
-        _animator.Play("Grab Throw");
+        _animator.TransitionPlay("Grab Throw");
         if (_grabbed && _grabbed.GetComponent<Grabbable>())
             _grabbed.GetComponent<Grabbable>().Throw();
         _grabbed = null;

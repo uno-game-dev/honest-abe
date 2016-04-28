@@ -22,7 +22,7 @@ public class Death : MonoBehaviour
         SoundPlayer.Play("Death");
 
         Animator animator = GetComponent<Animator>();
-        animator.Play("Dead");
+        animator.TransitionPlay("Dead");
 
         foreach (MonoBehaviour monoBehaviour in GetComponents<MonoBehaviour>())
             if (monoBehaviour != this)

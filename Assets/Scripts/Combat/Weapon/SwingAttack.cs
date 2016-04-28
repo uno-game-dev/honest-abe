@@ -8,12 +8,12 @@
         base.PrepareToLightAttack();
         if (chain == SwingChain.First)
         {
-            animator.Play("Light Attack Axe Right");
+            animator.TransitionPlay("Light Attack Axe Right");
             chain = SwingChain.Second;
         }
         else
         {
-            animator.Play("Light Attack Axe Left");
+            animator.TransitionPlay("Light Attack Axe Left");
             chain = SwingChain.First;
         }
     }
@@ -24,7 +24,7 @@
             SoundPlayer.Play("Heavy Axe Lift");
 
         base.PrepareToHeavyAttack();
-        animator.Play("Heavy Attack Axe Prep");
+        animator.TransitionPlay("Heavy Attack Axe Prep");
         chain = SwingChain.First;
     }
 
@@ -43,7 +43,7 @@
         if (tag == "Player")
             SoundPlayer.Play("Heavy Axe Swing");
 
-        animator.Play("Heavy Attack Axe Swing");
+        animator.TransitionPlay("Heavy Attack Axe Swing");
         bool hand = chain == SwingChain.Second;
         if (swipe) swipe.Activate(hand);
         base.PerformHeavyAttack();

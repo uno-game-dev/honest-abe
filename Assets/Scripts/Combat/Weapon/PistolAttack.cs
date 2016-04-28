@@ -56,17 +56,17 @@ class PistolAttack : BaseAttack
     private void Aim()
     {
         if (isWoman)
-            animator.Play("Woman Draw Pistol");
+            animator.TransitionPlay("Woman Draw Pistol");
         else
-            animator.Play("Draw Pistol");
+            animator.TransitionPlay("Draw Pistol");
     }
 
     private void Shoot()
     {
         if (isWoman)
-            animator.Play("Woman Shoot Pistol");
+            animator.TransitionPlay("Woman Shoot Pistol");
         else
-            animator.Play("Shoot Pistol");
+            animator.TransitionPlay("Shoot Pistol");
         SoundPlayer.Play("Pistol Fire");
         if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
         ShootCollisionCheck();
@@ -75,9 +75,9 @@ class PistolAttack : BaseAttack
     private void Reload()
     {
         if (isWoman)
-            animator.Play("Woman Reload Pistol");
+            animator.TransitionPlay("Woman Reload Pistol");
         else
-            animator.Play("Reload Pistol");
+            animator.TransitionPlay("Reload Pistol");
         SoundPlayer.Play("Pistol Reload");
     }
 

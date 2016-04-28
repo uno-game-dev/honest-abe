@@ -12,7 +12,7 @@ class ShootAttack : BaseAttack
     {   
         base.PrepareToLightAttack();
         Aim();
-        animator.Play("Shoot Musket");
+        animator.TransitionPlay("Shoot Musket");
     }
 
     protected override void PrepareToHeavyAttack()
@@ -53,7 +53,7 @@ class ShootAttack : BaseAttack
     {
         if (!IsAttacking()) return;
 
-        animator.Play("Aim Musket");
+        animator.TransitionPlay("Aim Musket");
     }
 
     private void Shoot()
@@ -62,7 +62,7 @@ class ShootAttack : BaseAttack
 
         if (weapon)
             if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
-        animator.Play("Shoot Musket");
+        animator.TransitionPlay("Shoot Musket");
         SoundPlayer.Play("Rifle Fire");
         ShootCollisionCheck();
     }
@@ -72,7 +72,7 @@ class ShootAttack : BaseAttack
         if (!IsAttacking()) return;
 
         SoundPlayer.Play("Rifle Reload");
-        animator.Play("Reload Musket");
+        animator.TransitionPlay("Reload Musket");
     }
 
     private void ShootCollisionCheck()

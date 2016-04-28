@@ -89,11 +89,10 @@ public static class ExtensionFunctions
         return -1;
     }
 
-    public static void TransitionPlay(this Animator animator, string stateName, float transitionSeconds = 0.1f, float startSeconds = 0)
+    public static void TransitionPlay(this Animator animator, string stateName, float transitionSeconds = 0.1f, float normalizedTime = 0)
     {
         float stateLength = animator.GetCurrentAnimatorStateInfo(0).length;
         float transitionDuration = transitionSeconds / stateLength;
-        float normalizedTime = startSeconds / stateLength;
-        animator.CrossFade(stateName, transitionDuration, -1, startSeconds);
+        animator.CrossFade(stateName, transitionDuration, -1, normalizedTime);
     }
 }
