@@ -97,7 +97,10 @@ class PistolAttack : BaseAttack
             if (stun)
                 stun.GetStunned();
             if (bulletSpark)
-                Instantiate(bulletSpark, hit.point, Quaternion.identity);
+            {
+                GameObject instance = Instantiate(bulletSpark);
+                instance.transform.position = new Vector3(hit.point.x, hit.point.y, -35);
+            }
         }
     }
 }
