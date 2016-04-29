@@ -38,6 +38,7 @@ public class ChainAttack : MonoBehaviour
         number.name = "Chain Attack Number";
         TextMesh tm = number.AddComponent<TextMesh>();
         tm.text = numberOfChainAttacks.ToString();
+        tm.color = Color.red;
         tm.fontSize = 24;
         tm.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         tm.transform.position = transform.position;

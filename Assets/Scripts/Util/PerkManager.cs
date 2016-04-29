@@ -13,46 +13,46 @@ public class PerkManager : MonoBehaviour
     public static bool axe_bfa_unlocked = false;
     public static bool axe_slugger_unlocked = false;
     public static bool hat_bearHands_unlocked = false;
-	public static bool hat_stickyFingers_unlocked = false;
-	public static bool trinket_agressionBuddy_unlocked = false;
-	public static bool trinket_maryToddsLockette_unlocked = false;
+    public static bool hat_stickyFingers_unlocked = false;
+    public static bool trinket_agressionBuddy_unlocked = false;
+    public static bool trinket_maryToddsLockette_unlocked = false;
 
     // Perk names
     public static string axe_none_name = "Axe_None";
     public static string axe_none_desc = "Abe's Regular Axe";
-    public static string axe_none_lock_desc = "How are you even seeing this?";
+    public static string axe_none_lock_desc = "How are you even seeing this?"; // I like this - Parker
 
     public static string hat_none_name = "Hat_None";
     public static string hat_none_desc = "Abe's Regular Hat";
-    public static string hat_none_lock_desc = "How are you even seeing this?";
+    public static string hat_none_lock_desc = "How are you even seeing this?"; // I also like this - Parker
 
     public static string axe_dtVampirism_name = "Axe_DTVampirism";
     public static string axe_dtVampirism_desc = "Perk: Vampirism\nRestores damage threshold on all heavy attacks";
-    public static string axe_dtVampirism_lock_desc = "Perk: Vampirism\nThis Perk is Locked!";
+    public static string axe_dtVampirism_lock_desc = "Perk: Vampirism\nThis Perk is Locked!\nUnlocked by beating the game";
 
     public static string axe_bfa_name = "Axe_BFA";
-    public static string axe_bfa_desc = "Perk: B.F.A.\nA bigger, stronger axe for your pleasure.";
-    public static string axe_bfa_lock_desc = "Perk: B.F.A\nThis Perk is Locked!";
+    public static string axe_bfa_desc = "Perk: B.F.A.\nA bigger, stronger axe for your pleasure";
+    public static string axe_bfa_lock_desc = "Perk: B.F.A\nThis Perk is Locked!\nUnlocked by beating the game using only Abe's axe";
 
     public static string axe_slugger_name = "Axe_Slugger";
     public static string axe_slugger_desc = "Perk: Slugger\nStronger combos and harder knockbacks";
-    public static string axe_slugger_lock_desc = "Perk: Slugger\nThis Perk is Locked!";
+    public static string axe_slugger_lock_desc = "Perk: Slugger\nThis Perk is Locked!\nUnlocking by executing every non-boss enemy";
 
     public static string hat_bearHands_name = "Hat_bearHands";
     public static string hat_bearHands_desc = "Perk: Bear Hands\nIncreased damage on all empty-handed attacks";
-    public static string hat_bearHands_lock_desc = "Perk: Bear Hands\nThis Perk is Locked!";
+    public static string hat_bearHands_lock_desc = "Perk: Bear Hands\nThis Perk is Locked!\nUnlocked by beating the Bear bare-handed (no weapons)";
 
-	public static string trinket_agressionBuddy_name = "Trinket_AggressionBuddy";
-	public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold with a cooldown of 30sec.";
-    public static string trinket_agressionBuddy_lock_desc = "Perk: Aggression Buddy\nThis Perk is Locked!";
+    public static string trinket_agressionBuddy_name = "Trinket_AggressionBuddy";
+    public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold\n30 second cooldown";
+    public static string trinket_agressionBuddy_lock_desc = "Perk: Aggression Buddy\nThis Perk is Locked!\nUnlocked by defeating Robert E. Lee without dropping below 80% health";
 
-	public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLockette";
-	public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides invincibility with a cooldown of 120sec.";
-    public static string trinket_maryToddsLockette_lock_desc = "Perk: Mary Todd's Locket\nThis Perk is Locked!";
+    public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLockette";
+    public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides temporary invincibility\n120 second cooldown";
+    public static string trinket_maryToddsLockette_lock_desc = "Perk: Mary Todd's Locket\nThis Perk is Locked!\nUnlocked by never picking up a health kit";
 
-	public static string hat_stickyFingers_name = "Hat_StickyFingers";
-	public static string hat_stickyFingers_desc = "Perk: Sticky Fingers\nEnables the ablity to steal weapons";
-    public static string hat_stickyFingers_lock_desc = "Perk: Sticky Fingers\nThis Perk is Locked!";
+    public static string hat_stickyFingers_name = "Hat_StickyFingers";
+    public static string hat_stickyFingers_desc = "Perk: Sticky Fingers\nEnables the ablity to steal weapons";
+    public static string hat_stickyFingers_lock_desc = "Perk: Sticky Fingers\nThis Perk is Locked!\nUnlocked by using every weapon in the game";
 
     /*
      * Individual Perk Unlock Requirements
@@ -63,15 +63,21 @@ public class PerkManager : MonoBehaviour
      * Core PerkManager Componenets
      */
 
-	public static Perk activeAxePerk = null;
-	public static Perk activeHatPerk = null;
-	public static Perk activeTrinketPerk = null;
+    public static Perk activeAxePerk = null;
+    public static Perk activeHatPerk = null;
+    public static Perk activeTrinketPerk = null;
 
-	public static event PerkEffectHandler AxePerkEffect = delegate { };
-	public static event PerkEffectHandler HatPerkEffect = delegate { };
-	public static event PerkEffectHandler TrinketPerkEffect = delegate { };
+    public static event PerkEffectHandler AxePerkEffect = delegate { };
+    public static event PerkEffectHandler HatPerkEffect = delegate { };
+    public static event PerkEffectHandler TrinketPerkEffect = delegate { };
 
     public delegate void PerkEffectHandler();
+
+    public static bool newPerksUnlocked = false;
+
+    [HideInInspector]
+    public bool showInstructions;
+    private bool perksChosen;
 
     /*
      * List of all perks in the game
@@ -87,14 +93,14 @@ public class PerkManager : MonoBehaviour
 
     private static CameraFollow cameraFollow;
 
-	private WorldGenerator worldGen;
-	private LevelManager levelManager;
+    private WorldGenerator worldGen;
+    private LevelManager levelManager;
 
-	/*
+    /*
 	 * Trinket UI
 	 */
-	public static int trinketTime = 100;
-	public static int maryToddsTrinketTime = 100;
+    public static int trinketTime = 100;
+    public static int maryToddsTrinketTime = 100;
     public static float decreaseTrinketBarRate = 0;
     public static float decreaseMaryToddsBarRate = 0;
     public static bool updateTrinketBar = false;
@@ -102,8 +108,8 @@ public class PerkManager : MonoBehaviour
 
     private static TrinketSlider trinketSlider;
 
-	private float nextTrinketDecrease = 0f;
-	private float nextMaryToddsDecrease = 0f;
+    private float nextTrinketDecrease = 0f;
+    private float nextMaryToddsDecrease = 0f;
 
     void Awake()
     {
@@ -126,30 +132,49 @@ public class PerkManager : MonoBehaviour
             perkList.Add(p);
         }
 
-		cameraFollow = GameObject.Find ("Main Camera").GetComponent<CameraFollow> ();
-		worldGen = GameObject.Find ("Level").GetComponent<WorldGenerator> ();
-		levelManager = GameObject.Find ("GameManager").GetComponent<LevelManager> ();
-		trinketSlider = GameObject.Find ("TrinketUI").GetComponent<TrinketSlider> ();
+        cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        worldGen = GameObject.Find("Level").GetComponent<WorldGenerator>();
+        levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
+        trinketSlider = GameObject.Find("TrinketUI").GetComponent<TrinketSlider>();
+
+        perksChosen = false;
     }
 
-	void Update()
+    void Update()
+    {
+        if (!perksChosen && showInstructions)
+        {
+            HandlePerkInfo();
+        }
+
+        if (updateTrinketBar && (Time.time > nextTrinketDecrease))
+        {
+            nextTrinketDecrease = Time.time + decreaseTrinketBarRate;
+            trinketTime -= 1;
+            trinketSlider.UpdateTrinket(trinketTime);
+        }
+        if (updateMaryToddsBar && (Time.time > nextMaryToddsDecrease))
+        {
+            nextMaryToddsDecrease = Time.time + decreaseMaryToddsBarRate;
+            maryToddsTrinketTime -= 1;
+            trinketSlider.UpdateMaryToddsTrinket(maryToddsTrinketTime);
+        }
+    }
+
+    private void HandlePerkInfo()
     {
         if (levelManager.currentScene == 0 && (!hatPerkChosen || !axePerkChosen))
+        {
             cameraFollow.lockRightEdge = true;
+            GameObject.Find("UI").GetComponent<UIManager>().pickUpInstructions.SetActive(true);
+        }
         else
+        {
             cameraFollow.lockRightEdge = false;
-
-        if (updateTrinketBar && (Time.time > nextTrinketDecrease)){
-			nextTrinketDecrease = Time.time + decreaseTrinketBarRate;
-			trinketTime -= 1;
-			trinketSlider.UpdateTrinket (trinketTime);
-		}
-		if(updateMaryToddsBar && (Time.time > nextMaryToddsDecrease )){
-			nextMaryToddsDecrease = Time.time + decreaseMaryToddsBarRate;
-			maryToddsTrinketTime -= 1;
-			trinketSlider.UpdateMaryToddsTrinket(maryToddsTrinketTime);
-		}
-	}
+            GameObject.Find("UI").GetComponent<UIManager>().pickUpInstructions.SetActive(false);
+            perksChosen = true;
+        }
+    }
 
     public void Reset()
     {
