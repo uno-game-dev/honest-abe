@@ -654,6 +654,8 @@ GameObject:
   - 114: {fileID: 11428668}
   - 114: {fileID: 11472116}
   - 114: {fileID: 11448898}
+  - 114: {fileID: 11431484}
+  - 114: {fileID: 11484172}
   m_Layer: 11
   m_Name: Officer-Boss
   m_TagString: Boss
@@ -1709,11 +1711,11 @@ MonoBehaviour:
   m_StateName: FinishAttack
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 780, y: 90}
+  m_Position: {x: 780, y: 120}
   m_Transitions:
-  - m_Destination: {fileID: 11476700}
-    m_EventID: 755052694
-  m_CachedInstanceID: -636784
+  - m_Destination: {fileID: 11484172}
+    m_EventID: 103276309
+  m_CachedInstanceID: 93582
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1727,7 +1729,7 @@ MonoBehaviour:
     m_NodeFieldStartIndex: 00000000030000000600000009000000
     m_BranchIndex: ffffffffffffffff01000000
     m_UnityObjectValue: []
-    m_IntValue: 01000000010000000200000001000000030000009630012d
+    m_IntValue: 010000000100000002000000010000000300000015df2706
     m_FloatValue: []
     m_StringValue:
     - OnEnable
@@ -1823,7 +1825,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 20258
+  m_CachedInstanceID: 11772
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1872,6 +1874,16 @@ MonoBehaviour:
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
     value: 0
+  - m_ID: 175216811
+    m_Name: waitTime
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    value: 2
+  - m_ID: 475491009
+    m_Name: cooldownChance
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    value: 0.35
   m_IntVars: []
   m_BoolVars: []
   m_StringVars:
@@ -1926,6 +1938,16 @@ MonoBehaviour:
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
     m_IsSystem: 0
+  - m_ID: 322721332
+    m_Name: toCooldown
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 103276309
+    m_Name: toDecideToCooldown
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    m_IsSystem: 0
   m_Namespace: 
 --- !u!114 &11428668
 MonoBehaviour:
@@ -1947,7 +1969,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11472116}
     m_EventID: 805742543
-  m_CachedInstanceID: -636788
+  m_CachedInstanceID: 93584
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2006,6 +2028,68 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   numberOfCollisions: 0
+--- !u!114 &11431484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11427242}
+  m_Parent: {fileID: 11421144}
+  m_StateName: Cooldown
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 790, y: -90}
+  m_Transitions:
+  - m_Destination: {fileID: 11476700}
+    m_EventID: 755052694
+  m_CachedInstanceID: -681432
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - Wait
+    - RunAwayFromPlayer
+    m_NodeTypeHash: 89ef821089ef82104a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000090000000c000000
+    m_BranchIndex: ffffffffffffffff0100000001000000
+    m_UnityObjectValue: []
+    m_IntValue: 01000000010000000200000001000000030000009630012d04000000
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - Wait
+    - RunAwayFromPlayer
+    - BehaviourMachine.FsmEvent
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000060000000300000004000000
+    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000010000000200000011000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
 --- !u!114 &11443786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2051,7 +2135,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11472116}
     m_EventID: 805742543
-  m_CachedInstanceID: -636792
+  m_CachedInstanceID: 93586
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2148,7 +2232,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11407480}
     m_EventID: 1463829125
-  m_CachedInstanceID: -636786
+  m_CachedInstanceID: 93588
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2266,7 +2350,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11455202}
     m_EventID: 334526696
-  m_CachedInstanceID: -636790
+  m_CachedInstanceID: 93590
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2333,7 +2417,7 @@ MonoBehaviour:
     m_EventID: 805742543
   - m_Destination: {fileID: 11455202}
     m_EventID: 334526696
-  m_CachedInstanceID: -636782
+  m_CachedInstanceID: 93592
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2368,6 +2452,73 @@ MonoBehaviour:
     - instanceID
     - name
     - enabled
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
+--- !u!114 &11484172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11427242}
+  m_Parent: {fileID: 11421144}
+  m_StateName: DecideToCooldown
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 790, y: 0}
+  m_Transitions:
+  - m_Destination: {fileID: 11431484}
+    m_EventID: 322721332
+  - m_Destination: {fileID: 11476700}
+    m_EventID: 755052694
+  m_CachedInstanceID: -681434
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - BehaviourMachine.PrioritySelector
+    - ChanceToCooldown
+    - ReturnSuccess
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
+    m_BranchIndex: ffffffffffffffff010000000200000002000000
+    m_UnityObjectValue: []
+    m_IntValue: 01000000010000000200000001000000030000000400000034563c13050000009630012d
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - PrioritySelector
+    - ChanceToCooldown
+    - ReturnSuccess
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
     - instanceID
     - name
     - onSuccess
