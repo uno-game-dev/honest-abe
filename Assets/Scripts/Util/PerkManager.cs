@@ -31,7 +31,7 @@ public class PerkManager : MonoBehaviour
     public static string axe_dtVampirism_lock_desc = "Perk: Vampirism\nThis Perk is Locked!";
 
     public static string axe_bfa_name = "Axe_BFA";
-    public static string axe_bfa_desc = "Perk: B.F.A.\nA bigger, stronger axe for your pleasure.";
+    public static string axe_bfa_desc = "Perk: B.F.A.\nA bigger, stronger axe for your pleasure";
     public static string axe_bfa_lock_desc = "Perk: B.F.A\nThis Perk is Locked!";
 
     public static string axe_slugger_name = "Axe_Slugger";
@@ -43,11 +43,11 @@ public class PerkManager : MonoBehaviour
     public static string hat_bearHands_lock_desc = "Perk: Bear Hands\nThis Perk is Locked!";
 
     public static string trinket_agressionBuddy_name = "Trinket_AggressionBuddy";
-    public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold with a cooldown of 30sec.";
+    public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold\n30 second cooldown";
     public static string trinket_agressionBuddy_lock_desc = "Perk: Aggression Buddy\nThis Perk is Locked!";
 
     public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLockette";
-    public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides invincibility with a cooldown of 120sec.";
+    public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides temporary invincibility\n120 second cooldown";
     public static string trinket_maryToddsLockette_lock_desc = "Perk: Mary Todd's Locket\nThis Perk is Locked!";
 
     public static string hat_stickyFingers_name = "Hat_StickyFingers";
