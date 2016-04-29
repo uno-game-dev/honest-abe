@@ -93,7 +93,11 @@ class PistolAttack : BaseAttack
             Damage damage = hit.collider.GetComponent<Damage>();
             Stun stun = hit.collider.GetComponent<Stun>();
             if (damage)
-                damage.ExecuteDamage(attack.GetDamageAmount(), hit.collider);
+            {
+                damage.ExecuteDamage(attack.GetDamageAmount(), null);
+                Object blood = Instantiate(damage.bloodShoot, hit.point, Quaternion.identity);
+                if (transform.localScale.x < 0) ((GameObject)blood).transform.Rotate(0, 180, 0);
+            }
             if (stun)
                 stun.GetStunned();
             if (bulletSpark)
