@@ -326,13 +326,12 @@ GameObject:
   - 114: {fileID: 11490896}
   - 114: {fileID: 11495698}
   - 114: {fileID: 11416806}
-  - 114: {fileID: 11488024}
   - 114: {fileID: 11467310}
   - 114: {fileID: 11427296}
   - 114: {fileID: 11497964}
   m_Layer: 12
   m_Name: Musket
-  m_TagString: OneUseWeapon
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1045,7 +1044,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.04, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 464774}
@@ -1672,7 +1671,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 12748
+  m_CachedInstanceID: 18516
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1730,7 +1729,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 12750
+  m_CachedInstanceID: 18528
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1828,7 +1827,7 @@ MonoBehaviour:
     m_EventID: 1484665370
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 12756
+  m_CachedInstanceID: 18520
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1838,26 +1837,33 @@ MonoBehaviour:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
     - KeepRange
+    - BehaviourMachine.PrioritySelector
     - IsPlayerInMeleeRange
+    - BehaviourMachine.Sequence
     - IsPlayerInLine
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
-    m_BranchIndex: ffffffffffffffff010000000100000001000000
+    - AmIOnScreen
+    m_NodeTypeHash: 89ef821089ef8210fbd4a944fbd4a9444a2bcb23fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000a0000000d0000000f0000001200000015000000
+    m_BranchIndex: ffffffffffffffff010000000100000003000000030000000500000005000000
     m_UnityObjectValue: []
-    m_IntValue: 0100000001000000020000000100000005000000030000001a327e580400000061fc9115
+    m_IntValue: 010000000100000002000000010000000500000006000000030000001a327e5807000000040000000800000061fc9115
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
     - KeepRange
+    - PrioritySelector
     - IsPlayerInMeleeRange
+    - Sequence
     - IsPlayerInLine
+    - BehaviourMachine.FsmEvent
+    - AmIOnScreen
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000040000000700000008000000050000000900000006000000070000000a000000080000000b000000
+    m_FieldType: 0100000002000000050000000100000002000000050000000100000002000000010000000200000001000000020000001e000000010000000200000001000000020000001100000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name
@@ -1865,6 +1871,13 @@ MonoBehaviour:
     - instanceID
     - name
     - enabled
+    - instanceID
+    - name
+    - instanceID
+    - name
+    - instanceID
+    - name
+    - onSuccess
     - instanceID
     - name
     - instanceID
@@ -1914,7 +1927,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 12760
+  m_CachedInstanceID: 18530
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1986,7 +1999,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 12762
+  m_CachedInstanceID: 18522
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2081,7 +2094,7 @@ MonoBehaviour:
     m_Name: preferredRangeMax
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
-    value: 20
+    value: 25
   m_IntVars:
   - m_ID: 965948815
     m_Name: bulletsRemaining
@@ -2235,7 +2248,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12774
+  m_CachedInstanceID: 18536
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2372,7 +2385,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12786
+  m_CachedInstanceID: 18524
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2465,7 +2478,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 12792
+  m_CachedInstanceID: 18514
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2540,7 +2553,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 12798
+  m_CachedInstanceID: 18518
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2576,21 +2589,6 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
---- !u!114 &11488024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd71f47f14968164ebc11b9250190101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  unlocked: 0
-  setToBeUnlocked: 0
-  alreadyActive: 0
 --- !u!114 &11490896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2717,7 +2715,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 12814
+  m_CachedInstanceID: 18526
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1

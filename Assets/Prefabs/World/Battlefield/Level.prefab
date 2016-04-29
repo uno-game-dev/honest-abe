@@ -346,14 +346,15 @@ MonoBehaviour:
   - {fileID: 134448, guid: 732eb9167d99a30409eefb80a92a72e3, type: 2}
   - {fileID: 120372, guid: b37a29c7259bf6e4db5093541ec51b0c, type: 2}
   boss: {fileID: 188124, guid: b68bd33be5773a34fb8a3090af9a6bf3, type: 2}
-  startSpawnPosition: 38
-  screensInLevel: 8
+  maxAttemptsForSpawn: 2
+  screensInLevel: 6
   currentScreen: 0
   spawnYPos: 0
   spawnZPos: 10
   propDensity: 5
   decalDensity: 10
   itemDensity: 1
+  startSpawnPosition: 38
 --- !u!114 &11475430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,6 +411,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: propDensity
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: screensInLevel
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

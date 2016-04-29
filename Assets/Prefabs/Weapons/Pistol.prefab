@@ -270,7 +270,7 @@ MonoBehaviour:
   heavyStun: 0.5
   heavyKnockback: 7
   throwDamage: 0
-  isEnemyWeapon: 0
+  isEnemyWeapon: 1
 --- !u!114 &11477132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3365,6 +3365,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: attackType
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isEnemyWeapon
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

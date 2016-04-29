@@ -325,14 +325,15 @@ MonoBehaviour:
   - {fileID: 120088, guid: 44f4564c3130f664390d0fac7940d129, type: 2}
   - {fileID: 149616, guid: c185ebc8a914b5a45a8e8939507dd27c, type: 2}
   boss: {fileID: 112324, guid: 2344d1aded5b2a9438bf739fa32fb18b, type: 2}
-  startSpawnPosition: 38
-  screensInLevel: 10
+  maxAttemptsForSpawn: 2
+  screensInLevel: 6
   currentScreen: 0
   spawnYPos: 0
   spawnZPos: 10
   propDensity: 3
   decalDensity: 10
   itemDensity: 1
+  startSpawnPosition: 38
 --- !u!114 &11458518
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -109,12 +109,15 @@ public class PlayerMotor : MonoBehaviour
     {
         if (collider.tag == "Weapon")
         {
-            if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded && !collider.gameObject.GetComponent<Weapon>().isEnemyWeapon)
+            if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked && _playerAttack.emptyHanded)
             {
-                EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
-                _playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
-                collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
-                StartPickup();
+                if (!collider.gameObject.GetComponent<Weapon>().isEnemyWeapon || this.FindContainsInChildren("Hat_SF"))
+                {
+                    EventHandler.SendEvent(EventHandler.Events.WEAPON_PICKUP, collider.gameObject);
+                    _playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
+                    collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
+                    StartPickup();
+                }
             }
         }
         if (collider.tag == "Perk")
@@ -162,7 +165,6 @@ public class PlayerMotor : MonoBehaviour
         {
             if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
             {
-                EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                 savedWeapon = gameObject.GetComponent<Attack>().weapon;
                 if (savedWeapon.name != "Player")
                 {
@@ -170,7 +172,6 @@ public class PlayerMotor : MonoBehaviour
                 }
                 _playerAttack.SetWeapon(collider.gameObject.GetComponent<Weapon>());
                 collider.GetComponent<BaseCollision>().AddCollisionLayer("Enemy");
-                collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
                 _playerAttack.emptyHanded = false;
                 StartPickup();
             }

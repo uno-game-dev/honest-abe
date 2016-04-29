@@ -212,10 +212,10 @@ public class WorldGenerator : MonoBehaviour
 		if (_levelName == GlobalSettings.levelOneSceneName)
 		{
 			// Ensure that spawned enemies do not reduce _remainingEnemyDensity below 0
-			if (_remainingEnemyDensity == 1 || currentScreen <= 5)
+			if (_remainingEnemyDensity == 1 || currentScreen <= screensInLevel / 2)
 				r = 0;
 			else
-				r = _rnd.Next(2);
+				r = _rnd.Next(2); // Spawn enemy type 2 during second half of level
 		}
 		else if (_levelName == GlobalSettings.levelTwoSceneName)
 		{
