@@ -5,6 +5,8 @@ public class Death : MonoBehaviour
 {
     public GameObject[] weaponDropPrefabs;
     public GameObject[] itemDropPrefabs;
+    public float minRotation = -45f;
+    public float maxRotation = 45f;
     private float chanceToDrop = .20f;
 	private float randomNum = 0;
 
@@ -23,6 +25,8 @@ public class Death : MonoBehaviour
 
         Animator animator = GetComponent<Animator>();
         animator.Play("Dead");
+
+        transform.Rotate(0, Random.Range(minRotation, maxRotation), 0);
 
         foreach (MonoBehaviour monoBehaviour in GetComponents<MonoBehaviour>())
             if (monoBehaviour != this)
