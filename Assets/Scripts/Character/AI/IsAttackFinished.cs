@@ -4,16 +4,16 @@ using BehaviourMachine;
 
 public class IsAttackFinished : ConditionNode {
 
-	private MeleeAttack meleeAttack;
+	private Attack attack;
 
 	// Use this for initialization
 	public override void Start () {
-		meleeAttack = self.GetComponent<MeleeAttack> ();
+		attack = self.GetComponent<Attack> ();
 	}
 
 	// Update is called once per frame
 	public override Status Update () {
-		if (meleeAttack.state != BaseAttack.State.Null)
+		if (attack.attackState != Attack.State.Null)
 			return Status.Failure;
 		if (onSuccess.id != 0)
 			owner.root.SendEvent (onSuccess.id);
