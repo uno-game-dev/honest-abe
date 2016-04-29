@@ -6,9 +6,6 @@ public class ChainAttack : MonoBehaviour
     public float chainAttackTimer = 0;
     public float chainAttackResetsIn = 1;
 
-    public Font chainFont;
-    public Texture chainFontTexture;
-
     private void Update()
     {
         if (chainAttackTimer < chainAttackResetsIn)
@@ -41,8 +38,6 @@ public class ChainAttack : MonoBehaviour
         number.name = "Chain Attack Number";
         TextMesh tm = number.AddComponent<TextMesh>();
         tm.text = numberOfChainAttacks.ToString();
-        tm.font = chainFont;
-        //tm.font.material.SetTexture("Font Texture", chainFontTexture);
         tm.color = Color.red;
         tm.fontSize = 24;
         tm.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -56,8 +51,6 @@ public class ChainAttack : MonoBehaviour
         number.name = "Chain Attack Break";
         TextMesh tm = number.AddComponent<TextMesh>();
         tm.text = "X";
-        tm.font = chainFont;
-        //tm.font.material.SetTexture("Font Texture", chainFontTexture);
         tm.fontSize = 24;
         tm.color = Color.red;
         tm.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
