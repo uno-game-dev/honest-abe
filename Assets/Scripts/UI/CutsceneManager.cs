@@ -90,6 +90,7 @@ public class CutsceneManager : MonoBehaviour
                 if (index >= _introText.Length)
                 {
                     _cutsceneOver = true;
+                    GameObject.Find("GameManager").GetComponent<PerkManager>().showInstructions = true;
                 }
                 else if (index < _introText.Length)
                 {

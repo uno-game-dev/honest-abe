@@ -73,6 +73,9 @@ public class UIManager : MonoBehaviour
     public GameObject cutsceneUI;
     public CutsceneManager cutsceneManager;
 
+    // Intro Instructions
+    public GameObject pickUpInstructions;
+
 	void Awake()
 	{
 		updateActive = false;
@@ -104,6 +107,8 @@ public class UIManager : MonoBehaviour
 		bossHealthUI.enabled = false;
 		_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
 		_trinketUI.enabled = false;
+        pickUpInstructions = GameObject.Find("PickUpLesson");
+        pickUpInstructions.SetActive(false);
     }
 
     void Update()
