@@ -37,6 +37,11 @@ public class NavigateObstacle : ConditionNode {
 		directionNorm = direction.normalized;
 		distanceToPlayer = (playerPosition - selfPosition).magnitude;
 
+		// Patch annoying bug
+		/*if (selfPosition.y <= -11.2f)
+			baseCollision.Move (Time.deltaTime * new Vector2 (0, 1) * movement.vericalMovementSpeed);
+		*/
+
 		if (!bailing) {
 			// Fire 2 raycasts at the player and see which ones hit the obstacle
 			xDiff = Mathf.Abs (playerPosition.x - selfPosition.x);
@@ -97,14 +102,14 @@ public class NavigateObstacle : ConditionNode {
 	}
 
 	public void stepUp(){
-		if ((selfPosition.y + 1) * diagonalMovementSpeed < -0.1f)
+		if (Time.deltaTime * (selfPosition.y + 1) * diagonalMovementSpeed < -0.1f)
 			baseCollision.Move (Time.deltaTime * new Vector2 (0, 1) * diagonalMovementSpeed);
 		else
 			navigate ('y');
 	}
 
 	public void stepDown(){
-		if ((selfPosition.y - 1) * diagonalMovementSpeed > -11.2f)
+		if (Time.deltaTime * (selfPosition.y - 1) * diagonalMovementSpeed > -11.2f)
 			baseCollision.Move (Time.deltaTime * new Vector2 (0, -1) * diagonalMovementSpeed);
 		else
 			navigate ('y');
@@ -137,7 +142,7 @@ public class NavigateObstacle : ConditionNode {
 		else
 			deltaPosition = new Vector3 (-1, 1, 0);
 		// I can't veer up if I'm right below the skyline
-		if (selfPosition.y + deltaPosition.normalized.y * diagonalMovementSpeed < -0.1f)
+		if (Time.deltaTime * selfPosition.y + deltaPosition.normalized.y * diagonalMovementSpeed < -0.1f)
 			baseCollision.Move (Time.deltaTime * deltaPosition.normalized * diagonalMovementSpeed);
 		else {
 			// If I can't veer up, navigate using the y axis
@@ -151,7 +156,7 @@ public class NavigateObstacle : ConditionNode {
 		else
 			deltaPosition = new Vector3 (-1, -1, 0);
 		// I can't veer down if I'm right above the bottom
-		if (selfPosition.y - deltaPosition.normalized.y * diagonalMovementSpeed > -11.2f)
+		if (Time.deltaTime * selfPosition.y - deltaPosition.normalized.y * diagonalMovementSpeed > -11.2f)
 			baseCollision.Move (Time.deltaTime * deltaPosition.normalized * diagonalMovementSpeed);
 		else {
 			// If I can't veer down, navigate using the y axis
@@ -216,7 +221,7 @@ public class NavigateObstacle : ConditionNode {
 
 
 	public bool checkUpParallel(int i){
-		if (selfPosition.y + (2 * i) >= -0.1f)
+		if (Time.deltaTime * selfPosition.y + (2 * i) >= -0.1f)
 			return false;
 		hit = Physics2D.Raycast (selfPosition + new Vector2 (0, 2 * i), direction, 2, layerMask);
 		Debug.DrawRay (selfPosition + new Vector2 (0, 2 * i), direction);
@@ -226,7 +231,7 @@ public class NavigateObstacle : ConditionNode {
 	}
 
 	public bool checkDownParallel(int i){
-		if (selfPosition.y - (2 * i) <= -11.2f)
+		if (Time.deltaTime * selfPosition.y - (2 * i) <= -11.2f)
 			return false;
 		hit = Physics2D.Raycast (selfPosition + new Vector2 (0, -2 * i), direction, 2, layerMask);
 		Debug.DrawRay (selfPosition + new Vector2 (0, -2 * i), direction);
@@ -257,7 +262,7 @@ public class NavigateObstacle : ConditionNode {
 	 //*/ 
 
 	public bool checkUp(int i){
-		if (selfPosition.y + i >= -0.1f) // can't go above the ground
+		if (Time.deltaTime * selfPosition.y + i >= -0.1f) // can't go above the ground
 			return false;
 		// TODO: Mess with length = 2 and see if there's a better way?
 		hit = Physics2D.Raycast (selfPosition + new Vector2 (0, 1), direction + new Vector2 (0, i), 2, layerMask); //length 2
@@ -272,7 +277,7 @@ public class NavigateObstacle : ConditionNode {
 	}
 
 	public bool checkDown(int i){
-		if (selfPosition.y - i <= -11.2f) // can't go below the bottom
+		if (Time.deltaTime * selfPosition.y - i <= -11.2f) // can't go below the bottom
 			return false;
 		hit = Physics2D.Raycast (selfPosition + new Vector2 (0, -1), direction + new Vector2 (0, -i), 2, layerMask);
 		Debug.DrawRay (selfPosition + new Vector2 (0, -1), direction + new Vector2 (0, -i));
