@@ -66,7 +66,7 @@ public class KnockDown : MonoBehaviour
         this.horizontalVelocity = Mathf.Abs(horizontalVelocity);
         height = 5;
         SetState(State.InAir);
-        _animator.Play("Knock Down In Air");
+        _animator.TransitionPlay("Knock Down In Air");
         _characterState.SetState(CharacterState.State.KnockDown);
     }
 
@@ -77,7 +77,7 @@ public class KnockDown : MonoBehaviour
         
         height = 0;
         SetState(State.Land);
-        _animator.Play("Knock Down Land");
+        _animator.TransitionPlay("Knock Down Land");
         if (gameObject.tag == "Enemy" && GetComponent<Grabbable>() != null && GetComponent<Grabbable>().wasThrown)
         {
             GetComponent<Damage>().ExecuteDamage(landingDamage, GetComponent<Collider2D>());
@@ -92,7 +92,7 @@ public class KnockDown : MonoBehaviour
             return;
 
         SetState(State.OnGround);
-        _animator.Play("Knock Down On Ground");
+        _animator.TransitionPlay("Knock Down On Ground");
         Invoke("GetUp", onGroundDuration);
     }
 
@@ -106,7 +106,7 @@ public class KnockDown : MonoBehaviour
             GetComponent<BaseCollision>().RemoveCollisionLayer("Enemy");
         }
         SetState(State.GettingUp);
-        _animator.Play("Knock Down Get Up");
+        _animator.TransitionPlay("Knock Down Get Up");
         Invoke("BackToIdle", getUpDuration);
     }
 

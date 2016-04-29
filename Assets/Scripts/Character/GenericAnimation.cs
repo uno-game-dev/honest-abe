@@ -34,43 +34,43 @@ public class GenericAnimation : MonoBehaviour
         CharacterState.State state = characterState.state;
         if (animator.runtimeAnimatorController.name == "Bear")
         {
-            if (state == CharacterState.State.Idle) animator.Play("Idle Bear");
-            if (state == CharacterState.State.Movement) animator.Play("Walk Bear");
+            if (state == CharacterState.State.Idle) animator.TransitionPlay("Idle Bear");
+            if (state == CharacterState.State.Movement) animator.TransitionPlay("Walk Bear");
         }
         else if (name.Contains("Woman"))
         {
-            if (state == CharacterState.State.Idle) animator.Play("Woman Idle Pistol");
-            if (state == CharacterState.State.Movement) animator.Play("Woman Walk Pistol");
+            if (state == CharacterState.State.Idle) animator.TransitionPlay("Woman Idle Pistol");
+            if (state == CharacterState.State.Movement) animator.TransitionPlay("Woman Walk Pistol");
         }
         if (grabber && grabber.state == Grabber.State.Hold)
         {
-            if (state == CharacterState.State.Idle) animator.Play("Grab Idle");
-            if (state == CharacterState.State.Movement) animator.Play("Grab Walk");
+            if (state == CharacterState.State.Idle) animator.TransitionPlay("Grab Idle");
+            if (state == CharacterState.State.Movement) animator.TransitionPlay("Grab Walk");
         }
         else if (attack.weapon.attackType == Weapon.AttackType.Swing)
         {
-            if (state == CharacterState.State.Idle) animator.Play("Idle Axe");
-            if (state == CharacterState.State.Movement) animator.Play("Walk Axe");
+            if (state == CharacterState.State.Idle) animator.TransitionPlay("Idle Axe");
+            if (state == CharacterState.State.Movement) animator.TransitionPlay("Walk Axe");
         }
         else if (attack.weapon.attackType == Weapon.AttackType.Shoot)
         {
-            if (state == CharacterState.State.Idle) animator.Play("Idle Musket");
-            if (state == CharacterState.State.Movement) animator.Play("Walk Musket");
+            if (state == CharacterState.State.Idle) animator.TransitionPlay("Idle Musket");
+            if (state == CharacterState.State.Movement) animator.TransitionPlay("Walk Musket");
         }
         else
         {
             if (tag == "Player")
             {
-                if (state == CharacterState.State.Idle) animator.Play("Abe Idle");
-                if (state == CharacterState.State.Movement) animator.Play("Abe Walk");
-                if (state == CharacterState.State.Dead) animator.Play("Abe Death");
+                if (state == CharacterState.State.Idle) animator.TransitionPlay("Abe Idle");
+                if (state == CharacterState.State.Movement) animator.TransitionPlay("Abe Walk");
+                if (state == CharacterState.State.Dead) animator.TransitionPlay("Abe Death");
             }
             else
             {
-                if (state == CharacterState.State.Idle) animator.Play("Idle");
-                if (state == CharacterState.State.Movement) animator.Play("Walk");
+                if (state == CharacterState.State.Idle) animator.TransitionPlay("Idle");
+                if (state == CharacterState.State.Movement) animator.TransitionPlay("Walk");
             }
         }
-        if (state == CharacterState.State.StartGame) animator.Play("Knock Down On Ground");
+        if (state == CharacterState.State.StartGame) animator.TransitionPlay("Knock Down On Ground");
     }
 }
