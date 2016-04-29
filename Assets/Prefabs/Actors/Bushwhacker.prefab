@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496152}
     m_EventID: 277351336
-  m_CachedInstanceID: 14888
+  m_CachedInstanceID: 18630
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1768,7 +1768,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11445508}
     m_EventID: 1934339850
-  m_CachedInstanceID: 14894
+  m_CachedInstanceID: 18636
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1841,7 +1841,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11454856}
     m_EventID: 713601555
-  m_CachedInstanceID: 14884
+  m_CachedInstanceID: 18626
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1942,9 +1942,9 @@ MonoBehaviour:
   attackArea: {fileID: 0}
   strength: 0
   state: 0
-  prepLightAttackTime: 0.3
-  prepHeavyAttackTime: 0.6
-  lightAttackTime: 0.2
+  prepLightAttackTime: 0.1
+  prepHeavyAttackTime: 0.2
+  lightAttackTime: 0.3
   heavyAttackTime: 0.2
   finishLightAttackTime: 0.1
   finishHeavyAttackTime: 0.1
@@ -1993,8 +1993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMovementSpeed: 14
-  vericalMovementSpeed: 8
+  horizontalMovementSpeed: 10
+  vericalMovementSpeed: 6
   direction: 1
   velocity: {x: 0, y: 0}
   movementSmoothing: 0.115
@@ -2022,7 +2022,7 @@ MonoBehaviour:
     m_EventID: 334526696
   - m_Destination: {fileID: 11454856}
     m_EventID: 713601555
-  m_CachedInstanceID: 14898
+  m_CachedInstanceID: 18640
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2120,7 +2120,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
-  m_CachedInstanceID: 14882
+  m_CachedInstanceID: 18624
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2180,7 +2180,7 @@ MonoBehaviour:
     m_EventID: 225201245
   - m_Destination: {fileID: 11445508}
     m_EventID: 1934339850
-  m_CachedInstanceID: 14892
+  m_CachedInstanceID: 18634
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
-  m_CachedInstanceID: 14886
+  m_CachedInstanceID: 18628
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2351,8 +2351,8 @@ MonoBehaviour:
   attackOffset: {x: 1, y: 0}
   heldOffset: {x: 0, y: 0.05, z: 0}
   heldOrientation: {x: 0, y: 0, z: 180}
-  lightDamage: 10
-  lightStun: 0.2
+  lightDamage: 5
+  lightStun: 0
   lightKnockback: 4
   heavyDamage: 15
   heavyStun: 0.5
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11422368}
     m_EventID: 805742543
-  m_CachedInstanceID: 14896
+  m_CachedInstanceID: 18638
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2405,11 +2405,11 @@ MonoBehaviour:
     - BehaviourMachine.Update
     - RunAwayFromPlayer
     - IsPlayerFarAway
-    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb23
-    m_NodeFieldStartIndex: 000000000300000006000000080000000b000000
+    m_NodeTypeHash: 89ef821089ef82104a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000090000000c000000
     m_BranchIndex: ffffffffffffffff0100000001000000
     m_UnityObjectValue: []
-    m_IntValue: 010000000100000002000000010000000300000004000000cfa70630
+    m_IntValue: 0100000001000000020000000100000003000000cfa7063004000000cfa70630
     m_FloatValue: []
     m_StringValue:
     - OnEnable
@@ -2420,8 +2420,8 @@ MonoBehaviour:
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e000000
+    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000060000000300000007000000
+    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e00000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name
@@ -2431,6 +2431,7 @@ MonoBehaviour:
     - enabled
     - instanceID
     - name
+    - onSuccess
     - instanceID
     - name
     - onSuccess
@@ -2452,7 +2453,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 14880
+  m_CachedInstanceID: 18622
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -3160,7 +3161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: horizontalMovementSpeed
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_NodeSerialization.m_BranchIndex.Array.data[3]
@@ -3186,6 +3187,22 @@ Prefab:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 529ea5cf4288ec840b986e88adcb0e60, type: 3}
+    - target: {fileID: 0}
+      propertyPath: prepLightAttackTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: prepHeavyAttackTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightAttackTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: vericalMovementSpeed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 180872}

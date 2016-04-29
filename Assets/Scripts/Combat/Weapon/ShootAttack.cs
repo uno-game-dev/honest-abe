@@ -88,10 +88,13 @@ class ShootAttack : BaseAttack
 			Stun stun = hit.collider.GetComponent<Stun> ();
 			if (damage)
 				damage.ExecuteDamage (attack.GetDamageAmount (), hit.collider);
-			if (stun)
-				stun.GetStunned ();
-			if (bulletSpark)
-				Instantiate (bulletSpark, hit.point, Quaternion.identity);
+            if (stun)
+                stun.GetStunned(stunAmount: 0.7f, power: Stun.Power.Shoot);
+            if (bulletSpark)
+            {
+                GameObject instance = Instantiate(bulletSpark);
+                instance.transform.position = new Vector3(hit.point.x, hit.point.y, -35);
+            }
 		}
 		base.PerformLightAttack ();
 

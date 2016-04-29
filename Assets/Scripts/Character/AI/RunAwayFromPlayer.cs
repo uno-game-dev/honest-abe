@@ -2,7 +2,7 @@
 using System.Collections;
 using BehaviourMachine;
 
-public class RunAwayFromPlayer : ActionNode {
+public class RunAwayFromPlayer : ConditionNode {
 
 	private BaseCollision baseCollision;
 	private GameObject player;
@@ -11,8 +11,12 @@ public class RunAwayFromPlayer : ActionNode {
 	private Movement movement;
 	private EnemyFollow enemyFollow;
 	private Vector3 deltaPosition;
+	private float directionX, directionY, distanceToPlayer;
+	private float timer, duration;
 
 	public override void Start () {
+		timer = 0;
+		duration = 2.5f;
 		player = GameObject.Find ("Player");
 		baseCollision = self.GetComponent<BaseCollision> ();
 		movement = self.GetComponent<Movement> ();
@@ -24,11 +28,27 @@ public class RunAwayFromPlayer : ActionNode {
 		// Move in the opposite direction of the player
 		playerPosition = player.transform.position;
 		selfPosition = self.transform.position;
+
 		Vector3 vectorToPlayer = playerPosition - selfPosition;
 		deltaPosition = -vectorToPlayer.normalized * movement.horizontalMovementSpeed;
 		float newY = selfPosition.y + deltaPosition.y;
-		if(newY < -0.1f && newY > -11.2f)
-			movement.Move(deltaPosition);
-		return Status.Success;
+		if (newY < -0.1f && newY > -11.2f) {
+			movement.SetState (Movement.State.Walk);
+			baseCollision.Move (Time.deltaTime * deltaPosition);
+		} else { // If I can't go any further, go ahead and turn around
+			if (onSuccess.id != 0)
+				owner.root.SendEvent(onSuccess.id);
+			return Status.Success;
+		}
+
+		// Do that for some amount of time, then go back to Approach
+		timer += Time.deltaTime;
+		if (timer > duration) {
+			if (onSuccess.id != 0)
+				owner.root.SendEvent(onSuccess.id);
+			return Status.Success;
+		}
+		Debug.Log (timer);
+		return Status.Running;
 	}
 }

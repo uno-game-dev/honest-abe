@@ -6,7 +6,7 @@ public class Stun : MonoBehaviour
 {
     public enum State { Null, Stunned }
     public enum Direction { Left, Right }
-    public enum Power { Light, Heavy }
+    public enum Power { Light, Heavy, Shoot }
 
     public State state;
     public float stunDuration = 0.0f;
@@ -120,7 +120,11 @@ public class Stun : MonoBehaviour
             return;
         }
         this.knockbackAmount = knockbackAmount;
-        if (power == Power.Heavy)
+        if (power == Power.Shoot)
+        {
+            _animator.Play("Gun Shot Damage Reaction");
+        }
+        else if (power == Power.Heavy)
         {
             if (direction == Direction.Right)
                 _animator.TransitionPlay("Heavy Damage Reaction Right", stunTransition, 0.25f);

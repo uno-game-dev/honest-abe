@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11484316}
   m_Layer: 9
   m_Name: Leaves
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 15a580234f4c4834fae941edc17d71a7,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120088}
