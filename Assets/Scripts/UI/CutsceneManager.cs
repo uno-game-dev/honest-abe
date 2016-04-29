@@ -133,15 +133,18 @@ public class CutsceneManager : MonoBehaviour
                 _introStoryPanel.SetActive(true);
                 GameObject.Find("Player").GetComponent<Cinematic>().cinematic = "Abe Rises";
                 GameObject.Find("Player").GetComponent<Cinematic>().enabled = true;
+                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
                 break;
             case Cutscenes.MID:
                 cutsceneActive = true;
                 _midStoryPanel.SetActive(true);
+                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
                 break;
             case Cutscenes.END:
                 cutsceneActive = true;
                 _endStoryPanel.SetActive(true);
                 GameObject.Find("Player").GetComponent<Player>().PlayEnding();
+                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
                 break;
             case Cutscenes.NULL:
                 cutsceneActive = false;
