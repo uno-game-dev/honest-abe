@@ -3,13 +3,13 @@
 class ShootAttack : BaseAttack
 {
     public GameObject bulletSpark = null;
-	private CharacterState characterState;
+    private CharacterState characterState;
     public float aimDuration = 1f;
     public float shootDuration = 1f;
     public float reloadDuration = 1f;
 
     protected override void PrepareToLightAttack()
-    {   
+    {
         base.PrepareToLightAttack();
         Aim();
         animator.Play("Shoot Musket");
@@ -81,29 +81,37 @@ class ShootAttack : BaseAttack
         if (GetComponent<Movement>())
             if (GetComponent<Movement>().direction == Movement.Direction.Left)
                 direction = Vector2.left;
-		Vector2 size = new Vector2(1, 1);
+        Vector2 size = new Vector2(1, 1);
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, size, 0, direction, 200, _collision.collisionLayer);
-		if (hit) {
-			Damage damage = hit.collider.GetComponent<Damage> ();
-			Stun stun = hit.collider.GetComponent<Stun> ();
-			if (damage)
-				damage.ExecuteDamage (attack.GetDamageAmount (), hit.collider);
-			if (stun)
-				stun.GetStunned ();
-			if (bulletSpark)
-				Instantiate (bulletSpark, hit.point, Quaternion.identity);
-		}
-		base.PerformLightAttack ();
+        if (hit)
+        {
+            Damage damage = hit.collider.GetComponent<Damage>();
+            Stun stun = hit.collider.GetComponent<Stun>();
+            if (damage)
+            {
+                damage.ExecuteDamage(attack.GetDamageAmount(), null);
+                Object blood = Instantiate(damage.bloodShoot, hit.point, Quaternion.identity);
+                if (transform.localScale.x < 0) ((GameObject)blood).transform.Rotate(0, 180, 0);
+            }
+            if (stun)
+                stun.GetStunned();
+            if (bulletSpark)
+                Instantiate(bulletSpark, hit.point, Quaternion.identity);
+        }
+        base.PerformLightAttack();
 
-		//Enable one use weapons for the Player
-		if(gameObject.transform.name == "Player"){
-			Destroy (gameObject.transform.FindContainsInChildren ("Musket"));
-			if (GetComponent<PlayerMotor> ().savedWeapon) {
-				gameObject.GetComponent<Attack> ().SetWeapon (GetComponent<PlayerMotor> ().savedWeapon);
-				GetComponent<PlayerMotor> ().savedWeapon.transform.gameObject.SetActive (true);
-			} else {
-				gameObject.GetComponent<Attack> ().SetWeapon (gameObject.GetComponent<Weapon>());
-			}
-		}
+        //Enable one use weapons for the Player
+        if (gameObject.transform.name == "Player")
+        {
+            Destroy(gameObject.transform.FindContainsInChildren("Musket"));
+            if (GetComponent<PlayerMotor>().savedWeapon)
+            {
+                gameObject.GetComponent<Attack>().SetWeapon(GetComponent<PlayerMotor>().savedWeapon);
+                GetComponent<PlayerMotor>().savedWeapon.transform.gameObject.SetActive(true);
+            }
+            else {
+                gameObject.GetComponent<Attack>().SetWeapon(gameObject.GetComponent<Weapon>());
+            }
+        }
     }
 }

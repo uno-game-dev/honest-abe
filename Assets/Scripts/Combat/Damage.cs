@@ -7,9 +7,11 @@ public class Damage : MonoBehaviour
     public float damageAmount;
     public float damageRate = 0.2f;
     public GameObject bloodSplatter;
-    public GameObject bloodSwing;
+    public GameObject bloodLightSwing;
+    public GameObject bloodHeavySwing;
     public GameObject bloodShoot;
-    public GameObject bloodMelee;
+    public GameObject bloodLightMelee;
+    public GameObject bloodHeavyMelee;
     public GameObject bloodJab;
 
     private Health health;
@@ -117,16 +119,29 @@ public class Damage : MonoBehaviour
 
     private void AddBlood(Collider2D collider)
     {
-        if (collider.GetComponentInParent<Attack>())
-            if (collider.GetComponentInParent<Attack>().weapon)
+        Attack attack = collider.GetComponentInParent<Attack>();
+        if (attack)
+            if (attack.weapon)
             {
-                Weapon.AttackType attackType = collider.GetComponentInParent<Attack>().weapon.attackType;
+                Weapon.AttackType attackType = attack.weapon.attackType;
                 if (attackType == Weapon.AttackType.Swing)
-                    InstantiateBlood(bloodSwing);
+                {
+                    if (attack.attackState == Attack.State.Heavy)
+                        InstantiateBlood(bloodHeavySwing);
+                    else
+                        InstantiateBlood(bloodLightSwing);
+                }
                 else if (attackType == Weapon.AttackType.Shoot)
                     InstantiateBlood(bloodShoot);
+                else if (attackType == Weapon.AttackType.Pistol)
+                    InstantiateBlood(bloodShoot);
                 else if (attackType == Weapon.AttackType.Melee)
-                    InstantiateBlood(bloodMelee);
+                {
+                    if (attack.attackState == Attack.State.Heavy)
+                        InstantiateBlood(bloodHeavyMelee);
+                    else
+                        InstantiateBlood(bloodLightMelee);
+                }
                 else if (attackType == Weapon.AttackType.Jab)
                     InstantiateBlood(bloodJab);
 

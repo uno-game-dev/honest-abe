@@ -357,11 +357,11 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4278190144
       maxColor:
         serializedVersion: 2
-        rgba: 4278190271
-      minMaxState: 0
+        rgba: 4278190172
+      minMaxState: 2
     startSize:
       scalar: 0.2
       maxCurve:
@@ -1834,7 +1834,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4278190183
+        rgba: 4278190144
       minMaxState: 0
     startSize:
       scalar: 0.2
@@ -3190,6 +3190,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.scalar
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.minMaxState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 4278190144
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.minColor.rgba
+      value: 4278190144
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
