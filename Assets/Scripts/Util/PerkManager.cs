@@ -73,9 +73,11 @@ public class PerkManager : MonoBehaviour
 
     public delegate void PerkEffectHandler();
 
-    private bool perksChosen;
+    public static bool newPerksUnlocked = false;
+
     [HideInInspector]
     public bool showInstructions;
+    private bool perksChosen;
 
     /*
      * List of all perks in the game

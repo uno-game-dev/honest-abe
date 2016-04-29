@@ -106,8 +106,9 @@ public class CutsceneManager : MonoBehaviour
             {
                 if (index >= _endText.Length)
                 {
-                    GameObject.Find("GameManager").GetComponent<LevelManager>().LoadFirstLevel();
-                    UIManager.updateActive = false;
+                    //GameObject.Find("GameManager").GetComponent<LevelManager>().LoadFirstLevel();
+                    //UIManager.updateActive = false;
+                    GameObject.Find("UI").GetComponent<UIManager>().WinUI.SetActive(true);
                     _cutsceneOver = true;
                 }
                 else if (index < _endText.Length)
