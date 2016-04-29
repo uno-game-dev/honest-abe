@@ -42,7 +42,7 @@ public class CameraFollow : MonoBehaviour
             pos.y = (verticalBounds.transform.position.y + (verticalBounds.size.y / 2) - cam.orthographicSize);
         if (pos.y - cam.orthographicSize < verticalBounds.transform.position.y - (verticalBounds.size.y / 2))
             pos.y = (verticalBounds.transform.position.y - (verticalBounds.size.y / 2) + cam.orthographicSize);
-        pos.x = (playerTransform.position.x - (playerTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.x / 2) - 2) + (((2 * cam.orthographicSize) * cam.aspect) / 2);
+        pos.x = (playerTransform.position.x - (playerTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.x / 2) - 3) + (((2 * cam.orthographicSize) * cam.aspect) / 2);
         transform.position = pos;
     }
 
