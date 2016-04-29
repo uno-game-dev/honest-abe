@@ -90,6 +90,7 @@ public class CutsceneManager : MonoBehaviour
                 if (index >= _introText.Length)
                 {
                     _cutsceneOver = true;
+                    GameObject.Find("GameManager").GetComponent<PerkManager>().showInstructions = true;
                 }
                 else if (index < _introText.Length)
                 {
@@ -105,8 +106,9 @@ public class CutsceneManager : MonoBehaviour
             {
                 if (index >= _endText.Length)
                 {
-                    GameObject.Find("GameManager").GetComponent<LevelManager>().LoadFirstLevel();
-                    UIManager.updateActive = false;
+                    //GameObject.Find("GameManager").GetComponent<LevelManager>().LoadFirstLevel();
+                    //UIManager.updateActive = false;
+                    GameObject.Find("UI").GetComponent<UIManager>().WinUI.SetActive(true);
                     _cutsceneOver = true;
                 }
                 else if (index < _endText.Length)
@@ -133,15 +135,18 @@ public class CutsceneManager : MonoBehaviour
                 _introStoryPanel.SetActive(true);
                 GameObject.Find("Player").GetComponent<Cinematic>().cinematic = "Abe Rises";
                 GameObject.Find("Player").GetComponent<Cinematic>().enabled = true;
+                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
                 break;
             case Cutscenes.MID:
                 cutsceneActive = true;
                 _midStoryPanel.SetActive(true);
+                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
                 break;
             case Cutscenes.END:
                 cutsceneActive = true;
                 _endStoryPanel.SetActive(true);
                 GameObject.Find("Player").GetComponent<Player>().PlayEnding();
+                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
                 break;
             case Cutscenes.NULL:
                 cutsceneActive = false;

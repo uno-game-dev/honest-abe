@@ -36,6 +36,16 @@ public class PlayerHealth : Health
 		}
     }
 
+    public void RefillForCutscene()
+    {
+        // Add 100 to Abe's health to make sure it's refilled
+        Increase(100);
+
+        // Empty the DT then add 100 to make sure it matches the health
+        damageThreshold = 0;
+        IncreaseDT(100);
+    }
+
 	public void Initialize()
 	{
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -48,7 +58,6 @@ public class PlayerHealth : Health
 		GetComponent<PlayerControls>().enabled = true;
         _animator = GetComponent<Animator>();
         _characterState = GetComponent<CharacterState>();
-
     }
 
     public override void Increase(int amount)
