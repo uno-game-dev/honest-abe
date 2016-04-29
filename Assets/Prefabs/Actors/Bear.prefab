@@ -912,9 +912,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.6753975, y: 0.02653408}
+  m_Offset: {x: -0.09332752, y: 0.02653408}
   serializedVersion: 2
-  m_Size: {x: 3.730561, y: 0.94693184}
+  m_Size: {x: 4.322419, y: 0.94693184}
 --- !u!61 &6191436
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 7860
+  m_CachedInstanceID: 11624
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1111,7 +1111,7 @@ MonoBehaviour:
     m_Name: attackProximityMinX
     m_Blackboard: {fileID: 11460448}
     m_IsConstant: 0
-    value: 1
+    value: 0
   - m_ID: 51535946
     m_Name: farAwayDistance
     m_Blackboard: {fileID: 11460448}
@@ -1176,6 +1176,11 @@ MonoBehaviour:
     m_Blackboard: {fileID: 11460448}
     m_IsConstant: 0
     m_IsSystem: 0
+  - m_ID: 1233168106
+    m_Name: toGetOffPlayer
+    m_Blackboard: {fileID: 11460448}
+    m_IsConstant: 0
+    m_IsSystem: 0
   m_Namespace: 
 --- !u!114 &11466074
 MonoBehaviour:
@@ -1197,7 +1202,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 7872
+  m_CachedInstanceID: 11622
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1315,7 +1320,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479958}
     m_EventID: 314948278
-  m_CachedInstanceID: 7880
+  m_CachedInstanceID: 11620
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1371,7 +1376,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 7882
+  m_CachedInstanceID: 11618
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1433,8 +1438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c2280ee63dc364ba5453dd1e108686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMovementSpeed: 2
-  vericalMovementSpeed: 1
+  horizontalMovementSpeed: 3
+  vericalMovementSpeed: 2
   direction: 1
   velocity: {x: 0, y: 0}
   movementSmoothing: 0.115
@@ -1462,7 +1467,7 @@ MonoBehaviour:
     m_EventID: 1209066823
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 7888
+  m_CachedInstanceID: 11608
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1520,13 +1525,13 @@ MonoBehaviour:
   attackArea: {fileID: 0}
   strength: 0
   state: 0
-  prepLightAttackTime: 0.6
+  prepLightAttackTime: 0.4
   prepHeavyAttackTime: 1.5
   lightAttackTime: 0.2
   heavyAttackTime: 0.4
-  finishLightAttackTime: 1
+  finishLightAttackTime: 0.5
   finishHeavyAttackTime: 0.5
-  lightDuration: 1.8000001
+  lightDuration: 1.1
   heavyDuration: 2.4
   swipe: {fileID: 0}
   _hand: 1
@@ -1550,7 +1555,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11469878}
     m_EventID: 2084026198
-  m_CachedInstanceID: 7892
+  m_CachedInstanceID: 11616
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1626,7 +1631,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 7896
+  m_CachedInstanceID: 11614
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
