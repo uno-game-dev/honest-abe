@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class CutsceneManager : MonoBehaviour
     {
         NULL,
         INTRO,
+        BEAR,
         MID,
         END
     }
@@ -20,20 +20,27 @@ public class CutsceneManager : MonoBehaviour
 
 
     private string[] _introText = {
-        "The last thing Abe can remember was a romantic carriage ride with Mary Todd, which was interrupted when they were ambushed by a group of confederates and General Robert E. Lee himself.",
-        "Abe can still see the look on his face as the General aimed his pistol and fired."
+        "Abe awakes, a chilling memory gradually coming back to him... A romantic carriage ride with Mary Todd… A confederate ambush...",
+        "General Robert E Lee himself had stepped out of the shadows and aimed a pistol at Abe’s face...",
+        "The last thing Abe can remember is the sound of that gunshot."
+    };
+
+    private string[] _bearText =
+    {
+        "Finally, Abe lumbers out of the forest they had tried to bury him in.",
+        "It seems this battle has only just begun."
     };
 
     private string[] _endText = {
-        "With a sliver of hope that Mary Todd may yet be alive, Abe wanders off in search of his beloved, his bloody axe hungering for the next battle. "
+        "With a sliver of hope that Mary Todd may yet be alive, Abe wanders off in search of his beloved, his bloody axe hungering for the next battle."
     };
 
     private bool _cutsceneOver, _allowSkip;
     private float timeToAllowSkip = 2f, timer = 0f;
 
     private GameObject _cutsceneCanvas; // The canvas object that is used for all the cutscenes
-    private GameObject _introStoryPanel, _midStoryPanel, _endStoryPanel, _skipText;
-    private Text _introStoryText, _endStoryText;
+    private GameObject _introStoryPanel, _bearStoryPanel, _midStoryPanel, _endStoryPanel, _skipText;
+    private Text _introStoryText, _bearStoryText, _endStoryText;
     private Image _midStoryImage;
 
     void Start()
@@ -44,6 +51,11 @@ public class CutsceneManager : MonoBehaviour
         _introStoryText = _introStoryPanel.transform.Find("Text").GetComponent<Text>();
         _introStoryText.text = _introText[0];
         _introStoryPanel.SetActive(false);
+
+        _bearStoryPanel = GameObject.Find("BearCutscenePanel");
+        _bearStoryText = _bearStoryPanel.transform.Find("Text").GetComponent<Text>();
+        _bearStoryText.text = _bearText[0];
+        _bearStoryPanel.SetActive(false);
 
         _midStoryPanel = GameObject.Find("MidCutscenePanel");
         _midStoryImage = _midStoryPanel.transform.Find("Image").GetComponent<Image>();
@@ -97,6 +109,18 @@ public class CutsceneManager : MonoBehaviour
                     _introStoryText.text = _introText[index];
                 }
             }
+            else if (currentCutscene == Cutscenes.BEAR)
+            {
+                if (index >= _bearText.Length)
+                {
+                    EventHandler.SendEvent(EventHandler.Events.LEVEL_NEXT);
+                    _cutsceneOver = true;
+                }
+                else if (index < _bearText.Length)
+                {
+                    _bearStoryText.text = _bearText[index];
+                }
+            }
             else if (currentCutscene == Cutscenes.MID)
             {
                 EventHandler.SendEvent(EventHandler.Events.LEVEL_NEXT);
@@ -137,6 +161,11 @@ public class CutsceneManager : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Cinematic>().enabled = true;
                 GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
                 break;
+            case Cutscenes.BEAR:
+                cutsceneActive = true;
+                _bearStoryPanel.SetActive(true);
+                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
+                break;
             case Cutscenes.MID:
                 cutsceneActive = true;
                 _midStoryPanel.SetActive(true);
@@ -169,6 +198,9 @@ public class CutsceneManager : MonoBehaviour
 
         _introStoryPanel.SetActive(false);
         _introStoryText.text = _introText[index];
+
+        _bearStoryPanel.SetActive(false);
+        _bearStoryText.text = _bearText[index];
 
         _midStoryPanel.SetActive(false);
 
