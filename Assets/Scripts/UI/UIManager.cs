@@ -223,7 +223,7 @@ public class UIManager : MonoBehaviour
         updateActive = true;
         _startGameText.SetActive(false);
         _logoImage.SetActive(false);
-        cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.END);
+        cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
     }
 
 	private void SetListenersForPauseUI()
