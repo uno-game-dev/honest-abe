@@ -176,6 +176,12 @@ public class UIManager : MonoBehaviour
             _controlsUI.SetActive(false);
             _creditsUI.SetActive(false);
 
+            // Cancel out any audio changes if they player doesn't apply
+            SoundPlayer.SetMusicVolume01(musicVolume);
+            SoundPlayer.SetSoundVolume01(effectsVolume);
+            _audioUIMusicSlider.value = musicVolume;
+            _audioUIEffectsSlider.value = effectsVolume;
+
             if (CutsceneManager.cutsceneActive)
                 cutsceneUI.SetActive(true);
 
@@ -286,6 +292,9 @@ public class UIManager : MonoBehaviour
         _audioUIMusicValue.text = "" + System.Math.Round(musicVolume, 1);
         _audioUIEffectValue.text = "" + System.Math.Round(effectsVolume, 1);
         _audioUI.SetActive(false);
+
+        _audioUIMusicSlider.onValueChanged.AddListener(OnMusicSlide);
+        _audioUIEffectsSlider.onValueChanged.AddListener(OnEffectSlide);
 
         /*
          * Controls
@@ -427,6 +436,9 @@ public class UIManager : MonoBehaviour
         _optionsUI.SetActive(true);
         _audioUI.SetActive(false);
 
+        SoundPlayer.SetMusicVolume01(musicVolume);
+        SoundPlayer.SetSoundVolume01(effectsVolume);
+
         EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
 
@@ -467,6 +479,16 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetFloat(EffectsVolume, effectsVolume);
 
         EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
+    }
+
+    public void OnMusicSlide(float val)
+    {
+        SoundPlayer.SetMusicVolume01(val);
+    }
+
+    public void OnEffectSlide(float val)
+    {
+        SoundPlayer.SetSoundVolume01(val);
     }
 
     //After Losing
