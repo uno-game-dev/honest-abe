@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class CutsceneManager : MonoBehaviour
     private Text _introStoryText, _bearStoryText, _endStoryText;
     private Image _midStoryImage;
 
+    private Letterbox _letterbox;
+
     void Start()
     {
         _cutsceneCanvas = GameObject.Find("CutsceneCanvas");
@@ -74,6 +77,8 @@ public class CutsceneManager : MonoBehaviour
         cutsceneActive = false;
         index = 0;
 
+        _letterbox = Camera.main.GetComponent<Letterbox>();
+
         ChangeCutscene(Cutscenes.NULL);
     }
 
@@ -102,7 +107,8 @@ public class CutsceneManager : MonoBehaviour
                 if (index >= _introText.Length)
                 {
                     _cutsceneOver = true;
-                    GameObject.Find("GameManager").GetComponent<PerkManager>().showInstructions = true;
+                    Invoke("ShowHUD", 1);
+                    Invoke("ShowPickupText", 1);
                 }
                 else if (index < _introText.Length)
                 {
@@ -113,7 +119,8 @@ public class CutsceneManager : MonoBehaviour
             {
                 if (index >= _bearText.Length)
                 {
-                    EventHandler.SendEvent(EventHandler.Events.LEVEL_NEXT);
+                    Invoke("ShowHUD", 1);
+                    Invoke("NextLevel", 1);
                     _cutsceneOver = true;
                 }
                 else if (index < _bearText.Length)
@@ -123,16 +130,15 @@ public class CutsceneManager : MonoBehaviour
             }
             else if (currentCutscene == Cutscenes.MID)
             {
-                EventHandler.SendEvent(EventHandler.Events.LEVEL_NEXT);
+                Invoke("ShowHUD", 1);
+                Invoke("NextLevel", 1);
                 _cutsceneOver = true;
             }
             else if (currentCutscene == Cutscenes.END)
             {
                 if (index >= _endText.Length)
                 {
-                    //GameObject.Find("GameManager").GetComponent<LevelManager>().LoadFirstLevel();
-                    //UIManager.updateActive = false;
-                    GameObject.Find("UI").GetComponent<UIManager>().WinUI.SetActive(true);
+                    Invoke("ShowWinScreen", 1);
                     _cutsceneOver = true;
                 }
                 else if (index < _endText.Length)
@@ -160,22 +166,33 @@ public class CutsceneManager : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Cinematic>().cinematic = "Abe Rises";
                 GameObject.Find("Player").GetComponent<Cinematic>().enabled = true;
                 GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
+                GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(false);
+                _letterbox.TweenTo(0.15f, 1);
                 break;
             case Cutscenes.BEAR:
                 cutsceneActive = true;
                 _bearStoryPanel.SetActive(true);
                 GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
+                GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(false);
+                GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = false;
+                _letterbox.TweenTo(0.15f, 1);
                 break;
             case Cutscenes.MID:
                 cutsceneActive = true;
                 _midStoryPanel.SetActive(true);
                 GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
+                GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(false);
+                GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = false;
+                _letterbox.TweenTo(0.15f, 1);
                 break;
             case Cutscenes.END:
                 cutsceneActive = true;
                 _endStoryPanel.SetActive(true);
                 GameObject.Find("Player").GetComponent<Player>().PlayEnding();
                 GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
+                GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(false);
+                GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = false;
+                _letterbox.TweenTo(0.15f, 1);
                 break;
             case Cutscenes.NULL:
                 cutsceneActive = false;
@@ -187,6 +204,7 @@ public class CutsceneManager : MonoBehaviour
     private void EndCutscene()
     {
         ChangeCutscene(Cutscenes.NULL);
+        _letterbox.TweenTo(0, 1);
         _cutsceneOver = false;
     }
 
@@ -207,4 +225,26 @@ public class CutsceneManager : MonoBehaviour
         _endStoryPanel.SetActive(false);
         _endStoryText.text = _endText[index];
     }
+
+    private void ShowPickupText()
+    {
+        GameObject.Find("GameManager").GetComponent<PerkManager>().showInstructions = true;
+    }
+
+    private void ShowHUD()
+    {
+        GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(true);
+        _letterbox.Amount = 0;
+    }
+
+    private void NextLevel()
+    {
+        EventHandler.SendEvent(EventHandler.Events.LEVEL_NEXT);
+    }
+
+    private void ShowWinScreen()
+    {
+        GameObject.Find("UI").GetComponent<UIManager>().WinUI.SetActive(true);
+    }
+
 }

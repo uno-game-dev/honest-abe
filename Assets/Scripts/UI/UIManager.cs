@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public Text perkText;
 
-	// Boss UI
+    // Boss UI
 	[HideInInspector]
 	public Canvas bossHealthUI;
 
@@ -88,6 +88,14 @@ public class UIManager : MonoBehaviour
     // Intro Instructions
     public GameObject pickUpInstructions;
 
+    // HUD Canvas
+    private GameObject _hudCanvas;
+    public GameObject hudCanvas {
+        get {
+            return _hudCanvas;
+        }
+    }
+
 	void Awake()
 	{
 		updateActive = false;
@@ -115,12 +123,14 @@ public class UIManager : MonoBehaviour
         //_cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.NULL);
 		perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
-		bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
+        bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
 		bossHealthUI.enabled = false;
 		_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
 		_trinketUI.enabled = false;
         pickUpInstructions = GameObject.Find("PickUpLesson");
         pickUpInstructions.SetActive(false);
+
+        _hudCanvas = GameObject.Find("HUDMarkerCanvas");
     }
 
     void Update()
@@ -213,7 +223,7 @@ public class UIManager : MonoBehaviour
         updateActive = true;
         _startGameText.SetActive(false);
         _logoImage.SetActive(false);
-        cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
+        cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.END);
     }
 
 	private void SetListenersForPauseUI()
