@@ -181,7 +181,9 @@ public class EventHandler : MonoBehaviour
 				Perk.performMaryToddsTimeStamp = Time.time;
 				if (other != null && other.GetComponent<Boss>() != null && other.GetComponent<Boss>().bossName == "Officer-Boss")
                     GameObject.Find("UI").GetComponent<UIManager>().cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.MID);
-				break;
+                else if (other != null && other.GetComponent<Boss>() != null && other.GetComponent<Boss>().bossName == "Bear")
+                    GameObject.Find("UI").GetComponent<UIManager>().cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.BEAR);
+                break;
             case Events.LEVEL_NEXT:
                 GameObject.Find("GameManager").GetComponent<LevelManager>().currentScene++;
                 break;
