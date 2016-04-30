@@ -99,11 +99,19 @@ class PistolAttack : BaseAttack
                 if (transform.localScale.x < 0) ((GameObject)blood).transform.Rotate(0, 180, 0);
             }
             if (stun)
-                stun.GetStunned();
+                stun.GetStunned(stunAmount: 0.7f, power: Stun.Power.Shoot);
             if (bulletSpark)
             {
                 GameObject instance = Instantiate(bulletSpark);
                 instance.transform.position = new Vector3(hit.point.x, hit.point.y, -35);
+                if (transform.localScale.x > 0)
+                {
+                    Vector3 euler = instance.transform.localEulerAngles;
+                    euler.y = 180;
+                    instance.transform.localEulerAngles = euler;
+                }
+                if (!hit.collider.tag.Contains("Obstacle"))
+                    instance.transform.FindContainsInChildren("Wood").SetActive(false);
             }
         }
     }
