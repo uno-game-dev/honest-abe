@@ -42,7 +42,7 @@ public class Throw : MonoBehaviour
     {
         SetState(State.Prepare);
         _characterState.SetState(CharacterState.State.Throw);
-        _animator.Play("Throw");
+        _animator.TransitionPlay("Throw");
         Invoke("PerformThrow", prepareThrowTime);
     }
 

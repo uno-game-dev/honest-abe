@@ -24,7 +24,7 @@ public class Death : MonoBehaviour
         SoundPlayer.Play("Death");
 
         Animator animator = GetComponent<Animator>();
-        animator.Play("Dead");
+        animator.TransitionPlay("Dead");
 
         transform.Rotate(0, Random.Range(minRotation, maxRotation), 0);
 

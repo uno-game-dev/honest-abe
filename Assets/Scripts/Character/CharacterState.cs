@@ -88,6 +88,6 @@ public class CharacterState : MonoBehaviour
     public bool CanBeStunned()
     {
         return state == State.Idle || state == State.Movement || state == State.Grab || state == State.Attack || state == State.Pickup
-            || state == State.Throw;
+            || state == State.Throw || state == State.Stun;
     }
 }

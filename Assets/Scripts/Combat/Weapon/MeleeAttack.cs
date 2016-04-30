@@ -9,18 +9,18 @@ public class MeleeAttack : BaseAttack
     {
         if (animator.runtimeAnimatorController.name == "Bear")
         {
-            animator.Play("Light Swipe");
+            animator.TransitionPlay("Light Swipe");
         }
         if (_hand == Hand.Left)
         {
-            animator.Play("Light Attack Melee Left");
+            animator.TransitionPlay("Light Attack Melee Left");
             _hand = Hand.Right;
             if (tag == "Player")
                 SoundPlayer.Play("Light Punch Swing");
         }
         else
         {
-            animator.Play("Light Attack Melee Right");
+            animator.TransitionPlay("Light Attack Melee Right");
             _hand = Hand.Left;
             if (tag == "Player")
                 SoundPlayer.Play("Light Punch Swing");
@@ -37,19 +37,19 @@ public class MeleeAttack : BaseAttack
     {
         if (animator.runtimeAnimatorController.name == "Bear")
         {
-            animator.Play("Heavy Swipe");
+            animator.TransitionPlay("Heavy Swipe");
             SoundPlayer.Play("Bear Heavy Attack");
         }
         if (_hand == Hand.Left)
         {
-            animator.Play("Heavy Attack Melee Left");
+            animator.TransitionPlay("Heavy Attack Melee Left");
             _hand = Hand.Right;
             if (tag == "Player")
                 SoundPlayer.Play("Heavy Punch Swing");
         }
         else
         {
-            animator.Play("Heavy Attack Melee Right");
+            animator.TransitionPlay("Heavy Attack Melee Right");
             _hand = Hand.Left;
             if (tag == "Player")
                 SoundPlayer.Play("Heavy Punch Swing");

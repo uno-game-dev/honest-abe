@@ -203,7 +203,7 @@ public class PlayerHealth : Health
 		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
         SoundPlayer.Play("Abe Death");
-        _animator.Play("Abe Death");
+        _animator.TransitionPlay("Abe Death");
         _characterState.SetState(CharacterState.State.Dead);
 
 		GameObject.Find("Main Camera").GetComponent<CameraFollow>().enabled = false;

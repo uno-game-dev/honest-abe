@@ -19,14 +19,14 @@ public class Cinematic : MonoBehaviour
 
     private void Start()
     {
-        animator.Play(cinematic);
+        animator.TransitionPlay(cinematic);
     }
 
     private void OnEnable()
     {
         previousState = characterState.state;
         characterState.SetState(CharacterState.State.Cinematic);
-        animator.Play(cinematic);
+        animator.TransitionPlay(cinematic);
         hasPlayedAudio = false;
     }
 
