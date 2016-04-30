@@ -1044,7 +1044,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0, z: 0}
+  m_LocalPosition: {x: 15.92, y: -8.38, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 464774}
@@ -1671,7 +1671,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 18516
+  m_CachedInstanceID: 20188
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1729,7 +1729,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 18528
+  m_CachedInstanceID: 20200
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1827,7 +1827,7 @@ MonoBehaviour:
     m_EventID: 1484665370
   - m_Destination: {fileID: 11403564}
     m_EventID: 361888865
-  m_CachedInstanceID: 18520
+  m_CachedInstanceID: 20192
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1927,7 +1927,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 18530
+  m_CachedInstanceID: 20202
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1999,7 +1999,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 18522
+  m_CachedInstanceID: 20194
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2084,7 +2084,7 @@ MonoBehaviour:
     m_Name: preferredRangeMin
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
-    value: 15
+    value: 8
   - m_ID: 1509243041
     m_Name: attackPosition
     m_Blackboard: {fileID: 11426784}
@@ -2094,7 +2094,7 @@ MonoBehaviour:
     m_Name: preferredRangeMax
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
-    value: 25
+    value: 15
   m_IntVars:
   - m_ID: 965948815
     m_Name: bulletsRemaining
@@ -2248,7 +2248,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 18536
+  m_CachedInstanceID: 20208
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2361,10 +2361,12 @@ MonoBehaviour:
   damageAmount: 10
   damageRate: 0.2
   bloodSplatter: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodSwing: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodShoot: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
-  bloodJab: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodLightSwing: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodHeavySwing: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
+  bloodShoot: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
+  bloodLightMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+  bloodHeavyMelee: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodJab: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
 --- !u!114 &11462508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2385,7 +2387,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 18524
+  m_CachedInstanceID: 20196
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2478,7 +2480,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 18514
+  m_CachedInstanceID: 20186
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2553,7 +2555,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 18518
+  m_CachedInstanceID: 20190
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2612,7 +2614,7 @@ MonoBehaviour:
   heavyStun: 0.5
   heavyKnockback: 7
   throwDamage: 0
-  isEnemyWeapon: 0
+  isEnemyWeapon: 1
 --- !u!114 &11492716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2715,7 +2717,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 18526
+  m_CachedInstanceID: 20198
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -6574,11 +6576,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: bloodShoot
       value: 
-      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+      objectReference: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodJab
       value: 
-      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+      objectReference: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
     - target: {fileID: 0}
       propertyPath: bloodMelee
       value: 
@@ -6635,6 +6637,22 @@ Prefab:
       propertyPath: m_FloatVars.Array.data[6].value
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bloodLightSwing
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodHeavySwing
+      value: 
+      objectReference: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodLightMelee
+      value: 
+      objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodHeavyMelee
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177166}

@@ -12,7 +12,7 @@ class ShootAttack : BaseAttack
     {   
         base.PrepareToLightAttack();
         Aim();
-        animator.Play("Shoot Musket");
+        animator.TransitionPlay("Shoot Musket");
     }
 
     protected override void PrepareToHeavyAttack()
@@ -53,7 +53,7 @@ class ShootAttack : BaseAttack
     {
         if (!IsAttacking()) return;
 
-        animator.Play("Aim Musket");
+        animator.TransitionPlay("Aim Musket");
     }
 
     private void Shoot()
@@ -62,7 +62,7 @@ class ShootAttack : BaseAttack
 
         if (weapon)
             if (weapon.GetComponent<MusketFire>()) weapon.GetComponent<MusketFire>().Fire();
-        animator.Play("Shoot Musket");
+        animator.TransitionPlay("Shoot Musket");
         SoundPlayer.Play("Rifle Fire");
         ShootCollisionCheck();
     }
@@ -72,7 +72,7 @@ class ShootAttack : BaseAttack
         if (!IsAttacking()) return;
 
         SoundPlayer.Play("Rifle Reload");
-        animator.Play("Reload Musket");
+        animator.TransitionPlay("Reload Musket");
     }
 
     private void ShootCollisionCheck()
@@ -83,26 +83,37 @@ class ShootAttack : BaseAttack
                 direction = Vector2.left;
 		Vector2 size = new Vector2(1, 1);
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, size, 0, direction, 200, _collision.collisionLayer);
-		if (hit) {
-			Damage damage = hit.collider.GetComponent<Damage> ();
-			Stun stun = hit.collider.GetComponent<Stun> ();
+        if (hit)
+        {
+            Damage damage = hit.collider.GetComponent<Damage>();
+            Stun stun = hit.collider.GetComponent<Stun>();
 			if (damage)
-				damage.ExecuteDamage (attack.GetDamageAmount (), hit.collider);
+            {
+                damage.ExecuteDamage(attack.GetDamageAmount(), null);
+                Object blood = Instantiate(damage.bloodShoot, hit.point, Quaternion.identity);
+                if (transform.localScale.x < 0) ((GameObject)blood).transform.Rotate(0, 180, 0);
+            }
 			if (stun)
-				stun.GetStunned ();
+                stun.GetStunned(stunAmount: 0.7f, power: Stun.Power.Shoot);
 			if (bulletSpark)
-				Instantiate (bulletSpark, hit.point, Quaternion.identity);
+            {
+                GameObject instance = Instantiate(bulletSpark);
+                instance.transform.position = new Vector3(hit.point.x, hit.point.y, -35);
+            }
 		}
-		base.PerformLightAttack ();
+        base.PerformLightAttack();
 
 		//Enable one use weapons for the Player
-		if(gameObject.transform.name == "Player"){
-			Destroy (gameObject.transform.FindContainsInChildren ("Musket"));
-			if (GetComponent<PlayerMotor> ().savedWeapon) {
-				gameObject.GetComponent<Attack> ().SetWeapon (GetComponent<PlayerMotor> ().savedWeapon);
-				GetComponent<PlayerMotor> ().savedWeapon.transform.gameObject.SetActive (true);
-			} else {
-				gameObject.GetComponent<Attack> ().SetWeapon (gameObject.GetComponent<Weapon>());
+        if (gameObject.transform.name == "Player")
+        {
+            Destroy(gameObject.transform.FindContainsInChildren("Musket"));
+            if (GetComponent<PlayerMotor>().savedWeapon)
+            {
+                gameObject.GetComponent<Attack>().SetWeapon(GetComponent<PlayerMotor>().savedWeapon);
+                GetComponent<PlayerMotor>().savedWeapon.transform.gameObject.SetActive(true);
+            }
+            else {
+                gameObject.GetComponent<Attack>().SetWeapon(gameObject.GetComponent<Weapon>());
 			}
 		}
     }

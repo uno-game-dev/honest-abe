@@ -1568,6 +1568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  wasThrown: 0
 --- !u!114 &11417338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1590,7 +1591,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 60430
+  m_CachedInstanceID: 63942
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1706,7 +1707,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 60438
+  m_CachedInstanceID: 63940
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1762,6 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stateMachine: {fileID: 0}
 --- !u!114 &11448730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1799,6 +1801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7dfacf1bbf624a8380211d7dfc6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabber: {fileID: 0}
 --- !u!114 &11456390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1855,9 +1858,11 @@ MonoBehaviour:
   damageAmount: 10
   damageRate: 0.2
   bloodSplatter: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodSwing: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
+  bloodLightSwing: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodHeavySwing: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
   bloodShoot: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
-  bloodMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+  bloodLightMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+  bloodHeavyMelee: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
   bloodJab: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
 --- !u!114 &11471474
 MonoBehaviour:
@@ -1877,7 +1882,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 60452
+  m_CachedInstanceID: 63930
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1904,7 +1909,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 60454
+  m_CachedInstanceID: 63938
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2075,7 +2080,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11492368}
     m_EventID: 1901486430
-  m_CachedInstanceID: 60458
+  m_CachedInstanceID: 63936
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2140,7 +2145,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479614}
     m_EventID: 1997708586
-  m_CachedInstanceID: 60460
+  m_CachedInstanceID: 63934
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2233,7 +2238,7 @@ MonoBehaviour:
     m_EventID: 734815261
   - m_Destination: {fileID: 11444962}
     m_EventID: 362682009
-  m_CachedInstanceID: 60466
+  m_CachedInstanceID: 63944
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2310,7 +2315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDropPrefabs:
-  - {fileID: 155526, guid: 481f15881862ba2409da4c965f72ea6a, type: 2}
+  - {fileID: 0}
   itemDropPrefabs:
   - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
 --- !u!114 &11497228
@@ -3239,6 +3244,22 @@ Prefab:
       propertyPath: m_StringVars.Array.data[0].m_Name
       value: attackSide
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bloodLightSwing
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodHeavySwing
+      value: 
+      objectReference: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodLightMelee
+      value: 
+      objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodHeavyMelee
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}

@@ -79,4 +79,20 @@ public static class ExtensionFunctions
 
         return goList.ToArray();
     }
+
+    public static float ClipLength(this Animator animator, string clipName)
+    {
+        AnimationClip clip = animator.GetAnimationClip(clipName);
+        if (clip)
+            return clip.length;
+
+        return -1;
+    }
+
+    public static void TransitionPlay(this Animator animator, string stateName, float transitionSeconds = 0.1f, float normalizedTime = 0)
+    {
+        float stateLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        float transitionDuration = transitionSeconds / stateLength;
+        animator.CrossFade(stateName, transitionDuration, -1, normalizedTime);
+    }
 }

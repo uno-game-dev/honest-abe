@@ -127,9 +127,7 @@ public class PlayerMotor : MonoBehaviour
 
             if (_controls.heldComplete && _collidersImOn.Contains(collider) && _controls.justClicked)
             {
-                if (((collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT) ||
-                    (collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_HAT))
-                    && (PerkManager.activeHatPerk == null))
+                if ((collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.HAT || collider.gameObject.GetComponent<Perk>().category == Perk.PerkCategory.NONE_HAT) && !PerkManager.hatPerkChosen)
                 {
                     EventHandler.SendEvent(EventHandler.Events.PERK_PICKUP, collider.gameObject);
                     collider.transform.gameObject.GetComponent<Perk>().OnCollision(gameObject);
@@ -190,14 +188,14 @@ public class PlayerMotor : MonoBehaviour
 
     private void StartPickup()
     {
-        _animator.Play("Pickup");
+        _animator.TransitionPlay("Pickup");
         _characterState.SetState(CharacterState.State.Pickup);
         Invoke("FinishPickup", pickupDuration);
     }
 
     private void StartHatPickup()
     {
-        _animator.Play("Pickup Hat");
+        _animator.TransitionPlay("Pickup Hat");
         _characterState.SetState(CharacterState.State.Pickup);
         Invoke("FinishPickup", pickupDuration);
     }

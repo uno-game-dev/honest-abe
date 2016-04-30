@@ -11,12 +11,12 @@ class SlashAttack : BaseAttack
 		base.PrepareToLightAttack();
 		if (chain == SwingChain.First)
 		{
-			animator.Play("Light Attack Saber Right");
+			animator.TransitionPlay("Light Attack Saber Right");
 			chain = SwingChain.Second;
 		}
 		else
 		{
-			animator.Play("Light Attack Saber Left");
+			animator.TransitionPlay("Light Attack Saber Left");
 			chain = SwingChain.First;
 		}
 	}
@@ -24,7 +24,7 @@ class SlashAttack : BaseAttack
 	protected override void PrepareToHeavyAttack()
 	{
 		base.PrepareToHeavyAttack();
-		animator.Play("Heavy Attack Saber Stab");
+		animator.TransitionPlay("Heavy Attack Saber Stab");
 		chain = SwingChain.First;
 	}
 

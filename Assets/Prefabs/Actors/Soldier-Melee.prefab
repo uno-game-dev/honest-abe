@@ -1386,6 +1386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  wasThrown: 0
 --- !u!114 &11417352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1418,7 +1419,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 17486
+  m_CachedInstanceID: 14626
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1445,7 +1446,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 17494
+  m_CachedInstanceID: 14634
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1612,6 +1613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stateMachine: {fileID: 0}
 --- !u!114 &11448708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1680,6 +1682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7dfacf1bbf624a8380211d7dfc6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabber: {fileID: 0}
 --- !u!114 &11458112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1702,7 +1705,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 17500
+  m_CachedInstanceID: 14640
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1785,10 +1788,12 @@ MonoBehaviour:
   damageAmount: 10
   damageRate: 0.2
   bloodSplatter: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodSwing: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
+  bloodLightSwing: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodHeavySwing: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
   bloodShoot: {fileID: 145470, guid: dc47523e4dd2152428fd83001196e622, type: 2}
-  bloodMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
-  bloodJab: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodLightMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+  bloodHeavyMelee: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodJab: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
 --- !u!114 &11462888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1836,7 +1841,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 17488
+  m_CachedInstanceID: 14628
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1896,7 +1901,7 @@ MonoBehaviour:
     m_EventID: 93402385
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 17498
+  m_CachedInstanceID: 14638
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1966,7 +1971,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 17492
+  m_CachedInstanceID: 14632
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2060,7 +2065,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11465972}
     m_EventID: 1639135052
-  m_CachedInstanceID: 17490
+  m_CachedInstanceID: 14630
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2930,6 +2935,22 @@ Prefab:
       propertyPath: state
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bloodLightSwing
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodHeavySwing
+      value: 
+      objectReference: {fileID: 145470, guid: e579e899efdc40a46aef8539068f1887, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodLightMelee
+      value: 
+      objectReference: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+    - target: {fileID: 0}
+      propertyPath: bloodHeavyMelee
+      value: 
+      objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}

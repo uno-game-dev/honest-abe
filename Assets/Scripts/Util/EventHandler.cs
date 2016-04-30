@@ -194,8 +194,6 @@ public class EventHandler : MonoBehaviour
                 break;
 			case Events.GAME_WIN:
                 Debug.Log("Game Win");
-				Perk.trinketTimeStamp = Time.time;
-				Perk.performMaryToddsTimeStamp = Time.time;
                 PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
                 GameObject.Find("GameManager").GetComponent<GameManager>().Win();
                 GameObject.Find("UI").GetComponent<UIManager>().cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.END);

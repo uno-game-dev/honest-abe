@@ -36,6 +36,16 @@ public class PlayerHealth : Health
 		}
     }
 
+    public void RefillForCutscene()
+    {
+        // Add 100 to Abe's health to make sure it's refilled
+        Increase(100);
+
+        // Empty the DT then add 100 to make sure it matches the health
+        damageThreshold = 0;
+        IncreaseDT(100);
+    }
+
 	public void Initialize()
 	{
 		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -48,7 +58,6 @@ public class PlayerHealth : Health
 		GetComponent<PlayerControls>().enabled = true;
         _animator = GetComponent<Animator>();
         _characterState = GetComponent<CharacterState>();
-
     }
 
     public override void Increase(int amount)
@@ -194,7 +203,7 @@ public class PlayerHealth : Health
 		alive = false;
 		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
         SoundPlayer.Play("Abe Death");
-        _animator.Play("Abe Death");
+        _animator.TransitionPlay("Abe Death");
         _characterState.SetState(CharacterState.State.Dead);
 
 		GameObject.Find("Main Camera").GetComponent<CameraFollow>().enabled = false;

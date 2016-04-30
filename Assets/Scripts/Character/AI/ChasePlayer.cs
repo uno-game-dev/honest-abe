@@ -6,6 +6,7 @@ public class ChasePlayer : ActionNode {
 	private EnemyFollow enemyFollow;
 	private GameObject player;
 	private Movement movement;
+	private float playerX, selfX;
 
 	public override void Start(){
 		enemyFollow = self.GetComponent<EnemyFollow> ();
@@ -14,6 +15,17 @@ public class ChasePlayer : ActionNode {
 	}
 
 	public override Status Update () {
+
+		playerX = player.transform.position.x;
+		selfX = self.transform.position.x;
+
+		// Face the player (in case you're really close and that's all you need)
+		if (playerX < selfX)
+			movement.SetDirection (Movement.Direction.Left);
+		else if (playerX > selfX)
+			movement.SetDirection (Movement.Direction.Right);
+		else
+			return Status.Success;
 
 		// Follow the player
 		enemyFollow.targetType = EnemyFollow.TargetType.Player;

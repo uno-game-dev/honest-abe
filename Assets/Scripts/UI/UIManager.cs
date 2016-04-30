@@ -57,9 +57,21 @@ public class UIManager : MonoBehaviour
     private Button _controlsUIBackButton;
 
     // Win UI
-    private GameObject _winUI;
+    private GameObject _winUI, _winUINewPerks;
 	private Button _winUIYesButton;
 	private Button _winUINoButton;
+
+    public GameObject WinUI {
+        get {
+            return _winUI;
+        }
+    }
+
+    public GameObject NewPerks {
+        get {
+            return _winUINewPerks;
+        }
+    }
 	
 	// Lose UI
 	private GameObject _loseUI;
@@ -72,6 +84,9 @@ public class UIManager : MonoBehaviour
     // Cutscene Canvas
     public GameObject cutsceneUI;
     public CutsceneManager cutsceneManager;
+
+    // Intro Instructions
+    public GameObject pickUpInstructions;
 
 	void Awake()
 	{
@@ -104,6 +119,8 @@ public class UIManager : MonoBehaviour
 		bossHealthUI.enabled = false;
 		_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
 		_trinketUI.enabled = false;
+        pickUpInstructions = GameObject.Find("PickUpLesson");
+        pickUpInstructions.SetActive(false);
     }
 
     void Update()
@@ -289,6 +306,9 @@ public class UIManager : MonoBehaviour
 		_winUIYesButton.onClick.AddListener(OnWinYes);
 		_winUINoButton.onClick.AddListener(OnWinNo);
 
+        _winUINewPerks = GameObject.Find("NewPerksText");
+        _winUINewPerks.SetActive(false);
+
 		_winUI.SetActive(false);
 	}
 
@@ -472,12 +492,12 @@ public class UIManager : MonoBehaviour
     //After Win
     public void OnWinYes()
     {
-		//Need to restart the game, but for the alpha since it's only one scene it will restart the level
-		_levelManager.currentScene++;
-		_winUI.SetActive(false);
+        //Need to restart the game, but for the alpha since it's only one scene it will restart the level
+        //_levelManager.currentScene++;
+        _winUI.SetActive(false);
         updateActive = false;
-
         EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
+        _levelManager.LoadFirstLevel();
     }
 
     //After Win

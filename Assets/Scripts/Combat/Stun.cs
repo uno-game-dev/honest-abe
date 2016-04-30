@@ -6,7 +6,7 @@ public class Stun : MonoBehaviour
 {
     public enum State { Null, Stunned }
     public enum Direction { Left, Right }
-    public enum Power { Light, Heavy }
+    public enum Power { Light, Heavy, Shoot }
 
     public State state;
     public float stunDuration = 0.0f;
@@ -20,6 +20,7 @@ public class Stun : MonoBehaviour
     private Vector2 previousPos, currentPos;
     private GenericAnimation genericAnimation;
     private System.Random random;
+    private float stunTransition = 0.1f;
 
     private void Awake()
     {
@@ -114,24 +115,28 @@ public class Stun : MonoBehaviour
 
         if (_characterState.state == CharacterState.State.Grabbed)
         {
-            _animator.Play("Grabbed Damage", 0, 0.15f);
+            _animator.TransitionPlay("Grabbed Damage", stunTransition, 0.15f);
             Invoke("FinishGrabbedStun", 0.5f);
             return;
         }
         this.knockbackAmount = knockbackAmount;
-        if (power == Power.Heavy)
+        if (power == Power.Shoot)
+        {
+            _animator.Play("Gun Shot Damage Reaction");
+        }
+        else if (power == Power.Heavy)
         {
             if (direction == Direction.Right)
-                _animator.Play("Heavy Damage Reaction Right", 0, 0.25f);
+                _animator.TransitionPlay("Heavy Damage Reaction Right", stunTransition, 0.25f);
             else // if (direction == Direction Left)
-                _animator.Play("Heavy Damage Reaction Left", 0, 0.25f);
+                _animator.TransitionPlay("Heavy Damage Reaction Left", stunTransition, 0.25f);
         }
         else // if (power == Power.Light)
         {
             if (direction == Direction.Right)
-                _animator.Play("Light Damage Reaction Right", 0, 0.25f);
+                _animator.TransitionPlay("Light Damage Reaction Right", stunTransition, 0.25f);
             else // if (direction == Direction Left)
-                _animator.Play("Light Damage Reaction Left", 0, 0.25f);
+                _animator.TransitionPlay("Light Damage Reaction Left", stunTransition, 0.25f);
         }
         state = State.Stunned;
         velocity = new Vector2((directionModifier), 0).normalized * knockbackAmount * 2;
@@ -153,6 +158,6 @@ public class Stun : MonoBehaviour
     {
         if (genericAnimation) genericAnimation.UpdateState();
         if (_characterState.state == CharacterState.State.Grabbed)
-            _animator.Play("Grabbed");
+            _animator.TransitionPlay("Grabbed");
     }
 }
