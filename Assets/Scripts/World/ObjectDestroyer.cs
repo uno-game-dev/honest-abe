@@ -2,23 +2,11 @@
 
 public class ObjectDestroyer : MonoBehaviour
 {
-    bool seen = false;
-
-    void Start()
-    {
-    }
+    public float distanceToDestroy = 32f;
 
     void Update()
     {
-
-        if (GetComponent<Renderer>().isVisible)
-        {
-            seen = true;
-        }
-
-        if (seen && !GetComponent<Renderer>().isVisible)
-        {
+        if (Camera.main.transform.position.x - transform.position.x > distanceToDestroy)
             Destroy(gameObject);
-        }
     }
 }
