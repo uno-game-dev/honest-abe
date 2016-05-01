@@ -100,7 +100,7 @@ public class Movement : MonoBehaviour
 
         if (newState == State.Walk && _characterState.state == CharacterState.State.Idle)
         {
-            if (footsteps) Destroy(footsteps);
+            StopFootSteps();
             if (tag == "Player") footsteps = SoundPlayer.Play("Footsteps", true);
             _characterState.SetState(CharacterState.State.Movement);
         }
@@ -109,9 +109,14 @@ public class Movement : MonoBehaviour
             _characterState.SetState(CharacterState.State.Idle);
         }
         if (newState == State.Null)
-        {
-            if (footsteps) Destroy(footsteps);
-            footsteps = null;
-        }
+            StopFootSteps();
+    }
+
+    public void StopFootSteps()
+    {
+        if (footsteps)
+            Destroy(footsteps);
+
+        footsteps = null;
     }
 }
