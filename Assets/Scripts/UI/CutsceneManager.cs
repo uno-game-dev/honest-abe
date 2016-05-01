@@ -46,6 +46,8 @@ public class CutsceneManager : MonoBehaviour
 
     private Letterbox _letterbox;
 
+    private GameObject _player, _ui;
+
     void Start()
     {
         _cutsceneCanvas = GameObject.Find("CutsceneCanvas");
@@ -78,6 +80,9 @@ public class CutsceneManager : MonoBehaviour
         index = 0;
 
         _letterbox = Camera.main.GetComponent<Letterbox>();
+
+        _player = GameObject.Find("Player");
+        _ui = GameObject.Find("UI");
 
         ChangeCutscene(Cutscenes.NULL);
     }
@@ -163,35 +168,35 @@ public class CutsceneManager : MonoBehaviour
             case Cutscenes.INTRO:
                 cutsceneActive = true;
                 _introStoryPanel.SetActive(true);
-                GameObject.Find("Player").GetComponent<Cinematic>().cinematic = "Abe Rises";
-                GameObject.Find("Player").GetComponent<Cinematic>().enabled = true;
-                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
-                GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(false);
+                _player.GetComponent<Cinematic>().cinematic = "Abe Rises";
+                _player.GetComponent<Cinematic>().enabled = true;
+                _player.GetComponent<PlayerHealth>().RefillForCutscene();
+                _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
                 _letterbox.TweenTo(0.15f, 1);
                 break;
             case Cutscenes.BEAR:
                 cutsceneActive = true;
                 _bearStoryPanel.SetActive(true);
-                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
-                GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(false);
-                GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = false;
+                _player.GetComponent<PlayerHealth>().RefillForCutscene();
+                _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
+                _ui.GetComponent<UIManager>().bossHealthUI.enabled = false;
                 _letterbox.TweenTo(0.15f, 1);
                 break;
             case Cutscenes.MID:
                 cutsceneActive = true;
                 _midStoryPanel.SetActive(true);
-                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
-                GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(false);
-                GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = false;
+                _player.GetComponent<PlayerHealth>().RefillForCutscene();
+                _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
+                _ui.GetComponent<UIManager>().bossHealthUI.enabled = false;
                 _letterbox.TweenTo(0.15f, 1);
                 break;
             case Cutscenes.END:
                 cutsceneActive = true;
                 _endStoryPanel.SetActive(true);
-                GameObject.Find("Player").GetComponent<Player>().PlayEnding();
-                GameObject.Find("Player").GetComponent<PlayerHealth>().RefillForCutscene();
-                GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(false);
-                GameObject.Find("UI").GetComponent<UIManager>().bossHealthUI.enabled = false;
+                _player.GetComponent<Player>().PlayEnding();
+                _player.GetComponent<PlayerHealth>().RefillForCutscene();
+                _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
+                _ui.GetComponent<UIManager>().bossHealthUI.enabled = false;
                 _letterbox.TweenTo(0.15f, 1);
                 break;
             case Cutscenes.NULL:
@@ -233,7 +238,7 @@ public class CutsceneManager : MonoBehaviour
 
     private void ShowHUD()
     {
-        GameObject.Find("UI").GetComponent<UIManager>().hudCanvas.SetActive(true);
+        _ui.GetComponent<UIManager>().hudCanvas.SetActive(true);
         _letterbox.Amount = 0;
     }
 
@@ -244,7 +249,7 @@ public class CutsceneManager : MonoBehaviour
 
     private void ShowWinScreen()
     {
-        GameObject.Find("UI").GetComponent<UIManager>().WinUI.SetActive(true);
+        _ui.GetComponent<UIManager>().WinUI.SetActive(true);
     }
 
 }
