@@ -53,6 +53,7 @@ public class Projectile : MonoBehaviour
     {
         _endXPos = transform.position.x;
         velocity = 0;
+        SoundPlayer.Play("Axe Throw Hits Target");
         if (collider.GetComponent<Stun>())
             collider.GetComponent<Stun>().GetStunned();
         if (collider.GetComponent<Damage>())

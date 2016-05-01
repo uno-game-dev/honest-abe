@@ -186,9 +186,12 @@ public class PlayerHealth : Health
     {
         // Make sure damageThreshold does not go above 120
         if (damageThreshold <= 110)
+        {
+            SoundPlayer.Play("DT Restoration");
             // Abe performed an execution increase damageThreshold by 10
             damageThreshold += 10;
-        else 
+        }
+        else
             // Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
             damageThreshold = 120;
         // Update damageThreshold

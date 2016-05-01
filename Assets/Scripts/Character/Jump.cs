@@ -88,7 +88,12 @@ public class Jump : MonoBehaviour
         EventHandler.SendEvent(EventHandler.Events.LAND);
         SetState(State.Land);
         _animator.TransitionPlay("Jump Land");
-        SoundPlayer.Play("Jump Land");
+
+        if (FindObjectOfType<LevelManager>().currentScene < 2)
+            SoundPlayer.Play("JumpLand Grass");
+        else
+            SoundPlayer.Play("Jump Land");
+
         _characterState.SetState(CharacterState.State.Null);
         isGrounded = true;
         _collision.AddCollisionLayer("Environment");

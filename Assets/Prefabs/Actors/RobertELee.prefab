@@ -840,6 +840,7 @@ GameObject:
   - 114: {fileID: 11434230}
   - 114: {fileID: 11483636}
   - 114: {fileID: 11460790}
+  - 114: {fileID: 11437406}
   m_Layer: 11
   m_Name: RobertELee
   m_TagString: Boss
@@ -2080,7 +2081,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 63382
+  m_CachedInstanceID: 17016
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2124,7 +2125,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: 63400
+  m_CachedInstanceID: 17034
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2312,7 +2313,7 @@ MonoBehaviour:
     m_EventID: 1655330493
   - m_Destination: {fileID: 11492458}
     m_EventID: 334526696
-  m_CachedInstanceID: 63394
+  m_CachedInstanceID: 17028
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2382,7 +2383,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11467984}
     m_EventID: 801792392
-  m_CachedInstanceID: 63406
+  m_CachedInstanceID: 17040
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2435,6 +2436,21 @@ MonoBehaviour:
   localScale: {x: 3, y: 3, z: 3}
   loadedModel: {fileID: 180452}
   runtimeAnimationController: {fileID: 0}
+--- !u!114 &11437406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDropPrefabs: []
+  itemDropPrefabs: []
+  minRotation: -45
+  maxRotation: 45
 --- !u!114 &11447112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2496,7 +2512,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11492458}
     m_EventID: 334526696
-  m_CachedInstanceID: 63396
+  m_CachedInstanceID: 17030
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2596,7 +2612,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11483636}
     m_EventID: 2052093111
-  m_CachedInstanceID: 63392
+  m_CachedInstanceID: 17026
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2652,7 +2668,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: 63410
+  m_CachedInstanceID: 17044
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2748,7 +2764,7 @@ MonoBehaviour:
     m_EventID: 806683367
   - m_Destination: {fileID: 11460790}
     m_EventID: 940445361
-  m_CachedInstanceID: 63404
+  m_CachedInstanceID: 17038
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2851,7 +2867,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11428584}
     m_EventID: 115829197
-  m_CachedInstanceID: 63402
+  m_CachedInstanceID: 17036
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2928,7 +2944,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11467984}
     m_EventID: 801792392
-  m_CachedInstanceID: 63408
+  m_CachedInstanceID: 17042
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3013,7 +3029,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: 63398
+  m_CachedInstanceID: 17032
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1

@@ -63,12 +63,25 @@ public class Damage : MonoBehaviour
                 if (UnityEngine.Random.value < 0.33f)
                     SoundPlayer.Play("Damage React Bear");
             }
-            else if (attackArea)
+            else if (name.Contains("Officer-Boss"))
+                SoundPlayer.Play("Battlefield Boss Hit");
+            else if (name.Contains("RobertELee"))
+                SoundPlayer.Play("Lee Hit");
+            else if (name.Contains("Officer"))
+                SoundPlayer.Play("Officer Hit");
+            else if (name.Contains("Bushwhacker"))
+                SoundPlayer.Play("BushWhacker Hit");
+            else if (name.Contains("Officer"))
+                SoundPlayer.Play("Officer Hit");
+            else if (name.Contains("Woman"))
+                SoundPlayer.Play("Woman Hit");
+            else if (tag != "Player")
+                SoundPlayer.Play("Damage React Light");
+
+            if (attackArea)
             {
                 if (attackArea.GetAttackState() == Attack.State.Heavy)
                 {
-                    if (tag != "Player")
-                        SoundPlayer.Play("Damage React Heavy");
                     if (attackArea.GetAttackType() == Weapon.AttackType.Swing)
                     {
                         SoundPlayer.Play("Heavy Axe Impact 1");
@@ -88,8 +101,6 @@ public class Damage : MonoBehaviour
                 }
                 else
                 {
-                    if (tag != "Player")
-                        SoundPlayer.Play("Damage React Light");
                     if (attackArea.GetAttackType() == Weapon.AttackType.Swing)
                     {
                         if (attackArea.GetAttackChainNumber() >= 2)
@@ -108,11 +119,6 @@ public class Damage : MonoBehaviour
                     else if (attackArea.GetAttackType() == Weapon.AttackType.Knife)
                         SoundPlayer.Play("Knife Impact");
                 }
-            }
-            else
-            {
-                if (tag != "Player")
-                    SoundPlayer.Play("Damage React Light");
             }
         }
     }

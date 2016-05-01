@@ -20,8 +20,12 @@ public class Death : MonoBehaviour
         CharacterState characterState = GetComponent<CharacterState>();
         if (characterState) characterState.SetState(CharacterState.State.Dead);
 
-        SoundPlayer sound = GetComponent<SoundPlayer>();
-        SoundPlayer.Play("Death");
+        if (name.Contains("RobertELee"))
+            SoundPlayer.Play("Lee Death");
+        else if (name.Contains("Officer"))
+            SoundPlayer.Play("Officer Death");
+        else
+            SoundPlayer.Play("Death");
 
         Animator animator = GetComponent<Animator>();
         animator.TransitionPlay("Dead");
