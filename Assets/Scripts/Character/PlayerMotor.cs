@@ -188,6 +188,7 @@ public class PlayerMotor : MonoBehaviour
 
     private void StartPickup()
     {
+        _movement.SetState(Movement.State.Null);
         _animator.TransitionPlay("Pickup");
         _characterState.SetState(CharacterState.State.Pickup);
         Invoke("FinishPickup", pickupDuration);
@@ -195,6 +196,7 @@ public class PlayerMotor : MonoBehaviour
 
     private void StartHatPickup()
     {
+        _movement.SetState(Movement.State.Null);
         _animator.TransitionPlay("Pickup Hat");
         _characterState.SetState(CharacterState.State.Pickup);
         Invoke("FinishPickup", pickupDuration);
