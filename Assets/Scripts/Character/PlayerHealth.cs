@@ -24,18 +24,27 @@ public class PlayerHealth : Health
 
     void Update()
     {
-        if (health <= 0)
-            Death();
-		if (alive)
-			// Decreases the timer to know when to update the damageSlider
-			_updateSliderTime -= Time.deltaTime;
-		UpdateHUD();
-		if (executionsPerformed > 0)
-		{
-			executionsPerformed--;
-			Execution();
-		}
+        if (health <= 0) {
+            timeSinceDead += Time.unscaledDeltaTime;
 
+            if (timeSinceDead > timeUntilGameOver)
+            {
+                timeSinceDead -= timeUntilGameOver;
+                EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
+            }
+
+            Death();
+        }
+        if (alive)
+            // Decreases the timer to know when to update the damageSlider
+            _updateSliderTime -= Time.deltaTime;
+
+        UpdateHUD();
+        if (executionsPerformed > 0)
+        {
+            executionsPerformed--;
+            Execution();
+        }
 		if (invincible)
 			health = 100;
     }
