@@ -49,6 +49,9 @@ public class Health : MonoBehaviour
             {
                 if (gameObject.tag != "Player" && playerAttack.attackState == Attack.State.Heavy)
                 {
+                    if (playerAttack.GetComponent<Execution>())
+                        playerAttack.GetComponent<Execution>().OnExecute(transform.position);
+
                     ShowExecution();
                     EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
                 }

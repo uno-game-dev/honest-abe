@@ -6,6 +6,8 @@ public class FloatUpAndDestroy : MonoBehaviour
     public float floatTimer = 0;
     public float destroyIn = 1;
     public float floatVelocity = 4;
+    public float torque = 0;
+    public float dampenTorque = 0;
     public float floatGravity = -9.81f;
     public float floatGravityMultiplier = 1;
 
@@ -17,6 +19,8 @@ public class FloatUpAndDestroy : MonoBehaviour
     void Update()
     {
         transform.Translate(0, floatVelocity * Time.deltaTime, 0);
+        transform.Rotate(0, torque * Time.deltaTime, 0);
         floatVelocity += floatGravity * floatGravityMultiplier * Time.deltaTime;
+        torque = Mathf.Sign(torque) * Mathf.Max(Mathf.Abs(torque) - dampenTorque * Time.deltaTime, 0);
     }
 }
