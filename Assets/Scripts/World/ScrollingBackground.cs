@@ -51,7 +51,9 @@ public class ScrollingBackground : MonoBehaviour
             float x = Mathf.Repeat(renderer.material.mainTextureOffset.x  + step, 1) ;
 
             Vector2 offset = new Vector2(x, savedOffset.y);
-            renderer.material.mainTextureOffset = offset;
+
+            if (!float.IsNaN(offset.x) && !float.IsNaN(offset.y))
+                renderer.material.mainTextureOffset = offset;
         }
     }
 
