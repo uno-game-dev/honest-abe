@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 14626
+  m_CachedInstanceID: 14192
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1446,7 +1446,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 14634
+  m_CachedInstanceID: 14200
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1506,7 +1506,7 @@ MonoBehaviour:
     m_Name: movementProximityDistance
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
-    value: 20
+    value: 30
   - m_ID: 909306535
     m_Name: attackProximityDistanceX
     m_Blackboard: {fileID: 11427242}
@@ -1671,6 +1671,8 @@ MonoBehaviour:
   weaponDropPrefabs: []
   itemDropPrefabs:
   - {fileID: 189930, guid: c2da1156d649a184fab0696187a07936, type: 2}
+  minRotation: -45
+  maxRotation: 45
 --- !u!114 &11451986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1705,7 +1707,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 14640
+  m_CachedInstanceID: 14206
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1841,7 +1843,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 14628
+  m_CachedInstanceID: 14194
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1901,7 +1903,7 @@ MonoBehaviour:
     m_EventID: 93402385
   - m_Destination: {fileID: 11426946}
     m_EventID: 334526696
-  m_CachedInstanceID: 14638
+  m_CachedInstanceID: 14204
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1971,7 +1973,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11493890}
     m_EventID: 805742543
-  m_CachedInstanceID: 14632
+  m_CachedInstanceID: 14198
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2065,7 +2067,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11465972}
     m_EventID: 1639135052
-  m_CachedInstanceID: 14630
+  m_CachedInstanceID: 14196
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2597,7 +2599,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[0].value
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[1].m_Name
