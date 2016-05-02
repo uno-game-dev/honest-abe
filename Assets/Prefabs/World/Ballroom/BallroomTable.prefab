@@ -41,7 +41,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_Offset: {x: 0.04, y: -0.77}
   serializedVersion: 2
   m_Size: {x: 2.1, y: 0.45}
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5355fcbceaafd84dbcdd111b4feaf1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToDestroy: 32
 --- !u!212 &21293458
 SpriteRenderer:
   m_ObjectHideFlags: 1
