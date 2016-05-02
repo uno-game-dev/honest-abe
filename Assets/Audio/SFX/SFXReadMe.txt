@@ -1,23 +1,10 @@
 *** Version 2 ***
 
-***
-New things will be notated by stars like you can see here 
-***
-
-Here is a description of / guideline on how to use each SFX in the Audio Module: (this list will be updated periodically,)
+ED!! I AM DELETING OLD GUIDELINES AS YOU PRETTY MUCH KNOW HOW THINGS WORK NOW. I DON’T FEEL LIKE GOING THROUGH AND DELETING ALL THE STARS, SO I SIMPLY ADDED ALL THE NEW SFX TO THE END. I’LL CLEARLY MARK WHERE THEY START. ALL NEW SHIT IS AT THE END OF THE LIST EXCEPT FOR ‘ABE ROAR’ WHICH I JUST CHANGED THE SOUND ON, YOU OBVIOUSLY DON’T NEED TO MESS WITH THAT.
 
 NOTE: As SFX creator, I am simply creating sounds as loud as possible without clipping, as Unity’s volume function is shit. Therefore, it will be up to the dev implementing sounds to test for volume as new sounds are put in.
 
 In the order they appear (to me at least):
-
-*********************************
-First, some notes on things that are old, but need changes:
-1. Jump Start is in the module, with the proper sound, but it’s not being triggered
-2. Menu Click 1 through Menu Click 4 are in the module with proper sounds, but aren’t being triggered. 
-3. PLEASE get rid of the constant walk loop that plays even when Abe isn’t walking!
-4. Turn off walk sounds for enemies completely. Only Abe will now have footstep sounds.
-5. Turn off “swing” (ya know, the swoosh sound) for all enemies EXCEPT Saber officers. Only Abe and Saber officers should have a “swing” sound. All other enemies should keep their IMPACT sounds, but no “swing” sound for melee or knife.
-**********************************
 
 *******
 Ok, I’m going to keep everything in the order it appears in the module, as before. New things will be highlighted by the stars.
@@ -203,3 +190,56 @@ Sound that should be made ONLY WHEN ABE DIES
 
 -Menu Click 1 - 4
 Sounds to be played ALWAYS IN THE SAME ORDER, 1 through 4, upon keying around or clicking on any menu item. They need to be in the same order because they follow the ‘Abe Rising’ motif
+
+
+************************************************************* OK ED HERE’S WHERE THE NEW, FINAL SFX STUFF STARTS*********************************************************
+
+-BushWhacker Hit (6 of them)
+This is the sound to be played when a BushWhacker takes damage. Obviously you only need wire it up once since these (and many others to follow) all have the same name
+
+-BushWhacker StabOnGround
+Sound that is played when, after Abe is successfully tripped, a BushWhacker jumps on him to stab 
+
+-Officer Hit (8 of them)
+This is the sound to be played when an officer takes damage.
+
+-Officer Death (5 of them)
+This is the sound to be played when an officer dies
+
+-Death (two more, which go with the 3 above from last time)
+Don’t worry about these, just wanted more variation in melee enemy death sounds
+
+-Woman Hit (9 of them)
+This is the sound to be played when a Woman takes damage
+
+** Note: you should notice Officer and Melee and Lee and others have specific death sounds but Women and Bushwhackers and some others do not. For those that don’t have specific death sounds, just have their random hit sounds play when they die as well.***
+
+-Battlefield Boss Hit
+This is the sound to be played when the Battlefield boss (big officer) takes damage / dies.
+
+-Battlefield Boss Intro
+This is the sound to be played when the Battlefield boss first appears, much like how the bear does his long growl on appearing
+
+-Lee hit (8 of them)
+This is the sound to be played when Lee takes damage
+
+-Lee Death
+This is the sound for Lee dying. Only one.
+
+-DT Restoration (4 of them)
+So, when an execution is performed, the DT bar is raised, but there’s no audio feedback for that. So when that happens, 1 of these 4 sounds should randomly play.
+
+-JumpLand Grass
+This is the sound to be played when Abe lands from a jump in the Forest and Battlefield levels. Which means you need to take the original “Jump Land” sound from way up above and make it only play when Abe lands a jump in the Ballroom.
+
+-Abe Gets Tripped
+This is the sound to be played the moment when a BushWhacker SUCCESSFULLY trips Abe
+
+-Axe Throw
+Sound to be played when the Axe is thrown
+
+-Axe Throw Hits Target
+Sound to be played when a thrown Axe hits its target
+
+** Many of these new sounds are louder than before. So I tried to set their volumes mostly at .2, thinking that’d have them mesh best with the previous ones. However, it’s going to take  a play through, hearing them play in-game, to tell where the volume’s should really be. I don’t mind doing this but I can’t do so of course until they’re wired in.
+**

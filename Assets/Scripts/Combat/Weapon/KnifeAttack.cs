@@ -19,7 +19,13 @@ class KnifeAttack : BaseAttack
 		base.PrepareToHeavyAttack();
 	}
 
-	protected override void BackToIdle()
+    protected override void PerformLightAttack()
+    {
+        SoundPlayer.Play("BushWhack StabOnGround");
+        base.PerformLightAttack();
+    }
+
+    protected override void BackToIdle()
 	{
 		base.BackToIdle();
 	}

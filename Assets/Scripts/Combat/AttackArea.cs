@@ -60,7 +60,8 @@ public class AttackArea : MonoBehaviour
                 if (_player.GetComponent<Grabber>() && _player.GetComponent<Grabber>().IsGrabbingSomeone())
                     _player.GetComponent<Grabber>().Release();
 				_player.GetComponent<KnockDown> ().StartKnockDown (0);
-			}
+                SoundPlayer.Play("Abe Gets Tripped");
+            }
 		}
 
         if (_updateChainAttack && _chainAttack)

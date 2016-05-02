@@ -48,6 +48,7 @@ public class Throw : MonoBehaviour
 
     private void PerformThrow()
     {
+        SoundPlayer.Play("Axe Throw");
         _attack.weapon.transform.SetParent(null, true);
         if (PerkManager.activeAxePerk != null && PerkManager.activeAxePerk.type == Perk.PerkType.AXE_BFA)
             _attack.weapon.transform.localScale = new Vector3(2, 2, 1);

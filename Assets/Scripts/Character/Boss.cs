@@ -17,6 +17,8 @@ public class Boss : MonoBehaviour
 
         if (name.Contains("Bear"))
             SoundPlayer.Play("Bear Appearance");
+        else if (name.Contains("Officer-Boss"))
+            SoundPlayer.Play("Battlefield Boss Intro");
     }
 
     // Update is called once per frame
