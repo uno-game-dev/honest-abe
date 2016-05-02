@@ -131,13 +131,13 @@ public class PlayerHealth : Health
         _tempDamageThreshold = damageThreshold;
         _tempDamageThreshold += amount;
 
-        if (_tempDamageThreshold <= 120)
+        if (_tempDamageThreshold <= 100)
         {
             damageThreshold += amount;
             _slider.UpdateDamageThreshold(damageThreshold);
         }
         else {
-            damageThreshold = 120;
+            damageThreshold = 100;
             _slider.UpdateDamageThreshold(damageThreshold);
         }
     }
@@ -184,16 +184,16 @@ public class PlayerHealth : Health
 	
     private void Execution()
     {
-        // Make sure damageThreshold does not go above 120
-        if (damageThreshold <= 110)
+        // Make sure damageThreshold does not go above 100
+        if (damageThreshold <= 90)
         {
             SoundPlayer.Play("DT Restoration");
             // Abe performed an execution increase damageThreshold by 10
             damageThreshold += 10;
         }
         else
-            // Abe performed an execution and damageThreshold is 110 or greater adjust damageThreshold to 120
-            damageThreshold = 120;
+            // Abe performed an execution and damageThreshold is 90 or greater adjust damageThreshold to 100
+            damageThreshold = 100;
         // Update damageThreshold
         _slider.UpdateDamageThreshold(damageThreshold);
     }
