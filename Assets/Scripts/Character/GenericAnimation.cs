@@ -71,6 +71,6 @@ public class GenericAnimation : MonoBehaviour
                 if (state == CharacterState.State.Movement) animator.TransitionPlay("Walk");
             }
         }
-        if (state == CharacterState.State.StartGame) animator.TransitionPlay("Knock Down On Ground");
+        if (state == CharacterState.State.StartGame) animator.Play("Knock Down On Ground");
     }
 }
