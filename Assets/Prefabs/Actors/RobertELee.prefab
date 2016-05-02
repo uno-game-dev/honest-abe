@@ -2023,7 +2023,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 17016
+  m_CachedInstanceID: 58418
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2067,7 +2067,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: 17034
+  m_CachedInstanceID: 58436
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2140,12 +2140,12 @@ MonoBehaviour:
     m_Name: preferredRangeMin
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
-    value: 10
+    value: 8
   - m_ID: 140876305
     m_Name: preferredRangeMax
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
-    value: 20
+    value: 15
   - m_ID: 193986339
     m_Name: meleeRange
     m_Blackboard: {fileID: 11427242}
@@ -2255,7 +2255,7 @@ MonoBehaviour:
     m_EventID: 1655330493
   - m_Destination: {fileID: 11492458}
     m_EventID: 334526696
-  m_CachedInstanceID: 17028
+  m_CachedInstanceID: 58430
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2325,7 +2325,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11467984}
     m_EventID: 801792392
-  m_CachedInstanceID: 17040
+  m_CachedInstanceID: 58442
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2454,7 +2454,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11492458}
     m_EventID: 334526696
-  m_CachedInstanceID: 17030
+  m_CachedInstanceID: 58432
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2554,7 +2554,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11483636}
     m_EventID: 2052093111
-  m_CachedInstanceID: 17026
+  m_CachedInstanceID: 58428
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: 17044
+  m_CachedInstanceID: 58446
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2706,7 +2706,7 @@ MonoBehaviour:
     m_EventID: 806683367
   - m_Destination: {fileID: 11460790}
     m_EventID: 940445361
-  m_CachedInstanceID: 17038
+  m_CachedInstanceID: 58440
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2715,27 +2715,34 @@ MonoBehaviour:
     m_NodeTypes:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
-    - IsWeaponOutOfAmmo
     - KeepRange
+    - BehaviourMachine.PrioritySelector
+    - IsWeaponOutOfAmmo
+    - BehaviourMachine.Sequence
     - IsPlayerInLine
-    m_NodeTypeHash: 89ef821089ef82104a2bcb23fbd4a9444a2bcb23
-    m_NodeFieldStartIndex: 000000000300000006000000090000000b0000000e000000
-    m_BranchIndex: ffffffffffffffff010000000100000001000000
+    - AmIOnScreen
+    m_NodeTypeHash: 89ef821089ef8210fbd4a944fbd4a9444a2bcb23fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000a0000000d0000000f0000001200000015000000
+    m_BranchIndex: ffffffffffffffff010000000100000003000000030000000500000005000000
     m_UnityObjectValue: []
-    m_IntValue: 0100000001000000020000000100000006000000b10e0e380500000004000000e7021530
+    m_IntValue: 01000000010000000200000001000000050000000300000006000000b10e0e38070000000400000008000000e7021530
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
-    - IsWeaponOutOfAmmo
     - KeepRange
+    - PrioritySelector
+    - IsWeaponOutOfAmmo
+    - Sequence
     - IsPlayerInLine
+    - BehaviourMachine.FsmEvent
+    - AmIOnScreen
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000600000003000000070000000400000008000000
-    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000010000000200000001000000020000001e000000
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000040000000700000008000000050000000900000006000000070000000a000000080000000b000000
+    m_FieldType: 0100000002000000050000000100000002000000050000000100000002000000010000000200000001000000020000001e000000010000000200000001000000020000001100000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name
@@ -2745,9 +2752,16 @@ MonoBehaviour:
     - enabled
     - instanceID
     - name
+    - instanceID
+    - name
+    - instanceID
+    - name
     - onSuccess
     - instanceID
     - name
+    - instanceID
+    - name
+    - onSuccess
     - instanceID
     - name
     - onSuccess
@@ -2809,7 +2823,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11428584}
     m_EventID: 115829197
-  m_CachedInstanceID: 17036
+  m_CachedInstanceID: 58438
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2886,7 +2900,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11467984}
     m_EventID: 801792392
-  m_CachedInstanceID: 17042
+  m_CachedInstanceID: 58444
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2971,7 +2985,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
-  m_CachedInstanceID: 17032
+  m_CachedInstanceID: 58434
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
