@@ -763,6 +763,9 @@ GameObject:
   - 114: {fileID: 11483636}
   - 114: {fileID: 11460790}
   - 114: {fileID: 11437406}
+  - 114: {fileID: 11475844}
+  - 114: {fileID: 11429666}
+  - 114: {fileID: 11466170}
   m_Layer: 11
   m_Name: RobertELee
   m_TagString: Boss
@@ -2161,6 +2164,16 @@ MonoBehaviour:
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
     value: 0
+  - m_ID: 915061232
+    m_Name: waitTime
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    value: 2
+  - m_ID: 1799611713
+    m_Name: cooldownChance
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    value: 0.35
   m_IntVars:
   - m_ID: 998447034
     m_Name: bulletsRemaining
@@ -2227,6 +2240,21 @@ MonoBehaviour:
     m_IsSystem: 0
   - m_ID: 940445361
     m_Name: toDrawSaber
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 290996464
+    m_Name: toFinishAttack
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 1437813860
+    m_Name: toDecideToCooldown
+    m_Blackboard: {fileID: 11427242}
+    m_IsConstant: 0
+    m_IsSystem: 0
+  - m_ID: 183497589
+    m_Name: toCooldown
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
     m_IsSystem: 0
@@ -2299,6 +2327,73 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
+--- !u!114 &11429666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11427242}
+  m_Parent: {fileID: 11421144}
+  m_StateName: DecideToCooldown
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 840, y: -50}
+  m_Transitions:
+  - m_Destination: {fileID: 11475844}
+    m_EventID: 183497589
+  - m_Destination: {fileID: 11475658}
+    m_EventID: 805742543
+  m_CachedInstanceID: -616106
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - BehaviourMachine.PrioritySelector
+    - ChanceToCooldown
+    - ReturnSuccess
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
+    m_BranchIndex: ffffffffffffffff010000000200000002000000
+    m_UnityObjectValue: []
+    m_IntValue: 01000000010000000200000001000000040000000300000075f3ef0a05000000cfa70630
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - PrioritySelector
+    - ChanceToCooldown
+    - ReturnSuccess
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
     - instanceID
     - name
     - onSuccess
@@ -2550,7 +2645,7 @@ MonoBehaviour:
   m_StateName: ShootPistol
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 190, y: -120}
+  m_Position: {x: 160, y: -120}
   m_Transitions:
   - m_Destination: {fileID: 11483636}
     m_EventID: 2052093111
@@ -2684,6 +2779,62 @@ MonoBehaviour:
   bloodLightMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
   bloodHeavyMelee: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
   bloodJab: {fileID: 145470, guid: 2e7b8f25a4d2bd84b81b7bf6c9e4cb5c, type: 2}
+--- !u!114 &11466170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11427242}
+  m_Parent: {fileID: 11421144}
+  m_StateName: FinishAttack
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 840, y: 50}
+  m_Transitions:
+  - m_Destination: {fileID: 11429666}
+    m_EventID: 1437813860
+  m_CachedInstanceID: -616108
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - IsAttackFinished
+    m_NodeTypeHash: 89ef821089ef82104a2bcb23
+    m_NodeFieldStartIndex: 00000000030000000600000009000000
+    m_BranchIndex: ffffffffffffffff01000000
+    m_UnityObjectValue: []
+    m_IntValue: 0100000001000000020000000100000003000000644cb355
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - IsAttackFinished
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000
+    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - onSuccess
 --- !u!114 &11467984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2868,6 +3019,68 @@ MonoBehaviour:
     - instanceID
     - name
     - onSuccess
+--- !u!114 &11475844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Blackboard: {fileID: 11427242}
+  m_Parent: {fileID: 11421144}
+  m_StateName: Cooldown
+  m_Color: 0
+  m_HideScript: 1
+  m_Position: {x: 610, y: -50}
+  m_Transitions:
+  - m_Destination: {fileID: 11475658}
+    m_EventID: 805742543
+  m_CachedInstanceID: -616104
+  m_Description: 
+  m_IgnoreTimeScale: 0
+  m_ResetStatusOnDisable: 1
+  m_EnabledStates: []
+  m_NodeSerialization:
+    m_NodeTypes:
+    - BehaviourMachine.OnEnable
+    - BehaviourMachine.Update
+    - Wait
+    - RunAwayFromPlayer
+    m_NodeTypeHash: 89ef821089ef82104a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000090000000c000000
+    m_BranchIndex: ffffffffffffffff0100000001000000
+    m_UnityObjectValue: []
+    m_IntValue: 0100000001000000020000000100000003000000cfa7063004000000
+    m_FloatValue: []
+    m_StringValue:
+    - OnEnable
+    - Update
+    - Wait
+    - RunAwayFromPlayer
+    - BehaviourMachine.FsmEvent
+    m_CurveValue: []
+    m_GenericFieldType: []
+    m_GenericFieldHash: 
+    m_GenericFieldSize: 
+    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000060000000300000004000000
+    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000010000000200000011000000
+    m_FieldPath:
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - enabled
+    - instanceID
+    - name
+    - onSuccess
+    - instanceID
+    - name
+    - onSuccess
 --- !u!114 &11476686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2896,7 +3109,7 @@ MonoBehaviour:
   m_StateName: Reload
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 400, y: -120}
+  m_Position: {x: 360, y: -120}
   m_Transitions:
   - m_Destination: {fileID: 11467984}
     m_EventID: 801792392
@@ -2981,8 +3194,10 @@ MonoBehaviour:
   m_StateName: Attack
   m_Color: 0
   m_HideScript: 1
-  m_Position: {x: 720, y: -40}
+  m_Position: {x: 840, y: 130}
   m_Transitions:
+  - m_Destination: {fileID: 11466170}
+    m_EventID: 290996464
   - m_Destination: {fileID: 11475658}
     m_EventID: 805742543
   m_CachedInstanceID: 58434
@@ -3001,7 +3216,7 @@ MonoBehaviour:
     m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
     m_BranchIndex: ffffffffffffffff010000000200000002000000
     m_UnityObjectValue: []
-    m_IntValue: 010000000100000002000000010000000300000004000000cfa7063005000000
+    m_IntValue: 010000000100000002000000010000000300000004000000cfa7063005000000f0405811
     m_FloatValue: []
     m_StringValue:
     - OnEnable
@@ -3009,13 +3224,12 @@ MonoBehaviour:
     - PrioritySelector
     - IsPlayerOutOfRange
     - AttackPlayer
-    - BehaviourMachine.FsmEvent
     m_CurveValue: []
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000005000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e000000010000000200000011000000
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name

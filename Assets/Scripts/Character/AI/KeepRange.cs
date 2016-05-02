@@ -53,6 +53,10 @@ public class KeepRange : ActionNode {
 				movement.FlipDirection ();
 			} else {
 				movement.Move (new Vector2 (0, directionY) * movement.horizontalMovementSpeed);
+				if (playerPosition.x > selfPosition.x && movement.direction == Movement.Direction.Left)
+					movement.FlipDirection ();
+				else if (playerPosition.x < selfPosition.x && movement.direction == Movement.Direction.Right)
+					movement.FlipDirection();
 			}
 		}
 		// If he's too far away, move toward him on x axis
