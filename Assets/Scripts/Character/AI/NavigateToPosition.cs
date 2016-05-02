@@ -108,7 +108,7 @@ public class NavigateToPosition : ConditionNode {
 		else
 			deltaPosition = new Vector3 (-1, 1, 0);
 		// I can't veer up if I'm right below the skyline
-		if (Time.deltaTime * selfPosition.y + deltaPosition.normalized.y * diagonalMovementSpeed < -0.1f)
+		if (Time.deltaTime * (selfPosition.y + deltaPosition.normalized.y) * diagonalMovementSpeed < -0.1f)
 			baseCollision.Move (Time.deltaTime * deltaPosition.normalized * diagonalMovementSpeed);
 		else
 			navigate ('y'); // If I can't veer up, navigate using the y axis
@@ -120,7 +120,7 @@ public class NavigateToPosition : ConditionNode {
 		else
 			deltaPosition = new Vector3 (-1, -1, 0);
 		// I can't veer down if I'm right above the bottom
-		if (Time.deltaTime * selfPosition.y - deltaPosition.normalized.y * diagonalMovementSpeed > -11.2f)
+		if (Time.deltaTime * (selfPosition.y - deltaPosition.normalized.y) * diagonalMovementSpeed > -10.2f)
 			baseCollision.Move (Time.deltaTime * deltaPosition.normalized * diagonalMovementSpeed);
 		else
 			navigate ('y'); // If I can't veer down, navigate using the y axis
@@ -167,7 +167,7 @@ public class NavigateToPosition : ConditionNode {
 	 *   Checks if the character can move in the specified direction
 	 */ 
 	public bool checkUp(int i){
-		if (Time.deltaTime * selfPosition.y + i + 1 >= -0.1f) // can't go above the ground
+		if (Time.deltaTime * ((selfPosition.y + 1) + (direction.y + i)) >= -0.1f) // can't go above the ground
 			return false;
 		hit = Physics2D.Raycast (selfPosition + new Vector2 (0, 1), direction + new Vector2 (0, i), 2, layerMask); //length 2
 		if (hit && hit.collider.tag=="Player")
@@ -179,7 +179,7 @@ public class NavigateToPosition : ConditionNode {
 	}
 
 	public bool checkDown(int i){
-		if (Time.deltaTime * selfPosition.y - i - 1 <= -11.2f) // can't go below the bottom
+		if (Time.deltaTime * ((selfPosition.y - 1) + (direction.y - i)) <= -10.2f) // can't go below the bottom
 			return false;
 		hit = Physics2D.Raycast (selfPosition + new Vector2 (0, -1), direction + new Vector2 (0, -i), 2, layerMask);
 		if (hit && hit.collider.tag=="Player")
