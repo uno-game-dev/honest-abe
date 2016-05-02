@@ -212,6 +212,8 @@ public class PlayerHealth : Health
 		GameObject.Find("Main Camera").GetComponent<CameraFollow>().enabled = false;
 		GetComponent<BaseCollision>().enabled = false;
 
+        foreach (Movement movement in FindObjectsOfType<Movement>())
+            movement.StopFootSteps();
         foreach (ScrollingBackground sb in FindObjectsOfType<ScrollingBackground>())
             sb.scrollSpeed = 0;
 	}
