@@ -165,6 +165,9 @@ public class UIManager : MonoBehaviour
             }
 
             Time.timeScale = 0;
+
+            foreach (Movement movement in FindObjectsOfType<Movement>())
+                movement.StopFootSteps();
         }
         else
         {
@@ -192,6 +195,11 @@ public class UIManager : MonoBehaviour
             }
 
             Time.timeScale = 1;
+
+            CharacterState characterState = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterState>();
+            if (characterState)
+                if (characterState.CanMove())
+                    characterState.SetState(CharacterState.State.Idle);
         }
     }
 
