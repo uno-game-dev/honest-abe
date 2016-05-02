@@ -89,14 +89,12 @@ public class EventHandler : MonoBehaviour
                 if (player == null) player = GameObject.Find("Player");
                 if (player.GetComponent<Attack>().emptyHanded)
                 {
-                    if (bfaPerk == null) bfaPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_bfa_name));
-                    bfaPerk.setToBeUnlocked = false;
+                    PerkManager.axe_bfa_to_be_unlocked = false;
                 }
                 break;
             case Events.LIGHT_KILL:
                 Debug.Log("Light Kill");
-                if (sluggerPerk == null) sluggerPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_slugger_name));
-                sluggerPerk.setToBeUnlocked = false;
+                PerkManager.axe_slugger_to_be_unlocked = false;
                 PerkManager.enemiesKilled++;
                 break;
             case Events.HEAVY_SWING:
@@ -114,8 +112,7 @@ public class EventHandler : MonoBehaviour
                     player = GameObject.Find("Player");
                 if (player.GetComponent<Attack>().emptyHanded)
                 {
-                    if (bfaPerk == null) bfaPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_bfa_name));
-                    bfaPerk.setToBeUnlocked = false;
+                    PerkManager.axe_bfa_to_be_unlocked = false;
                 }
                 break;
             case Events.HEAVY_KILL:
@@ -133,13 +130,11 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.WEAPON_THROW_KILL:
                 Debug.Log("Weapon Throw Kill");
-                if (sluggerPerk == null) sluggerPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_slugger_name));
-                sluggerPerk.setToBeUnlocked = false;
+                PerkManager.axe_slugger_to_be_unlocked = false;
                 break;
             case Events.GUN_FIRE_KILL:
                 Debug.Log("Gun Fire Kill");
-                if (sluggerPerk == null) sluggerPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_slugger_name));
-                sluggerPerk.setToBeUnlocked = false;
+                PerkManager.axe_slugger_to_be_unlocked = false;
                 break;
             case Events.ENEMY_GRAB:
                 Debug.Log("Enemy Grab");
@@ -152,8 +147,7 @@ public class EventHandler : MonoBehaviour
                 if (other != null && other.GetComponent<Item>() != null && other.GetComponent<Item>().type == Item.Type.HEALTH)
                 {
                     // If we pickup a health pickup then it cancels out the ability to get the mary todd's lockette perk
-                    PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.trinket_maryToddsLockette_name)).setToBeUnlocked = false;
-                    Debug.Log(PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.trinket_maryToddsLockette_name)).setToBeUnlocked);
+                    PerkManager.trinket_maryToddsLockette_to_be_unlocked = false;
                 }
                 break;
             case Events.WEAPON_PICKUP:
@@ -168,8 +162,7 @@ public class EventHandler : MonoBehaviour
 
                 // If the player picks up any weapons other than the axe, cancel out the BFA perk unlock
                 // The axe is considered a perk, so will not trigger a WEAPON_PICKUP event
-                if (bfaPerk == null) bfaPerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.axe_bfa_name));
-                bfaPerk.setToBeUnlocked = false;
+                PerkManager.axe_bfa_to_be_unlocked = false;
                 break;
             case Events.PERK_PICKUP:
                 Debug.Log("Perk Pickup");
@@ -225,14 +218,12 @@ public class EventHandler : MonoBehaviour
                     if (!other.GetComponent<Attack>().emptyHanded)
                     {
                         // If we hit him with a weapon, cancel out the ability to earn the perk
-                        if (bearAbePerk == null) bearAbePerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.hat_bearHands_name));
-                        bearAbePerk.setToBeUnlocked = false;
+                        PerkManager.hat_bearHands_to_be_unlocked = false;
                     }
                 }
                 break;
             case Events.BEAR_HIT_THROWN:
-                if (bearAbePerk == null) bearAbePerk = PerkManager.perkList.Find(x => x.perkName.Equals(PerkManager.hat_bearHands_name));
-                bearAbePerk.setToBeUnlocked = false;
+                PerkManager.hat_bearHands_to_be_unlocked = false;
                 break;
             case Events.ROBERT_E_LEE_KILL:
                 Debug.Log("Killed Robert E. Lee");

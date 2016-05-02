@@ -45,5 +45,6 @@ public class LevelManager : MonoBehaviour
         currentScene = 0;
         SceneManager.LoadScene(0);
         pauseUpdate = false;
+        PerkManager.CheckPerks();
     }
 }

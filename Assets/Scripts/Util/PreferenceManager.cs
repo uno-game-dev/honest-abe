@@ -3,7 +3,12 @@ using UnityEngine;
 public class PreferenceManager : MonoBehaviour
 {
 
-	void Awake()
+    void Awake()
+    {
+        SetPreferences();
+    }
+
+	public static void SetPreferences()
 	{
 		// Axe DT Vampirism
 		if (!PlayerPrefs.HasKey(PerkManager.axe_dtVampirism_name))
