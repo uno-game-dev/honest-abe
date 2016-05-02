@@ -35,11 +35,11 @@ public class Boss : MonoBehaviour
             {
                 isMusicPlaying = true;
                 if (_levelManager.currentScene == 0)
-                    MusicPlayer.Play("Forest Boss");
+                    MusicPlayer.Play("Forest Boss Music");
                 else if (_levelManager.currentScene == 1)
-                    MusicPlayer.Play("BattleField Boss");
+                    MusicPlayer.Play("BattleField Boss Music");
                 else if (_levelManager.currentScene == 2)
-                    MusicPlayer.Play("Ballroom Boss Intro", "Ballroom Boss Loop");
+                    MusicPlayer.Play("Ballroom Boss Music Intro", "Ballroom Boss Music Loop");
             }
         }
     }
