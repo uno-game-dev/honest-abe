@@ -167,37 +167,37 @@ public class CutsceneManager : MonoBehaviour
         {
             case Cutscenes.INTRO:
                 cutsceneActive = true;
-                _introStoryPanel.SetActive(true);
                 _player.GetComponent<Cinematic>().cinematic = "Abe Rises";
                 _player.GetComponent<Cinematic>().enabled = true;
                 _player.GetComponent<PlayerHealth>().RefillForCutscene();
                 _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
                 _letterbox.TweenTo(0.15f, 1);
+                Invoke("ShowIntroPanel", 1);
                 break;
             case Cutscenes.BEAR:
                 cutsceneActive = true;
-                _bearStoryPanel.SetActive(true);
                 _player.GetComponent<PlayerHealth>().RefillForCutscene();
                 _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
                 _ui.GetComponent<UIManager>().bossHealthUI.enabled = false;
                 _letterbox.TweenTo(0.15f, 1);
+                Invoke("ShowBearPanel", 1);
                 break;
             case Cutscenes.MID:
                 cutsceneActive = true;
-                _midStoryPanel.SetActive(true);
                 _player.GetComponent<PlayerHealth>().RefillForCutscene();
                 _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
                 _ui.GetComponent<UIManager>().bossHealthUI.enabled = false;
                 _letterbox.TweenTo(0.15f, 1);
+                Invoke("ShowMidPanel", 1);
                 break;
             case Cutscenes.END:
                 cutsceneActive = true;
-                _endStoryPanel.SetActive(true);
                 _player.GetComponent<Player>().PlayEnding();
                 _player.GetComponent<PlayerHealth>().RefillForCutscene();
                 _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
                 _ui.GetComponent<UIManager>().bossHealthUI.enabled = false;
                 _letterbox.TweenTo(0.15f, 1);
+                Invoke("ShowEndPanel", 1);
                 break;
             case Cutscenes.NULL:
                 cutsceneActive = false;
@@ -252,4 +252,23 @@ public class CutsceneManager : MonoBehaviour
         _ui.GetComponent<UIManager>().WinUI.SetActive(true);
     }
 
+    private void ShowIntroPanel()
+    {
+        _introStoryPanel.SetActive(true);
+    }
+
+    private void ShowBearPanel()
+    {
+        _bearStoryPanel.SetActive(true);
+    }
+
+    private void ShowMidPanel()
+    {
+        _midStoryPanel.SetActive(true);
+    }
+
+    private void ShowEndPanel()
+    {
+        _endStoryPanel.SetActive(true);
+    }
 }
