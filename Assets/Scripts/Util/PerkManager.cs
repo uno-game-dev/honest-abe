@@ -36,32 +36,32 @@ public class PerkManager : MonoBehaviour
     public static string hat_none_lock_desc = "How are you even seeing this?"; // I also like this - Parker
 
     public static string axe_dtVampirism_name = "Axe_DTVampirism";
-    public static string axe_dtVampirism_desc = "Perk: Vampirism\nRestores damage threshold on all heavy attacks";
-    public static string axe_dtVampirism_lock_desc = "Perk: Vampirism\nThis Perk is Locked!\nUnlocked by beating the game";
+    public static string axe_dtVampirism_desc = "Perk: Vampirism\nRestores damage threshold on all heavy attacks\nUnlocked by beating the game";
+    public static string axe_dtVampirism_lock_desc = "Perk: Vampirism\nThis Perk is Locked!\n<i>Return the favor</i>";
 
     public static string axe_bfa_name = "Axe_BFA";
-    public static string axe_bfa_desc = "Perk: B.F.A.\nA bigger, stronger axe for your pleasure";
-    public static string axe_bfa_lock_desc = "Perk: B.F.A\nThis Perk is Locked!\nUnlocked by beating the game using only Abe's axe";
+    public static string axe_bfa_desc = "Perk: B.F.A.\nA bigger, stronger axe for your pleasure\nUnlocked by beating the game using only Abe's axe";
+    public static string axe_bfa_lock_desc = "Perk: B.F.A\nThis Perk is Locked!\n<i>Axe love, rewarded</i>";
 
     public static string axe_slugger_name = "Axe_Slugger";
-    public static string axe_slugger_desc = "Perk: Slugger\nStronger combos and harder knockbacks";
-    public static string axe_slugger_lock_desc = "Perk: Slugger\nThis Perk is Locked!\nUnlocking by executing every non-boss enemy";
+    public static string axe_slugger_desc = "Perk: Slugger\nStronger combos and harder knockbacks\nUnlocking by executing every non-boss enemy";
+    public static string axe_slugger_lock_desc = "Perk: Slugger\nThis Perk is Locked!\n<i>Send your enemies off with a grand slam</i>";
 
     public static string hat_bearHands_name = "Hat_bearHands";
-    public static string hat_bearHands_desc = "Perk: Bear Hands\nIncreased damage on all empty-handed attacks";
-    public static string hat_bearHands_lock_desc = "Perk: Bear Hands\nThis Perk is Locked!\nUnlocked by beating the Bear bare-handed (no weapons)";
+    public static string hat_bearHands_desc = "Perk: Bear Hands\nIncreased damage on all empty-handed attacks\nUnlocked by beating the Bear bare-handed (no weapons)";
+    public static string hat_bearHands_lock_desc = "Perk: Bear Hands\nThis Perk is Locked!\n<i>Hand, meet bear</i>";
 
     public static string trinket_agressionBuddy_name = "Trinket_AggressionBuddy";
-    public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold\n30 second cooldown";
-    public static string trinket_agressionBuddy_lock_desc = "Perk: Aggression Buddy\nThis Perk is Locked!\nUnlocked by defeating Robert E. Lee without dropping below 80% health";
+    public static string trinket_agressionBuddy_desc = "Perk: Aggression Buddy\nRestores damage threshold\n30 second cooldown\nUnlocked by defeating Robert E. Lee without dropping below 80% health";
+    public static string trinket_agressionBuddy_lock_desc = "Perk: Aggression Buddy\nThis Perk is Locked!\n<i>Shot you? He barely touched you!</i>";
 
     public static string trinket_maryToddsLockette_name = "Trinket_MaryToddsLockette";
-    public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides temporary invincibility\n120 second cooldown";
-    public static string trinket_maryToddsLockette_lock_desc = "Perk: Mary Todd's Locket\nThis Perk is Locked!\nUnlocked by never picking up a health kit";
+    public static string trinket_maryToddsLockette_desc = "Perk: Mary Todd's Locket\nProvides temporary invincibility\n120 second cooldown\nUnlocked by never picking up a health kit";
+    public static string trinket_maryToddsLockette_lock_desc = "Perk: Mary Todd's Locket\nThis Perk is Locked!\n<i>Only she can heal you</i>";
 
     public static string hat_stickyFingers_name = "Hat_StickyFingers";
-    public static string hat_stickyFingers_desc = "Perk: Sticky Fingers\nEnables the ablity to steal weapons";
-    public static string hat_stickyFingers_lock_desc = "Perk: Sticky Fingers\nThis Perk is Locked!\nUnlocked by using every weapon in the game";
+    public static string hat_stickyFingers_desc = "Perk: Sticky Fingers\nEnables the ablity to steal weapons\nUnlocked by using 10 dropped weapons";
+    public static string hat_stickyFingers_lock_desc = "Perk: Sticky Fingers\nThis Perk is Locked!\n<i>See it, kill with it</i>";
 
     /*
      * Individual Perk Unlock Requirements
