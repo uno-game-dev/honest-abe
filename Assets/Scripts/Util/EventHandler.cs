@@ -234,7 +234,6 @@ public class EventHandler : MonoBehaviour
                 break;
             case Events.STEP:
                 //AudioManager.instance.PlayFootstep();
-                Debug.Log("Step");
                 break;
             case Events.ENEMY_CLOSE_TO_STEAL_WEAPON:
                 if ((other != null) && (PerkManager.activeHatPerk != null) && (PerkManager.activeHatPerk.perkName == "Hat_StickyFingers"))
