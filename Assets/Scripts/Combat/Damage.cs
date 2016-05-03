@@ -67,8 +67,10 @@ public class Damage : MonoBehaviour
                 SoundPlayer.Play("Battlefield Boss Hit");
             else if (name.Contains("RobertELee"))
                 SoundPlayer.Play("Lee Hit");
-            else if (name.Contains("Officer"))
-                SoundPlayer.Play("Officer Hit");
+            //else if (name.Contains("Officer"))
+            //    SoundPlayer.Play("Officer Hit");
+            else if (name.Contains("Rifleman"))
+                SoundPlayer.Play("Rifleman Hit");
             else if (name.Contains("Bushwhacker"))
                 SoundPlayer.Play("BushWhacker Hit");
             else if (name.Contains("Officer"))

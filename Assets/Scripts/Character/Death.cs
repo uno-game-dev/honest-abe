@@ -22,8 +22,10 @@ public class Death : MonoBehaviour
 
         if (name.Contains("RobertELee"))
             SoundPlayer.Play("Lee Death");
-        else if (name.Contains("Officer"))
-            SoundPlayer.Play("Officer Death");
+        else if (name.Contains("Rifleman"))
+            SoundPlayer.Play("Rifleman Death");
+        //else if (name.Contains("Officer"))
+        //    SoundPlayer.Play("Officer Death");
         else
             SoundPlayer.Play("Death");
 
