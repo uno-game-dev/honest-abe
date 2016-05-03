@@ -546,6 +546,7 @@ public class UIManager : MonoBehaviour
         _levelManager.LoadFirstLevel();
         _loseUI.SetActive(false);
         updateActive = false;
+        Time.timeScale = 1;
 
         EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
