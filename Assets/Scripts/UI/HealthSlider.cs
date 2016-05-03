@@ -18,13 +18,7 @@ public class HealthSlider : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		//Check to see if damageThreshold is greater than 100 to set maxDamageThreshold
-		if (damageThresholdSlider.value > 100)
-		{
-			//Change the color of damageThreshold to Green because it > 100
-			amountOfDTSlider.transform.Find("Fill Area").gameObject.GetComponentInChildren<Image>().color = Color.green;
-		}
-		else if (damageThresholdSlider.value > currentHealthSlider.value)
+		if (damageThresholdSlider.value > currentHealthSlider.value)
 		{
 			amountOfDTSlider.transform.Find("Fill Area").gameObject.GetComponentInChildren<Image>().color = Color.yellow;
 		}
