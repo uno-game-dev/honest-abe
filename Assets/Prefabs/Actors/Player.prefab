@@ -326,6 +326,7 @@ GameObject:
   - 114: {fileID: 11480316}
   - 114: {fileID: 11408302}
   - 114: {fileID: 11477894}
+  - 114: {fileID: 11471392}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1837,6 +1838,18 @@ MonoBehaviour:
   state: 0
   startJumpDuration: 0.05
   landDuration: 0.25
+--- !u!114 &11471392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37dc57429c169734abee0b3666d0811c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUpPrefab: {fileID: 160676, guid: 5cbcbd1b265e89249b885b6781e2b12b, type: 2}
 --- !u!114 &11474242
 MonoBehaviour:
   m_ObjectHideFlags: 1
