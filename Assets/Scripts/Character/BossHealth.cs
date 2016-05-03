@@ -6,7 +6,8 @@ public class BossHealth : Health
     [HideInInspector]
     private GameManager _gameManager;
     [HideInInspector]
-    private BossHealthSlider bossHealthSlider;
+    private BossHealthSlider _bossHealthSlider;
+	private WorldGenerator _worldGenerator;
     private int _totalHealth;
     private int _tempHealth;
     private int _currentTargetHealthForExecution;
@@ -14,8 +15,9 @@ public class BossHealth : Health
 	// Use this for initialization
 	void Start()
 	{
-		bossHealthSlider = GameObject.Find("BossHealthUI").GetComponent<BossHealthSlider>();
-		bossHealthSlider.Reset(health);
+		_worldGenerator = GameObject.Find("Level").GetComponent<WorldGenerator>();
+        _bossHealthSlider = GameObject.Find("BossHealthUI").GetComponent<BossHealthSlider>();
+		_bossHealthSlider.Reset(health);
         _totalHealth = health;
         _currentTargetHealthForExecution = _totalHealth - (_totalHealth / 4);
     }
@@ -35,7 +37,7 @@ public class BossHealth : Health
 		else
 			health += damage;
 
-		bossHealthSlider.UpdateBossHealth(health);
+		_bossHealthSlider.UpdateBossHealth(health);
 	}
 
 	public override void Decrease(int damage)
@@ -90,11 +92,17 @@ public class BossHealth : Health
             if (health < _currentTargetHealthForExecution)
             {
                 _currentTargetHealthForExecution -= _totalHealth / 4;
-                // Officer-Boss additional spawns
-                if (gameObject.name == "Officer-Boss(Clone)")
-                    GameObject.Find("Level").GetComponent<WorldGenerator>().SpawnWaveDuringBoss();
-            }
+				// Officer-Boss additional spawns
+				if (gameObject.name == "Bear(Clone)")
+				{
+					int n = (_totalHealth - health) / (_totalHealth / 4);
+					Debug.Log("Spawning " + n + " Bushwhackers");
+                    _worldGenerator.SpawnBushwhacker(n);
+				}
+				else if (gameObject.name == "Officer-Boss(Clone)")
+					_worldGenerator.SpawnWaveDuringBoss();
+			}
         }
-		bossHealthSlider.UpdateBossHealth(health);
+		_bossHealthSlider.UpdateBossHealth(health);
 	}
 }

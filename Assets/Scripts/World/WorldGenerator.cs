@@ -37,8 +37,9 @@ public class WorldGenerator : MonoBehaviour
 	private bool _canSpawn = true;
 	private bool _spawnWaveOnClear;
     private bool _spawnWaveDuringBoss;
+	private bool _spawnOnLeft = true;
 
-    private RectTransform _area;
+	private RectTransform _area;
     private double _width;
     private double _height;
 
@@ -54,7 +55,10 @@ public class WorldGenerator : MonoBehaviour
         _area = (RectTransform)terrain.transform;
         _width = _area.rect.width;
         _height = _area.rect.height;
-    }
+		if (_rnd.Next(2) == 0)
+			_spawnOnLeft = false;
+
+	}
 
 	// Update is called once per frame
 	void Update()
@@ -251,28 +255,32 @@ public class WorldGenerator : MonoBehaviour
         while (occupied && attempts < maxAttemptsForSpawn)
 		{
 			occupied = false;
-			//do
-				// Spawn wave along right edge of camera on clear
-				if (_spawnWaveOnClear)
-					x = GameObject.Find("RightEdge").transform.position.x;
-				else if (_spawnWaveDuringBoss)
+			// Spawn wave along right edge of camera on clear
+			if (_spawnWaveDuringBoss)
+			{
+				if (_spawnOnLeft)
 				{
-					if (_rnd.Next(2) == 0)
-						x = GameObject.Find("LeftEdge").transform.position.x + 2;
-					else
-						x = GameObject.Find("RightEdge").transform.position.x - 2;
+					x = GameObject.Find("LeftEdge").transform.position.x + 2;
+					_spawnOnLeft = false;
 				}
 				else
-					x = (float)((_width * _rnd.NextDouble() * 2) - _width + _lastXPos);
-				y = (float)(((_height * _rnd.NextDouble()) * spawnYMod) - (_height * spawnYMod * 1.1));
-			//while ((Math.Abs((double)(x - _lastPos.x)) < 1.5) && (Math.Abs((double)(y - _lastPos.y)) < 1.5));
+				{
+					x = GameObject.Find("RightEdge").transform.position.x - 2;
+					_spawnOnLeft = true;
+				}
+			}
+			else if (_spawnWaveOnClear)
+				x = GameObject.Find("RightEdge").transform.position.x;
+			else
+				x = (float)((_width * _rnd.NextDouble() * 2) - _width + _lastXPos);
+			y = (float)(((_height * _rnd.NextDouble()) * spawnYMod) - (_height * spawnYMod * 1.1));
 
 			foreach (Vector3 pos in _occupiedPos)
 			{
 				if ((Math.Abs((double)(x - pos.x)) < 1.5) && (Math.Abs((double)(y - pos.y)) < 1.5))
 				{
 					occupied = true;
-					Debug.Log("Could not find empty position after " + maxAttemptsForSpawn + " attempts!");
+					Debug.Log("Could not find empty position after " + maxAttemptsForSpawn + " attempts");
 					break;
 				}
 			}
@@ -292,5 +300,20 @@ public class WorldGenerator : MonoBehaviour
 		_occupiedPos = new List<Vector3>();
 		_spawnWaveDuringBoss = true;
 		_spawnWaveDuringBoss = SpawnEnemies();
-    }
+	}
+
+	public void SpawnBushwhacker(int n)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			_occupiedPos = new List<Vector3>();
+			_spawnWaveDuringBoss = true;
+			Vector3 vector = GetRandomEmptyPos(1f);
+			if (vector != Vector3.zero)
+			{
+				Instantiate(enemies[1], vector, Quaternion.Euler(0, 0, 0));
+			}
+		}
+		_spawnWaveDuringBoss = false;
+	}
 }
