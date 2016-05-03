@@ -48,7 +48,7 @@ public class Perk : MonoBehaviour
     // unlocked is whether the perk is available for the player to pick up when the game starts
     // setToBeUnlocked is whether the perk was earned during the game but the player has not finished the game yet
     [HideInInspector]
-    public bool unlocked, setToBeUnlocked, alreadyActive;
+    public bool unlocked, alreadyActive;
 
     /*
      * References to scripts affected by the perks
@@ -75,7 +75,6 @@ public class Perk : MonoBehaviour
 
     public void CheckStatus()
     {
-        setToBeUnlocked = false;
 
         switch (type)
         {
@@ -102,21 +101,21 @@ public class Perk : MonoBehaviour
                 _perkDesc = PerkManager.axe_bfa_desc;
                 _perkName = PerkManager.axe_bfa_name;
                 unlocked = PerkManager.axe_bfa_unlocked;
-                if (!unlocked) setToBeUnlocked = true;
+                if (!unlocked) PerkManager.axe_bfa_to_be_unlocked = true;
                 break;
             case PerkType.AXE_SLUGGER:
                 _category = PerkCategory.AXE;
                 _perkDesc = PerkManager.axe_slugger_desc;
                 _perkName = PerkManager.axe_slugger_name;
                 unlocked = PerkManager.axe_slugger_unlocked;
-                if (!unlocked) setToBeUnlocked = true;
+                if (!unlocked) PerkManager.axe_slugger_to_be_unlocked = true;
                 break;
             case PerkType.HAT_BEARHANDS:
                 _category = PerkCategory.HAT;
                 _perkDesc = PerkManager.hat_bearHands_desc;
                 _perkName = PerkManager.hat_bearHands_name;
                 unlocked = PerkManager.hat_bearHands_unlocked;
-                if (!unlocked) setToBeUnlocked = true;
+                if (!unlocked) PerkManager.hat_bearHands_to_be_unlocked = true;
                 break;
 			case PerkType.TRINKET_AGGRESSIONBUDDY:
 				_category = PerkCategory.TRINKET;
@@ -129,7 +128,7 @@ public class Perk : MonoBehaviour
 				_perkDesc = PerkManager.trinket_maryToddsLockette_desc;
 				_perkName = PerkManager.trinket_maryToddsLockette_name;
 				unlocked = PerkManager.trinket_maryToddsLockette_unlocked;
-				if (!unlocked) setToBeUnlocked = true;
+				if (!unlocked) PerkManager.trinket_maryToddsLockette_to_be_unlocked = true;
                 break;
 			case PerkType.HAT_STICKYFINGERS:
 				_category = PerkCategory.HAT;

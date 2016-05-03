@@ -17,6 +17,15 @@ public class PerkManager : MonoBehaviour
     public static bool trinket_agressionBuddy_unlocked = false;
     public static bool trinket_maryToddsLockette_unlocked = false;
 
+    // Perks to be unlocked states
+    public static bool axe_dtVampirism_to_be_unlocked = false;
+    public static bool axe_bfa_to_be_unlocked = false;
+    public static bool axe_slugger_to_be_unlocked = false;
+    public static bool hat_bearHands_to_be_unlocked = false;
+    public static bool hat_stickyFingers_to_be_unlocked = false;
+    public static bool trinket_agressionBuddy_to_be_unlocked = false;
+    public static bool trinket_maryToddsLockette_to_be_unlocked = false;
+
     // Perk names
     public static string axe_none_name = "Axe_None";
     public static string axe_none_desc = "Abe's Regular Axe";
@@ -138,6 +147,21 @@ public class PerkManager : MonoBehaviour
         trinketSlider = GameObject.Find("TrinketUI").GetComponent<TrinketSlider>();
 
         perksChosen = false;
+    }
+
+    public static void CheckPerks()
+    {
+        GameObject[] perksInLevel = GameObject.FindGameObjectsWithTag("Perk");
+        for (int i = 0; i < perksInLevel.Length; i++)
+        {
+            perksInLevel[i].GetComponent<Perk>().CheckStatus();
+        }
+
+        GameObject[] axePerksInLevel = GameObject.FindGameObjectsWithTag("AbeAxe");
+        for (int i = 0; i < axePerksInLevel.Length; i++)
+        {
+            axePerksInLevel[i].GetComponent<Perk>().CheckStatus();
+        }
     }
 
     void Update()
