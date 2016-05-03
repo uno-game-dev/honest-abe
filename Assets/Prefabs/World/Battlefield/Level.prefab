@@ -96,8 +96,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.53, z: 9}
-  m_LocalScale: {x: 38.265747, y: 10.378995, z: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 9}
+  m_LocalScale: {x: 38, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 452432}
   m_RootOrder: 0
@@ -108,8 +108,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.15, z: 8}
-  m_LocalScale: {x: 38.17589, y: 5.63383, z: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 8}
+  m_LocalScale: {x: 100, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 452432}
   m_RootOrder: 1
@@ -120,8 +120,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.21, z: 7}
-  m_LocalScale: {x: 38.17589, y: 11.0689535, z: 1}
+  m_LocalPosition: {x: 0, y: -5.5, z: 7}
+  m_LocalScale: {x: 38, y: 11, z: 1}
   m_Children: []
   m_Father: {fileID: 452432}
   m_RootOrder: 3
@@ -148,8 +148,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.21, z: 6}
-  m_LocalScale: {x: 38.17589, y: 11.0689535, z: 1}
+  m_LocalPosition: {x: 0, y: -5.5, z: 6}
+  m_LocalScale: {x: 38, y: 11, z: 1}
   m_Children: []
   m_Father: {fileID: 452432}
   m_RootOrder: 2
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155d10f594fca4aa99748b4c0db9d0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0.013
+  scrollSpeed: 0.00925
   scrollDirection: 1
 --- !u!114 &11478376
 MonoBehaviour:
@@ -416,6 +416,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: screensInLevel
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
