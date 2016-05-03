@@ -19,6 +19,7 @@ public class WorldGenerator : MonoBehaviour
 	public int propDensity = 3;
 	public int decalDensity = 10;
 	public int itemDensity = 1;
+	public bool useMoreDensityForSpecialEnemies;
 
     public float startSpawnPosition;
 	public float spawnYMod = 0.7f;
@@ -240,8 +241,12 @@ public class WorldGenerator : MonoBehaviour
 			else
 				r = _rnd.Next(2);
 		}
-		_remainingEnemyDensity -= r + 1;
-		return r;
+
+		if (useMoreDensityForSpecialEnemies)
+			_remainingEnemyDensity -= r + 1;
+		else
+			_remainingEnemyDensity--;
+        return r;
 	}
 
 	private Vector3 GetRandomEmptyPos(float z)

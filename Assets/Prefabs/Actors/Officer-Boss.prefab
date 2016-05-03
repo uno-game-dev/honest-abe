@@ -1363,7 +1363,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.666629, y: -2.9930332, z: 0}
+  m_LocalPosition: {x: -5.096804, y: -7.255905, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 457714}
@@ -1687,10 +1687,10 @@ MonoBehaviour:
   attackOffset: {x: 2, y: 0.5}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 76}
-  lightDamage: 5
+  lightDamage: 15
   lightStun: 0.2
   lightKnockback: 2
-  heavyDamage: 8
+  heavyDamage: 25
   heavyStun: 1
   heavyKnockback: 5
   throwDamage: 4
@@ -1715,7 +1715,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11484172}
     m_EventID: 103276309
-  m_CachedInstanceID: 93582
+  m_CachedInstanceID: 82594
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11772
+  m_CachedInstanceID: 82582
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11472116}
     m_EventID: 805742543
-  m_CachedInstanceID: 93584
+  m_CachedInstanceID: 82598
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2048,7 +2048,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11476700}
     m_EventID: 755052694
-  m_CachedInstanceID: -681432
+  m_CachedInstanceID: 82604
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11472116}
     m_EventID: 805742543
-  m_CachedInstanceID: 93586
+  m_CachedInstanceID: 82602
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11407480}
     m_EventID: 1463829125
-  m_CachedInstanceID: 93588
+  m_CachedInstanceID: 82596
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2352,7 +2352,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11455202}
     m_EventID: 334526696
-  m_CachedInstanceID: 93590
+  m_CachedInstanceID: 82600
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2419,7 +2419,7 @@ MonoBehaviour:
     m_EventID: 805742543
   - m_Destination: {fileID: 11455202}
     m_EventID: 334526696
-  m_CachedInstanceID: 93592
+  m_CachedInstanceID: 82592
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2482,7 +2482,7 @@ MonoBehaviour:
     m_EventID: 322721332
   - m_Destination: {fileID: 11476700}
     m_EventID: 755052694
-  m_CachedInstanceID: -681434
+  m_CachedInstanceID: 82606
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3415,6 +3415,10 @@ Prefab:
       propertyPath: bloodHeavyMelee
       value: 
       objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: damageAmount
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188124}
