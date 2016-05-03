@@ -13,7 +13,8 @@ public class IsPlayerKnockedDown : ConditionNode {
 	}
 	
 	public override Status Update () {
-		if (knockDown.state == KnockDown.State.OnGround) {
+		if (knockDown.state == KnockDown.State.OnGround || knockDown.state == KnockDown.State.InAir
+			|| knockDown.state == KnockDown.State.Land) {
 			if (onSuccess.id != 0)
 				owner.root.SendEvent (onSuccess.id);
 			return Status.Success;
