@@ -2,6 +2,8 @@
 
 public class GameManager : MonoBehaviour
 {
+	public bool firstGame = true;
+
     private static GameObject _instance;
 
     private CameraFollow _cameraFollow;
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _levelManager = GetComponent<LevelManager>();
-    }
+	}
 
 	void Update()
     {

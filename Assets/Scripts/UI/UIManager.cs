@@ -237,13 +237,24 @@ public class UIManager : MonoBehaviour
         _loseUI.SetActive(true);
     }
 
-    public void OnPressEnterAtBeginning()
-    {
-        updateActive = true;
-        _startGameText.SetActive(false);
-        _logoImage.SetActive(false);
-        cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
-    }
+	public void OnPressEnterAtBeginning()
+	{
+		updateActive = true;
+		_startGameText.SetActive(false);
+		_logoImage.SetActive(false);
+		if (_gameManager.firstGame)
+		{
+			cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
+			_gameManager.firstGame = false;
+		}
+		else
+		{
+			Cinematic cinematic = GameObject.Find("Player").GetComponent<Cinematic>();
+			cinematic.GetComponent<Cinematic>().cinematic = "Abe Rises";
+			cinematic.GetComponent<Cinematic>().enabled = true;
+			GameObject.Find("GameManager").GetComponent<PerkManager>().showInstructions = true;
+		}
+	}
 
     private void SetListenersForPauseUI()
     {

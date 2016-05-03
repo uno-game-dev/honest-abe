@@ -172,7 +172,7 @@ public class CutsceneManager : MonoBehaviour
                 _player.GetComponent<PlayerHealth>().RefillForCutscene();
                 _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
                 _letterbox.TweenTo(0.15f, 1);
-                Invoke("ShowIntroPanel", 1);
+				Invoke("ShowIntroPanel", 1);
                 break;
             case Cutscenes.BEAR:
                 cutsceneActive = true;

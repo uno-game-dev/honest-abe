@@ -205,6 +205,7 @@ public class PerkManager : MonoBehaviour
         hatPerkChosen = false;
         trinketPerkChosen = false;
         axePerkChosen = false;
+		perksChosen = false;
     }
 
     public static void PerformPerkEffects(Perk.PerkCategory type)
