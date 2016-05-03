@@ -344,7 +344,6 @@ MonoBehaviour:
   decals:
   - {fileID: 129404, guid: 88ed5003a3056cf4c8cff1b19ec74e82, type: 2}
   - {fileID: 134448, guid: 732eb9167d99a30409eefb80a92a72e3, type: 2}
-  - {fileID: 163346, guid: 34650810ed06d3f4d92517ed129851b5, type: 2}
   boss: {fileID: 188124, guid: b68bd33be5773a34fb8a3090af9a6bf3, type: 2}
   maxAttemptsForSpawn: 2
   screensInLevel: 6
@@ -394,6 +393,10 @@ Prefab:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: decals.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: props.Array.data[1]
       value: 
       objectReference: {fileID: 146584, guid: 7ad80743fb4dcd94a99f622f637bd042, type: 2}
@@ -432,6 +435,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: scrollSpeed
       value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: decals.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
