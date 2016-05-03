@@ -506,7 +506,7 @@ public class UIManager : MonoBehaviour
         Screen.SetResolution(Screen.resolutions[_graphicsUIResList.value].width, Screen.resolutions[_graphicsUIResList.value].height, _graphicsUIFullscreenToggle.isOn);
 
         // Make sure the camera is positioned over the player appropriately
-        GameObject.Find("Main Camera").GetComponent<CameraFollow>().FixAspectRatio();
+        //GameObject.Find("Main Camera").GetComponent<CameraFollow>().FixAspectRatio();
 
         EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);
     }
