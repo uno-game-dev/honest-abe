@@ -110,14 +110,23 @@ public class CameraFollow : MonoBehaviour
             }
         }
 
+
+        // Make sure the player isn't allowed off the left end of the screen
+        if (playerTransform.position.x - 0.5f < leftEdgeTransform.position.x + 0.5f)
+        {
+            Debug.Log("out of left edge");
+            pos.x = (playerTransform.position.x - (playerTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.x / 2) - 2) + (((2 * cam.orthographicSize) * cam.aspect) / 2);
+        }
+
+        if (playerTransform.position.x + 0.5f > rightEdgeTransform.position.x)
+        {
+            pos.x = (playerTransform.position.x + (playerTransform.gameObject.GetComponent<BoxCollider2D>().bounds.size.x / 2) + 2) - (((2 * cam.orthographicSize) * cam.aspect) / 2);
+        }
+
         velocity.x = (pos.x - previousPos.x) / Time.deltaTime;
         velocity.y = (pos.y - previousPos.y) / Time.deltaTime;
 
         transform.position = pos;
     }
 
-    public void FixAspectRatio()
-    {
-        
-    }
 }
