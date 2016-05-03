@@ -12,26 +12,35 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public Text perkText;
 
-	// Boss UI
-	[HideInInspector]
-	public Canvas bossHealthUI;
+    // Boss UI
+    [HideInInspector]
+    public Canvas bossHealthUI;
 
-	private GameManager _gameManager;
-	private LevelManager _levelManager;
-	private GameObject _startGameText, _logoImage;
-	private bool _paused = false;
-	private bool _options = false;
+    private GameObject _bossUI;
+    public GameObject bossUI
+    {
+        get
+        {
+            return _bossUI;
+        }
+    }
 
-	// Pause UI
-	private GameObject _pauseUI;
-	private Button _pauseUIResumeButton;
-	private Button _pauseUIOptionsButton;
+    private GameManager _gameManager;
+    private LevelManager _levelManager;
+    private GameObject _startGameText, _logoImage;
+    private bool _paused = false;
+    private bool _options = false;
+
+    // Pause UI
+    private GameObject _pauseUI;
+    private Button _pauseUIResumeButton;
+    private Button _pauseUIOptionsButton;
     private Button _pauseUICreditsButton;
-	private Button _pauseUIQuitButton;
+    private Button _pauseUIQuitButton;
 
-	// Options UI
-	private GameObject _optionsUI, _optionsUIBackground;
-	private Button _optionsUIBackButton;
+    // Options UI
+    private GameObject _optionsUI, _optionsUIBackground;
+    private Button _optionsUIBackButton;
     private Button _optionsUIGraphicsButton;
     private Button _optionsUIAudioButton;
     private Button _optionsUIControlsButton;
@@ -58,28 +67,32 @@ public class UIManager : MonoBehaviour
 
     // Win UI
     private GameObject _winUI, _winUINewPerks;
-	private Button _winUIYesButton;
-	private Button _winUINoButton;
+    private Button _winUIYesButton;
+    private Button _winUINoButton;
 
-    public GameObject WinUI {
-        get {
+    public GameObject WinUI
+    {
+        get
+        {
             return _winUI;
         }
     }
 
-    public GameObject NewPerks {
-        get {
+    public GameObject NewPerks
+    {
+        get
+        {
             return _winUINewPerks;
         }
     }
-	
-	// Lose UI
-	private GameObject _loseUI;
-	private Button _loseUIYesButton;
-	private Button _loseUINoButton;
 
-	//Trinket UI
-	private static Text _trinketUI;
+    // Lose UI
+    private GameObject _loseUI;
+    private Button _loseUIYesButton;
+    private Button _loseUINoButton;
+
+    //Trinket UI
+    private static Text _trinketUI;
 
     // Cutscene Canvas
     public GameObject cutsceneUI;
@@ -88,44 +101,58 @@ public class UIManager : MonoBehaviour
     // Intro Instructions
     public GameObject pickUpInstructions;
 
-	void Awake()
-	{
-		updateActive = false;
-		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		_levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
-		_startGameText = GameObject.Find("StartText");
+    // HUD Canvas
+    private GameObject _hudCanvas;
+    public GameObject hudCanvas
+    {
+        get
+        {
+            return _hudCanvas;
+        }
+    }
+
+    void Awake()
+    {
+        updateActive = false;
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
+        _startGameText = GameObject.Find("StartText");
         _logoImage = GameObject.Find("Logo");
-        if (SceneManager.GetActiveScene().buildIndex == 0) {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
             _startGameText.SetActive(true);
-        	_logoImage.SetActive(true);
-		}
+            _logoImage.SetActive(true);
+        }
         else
         {
             _startGameText.SetActive(false);
             _logoImage.SetActive(false);
             updateActive = true;
         }
-		SetListenersForPauseUI();
+        SetListenersForPauseUI();
         SetListenersForCreditsUI();
-		SetListenersForOptionsUI();
-		SetListenersForWinUI();
-		SetListenersForLoseUI();
+        SetListenersForOptionsUI();
+        SetListenersForWinUI();
+        SetListenersForLoseUI();
         cutsceneUI = GameObject.Find("CutsceneCanvas");
         cutsceneManager = cutsceneUI.GetComponent<CutsceneManager>();
         //_cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.NULL);
-		perkText = GameObject.Find("PerkText").GetComponent<Text>();
+        perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
-		bossHealthUI = GameObject.Find("BossHUDMarkerCanvas").GetComponent<Canvas>();
-		bossHealthUI.enabled = false;
-		_trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
-		_trinketUI.enabled = false;
+        _bossUI = GameObject.Find("BossHUDMarkerCanvas");
+        bossHealthUI = _bossUI.GetComponent<Canvas>();
+        bossHealthUI.enabled = false;
+        _trinketUI = GameObject.Find("ActivateTrinketText").GetComponent<Text>();
+        _trinketUI.enabled = false;
         pickUpInstructions = GameObject.Find("PickUpLesson");
         pickUpInstructions.SetActive(false);
+
+        _hudCanvas = GameObject.Find("HUDMarkerCanvas");
     }
 
     void Update()
     {
-		if (!updateActive && !_paused && (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape)))
+        if (!updateActive && !_paused && (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape)))
             OnPressEnterAtBeginning();
 
         if (Input.GetButtonDown("Pause"))
@@ -134,11 +161,13 @@ public class UIManager : MonoBehaviour
         _audioUIMusicValue.text = "" + (System.Math.Round(_audioUIMusicSlider.value * 100));
         _audioUIEffectValue.text = "" + (System.Math.Round(_audioUIEffectsSlider.value * 100));
 
-        if ((PerkManager.activeTrinketPerk != null) && (Perk.trinketTimeStamp <= Time.time)) {
-			_trinketUI.enabled = true;
-		} else {
-			_trinketUI.enabled = false;
-		}
+        if ((PerkManager.activeTrinketPerk != null) && (Perk.trinketTimeStamp <= Time.time))
+        {
+            _trinketUI.enabled = true;
+        }
+        else {
+            _trinketUI.enabled = false;
+        }
     }
 
     public void TogglePause()
@@ -203,10 +232,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-	public void ActivateLoseUI()
-	{
-		_loseUI.SetActive(true);
-	}
+    public void ActivateLoseUI()
+    {
+        _loseUI.SetActive(true);
+    }
 
     public void OnPressEnterAtBeginning()
     {
@@ -216,22 +245,22 @@ public class UIManager : MonoBehaviour
         cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
     }
 
-	private void SetListenersForPauseUI()
-	{
-		_pauseUI = GameObject.Find("PauseUI");
+    private void SetListenersForPauseUI()
+    {
+        _pauseUI = GameObject.Find("PauseUI");
 
-		_pauseUIResumeButton = _pauseUI.transform.FindContainsInChildren("Resume").GetComponent<Button>();
-		_pauseUIOptionsButton = _pauseUI.transform.FindContainsInChildren("Options").GetComponent<Button>();
+        _pauseUIResumeButton = _pauseUI.transform.FindContainsInChildren("Resume").GetComponent<Button>();
+        _pauseUIOptionsButton = _pauseUI.transform.FindContainsInChildren("Options").GetComponent<Button>();
         _pauseUICreditsButton = _pauseUI.transform.FindContainsInChildren("Credits").GetComponent<Button>();
-		_pauseUIQuitButton = _pauseUI.transform.FindContainsInChildren("Quit").GetComponent<Button>();
+        _pauseUIQuitButton = _pauseUI.transform.FindContainsInChildren("Quit").GetComponent<Button>();
 
-		_pauseUIResumeButton.onClick.AddListener(OnResume);
-		_pauseUIOptionsButton.onClick.AddListener(OnOptions);
+        _pauseUIResumeButton.onClick.AddListener(OnResume);
+        _pauseUIOptionsButton.onClick.AddListener(OnOptions);
         _pauseUICreditsButton.onClick.AddListener(OnCredits);
-		_pauseUIQuitButton.onClick.AddListener(OnQuit);
+        _pauseUIQuitButton.onClick.AddListener(OnQuit);
 
         _pauseUI.SetActive(false);
-	}
+    }
 
     private void SetListenersForCreditsUI()
     {
@@ -241,17 +270,17 @@ public class UIManager : MonoBehaviour
         _creditsUI.SetActive(false);
     }
 
-	private void SetListenersForOptionsUI()
-	{
+    private void SetListenersForOptionsUI()
+    {
         _optionsUIBackground = GameObject.Find("OptionsBackground");
         _optionsUIBackground.SetActive(false);
 
-		_optionsUI = GameObject.Find("OptionsUI");
-		_optionsUIBackButton = _optionsUI.transform.Find("Back").GetComponent<Button>();
+        _optionsUI = GameObject.Find("OptionsUI");
+        _optionsUIBackButton = _optionsUI.transform.Find("Back").GetComponent<Button>();
         _optionsUIAudioButton = _optionsUI.transform.Find("AudioBtn").GetComponent<Button>();
         _optionsUIControlsButton = _optionsUI.transform.Find("ControlsBtn").GetComponent<Button>();
         _optionsUIGraphicsButton = _optionsUI.transform.Find("GraphicsBtn").GetComponent<Button>();
-		_optionsUIBackButton.onClick.AddListener(OnOptionsBack);
+        _optionsUIBackButton.onClick.AddListener(OnOptionsBack);
         _optionsUIGraphicsButton.onClick.AddListener(OnGraphics);
         _optionsUIAudioButton.onClick.AddListener(OnAudio);
         _optionsUIControlsButton.onClick.AddListener(OnControls);
@@ -313,36 +342,36 @@ public class UIManager : MonoBehaviour
         _controlsUI.SetActive(false);
     }
 
-	private void SetListenersForWinUI()
-	{
-		_winUI = GameObject.Find("WinUI");
+    private void SetListenersForWinUI()
+    {
+        _winUI = GameObject.Find("WinUI");
 
-		_winUIYesButton = _winUI.transform.FindContainsInChildren("Yes").GetComponent<Button>();
-		_winUINoButton = _winUI.transform.FindContainsInChildren("No").GetComponent<Button>();
+        _winUIYesButton = _winUI.transform.FindContainsInChildren("Yes").GetComponent<Button>();
+        _winUINoButton = _winUI.transform.FindContainsInChildren("No").GetComponent<Button>();
 
-		_winUIYesButton.onClick.AddListener(OnWinYes);
-		_winUINoButton.onClick.AddListener(OnWinNo);
+        _winUIYesButton.onClick.AddListener(OnWinYes);
+        _winUINoButton.onClick.AddListener(OnWinNo);
 
         _winUINewPerks = GameObject.Find("NewPerksText");
         _winUINewPerks.SetActive(false);
 
-		_winUI.SetActive(false);
-	}
+        _winUI.SetActive(false);
+    }
 
-	private void SetListenersForLoseUI()
-	{
-		_loseUI = GameObject.Find("LoseUI");
+    private void SetListenersForLoseUI()
+    {
+        _loseUI = GameObject.Find("LoseUI");
 
-		_loseUIYesButton = _loseUI.transform.FindContainsInChildren("Yes").GetComponent<Button>();
-		_loseUINoButton = _loseUI.transform.FindContainsInChildren("No").GetComponent<Button>();
+        _loseUIYesButton = _loseUI.transform.FindContainsInChildren("Yes").GetComponent<Button>();
+        _loseUINoButton = _loseUI.transform.FindContainsInChildren("No").GetComponent<Button>();
 
-		_loseUIYesButton.onClick.AddListener(OnLoseYes);
-		_loseUINoButton.onClick.AddListener(OnLoseNo);
+        _loseUIYesButton.onClick.AddListener(OnLoseYes);
+        _loseUINoButton.onClick.AddListener(OnLoseNo);
 
-		_loseUI.SetActive(false);
-	}
+        _loseUI.SetActive(false);
+    }
 
-	public void OnResume()
+    public void OnResume()
     {
         //_paused = false;
         //_pauseUI.SetActive(false);
@@ -502,9 +531,9 @@ public class UIManager : MonoBehaviour
     //After Losing
     public void OnLoseYes()
     {
-		//Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
-		_levelManager.LoadFirstLevel();
-		_loseUI.SetActive(false);
+        //Need to restart game or restart level depending on team, but for the alpha since it's only one scene it will restart the level
+        _levelManager.LoadFirstLevel();
+        _loseUI.SetActive(false);
         updateActive = false;
 
         EventHandler.SendEvent(EventHandler.Events.BUTTON_CLICK);

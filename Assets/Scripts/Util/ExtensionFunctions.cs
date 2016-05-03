@@ -2,6 +2,14 @@
 
 public static class ExtensionFunctions
 {
+    public enum EaseType
+    {
+        EaseInOut,
+        EaseOut,
+        EaseIn,
+        Linear
+    }
+
     private static System.Random random = new System.Random();
 
     public static T GetOrAddComponent<T>(this Component component) where T : Component
@@ -94,5 +102,23 @@ public static class ExtensionFunctions
         float stateLength = animator.GetCurrentAnimatorStateInfo(0).length;
         float transitionDuration = transitionSeconds / stateLength;
         animator.CrossFade(stateName, transitionDuration, -1, normalizedTime);
+    }
+
+    public static float EaseFromTo(float start, float end, float value, EaseType type = EaseType.EaseInOut)
+    {
+        switch (type)
+        {
+            case EaseType.EaseInOut:
+                return Mathf.Lerp(start, end, value * value * (3.0f - 2.0f * value));
+
+            case EaseType.EaseOut:
+                return Mathf.Lerp(start, end, Mathf.Sin(value * Mathf.PI * 0.5f));
+
+            case EaseType.EaseIn:
+                return Mathf.Lerp(start, end, 1.0f - Mathf.Cos(value * Mathf.PI * 0.5f));
+
+            default:
+                return Mathf.Lerp(start, end, value);
+        }
     }
 }

@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 		if (_playEnding)
 		{
 			_movement.Move(_velocity);
-			transform.Translate(Vector3.right * (_movement.horizontalMovementSpeed / 4) * Time.deltaTime);
+			transform.Translate(Vector3.right * (_movement.horizontalMovementSpeed / 3) * Time.deltaTime);
 		}
 	}
 
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 		GetComponent<BaseCollision>().enabled = false;
 		_playerMotor.enabled = false;
 		_movement = GetComponent<Movement>();
-		_velocity = new Vector2(_movement.horizontalMovementSpeed / 2, 0);
+		_velocity = new Vector2(_movement.horizontalMovementSpeed / 3, 0);
 		Invoke("SetPlayEndingToTrue", 1);
 	}
 
