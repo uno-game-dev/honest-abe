@@ -353,6 +353,7 @@ MonoBehaviour:
   propDensity: 5
   decalDensity: 10
   itemDensity: 1
+  useMoreDensityForSpecialEnemies: 0
   startSpawnPosition: 38
   spawnYMod: 0.7
 --- !u!114 &11475430
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184828}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 155d10f594fca4aa99748b4c0db9d0f9, type: 3}
   m_Name: 
@@ -439,6 +440,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: decals.Array.data[2]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
