@@ -1576,7 +1576,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 17092
+  m_CachedInstanceID: 58496
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1678,7 +1678,7 @@ MonoBehaviour:
     m_EventID: 570825600
   - m_Destination: {fileID: 11414364}
     m_EventID: 871818645
-  m_CachedInstanceID: 17084
+  m_CachedInstanceID: 58488
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 210, y: 160}
   m_Transitions: []
-  m_CachedInstanceID: 17108
+  m_CachedInstanceID: 58512
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1834,7 +1834,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 17094
+  m_CachedInstanceID: 58498
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1906,7 +1906,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 17086
+  m_CachedInstanceID: 58490
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1991,7 +1991,7 @@ MonoBehaviour:
     m_Name: movementProximityDistance
     m_Blackboard: {fileID: 11426784}
     m_IsConstant: 0
-    value: 20
+    value: 30
   - m_ID: 768279970
     m_Name: attackProximityDistanceX
     m_Blackboard: {fileID: 11426784}
@@ -2322,7 +2322,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11491078}
     m_EventID: 1003642416
-  m_CachedInstanceID: 17100
+  m_CachedInstanceID: 58504
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2378,7 +2378,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 17088
+  m_CachedInstanceID: 58492
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 17080
+  m_CachedInstanceID: 58484
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 17082
+  m_CachedInstanceID: 58486
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2569,7 +2569,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 17106
+  m_CachedInstanceID: 58510
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2667,7 +2667,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 17090
+  m_CachedInstanceID: 58494
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -6655,6 +6655,10 @@ Prefab:
       propertyPath: bloodHeavyMelee
       value: 
       objectReference: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_FloatVars.Array.data[0].value
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177166}
