@@ -6,6 +6,7 @@ public class PlayerHealth : Health
     public int damageThreshold;
     public float decreaseSecondsPerHealthPoint = 1;
 	public int executionsPerformed;
+	public bool invincible = false;
 
 	[HideInInspector]
 	private HealthSlider _slider;
@@ -34,6 +35,9 @@ public class PlayerHealth : Health
 			executionsPerformed--;
 			Execution();
 		}
+
+		if (invincible)
+			health = 100;
     }
 
     public void RefillForCutscene()

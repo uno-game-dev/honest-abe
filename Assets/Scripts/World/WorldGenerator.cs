@@ -21,8 +21,9 @@ public class WorldGenerator : MonoBehaviour
 	public int itemDensity = 1;
 
     public float startSpawnPosition;
+	public float spawnYMod = 0.8f;
 
-    private GameObject _camera;
+	private GameObject _camera;
 	private List<Vector3> _occupiedPos;
 	private System.Random _rnd;
 	private string _levelName;
@@ -259,7 +260,7 @@ public class WorldGenerator : MonoBehaviour
             }
 			else
 				x = (float)((_width * _rnd.NextDouble() * 2) - _width + _lastXPos);
-			y = (float)((_height * _rnd.NextDouble()) * 0.9 - _height);
+			y = (float)(((_height * _rnd.NextDouble()) * spawnYMod) - (_height * spawnYMod * 1.1));
 
 			foreach (Vector3 pos in _occupiedPos)
 			{
