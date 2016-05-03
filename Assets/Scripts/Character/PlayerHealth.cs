@@ -5,26 +5,33 @@ public class PlayerHealth : Health
 {
     public int damageThreshold;
     public float decreaseSecondsPerHealthPoint = 1;
-	public int executionsPerformed;
-	public bool invincible = false;
+    public int executionsPerformed;
+    public bool invincible = false;
 
-	[HideInInspector]
-	private HealthSlider _slider;
-	private GameManager _gameManager;
-	private int _tempHealth;
+    [HideInInspector]
+    private HealthSlider _slider;
+    private GameManager _gameManager;
+    private int _tempHealth;
     private int _tempDamageThreshold;
     private float _updateSliderTime = 1;
     private Animator _animator;
     private CharacterState _characterState;
 
+    private float timeSinceDead, timeUntilGameOver = 2.5f;
+
     void Start()
-	{
-		Initialize();
+    {
+        Initialize();
     }
 
     void Update()
     {
-        if (health <= 0) {
+        if (health <= 0)
+        {
+            Time.timeScale -= Time.deltaTime;
+            if (Time.timeScale < 0)
+                Time.timeScale = 0;
+
             timeSinceDead += Time.unscaledDeltaTime;
 
             if (timeSinceDead > timeUntilGameOver)
@@ -45,8 +52,8 @@ public class PlayerHealth : Health
             executionsPerformed--;
             Execution();
         }
-		if (invincible)
-			health = 100;
+        if (invincible)
+            health = 100;
     }
 
     public void RefillForCutscene()
@@ -59,16 +66,16 @@ public class PlayerHealth : Health
         IncreaseDT(100);
     }
 
-	public void Initialize()
-	{
-		_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		_slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
-		health = 100;
-		damageThreshold = 100;
-		executionsPerformed = 0;
+    public void Initialize()
+    {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _slider = GameObject.Find("HealthUI").GetComponent<HealthSlider>();
+        health = 100;
+        damageThreshold = 100;
+        executionsPerformed = 0;
         alive = true;
-		GetComponent<PlayerMotor>().enabled = true;
-		GetComponent<PlayerControls>().enabled = true;
+        GetComponent<PlayerMotor>().enabled = true;
+        GetComponent<PlayerControls>().enabled = true;
         _animator = GetComponent<Animator>();
         _characterState = GetComponent<CharacterState>();
     }
@@ -157,22 +164,26 @@ public class PlayerHealth : Health
 
     public override void Decrease(int damage)
     {
-        if ((PerkManager.activeTrinketPerk != null) && (Perk.performMaryToddsTimeStamp >= Time.time)) {
-			Debug.Log ("Mary Todd's Lockette is Actived");
-			return;
-		} else {
-			Debug.Log (Perk.maryToddsLocketteIsActive);
-			// Temp variable for damageThreshold
-			_tempDamageThreshold = damageThreshold - damage;
-			if (_tempDamageThreshold <= 0) {
-				health -= Math.Abs (_tempDamageThreshold);
-				_slider.UpdateCurrentHealth (health);
-				damageThreshold = 0;
-			} else {
-				damageThreshold -= damage;
-			}
-			_slider.UpdateDamageThreshold (damageThreshold);
-		}
+        if ((PerkManager.activeTrinketPerk != null) && (Perk.performMaryToddsTimeStamp >= Time.time))
+        {
+            Debug.Log("Mary Todd's Lockette is Actived");
+            return;
+        }
+        else {
+            Debug.Log(Perk.maryToddsLocketteIsActive);
+            // Temp variable for damageThreshold
+            _tempDamageThreshold = damageThreshold - damage;
+            if (_tempDamageThreshold <= 0)
+            {
+                health -= Math.Abs(_tempDamageThreshold);
+                _slider.UpdateCurrentHealth(health);
+                damageThreshold = 0;
+            }
+            else {
+                damageThreshold -= damage;
+            }
+            _slider.UpdateDamageThreshold(damageThreshold);
+        }
     }
 
     // Updates the health and damageThreshold 
@@ -194,7 +205,7 @@ public class PlayerHealth : Health
             }
         }
     }
-	
+
     private void Execution()
     {
         // Make sure damageThreshold does not go above 100
@@ -212,22 +223,20 @@ public class PlayerHealth : Health
     }
 
     private void Death()
-	{
+    {
         if (!alive)
             return;
 
-		alive = false;
-		EventHandler.SendEvent(EventHandler.Events.GAME_LOSE);
+        alive = false;
         SoundPlayer.Play("Abe Death");
         _animator.TransitionPlay("Abe Death");
         _characterState.SetState(CharacterState.State.Dead);
-
-		GameObject.Find("Main Camera").GetComponent<CameraFollow>().enabled = false;
-		GetComponent<BaseCollision>().enabled = false;
+        GameObject.Find("Main Camera").GetComponent<CameraFollow>().enabled = false;
+        GetComponent<BaseCollision>().enabled = false;
 
         foreach (Movement movement in FindObjectsOfType<Movement>())
             movement.StopFootSteps();
         foreach (ScrollingBackground sb in FindObjectsOfType<ScrollingBackground>())
             sb.scrollSpeed = 0;
-	}
+    }
 }
