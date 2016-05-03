@@ -10,7 +10,7 @@ public class AttackArea : MonoBehaviour
     private bool _updateChainAttack;
     private List<Collider2D> _colliders = new List<Collider2D>();
     private BoxCollider2D _collider;
-	private GameObject _player;
+    private GameObject _player;
 
     private void Awake()
     {
@@ -18,22 +18,17 @@ public class AttackArea : MonoBehaviour
         _collider = GetComponent<BoxCollider2D>();
         _chainAttack = GetComponentInParent<ChainAttack>();
         _attack = GetComponentInParent<Attack>();
-		_player = GameObject.Find ("Player");
+        _player = GameObject.Find("Player");
     }
 
     private void OnEnable()
-	{
-		_collision.OnCollisionEnter += OnCollision;
-
-		if (_chainAttack && _chainAttack.numberOfChainAttacks == 0 && _attack.attackState == Attack.State.Heavy)
-            _updateChainAttack = false;
-        else
-            _updateChainAttack = true;
-	}
+    {
+        _collision.OnCollisionEnter += OnCollision;
+    }
 
     private void OnDisable()
     {
-		_collision.OnCollisionEnter -= OnCollision;
+        _collision.OnCollisionEnter -= OnCollision;
 
         if (!hit && _chainAttack)
             _chainAttack.Miss();
@@ -49,28 +44,28 @@ public class AttackArea : MonoBehaviour
 
         _colliders.Add(collider);
 
-		if (transform.parent.gameObject.tag == "Player") {
-			if (_attack.attackState == Attack.State.Heavy)
-				EventHandler.SendEvent (EventHandler.Events.HEAVY_HIT);
-			else if (_attack.attackState == Attack.State.Light)
-				EventHandler.SendEvent (EventHandler.Events.LIGHT_HIT);
-		} else {
-			// Knock the player down if this was a trip attack (i.e. if I'm a bushwhacker and this was a Heavy attack)
-			if (collider.name.Contains("Bushwhacker") && _attack.attackState == Attack.State.Heavy) {
-                if (_player.GetComponent<Grabber>() && _player.GetComponent<Grabber>().IsGrabbingSomeone())
-                    _player.GetComponent<Grabber>().Release();
-				_player.GetComponent<KnockDown> ().StartKnockDown (0);
-                SoundPlayer.Play("Abe Gets Tripped");
-            }
-		}
-
-        if (_updateChainAttack && _chainAttack)
+        if (transform.parent.gameObject.tag == "Player")
         {
             if (_attack.attackState == Attack.State.Heavy)
-                _chainAttack.ShowComboBreak();
-            else
-                _chainAttack.Hit();
-            _updateChainAttack = false;
+            {
+                EventHandler.SendEvent(EventHandler.Events.HEAVY_HIT);
+                if (_chainAttack && !hit) _chainAttack.HeavyAttackChain();
+            }
+            else if (_attack.attackState == Attack.State.Light)
+            {
+                EventHandler.SendEvent(EventHandler.Events.LIGHT_HIT);
+                if (_chainAttack && !hit) _chainAttack.LightAttackChain();
+            }
+        }
+        else {
+            // Knock the player down if this was a trip attack (i.e. if I'm a bushwhacker and this was a Heavy attack)
+            if (collider.name.Contains("Bushwhacker") && _attack.attackState == Attack.State.Heavy)
+            {
+                if (_player.GetComponent<Grabber>() && _player.GetComponent<Grabber>().IsGrabbingSomeone())
+                    _player.GetComponent<Grabber>().Release();
+                _player.GetComponent<KnockDown>().StartKnockDown(0);
+                SoundPlayer.Play("Abe Gets Tripped");
+            }
         }
         this.hit = collider.gameObject;
     }
@@ -83,6 +78,17 @@ public class AttackArea : MonoBehaviour
     public int GetAttackChainNumber()
     {
         return _chainAttack.numberOfChainAttacks;
+    }
+
+    public void AddToChainOnDeath(GameObject deadObject, bool isHeavy)
+    {
+        if (hit)
+            return;
+
+        hit = deadObject;
+        if (_chainAttack)
+            if (isHeavy) _chainAttack.HeavyAttackChain();
+            else _chainAttack.LightAttackChain();
     }
 
     public Weapon.AttackType GetAttackType()
