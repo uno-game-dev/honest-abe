@@ -42,40 +42,47 @@ public class GameManager : MonoBehaviour
 
         // This is super ugly, but I had to do what immediately came to mind
         // and don't have time to make it nicer
-        if (PerkManager.axe_bfa_to_be_unlocked)
+        if (PerkManager.axe_bfa_to_be_unlocked && !PerkManager.axe_bfa_unlocked)
         {
             PerkManager.newPerksUnlocked = true;
             PerkManager.UpdatePerkStatus(PerkManager.axe_bfa_name, 1);
+            Debug.Log("BFA to unlock");
         }
-        if (PerkManager.axe_dtVampirism_to_be_unlocked)
+        if (PerkManager.axe_dtVampirism_to_be_unlocked && !PerkManager.axe_dtVampirism_unlocked)
         {
             PerkManager.newPerksUnlocked = true;
             PerkManager.UpdatePerkStatus(PerkManager.axe_dtVampirism_name, 1);
+            Debug.Log("vamp to unlock");
         }
-        if (PerkManager.axe_slugger_to_be_unlocked)
+        if (PerkManager.axe_slugger_to_be_unlocked && !PerkManager.axe_slugger_unlocked)
         {
             PerkManager.newPerksUnlocked = true;
             PerkManager.UpdatePerkStatus(PerkManager.axe_slugger_name, 1);
+            Debug.Log("slugger to unlock");
         }
-        if (PerkManager.hat_bearHands_to_be_unlocked)
+        if (PerkManager.hat_bearHands_to_be_unlocked && !PerkManager.hat_bearHands_unlocked)
         {
             PerkManager.newPerksUnlocked = true;
             PerkManager.UpdatePerkStatus(PerkManager.hat_bearHands_name, 1);
+            Debug.Log("bear to unlock");
         }
-        if (PerkManager.hat_stickyFingers_to_be_unlocked)
+        if (PerkManager.hat_stickyFingers_to_be_unlocked && !PerkManager.hat_stickyFingers_unlocked)
         {
             PerkManager.newPerksUnlocked = true;
             PerkManager.UpdatePerkStatus(PerkManager.hat_stickyFingers_name, 1);
+            Debug.Log("sticky to unlock");
         }
-        if (PerkManager.trinket_agressionBuddy_to_be_unlocked)
+        if (PerkManager.trinket_agressionBuddy_to_be_unlocked && !PerkManager.trinket_agressionBuddy_unlocked)
         {
             PerkManager.newPerksUnlocked = true;
             PerkManager.UpdatePerkStatus(PerkManager.trinket_agressionBuddy_name, 1);
+            Debug.Log("buddy to unlock");
         }
-        if (PerkManager.trinket_maryToddsLockette_to_be_unlocked)
+        if (PerkManager.trinket_maryToddsLockette_to_be_unlocked && !PerkManager.trinket_maryToddsLockette_unlocked)
         {
             PerkManager.newPerksUnlocked = true;
             PerkManager.UpdatePerkStatus(PerkManager.trinket_maryToddsLockette_name, 1);
+            Debug.Log("marytodds to unlock");
         }
 
         if (PerkManager.newPerksUnlocked)
