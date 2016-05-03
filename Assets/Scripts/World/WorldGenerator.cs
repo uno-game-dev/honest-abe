@@ -21,7 +21,7 @@ public class WorldGenerator : MonoBehaviour
 	public int itemDensity = 1;
 
     public float startSpawnPosition;
-	public float spawnYMod = 0.8f;
+	public float spawnYMod = 0.7f;
 
 	private GameObject _camera;
 	private List<Vector3> _occupiedPos;
