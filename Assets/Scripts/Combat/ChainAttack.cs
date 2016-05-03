@@ -5,58 +5,44 @@ public class ChainAttack : MonoBehaviour
     public int numberOfChainAttacks = 0;
     public float chainAttackTimer = 0;
     public float chainAttackResetsIn = 1;
+    private bool previousAttackLight;
 
     private void Update()
     {
         if (chainAttackTimer < chainAttackResetsIn)
             chainAttackTimer += Time.deltaTime;
-        else if (numberOfChainAttacks > 0)
+        else
+        {
             numberOfChainAttacks = 0;
+            ChainUI.SetChainNumber(numberOfChainAttacks);
+        }
     }
 
-    public void Hit()
+    public void LightAttackChain()
     {
-        if (numberOfChainAttacks == 3)
+        if (numberOfChainAttacks >= 3)
             numberOfChainAttacks = 0;
+
+        previousAttackLight = true;
         chainAttackTimer = 0;
         numberOfChainAttacks++;
-        AddChainAttackNumberToScene();
+        ChainUI.SetChainNumber(numberOfChainAttacks);
     }
 
     public void Miss()
     {
-        if (numberOfChainAttacks > 0)
-            ShowComboBreak();
-
-        numberOfChainAttacks = 0;
         chainAttackTimer = float.PositiveInfinity;
+        numberOfChainAttacks = 0;
+        ChainUI.SetChainNumber(numberOfChainAttacks);
     }
 
-    public void AddChainAttackNumberToScene()
+    public void HeavyAttackChain()
     {
-        GameObject number = new GameObject();
-        number.name = "Chain Attack Number";
-        TextMesh tm = number.AddComponent<TextMesh>();
-        tm.text = numberOfChainAttacks.ToString();
-        tm.color = Color.red;
-        tm.fontSize = 24;
-        tm.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        tm.transform.position = transform.position;
-        number.AddComponent<FloatUpAndDestroy>();
-    }
+        if (previousAttackLight)
+            chainAttackTimer = 0;
 
-    public void ShowComboBreak()
-    {
-        GameObject number = new GameObject();
-        number.name = "Chain Attack Break";
-        TextMesh tm = number.AddComponent<TextMesh>();
-        tm.text = "X";
-        tm.fontSize = 24;
-        tm.color = Color.red;
-        tm.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        tm.transform.position = transform.position;
-        FloatUpAndDestroy f = number.AddComponent<FloatUpAndDestroy>();
-        f.floatGravityMultiplier = 0.5f;
-        f.floatVelocity = 2;
+        previousAttackLight = false;
+        ChainUI.AddHeavy();
+        numberOfChainAttacks = 0;
     }
 }

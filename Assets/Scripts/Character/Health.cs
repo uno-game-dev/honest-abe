@@ -50,10 +50,14 @@ public class Health : MonoBehaviour
                 if (gameObject.tag != "Player" && playerAttack.attackState == Attack.State.Heavy)
                 {
                     ShowExecution();
+                    playerAttack.GetComponentInChildren<AttackArea>().AddToChainOnDeath(gameObject, true);
                     EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
                 }
                 else if (playerAttack.attackState == Attack.State.Light)
+                {
+                    playerAttack.GetComponentInChildren<AttackArea>().AddToChainOnDeath(gameObject, false);
                     EventHandler.SendEvent(EventHandler.Events.LIGHT_KILL);
+                }
             }
 
             DeathSequence();
