@@ -93,13 +93,14 @@ public class BossHealth : Health
             {
                 _currentTargetHealthForExecution -= _totalHealth / 4;
 				// Officer-Boss additional spawns
-				if (gameObject.name == "Bear(Clone)")
-				{
-					int n = (_totalHealth - health) / (_totalHealth / 4);
-					Debug.Log("Spawning " + n + " Bushwhackers");
-                    _worldGenerator.SpawnBushwhacker(n);
-				}
-				else if (gameObject.name == "Officer-Boss(Clone)")
+				//if (gameObject.name == "Bear(Clone)")
+				//{
+				//	int n = (_totalHealth - health) / (_totalHealth / 4);
+				//	Debug.Log("Spawning " + n + " Bushwhackers");
+                //  _worldGenerator.SpawnBushwhacker(n);
+				//}
+				//else
+                if (gameObject.name == "Officer-Boss(Clone)")
 					_worldGenerator.SpawnWaveDuringBoss();
 			}
         }
