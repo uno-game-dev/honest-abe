@@ -44,7 +44,7 @@ public class PerkManager : MonoBehaviour
     public static string axe_bfa_lock_desc = "Perk: B.F.A\nThis Perk is Locked!\n<i>Axe love, rewarded</i>";
 
     public static string axe_slugger_name = "Axe_Slugger";
-    public static string axe_slugger_desc = "Perk: Slugger\nStronger combos and harder knockbacks\nUnlocking by executing every non-boss enemy";
+    public static string axe_slugger_desc = "Perk: Slugger\nStronger combos and harder knockbacks\nUnlocked by executing every non-boss enemy";
     public static string axe_slugger_lock_desc = "Perk: Slugger\nThis Perk is Locked!\n<i>Send your enemies off with a grand slam</i>";
 
     public static string hat_bearHands_name = "Hat_bearHands";
