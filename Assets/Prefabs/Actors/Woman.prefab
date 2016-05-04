@@ -554,7 +554,6 @@ GameObject:
   - 114: {fileID: 11426756}
   - 114: {fileID: 11419786}
   - 114: {fileID: 11491078}
-  - 114: {fileID: 11414364}
   m_Layer: 11
   m_Name: Woman
   m_TagString: Enemy
@@ -1576,7 +1575,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 58496
+  m_CachedInstanceID: 9304
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1676,9 +1675,7 @@ MonoBehaviour:
     m_EventID: 361888865
   - m_Destination: {fileID: 11461846}
     m_EventID: 570825600
-  - m_Destination: {fileID: 11414364}
-    m_EventID: 871818645
-  m_CachedInstanceID: 58488
+  m_CachedInstanceID: 9296
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1687,20 +1684,18 @@ MonoBehaviour:
     m_NodeTypes:
     - BehaviourMachine.OnEnable
     - BehaviourMachine.Update
-    - IsWeaponOutOfAmmo
     - KeepRange
     - IsPlayerInMeleeRange
     - IsPlayerInLine
-    m_NodeTypeHash: 89ef821089ef82104a2bcb23fbd4a9444a2bcb234a2bcb23
-    m_NodeFieldStartIndex: 000000000300000006000000090000000b0000000e00000011000000
-    m_BranchIndex: ffffffffffffffff01000000010000000100000001000000
+    m_NodeTypeHash: 89ef821089ef8210fbd4a9444a2bcb234a2bcb23
+    m_NodeFieldStartIndex: 000000000300000006000000080000000b0000000e000000
+    m_BranchIndex: ffffffffffffffff010000000100000001000000
     m_UnityObjectValue: []
-    m_IntValue: 010000000100000002000000010000000600000095e5f63305000000030000002a9d127704000000801b0622
+    m_IntValue: 0100000001000000020000000100000005000000030000002a9d127704000000801b0622
     m_FloatValue: []
     m_StringValue:
     - OnEnable
     - Update
-    - IsWeaponOutOfAmmo
     - KeepRange
     - IsPlayerInMeleeRange
     - IsPlayerInLine
@@ -1708,8 +1703,8 @@ MonoBehaviour:
     m_GenericFieldType: []
     m_GenericFieldHash: 
     m_GenericFieldSize: 
-    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000005000000060000000300000007000000040000000800000009000000050000000a000000
-    m_FieldType: 01000000020000000500000001000000020000000500000001000000020000001e000000010000000200000001000000020000001e00000001000000020000001e000000
+    m_FieldIndex: 0000000000000000010000000200000001000000030000000400000002000000050000000300000006000000070000000400000008000000
+    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000001000000020000001e00000001000000020000001e000000
     m_FieldPath:
     - instanceID
     - name
@@ -1719,67 +1714,9 @@ MonoBehaviour:
     - enabled
     - instanceID
     - name
-    - onSuccess
-    - instanceID
-    - name
     - instanceID
     - name
     - onSuccess
-    - instanceID
-    - name
-    - onSuccess
---- !u!114 &11414364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177166}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b065960b75e9a4e6195b143a036f7e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Blackboard: {fileID: 11426784}
-  m_Parent: {fileID: 11469354}
-  m_StateName: RunAwayFromPlayer
-  m_Color: 0
-  m_HideScript: 1
-  m_Position: {x: 210, y: 160}
-  m_Transitions: []
-  m_CachedInstanceID: 58512
-  m_Description: 
-  m_IgnoreTimeScale: 0
-  m_ResetStatusOnDisable: 1
-  m_EnabledStates: []
-  m_NodeSerialization:
-    m_NodeTypes:
-    - BehaviourMachine.OnEnable
-    - BehaviourMachine.Update
-    - RunAwayFromPlayer
-    m_NodeTypeHash: 89ef821089ef82104a2bcb23
-    m_NodeFieldStartIndex: 00000000030000000600000009000000
-    m_BranchIndex: ffffffffffffffff01000000
-    m_UnityObjectValue: []
-    m_IntValue: 0100000001000000020000000100000003000000
-    m_FloatValue: []
-    m_StringValue:
-    - OnEnable
-    - Update
-    - RunAwayFromPlayer
-    - BehaviourMachine.FsmEvent
-    m_CurveValue: []
-    m_GenericFieldType: []
-    m_GenericFieldHash: 
-    m_GenericFieldSize: 
-    m_FieldIndex: 000000000000000001000000020000000100000003000000040000000200000003000000
-    m_FieldType: 010000000200000005000000010000000200000005000000010000000200000011000000
-    m_FieldPath:
-    - instanceID
-    - name
-    - enabled
-    - instanceID
-    - name
-    - enabled
     - instanceID
     - name
     - onSuccess
@@ -1834,7 +1771,7 @@ MonoBehaviour:
     m_EventID: 1833054491
   - m_Destination: {fileID: 11499232}
     m_EventID: 362682009
-  m_CachedInstanceID: 58498
+  m_CachedInstanceID: 9306
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1906,7 +1843,7 @@ MonoBehaviour:
     m_EventID: 977896394
   - m_Destination: {fileID: 11424772}
     m_EventID: 592199803
-  m_CachedInstanceID: 58490
+  m_CachedInstanceID: 9298
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2322,7 +2259,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11491078}
     m_EventID: 1003642416
-  m_CachedInstanceID: 58504
+  m_CachedInstanceID: 9312
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2378,7 +2315,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 58492
+  m_CachedInstanceID: 9300
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2468,7 +2405,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 58484
+  m_CachedInstanceID: 9292
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2513,7 +2450,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 58486
+  m_CachedInstanceID: 9294
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2569,7 +2506,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11413808}
     m_EventID: 800830063
-  m_CachedInstanceID: 58510
+  m_CachedInstanceID: 9318
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2667,7 +2604,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11426596}
     m_EventID: 1997708586
-  m_CachedInstanceID: 58494
+  m_CachedInstanceID: 9302
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -6638,7 +6575,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[3].m_Destination
       value: 
-      objectReference: {fileID: 11414364}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bloodLightSwing
       value: 

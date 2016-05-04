@@ -23,8 +23,8 @@ public class IsPlayerInAttackRange : ConditionNode {
 		float yDiff = Mathf.Abs (playerPosition.y - selfPosition.y);
 
 		if(xDiff < blackboard.GetFloatVar("attackProximityDistanceX")){
-			if (yDiff < blackboard.GetFloatVar("attackProximityDistanceY")) {
-				if (self.tag != "Boss" || xDiff > blackboard.GetFloatVar ("attackProximityMinX")) { //! other Bosses need
+			if (yDiff <= blackboard.GetFloatVar("attackProximityDistanceY")) {
+				if (self.tag != "Boss" || xDiff >= blackboard.GetFloatVar ("attackProximityMinX")) { //! other Bosses need
 					if (direction == Movement.Direction.Left && playerPosition.x < selfPosition.x) {
 						if (onSuccess.id != 0)
 							owner.root.SendEvent (onSuccess.id);

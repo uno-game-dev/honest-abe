@@ -1683,7 +1683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 4
-  attackSize: {x: 4, y: 2}
+  attackSize: {x: 5, y: 3}
   attackOffset: {x: 2, y: 0.5}
   heldOffset: {x: 0, y: 0, z: 0}
   heldOrientation: {x: 0, y: 0, z: 76}
@@ -1715,7 +1715,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11484172}
     m_EventID: 103276309
-  m_CachedInstanceID: 82594
+  m_CachedInstanceID: 10834
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1789,7 +1789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0230f66eb00a64fb8986d61f3c1b17fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 250
   additionalHealthFloor: 0
   additionalHealthCeiling: 0
   alive: 0
@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 82582
+  m_CachedInstanceID: 10822
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1853,12 +1853,12 @@ MonoBehaviour:
     m_Name: attackProximityDistanceX
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
-    value: 4
+    value: 5
   - m_ID: 450703671
     m_Name: attackProximityDistanceY
     m_Blackboard: {fileID: 11427242}
     m_IsConstant: 0
-    value: 2
+    value: 1
   - m_ID: 1703854815
     m_Name: attackPosition
     m_Blackboard: {fileID: 11427242}
@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11472116}
     m_EventID: 805742543
-  m_CachedInstanceID: 82598
+  m_CachedInstanceID: 10838
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2048,7 +2048,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11476700}
     m_EventID: 755052694
-  m_CachedInstanceID: 82604
+  m_CachedInstanceID: 10844
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11472116}
     m_EventID: 805742543
-  m_CachedInstanceID: 82602
+  m_CachedInstanceID: 10842
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11407480}
     m_EventID: 1463829125
-  m_CachedInstanceID: 82596
+  m_CachedInstanceID: 10836
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2352,7 +2352,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11455202}
     m_EventID: 334526696
-  m_CachedInstanceID: 82600
+  m_CachedInstanceID: 10840
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2419,7 +2419,7 @@ MonoBehaviour:
     m_EventID: 805742543
   - m_Destination: {fileID: 11455202}
     m_EventID: 334526696
-  m_CachedInstanceID: 82592
+  m_CachedInstanceID: 10832
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2482,7 +2482,7 @@ MonoBehaviour:
     m_EventID: 322721332
   - m_Destination: {fileID: 11476700}
     m_EventID: 755052694
-  m_CachedInstanceID: 82606
+  m_CachedInstanceID: 10846
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -3065,7 +3065,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: health
-      value: 150
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damageRate
