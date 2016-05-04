@@ -176,6 +176,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case Cutscenes.BEAR:
                 cutsceneActive = true;
+                GameObject.Find("Blood Drip").SetActive(false);
                 _player.GetComponent<PlayerHealth>().RefillForCutscene();
                 _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
                 _ui.GetComponent<UIManager>().bossHealthUI.enabled = false;
@@ -184,6 +185,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case Cutscenes.MID:
                 cutsceneActive = true;
+                GameObject.Find("Blood Drip").SetActive(false);
                 _player.GetComponent<PlayerHealth>().RefillForCutscene();
                 _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
                 _ui.GetComponent<UIManager>().bossHealthUI.enabled = false;
@@ -192,6 +194,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
             case Cutscenes.END:
                 cutsceneActive = true;
+                GameObject.Find("Blood Drip").SetActive(false);
                 _player.GetComponent<Player>().PlayEnding();
                 _player.GetComponent<PlayerHealth>().RefillForCutscene();
                 _ui.GetComponent<UIManager>().hudCanvas.SetActive(false);
