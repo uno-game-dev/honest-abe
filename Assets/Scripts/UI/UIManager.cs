@@ -91,6 +91,9 @@ public class UIManager : MonoBehaviour
     private Button _loseUIYesButton;
     private Button _loseUINoButton;
 
+	// Health UI
+	private CanvasGroup _healthUICanvas;
+
     //Trinket UI
     private static Text _trinketUI;
 
@@ -118,8 +121,11 @@ public class UIManager : MonoBehaviour
         _levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
         _startGameText = GameObject.Find("StartText");
         _logoImage = GameObject.Find("Logo");
+		_healthUICanvas = GameObject.Find("HealthUI").GetComponent<CanvasGroup>();
+
         if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
+		{
+			_healthUICanvas.alpha = 0;
 			_startGameText.SetActive(true);
 			if (_gameManager.firstGame)
 				_logoImage.SetActive(true);
@@ -139,7 +145,6 @@ public class UIManager : MonoBehaviour
         SetListenersForLoseUI();
         cutsceneUI = GameObject.Find("CutsceneCanvas");
         cutsceneManager = cutsceneUI.GetComponent<CutsceneManager>();
-        //_cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.NULL);
         perkText = GameObject.Find("PerkText").GetComponent<Text>();
         perkText.enabled = false;
         _bossUI = GameObject.Find("BossHUDMarkerCanvas");
@@ -259,6 +264,7 @@ public class UIManager : MonoBehaviour
 			cinematic.GetComponent<Cinematic>().enabled = true;
 			GameObject.Find("GameManager").GetComponent<PerkManager>().showInstructions = true;
 		}
+		_healthUICanvas.alpha = 1;
 	}
 
     private void SetListenersForPauseUI()
