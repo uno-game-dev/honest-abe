@@ -1669,6 +1669,7 @@ MonoBehaviour:
   damageThreshold: 100
   decreaseSecondsPerHealthPoint: 0.2
   executionsPerformed: 0
+  invincible: 0
 --- !u!114 &11451924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1802,7 +1803,7 @@ MonoBehaviour:
   heldOrientation: {x: 0, y: 0, z: 0}
   lightDamage: 1
   lightStun: 0.2
-  lightKnockback: 1
+  lightKnockback: 5
   heavyDamage: 2
   heavyStun: 0.5
   heavyKnockback: 7
@@ -2442,7 +2443,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightKnockback
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
