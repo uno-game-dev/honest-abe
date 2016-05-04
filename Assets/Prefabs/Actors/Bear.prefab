@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 11624
+  m_CachedInstanceID: 7772
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1096,7 +1096,7 @@ MonoBehaviour:
     m_Name: attackProximityDistanceY
     m_Blackboard: {fileID: 11460448}
     m_IsConstant: 0
-    value: 2
+    value: 1
   - m_ID: 942417077
     m_Name: attackPosition
     m_Blackboard: {fileID: 11460448}
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11622
+  m_CachedInstanceID: 7778
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11479958}
     m_EventID: 314948278
-  m_CachedInstanceID: 11620
+  m_CachedInstanceID: 7784
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11496958}
     m_EventID: 1209066823
-  m_CachedInstanceID: 11618
+  m_CachedInstanceID: 7774
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1467,7 +1467,7 @@ MonoBehaviour:
     m_EventID: 1209066823
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 11608
+  m_CachedInstanceID: 7786
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11469878}
     m_EventID: 2084026198
-  m_CachedInstanceID: 11616
+  m_CachedInstanceID: 7780
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1605,9 +1605,11 @@ MonoBehaviour:
   damageAmount: 10
   damageRate: 1
   bloodSplatter: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodSwing: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
+  bloodLightSwing: {fileID: 0}
+  bloodHeavySwing: {fileID: 0}
   bloodShoot: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
-  bloodMelee: {fileID: 145470, guid: 0ca7678bdd3567541b86f1a64ef76496, type: 2}
+  bloodLightMelee: {fileID: 0}
+  bloodHeavyMelee: {fileID: 0}
   bloodJab: {fileID: 145470, guid: 0654068fb881f654690246f5a33dca2a, type: 2}
 --- !u!114 &11496958
 MonoBehaviour:
@@ -1631,7 +1633,7 @@ MonoBehaviour:
     m_EventID: 56118298
   - m_Destination: {fileID: 11485854}
     m_EventID: 158782084
-  m_CachedInstanceID: 11614
+  m_CachedInstanceID: 7776
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1934,7 +1936,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_FloatVars.Array.data[2].value
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Transitions.Array.data[0].m_Destination
