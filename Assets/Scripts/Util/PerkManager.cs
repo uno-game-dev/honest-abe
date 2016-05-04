@@ -200,7 +200,8 @@ public class PerkManager : MonoBehaviour
         {
             cameraFollow.lockRightEdge = false;
             GameObject.Find("UI").GetComponent<UIManager>().pickUpInstructions.SetActive(false);
-            perksChosen = true;
+			perksChosen = true;
+			gameManager.firstGame = false;
         }
     }
 

@@ -251,7 +251,6 @@ public class UIManager : MonoBehaviour
 		if (_gameManager.firstGame)
 		{
 			cutsceneManager.ChangeCutscene(CutsceneManager.Cutscenes.INTRO);
-			_gameManager.firstGame = false;
 		}
 		else
 		{
