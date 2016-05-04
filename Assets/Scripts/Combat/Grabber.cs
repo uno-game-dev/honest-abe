@@ -12,6 +12,7 @@ public class Grabber : MonoBehaviour
     public float grabPunchTime = 0.5f;
     public float grabThrowTime = 0.5f;
     public float grabLoseTime = 0.5f;
+	public float moveSpeedModifier = 0.5f;
     public State state;
 
     private Animator _animator;
