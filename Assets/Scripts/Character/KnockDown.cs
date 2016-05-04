@@ -72,10 +72,13 @@ public class KnockDown : MonoBehaviour
 
     public void HitGround()
     {
-        if (_characterState.state != CharacterState.State.KnockDown)
-            return;
-        
-        height = 0;
+		if (_characterState.state != CharacterState.State.KnockDown)
+		{
+			SetState(State.Null);
+			return;
+		}
+
+		height = 0;
         SetState(State.Land);
         _animator.TransitionPlay("Knock Down Land");
         if (gameObject.tag == "Enemy" && GetComponent<Grabbable>() != null && GetComponent<Grabbable>().wasThrown)
@@ -87,21 +90,27 @@ public class KnockDown : MonoBehaviour
     }
 
     private void Land()
-    {
+	{
 		if (_characterState.state != CharacterState.State.KnockDown)
-            return;
+		{
+			SetState(State.Null);
+			return;
+		}
 
-        SetState(State.OnGround);
+		SetState(State.OnGround);
         _animator.TransitionPlay("Knock Down On Ground");
         Invoke("GetUp", onGroundDuration);
     }
 
     private void GetUp()
-    {
-        if (_characterState.state != CharacterState.State.KnockDown)
-            return;
+	{
+		if (_characterState.state != CharacterState.State.KnockDown)
+		{
+			SetState(State.Null);
+			return;
+		}
 
-        if (gameObject.tag == "Enemy")
+		if (gameObject.tag == "Enemy")
         {
             GetComponent<BaseCollision>().RemoveCollisionLayer("Enemy");
         }
@@ -112,9 +121,6 @@ public class KnockDown : MonoBehaviour
 
     private void BackToIdle()
     {
-        if (_characterState.state != CharacterState.State.KnockDown)
-            return;
-
         SetState(State.Null);
         _characterState.SetState(CharacterState.State.Idle);
     }

@@ -14,7 +14,9 @@ public class Stun : MonoBehaviour
     private Vector2 velocity = Vector2.zero;
     private float stunTimer = 0;
     private CharacterState _characterState;
-    private BaseCollision _collision;
+	private KnockDown _knockdown;
+	private Jump _jump;
+	private BaseCollision _collision;
     private Animator _animator;
     private float knockbackAmount;
     private Vector2 previousPos, currentPos;
@@ -26,7 +28,9 @@ public class Stun : MonoBehaviour
     {
         _collision = GetComponent<BaseCollision>();
         _characterState = GetComponent<CharacterState>();
-        _animator = GetComponent<Animator>();
+		_knockdown = GetComponent<KnockDown>();
+		_jump = GetComponent<Jump>();
+		_animator = GetComponent<Animator>();
         genericAnimation = GetComponent<GenericAnimation>();
         random = new System.Random();
     }
@@ -43,22 +47,21 @@ public class Stun : MonoBehaviour
     }
 
     private void OnCollision(Collider2D collider)
-    {
-        AttackArea attackArea = collider.GetComponent<AttackArea>();
+	{
+		if (!_characterState.CanBeStunned()) // || _knockdown.state != KnockDown.State.Null || (tag == "Player" && _jump.state != Jump.State.Null))
+			return;
+
+		AttackArea attackArea = collider.GetComponent<AttackArea>();
         if (attackArea && attackArea.IsShootType())
             return;
 
         if (collider.tag == "Damage")
         {
-            if (_characterState.state == CharacterState.State.Dead)
-                return;
-
             if (tag != "Player" || ShouldStunPlayer(attackArea))
             { // only 50% chance to stun if it's Abe				
                 Attack attack = collider.GetComponentInParent<Attack>();
                 float directionMod = (collider.GetComponentInParent<Movement>().direction == Movement.Direction.Right ? 1f : -1f);
-
-
+				
                 if (attack.attackState == Attack.State.Heavy)
                 {
                     if (attack.getAttackHand() == Attack.Hand.Right)
@@ -110,9 +113,6 @@ public class Stun : MonoBehaviour
     public void GetStunned(float stunAmount = 1f, float knockbackAmount = 0.1f, float directionModifier = 1f,
         Direction direction = Direction.Left, Power power = Power.Light)
     {
-        if (!_characterState.CanBeStunned())
-            return;
-
         if (_characterState.state == CharacterState.State.Grabbed)
         {
             _animator.TransitionPlay("Grabbed Damage", stunTransition, 0.15f);
