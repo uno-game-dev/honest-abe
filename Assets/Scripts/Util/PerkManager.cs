@@ -86,7 +86,7 @@ public class PerkManager : MonoBehaviour
 
     [HideInInspector]
     public bool showInstructions;
-    private bool perksChosen;
+    public bool perksChosen;
 
     /*
      * List of all perks in the game

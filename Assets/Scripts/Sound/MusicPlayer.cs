@@ -36,7 +36,7 @@ public class MusicPlayer : MonoBehaviour
     {
         if (!didForestLevelTransitionMusic)
             if (levelManager && levelManager.currentScene == 0)
-                if (worldGenerator && worldGenerator.currentScreen == 2)
+                if (GameObject.Find("GameManager").GetComponent<PerkManager>().perksChosen)
                 {
                     didForestLevelTransitionMusic = true;
                     Play("Forest Level Music");
