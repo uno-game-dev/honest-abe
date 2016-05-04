@@ -103,6 +103,7 @@ public class PerkManager : MonoBehaviour
     private static CameraFollow cameraFollow;
 
     private WorldGenerator worldGen;
+	private GameManager gameManager;
     private LevelManager levelManager;
 
     /*
@@ -142,8 +143,10 @@ public class PerkManager : MonoBehaviour
         }
 
         cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
-        worldGen = GameObject.Find("Level").GetComponent<WorldGenerator>();
+		worldGen = GameObject.Find("Level").GetComponent<WorldGenerator>();
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
+		
         trinketSlider = GameObject.Find("TrinketUI").GetComponent<TrinketSlider>();
 
         perksChosen = false;
@@ -190,7 +193,8 @@ public class PerkManager : MonoBehaviour
         if (levelManager.currentScene == 0 && (!hatPerkChosen || !axePerkChosen))
         {
             cameraFollow.lockRightEdge = true;
-            GameObject.Find("UI").GetComponent<UIManager>().pickUpInstructions.SetActive(true);
+			if (gameManager.firstGame)
+				GameObject.Find("UI").GetComponent<UIManager>().pickUpInstructions.SetActive(true);
         }
         else
         {

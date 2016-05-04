@@ -120,8 +120,11 @@ public class UIManager : MonoBehaviour
         _logoImage = GameObject.Find("Logo");
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            _startGameText.SetActive(true);
-            _logoImage.SetActive(true);
+			_startGameText.SetActive(true);
+			if (_gameManager.firstGame)
+				_logoImage.SetActive(true);
+			else
+				_logoImage.SetActive(false);
         }
         else
         {
@@ -219,8 +222,11 @@ public class UIManager : MonoBehaviour
 
             if (!updateActive)
             {
-                _startGameText.SetActive(true);
-                _logoImage.SetActive(true);
+				_startGameText.SetActive(true);
+				if (_gameManager.firstGame)
+					_logoImage.SetActive(true);
+				else
+					_logoImage.SetActive(false);
             }
 
             Time.timeScale = 1;
