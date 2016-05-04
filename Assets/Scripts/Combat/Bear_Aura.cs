@@ -67,4 +67,5 @@ public class Bear_Aura : MonoBehaviour {
 	{
 		_damageElapsed = damageInterval;
 	}
+
 }
