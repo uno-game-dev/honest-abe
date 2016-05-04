@@ -1720,7 +1720,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11468350}
     m_EventID: 334526696
-  m_CachedInstanceID: 58578
+  m_CachedInstanceID: 9374
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091a7f16df68341edb6899faf5114efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 35
+  health: 40
   additionalHealthFloor: 2
   additionalHealthCeiling: 8
   alive: 0
@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 58568
+  m_CachedInstanceID: 9364
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1905,7 +1905,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 58562
+  m_CachedInstanceID: 9358
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -2034,7 +2034,7 @@ MonoBehaviour:
     m_EventID: 1986386542
   - m_Destination: {fileID: 11468350}
     m_EventID: 334526696
-  m_CachedInstanceID: 58576
+  m_CachedInstanceID: 9372
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2123,7 +2123,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11428194}
     m_EventID: 1726082671
-  m_CachedInstanceID: 58570
+  m_CachedInstanceID: 9366
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2260,14 +2260,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 4
-  attackSize: {x: 1, y: 1}
+  attackSize: {x: 3, y: 1}
   attackOffset: {x: 1, y: 0}
   heldOffset: {x: -0.03, y: -0.12, z: 0}
   heldOrientation: {x: 0, y: 0, z: 14.6}
-  lightDamage: 5
+  lightDamage: 8
   lightStun: 0.2
   lightKnockback: 2
-  heavyDamage: 8
+  heavyDamage: 15
   heavyStun: 1
   heavyKnockback: 5
   throwDamage: 4
@@ -2292,7 +2292,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 58574
+  m_CachedInstanceID: 9370
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackState: 0
   hand: 1
-  weapon: {fileID: 11479016, guid: 80d7e75e1a27d8d47956c9d216151473, type: 2}
+  weapon: {fileID: 11464192}
   emptyHanded: 1
 --- !u!114 &11493848
 MonoBehaviour:
@@ -2440,7 +2440,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11438388}
     m_EventID: 805742543
-  m_CachedInstanceID: 58572
+  m_CachedInstanceID: 9368
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
