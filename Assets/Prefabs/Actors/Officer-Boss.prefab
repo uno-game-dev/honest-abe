@@ -656,6 +656,7 @@ GameObject:
   - 114: {fileID: 11448898}
   - 114: {fileID: 11431484}
   - 114: {fileID: 11484172}
+  - 114: {fileID: 11404542}
   m_Layer: 11
   m_Name: Officer-Boss
   m_TagString: Boss
@@ -1695,6 +1696,21 @@ MonoBehaviour:
   heavyKnockback: 5
   throwDamage: 4
   isEnemyWeapon: 1
+--- !u!114 &11404542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188124}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95951e58cf2e8a64b83eac6313d1a952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDropPrefabs: []
+  itemDropPrefabs: []
+  minRotation: -45
+  maxRotation: 45
 --- !u!114 &11407480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1715,7 +1731,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11484172}
     m_EventID: 103276309
-  m_CachedInstanceID: 10834
+  m_CachedInstanceID: 13456
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -1825,7 +1841,7 @@ MonoBehaviour:
   m_HideScript: 1
   m_Position: {x: 0, y: 0}
   m_Transitions: []
-  m_CachedInstanceID: 10822
+  m_CachedInstanceID: 13464
   m_Description: 
   m_EnabledState: {fileID: 0}
   m_LastEnabledState: {fileID: 0}
@@ -1969,7 +1985,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11472116}
     m_EventID: 805742543
-  m_CachedInstanceID: 10838
+  m_CachedInstanceID: 13468
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2048,7 +2064,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11476700}
     m_EventID: 755052694
-  m_CachedInstanceID: 10844
+  m_CachedInstanceID: 13472
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2135,7 +2151,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11472116}
     m_EventID: 805742543
-  m_CachedInstanceID: 10842
+  m_CachedInstanceID: 13478
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2232,7 +2248,7 @@ MonoBehaviour:
   m_Transitions:
   - m_Destination: {fileID: 11407480}
     m_EventID: 1463829125
-  m_CachedInstanceID: 10836
+  m_CachedInstanceID: 13486
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2352,7 +2368,7 @@ MonoBehaviour:
     m_EventID: 1763704235
   - m_Destination: {fileID: 11455202}
     m_EventID: 334526696
-  m_CachedInstanceID: 10840
+  m_CachedInstanceID: 13494
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2419,7 +2435,7 @@ MonoBehaviour:
     m_EventID: 805742543
   - m_Destination: {fileID: 11455202}
     m_EventID: 334526696
-  m_CachedInstanceID: 10832
+  m_CachedInstanceID: 13496
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
@@ -2482,7 +2498,7 @@ MonoBehaviour:
     m_EventID: 322721332
   - m_Destination: {fileID: 11476700}
     m_EventID: 755052694
-  m_CachedInstanceID: 10846
+  m_CachedInstanceID: 13498
   m_Description: 
   m_IgnoreTimeScale: 0
   m_ResetStatusOnDisable: 1
