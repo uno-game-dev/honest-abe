@@ -20,6 +20,7 @@ public class PlayerMotor : MonoBehaviour
     private List<Collider2D> _collidersImOn = new List<Collider2D>();
     private float _stepElapsed = 0.0f;
     private CharacterState _characterState;
+	private Grabber _grabber;
     private Animator _animator;
 
     void Start()
@@ -34,6 +35,7 @@ public class PlayerMotor : MonoBehaviour
         _playerAttack = GetComponent<Attack>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _characterState = GetComponent<CharacterState>();
+		_grabber = GetComponent<Grabber>();
         _animator = GetComponent<Animator>();
         isOnItem = false;
         Initialize();
@@ -47,8 +49,9 @@ public class PlayerMotor : MonoBehaviour
         // Else run the update code
         if (_movement.enabled)
         {
-            _velocity = new Vector2(InputManager.GetAxis("Horizontal") * _movement.horizontalMovementSpeed,
-                InputManager.GetAxis("Vertical") * _movement.vericalMovementSpeed);
+			float movementMod = (_grabber.state == Grabber.State.Hold || _grabber.state == Grabber.State.Punch) ? _grabber.moveSpeedModifier : 1f;
+			_velocity = new Vector2(InputManager.GetAxis("Horizontal") * _movement.horizontalMovementSpeed * movementMod,
+				InputManager.GetAxis("Vertical") * _movement.vericalMovementSpeed * movementMod );
             _movement.Move(_velocity);
 
             UpdateStep();
