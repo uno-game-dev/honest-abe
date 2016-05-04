@@ -86,7 +86,7 @@ public class BossHealth : Health
             health -= damage;
             if (gameObject.tag != "Player" && playerAttack.attackState == Attack.State.Heavy && (health < _currentTargetHealthForExecution))
             {
-                ShowExecution();
+                playerAttack.GetComponentInChildren<AttackArea>().AddToChainOnDeath(gameObject, true);
                 EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
             }
             if (health < _currentTargetHealthForExecution)

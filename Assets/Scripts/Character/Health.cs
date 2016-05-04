@@ -52,7 +52,6 @@ public class Health : MonoBehaviour
                     if (playerAttack.GetComponent<Execution>())
                         playerAttack.GetComponent<Execution>().OnExecute(transform.position);
 
-                    ShowExecution();
                     playerAttack.GetComponentInChildren<AttackArea>().AddToChainOnDeath(gameObject, true);
                     EventHandler.SendEvent(EventHandler.Events.HEAVY_KILL);
                 }
@@ -83,21 +82,6 @@ public class Health : MonoBehaviour
                 Destroy(_enemyFollow.target);
 
         }
-    }
-
-    public void ShowExecution()
-    {
-        GameObject number = new GameObject();
-        number.name = "Execution";
-        TextMesh tm = number.AddComponent<TextMesh>();
-        tm.text = "RIP";
-        tm.fontSize = 24;
-        tm.color = Color.red;
-        tm.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        tm.transform.position = transform.position;
-        FloatUpAndDestroy f = number.AddComponent<FloatUpAndDestroy>();
-        f.floatGravityMultiplier = 0.5f;
-        f.floatVelocity = 2;
     }
 
     protected void DeathSequence()
