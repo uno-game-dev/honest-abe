@@ -1,10 +1,10 @@
 Thank you for download Behaviour Machine!
 
 If you have any questions, suggestions, comments or feature requests, please contact me at suppport@behaviourmachine.com
-Join the support forum at http://behaviourmachine.com/Forum/
+Join the support forum at http://behaviourmachine.com/Forum/ 
 
 ---------------
- How To Update
+ How To Update 
 ---------------
 
 You can find a detailed description at www.behaviourmachine.com/user-manual/updating/
@@ -20,20 +20,17 @@ P.S.: If you are upgrading BehaviourMachine from the 1.2 version (or previous) y
  Version History
 -----------------
 
-1.4.2
-NEW: Call BehaviourTree functions through Events from the new UI (TickFunctionFromUI function).
-
 1.4.1:
 NEW: DynamicList variable; stores a collection of values (aka List/Array).
 NEW: Awake function node.
-NEW: DynamicListAdd, DynamicListClear, DynamicListGetIndexOf, DynamicListGetCount, DynamicListInsert, DynamicListRemove, DynamicListRemoveAt action nodes.
+NEW: DynamicListAdd, DynamicListClear, DynamicListGetIndexOf, DynamicListInsert, DynamicListRemove, DynamicListRemoveAt action nodes.
 NEW: DynamicListContains condition node.
 NEW: DynamicListFor and DynamicListForEach decorator nodes.
 NEW: LogVariable node; prints a variable value to the Unity console.
-NEW: Normalized property for some OnGUI nodes.
+NEW: normalized property for some OnGUI nodes.
 
 1.4.0:
-- IMPORTANT: To prevent accidentally data loss during updates it's a good parctice to have the GlobalBlackboard.prefab outside BehaviourMachine folders. Just move the "Assets/Plugins/BehaviourMachine/Resources" folder elsewhere in your project (The root folder "Assets/" is fine). If you already have an "Assets/Resources" folder then you can just move the GlobalBlackboard.prefab to this folder. Don't forget that the GlobalBlackboard.prefab should be inside a Resources folder.
+- IMPORTANT: To prevent accidentally data loss during updates it's a good parctice to have the GlobalBlackboard.prefab outside BehaviourMachine folders. Just move the "Assets/Plugins/BehaviourMachine/Resources" folder elsewhere in your project (The root folder "Assets/" is fine). If you already have an "Assets/Resources" folder then you can just move the GlobalBlackboard.prefab to this folder. Don't forget that the GlobalBlackboard.prefab should be inside a Resources folder. 
 NEW: Uniduino and UniOSC third party nodes for Indie and Pro.
 NEW: Coroutine function node.
 NEW: UnityEventState, a state that allows you to use the power of UnityEvents (For Unity 4.6+).
@@ -62,7 +59,7 @@ FIX: Unity 5 build.
 - NEW: The base class for all states is now the InternalStateBehaviour, instead of StateBehaviour.
 - NEW: Improved InternalStateBehaviour.blackboard performance, now the blackboard is cached in Editor, no need to call GetComponent() during runtime.
 - NEW: BehaviourTree.SendEvent(). Uses the supplied event on the tree, if fails it will send the event to all enabled states in the tree.
-- FIX: Refactoring on StateBehaviour.SendEvent(), it will always process the event top-down starting from the root parent (no need to call root.SendEvent(...)) if it exists. Adding StateBehaviour.ProcessEvent() that will actually use the event, StateBehaviour.SendEvent() will just call ProcessEvent() on the root parent if it exists.
+- FIX: Refactoring on StateBehaviour.SendEvent(), it will always process the event top-down starting from the root parent (no need to call root.SendEvent(...)) if it exists. Adding StateBehaviour.ProcessEvent() that will actually use the event, StateBehaviour.SendEvent() will just call ProcessEvent() on the root parent if it exists.  
 - FIX: Refactoring on the enable/disable state logic. ParentBehaviour.enabledSate property was removed, Now the ParentBehaviour uses the EnabledState, and DisableState callbacks. The StateMachine has the enabledState property to access the enabled state. The BehaviourTree has the enabledStates property to access all enabled states on the tree.
 - FIX: ActionNode.Awake not being called after an assembly reload.
 - FIX: Adding nodes during runtime is breaking ActionNode.OnTick.
@@ -70,7 +67,7 @@ FIX: Unity 5 build.
 - FIX: SetSkybox node status.
 
 1.2.0:
-- NEW: StateMachine's concurrent state. You can set a concurrent state in a StateMachine that will be enabled when the StateMachine is enabled and disabled when the StateMachine is disabled.
+- NEW: StateMachine's concurrent state. You can set a concurrent state in a StateMachine that will be enabled when the StateMachine is enabled and disabled when the StateMachine is disabled. 
 - NEW: IsAxisButton, IsAxisButtonDown and IsAxisButtonUp, TransformDirection, InverseTransformDirection, IgnoreCollision nodes.
 - NEW: StateBehaviour.OnTick virtual method called by a StateNode.
 - FIX: ActionNode.OnGUI in final build.
@@ -91,8 +88,8 @@ FIX: Unity 5 build.
 - NEW: All console messages have a colored tag {b} for easy debugging.
 - NEW: MonoState.target GameObject property and inspector combobox to easily select MonoBehaviours (thanks to PrimeDerektive).
 - FIX: A lot of refactoring, adding new design patterns to facilitate changes in internal code. Runtime code are totally decoupled from editor!
-- FIX: Moving files/folders for better project organization.
-- FIX: Animator.rootMotion property not showing in the inspector (thanks to Derek).
+- FIX: Moving files/folders for better project organization. 
+- FIX: Animator.rootMotion property not showing in the inspector (thanks to Derek). 
 - FIX: SetAudioClip always returning error (thanks to cfregin).
 - FIX: Losing enum data when removing/adding a node's public field (thanks to cfregin).
 
@@ -139,7 +136,7 @@ FIX: Unity 5 build.
 - FIX: IsAllBoolTrue and IsAnyBoolTrue error.
 - FIX: Removing m_InstanceID warnning on WP8 build.
 
-0.3.0:
+0.3.0: 
 - IMPORTANT: Upgrade from older versions will lose the variables from all Blackboards D:
 - NEW: Mecanim parameters as variables!
 - NEW: Redesigned GUI control for variables, no more Radio buttons.
