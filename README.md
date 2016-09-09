@@ -1,4 +1,4 @@
-# honest-abe
+# Honest Abe
 Honest Abe is a beat 'em up game where you play as a revenant Abraham Lincoln who was killed and left for dead in the south by Robert E. Lee. Furthermore, as it turns out, Mary Todd was also kidnapped in that same attack! Now Abe thirsts for revenge, tearing through the south trying to rescue his wife and kill Robert E. Lee.
 
 This is a group project by the UNO Advanced Game Development class of Spring 2016.
