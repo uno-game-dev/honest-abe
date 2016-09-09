@@ -38,6 +38,5 @@ This is a group project by the UNO Advanced Game Development class of Spring 201
 - Rachel Farrell - Development, Design
 - Ted Mader - Development Lead
 
-####Tools
-- [Unity](https://unity3d.com/)
-- [{b} Behaviour Machine](http://www.behaviourmachine.com/)
+####Resources
+Hibernate uses [Unity](https://unity3d.com/) as its engine. AI is powered by [Behaviour Machine](http://www.behaviourmachine.com/).
