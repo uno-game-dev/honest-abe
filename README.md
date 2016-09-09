@@ -25,16 +25,16 @@ This is a group project by the UNO Advanced Game Development class of Spring 201
 
 ##Credits
 ####Team
-- Breena Crump - Developer / QA Tester
-- Chris Toups - Producer / Sound Designer
-- Christian Simmers - Artist (2D) / Designer
-- David DiMaggio - Sound Designer / Game Designer
-- Edward Garcia - Developer / Artist
-- Kyle Whittington - Social Media / Lead Artist
-- Maurice Robert - Developer / Game Designer
-- Parker Sprouse - Developer / QA Tester
-- Rachel Farrell - Developer / Designer
-- Ted Mader - Lead Developer / Developer
+- Breena Crump - Development, QA
+- Chris Toups - Team Lead, SFX
+- Christian Simmers - 2D Art, Design
+- David DiMaggio - Soundtrack, Design
+- Edward Garcia - Development, 2D/3D Art, Animations
+- Kyle Whittington - Art Lead, Social Media
+- Maurice Robert - Development, Design
+- Parker Sprouse - Development, QA
+- Rachel Farrell - Development, Design
+- Ted Mader - Development Lead
 
 ####Tools
 - [Unity](https://unity3d.com/)
