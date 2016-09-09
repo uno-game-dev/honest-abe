@@ -3,6 +3,8 @@ Honest Abe is a beat 'em up game where you play as a revenant Abraham Lincoln wh
 
 This is a group project by the UNO Advanced Game Development class of Spring 2016.
 
+[Learn more about us here.](http://www.uno.edu/campus-news/2016/Game-On-UNO-Video-Game-Development-Concentration-Simulates-Real-World-Experience.aspx)
+
 ![Alt text](http://i.imgur.com/CLgjKF2.png "Honest Abe")
 
 ## Download
