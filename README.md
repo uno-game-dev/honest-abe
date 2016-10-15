@@ -39,4 +39,4 @@ This is a group project by the UNO Advanced Game Development class of Spring 201
 - Ted Mader - Development Lead
 
 ####Resources
-Hibernate uses [Unity](https://unity3d.com/) as its engine. AI is powered by [Behaviour Machine](http://www.behaviourmachine.com/).
+Honest Abe uses [Unity](https://unity3d.com/) as its engine. AI is powered by [Behaviour Machine](http://www.behaviourmachine.com/).
