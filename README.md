@@ -1,7 +1,9 @@
-# honest-abe
+# Honest Abe
 Honest Abe is a beat 'em up game where you play as a revenant Abraham Lincoln who was killed and left for dead in the south by Robert E. Lee. Furthermore, as it turns out, Mary Todd was also kidnapped in that same attack! Now Abe thirsts for revenge, tearing through the south trying to rescue his wife and kill Robert E. Lee.
 
-This group project was created by the UNO Advanced Game Development class of Spring 2016.
+This is a group project by the UNO Advanced Game Development class of Spring 2016.
+
+[Learn more about us here.](http://www.uno.edu/campus-news/2016/Game-On-UNO-Video-Game-Development-Concentration-Simulates-Real-World-Experience.aspx)
 
 ![Alt text](http://i.imgur.com/CLgjKF2.png "Honest Abe")
 
@@ -25,17 +27,16 @@ This group project was created by the UNO Advanced Game Development class of Spr
 
 ##Credits
 ####Team
-- Breena Crump - Developer / QA Tester
-- Chris Toups - Producer / Sound Designer
-- Christian Simmers - Artist (2D) / Designer
-- David DiMaggio - Sound Designer / Game Designer
-- Edward Garcia - Developer / Artist
-- Kyle Whittington - Social Media / Lead Artist
-- Maurice Robert - Developer / Game Designer
-- Parker Sprouse - Developer / QA Tester
-- Rachel Farrell - Developer / Designer
-- Ted Mader - Lead Developer / Developer
+- Breena Crump - Development, QA
+- Chris Toups - Team Lead, SFX
+- Christian Simmers - 2D Art, Design
+- David DiMaggio - Soundtrack, Design
+- Edward Garcia - Development, 2D/3D Art, Animations
+- Kyle Whittington - Art Lead, Social Media
+- Maurice Robert - Development, Design
+- Parker Sprouse - Development, QA
+- Rachel Farrell - Development, Design
+- Ted Mader - Development Lead
 
-####Tools
-- [Unity](https://unity3d.com/)
-- [{b} Behaviour Machine](http://www.behaviourmachine.com/)
+####Resources
+Honest Abe uses [Unity](https://unity3d.com/) as its engine. AI is powered by [Behaviour Machine](http://www.behaviourmachine.com/).
