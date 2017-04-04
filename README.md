@@ -9,7 +9,7 @@ This is a group project by the UNO Advanced Game Development class of Spring 201
 
 ## Download
 
-####final-3 Release May 4, 2016 (aka End-of-Semester Build)
+#### final-3 Release May 4, 2016 (aka End-of-Semester Build)
 - Windows desktop 64-bit: https://build.cloud.unity3d.com/share/ZkMWaNQDf-/
 - Windows desktop 32-bit: https://build.cloud.unity3d.com/share/W1mk1rQvzW/
 - Mac desktop 64-bit: https://build.cloud.unity3d.com/share/bybTp4mvMW/
@@ -21,12 +21,12 @@ This is a group project by the UNO Advanced Game Development class of Spring 201
 - iOS:  https://build.cloud.unity3d.com/share/W1pPxHmDGW/
 - Web Player: https://build.cloud.unity3d.com/share/-kqQeSXvfW/
 
-####final-4 Release May 19, 2016 (built with Behaviour Machine Indie to work on mobile and web)
+#### final-4 Release May 19, 2016 (built with Behaviour Machine Indie to work on mobile and web)
 - Android    5/19/2016    52.0 MB   https://build.cloud.unity3d.com/share/WyM-Zt2F7Z/
 - WebGL     5/19/2016    36.1 MB    https://build.cloud.unity3d.com/share/ZJCI9d3tm-/(edited)
 
-##Credits
-####Team
+## Credits
+#### Team
 - Breena Crump - Development, QA
 - Chris Toups - Team Lead, SFX
 - Christian Simmers - 2D Art, Design
@@ -38,5 +38,5 @@ This is a group project by the UNO Advanced Game Development class of Spring 201
 - Rachel Farrell - Development, Design
 - Ted Mader - Development Lead
 
-####Resources
+#### Resources
 Honest Abe uses [Unity](https://unity3d.com/) as its engine. AI is powered by [Behaviour Machine](http://www.behaviourmachine.com/).
